@@ -8,8 +8,34 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
 }
+sourceSets {
+    main {
+        java {
+            srcDir "src/main/java"
+        }
+        resources {
+            srcDir "src/main/resources"
+            srcDir "src/main/java"
+            exclude "**/*.java"
+        }
+    }
+    test {
+        java {
+            srcDir "src/test/java"
+        }
+        resources {
+            srcDir "src/test/resources"
+            srcDir "src/test/java"
+            exclude "**/*.java"
+        }
+    }
+}
 
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     compile group: 'com.lmax', name: 'disruptor', version: '3.4.2'
@@ -19,6 +45,8 @@ dependencies {
     compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
     compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
+    compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
+
 }
 
 test {

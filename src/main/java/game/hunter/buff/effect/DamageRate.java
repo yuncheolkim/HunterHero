@@ -17,7 +17,6 @@ public class DamageRate implements BuffEffect {
     @Override
     public boolean doEffect(Hero hero, Buff buff) {
 
-
         HeroData processData = hero.getProcessData();
         HeroData originData = hero.getOriginData();
         processData.setDamage(processData.getDamage() + CalcUtil.calcRateAdd(originData.getDamage(), buff.buffVal().i1()));
