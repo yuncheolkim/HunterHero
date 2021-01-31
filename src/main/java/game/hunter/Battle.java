@@ -1,9 +1,7 @@
 package game.hunter;
 
 import game.hunter.action.ActionPoint;
-import game.hunter.damage.DamageInfo;
-import game.hunter.damage.DamageProcess;
-import game.hunter.damage.DamagedProcess;
+import game.hunter.damage.*;
 import game.hunter.record.BattleRecord;
 import game.hunter.record.Record;
 
@@ -59,6 +57,11 @@ public class Battle {
         battleId = ID_GEN.addAndGet(1);
         seed = System.currentTimeMillis();
         random = new Random(seed);
+
+        damageProcessList.add(new CriticalDamageProcess());
+//        takeDamageProcessList.add(new AvoidDamagedProcess());
+//        takeDamageProcessList.add(new DefDamagedProcess());
+//        takeDamageProcessList.add(new ShieldDamagedProcess());
     }
 
 
@@ -140,7 +143,7 @@ public class Battle {
         List<Hero> order = new ArrayList<>();
         order.addAll(sideAhero.stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
         order.addAll(sideBhero.stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
-        order.sort((o1, o2) -> o2.finalData.getSpeed() - o1.finalData.getSpeed());
+        order.sort((o1, o2) -> o2.property.getSpeed() - o1.property.getSpeed());
         return order;
     }
 
@@ -210,9 +213,9 @@ public class Battle {
         takeDamageProcessList.removeIf(process -> process.getClass() == clazz);
     }
 
-    public void calcAttackedProcess(Hero hero) {
+    public void calcAttackedProcess(DamageInfo info) {
         for (DamagedProcess damageProcess : takeDamageProcessList) {
-            damageProcess.process(hero);
+            damageProcess.process(info);
         }
     }
 

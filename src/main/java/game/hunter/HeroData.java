@@ -21,7 +21,7 @@ public class HeroData {
     /**
      * 伤害
      */
-    private int damage;
+    public int damage;
 
     /**
      * 闪避

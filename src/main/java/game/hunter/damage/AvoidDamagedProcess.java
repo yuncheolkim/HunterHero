@@ -11,13 +11,12 @@ import game.hunter.Hero;
  */
 public class AvoidDamagedProcess implements DamagedProcess {
     @Override
-    public boolean process(Hero hero) {
-        DamageInfo info = hero.getBattle().getDamageInfo();
+    public boolean process(DamageInfo info) {
 
-        int avoid = hero.getFinalData().getAvoid();
-        boolean happened = CalcUtil.happened(hero.getBattle().getRandom(), avoid, avoid + 200);
+        int avoid = info.target.property.getAvoid();
+        boolean happened = CalcUtil.happened(info.source.getBattle().getRandom(), avoid, avoid + 200);
         if (happened) {
-            info.setAvoid(true);
+            info.avoid = (true);
             return false;
         }
         return true;

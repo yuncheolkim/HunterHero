@@ -5,6 +5,7 @@ package game.hunter.record;
  * 2021/1/18 15:21
  */
 public class HealthChangeRecord extends Record {
+    public DamageType damageType;
 
     public HeroRecordSimple hero;
 

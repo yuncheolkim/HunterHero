@@ -14,12 +14,16 @@ public class CriticalDamageProcess implements DamageProcess {
     @Override
     public boolean process(Hero hero) {
 
-        HeroData finalData = hero.getFinalData();
-        boolean happened = CalcUtil.happened(hero.getBattle().getRandom(), finalData.getCritical(), finalData.getCritical() + 200);
+        HeroData processData = hero.property;
+
+        int rate = processData.getCritical();
+        boolean happened = CalcUtil.happened(hero.getBattle().getRandom(), rate, rate+ 200);
 
         // 暴击伤害
         if (happened) {
-            finalData.setCriticalDamage(finalData.getCriticalDamage() + CalcUtil.calcRateAdd(finalData.getDamage(), finalData.getCriticalDamageRate()));
+            int damage = processData.getDamage();
+            int damageRate = processData.getCriticalDamageRate();
+            processData.setCriticalDamage(processData.getCriticalDamage() + CalcUtil.calcRateAdd(damage, damageRate));
         }
 
         return true;

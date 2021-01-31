@@ -12,8 +12,5 @@ public class HeroRecordData {
 
     public int hp;
 
-    public HeroData originData;
-
-    public HeroData processData;
-
+    public HeroData property;
 }

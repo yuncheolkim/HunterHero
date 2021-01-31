@@ -9,103 +9,47 @@ import game.hunter.Hero;
  * 2021/1/11 14:56
  */
 public class DamageInfo {
-    private DamageSourceType type;
+    public DamageSourceType type;
 
-    private int sourceId;
+    public int sourceId;
+
+    /**
+     * 造成的普通伤害
+     */
+    public int sourceDamage;
+
+    /**
+     * 造成的暴击伤害
+     */
+    public int sourceCriticalDamage;
 
     /**
      * 造成的伤害
      */
-    private int sourceDamage;
-
-    /**
-     * 造成的伤害
-     */
-    private int attackedDamage;
+    public int attackedDamage;
 
     /**
      * 是否闪避
      */
-    private boolean avoid;
+    public boolean avoid;
 
     /**
      * 目标
      */
-    private Hero target;
+    public Hero target;
 
     /**
      * 最初伤害来源
      */
-    private Hero origin;
+    public Hero origin;
 
     /**
      * 直接伤害来源
      */
-    private Hero current;
+    public Hero source;
 
-
-    public int getAttackedDamage() {
-        return attackedDamage;
-    }
-
-    public void setAttackedDamage(int attackedDamage) {
-        this.attackedDamage = attackedDamage;
-    }
-
-    public Hero getTarget() {
-        return target;
-    }
-
-    public void setTarget(Hero target) {
-        this.target = target;
-    }
-
-    public Hero getOrigin() {
-        return origin;
-    }
-
-    public void setOrigin(Hero origin) {
-        this.origin = origin;
-    }
-
-    public Hero getCurrent() {
-        return current;
-    }
-
-    public void setCurrent(Hero current) {
-        this.current = current;
-    }
-
-    public boolean isAvoid() {
-        return avoid;
-    }
-
-    public void setAvoid(boolean avoid) {
-        this.avoid = avoid;
-    }
-
-    public int getSourceDamage() {
-        return sourceDamage;
-    }
-
-    public void setSourceDamage(int sourceDamage) {
-        this.sourceDamage = sourceDamage;
-    }
-
-    public DamageSourceType getType() {
-        return type;
-    }
-
-    public void setType(DamageSourceType type) {
-        this.type = type;
-    }
-
-    public int getSourceId() {
-        return sourceId;
-    }
-
-    public void setSourceId(int sourceId) {
-        this.sourceId = sourceId;
+    public int allSourceDamage(){
+        return sourceDamage + sourceCriticalDamage;
     }
 
     @Override
@@ -115,7 +59,6 @@ public class DamageInfo {
                 ", avoid=" + avoid +
                 ", target=" + target +
                 ", origin=" + origin +
-                ", current=" + current +
                 '}';
     }
 }

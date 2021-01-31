@@ -15,6 +15,6 @@ public interface DamagedProcess {
      *
      * @return 是否计算后续功能
      */
-    boolean process(Hero hero);
+    boolean process(DamageInfo hero);
 
 }

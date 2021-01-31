@@ -29,13 +29,14 @@ public class TestBattle {
         init(g2, Side.B);
         init(g3, Side.B);
         init(g4, Side.B);
-        g1.setHp(5000);
-        g2.getOriginData().setSpeed(80);
-        g2.setHp(500);
-        g3.getOriginData().setSpeed(50);
-        g3.setHp(1000);
-        g4.getOriginData().setSpeed(50);
-        g4.setHp(500);
+        g1.heroStats.hp = (5000);
+        g1.origin.setCritical(50);
+        g2.origin.setSpeed(80);
+        g2.heroStats.hp = (500);
+        g3.origin.setSpeed(50);
+        g3.heroStats.hp = (1000);
+        g4.origin.setSpeed(50);
+        g4.heroStats.hp = (500);
 
         g1.init();
         g2.init();
@@ -65,7 +66,7 @@ public class TestBattle {
         // 设置阵营
         g.setSide(side);
         // 设置数据
-        g.setOriginData(makeData());
+        g.origin = (makeData());
 
 
     }

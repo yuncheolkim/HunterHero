@@ -31,24 +31,19 @@ public class Hero {
     protected Pos pos;
 
     /**
-     * 血量
+     * 英雄原始数据
      */
-    protected int hp;
+    public HeroData origin;
 
     /**
-     * 最初属性英雄数据
+     * 英雄当前数据
      */
-    protected HeroData originData;
+    public HeroData property;
 
     /**
-     * 中间状态
+     * 英雄状态
      */
-    protected HeroData processData = new HeroData();
-
-    /**
-     * 最终属性数据
-     */
-    protected HeroData finalData;
+    public HeroStats heroStats = new HeroStats();
 
     /**
      * 技能列表
@@ -96,18 +91,12 @@ public class Hero {
     protected Object contextData;
 
     /**
-     * 能否行动
+     * 当前攻击信息
      */
-    protected boolean canActive = true;
-
-    /**
-     * 当前目标
-     */
-    private Hero currentTarget;
+    public DamageInfo damageInfo;
 
     public void init() {
-        finalData = new HeroData();
-        finalData.merge(originData);
+        property = new HeroData().merge(origin);
     }
 
     public void processAll(ActionPoint actionPoint) {
@@ -157,13 +146,12 @@ public class Hero {
 
         for (Hero target : targetList) {
 
-            this.currentTarget = target;
-            DamageInfo damageInfo = new DamageInfo();
-            damageInfo.setType(DamageSourceType.ATTACK);
-            this.battle.setDamageInfo(damageInfo);
-            damageInfo.setOrigin(this);
-            damageInfo.setCurrent(this);
-            damageInfo.setTarget(target);
+            damageInfo = new DamageInfo();
+            damageInfo.type = (DamageSourceType.ATTACK);
+            damageInfo.origin = (this);
+            damageInfo.source = (this);
+            damageInfo.target = (target);
+            damageInfo.sourceDamage = property.getDamage();
 
             // action
             processAction(ActionPoint.出手前);
@@ -172,16 +160,13 @@ public class Hero {
             // buff
             processBuff(ActionPoint.出手前);
 
-            mergeToFinal();
+            if (this.heroStats.active) {
 
-            if (this.canActive) {
-
+                calcAttack();
                 processAction(ActionPoint.出手);
                 // skill 主动技能
                 boolean skillFire = processSkill(ActionPoint.出手);
 
-                calcAttack();
-                calcSourceDamage(damageInfo);
                 // 计算伤害
                 Logs.trace("attack:", this.getSimple(), "--->", target.getSimple(), damageInfo);
 
@@ -202,10 +187,6 @@ public class Hero {
                 Logs.trace("无法行动", this);
             }
 
-            // 清理中间数据
-            this.resetData();
-            target.resetData();
-
         }
     }
 
@@ -221,23 +202,13 @@ public class Hero {
 
     public void calcAttack() {
         battle.calcAttack(this);
-
     }
 
     private void attackRecord() {
         AttackRecord attackRecord = new AttackRecord();
-        DamageInfo damageInfo = battle.getDamageInfo();
-        attackRecord.source = damageInfo.getOrigin().getSimple();
-        attackRecord.target = damageInfo.getTarget().getSimple();
+        attackRecord.source = damageInfo.source.getSimple();
+        attackRecord.target = damageInfo.target.getSimple();
         battle.addRecord(attackRecord);
-    }
-
-    public void resetData() {
-        processData = new HeroData();
-        canActive = true;
-        // 血量不重置
-        finalData = new HeroData();
-        finalData.merge(originData);
     }
 
     /**
@@ -283,6 +254,8 @@ public class Hero {
         battle.addRecord(record);
 
         buffMap.remove(actionPoint, buff);
+        // 重新计算增加buff的效果
+        calcBuffEffect(ActionPoint.增加buff后);
         processAll(ActionPoint.buff移除后);
         contextData = null;
     }
@@ -327,36 +300,12 @@ public class Hero {
         // 计算buff
         processBuff(ActionPoint.受到伤害之前);
 
-        battle.calcAttackedProcess(this);
-
-        calcFinalDamage(info);
+        battle.calcAttackedProcess(info);
+        info.attackedDamage = (info.allSourceDamage());
         // 减血
-        reduceHp(info.getAttackedDamage());
+        reduceHp(info);
 
         processBuff(ActionPoint.受到伤害之后);
-    }
-
-    /**
-     * 计算最终伤害
-     *
-     * @param info
-     */
-    public void calcSourceDamage(DamageInfo info) {
-
-        // 最终伤害合并计算
-        HeroData finalData = info.getCurrent().getFinalData();
-        int damage = finalData.getDamage() + finalData.getCriticalDamage();
-        damage += processData.getDamage() + processData.getCriticalDamage();
-        info.setSourceDamage(damage);
-    }
-
-    /**
-     * 计算最终伤害
-     *
-     * @param info
-     */
-    public void calcFinalDamage(DamageInfo info) {
-        info.setAttackedDamage(info.getSourceDamage());
     }
 
 
@@ -365,15 +314,16 @@ public class Hero {
      *
      * @param num
      */
-    public void reduceHp(int num) {
+    public void reduceHp(DamageInfo i) {
+        int num = i.attackedDamage;
         HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
-        info.setOldValue(hp);
+        info.setOldValue(heroStats.hp);
 
-        hp -= num;
-        info.setNewValue(hp);
+        heroStats.hp -= num;
+        info.setNewValue(heroStats.hp);
 
-        addHpChangeRecord(num * -1);
+        addDamageRecord(i);
         Logs.trace("reduceHp", info);
         if (info.getNewValue() <= 0) {
             deadInfo = info;
@@ -402,7 +352,7 @@ public class Hero {
     public void addBuff(Buff addBuff) {
 
 
-        ActionPoint actionPoint = addBuff.getActionPoint();
+        ActionPoint actionPoint = addBuff.getEffectPoint();
 
         Logs.trace("添加buff", this, actionPoint.name(), addBuff.name());
 
@@ -414,10 +364,8 @@ public class Hero {
             switch (first.get().calcBuffMergeType(addBuff)) {
                 case MERGE: {
                     Buff buff = first.get();
-                    if (buff.canMerge(addBuff)) {
-                        buff.mergeBuff(addBuff);
-                        Logs.trace("Buff存在合并");
-                    }
+                    buff.mergeBuff(addBuff);
+                    Logs.trace("Buff存在合并");
                     added = buff;
                     break;
                 }
@@ -432,10 +380,17 @@ public class Hero {
         } else {
             added = addBuff;
             buffMap.put(actionPoint, addBuff);
-            processAll(ActionPoint.增加buff后);
         }
-
+        calcBuffEffect(ActionPoint.增加buff后);
         addBuffRecord(added);
+    }
+
+    /**
+     * 重新计算buff效果
+     */
+    public void calcBuffEffect(ActionPoint point){
+        property = new HeroData().merge(origin);
+        processAll(point);
     }
 
     private void addBuffRecord(Buff buff) {
@@ -454,83 +409,70 @@ public class Hero {
         HeroRecordSimple simple = new HeroRecordSimple();
         simple.id = id;
         simple.pos = pos;
-        simple.hp = hp;
+        simple.hp = heroStats.hp;
+        simple.angry = heroStats.angry;
         return simple;
     }
 
     /**
      * 增加血量
+     * todo
      *
      * @param num
      */
     public void addHp(int num) {
         HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
-        info.setOldValue(hp);
-        hp += num;
-        info.setNewValue(hp);
-        if (hp > finalData.getMaxHp()) {
-            hp = finalData.getMaxHp();
-        }
-        addHpChangeRecord(hp - info.getOldValue());
+        info.setOldValue(heroStats.hp);
+        heroStats.hp += num;
+        info.setNewValue(heroStats.hp);
+        addHpRecord(-info.getOldValue());
 
         for (HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
             statusChangeListener.changHp(info);
         }
     }
 
-    /**
-     * 战斗记录
-     *
-     * @param hp
-     */
-    private void addHpChangeRecord(int hp) {
-        HealthChangeRecord record = new HealthChangeRecord();
-        record.hero = getSimple();
-        record.value = hp;
+    private void addHpRecord(int i) {
 
-        battle.addRecord(record);
     }
 
     /**
-     * 根据中间状态计算最终属性值
+     * 战斗记录
+     *
+     * @param info
      */
-    public void mergeToFinal() {
-        finalData.merge(processData);
+    private void addDamageRecord(DamageInfo info) {
+        HealthChangeRecord record = new HealthChangeRecord();
+        record.hero = getSimple();
+        record.value = info.sourceDamage * -1;
+        record.damageType = DamageType.ATTACK;
+        battle.addRecord(record);
+
+        // 暴击
+        if (info.sourceCriticalDamage > 0) {
+            record = new HealthChangeRecord();
+            record.hero = getSimple();
+            record.value = info.sourceCriticalDamage *-1;
+            record.damageType = DamageType.CRITICAL;
+        }
     }
 
     public HeroRecordData record() {
         HeroRecordData d = new HeroRecordData();
         d.simple = getSimple();
-        d.hp = hp;
-        d.originData = originData;
-        d.processData = new HeroData().merge(processData);
+        d.property = property;
         return d;
     }
 
     public boolean isDead() {
-        return hp <= 0;
+        return heroStats.hp <= 0;
     }
 
     public boolean isAlive() {
         return !isDead();
     }
 
-    public HeroData getOriginData() {
-        return originData;
-    }
-
-    public void setOriginData(HeroData originData) {
-        this.originData = originData;
-    }
-
-    public HeroData getFinalData() {
-        return finalData;
-    }
-
-    public void setFinalData(HeroData finalData) {
-        this.finalData = finalData;
-    }
 
     public Pos getPos() {
         return pos;
@@ -556,14 +498,6 @@ public class Hero {
         this.battle = battle;
     }
 
-    public HeroData getProcessData() {
-        return processData;
-    }
-
-    public void setProcessData(HeroData processData) {
-        this.processData = processData;
-    }
-
     public Side getSide() {
         return side;
     }
@@ -580,38 +514,18 @@ public class Hero {
         return skillMap;
     }
 
-    public boolean isCanActive() {
-        return canActive;
+
+    public int getHp(){
+        return heroStats.hp;
     }
-
-    public void setCanActive(boolean canActive) {
-        this.canActive = canActive;
-    }
-
-    public int getHp() {
-        return hp;
-    }
-
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
-
-
-    public Hero getCurrentTarget() {
-        return currentTarget;
-    }
-
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("hp", hp)
+                .add("property", property)
                 .add("id", id)
                 .add("pos", pos)
-                .add("originData", originData)
-                .add("processData", processData)
-                .add("finalData", finalData)
                 .add("side", side)
-                .add("canActive", canActive)
                 .toString();
     }
+
 }

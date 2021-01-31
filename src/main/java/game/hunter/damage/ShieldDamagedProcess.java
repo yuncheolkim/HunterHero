@@ -11,7 +11,7 @@ import game.hunter.Hero;
 public class ShieldDamagedProcess implements DamagedProcess {
 
     @Override
-    public boolean process(Hero hero) {
+    public boolean process(DamageInfo hero) {
         return false;
     }
 }

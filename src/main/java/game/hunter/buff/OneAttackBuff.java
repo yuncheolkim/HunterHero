@@ -9,7 +9,7 @@ import game.hunter.record.BuffData;
 /**
  * 叠加攻击buff
  *
- * @author Yunzhe.Jin
+ * @author Yunzhe.Jio
  * 2021/1/8 15:53
  */
 public class OneAttackBuff extends Buff {
@@ -25,7 +25,7 @@ public class OneAttackBuff extends Buff {
             }
         });
         effects.add(new DamageRate());
-        actionPoint = ActionPoint.出手前;
+        effectPoint = ActionPoint.增加buff后;
         buffType = BuffType.BUFF;
         buffMergeType = BuffMergeType.MERGE;
         target = t;

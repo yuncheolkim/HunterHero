@@ -39,7 +39,7 @@ public abstract class Buff {
     /**
      * buff触发时机
      */
-    protected ActionPoint actionPoint;
+    protected ActionPoint effectPoint;
 
     /**
      * bufftype
@@ -118,11 +118,6 @@ public abstract class Buff {
         return data;
     }
 
-
-    public boolean canMerge(Buff addBuff) {
-        return true;
-    }
-
     /**
      * 计算合并策略
      *
@@ -160,12 +155,12 @@ public abstract class Buff {
         this.round = round;
     }
 
-    public ActionPoint getActionPoint() {
-        return actionPoint;
+    public ActionPoint getEffectPoint() {
+        return effectPoint;
     }
 
-    public void setActionPoint(ActionPoint actionPoint) {
-        this.actionPoint = actionPoint;
+    public void setEffectPoint(ActionPoint effectPoint) {
+        this.effectPoint = effectPoint;
     }
 
     public Hero getSource() {
@@ -196,7 +191,7 @@ public abstract class Buff {
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
-                .add("actionPoint", actionPoint)
+                .add("actionPoint", effectPoint)
                 .add("buffType", buffType)
                 .toString();
     }

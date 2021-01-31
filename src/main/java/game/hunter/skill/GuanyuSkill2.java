@@ -41,13 +41,14 @@ public class GuanyuSkill2 extends Skill {
 
     private List<Hero> attackHero(Hero hero) {
         List<Hero> list = hero.getBattle().oppositeHeroes(hero.getSide());
-        Hero currentTarget = hero.getCurrentTarget();
+        Hero currentTarget = hero.damageInfo.target;
         if (currentTarget == null) {
             return new ArrayList<>();
         }
         return list.stream()
                 .filter(h -> h.getPos().getIndex() == currentTarget.getBattle().getFormation().left(currentTarget.getPos()) ||
                         h.getPos().getIndex() == currentTarget.getBattle().getFormation().right(currentTarget.getPos()))
+                .filter(Hero::isAlive)
                 .collect(Collectors.toList());
     }
 
@@ -59,12 +60,12 @@ public class GuanyuSkill2 extends Skill {
 
         for (Hero target : collect) {
             DamageInfo damageInfo = new DamageInfo();
-            damageInfo.setType(DamageSourceType.SKILL);
-            damageInfo.setCurrent(hero);
-            damageInfo.setTarget(target);
-            hero.calcSourceDamage(damageInfo);
+            damageInfo.sourceId = id;
+            damageInfo.type = (DamageSourceType.SKILL);
+            damageInfo.source = (hero);
+            damageInfo.target = (target);
+            damageInfo.sourceDamage = (CalcUtil.calcRateAdd(hero.damageInfo.sourceDamage, v));
 
-            damageInfo.setSourceDamage(CalcUtil.calcRateAdd(damageInfo.getSourceDamage(), v));
             hero.damage(target, damageInfo);
         }
         return process;

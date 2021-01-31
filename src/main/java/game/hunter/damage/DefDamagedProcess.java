@@ -10,7 +10,7 @@ import game.hunter.Hero;
  */
 public class DefDamagedProcess implements DamagedProcess {
     @Override
-    public boolean process(Hero hero) {
+    public boolean process(DamageInfo hero) {
         return false;
     }
 }

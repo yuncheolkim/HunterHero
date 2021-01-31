@@ -27,7 +27,7 @@ public class GuanyuSkill1 extends Skill {
     @Override
     public UseSkillRecord process(Hero hero) {
         UseSkillRecord record = super.process(hero);
-        hero.addBuff(new OneAttackBuff(hero.getBattle().getDamageInfo().getTarget()));
+        hero.addBuff(new OneAttackBuff(hero.damageInfo.target));
         return record;
     }
 
