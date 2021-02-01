@@ -6,7 +6,9 @@ import game.hunter.action.ActionPoint;
 import game.hunter.record.BuffData;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Yunzhe.Jin
@@ -39,12 +41,14 @@ public abstract class Buff {
     /**
      * buff触发时机
      */
-    protected ActionPoint effectPoint;
+    public Map<ActionPoint, Integer> effectPoint = new HashMap<>();
+
+    protected ActionPoint currentPoint;
 
     /**
      * bufftype
      */
-    protected BuffType buffType;
+    protected BuffType buffType = BuffType.BUFF;
 
     /**
      * buff 来源
@@ -54,7 +58,7 @@ public abstract class Buff {
     /**
      * 相同buff合并规则
      */
-    protected BuffMergeType buffMergeType;
+    protected BuffMergeType buffMergeType = BuffMergeType.REPLACE;
 
 
     public void initRound(int round) {
@@ -65,7 +69,6 @@ public abstract class Buff {
 
     /**
      * 减少回合数时机
-     *
      * @return
      */
     public ActionPoint reducePoint() {
@@ -78,10 +81,10 @@ public abstract class Buff {
 
     /**
      * 计算buff
-     *
+     * @param actionPoint
      * @param hero
      */
-    public void process(Hero hero) {
+    public void process(ActionPoint actionPoint, Hero hero) {
         for (BuffEffect effect : effects) {
             if (!effect.doEffect(hero, this)) {
                 break;
@@ -92,14 +95,12 @@ public abstract class Buff {
 
     /**
      * 返回buff相关数据
-     *
      * @return
      */
     public abstract IBuffVal buffVal();
 
     /**
      * 合并buff
-     *
      * @param from
      */
     public void mergeBuff(Buff from) {
@@ -120,7 +121,6 @@ public abstract class Buff {
 
     /**
      * 计算合并策略
-     *
      * @return
      */
     public BuffMergeType calcBuffMergeType(Buff addBuf) {
@@ -153,14 +153,6 @@ public abstract class Buff {
 
     public void setRound(int round) {
         this.round = round;
-    }
-
-    public ActionPoint getEffectPoint() {
-        return effectPoint;
-    }
-
-    public void setEffectPoint(ActionPoint effectPoint) {
-        this.effectPoint = effectPoint;
     }
 
     public Hero getSource() {

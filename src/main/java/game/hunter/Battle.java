@@ -58,6 +58,7 @@ public class Battle {
         seed = System.currentTimeMillis();
         random = new Random(seed);
 
+        damageProcessList.add(new BuffDamageProcess());
         damageProcessList.add(new CriticalDamageProcess());
 //        takeDamageProcessList.add(new AvoidDamagedProcess());
 //        takeDamageProcessList.add(new DefDamagedProcess());

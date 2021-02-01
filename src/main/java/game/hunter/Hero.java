@@ -12,6 +12,7 @@ import game.hunter.record.*;
 import game.hunter.status.HealthChangeInfo;
 import game.hunter.status.HeroStatusChangeListener;
 
+import java.security.PublicKey;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -32,14 +33,19 @@ public class Hero {
     protected Pos pos;
 
     /**
-     * 英雄原始数据
+     * 英雄原始数据，开局后永远不变
      */
     public HeroData origin;
 
     /**
-     * 英雄当前数据
+     * 英雄当前数据,本局持续
      */
     public HeroData property;
+
+    /**
+     * 每次出手数据,临时数据
+     */
+    public HeroData fightingData;
 
     /**
      * 英雄状态
@@ -108,7 +114,6 @@ public class Hero {
 
     /**
      * 执行动作
-     *
      * @param actionPoint 相应的动作
      */
     public void processAction(ActionPoint actionPoint) {
@@ -146,13 +151,14 @@ public class Hero {
         List<Hero> targetList = findTarget();
 
         for (Hero target : targetList) {
-
+            resetTempData();
             damageInfo = new DamageInfo();
             damageInfo.type = (DamageSourceType.ATTACK);
             damageInfo.origin = (this);
             damageInfo.source = (this);
             damageInfo.target = (target);
             damageInfo.sourceDamage = property.getDamage();
+            target.damageInfo = damageInfo;
 
             // action
             processAction(ActionPoint.出手前);
@@ -194,16 +200,25 @@ public class Hero {
     /**
      * 对一个敌人造成伤害
      * 伤害可能来自技能，buff
-     *
      * @param target 目标
      */
     public void damage(Hero target, DamageInfo info) {
         target.attacked(info);
     }
 
+    /**
+     * 计算攻击方最终伤害
+     */
     public void calcAttack() {
+        damageInfo.target.processBuff(ActionPoint.攻击方计算伤害前);
         battle.calcAttack(this);
+        damageInfo.target.processBuff(ActionPoint.攻击方计算伤害后);
     }
+
+    private void resetTempData() {
+        fightingData = new HeroData().merge(property);
+    }
+
 
     private void attackRecord() {
         AttackRecord attackRecord = new AttackRecord();
@@ -219,7 +234,7 @@ public class Hero {
         Collection<Buff> buffs = buffMap.get(actionPoint);
         if (buffs != null) {
             for (Buff buff : buffs) {
-                buff.process(this);
+                buff.process(actionPoint,this);
             }
         }
 
@@ -292,7 +307,6 @@ public class Hero {
 
     /**
      * 被攻击
-     *
      * @param info
      */
     public void attacked(DamageInfo info) {
@@ -312,7 +326,6 @@ public class Hero {
 
     /**
      * 最终减少的血量，所有减血操作都要通过这个方法，不能直接修改属性
-     *
      * @param num
      */
     public void reduceHp(DamageInfo i) {
@@ -347,40 +360,41 @@ public class Hero {
 
     /**
      * 添加buff
-     *
      * @param addBuff
      */
     public void addBuff(Buff addBuff) {
 
 
-        ActionPoint actionPoint = addBuff.getEffectPoint();
+        Set<ActionPoint> values = addBuff.effectPoint.keySet();
 
-        Logs.trace("添加buff", this, actionPoint.name(), addBuff.name());
-
-        Collection<Buff> buffs = getBuffMap().get(actionPoint);
-
-        Optional<Buff> first = buffs.stream().filter(buff -> buff.getId() == addBuff.getId()).findFirst();
         Buff added = null;
-        if (first.isPresent()) {
-            switch (first.get().calcBuffMergeType(addBuff)) {
-                case MERGE: {
-                    Buff buff = first.get();
-                    buff.mergeBuff(addBuff);
-                    Logs.trace("Buff存在合并");
-                    added = buff;
-                    break;
+        for (ActionPoint actionPoint : values) {
+            Logs.trace("添加buff", this, actionPoint.name(), addBuff.name());
+
+            Collection<Buff> buffs = getBuffMap().get(actionPoint);
+
+            Optional<Buff> first = buffs.stream().filter(buff -> buff.getId() == addBuff.getId()).findFirst();
+            if (first.isPresent()) {
+                switch (first.get().calcBuffMergeType(addBuff)) {
+                    case MERGE: {
+                        Buff buff = first.get();
+                        buff.mergeBuff(addBuff);
+                        Logs.trace("Buff存在合并");
+                        added = buff;
+                        break;
+                    }
+                    case REPLACE: {
+                        buffMap.remove(actionPoint, first.get());
+                        buffMap.put(actionPoint, addBuff);
+                        Logs.trace("Buff存在替换");
+                        added = addBuff;
+                        break;
+                    }
                 }
-                case REPLACE: {
-                    buffMap.remove(actionPoint, first.get());
-                    buffMap.put(actionPoint, addBuff);
-                    Logs.trace("Buff存在替换");
-                    added = addBuff;
-                    break;
-                }
+            } else {
+                added = addBuff;
+                buffMap.put(actionPoint, addBuff);
             }
-        } else {
-            added = addBuff;
-            buffMap.put(actionPoint, addBuff);
         }
         calcBuffEffect(ActionPoint.增加buff后);
         addBuffRecord(added);
@@ -389,7 +403,7 @@ public class Hero {
     /**
      * 重新计算buff效果
      */
-    public void calcBuffEffect(ActionPoint point){
+    public void calcBuffEffect(ActionPoint point) {
         property = new HeroData().merge(origin);
         processAll(point);
     }
@@ -418,7 +432,6 @@ public class Hero {
     /**
      * 增加血量
      * todo
-     *
      * @param num
      */
     public void addHp(int num) {
@@ -440,7 +453,6 @@ public class Hero {
 
     /**
      * 战斗记录
-     *
      * @param info
      */
     private void addDamageRecord(DamageInfo info) {
@@ -454,7 +466,7 @@ public class Hero {
         if (info.sourceCriticalDamage > 0) {
             record = new HealthChangeRecord();
             record.hero = getSimple();
-            record.value = info.sourceCriticalDamage *-1;
+            record.value = info.sourceCriticalDamage * -1;
             record.damageType = DamageType.CRITICAL;
             battle.addRecord(record);
         }
@@ -517,9 +529,10 @@ public class Hero {
     }
 
 
-    public int getHp(){
+    public int getHp() {
         return heroStats.hp;
     }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
