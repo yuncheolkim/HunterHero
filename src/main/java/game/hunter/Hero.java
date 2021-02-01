@@ -2,6 +2,7 @@ package game.hunter;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import game.hunter.action.ActionPoint;
 import game.hunter.buff.Buff;
@@ -207,7 +208,7 @@ public class Hero {
     private void attackRecord() {
         AttackRecord attackRecord = new AttackRecord();
         attackRecord.source = damageInfo.source.getSimple();
-        attackRecord.target = damageInfo.target.getSimple();
+        attackRecord.target = Lists.newArrayList(damageInfo.target.getSimple());
         battle.addRecord(attackRecord);
     }
 
@@ -455,6 +456,7 @@ public class Hero {
             record.hero = getSimple();
             record.value = info.sourceCriticalDamage *-1;
             record.damageType = DamageType.CRITICAL;
+            battle.addRecord(record);
         }
     }
 

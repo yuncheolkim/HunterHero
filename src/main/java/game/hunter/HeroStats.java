@@ -18,4 +18,9 @@ public class HeroStats {
      * 可否行动
      */
     public boolean active = true;
+
+    /**
+     * 护盾
+     */
+    public int shield;
 }

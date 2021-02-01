@@ -40,25 +40,12 @@ public class HeroData {
      */
     private int criticalDamageRate;
 
-    /**
-     * 计算后的暴击伤害
-     */
-    private int criticalDamage;
 
     /**
      * 速度
      */
     private int speed;
 
-    /**
-     * 怒气
-     */
-    private int angle;
-
-    /**
-     * 护盾
-     */
-    private int shield;
 
 
     public HeroData merge(HeroData o) {
@@ -68,10 +55,7 @@ public class HeroData {
         avoid += o.avoid;
         critical += o.critical;
         criticalDamageRate += o.criticalDamageRate;
-        criticalDamage += o.criticalDamage;
         speed += o.speed;
-        angle += o.angle;
-        shield += o.shield;
         return this;
     }
 
@@ -115,14 +99,6 @@ public class HeroData {
         this.critical = critical;
     }
 
-    public int getCriticalDamage() {
-        return criticalDamage;
-    }
-
-    public void setCriticalDamage(int criticalDamage) {
-        this.criticalDamage = criticalDamage;
-    }
-
     public int getSpeed() {
         return speed;
     }
@@ -130,23 +106,6 @@ public class HeroData {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
-
-    public int getAngle() {
-        return angle;
-    }
-
-    public void setAngle(int angle) {
-        this.angle = angle;
-    }
-
-    public int getShield() {
-        return shield;
-    }
-
-    public void setShield(int shield) {
-        this.shield = shield;
-    }
-
     public int getCriticalDamageRate() {
         return criticalDamageRate;
     }
@@ -164,10 +123,7 @@ public class HeroData {
                 .add("avoid", avoid)
                 .add("critical", critical)
                 .add("criticalDamageRate", criticalDamageRate)
-                .add("criticalDamage", criticalDamage)
                 .add("speed", speed)
-                .add("angle", angle)
-                .add("shield", shield)
                 .toString();
     }
 }

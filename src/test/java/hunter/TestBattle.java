@@ -30,7 +30,7 @@ public class TestBattle {
         init(g3, Side.B);
         init(g4, Side.B);
         g1.heroStats.hp = (5000);
-        g1.origin.setCritical(50);
+        g1.origin.setCritical(5000);
         g2.origin.setSpeed(80);
         g2.heroStats.hp = (500);
         g3.origin.setSpeed(50);
