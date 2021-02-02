@@ -15,8 +15,6 @@ public class Common {
     public static <T extends Hero> T newHero(Battle battle, Side side, Pos pos, Supplier<T> supplier, Consumer<T> consumer) {
         T hero = supplier.get();
         hero.setPos(pos);
-        // 设置id
-        hero.setId(Common.id++);
         // 设置位置
         // 设置阵营
         hero.setSide(side);

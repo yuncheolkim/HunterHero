@@ -59,8 +59,6 @@ public class TestBattle {
     }
 
     private void init(Guanyu g, Side side) {
-        // 设置id
-        g.setId(Common.id++);
         // 设置位置
         // 设置阵营
         g.setSide(side);
