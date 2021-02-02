@@ -16,4 +16,9 @@ public class Constant {
      */
     public static final CoolDown INFINITE = new CoolDown();
 
+    /**
+     * buff
+     */
+    public static final int BUFF_INFINITE = -8;
+
 }

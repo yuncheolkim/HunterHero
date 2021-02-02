@@ -12,7 +12,6 @@ import org.junit.Test;
  * 2021/1/13 10:43
  */
 public class TestBattle {
-    private static int id = 0;
 
     @Test
     public void test1() {
@@ -61,7 +60,7 @@ public class TestBattle {
 
     private void init(Guanyu g, Side side) {
         // 设置id
-        g.setId(id++);
+        g.setId(Common.id++);
         // 设置位置
         // 设置阵营
         g.setSide(side);

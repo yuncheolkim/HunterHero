@@ -12,7 +12,6 @@ import game.hunter.record.*;
 import game.hunter.status.HealthChangeInfo;
 import game.hunter.status.HeroStatusChangeListener;
 
-import java.security.PublicKey;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -151,7 +150,7 @@ public class Hero {
         List<Hero> targetList = findTarget();
 
         for (Hero target : targetList) {
-            resetTempData();
+            resetFightingData();
             damageInfo = new DamageInfo();
             damageInfo.type = (DamageSourceType.ATTACK);
             damageInfo.origin = (this);
@@ -215,7 +214,7 @@ public class Hero {
         damageInfo.target.processBuff(ActionPoint.攻击方计算伤害后);
     }
 
-    private void resetTempData() {
+    private void resetFightingData() {
         fightingData = new HeroData().merge(property);
     }
 
@@ -234,7 +233,7 @@ public class Hero {
         Collection<Buff> buffs = buffMap.get(actionPoint);
         if (buffs != null) {
             for (Buff buff : buffs) {
-                buff.process(actionPoint,this);
+                buff.process(actionPoint, this);
             }
         }
 
@@ -243,7 +242,7 @@ public class Hero {
         List<Map.Entry<ActionPoint, Buff>> removeValue = new ArrayList<>();
         for (Map.Entry<ActionPoint, Buff> entry : values) {
             if (entry.getValue().reducePoint() == actionPoint) {
-                if (entry.getValue().reduceRound() == 0) {
+                if (!entry.getValue().isActive()) {
                     removeValue.add(entry);
                 }
             }

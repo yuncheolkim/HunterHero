@@ -7,8 +7,6 @@ import game.hunter.buff.Buff;
 import game.hunter.buff.IBuffVal;
 import game.hunter.damage.DamageInfo;
 
-import javax.crypto.Cipher;
-
 /**
  * @author Yunzhe.Jin
  * 2021/2/1 15:13
@@ -22,7 +20,7 @@ public class ZhangfeiBuff1 extends Buff {
 
         effectPoint.put(ActionPoint.攻击方计算伤害前, 1);
         effectPoint.put(ActionPoint.攻击方计算伤害后, 1);
-        id = 200002;
+        id = 300001;
         initRound(2);
     }
 

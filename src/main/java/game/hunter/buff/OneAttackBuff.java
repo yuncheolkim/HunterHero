@@ -29,7 +29,7 @@ public class OneAttackBuff extends Buff {
         buffType = BuffType.BUFF;
         buffMergeType = BuffMergeType.MERGE;
         target = t;
-        id = 200001;
+        id = 300002;
         initRound(2);
     }
 

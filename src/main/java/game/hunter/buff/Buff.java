@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static game.hunter.Constant.BUFF_INFINITE;
+
 /**
  * @author Yunzhe.Jin
  * 2021/1/8 14:27
@@ -25,8 +27,9 @@ public abstract class Buff {
 
     /**
      * 持续回合
+     * BUFF_INFINITE 永久有效
      */
-    protected int round;
+    protected int round = BUFF_INFINITE;
 
     /**
      * 剩余回合
@@ -42,8 +45,6 @@ public abstract class Buff {
      * buff触发时机
      */
     public Map<ActionPoint, Integer> effectPoint = new HashMap<>();
-
-    protected ActionPoint currentPoint;
 
     /**
      * bufftype
@@ -75,7 +76,19 @@ public abstract class Buff {
         return ActionPoint.回合结束后;
     }
 
+    public boolean isActive() {
+        if (round == BUFF_INFINITE) {
+            return true;
+        }
+
+        return remainRound > 0;
+
+    }
+
     public int reduceRound() {
+        if (round == BUFF_INFINITE) {
+            return BUFF_INFINITE;
+        }
         return --remainRound;
     }
 
