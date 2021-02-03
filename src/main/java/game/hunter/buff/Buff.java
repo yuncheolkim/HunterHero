@@ -61,6 +61,11 @@ public abstract class Buff {
      */
     protected BuffMergeType buffMergeType = BuffMergeType.REPLACE;
 
+    /**
+     * buff名
+     */
+    protected String name;
+
 
     public void initRound(int round) {
         this.round = round;
@@ -110,7 +115,9 @@ public abstract class Buff {
      * 返回buff相关数据
      * @return
      */
-    public abstract IBuffVal buffVal();
+    public IBuffVal buffVal() {
+        return new DefaultBuffData();
+    }
 
     /**
      * 合并buff

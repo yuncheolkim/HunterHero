@@ -308,7 +308,8 @@ public class Hero {
      * 被攻击
      * @param info
      */
-    public void attacked(DamageInfo info) {
+    public void attacked(DamageInfo info)
+    {
         Logs.trace("attacked:", this);
 
         // 计算buff
