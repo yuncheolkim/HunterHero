@@ -86,7 +86,7 @@ public class Battle {
             List<Hero> heroes = decideOrder();
             for (Hero hero : heroes) {
                 if (hero.isAlive()) {
-                    hero.attack();
+                    hero.action();
                 }
             }
 

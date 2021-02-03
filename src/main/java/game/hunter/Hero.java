@@ -142,8 +142,15 @@ public class Hero {
         return list;
     }
 
+    public void action(){
+        ActionStartRecord record = new ActionStartRecord();
+        record.hero = this.getSimple();
+        battle.addRecord(record);
+        attack();
+    }
+
     /**
-     * 出手
+     * 普通攻击
      */
     public void attack() {
 

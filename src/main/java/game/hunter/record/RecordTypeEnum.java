@@ -5,6 +5,10 @@ package game.hunter.record;
  * 2021/1/8 16:55
  */
 public enum RecordTypeEnum {
+    /**
+     * 出手
+     */
+    ACTION,
     ATTACK,
     HEALTH_CHANGE,
     BUFF_ADD,
