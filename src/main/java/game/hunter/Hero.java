@@ -136,13 +136,13 @@ public class Hero {
             }
         }
         if (list.isEmpty()) {
-            return battle.oppositeHeroes(side).stream().filter(Hero::isAlive).collect(Collectors.toList());
+            return battle.oppositeHeroes(side).stream().filter(Hero::isAlive).limit(1).collect(Collectors.toList());
         }
 
         return list;
     }
 
-    public void action(){
+    public void action() {
         ActionStartRecord record = new ActionStartRecord();
         record.hero = this.getSimple();
         battle.addRecord(record);
@@ -315,8 +315,7 @@ public class Hero {
      * 被攻击
      * @param info
      */
-    public void attacked(DamageInfo info)
-    {
+    public void attacked(DamageInfo info) {
         Logs.trace("attacked:", this);
 
         // 计算buff
@@ -494,6 +493,10 @@ public class Hero {
         return !isDead();
     }
 
+
+    public boolean hasBuff(final int id) {
+        return buffMap.values().stream().anyMatch(buff -> buff.getId() == id);
+    }
 
     public Pos getPos() {
         return pos;

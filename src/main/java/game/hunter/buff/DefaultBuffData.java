@@ -122,4 +122,55 @@ public class DefaultBuffData implements IBuffVal {
     public void setFloat5(float float5) {
         this.float5 = float5;
     }
+
+    @Override
+    public int i1() {
+        return int1;
+    }
+
+    @Override
+    public int i2() {
+        return int2;
+    }
+
+    @Override
+    public int i3() {
+        return int3;
+    }
+
+    @Override
+    public int i4() {
+        return int4;
+
+    }
+
+    @Override
+    public int i5() {
+        return int5;
+    }
+
+    @Override
+    public float f1() {
+        return float1;
+    }
+
+    @Override
+    public float f2() {
+        return float2;
+    }
+
+    @Override
+    public float f3() {
+        return float3;
+    }
+
+    @Override
+    public float f4() {
+        return float4;
+    }
+
+    @Override
+    public float f5() {
+        return float5;
+    }
 }

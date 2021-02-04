@@ -1,7 +1,10 @@
 package game.hunter;
 
 import game.hunter.action.ActionPoint;
-import game.hunter.damage.*;
+import game.hunter.damage.CriticalDamageProcess;
+import game.hunter.damage.DamageInfo;
+import game.hunter.damage.DamageProcess;
+import game.hunter.damage.DamagedProcess;
 import game.hunter.record.BattleRecord;
 import game.hunter.record.Record;
 
@@ -15,7 +18,6 @@ import static game.hunter.Constant.ID_GEN;
 
 /**
  * 一场战斗
- *
  * @author Yunzhe.Jin
  * 2021/1/8 14:24
  */
@@ -109,7 +111,6 @@ public class Battle {
 
     /**
      * 获取水平附近的英雄
-     *
      * @param from
      * @return
      */
@@ -122,7 +123,6 @@ public class Battle {
 
     /**
      * 英雄执行动作
-     *
      * @param actionPoint
      */
     private void processHero(ActionPoint actionPoint) {
@@ -181,8 +181,15 @@ public class Battle {
         if (side == Side.A) {
             return sideBhero;
         }
-
         return sideAhero;
+    }
+
+    public List<Hero> mySideHeroes(Side side) {
+
+        if (side == Side.A) {
+            return sideAhero;
+        }
+        return sideBhero;
     }
 
     public void addRecord(Record r) {

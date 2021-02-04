@@ -20,7 +20,7 @@ public class Skill {
     /**
      * 冷却时间
      */
-    protected CoolDown cd;
+    protected CoolDown cd = Constant.INFINITE;
 
     /**
      * 出手时机
@@ -48,7 +48,6 @@ public class Skill {
 
     /**
      * 能不能使用技能
-     *
      * @param hero
      * @return
      */
@@ -65,7 +64,6 @@ public class Skill {
 
     /**
      * 减少cd
-     *
      * @param round
      */
     public void reduceCoolDown(int round) {

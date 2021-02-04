@@ -20,10 +20,16 @@ public class BuffData {
 
     public int i4;
 
+    public int i5;
+
     public float f1;
 
     public float f2;
 
     public float f3;
+
+    public float f4;
+
+    public float f5;
 
 }
