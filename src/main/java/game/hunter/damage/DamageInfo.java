@@ -4,7 +4,6 @@ import game.hunter.Hero;
 
 /**
  * 造成伤害的信息
- *
  * @author Yunzhe.Jin
  * 2021/1/11 14:56
  */
@@ -48,8 +47,34 @@ public class DamageInfo {
      */
     public Hero source;
 
-    public int allSourceDamage(){
+    public int allSourceDamage() {
         return sourceDamage + sourceCriticalDamage;
+    }
+
+    /**
+     * 调整伤害，不能超过max
+     * @param maxDamageable
+     */
+    public void adjustDamageHp(int maxDamageable) {
+
+        if (allSourceDamage() > maxDamageable) {
+            int temp = (allSourceDamage() - maxDamageable) / 2;
+
+            sourceDamage -= temp;
+            sourceCriticalDamage -= temp;
+
+
+            if (sourceCriticalDamage < 0) {
+                // 益出部分加入普通攻击减伤里面
+                sourceDamage += sourceCriticalDamage;
+                sourceCriticalDamage = 0;
+            }
+
+            if (sourceDamage < 0) {
+                sourceDamage = 0;
+            }
+        }
+
     }
 
     @Override

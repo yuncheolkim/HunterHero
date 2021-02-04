@@ -318,10 +318,10 @@ public class Hero {
     public void attacked(DamageInfo info) {
         Logs.trace("attacked:", this);
 
-        // 计算buff
-        processBuff(ActionPoint.受到伤害之前);
 
         battle.calcAttackedProcess(info);
+        // 计算buff
+        processBuff(ActionPoint.受到伤害之前);
         info.attackedDamage = (info.allSourceDamage());
         // 减血
         reduceHp(info);

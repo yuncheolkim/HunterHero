@@ -35,4 +35,24 @@ public class TestLiubei {
 
         newBattle.start();
     }
+
+    /**
+     * 以德服人test
+     */
+    @Test
+    public void test2() {
+        // 一场战斗
+        Battle newBattle = new Battle();
+        Common.newHero(newBattle, Side.A, Pos.from(2), Liubei::new, g -> {
+            g.heroStats.hp = (2000);
+        });
+
+        Common.newHero(newBattle, Side.B, Pos.from(-1), Zhangfei::new, g -> {
+            g.heroStats.hp = 5000;
+            g.origin.setDamage(300);
+            g.origin.setSpeed(200);
+        });
+
+        newBattle.start();
+    }
 }
