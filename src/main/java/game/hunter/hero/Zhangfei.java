@@ -1,10 +1,6 @@
 package game.hunter.hero;
 
 import game.hunter.Hero;
-import game.hunter.find.MaxHpFindTargetStrategy;
-import game.hunter.find.OneAttackBuffFindTargetStrategy;
-import game.hunter.skill.GuanyuSkill1;
-import game.hunter.skill.GuanyuSkill2;
 import game.hunter.skill.ZhangfeiSkill1;
 
 /**

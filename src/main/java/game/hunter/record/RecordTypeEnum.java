@@ -11,6 +11,7 @@ public enum RecordTypeEnum {
     ACTION,
     ATTACK,
     HEALTH_CHANGE,
+    AVOID,
     BUFF_ADD,
     BUFF_REMOVE,
     BUFF_UPDATE,

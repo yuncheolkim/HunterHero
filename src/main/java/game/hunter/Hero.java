@@ -277,7 +277,7 @@ public class Hero {
 
         buffMap.remove(actionPoint, buff);
         // 重新计算增加buff的效果
-        calcBuffEffect(ActionPoint.增加buff后);
+        calcBuffEffect(ActionPoint.重新计算属性);
         processAll(ActionPoint.buff移除后);
         contextData = null;
     }
@@ -318,15 +318,24 @@ public class Hero {
     public void attacked(DamageInfo info) {
         Logs.trace("attacked:", this);
 
-
         battle.calcAttackedProcess(info);
-        // 计算buff
-        processBuff(ActionPoint.受到伤害之前);
-        info.attackedDamage = (info.allSourceDamage());
-        // 减血
-        reduceHp(info);
+        if (info.avoid) {
+            processBuff(ActionPoint.闪避之前);
+        }
+        if (info.avoid) {
+            AvoidRecord r = new AvoidRecord();
+            r.hero = this.getSimple();
+            battle.addRecord(r);
+            processBuff(ActionPoint.闪避之后);
+        } else {
+            // 计算buff
+            processBuff(ActionPoint.受到伤害之前);
+            info.attackedDamage = (info.allSourceDamage());
+            // 减血
+            reduceHp(info);
 
-        processBuff(ActionPoint.受到伤害之后);
+            processBuff(ActionPoint.受到伤害之后);
+        }
     }
 
 
@@ -402,7 +411,8 @@ public class Hero {
                 buffMap.put(actionPoint, addBuff);
             }
         }
-        calcBuffEffect(ActionPoint.增加buff后);
+        processAll(ActionPoint.增加buff后);
+        calcBuffEffect(ActionPoint.重新计算属性);
         addBuffRecord(added);
     }
 

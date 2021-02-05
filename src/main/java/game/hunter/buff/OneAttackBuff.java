@@ -25,7 +25,7 @@ public class OneAttackBuff extends Buff {
             }
         });
         effects.add(new DamageRate());
-        effectPoint.put(ActionPoint.增加buff后, 1);
+        effectPoint.put(ActionPoint.重新计算属性, 1);
         buffType = BuffType.BUFF;
         buffMergeType = BuffMergeType.MERGE;
         target = t;

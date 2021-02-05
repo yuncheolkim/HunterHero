@@ -1,6 +1,5 @@
 package game.hunter.buff.hero;
 
-import game.hunter.CalcUtil;
 import game.hunter.Hero;
 import game.hunter.action.ActionPoint;
 import game.hunter.buff.DefaultDataBuff;
@@ -11,19 +10,17 @@ import game.hunter.buff.DefaultDataBuff;
  * @author Yunzhe.Jin
  * 2021/2/3 18:09
  */
-public class LiubeiBuff1 extends DefaultDataBuff {
+public class CaocaoBuff2 extends DefaultDataBuff {
 
-    public LiubeiBuff1() {
+    public CaocaoBuff2() {
         // 增加比例
         data.setInt1(20);
-        effectPoint.put(ActionPoint.重新计算属性, 1);
-        id = 300003;
-        name = "激励";
-        initRound(2);
+        effectPoint.put(ActionPoint.增加buff后, 1);
+        id = 300006;
+        name = "护甲";
     }
 
     @Override
     public void process(ActionPoint actionPoint, Hero hero) {
-        hero.property.damage += CalcUtil.calcRateAdd(hero.origin.damage, data.getInt1());
     }
 }

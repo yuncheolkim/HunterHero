@@ -1,10 +1,7 @@
 package game.hunter;
 
 import game.hunter.action.ActionPoint;
-import game.hunter.damage.CriticalDamageProcess;
-import game.hunter.damage.DamageInfo;
-import game.hunter.damage.DamageProcess;
-import game.hunter.damage.DamagedProcess;
+import game.hunter.damage.*;
 import game.hunter.record.BattleRecord;
 import game.hunter.record.Record;
 
@@ -60,9 +57,13 @@ public class Battle {
         seed = System.currentTimeMillis();
         random = new Random(seed);
 
+        // 暴击
         damageProcessList.add(new CriticalDamageProcess());
-//        takeDamageProcessList.add(new AvoidDamagedProcess());
+        // 闪避
+        takeDamageProcessList.add(new AvoidDamagedProcess());
+        // 护甲
 //        takeDamageProcessList.add(new DefDamagedProcess());
+        // 护盾
 //        takeDamageProcessList.add(new ShieldDamagedProcess());
     }
 
@@ -101,7 +102,6 @@ public class Battle {
             Logs.trace("==============================================");
             //下一回合
             nextRound();
-
         }
         // 结算
         Logs.trace("游戏结束", "胜利：", winSide);
