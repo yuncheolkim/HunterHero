@@ -16,14 +16,14 @@ import java.util.Optional;
 public class LiubeiSkill1 extends Skill {
 
     public LiubeiSkill1() {
-        actionPoint = ActionPoint.回合开始前;
+        actionPoint.put(ActionPoint.回合开始前, 1);
         id = 200004;
         name = "激励";
     }
 
     @Override
-    public UseSkillRecord process(Hero hero) {
-        UseSkillRecord record = super.process(hero);
+    public UseSkillRecord process(ActionPoint point, Hero hero) {
+        UseSkillRecord record = super.process(point, hero);
 
         List<Hero> list = hero.getBattle().mySideHeroes(hero.getSide());
 

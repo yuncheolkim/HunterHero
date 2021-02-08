@@ -9,8 +9,10 @@ import game.hunter.skill.CaocaoSkill2;
  * 2021/2/5 14:55
  */
 public class Caocao extends Hero {
+    public static final int ID = 100004;
+
     public Caocao() {
-        id = 100004;
+        id = ID;
         addSkill(new CaocaoSkill1());
         addSkill(new CaocaoSkill2());
     }

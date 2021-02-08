@@ -26,7 +26,7 @@ public class GuanyuSkill2 extends Skill {
     private float v = 0.2f;
 
     public GuanyuSkill2() {
-        actionPoint = ActionPoint.出手后;
+        actionPoint.put(ActionPoint.出手后,1);
         id = 200003;
         name = "GuanyuSkill2";
         cd = Constant.INFINITE;
@@ -52,8 +52,8 @@ public class GuanyuSkill2 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(Hero hero) {
-        UseSkillRecord process = super.process(hero);
+    public UseSkillRecord process(ActionPoint point, Hero hero) {
+        UseSkillRecord process = super.process(point,hero);
         List<Hero> collect = attackHero(hero);
         process.target = collect.stream().map(Hero::getSimple).collect(Collectors.toList());
 
@@ -65,7 +65,7 @@ public class GuanyuSkill2 extends Skill {
             damageInfo.target = (target);
             damageInfo.sourceDamage = (CalcUtil.calcRateAdd(hero.damageInfo.allSourceDamage(), v));
 
-            hero.damage(target, damageInfo);
+            hero.damage(damageInfo);
         }
         return process;
     }

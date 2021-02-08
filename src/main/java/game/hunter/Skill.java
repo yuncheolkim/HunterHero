@@ -4,6 +4,9 @@ import com.google.common.base.MoreObjects;
 import game.hunter.action.ActionPoint;
 import game.hunter.record.UseSkillRecord;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author Yunzhe.Jin
  * 2021/1/8 14:27
@@ -23,9 +26,9 @@ public class Skill {
     protected CoolDown cd = Constant.INFINITE;
 
     /**
-     * 出手时机
+     * 触发时机
      */
-    protected ActionPoint actionPoint;
+    public Map<ActionPoint, Integer> actionPoint = new HashMap<>();
 
     /**
      * 减少冷却时间时机
@@ -37,7 +40,7 @@ public class Skill {
      */
     protected String name;
 
-    public UseSkillRecord process(Hero hero) {
+    public UseSkillRecord process(ActionPoint actionPoint, Hero hero) {
         UseSkillRecord record = new UseSkillRecord(id);
         record.hero = hero.getSimple();
         record.skillId = id;
@@ -104,14 +107,6 @@ public class Skill {
 
     public void setCd(CoolDown cd) {
         this.cd = cd;
-    }
-
-    public ActionPoint getActionPoint() {
-        return actionPoint;
-    }
-
-    public void setActionPoint(ActionPoint actionPoint) {
-        this.actionPoint = actionPoint;
     }
 
     public String getName() {

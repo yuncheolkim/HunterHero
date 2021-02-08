@@ -14,15 +14,15 @@ import game.hunter.record.UseSkillRecord;
 public class ZhangfeiSkill1 extends Skill {
 
     public ZhangfeiSkill1() {
-        actionPoint = ActionPoint.开场;
+        actionPoint.put(ActionPoint.开场, 1);
         id = 200001;
         name = "ZhangfeiSkill1";
         cd = Constant.INFINITE;
     }
 
     @Override
-    public UseSkillRecord process(Hero hero) {
-        UseSkillRecord record = super.process(hero);
+    public UseSkillRecord process(ActionPoint point, Hero hero) {
+        UseSkillRecord record = super.process(point, hero);
 
         hero.addBuff(new ZhangfeiBuff1());
 

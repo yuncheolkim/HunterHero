@@ -10,7 +10,5 @@ public class HeroRecordData {
 
     public HeroRecordSimple simple;
 
-    public int hp;
-
     public HeroData property;
 }

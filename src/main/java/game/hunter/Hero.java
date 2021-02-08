@@ -166,12 +166,7 @@ public class Hero {
             damageInfo.sourceDamage = property.getDamage();
             target.damageInfo = damageInfo;
 
-            // action
-            processAction(ActionPoint.出手前);
-            // skill
-            processSkill(ActionPoint.出手前);
-            // buff
-            processBuff(ActionPoint.出手前);
+            processAll(ActionPoint.出手前);
 
             if (this.heroStats.active) {
 
@@ -187,15 +182,11 @@ public class Hero {
                     attackRecord();
 
                     // 受到伤害
-                    damage(target, damageInfo);
+                    damage(damageInfo);
                 }
 
                 // action
-                processAction(ActionPoint.出手后);
-                // skill
-                processSkill(ActionPoint.出手后);
-                // buff
-                processBuff(ActionPoint.出手后);
+                processAll(ActionPoint.出手后);
             } else {
                 Logs.trace("无法行动", this);
             }
@@ -208,8 +199,8 @@ public class Hero {
      * 伤害可能来自技能，buff
      * @param target 目标
      */
-    public void damage(Hero target, DamageInfo info) {
-        target.attacked(info);
+    public void damage(DamageInfo info) {
+        info.target.attacked(info);
     }
 
     /**
@@ -299,11 +290,15 @@ public class Hero {
                 Logs.trace("使用技能", this);
 
                 // 使用技能
-                UseSkillRecord record = skill.process(this);
-                battle.addRecord(record);
+                UseSkillRecord record = skill.process(actionPoint, this);
+                if (record != null) {
+                    battle.addRecord(record);
+                }
                 // 冷却
                 skill.fireCoolDown();
-                record.cd = skill.cd;
+                if (record != null) {
+                    record.cd = skill.cd;
+                }
                 fired = true;
             }
         }
@@ -317,24 +312,29 @@ public class Hero {
      */
     public void attacked(DamageInfo info) {
         Logs.trace("attacked:", this);
+        processAll(ActionPoint.被攻击之前);
+        if (info.target.id != this.id) {
+            info.target.attacked(info);
+            return;
+        }
 
         battle.calcAttackedProcess(info);
         if (info.avoid) {
-            processBuff(ActionPoint.闪避之前);
+            processAll(ActionPoint.闪避之前);
         }
         if (info.avoid) {
             AvoidRecord r = new AvoidRecord();
             r.hero = this.getSimple();
             battle.addRecord(r);
-            processBuff(ActionPoint.闪避之后);
+            processAll(ActionPoint.闪避之后);
         } else {
             // 计算buff
-            processBuff(ActionPoint.受到伤害之前);
+            processAll(ActionPoint.受到伤害之前);
             info.attackedDamage = (info.allSourceDamage());
             // 减血
             reduceHp(info);
 
-            processBuff(ActionPoint.受到伤害之后);
+            processAll(ActionPoint.受到伤害之后);
         }
     }
 
@@ -344,19 +344,20 @@ public class Hero {
      * @param num
      */
     public void reduceHp(DamageInfo i) {
+        Hero target = i.target;
         int num = i.attackedDamage;
         HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
-        info.setOldValue(heroStats.hp);
+        info.setOldValue(target.heroStats.hp);
 
-        heroStats.hp -= num;
-        info.setNewValue(heroStats.hp);
+        target.heroStats.hp -= num;
+        info.setNewValue(target.heroStats.hp);
 
         addDamageRecord(i);
         Logs.trace("reduceHp", info);
         if (info.getNewValue() <= 0) {
             deadInfo = info;
-            processAction(ActionPoint.死之前);
+            processAll(ActionPoint.死之前);
         }
 
         for (HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
@@ -364,13 +365,15 @@ public class Hero {
         }
 
         if (isDead()) {
-            processAction(ActionPoint.死之后);
+            processAll(ActionPoint.死之后);
         }
 
     }
 
     public void addSkill(Skill s) {
-        skillMap.put(s.actionPoint, s);
+        for (ActionPoint actionPoint : s.actionPoint.keySet()) {
+            skillMap.put(actionPoint, s);
+        }
     }
 
     /**
@@ -473,7 +476,7 @@ public class Hero {
      */
     private void addDamageRecord(DamageInfo info) {
         HealthChangeRecord record = new HealthChangeRecord();
-        record.hero = getSimple();
+        record.hero = info.target.getSimple();
         record.value = info.sourceDamage * -1;
         record.damageType = DamageType.ATTACK;
         battle.addRecord(record);
@@ -481,7 +484,7 @@ public class Hero {
         // 暴击
         if (info.sourceCriticalDamage > 0) {
             record = new HealthChangeRecord();
-            record.hero = getSimple();
+            record.hero = info.target.getSimple();
             record.value = info.sourceCriticalDamage * -1;
             record.damageType = DamageType.CRITICAL;
             battle.addRecord(record);
@@ -506,6 +509,10 @@ public class Hero {
 
     public boolean hasBuff(final int id) {
         return buffMap.values().stream().anyMatch(buff -> buff.getId() == id);
+    }
+
+    public List<Hero> friends() {
+        return battle.mySideHeroes(side);
     }
 
     public Pos getPos() {

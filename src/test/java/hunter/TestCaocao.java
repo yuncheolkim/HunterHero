@@ -5,6 +5,7 @@ import game.hunter.Pos;
 import game.hunter.Side;
 import game.hunter.hero.Caocao;
 import game.hunter.hero.Guanyu;
+import game.hunter.hero.base.BlankHero;
 import org.junit.Test;
 
 /**
@@ -24,6 +25,33 @@ public class TestCaocao {
         });
 
         Common.newHero(newBattle, Side.B, Pos.from(-1), Caocao::new, g -> {
+            g.origin.setSpeed(50);
+            g.heroStats.hp = 2000;
+            g.origin.setAvoid(500);
+        });
+
+        newBattle.start();
+
+    }
+
+    /**
+     * 护驾
+     */
+    @Test
+    public void test2() {
+        // 一场战斗
+        Battle newBattle = new Battle();
+        Common.newHero(newBattle, Side.A, Pos.from(1), BlankHero::new, g -> {
+            g.heroStats.hp = (2000);
+            g.origin.setSpeed(10);
+        });
+
+        Common.newHero(newBattle, Side.B, Pos.from(-1), Caocao::new, g -> {
+            g.origin.setSpeed(50);
+            g.heroStats.hp = 2000;
+        });
+
+        Common.newHero(newBattle, Side.B, Pos.from(-2), BlankHero::new, g -> {
             g.origin.setSpeed(50);
             g.heroStats.hp = 2000;
             g.origin.setAvoid(500);

@@ -13,14 +13,14 @@ import game.hunter.record.UseSkillRecord;
 public class CaocaoSkill1 extends Skill {
 
     public CaocaoSkill1() {
-        actionPoint = ActionPoint.开场;
+        actionPoint.put(ActionPoint.开场, 1);
         id = 200006;
         name = "奸雄";
     }
 
     @Override
-    public UseSkillRecord process(Hero hero) {
-        UseSkillRecord record = super.process(hero);
+    public UseSkillRecord process(ActionPoint point, Hero hero) {
+        UseSkillRecord record = super.process(point, hero);
 
         hero.addBuff(new CaocaoBuff1());
 

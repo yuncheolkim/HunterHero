@@ -34,6 +34,6 @@ public class CalcUtil {
     }
 
     public static boolean happened(Random r, int rate, int total) {
-        return rate > r.nextInt(total);
+        return rate + 1 > r.nextInt(total);
     }
 }

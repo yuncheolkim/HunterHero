@@ -13,14 +13,15 @@ import game.hunter.record.UseSkillRecord;
 public class LiubeiSkill2 extends Skill {
 
     public LiubeiSkill2() {
-        actionPoint = ActionPoint.开场;
+        actionPoint.put(ActionPoint.开场, 1);
+
         id = 200005;
         name = "以德服人";
     }
 
     @Override
-    public UseSkillRecord process(Hero hero) {
-        UseSkillRecord record = super.process(hero);
+    public UseSkillRecord process(ActionPoint point, Hero hero) {
+        UseSkillRecord record = super.process(point, hero);
 
         hero.addBuff(new LiubeiBuff2());
 
