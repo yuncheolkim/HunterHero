@@ -11,5 +11,7 @@ public enum DamageType {
     /**
      * 暴击伤害
      */
-    CRITICAL
+    CRITICAL,
+
+    NONE
 }
