@@ -37,10 +37,9 @@ public class Common {
         HeroData data = new HeroData();
         data.setMaxHp(2000);
         data.setDamage(100);
-        data.setDef(100);
         data.setAvoid(0);
         data.setCritical(0);
-        data.setCriticalDamageRate(100);
+        data.setCriticalDamageRate(0);
         data.setSpeed(100);
 
         return data;

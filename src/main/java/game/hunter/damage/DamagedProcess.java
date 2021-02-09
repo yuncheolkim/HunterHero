@@ -1,7 +1,5 @@
 package game.hunter.damage;
 
-import game.hunter.Hero;
-
 /**
  * 计算伤害
  *
@@ -15,6 +13,6 @@ public interface DamagedProcess {
      *
      * @return 是否计算后续功能
      */
-    boolean process(DamageInfo hero);
+    boolean process(DamageInfo info);
 
 }

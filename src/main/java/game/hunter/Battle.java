@@ -62,7 +62,7 @@ public class Battle {
         // 闪避
         takeDamageProcessList.add(new AvoidDamagedProcess());
         // 护甲
-//        takeDamageProcessList.add(new DefDamagedProcess());
+        takeDamageProcessList.add(new DefDamagedProcess());
         // 护盾
 //        takeDamageProcessList.add(new ShieldDamagedProcess());
     }

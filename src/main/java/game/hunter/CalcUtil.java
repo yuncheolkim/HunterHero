@@ -39,6 +39,10 @@ public class CalcUtil {
         return (int) (val * (100 - rate) / 100.0f);
     }
 
+    public static int calcRateSub(int val, float rate) {
+        return (int) (val * (1 - rate));
+    }
+
     public static int calcRateAdd(int val, float rate) {
         return (int) (val * rate);
     }
