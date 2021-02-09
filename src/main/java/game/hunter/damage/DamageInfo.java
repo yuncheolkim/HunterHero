@@ -1,5 +1,6 @@
 package game.hunter.damage;
 
+import game.hunter.CalcUtil;
 import game.hunter.Hero;
 
 /**
@@ -49,6 +50,11 @@ public class DamageInfo {
 
     public int allSourceDamage() {
         return sourceDamage + sourceCriticalDamage;
+    }
+
+    public void reduceDamage(int rate) {
+        sourceDamage = CalcUtil.calcRateSub(sourceDamage, rate);
+        sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
     }
 
     /**

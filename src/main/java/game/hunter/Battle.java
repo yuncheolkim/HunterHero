@@ -128,11 +128,7 @@ public class Battle {
     private void processHero(ActionPoint actionPoint) {
         List<Hero> heroes = decideOrder();
         for (Hero hero : heroes) {
-            hero.processAction(actionPoint);
-            // skill
-            hero.processSkill(actionPoint);
-            // buff
-            hero.processBuff(actionPoint);
+            hero.processAll(actionPoint);
         }
     }
 

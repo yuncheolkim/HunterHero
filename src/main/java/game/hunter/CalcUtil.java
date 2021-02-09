@@ -29,6 +29,16 @@ public class CalcUtil {
         return (int) (val * rate / 100.0f);
     }
 
+    /**
+     * 减少比例
+     * @param val
+     * @param rate
+     * @return
+     */
+    public static int calcRateSub(int val, int rate) {
+        return (int) (val * (100 - rate) / 100.0f);
+    }
+
     public static int calcRateAdd(int val, float rate) {
         return (int) (val * rate);
     }

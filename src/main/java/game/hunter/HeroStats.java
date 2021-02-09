@@ -23,4 +23,5 @@ public class HeroStats {
      * 护盾
      */
     public int shield;
+
 }

@@ -40,6 +40,8 @@ public class Skill {
      */
     protected String name;
 
+    protected SkillType skillType = SkillType.B;
+
     public UseSkillRecord process(ActionPoint actionPoint, Hero hero) {
         UseSkillRecord record = new UseSkillRecord(id);
         record.hero = hero.getSimple();
@@ -115,6 +117,10 @@ public class Skill {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public SkillType getSkillType() {
+        return skillType;
     }
 
     @Override

@@ -458,16 +458,23 @@ public class Hero {
         info.setTarget(this);
         info.setOldValue(heroStats.hp);
         heroStats.hp += num;
+        if (heroStats.hp > property.getMaxHp()) {
+            heroStats.hp = property.getMaxHp();
+        }
         info.setNewValue(heroStats.hp);
-        addHpRecord(-info.getOldValue());
+
+        addHpRecord(info.getNewValue() - info.getOldValue());
 
         for (HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
             statusChangeListener.changHp(info);
         }
     }
 
-    private void addHpRecord(int i) {
-
+    private void addHpRecord(int add) {
+        HealthChangeRecord record = new HealthChangeRecord();
+        record.hero = this.getSimple();
+        record.value = add;
+        battle.addRecord(record);
     }
 
     /**
