@@ -476,6 +476,7 @@ public class Hero {
         HealthChangeRecord record = new HealthChangeRecord();
         record.hero = this.getSimple();
         record.value = add;
+        record.damageType = DamageType.NONE;
         battle.addRecord(record);
     }
 
