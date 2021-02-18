@@ -1,4 +1,5 @@
 plugins {
+    id "org.springframework.boot" version "2.4.2"
     id 'java'
 }
 
@@ -6,8 +7,21 @@ group 'info.yunk'
 version '1.0-SNAPSHOT'
 
 repositories {
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+    }
     mavenCentral()
 }
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 sourceSets {
     main {
         java {
@@ -35,6 +49,7 @@ tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
 }
 dependencies {
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
     compile group: 'com.lmax', name: 'disruptor', version: '3.4.2'
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
@@ -46,6 +61,32 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
 
 }
+jar {
+    enabled = true
+}
+task copyConfigFile(type: Copy) {
+    from('src/main/resources')
+    into 'build/libs/config'
+}
+task copyJar(type: Copy) {
+    delete "$buildDir/libs/"
+    from configurations.compileClasspath
+    into "$buildDir/libs/lib"
+}
+
+bootJar {
+    archiveBaseName = 'game-server'
+    mainClassName = 'game.GameMain'
+
+    excludes = ["*.jar"]
+    dependsOn copyJar
+    // 指定依赖包的路径
+    manifest {
+        attributes "Manifest-Version": 1.0,
+                'Class-Path': getProject().getConfigurations().compileClasspath.files.collect { "lib/$it.name" }.join(' ')
+    }
+}
+
 
 test {
     useJUnitPlatform()
