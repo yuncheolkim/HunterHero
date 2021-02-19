@@ -10,3 +10,7 @@ message Message {
     int32 error = 3;
     bytes body = 5;
 }
+// 登录
+message LoginReq {
+    int64 playerId = 1;
+}
