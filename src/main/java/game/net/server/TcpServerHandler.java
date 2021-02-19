@@ -32,7 +32,7 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                ctx.writeAndFlush(Message.newBuilder().setId(3));
+                ctx.writeAndFlush(Message.newBuilder().setVersion(1));
             }
 
         }).start();

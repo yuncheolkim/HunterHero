@@ -8,14 +8,10 @@ public interface MessageOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   * 消息编号
-   * </pre>
-   *
-   * <code>int64 id = 1;</code>
-   * @return The id.
+   * <code>int32 version = 1;</code>
+   * @return The version.
    */
-  long getId();
+  int getVersion();
 
   /**
    * <code>int32 msgNo = 2;</code>
@@ -24,26 +20,14 @@ public interface MessageOrBuilder extends
   int getMsgNo();
 
   /**
-   * <code>bytes body = 3;</code>
+   * <code>int32 error = 3;</code>
+   * @return The error.
+   */
+  int getError();
+
+  /**
+   * <code>bytes body = 5;</code>
    * @return The body.
    */
   com.google.protobuf.ByteString getBody();
-
-  /**
-   * <code>int32 serviceNo = 4;</code>
-   * @return The serviceNo.
-   */
-  int getServiceNo();
-
-  /**
-   * <code>int32 appNo = 5;</code>
-   * @return The appNo.
-   */
-  int getAppNo();
-
-  /**
-   * <code>int32 idType = 6;</code>
-   * @return The idType.
-   */
-  int getIdType();
 }

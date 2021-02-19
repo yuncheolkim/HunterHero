@@ -51,7 +51,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            id_ = input.readInt64();
+            version_ = input.readInt32();
             break;
           }
           case 16: {
@@ -59,24 +59,14 @@ private static final long serialVersionUID = 0L;
             msgNo_ = input.readInt32();
             break;
           }
-          case 26: {
+          case 24: {
+
+            error_ = input.readInt32();
+            break;
+          }
+          case 42: {
 
             body_ = input.readBytes();
-            break;
-          }
-          case 32: {
-
-            serviceNo_ = input.readInt32();
-            break;
-          }
-          case 40: {
-
-            appNo_ = input.readInt32();
-            break;
-          }
-          case 48: {
-
-            idType_ = input.readInt32();
             break;
           }
           default: {
@@ -111,19 +101,15 @@ private static final long serialVersionUID = 0L;
             game.proto.Message.class, game.proto.Message.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private long id_;
+  public static final int VERSION_FIELD_NUMBER = 1;
+  private int version_;
   /**
-   * <pre>
-   * 消息编号
-   * </pre>
-   *
-   * <code>int64 id = 1;</code>
-   * @return The id.
+   * <code>int32 version = 1;</code>
+   * @return The version.
    */
   @java.lang.Override
-  public long getId() {
-    return id_;
+  public int getVersion() {
+    return version_;
   }
 
   public static final int MSGNO_FIELD_NUMBER = 2;
@@ -137,48 +123,26 @@ private static final long serialVersionUID = 0L;
     return msgNo_;
   }
 
-  public static final int BODY_FIELD_NUMBER = 3;
+  public static final int ERROR_FIELD_NUMBER = 3;
+  private int error_;
+  /**
+   * <code>int32 error = 3;</code>
+   * @return The error.
+   */
+  @java.lang.Override
+  public int getError() {
+    return error_;
+  }
+
+  public static final int BODY_FIELD_NUMBER = 5;
   private com.google.protobuf.ByteString body_;
   /**
-   * <code>bytes body = 3;</code>
+   * <code>bytes body = 5;</code>
    * @return The body.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString getBody() {
     return body_;
-  }
-
-  public static final int SERVICENO_FIELD_NUMBER = 4;
-  private int serviceNo_;
-  /**
-   * <code>int32 serviceNo = 4;</code>
-   * @return The serviceNo.
-   */
-  @java.lang.Override
-  public int getServiceNo() {
-    return serviceNo_;
-  }
-
-  public static final int APPNO_FIELD_NUMBER = 5;
-  private int appNo_;
-  /**
-   * <code>int32 appNo = 5;</code>
-   * @return The appNo.
-   */
-  @java.lang.Override
-  public int getAppNo() {
-    return appNo_;
-  }
-
-  public static final int IDTYPE_FIELD_NUMBER = 6;
-  private int idType_;
-  /**
-   * <code>int32 idType = 6;</code>
-   * @return The idType.
-   */
-  @java.lang.Override
-  public int getIdType() {
-    return idType_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -195,23 +159,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0L) {
-      output.writeInt64(1, id_);
+    if (version_ != 0) {
+      output.writeInt32(1, version_);
     }
     if (msgNo_ != 0) {
       output.writeInt32(2, msgNo_);
     }
+    if (error_ != 0) {
+      output.writeInt32(3, error_);
+    }
     if (!body_.isEmpty()) {
-      output.writeBytes(3, body_);
-    }
-    if (serviceNo_ != 0) {
-      output.writeInt32(4, serviceNo_);
-    }
-    if (appNo_ != 0) {
-      output.writeInt32(5, appNo_);
-    }
-    if (idType_ != 0) {
-      output.writeInt32(6, idType_);
+      output.writeBytes(5, body_);
     }
     unknownFields.writeTo(output);
   }
@@ -222,29 +180,21 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0L) {
+    if (version_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, id_);
+        .computeInt32Size(1, version_);
     }
     if (msgNo_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, msgNo_);
     }
+    if (error_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, error_);
+    }
     if (!body_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(3, body_);
-    }
-    if (serviceNo_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, serviceNo_);
-    }
-    if (appNo_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(5, appNo_);
-    }
-    if (idType_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(6, idType_);
+        .computeBytesSize(5, body_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -261,18 +211,14 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.Message other = (game.proto.Message) obj;
 
-    if (getId()
-        != other.getId()) return false;
+    if (getVersion()
+        != other.getVersion()) return false;
     if (getMsgNo()
         != other.getMsgNo()) return false;
+    if (getError()
+        != other.getError()) return false;
     if (!getBody()
         .equals(other.getBody())) return false;
-    if (getServiceNo()
-        != other.getServiceNo()) return false;
-    if (getAppNo()
-        != other.getAppNo()) return false;
-    if (getIdType()
-        != other.getIdType()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -284,19 +230,14 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getId());
+    hash = (37 * hash) + VERSION_FIELD_NUMBER;
+    hash = (53 * hash) + getVersion();
     hash = (37 * hash) + MSGNO_FIELD_NUMBER;
     hash = (53 * hash) + getMsgNo();
+    hash = (37 * hash) + ERROR_FIELD_NUMBER;
+    hash = (53 * hash) + getError();
     hash = (37 * hash) + BODY_FIELD_NUMBER;
     hash = (53 * hash) + getBody().hashCode();
-    hash = (37 * hash) + SERVICENO_FIELD_NUMBER;
-    hash = (53 * hash) + getServiceNo();
-    hash = (37 * hash) + APPNO_FIELD_NUMBER;
-    hash = (53 * hash) + getAppNo();
-    hash = (37 * hash) + IDTYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getIdType();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -430,17 +371,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = 0L;
+      version_ = 0;
 
       msgNo_ = 0;
 
+      error_ = 0;
+
       body_ = com.google.protobuf.ByteString.EMPTY;
-
-      serviceNo_ = 0;
-
-      appNo_ = 0;
-
-      idType_ = 0;
 
       return this;
     }
@@ -468,12 +405,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.Message buildPartial() {
       game.proto.Message result = new game.proto.Message(this);
-      result.id_ = id_;
+      result.version_ = version_;
       result.msgNo_ = msgNo_;
+      result.error_ = error_;
       result.body_ = body_;
-      result.serviceNo_ = serviceNo_;
-      result.appNo_ = appNo_;
-      result.idType_ = idType_;
       onBuilt();
       return result;
     }
@@ -522,23 +457,17 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.Message other) {
       if (other == game.proto.Message.getDefaultInstance()) return this;
-      if (other.getId() != 0L) {
-        setId(other.getId());
+      if (other.getVersion() != 0) {
+        setVersion(other.getVersion());
       }
       if (other.getMsgNo() != 0) {
         setMsgNo(other.getMsgNo());
       }
+      if (other.getError() != 0) {
+        setError(other.getError());
+      }
       if (other.getBody() != com.google.protobuf.ByteString.EMPTY) {
         setBody(other.getBody());
-      }
-      if (other.getServiceNo() != 0) {
-        setServiceNo(other.getServiceNo());
-      }
-      if (other.getAppNo() != 0) {
-        setAppNo(other.getAppNo());
-      }
-      if (other.getIdType() != 0) {
-        setIdType(other.getIdType());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -569,45 +498,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long id_ ;
+    private int version_ ;
     /**
-     * <pre>
-     * 消息编号
-     * </pre>
-     *
-     * <code>int64 id = 1;</code>
-     * @return The id.
+     * <code>int32 version = 1;</code>
+     * @return The version.
      */
     @java.lang.Override
-    public long getId() {
-      return id_;
+    public int getVersion() {
+      return version_;
     }
     /**
-     * <pre>
-     * 消息编号
-     * </pre>
-     *
-     * <code>int64 id = 1;</code>
-     * @param value The id to set.
+     * <code>int32 version = 1;</code>
+     * @param value The version to set.
      * @return This builder for chaining.
      */
-    public Builder setId(long value) {
+    public Builder setVersion(int value) {
       
-      id_ = value;
+      version_ = value;
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * 消息编号
-     * </pre>
-     *
-     * <code>int64 id = 1;</code>
+     * <code>int32 version = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearId() {
+    public Builder clearVersion() {
       
-      id_ = 0L;
+      version_ = 0;
       onChanged();
       return this;
     }
@@ -643,9 +560,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int error_ ;
+    /**
+     * <code>int32 error = 3;</code>
+     * @return The error.
+     */
+    @java.lang.Override
+    public int getError() {
+      return error_;
+    }
+    /**
+     * <code>int32 error = 3;</code>
+     * @param value The error to set.
+     * @return This builder for chaining.
+     */
+    public Builder setError(int value) {
+      
+      error_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 error = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearError() {
+      
+      error_ = 0;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.ByteString body_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>bytes body = 3;</code>
+     * <code>bytes body = 5;</code>
      * @return The body.
      */
     @java.lang.Override
@@ -653,7 +601,7 @@ private static final long serialVersionUID = 0L;
       return body_;
     }
     /**
-     * <code>bytes body = 3;</code>
+     * <code>bytes body = 5;</code>
      * @param value The body to set.
      * @return This builder for chaining.
      */
@@ -667,105 +615,12 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bytes body = 3;</code>
+     * <code>bytes body = 5;</code>
      * @return This builder for chaining.
      */
     public Builder clearBody() {
       
       body_ = getDefaultInstance().getBody();
-      onChanged();
-      return this;
-    }
-
-    private int serviceNo_ ;
-    /**
-     * <code>int32 serviceNo = 4;</code>
-     * @return The serviceNo.
-     */
-    @java.lang.Override
-    public int getServiceNo() {
-      return serviceNo_;
-    }
-    /**
-     * <code>int32 serviceNo = 4;</code>
-     * @param value The serviceNo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setServiceNo(int value) {
-      
-      serviceNo_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 serviceNo = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearServiceNo() {
-      
-      serviceNo_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int appNo_ ;
-    /**
-     * <code>int32 appNo = 5;</code>
-     * @return The appNo.
-     */
-    @java.lang.Override
-    public int getAppNo() {
-      return appNo_;
-    }
-    /**
-     * <code>int32 appNo = 5;</code>
-     * @param value The appNo to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAppNo(int value) {
-      
-      appNo_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 appNo = 5;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAppNo() {
-      
-      appNo_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int idType_ ;
-    /**
-     * <code>int32 idType = 6;</code>
-     * @return The idType.
-     */
-    @java.lang.Override
-    public int getIdType() {
-      return idType_;
-    }
-    /**
-     * <code>int32 idType = 6;</code>
-     * @param value The idType to set.
-     * @return This builder for chaining.
-     */
-    public Builder setIdType(int value) {
-      
-      idType_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 idType = 6;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearIdType() {
-      
-      idType_ = 0;
       onChanged();
       return this;
     }
