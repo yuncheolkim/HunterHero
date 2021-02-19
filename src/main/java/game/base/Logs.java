@@ -1,4 +1,4 @@
-package game.hunter;
+package game.base;
 
 
 import org.slf4j.Logger;

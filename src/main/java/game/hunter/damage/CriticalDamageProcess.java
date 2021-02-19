@@ -1,9 +1,9 @@
 package game.hunter.damage;
 
+import game.base.Logs;
 import game.hunter.CalcUtil;
 import game.hunter.Hero;
 import game.hunter.HeroData;
-import game.hunter.Logs;
 
 /**
  * 攻击计算暴击伤害

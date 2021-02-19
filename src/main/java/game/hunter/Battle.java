@@ -1,5 +1,6 @@
 package game.hunter;
 
+import game.base.Logs;
 import game.hunter.action.ActionPoint;
 import game.hunter.damage.*;
 import game.hunter.record.BattleRecord;

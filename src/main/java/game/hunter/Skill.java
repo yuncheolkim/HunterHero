@@ -1,6 +1,7 @@
 package game.hunter;
 
 import com.google.common.base.MoreObjects;
+import game.base.Logs;
 import game.hunter.action.ActionPoint;
 import game.hunter.record.UseSkillRecord;
 

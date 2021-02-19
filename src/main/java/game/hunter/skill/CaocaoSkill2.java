@@ -1,6 +1,10 @@
 package game.hunter.skill;
 
-import game.hunter.*;
+import game.base.Logs;
+import game.hunter.Battle;
+import game.hunter.CalcUtil;
+import game.hunter.Hero;
+import game.hunter.Skill;
 import game.hunter.action.ActionPoint;
 import game.hunter.hero.Caocao;
 import game.hunter.record.UseSkillRecord;
