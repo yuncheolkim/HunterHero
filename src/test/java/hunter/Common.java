@@ -21,6 +21,7 @@ public class Common {
         // 设置数据
         hero.origin = makeData();
 
+        hero.heroStats.hp = hero.origin.getMaxHp();
         hero.setBattle(battle);
         if (side == Side.A) {
             battle.getSideAhero().add(hero);
@@ -35,7 +36,7 @@ public class Common {
 
     private static HeroData makeData() {
         HeroData data = new HeroData();
-        data.setMaxHp(2000);
+        data.setMaxHp(1000);
         data.setDamage(100);
         data.setAvoid(0);
         data.setCritical(0);

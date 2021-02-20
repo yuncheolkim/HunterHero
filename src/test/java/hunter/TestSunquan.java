@@ -18,11 +18,14 @@ public class TestSunquan {
         // 一场战斗
         Battle newBattle = new Battle();
         Common.newHero(newBattle, Side.A, Pos.from(1), BlankHero::new, g -> {
-            g.heroStats.hp = (2000);
+        });
+        Common.newHero(newBattle, Side.A, Pos.from(2), BlankHero::new, g -> {
+        });
+        Common.newHero(newBattle, Side.A, Pos.from(3), BlankHero::new, g -> {
         });
 
+
         Common.newHero(newBattle, Side.B, Pos.from(-2), Sunquan::new, g -> {
-            g.heroStats.hp = 2000;
         });
 
         newBattle.start();
