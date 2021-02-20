@@ -1,6 +1,6 @@
 package hunter;
 
-import game.hunter.*;
+import game.module.battle.*;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;

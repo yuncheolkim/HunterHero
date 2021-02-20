@@ -8,9 +8,15 @@ message Message {
     int32 version = 1;
     int32 msgNo = 2;
     int32 error = 3;
-    bytes body = 5;
+    int32 seq = 4;
+    bytes body = 10;
+
 }
 // 登录
+// 1
 message LoginReq {
     int64 playerId = 1;
+}
+//2
+message KickPush {
 }

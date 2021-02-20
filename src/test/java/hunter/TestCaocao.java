@@ -1,11 +1,11 @@
 package hunter;
 
-import game.hunter.Battle;
-import game.hunter.Pos;
-import game.hunter.Side;
-import game.hunter.hero.Caocao;
-import game.hunter.hero.Guanyu;
-import game.hunter.hero.base.BlankHero;
+import game.module.battle.Battle;
+import game.module.battle.Pos;
+import game.module.battle.Side;
+import game.module.battle.hero.Caocao;
+import game.module.battle.hero.Guanyu;
+import game.module.battle.hero.base.BlankHero;
 import org.junit.Test;
 
 /**

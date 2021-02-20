@@ -1,5 +1,6 @@
 package game.net.server;
 
+import game.base.Lifecycle;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -14,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -29,6 +31,12 @@ public class TcpServer implements IServer {
 
     public TcpServer(int port) {
         this.port = port;
+    }
+
+    private LinkedList<Lifecycle> starter = new LinkedList<>();
+
+    public void addStart(Lifecycle lifecycle) {
+        starter.add(lifecycle);
     }
 
     protected List<ChannelHandler> channelHandlerList() {
@@ -63,10 +71,15 @@ public class TcpServer implements IServer {
             }
         });
         thread.start();
+
+
+        // starter
+        starter.forEach(Lifecycle::start);
     }
 
     public void stop() {
         log.info("退出服务器");
+        starter.forEach(Lifecycle::stop);
         ChannelFuture close = channel.close();
         close.awaitUninterruptibly(1, TimeUnit.SECONDS);
     }

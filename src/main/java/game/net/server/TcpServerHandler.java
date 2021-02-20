@@ -1,13 +1,19 @@
 package game.net.server;
 
+import game.base.Constants;
+import game.base.G;
 import game.base.Logs;
+import game.msg.LoginMsgProcess;
+import game.msg.MsgProcess;
+import game.player.Player;
 import game.proto.Message;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import io.netty.util.Attribute;
 import org.slf4j.Logger;
 
-import java.util.concurrent.TimeUnit;
+import java.util.Optional;
 
 /**
  * @author Yunzhe.Jin
@@ -23,20 +29,6 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
         log.debug("客户端连接成功,{}", ctx.channel());
         super.channelActive(ctx);
 
-        new Thread(() -> {
-
-            while (true) {
-
-                try {
-                    TimeUnit.SECONDS.sleep(5);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                ctx.writeAndFlush(Message.newBuilder().setVersion(1));
-            }
-
-        }).start();
-
     }
 
     @Override
@@ -44,8 +36,30 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
         log.info("收到消息：{}-{}", ctx, msg);
         int msgNo = msg.getMsgNo();
 
+        if (isLogin(msgNo)) {
+            if (ctx.channel().hasAttr(Constants.pid)) {
+                // 重复登录
+                return;
+            }
+            G.W.getLoginWork().addTask(new LoginMsgProcess(ctx.channel(), msg));
+        } else if (!ctx.channel().hasAttr(Constants.pid)) {
+            // 没有登录
+            return;
+        } else {
+            Attribute<Long> attr = ctx.channel().attr(Constants.pid);
+            Optional<Player> player = G.P.findPlayer(attr.get());
+            if (player.isPresent()) {
+                G.W.getPlayerWork(player.get().getPid()).addTask(new MsgProcess(msg, player.get()));
+            } else {
+                Logs.C.error("channel:{} 存在,用户不存在？？{}", ctx.channel(), attr.get());
+            }
+        }
 
         // todo
+    }
+
+    private boolean isLogin(int msgNo) {
+        return msgNo == 1;
     }
 
 

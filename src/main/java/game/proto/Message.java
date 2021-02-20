@@ -64,7 +64,12 @@ private static final long serialVersionUID = 0L;
             error_ = input.readInt32();
             break;
           }
-          case 42: {
+          case 32: {
+
+            seq_ = input.readInt32();
+            break;
+          }
+          case 82: {
 
             body_ = input.readBytes();
             break;
@@ -134,10 +139,21 @@ private static final long serialVersionUID = 0L;
     return error_;
   }
 
-  public static final int BODY_FIELD_NUMBER = 5;
+  public static final int SEQ_FIELD_NUMBER = 4;
+  private int seq_;
+  /**
+   * <code>int32 seq = 4;</code>
+   * @return The seq.
+   */
+  @java.lang.Override
+  public int getSeq() {
+    return seq_;
+  }
+
+  public static final int BODY_FIELD_NUMBER = 10;
   private com.google.protobuf.ByteString body_;
   /**
-   * <code>bytes body = 5;</code>
+   * <code>bytes body = 10;</code>
    * @return The body.
    */
   @java.lang.Override
@@ -168,8 +184,11 @@ private static final long serialVersionUID = 0L;
     if (error_ != 0) {
       output.writeInt32(3, error_);
     }
+    if (seq_ != 0) {
+      output.writeInt32(4, seq_);
+    }
     if (!body_.isEmpty()) {
-      output.writeBytes(5, body_);
+      output.writeBytes(10, body_);
     }
     unknownFields.writeTo(output);
   }
@@ -192,9 +211,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, error_);
     }
+    if (seq_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, seq_);
+    }
     if (!body_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBytesSize(5, body_);
+        .computeBytesSize(10, body_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -217,6 +240,8 @@ private static final long serialVersionUID = 0L;
         != other.getMsgNo()) return false;
     if (getError()
         != other.getError()) return false;
+    if (getSeq()
+        != other.getSeq()) return false;
     if (!getBody()
         .equals(other.getBody())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -236,6 +261,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getMsgNo();
     hash = (37 * hash) + ERROR_FIELD_NUMBER;
     hash = (53 * hash) + getError();
+    hash = (37 * hash) + SEQ_FIELD_NUMBER;
+    hash = (53 * hash) + getSeq();
     hash = (37 * hash) + BODY_FIELD_NUMBER;
     hash = (53 * hash) + getBody().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -377,6 +404,8 @@ private static final long serialVersionUID = 0L;
 
       error_ = 0;
 
+      seq_ = 0;
+
       body_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
@@ -408,6 +437,7 @@ private static final long serialVersionUID = 0L;
       result.version_ = version_;
       result.msgNo_ = msgNo_;
       result.error_ = error_;
+      result.seq_ = seq_;
       result.body_ = body_;
       onBuilt();
       return result;
@@ -465,6 +495,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getError() != 0) {
         setError(other.getError());
+      }
+      if (other.getSeq() != 0) {
+        setSeq(other.getSeq());
       }
       if (other.getBody() != com.google.protobuf.ByteString.EMPTY) {
         setBody(other.getBody());
@@ -591,9 +624,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int seq_ ;
+    /**
+     * <code>int32 seq = 4;</code>
+     * @return The seq.
+     */
+    @java.lang.Override
+    public int getSeq() {
+      return seq_;
+    }
+    /**
+     * <code>int32 seq = 4;</code>
+     * @param value The seq to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSeq(int value) {
+      
+      seq_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 seq = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSeq() {
+      
+      seq_ = 0;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.ByteString body_ = com.google.protobuf.ByteString.EMPTY;
     /**
-     * <code>bytes body = 5;</code>
+     * <code>bytes body = 10;</code>
      * @return The body.
      */
     @java.lang.Override
@@ -601,7 +665,7 @@ private static final long serialVersionUID = 0L;
       return body_;
     }
     /**
-     * <code>bytes body = 5;</code>
+     * <code>bytes body = 10;</code>
      * @param value The body to set.
      * @return This builder for chaining.
      */
@@ -615,7 +679,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bytes body = 5;</code>
+     * <code>bytes body = 10;</code>
      * @return This builder for chaining.
      */
     public Builder clearBody() {

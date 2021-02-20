@@ -1,9 +1,9 @@
 package hunter;
 
-import game.hunter.Battle;
-import game.hunter.Pos;
-import game.hunter.Side;
-import game.hunter.hero.Guanyu;
+import game.module.battle.Battle;
+import game.module.battle.Pos;
+import game.module.battle.Side;
+import game.module.battle.hero.Guanyu;
 import org.junit.Test;
 
 /**

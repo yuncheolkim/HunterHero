@@ -26,7 +26,13 @@ public interface MessageOrBuilder extends
   int getError();
 
   /**
-   * <code>bytes body = 5;</code>
+   * <code>int32 seq = 4;</code>
+   * @return The seq.
+   */
+  int getSeq();
+
+  /**
+   * <code>bytes body = 10;</code>
    * @return The body.
    */
   com.google.protobuf.ByteString getBody();
