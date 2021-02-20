@@ -16,15 +16,15 @@ public class LoginHandler {
         Logs.C.info("start login:{} ---->{}", ch, playerId);
         G.P.compute(playerId, (pid, player) -> {
             if (player == null) {
-                player = new Player();
-                player.setPid(playerId);
-
+                player = new Player(pid);
+                player.setChannel(ch);
+                player.load();
             } else {
                 // 踢出之前的登录
                 player.kick();
                 player.setChannel(ch);
-
             }
+            player.login();
 
             return player;
         });

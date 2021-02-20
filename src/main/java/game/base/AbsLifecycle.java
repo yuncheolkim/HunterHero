@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * 2021/2/20 10:42
  */
 public abstract class AbsLifecycle implements Lifecycle {
-    private AtomicBoolean stopped = new AtomicBoolean(true);
+    protected AtomicBoolean stopped = new AtomicBoolean(true);
 
     @Override
     public void start() {

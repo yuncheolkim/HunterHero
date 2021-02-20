@@ -33,4 +33,12 @@ public class WorkManager extends AbsLifecycle {
     }
 
 
+    @Override
+    public void start() {
+        for (Work work : playerWork) {
+            work.start();
+        }
+        loginWork.start();
+        super.start();
+    }
 }

@@ -2,15 +2,12 @@ package game.base;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * @author Yunzhe.Jin
  * 2021/2/19 19:36
  */
 public class Work extends AbsLifecycle {
-
-    private AtomicBoolean stopped = new AtomicBoolean(true);
 
     private ExecutorService executor;
 

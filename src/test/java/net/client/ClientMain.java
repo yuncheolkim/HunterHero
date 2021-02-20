@@ -1,15 +1,27 @@
 package net.client;
 
 
+import game.proto.LoginReq;
+import game.proto.Message;
+import org.junit.Test;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Yunzhe.Jin
  */
 public class ClientMain {
 
-    public static void main(String[] args) throws InterruptedException {
+    @Test
+    public void testLogin() throws InterruptedException {
         Client client = new Client();
         client.connect("localhost", 9000);
+
+        client.send(Message.newBuilder()
+                .setMsgNo(1).setBody(LoginReq.newBuilder().setPlayerId(100).build().toByteString())
+                .build());
+
+        TimeUnit.SECONDS.sleep(300);
 
     }
 }

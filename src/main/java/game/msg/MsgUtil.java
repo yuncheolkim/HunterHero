@@ -11,14 +11,19 @@ import game.proto.Message;
 public class MsgUtil {
     private static final int version = 1;
 
-    public static Message kickMsg() {
-        return Message.newBuilder()
-                .setVersion(version).setMsgNo(2).setBody(KickPush.getDefaultInstance().toByteString())
-                .build();
+    private static final Message kickMsg = Message.newBuilder()
+            .setVersion(version).setMsgNo(2).setBody(KickPush.getDefaultInstance().toByteString())
+            .build();
 
+    public static Message kickMsg() {
+        return kickMsg;
     }
 
     public static Message make(int msgNo, MessageLite msg) {
-
+        return Message.newBuilder()
+                .setVersion(version)
+                .setMsgNo(msgNo)
+                .setBody(msg.toByteString())
+                .build();
     }
 }

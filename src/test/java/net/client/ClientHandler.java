@@ -1,5 +1,6 @@
 package net.client;
 
+import game.base.Logs;
 import game.proto.Message;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
@@ -19,6 +20,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
 
     // Stateful properties
     private volatile Channel channel;
+
     private final BlockingQueue<Message> answer = new LinkedBlockingQueue<Message>();
 
     public ClientHandler() {
@@ -34,6 +36,7 @@ public class ClientHandler extends SimpleChannelInboundHandler<Message> {
     @Override
     public void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception {
 
+        Logs.C.info("收到消息:{}", msg);
     }
 
 
