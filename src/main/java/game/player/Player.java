@@ -2,6 +2,7 @@ package game.player;
 
 import game.base.Constants;
 import game.base.Logs;
+import game.module.data.PlayerData;
 import game.msg.MsgUtil;
 import io.netty.channel.Channel;
 import org.joda.time.LocalDateTime;
@@ -20,6 +21,8 @@ public class Player {
 
     private LocalDateTime loginTime;
 
+    private PlayerData playerData = new PlayerData();
+
     public Player(long pid) {
         this.pid = pid;
         createTime = LocalDateTime.now();
@@ -33,8 +36,6 @@ public class Player {
             channel.writeAndFlush(MsgUtil.kickMsg());
             channel.close();
         }
-
-
     }
 
     public void login() {
@@ -45,6 +46,22 @@ public class Player {
      * 加载用户数据
      */
     public void load() {
+
+
+
+    }
+
+    /**
+     * 数据持久化
+     */
+    public void unload() {
+
+    }
+
+    /**
+     * 下线
+     */
+    public void offline() {
 
     }
 

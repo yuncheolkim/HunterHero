@@ -5,28 +5,28 @@ package game.proto;
 
 /**
  * <pre>
- *2
+ * 1001
  * </pre>
  *
- * Protobuf type {@code Message.KickPush}
+ * Protobuf type {@code Message.TaskReq}
  */
-public final class KickPush extends
+public final class TaskReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.KickPush)
-    KickPushOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.TaskReq)
+    TaskReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use KickPush.newBuilder() to construct.
-  private KickPush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use TaskReq.newBuilder() to construct.
+  private TaskReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private KickPush() {
+  private TaskReq() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new KickPush();
+    return new TaskReq();
   }
 
   @java.lang.Override
@@ -34,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private KickPush(
+  private TaskReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -73,15 +73,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_KickPush_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_TaskReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_KickPush_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_TaskReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.KickPush.class, game.proto.KickPush.Builder.class);
+            game.proto.TaskReq.class, game.proto.TaskReq.Builder.class);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -117,10 +117,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.KickPush)) {
+    if (!(obj instanceof game.proto.TaskReq)) {
       return super.equals(obj);
     }
-    game.proto.KickPush other = (game.proto.KickPush) obj;
+    game.proto.TaskReq other = (game.proto.TaskReq) obj;
 
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -138,69 +138,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.KickPush parseFrom(byte[] data)
+  public static game.proto.TaskReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.KickPush parseFrom(java.io.InputStream input)
+  public static game.proto.TaskReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.KickPush parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.TaskReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.KickPush parseDelimitedFrom(
+  public static game.proto.TaskReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.KickPush parseFrom(
+  public static game.proto.TaskReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -213,7 +213,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.KickPush prototype) {
+  public static Builder newBuilder(game.proto.TaskReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -230,29 +230,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *2
+   * 1001
    * </pre>
    *
-   * Protobuf type {@code Message.KickPush}
+   * Protobuf type {@code Message.TaskReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.KickPush)
-      game.proto.KickPushOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.TaskReq)
+      game.proto.TaskReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_KickPush_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_TaskReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_KickPush_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_TaskReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.KickPush.class, game.proto.KickPush.Builder.class);
+              game.proto.TaskReq.class, game.proto.TaskReq.Builder.class);
     }
 
-    // Construct using game.proto.KickPush.newBuilder()
+    // Construct using game.proto.TaskReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -276,17 +276,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_KickPush_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_TaskReq_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.KickPush getDefaultInstanceForType() {
-      return game.proto.KickPush.getDefaultInstance();
+    public game.proto.TaskReq getDefaultInstanceForType() {
+      return game.proto.TaskReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.KickPush build() {
-      game.proto.KickPush result = buildPartial();
+    public game.proto.TaskReq build() {
+      game.proto.TaskReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -294,8 +294,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.KickPush buildPartial() {
-      game.proto.KickPush result = new game.proto.KickPush(this);
+    public game.proto.TaskReq buildPartial() {
+      game.proto.TaskReq result = new game.proto.TaskReq(this);
       onBuilt();
       return result;
     }
@@ -334,16 +334,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.KickPush) {
-        return mergeFrom((game.proto.KickPush)other);
+      if (other instanceof game.proto.TaskReq) {
+        return mergeFrom((game.proto.TaskReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.KickPush other) {
-      if (other == game.proto.KickPush.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.TaskReq other) {
+      if (other == game.proto.TaskReq.getDefaultInstance()) return this;
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -359,11 +359,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.KickPush parsedMessage = null;
+      game.proto.TaskReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.KickPush) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.TaskReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -385,41 +385,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.KickPush)
+    // @@protoc_insertion_point(builder_scope:Message.TaskReq)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.KickPush)
-  private static final game.proto.KickPush DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.TaskReq)
+  private static final game.proto.TaskReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.KickPush();
+    DEFAULT_INSTANCE = new game.proto.TaskReq();
   }
 
-  public static game.proto.KickPush getDefaultInstance() {
+  public static game.proto.TaskReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<KickPush>
-      PARSER = new com.google.protobuf.AbstractParser<KickPush>() {
+  private static final com.google.protobuf.Parser<TaskReq>
+      PARSER = new com.google.protobuf.AbstractParser<TaskReq>() {
     @java.lang.Override
-    public KickPush parsePartialFrom(
+    public TaskReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new KickPush(input, extensionRegistry);
+      return new TaskReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<KickPush> parser() {
+  public static com.google.protobuf.Parser<TaskReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<KickPush> getParserForType() {
+  public com.google.protobuf.Parser<TaskReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.KickPush getDefaultInstanceForType() {
+  public game.proto.TaskReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

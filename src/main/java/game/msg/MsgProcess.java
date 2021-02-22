@@ -20,6 +20,6 @@ public class MsgProcess implements Runnable {
 
     @Override
     public void run() {
-        G.G.getHandler(message.getMsgNo()).handler(player, message);
+        G.G.getHandler(message.getMsgNo()).invoke(player, message);
     }
 }

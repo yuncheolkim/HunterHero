@@ -1,4 +1,4 @@
-package game.base;
+package game.manager;
 
 import game.player.Player;
 
@@ -19,6 +19,7 @@ public class PlayerManager {
     }
 
     public Player put(Player p) {
+
         return playerMap.put(p.getPid(), p);
     }
 

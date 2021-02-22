@@ -29,6 +29,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_KickPush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_TaskReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_TaskReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -41,8 +46,8 @@ public final class MessageOuterClass {
       "\n\rmessage.proto\022\007Message\"S\n\007Message\022\017\n\007v" +
       "ersion\030\001 \001(\005\022\r\n\005msgNo\030\002 \001(\005\022\r\n\005error\030\003 \001" +
       "(\005\022\013\n\003seq\030\004 \001(\005\022\014\n\004body\030\n \001(\014\"\034\n\010LoginRe" +
-      "q\022\020\n\010playerId\030\001 \001(\003\"\n\n\010KickPushB\020\n\ngame." +
-      "protoH\001P\001b\006proto3"
+      "q\022\020\n\010playerId\030\001 \001(\003\"\n\n\010KickPush\"\t\n\007TaskR" +
+      "eqB\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -65,6 +70,12 @@ public final class MessageOuterClass {
     internal_static_Message_KickPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_KickPush_descriptor,
+        new java.lang.String[] { });
+    internal_static_Message_TaskReq_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_Message_TaskReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_TaskReq_descriptor,
         new java.lang.String[] { });
   }
 
