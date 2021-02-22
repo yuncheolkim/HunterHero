@@ -14,6 +14,7 @@ import io.netty.util.Attribute;
 import org.slf4j.Logger;
 
 import java.util.Optional;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Yunzhe.Jin
@@ -28,6 +29,7 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         log.debug("客户端连接成功,{}", ctx.channel());
         super.channelActive(ctx);
+
 
     }
 

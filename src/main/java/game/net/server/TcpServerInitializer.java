@@ -8,6 +8,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.codec.protobuf.ProtobufEncoder;
 import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
 
 import java.util.List;
 
@@ -28,8 +29,10 @@ public class TcpServerInitializer extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel ch) throws Exception {
         ChannelPipeline pipeline = ch.pipeline();
 
+        // 客户端传过来的时候 varint 编码的长度
         pipeline.addLast(new ProtobufVarint32FrameDecoder());
         pipeline.addLast(new ProtobufDecoder(Message.getDefaultInstance()));
+        // 服务器给前端的时候4字节头固定格式
 //        pipeline.addLast(new ProtobufVarint32LengthFieldPrepender());
         pipeline.addLast(new TcpByteSendHandler());
         pipeline.addLast(new ProtobufEncoder());
