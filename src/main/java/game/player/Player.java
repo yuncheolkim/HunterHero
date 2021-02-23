@@ -3,6 +3,7 @@ package game.player;
 import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
+import game.base.Work;
 import game.module.data.PlayerData;
 import game.net.Transport;
 import game.proto.LoginRes;
@@ -28,10 +29,13 @@ public class Player {
 
     private PlayerData playerData = new PlayerData();
 
+    private LocalDateTime updateTime;
+
     public Player(long pid) {
         this.pid = pid;
         createTime = LocalDateTime.now();
         loginTime = createTime;
+        updateTime = createTime;
     }
 
     // 踢下线
@@ -69,6 +73,7 @@ public class Player {
 
         if (playerRepo.has(code)) {
             playerData = playerRepo.load(account);
+            playerData.write(this);
         } else {// 创建用户
             playerData.account = account;
             playerRepo.save(playerData);
@@ -78,8 +83,16 @@ public class Player {
     /**
      * 数据持久化
      */
-    public void unload() {
+    public void saveData() {
 
+        playerData.read(this);
+        PlayerData copy = playerData.copy();
+        Work dataPersistenceWork = G.W.getDataPersistenceWork(pid);
+
+        dataPersistenceWork.addTask(() -> {
+            PlayerRepo playerRepo = G.R.getPlayerRepo();
+            playerRepo.save(copy);
+        });
     }
 
     /**
@@ -87,6 +100,12 @@ public class Player {
      */
     public void offline() {
 
+    }
+
+    public void update() {
+
+
+        updateTime = LocalDateTime.now();
     }
 
     public void setChannel(Channel channel) {
@@ -108,5 +127,25 @@ public class Player {
 
     public Transport getTransport() {
         return transport;
+    }
+
+    public LocalDateTime getLoginTime() {
+        return loginTime;
+    }
+
+    public LocalDateTime getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setLoginTime(LocalDateTime loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public void setUpdateTime(LocalDateTime updateTime) {
+        this.updateTime = updateTime;
     }
 }

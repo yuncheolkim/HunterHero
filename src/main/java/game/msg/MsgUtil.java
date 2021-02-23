@@ -15,8 +15,13 @@ public class MsgUtil {
             .setVersion(version).setMsgNo(2).setBody(KickPush.getDefaultInstance().toByteString())
             .build();
 
+    //////////////
     public static final Message playerTick = Message.newBuilder()
-            .setVersion(version).setMsgNo(4)
+            .setVersion(version).setMsgNo(10)
+            .build();
+
+    public static final Message dataFlushTick = Message.newBuilder()
+            .setVersion(version).setMsgNo(11)
             .build();
 
     public static Message kickMsg() {

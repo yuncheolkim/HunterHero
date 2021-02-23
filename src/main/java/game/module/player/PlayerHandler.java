@@ -38,4 +38,11 @@ public class PlayerHandler {
 
         return null;
     }
+
+    public static MessageLite dataFlush(Player player, Empty o) {
+        Logs.C.info("保存玩家数据:{}", player.getPid());
+        player.saveData();
+
+        return null;
+    }
 }

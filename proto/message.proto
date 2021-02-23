@@ -3,7 +3,6 @@ package Message;
 option java_package = "game.proto";
 option optimize_for = SPEED;
 option java_multiple_files = true;
-
 message Message {
     int32 version = 1;
     int32 msgNo = 2;
@@ -38,7 +37,9 @@ message KickPush {
 message PlayerCreateNameReq {
     string name = 1;
 }
-// 4 tick
+//10~1000 后端使用
+// 10 tick
+// 11 dataSave
 
 // 1001
 message TaskReq {
