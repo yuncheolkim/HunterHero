@@ -21,6 +21,7 @@ public class WorkManager extends AbsLifecycle {
 
     public WorkManager() {
         initWork(playerWork, Executors.newSingleThreadExecutor());
+        initWork(dataPersistenceWork, Executors.newSingleThreadExecutor());
     }
 
     private void initWork(Work[] w, ExecutorService e) {
@@ -49,7 +50,15 @@ public class WorkManager extends AbsLifecycle {
         for (Work work : playerWork) {
             work.start();
         }
+        for (Work work : dataPersistenceWork) {
+            work.start();
+        }
         loginWork.start();
         super.start();
+    }
+
+    @Override
+    public void stop() {
+        super.stop();
     }
 }
