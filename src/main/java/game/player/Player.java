@@ -1,10 +1,13 @@
 package game.player;
 
+import com.google.protobuf.MessageLite;
 import game.base.Constants;
+import game.base.G;
 import game.base.Logs;
 import game.module.data.PlayerData;
-import game.msg.MsgUtil;
+import game.net.Transport;
 import game.proto.Message;
+import game.repo.PlayerRepo;
 import io.netty.channel.Channel;
 import org.joda.time.LocalDateTime;
 
@@ -16,7 +19,7 @@ import org.joda.time.LocalDateTime;
 public class Player {
     private final long pid;
 
-    private volatile Channel channel;
+    private Transport transport = new Transport();
 
     private LocalDateTime createTime;
 
@@ -32,31 +35,31 @@ public class Player {
 
     // 踢下线
     public void kick() {
-        if (channel.isOpen()) {
-            Logs.C.info("踢出用户:{},{}", pid, channel);
-            channel.writeAndFlush(MsgUtil.kickMsg());
-            channel.close();
-        }
+        Logs.C.info("踢出用户:{},{}", pid, transport.getChannel());
+        transport.close();
     }
 
     public void login() {
         loginTime = LocalDateTime.now();
     }
 
-    public  void send(Object o){
-
-        if (channel.isActive()) {
-            channel.writeAndFlush(Message.newBuilder().setMsgNo(101).build());
-        }
-    }
 
     /**
      * 加载用户数据
+     * @param code
      */
-    public void load() {
+    public void load(String code) {
+        // todo 根据code获取用户的账号, code从用户服务器生成
 
+        PlayerRepo playerRepo = G.R.getPlayerRepo();
+        String account = code;// todo for test
 
-
+        if (playerRepo.has(code)) {
+            playerData = playerRepo.load(account);
+        } else {// 创建用户
+            playerData.account = account;
+            playerRepo.save(playerData);
+        }
     }
 
     /**
@@ -73,13 +76,15 @@ public class Player {
 
     }
 
-    public Channel getChannel() {
-        return channel;
+    /////// transport
+
+    public void send(int msgNo, MessageLite messageLite) {
+        transport.send(Message.newBuilder().setMsgNo(msgNo).setBody(messageLite.toByteString()).build());
     }
 
     public void setChannel(Channel channel) {
-        this.channel = channel;
-        this.channel.attr(Constants.pid).set(pid);
+        transport.setChannel(channel);
+        transport.getChannel().attr(Constants.pid).set(pid);
     }
 
     public long getPid() {
@@ -88,6 +93,10 @@ public class Player {
 
     public LocalDateTime getCreateTime() {
         return createTime;
+    }
+
+    public PlayerData getPlayerData() {
+        return playerData;
     }
 
 }

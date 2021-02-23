@@ -18,7 +18,8 @@ public class ClientMain {
         client.connect("localhost", 9000);
 
         client.send(Message.newBuilder()
-                .setMsgNo(101)
+                .setMsgNo(1)
+                .setBody(LoginReq.newBuilder().setPlayerId(1).setCode("kim").build().toByteString())
                 .build());
 
         TimeUnit.SECONDS.sleep(300);

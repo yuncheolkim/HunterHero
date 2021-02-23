@@ -27,7 +27,7 @@ public class LoginMsgProcess implements Runnable {
     public void run() {
 
         try {
-            G.G.getLoginHandler().handler(ch, LoginReq.parseFrom(message.getBody()));
+            G.G.getLoginHandler().login(ch, LoginReq.parseFrom(message.getBody()));
         } catch (Exception e) {
             Logs.C.error("", e);
         }

@@ -12,9 +12,18 @@ import java.io.IOException;
  */
 public class PlayerRepo extends FileRepo {
 
-    public PlayerData find(String account) {
+    public boolean has(String account) {
+        String path = "data/" + account;
+        return FileUtils.hasFile(path);
+    }
+
+    public PlayerData load(String account) {
         try {
-            String s = FileUtils.readFile("data/" + account);
+            String path = "data/" + account;
+            if (!FileUtils.hasFile(path)) {
+                return null;
+            }
+            String s = FileUtils.readFile(path);
             return JsonUtil.fromJsonString(s, PlayerData.class);
         } catch (IOException e) {
             e.printStackTrace();

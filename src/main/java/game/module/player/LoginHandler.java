@@ -11,14 +11,19 @@ import io.netty.channel.Channel;
  * 2021/2/20 14:14
  */
 public class LoginHandler {
-    public void handler(Channel ch, LoginReq request) {
+    /**
+     * 登录
+     * @param ch
+     * @param request
+     */
+    public void login(Channel ch, LoginReq request) {
         long playerId = request.getPlayerId();
         Logs.C.info("start login:{} ---->{}", ch, playerId);
         G.P.compute(playerId, (pid, player) -> {
             if (player == null) {
                 player = new Player(pid);
                 player.setChannel(ch);
-                player.load();
+                player.load(request.getCode());
             } else {
                 // 踢出之前的登录
                 player.kick();
