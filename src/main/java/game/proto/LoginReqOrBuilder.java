@@ -12,4 +12,16 @@ public interface LoginReqOrBuilder extends
    * @return The playerId.
    */
   long getPlayerId();
+
+  /**
+   * <code>string code = 2;</code>
+   * @return The code.
+   */
+  java.lang.String getCode();
+  /**
+   * <code>string code = 2;</code>
+   * @return The bytes for code.
+   */
+  com.google.protobuf.ByteString
+      getCodeBytes();
 }

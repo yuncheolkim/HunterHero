@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import game.base.Copy;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,12 +40,6 @@ public class PlayerData implements Copy {
     @JsonProperty
     public List<TaskData> runTask = new ArrayList<>();
 
-    public static void main(String[] args) {
-        List<String> collect = Arrays.stream(PlayerData.class.getFields()).
-                map(field -> "data." + field.getName() + " = " + field.getName()).collect(Collectors.toList());
-        System.out.println(collect.stream().collect(Collectors.joining(";\n")));
-        String s = "import com.thoughtworks.qdox.JavaProjectBuilder\nimport java.nio.charset.StandardCharsets\nimport java.util.stream.Collectors\ndef builder = new JavaProjectBuilder();\nbuilder.setEncoding(StandardCharsets.UTF_8.toString())\ndef file = new File(\"/Users/jinyunzhe/develop/gitee/HunterHero/src/main/java/game/module/data/PlayerData.java\")\nbuilder.addSource(file)\ndef clazz = builder.getClasses().iterator().next();\ndef fieldNames = clazz.getFields().stream().filter({ f -> !f.isStatic() }).map({ f -> \"data.\" + f.getName() + \" = \" + f.getName() }).collect(Collectors.toList())\ndef s = clazz.getName() + \" data = new \" + clazz.getName() + \"();\\n\" + fieldNames.stream().collect(Collectors.joining(\";\\n\"));\ns = s + \" return data;\"\nreturn s";
-    }
 
     public PlayerData copy() {
 

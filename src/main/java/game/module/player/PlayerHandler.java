@@ -1,7 +1,7 @@
 package game.module.player;
 
 import game.player.Player;
-import game.proto.TaskReq;
+import game.proto.PlayerCreateNameReq;
 
 /**
  * @author Yunzhe.Jin
@@ -9,7 +9,13 @@ import game.proto.TaskReq;
  */
 public class PlayerHandler {
 
-    public static Object createName(Player player, TaskReq o) {
+    /**
+     * 起名
+     * @param player
+     * @param o
+     * @return
+     */
+    public static Object createName(Player player, PlayerCreateNameReq o) {
         return null;
     }
 

@@ -4,31 +4,26 @@
 package game.proto;
 
 /**
- * <pre>
- * 登录
- * 1
- * </pre>
- *
- * Protobuf type {@code Message.LoginReq}
+ * Protobuf type {@code Message.LoginRes}
  */
-public final class LoginReq extends
+public final class LoginRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.LoginReq)
-    LoginReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.LoginRes)
+    LoginResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use LoginReq.newBuilder() to construct.
-  private LoginReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use LoginRes.newBuilder() to construct.
+  private LoginRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private LoginReq() {
-    code_ = "";
+  private LoginRes() {
+    name_ = "";
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new LoginReq();
+    return new LoginRes();
   }
 
   @java.lang.Override
@@ -36,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LoginReq(
+  private LoginRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -62,7 +57,12 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            code_ = s;
+            name_ = s;
+            break;
+          }
+          case 24: {
+
+            first_ = input.readBool();
             break;
           }
           default: {
@@ -86,15 +86,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_LoginReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_LoginRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_LoginReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_LoginRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.LoginReq.class, game.proto.LoginReq.Builder.class);
+            game.proto.LoginRes.class, game.proto.LoginRes.Builder.class);
   }
 
   public static final int PLAYERID_FIELD_NUMBER = 1;
@@ -108,42 +108,53 @@ private static final long serialVersionUID = 0L;
     return playerId_;
   }
 
-  public static final int CODE_FIELD_NUMBER = 2;
-  private volatile java.lang.Object code_;
+  public static final int NAME_FIELD_NUMBER = 2;
+  private volatile java.lang.Object name_;
   /**
-   * <code>string code = 2;</code>
-   * @return The code.
+   * <code>string name = 2;</code>
+   * @return The name.
    */
   @java.lang.Override
-  public java.lang.String getCode() {
-    java.lang.Object ref = code_;
+  public java.lang.String getName() {
+    java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      code_ = s;
+      name_ = s;
       return s;
     }
   }
   /**
-   * <code>string code = 2;</code>
-   * @return The bytes for code.
+   * <code>string name = 2;</code>
+   * @return The bytes for name.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getCodeBytes() {
-    java.lang.Object ref = code_;
+      getNameBytes() {
+    java.lang.Object ref = name_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      code_ = b;
+      name_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
+  }
+
+  public static final int FIRST_FIELD_NUMBER = 3;
+  private boolean first_;
+  /**
+   * <code>bool first = 3;</code>
+   * @return The first.
+   */
+  @java.lang.Override
+  public boolean getFirst() {
+    return first_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -163,8 +174,11 @@ private static final long serialVersionUID = 0L;
     if (playerId_ != 0L) {
       output.writeInt64(1, playerId_);
     }
-    if (!getCodeBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, code_);
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+    }
+    if (first_ != false) {
+      output.writeBool(3, first_);
     }
     unknownFields.writeTo(output);
   }
@@ -179,8 +193,12 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(1, playerId_);
     }
-    if (!getCodeBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, code_);
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+    }
+    if (first_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(3, first_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -192,15 +210,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.LoginReq)) {
+    if (!(obj instanceof game.proto.LoginRes)) {
       return super.equals(obj);
     }
-    game.proto.LoginReq other = (game.proto.LoginReq) obj;
+    game.proto.LoginRes other = (game.proto.LoginRes) obj;
 
     if (getPlayerId()
         != other.getPlayerId()) return false;
-    if (!getCode()
-        .equals(other.getCode())) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (getFirst()
+        != other.getFirst()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -215,76 +235,79 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + PLAYERID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getPlayerId());
-    hash = (37 * hash) + CODE_FIELD_NUMBER;
-    hash = (53 * hash) + getCode().hashCode();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
+    hash = (37 * hash) + FIRST_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getFirst());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.LoginReq parseFrom(byte[] data)
+  public static game.proto.LoginRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.LoginReq parseFrom(java.io.InputStream input)
+  public static game.proto.LoginRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.LoginReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.LoginRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.LoginReq parseDelimitedFrom(
+  public static game.proto.LoginRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.LoginReq parseFrom(
+  public static game.proto.LoginRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -297,7 +320,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.LoginReq prototype) {
+  public static Builder newBuilder(game.proto.LoginRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -313,31 +336,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * 登录
-   * 1
-   * </pre>
-   *
-   * Protobuf type {@code Message.LoginReq}
+   * Protobuf type {@code Message.LoginRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.LoginReq)
-      game.proto.LoginReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.LoginRes)
+      game.proto.LoginResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_LoginReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_LoginRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_LoginReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_LoginRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.LoginReq.class, game.proto.LoginReq.Builder.class);
+              game.proto.LoginRes.class, game.proto.LoginRes.Builder.class);
     }
 
-    // Construct using game.proto.LoginReq.newBuilder()
+    // Construct using game.proto.LoginRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -357,7 +375,9 @@ private static final long serialVersionUID = 0L;
       super.clear();
       playerId_ = 0L;
 
-      code_ = "";
+      name_ = "";
+
+      first_ = false;
 
       return this;
     }
@@ -365,17 +385,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_LoginReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_LoginRes_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.LoginReq getDefaultInstanceForType() {
-      return game.proto.LoginReq.getDefaultInstance();
+    public game.proto.LoginRes getDefaultInstanceForType() {
+      return game.proto.LoginRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.LoginReq build() {
-      game.proto.LoginReq result = buildPartial();
+    public game.proto.LoginRes build() {
+      game.proto.LoginRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -383,10 +403,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.LoginReq buildPartial() {
-      game.proto.LoginReq result = new game.proto.LoginReq(this);
+    public game.proto.LoginRes buildPartial() {
+      game.proto.LoginRes result = new game.proto.LoginRes(this);
       result.playerId_ = playerId_;
-      result.code_ = code_;
+      result.name_ = name_;
+      result.first_ = first_;
       onBuilt();
       return result;
     }
@@ -425,22 +446,25 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.LoginReq) {
-        return mergeFrom((game.proto.LoginReq)other);
+      if (other instanceof game.proto.LoginRes) {
+        return mergeFrom((game.proto.LoginRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.LoginReq other) {
-      if (other == game.proto.LoginReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.LoginRes other) {
+      if (other == game.proto.LoginRes.getDefaultInstance()) return this;
       if (other.getPlayerId() != 0L) {
         setPlayerId(other.getPlayerId());
       }
-      if (!other.getCode().isEmpty()) {
-        code_ = other.code_;
+      if (!other.getName().isEmpty()) {
+        name_ = other.name_;
         onChanged();
+      }
+      if (other.getFirst() != false) {
+        setFirst(other.getFirst());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -457,11 +481,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.LoginReq parsedMessage = null;
+      game.proto.LoginRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.LoginReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.LoginRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -502,78 +526,109 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object code_ = "";
+    private java.lang.Object name_ = "";
     /**
-     * <code>string code = 2;</code>
-     * @return The code.
+     * <code>string name = 2;</code>
+     * @return The name.
      */
-    public java.lang.String getCode() {
-      java.lang.Object ref = code_;
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        code_ = s;
+        name_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string code = 2;</code>
-     * @return The bytes for code.
+     * <code>string name = 2;</code>
+     * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
-        getCodeBytes() {
-      java.lang.Object ref = code_;
+        getNameBytes() {
+      java.lang.Object ref = name_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        code_ = b;
+        name_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string code = 2;</code>
-     * @param value The code to set.
+     * <code>string name = 2;</code>
+     * @param value The name to set.
      * @return This builder for chaining.
      */
-    public Builder setCode(
+    public Builder setName(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      code_ = value;
+      name_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string code = 2;</code>
+     * <code>string name = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearCode() {
+    public Builder clearName() {
       
-      code_ = getDefaultInstance().getCode();
+      name_ = getDefaultInstance().getName();
       onChanged();
       return this;
     }
     /**
-     * <code>string code = 2;</code>
-     * @param value The bytes for code to set.
+     * <code>string name = 2;</code>
+     * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
-    public Builder setCodeBytes(
+    public Builder setNameBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      code_ = value;
+      name_ = value;
+      onChanged();
+      return this;
+    }
+
+    private boolean first_ ;
+    /**
+     * <code>bool first = 3;</code>
+     * @return The first.
+     */
+    @java.lang.Override
+    public boolean getFirst() {
+      return first_;
+    }
+    /**
+     * <code>bool first = 3;</code>
+     * @param value The first to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFirst(boolean value) {
+      
+      first_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool first = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFirst() {
+      
+      first_ = false;
       onChanged();
       return this;
     }
@@ -590,41 +645,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.LoginReq)
+    // @@protoc_insertion_point(builder_scope:Message.LoginRes)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.LoginReq)
-  private static final game.proto.LoginReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.LoginRes)
+  private static final game.proto.LoginRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.LoginReq();
+    DEFAULT_INSTANCE = new game.proto.LoginRes();
   }
 
-  public static game.proto.LoginReq getDefaultInstance() {
+  public static game.proto.LoginRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LoginReq>
-      PARSER = new com.google.protobuf.AbstractParser<LoginReq>() {
+  private static final com.google.protobuf.Parser<LoginRes>
+      PARSER = new com.google.protobuf.AbstractParser<LoginRes>() {
     @java.lang.Override
-    public LoginReq parsePartialFrom(
+    public LoginRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LoginReq(input, extensionRegistry);
+      return new LoginRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<LoginReq> parser() {
+  public static com.google.protobuf.Parser<LoginRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<LoginReq> getParserForType() {
+  public com.google.protobuf.Parser<LoginRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.LoginReq getDefaultInstanceForType() {
+  public game.proto.LoginRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
