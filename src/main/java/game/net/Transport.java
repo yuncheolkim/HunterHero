@@ -17,7 +17,7 @@ public class Transport {
 
     public void send(Message message) {
         if (channel.isActive()) {
-            channel.writeAndFlush(MsgUtil.kickMsg());
+            channel.writeAndFlush(message);
         }
     }
 
@@ -37,7 +37,9 @@ public class Transport {
     }
 
     public void close() {
-        channel.close();
+        if(channel.isActive()){
+            channel.close();
+        }
     }
 
     public Channel getChannel() {
