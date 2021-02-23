@@ -11,8 +11,12 @@ import game.proto.Message;
 public class MsgUtil {
     private static final int version = 1;
 
-    private static final Message kickMsg = Message.newBuilder()
+    public static final Message kickMsg = Message.newBuilder()
             .setVersion(version).setMsgNo(2).setBody(KickPush.getDefaultInstance().toByteString())
+            .build();
+
+    public static final Message playerTick = Message.newBuilder()
+            .setVersion(version).setMsgNo(4)
             .build();
 
     public static Message kickMsg() {

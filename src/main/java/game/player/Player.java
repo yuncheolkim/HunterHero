@@ -1,14 +1,15 @@
 package game.player;
 
-import com.google.protobuf.MessageLite;
 import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
 import game.module.data.PlayerData;
 import game.net.Transport;
+import game.proto.LoginRes;
 import game.proto.Message;
 import game.repo.PlayerRepo;
 import io.netty.channel.Channel;
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
 
 /**
@@ -41,6 +42,18 @@ public class Player {
 
     public void login() {
         loginTime = LocalDateTime.now();
+
+        LoginRes.Builder builder = LoginRes.newBuilder();
+        if (StringUtils.isEmpty(playerData.name)) {
+            builder.setFirst(true);
+        } else {
+
+            builder.setName(playerData.name);
+        }
+
+        builder.setPlayerId(pid);
+
+        transport.send(Message.newBuilder().setMsgNo(1).setBody(builder.build().toByteString()).build());
     }
 
 
@@ -76,12 +89,6 @@ public class Player {
 
     }
 
-    /////// transport
-
-    public void send(int msgNo, MessageLite messageLite) {
-        transport.send(Message.newBuilder().setMsgNo(msgNo).setBody(messageLite.toByteString()).build());
-    }
-
     public void setChannel(Channel channel) {
         transport.setChannel(channel);
         transport.getChannel().attr(Constants.pid).set(pid);
@@ -99,4 +106,7 @@ public class Player {
         return playerData;
     }
 
+    public Transport getTransport() {
+        return transport;
+    }
 }

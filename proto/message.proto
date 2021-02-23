@@ -12,9 +12,11 @@ message Message {
     bytes body = 10;
 
 }
-message Success {
-
+message Empty {
 }
+message Success {
+}
+
 // 登录
 // 1
 message LoginReq {
@@ -22,6 +24,7 @@ message LoginReq {
     string code = 2;
 }
 
+// 1
 message LoginRes {
     int64 playerId = 1;
     string name = 2;
@@ -35,6 +38,7 @@ message KickPush {
 message PlayerCreateNameReq {
     string name = 1;
 }
+// 4 tick
 
 // 1001
 message TaskReq {

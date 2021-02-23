@@ -1,5 +1,7 @@
 package game.net;
 
+import game.exception.ErrorEnum;
+import game.exception.ModuleErrorNoResolve;
 import game.msg.MsgUtil;
 import game.proto.Message;
 import io.netty.channel.Channel;
@@ -14,13 +16,24 @@ public class Transport {
 
 
     public void send(Message message) {
-        if (channel.isOpen()) {
+        if (channel.isActive()) {
             channel.writeAndFlush(MsgUtil.kickMsg());
         }
     }
 
-    public void sendError(){
+    public void sendError(ErrorEnum errorEnum) {
+        if (channel.isActive()) {
+            channel.writeAndFlush(Message.newBuilder().setError(errorEnum.errorNo()).build());
+        }
+    }
 
+    public void sendError(Message msg, ModuleErrorNoResolve error) {
+        if (channel.isActive()) {
+            channel.writeAndFlush(Message.newBuilder()
+                    .setSeq(msg.getSeq())
+                    .setMsgNo(msg.getMsgNo())
+                    .setError(error.errorNo()).build());
+        }
     }
 
     public void close() {

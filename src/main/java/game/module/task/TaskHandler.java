@@ -1,6 +1,6 @@
 package game.module.task;
 
-import game.anno.GameHandler;
+import com.google.protobuf.MessageLite;
 import game.player.Player;
 import game.proto.TaskReq;
 
@@ -16,11 +16,10 @@ public class TaskHandler {
      * @param o
      * @return
      */
-    public static Object addTask(Player player, TaskReq o) {
+    public static MessageLite addTask(Player player, TaskReq o) {
         return null;
     }
 
-    @GameHandler(no = 1002)
     public static Object findTask(Player player, TaskReq o) {
         return null;
     }

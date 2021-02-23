@@ -9,5 +9,5 @@ import game.player.Player;
  */
 public interface IMsgHandler<T extends MessageLite> {
 
-    Object handler(Player player, T request);
+    MessageLite handler(Player player, T request);
 }

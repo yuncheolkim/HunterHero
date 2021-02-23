@@ -2,7 +2,9 @@ package game.manager;
 
 import game.player.Player;
 
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
@@ -16,6 +18,11 @@ public class PlayerManager {
 
     public Optional<Player> findPlayer(Long pid) {
         return Optional.ofNullable(playerMap.get(pid));
+    }
+
+    public Set<Map.Entry<Long, Player>> allPlayer() {
+
+        return playerMap.entrySet();
     }
 
     public Player put(Player p) {

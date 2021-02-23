@@ -13,6 +13,7 @@ public class GameMain {
         TcpServer tcpServer = new TcpServer(9000);
         tcpServer.addStart(G.W);
         tcpServer.addStart(G.G);
+        tcpServer.addStart(G.S);
         tcpServer.start();
 
     }

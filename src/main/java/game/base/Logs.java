@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 public class Logs {
 
     public static final Logger C = LoggerFactory.getLogger("C");
+    public static final Logger M = LoggerFactory.getLogger("module");
 
     public static void trace(Object... args) {
 

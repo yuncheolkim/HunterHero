@@ -30,9 +30,6 @@ public class LoginHandler {
                 player.setChannel(ch);
             }
             player.login();
-
-            player.send(null);
-
             return player;
         });
     }

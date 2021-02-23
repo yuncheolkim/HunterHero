@@ -1,9 +1,6 @@
 package game.base;
 
-import game.manager.GameManager;
-import game.manager.PlayerManager;
-import game.manager.RepoManager;
-import game.manager.WorkManager;
+import game.manager.*;
 
 /**
  * @author Yunzhe.Jin
@@ -18,4 +15,5 @@ public class G {
 
     public static RepoManager R = new RepoManager();
 
+    public static ScheduleManager S = new ScheduleManager();
 }

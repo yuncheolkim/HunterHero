@@ -1,7 +1,11 @@
 package game.module.player;
 
+import com.google.protobuf.MessageLite;
+import game.base.Logs;
 import game.player.Player;
+import game.proto.Empty;
 import game.proto.PlayerCreateNameReq;
+import game.proto.Success;
 
 /**
  * @author Yunzhe.Jin
@@ -15,8 +19,23 @@ public class PlayerHandler {
      * @param o
      * @return
      */
-    public static Object createName(Player player, PlayerCreateNameReq o) {
-        return null;
+    public static MessageLite createName(Player player, PlayerCreateNameReq o) {
+
+        player.getPlayerData().name = o.getName();
+
+        return Success.getDefaultInstance();
     }
 
+
+    /**
+     * 玩家定时器
+     * @param player
+     * @param o
+     * @return
+     */
+    public static MessageLite tick(Player player, Empty o) {
+        Logs.C.info("定时器:{}", player.getPid());
+
+        return null;
+    }
 }

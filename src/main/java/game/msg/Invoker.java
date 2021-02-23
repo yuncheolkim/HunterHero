@@ -1,8 +1,10 @@
 package game.msg;
 
-import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.Parser;
+import game.base.Logs;
+import game.exception.ErrorEnum;
+import game.exception.ModuleException;
 import game.player.Player;
 import game.proto.Message;
 
@@ -30,10 +32,16 @@ public class Invoker<T extends MessageLite> {
     public void invoke(Player player, Message msg) {
         try {
             T req = supplier.get().parseFrom(msg.getBody());
-            Object ret = handler.handler(player, req);
-            player.send(ret);
-        } catch (InvalidProtocolBufferException e) {
-            e.printStackTrace();
+            MessageLite ret = handler.handler(player, req);
+            if (ret != null) {
+                player.getTransport().send(Message.newBuilder(msg).setBody(ret.toByteString()).build());
+            }
+        } catch (ModuleException e) {
+            Logs.M.error("", e);
+            player.getTransport().sendError(msg, e.getErrorNo());
+        } catch (Throwable e) {
+            Logs.C.error("", e);
+            player.getTransport().sendError(msg, ErrorEnum.ERR_1);
         }
     }
 
