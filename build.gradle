@@ -21,7 +21,7 @@ configurations {
         extendsFrom annotationProcessor
     }
 }
-
+apply from: 'ext.gradle'
 sourceSets {
     main {
         java {
@@ -55,8 +55,6 @@ dependencies {
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.11'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.11.3'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.11.3'
-    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.2.3'
-    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.30'
     compile group: 'com.google.guava', name: 'guava', version: '24.1-jre'
     compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.12.4'
@@ -64,6 +62,10 @@ dependencies {
     implementation group: 'joda-time', name: 'joda-time', version: '2.10.10'
     implementation group: 'com.thoughtworks.qdox', name: 'qdox', version: '2.0.0'
 
+    compile "ch.qos.logback:logback-core:${lib.logback}"
+    compile "ch.qos.logback:logback-classic:${lib.logback}"
+
+    compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.15'
 }
 jar {
     enabled = true

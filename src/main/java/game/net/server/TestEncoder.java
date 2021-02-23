@@ -1,6 +1,7 @@
 package game.net.server;
 
 import com.google.protobuf.MessageLiteOrBuilder;
+import game.base.Logs;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageEncoder;
@@ -16,6 +17,6 @@ public class TestEncoder extends MessageToMessageEncoder<MessageLiteOrBuilder> {
     @Override
     protected void encode(ChannelHandlerContext ctx, MessageLiteOrBuilder msg, List<Object> out) throws Exception {
         out.add(msg);
-        System.out.println(msg);
+        Logs.C.debug(msg.toString());
     }
 }

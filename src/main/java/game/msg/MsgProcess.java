@@ -1,6 +1,8 @@
 package game.msg;
 
+import com.google.protobuf.MessageLite;
 import game.base.G;
+import game.base.Logs;
 import game.player.Player;
 import game.proto.Message;
 
@@ -20,6 +22,12 @@ public class MsgProcess implements Runnable {
 
     @Override
     public void run() {
-        G.G.getHandler(message.getMsgNo()).invoke(player, message);
+
+        Invoker<MessageLite> handler = G.G.getHandler(message.getMsgNo());
+        if (handler != null) {
+            handler.invoke(player, message);
+        } else {
+            Logs.C.warn("不存在handler:{}", message.getMsgNo());
+        }
     }
 }

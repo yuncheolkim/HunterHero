@@ -4,6 +4,7 @@ import game.base.Constants;
 import game.base.Logs;
 import game.module.data.PlayerData;
 import game.msg.MsgUtil;
+import game.proto.Message;
 import io.netty.channel.Channel;
 import org.joda.time.LocalDateTime;
 
@@ -40,6 +41,13 @@ public class Player {
 
     public void login() {
         loginTime = LocalDateTime.now();
+    }
+
+    public  void send(Object o){
+
+        if (channel.isActive()) {
+            channel.writeAndFlush(Message.newBuilder().setMsgNo(101).build());
+        }
     }
 
     /**

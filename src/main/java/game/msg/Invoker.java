@@ -27,15 +27,14 @@ public class Invoker<T extends MessageLite> {
         this.supplier = supplier;
     }
 
-    public Object invoke(Player player, Message msg) {
+    public void invoke(Player player, Message msg) {
         try {
             T req = supplier.get().parseFrom(msg.getBody());
-            return handler.handler(player, req);
+            Object ret = handler.handler(player, req);
+            player.send(ret);
         } catch (InvalidProtocolBufferException e) {
             e.printStackTrace();
-
         }
-        return null;
     }
 
     public int getMsgNo() {

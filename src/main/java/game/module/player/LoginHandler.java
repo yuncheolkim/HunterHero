@@ -26,6 +26,8 @@ public class LoginHandler {
             }
             player.login();
 
+            player.send(null);
+
             return player;
         });
     }
