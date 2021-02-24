@@ -14,6 +14,7 @@ public class GameMain {
         tcpServer.addStart(G.W);
         tcpServer.addStart(G.G);
         tcpServer.addStart(G.S);
+        tcpServer.addStart(G.C);
         tcpServer.start();
 
     }

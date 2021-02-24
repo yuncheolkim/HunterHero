@@ -1,6 +1,8 @@
 package game.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.google.common.collect.ImmutableMap;
+import game.base.Constants;
 import game.base.Logs;
 import game.utils.FileUtils;
 import game.utils.JsonUtil;
@@ -23,17 +25,20 @@ public class JsonConfig {
 
     public <T> Map<Integer, T> load() {
         try {
-            String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource("data/task_对话.json")).toURI());
-            return JsonUtil.fromJsonString(s, type());
+            Logs.C.info(Constants.TOKEN_START + "加载配置文件:{}", fileName);
+            String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
+            ImmutableMap.Builder<Integer, T> b = ImmutableMap.builder();
+            return b.putAll(JsonUtil.fromJsonString(s, type())).build();
         } catch (Exception e) {
             Logs.C.error(fileName, e);
+            throw new RuntimeException(e);
+        } finally {
+            Logs.C.info(Constants.TOKEN_END + "加载配置文件结束:{}", fileName);
         }
-        return null;
     }
 
     protected <T> TypeReference<Map<Integer, T>> type() {
         return new TypeReference<Map<Integer, T>>() {
         };
     }
-
 }

@@ -6,19 +6,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Yunzhe.Jin
  * 2021/2/24 17:02
  */
-public class TaskDialogConfigData {
+public class DataConfigData2 {
+
+
     @JsonProperty
     public int id;
 
     @JsonProperty
-    public String content;
-
-    @JsonProperty
-    public int nextId;
-
-    @JsonProperty
-    public int optionId;
-
+    public String name;
 
 
 }
