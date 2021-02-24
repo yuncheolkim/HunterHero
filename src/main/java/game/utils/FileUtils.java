@@ -3,6 +3,7 @@ package game.utils;
 import com.google.common.base.Charsets;
 
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -13,6 +14,11 @@ import java.nio.file.StandardOpenOption;
  */
 public class FileUtils {
 
+    public static String readFile(URI path) throws IOException {
+        byte[] contentBytes = Files.readAllBytes(Paths.get(path));
+
+        return new String(contentBytes, Charsets.UTF_8);
+    }
 
     public static String readFile(String path) throws IOException {
         byte[] contentBytes = Files.readAllBytes(Paths.get(path));

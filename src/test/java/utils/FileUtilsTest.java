@@ -4,6 +4,7 @@ import game.utils.FileUtils;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * @author Yunzhe.Jin
@@ -21,4 +22,11 @@ public class FileUtilsTest {
         String s = FileUtils.readFile("test.txt");
         System.out.println(s);
     }
+
+    @Test
+    public void test3() throws IOException, URISyntaxException {
+        String s = FileUtils.readFile(getClass().getClassLoader().getResource("data/task_对话.json").toURI());
+        System.out.println(s);
+    }
+
 }

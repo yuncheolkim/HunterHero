@@ -28,6 +28,7 @@ message LoginRes {
     int64 playerId = 1;
     string name = 2;
     bool first = 3;
+    PlayerTask task = 4;
 }
 //2
 message KickPush {
@@ -41,6 +42,20 @@ message PlayerCreateNameReq {
 // 10 tick
 // 11 dataSave
 
+message PlayerTask {
+    repeated int32 completeTask = 1;
+    repeated int32 acceptTask = 2;
+    repeated RunTask runTask = 3;
+}
+
+message RunTask {
+    int32 taskId = 1;
+    int32 status = 2;
+}
+
+message TaskInfo {
+    int32 taskId = 1;
+}
 // 1001
 message TaskReq {
 

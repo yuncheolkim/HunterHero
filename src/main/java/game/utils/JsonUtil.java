@@ -2,6 +2,7 @@ package game.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,7 +20,9 @@ public class JsonUtil {
 
     static {
         for (int i = 0; i < ARRAY.length; ++i) {
-            ARRAY[i] = new ObjectMapper();
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false );
+            ARRAY[i] = objectMapper;
         }
     }
 

@@ -70,6 +70,8 @@ public class PlayerData implements Copy {
         data.completeTask = new ArrayList<>(completeTask);
         data.acceptTask = new ArrayList<>(acceptTask);
         data.runTask = runTask.stream().map(TaskData::copy).collect(Collectors.toList());
+        data.lastLoginTime = lastLoginTime;
+        data.updateTime = updateTime;
         return data;
 
     }
