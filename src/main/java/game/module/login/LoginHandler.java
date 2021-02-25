@@ -1,4 +1,4 @@
-package game.module.player;
+package game.module.login;
 
 import game.base.G;
 import game.base.Logs;

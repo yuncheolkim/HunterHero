@@ -1,6 +1,6 @@
 package game.repo;
 
-import game.module.data.PlayerData;
+import game.module.player.PlayerData;
 import game.utils.FileUtils;
 import game.utils.JsonUtil;
 

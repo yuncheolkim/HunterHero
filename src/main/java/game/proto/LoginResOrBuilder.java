@@ -30,4 +30,19 @@ public interface LoginResOrBuilder extends
    * @return The first.
    */
   boolean getFirst();
+
+  /**
+   * <code>.Message.PlayerTask task = 4;</code>
+   * @return Whether the task field is set.
+   */
+  boolean hasTask();
+  /**
+   * <code>.Message.PlayerTask task = 4;</code>
+   * @return The task.
+   */
+  game.proto.PlayerTask getTask();
+  /**
+   * <code>.Message.PlayerTask task = 4;</code>
+   */
+  game.proto.PlayerTaskOrBuilder getTaskOrBuilder();
 }

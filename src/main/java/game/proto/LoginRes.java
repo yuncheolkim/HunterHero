@@ -69,6 +69,19 @@ private static final long serialVersionUID = 0L;
             first_ = input.readBool();
             break;
           }
+          case 34: {
+            game.proto.PlayerTask.Builder subBuilder = null;
+            if (task_ != null) {
+              subBuilder = task_.toBuilder();
+            }
+            task_ = input.readMessage(game.proto.PlayerTask.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(task_);
+              task_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -161,6 +174,32 @@ private static final long serialVersionUID = 0L;
     return first_;
   }
 
+  public static final int TASK_FIELD_NUMBER = 4;
+  private game.proto.PlayerTask task_;
+  /**
+   * <code>.Message.PlayerTask task = 4;</code>
+   * @return Whether the task field is set.
+   */
+  @java.lang.Override
+  public boolean hasTask() {
+    return task_ != null;
+  }
+  /**
+   * <code>.Message.PlayerTask task = 4;</code>
+   * @return The task.
+   */
+  @java.lang.Override
+  public game.proto.PlayerTask getTask() {
+    return task_ == null ? game.proto.PlayerTask.getDefaultInstance() : task_;
+  }
+  /**
+   * <code>.Message.PlayerTask task = 4;</code>
+   */
+  @java.lang.Override
+  public game.proto.PlayerTaskOrBuilder getTaskOrBuilder() {
+    return getTask();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -184,6 +223,9 @@ private static final long serialVersionUID = 0L;
     if (first_ != false) {
       output.writeBool(3, first_);
     }
+    if (task_ != null) {
+      output.writeMessage(4, getTask());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -203,6 +245,10 @@ private static final long serialVersionUID = 0L;
     if (first_ != false) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(3, first_);
+    }
+    if (task_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getTask());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -225,6 +271,11 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName())) return false;
     if (getFirst()
         != other.getFirst()) return false;
+    if (hasTask() != other.hasTask()) return false;
+    if (hasTask()) {
+      if (!getTask()
+          .equals(other.getTask())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -244,6 +295,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + FIRST_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getFirst());
+    if (hasTask()) {
+      hash = (37 * hash) + TASK_FIELD_NUMBER;
+      hash = (53 * hash) + getTask().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -387,6 +442,12 @@ private static final long serialVersionUID = 0L;
 
       first_ = false;
 
+      if (taskBuilder_ == null) {
+        task_ = null;
+      } else {
+        task_ = null;
+        taskBuilder_ = null;
+      }
       return this;
     }
 
@@ -416,6 +477,11 @@ private static final long serialVersionUID = 0L;
       result.playerId_ = playerId_;
       result.name_ = name_;
       result.first_ = first_;
+      if (taskBuilder_ == null) {
+        result.task_ = task_;
+      } else {
+        result.task_ = taskBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -473,6 +539,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getFirst() != false) {
         setFirst(other.getFirst());
+      }
+      if (other.hasTask()) {
+        mergeTask(other.getTask());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -639,6 +708,125 @@ private static final long serialVersionUID = 0L;
       first_ = false;
       onChanged();
       return this;
+    }
+
+    private game.proto.PlayerTask task_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.PlayerTask, game.proto.PlayerTask.Builder, game.proto.PlayerTaskOrBuilder> taskBuilder_;
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     * @return Whether the task field is set.
+     */
+    public boolean hasTask() {
+      return taskBuilder_ != null || task_ != null;
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     * @return The task.
+     */
+    public game.proto.PlayerTask getTask() {
+      if (taskBuilder_ == null) {
+        return task_ == null ? game.proto.PlayerTask.getDefaultInstance() : task_;
+      } else {
+        return taskBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    public Builder setTask(game.proto.PlayerTask value) {
+      if (taskBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        task_ = value;
+        onChanged();
+      } else {
+        taskBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    public Builder setTask(
+        game.proto.PlayerTask.Builder builderForValue) {
+      if (taskBuilder_ == null) {
+        task_ = builderForValue.build();
+        onChanged();
+      } else {
+        taskBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    public Builder mergeTask(game.proto.PlayerTask value) {
+      if (taskBuilder_ == null) {
+        if (task_ != null) {
+          task_ =
+            game.proto.PlayerTask.newBuilder(task_).mergeFrom(value).buildPartial();
+        } else {
+          task_ = value;
+        }
+        onChanged();
+      } else {
+        taskBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    public Builder clearTask() {
+      if (taskBuilder_ == null) {
+        task_ = null;
+        onChanged();
+      } else {
+        task_ = null;
+        taskBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    public game.proto.PlayerTask.Builder getTaskBuilder() {
+      
+      onChanged();
+      return getTaskFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    public game.proto.PlayerTaskOrBuilder getTaskOrBuilder() {
+      if (taskBuilder_ != null) {
+        return taskBuilder_.getMessageOrBuilder();
+      } else {
+        return task_ == null ?
+            game.proto.PlayerTask.getDefaultInstance() : task_;
+      }
+    }
+    /**
+     * <code>.Message.PlayerTask task = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.PlayerTask, game.proto.PlayerTask.Builder, game.proto.PlayerTaskOrBuilder> 
+        getTaskFieldBuilder() {
+      if (taskBuilder_ == null) {
+        taskBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.PlayerTask, game.proto.PlayerTask.Builder, game.proto.PlayerTaskOrBuilder>(
+                getTask(),
+                getParentForChildren(),
+                isClean());
+        task_ = null;
+      }
+      return taskBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -4,29 +4,25 @@
 package game.proto;
 
 /**
- * <pre>
- * 1001 接受任务
- * </pre>
- *
- * Protobuf type {@code Message.TaskReq}
+ * Protobuf type {@code Message.RunTask}
  */
-public final class TaskReq extends
+public final class RunTask extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.TaskReq)
-    TaskReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.RunTask)
+    RunTaskOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use TaskReq.newBuilder() to construct.
-  private TaskReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use RunTask.newBuilder() to construct.
+  private RunTask(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private TaskReq() {
+  private RunTask() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new TaskReq();
+    return new RunTask();
   }
 
   @java.lang.Override
@@ -34,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private TaskReq(
+  private RunTask(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -55,6 +51,11 @@ private static final long serialVersionUID = 0L;
           case 8: {
 
             taskId_ = input.readInt32();
+            break;
+          }
+          case 16: {
+
+            status_ = input.readInt32();
             break;
           }
           default: {
@@ -78,15 +79,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_TaskReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_RunTask_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_TaskReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_RunTask_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.TaskReq.class, game.proto.TaskReq.Builder.class);
+            game.proto.RunTask.class, game.proto.RunTask.Builder.class);
   }
 
   public static final int TASKID_FIELD_NUMBER = 1;
@@ -98,6 +99,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getTaskId() {
     return taskId_;
+  }
+
+  public static final int STATUS_FIELD_NUMBER = 2;
+  private int status_;
+  /**
+   * <code>int32 status = 2;</code>
+   * @return The status.
+   */
+  @java.lang.Override
+  public int getStatus() {
+    return status_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -117,6 +129,9 @@ private static final long serialVersionUID = 0L;
     if (taskId_ != 0) {
       output.writeInt32(1, taskId_);
     }
+    if (status_ != 0) {
+      output.writeInt32(2, status_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -130,6 +145,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, taskId_);
     }
+    if (status_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, status_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -140,13 +159,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.TaskReq)) {
+    if (!(obj instanceof game.proto.RunTask)) {
       return super.equals(obj);
     }
-    game.proto.TaskReq other = (game.proto.TaskReq) obj;
+    game.proto.RunTask other = (game.proto.RunTask) obj;
 
     if (getTaskId()
         != other.getTaskId()) return false;
+    if (getStatus()
+        != other.getStatus()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -160,74 +181,76 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TASKID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskId();
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.TaskReq parseFrom(byte[] data)
+  public static game.proto.RunTask parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.TaskReq parseFrom(java.io.InputStream input)
+  public static game.proto.RunTask parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.TaskReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.RunTask parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.TaskReq parseDelimitedFrom(
+  public static game.proto.RunTask parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.TaskReq parseFrom(
+  public static game.proto.RunTask parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -240,7 +263,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.TaskReq prototype) {
+  public static Builder newBuilder(game.proto.RunTask prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -256,30 +279,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * 1001 接受任务
-   * </pre>
-   *
-   * Protobuf type {@code Message.TaskReq}
+   * Protobuf type {@code Message.RunTask}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.TaskReq)
-      game.proto.TaskReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.RunTask)
+      game.proto.RunTaskOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_TaskReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_RunTask_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_TaskReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_RunTask_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.TaskReq.class, game.proto.TaskReq.Builder.class);
+              game.proto.RunTask.class, game.proto.RunTask.Builder.class);
     }
 
-    // Construct using game.proto.TaskReq.newBuilder()
+    // Construct using game.proto.RunTask.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -299,23 +318,25 @@ private static final long serialVersionUID = 0L;
       super.clear();
       taskId_ = 0;
 
+      status_ = 0;
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_TaskReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_RunTask_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.TaskReq getDefaultInstanceForType() {
-      return game.proto.TaskReq.getDefaultInstance();
+    public game.proto.RunTask getDefaultInstanceForType() {
+      return game.proto.RunTask.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.TaskReq build() {
-      game.proto.TaskReq result = buildPartial();
+    public game.proto.RunTask build() {
+      game.proto.RunTask result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -323,9 +344,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.TaskReq buildPartial() {
-      game.proto.TaskReq result = new game.proto.TaskReq(this);
+    public game.proto.RunTask buildPartial() {
+      game.proto.RunTask result = new game.proto.RunTask(this);
       result.taskId_ = taskId_;
+      result.status_ = status_;
       onBuilt();
       return result;
     }
@@ -364,18 +386,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.TaskReq) {
-        return mergeFrom((game.proto.TaskReq)other);
+      if (other instanceof game.proto.RunTask) {
+        return mergeFrom((game.proto.RunTask)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.TaskReq other) {
-      if (other == game.proto.TaskReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.RunTask other) {
+      if (other == game.proto.RunTask.getDefaultInstance()) return this;
       if (other.getTaskId() != 0) {
         setTaskId(other.getTaskId());
+      }
+      if (other.getStatus() != 0) {
+        setStatus(other.getStatus());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -392,11 +417,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.TaskReq parsedMessage = null;
+      game.proto.RunTask parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.TaskReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.RunTask) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -436,6 +461,37 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
+
+    private int status_ ;
+    /**
+     * <code>int32 status = 2;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public int getStatus() {
+      return status_;
+    }
+    /**
+     * <code>int32 status = 2;</code>
+     * @param value The status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatus(int value) {
+      
+      status_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 status = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStatus() {
+      
+      status_ = 0;
+      onChanged();
+      return this;
+    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -449,41 +505,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.TaskReq)
+    // @@protoc_insertion_point(builder_scope:Message.RunTask)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.TaskReq)
-  private static final game.proto.TaskReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.RunTask)
+  private static final game.proto.RunTask DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.TaskReq();
+    DEFAULT_INSTANCE = new game.proto.RunTask();
   }
 
-  public static game.proto.TaskReq getDefaultInstance() {
+  public static game.proto.RunTask getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<TaskReq>
-      PARSER = new com.google.protobuf.AbstractParser<TaskReq>() {
+  private static final com.google.protobuf.Parser<RunTask>
+      PARSER = new com.google.protobuf.AbstractParser<RunTask>() {
     @java.lang.Override
-    public TaskReq parsePartialFrom(
+    public RunTask parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new TaskReq(input, extensionRegistry);
+      return new RunTask(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<TaskReq> parser() {
+  public static com.google.protobuf.Parser<RunTask> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<TaskReq> getParserForType() {
+  public com.google.protobuf.Parser<RunTask> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.TaskReq getDefaultInstanceForType() {
+  public game.proto.RunTask getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

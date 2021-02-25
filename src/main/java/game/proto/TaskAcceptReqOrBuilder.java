@@ -3,8 +3,8 @@
 
 package game.proto;
 
-public interface TaskReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Message.TaskReq)
+public interface TaskAcceptReqOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Message.TaskAcceptReq)
     com.google.protobuf.MessageOrBuilder {
 
   /**

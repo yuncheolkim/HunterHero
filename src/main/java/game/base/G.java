@@ -18,4 +18,6 @@ public class G {
     public static ScheduleManager S = new ScheduleManager();
 
     public static ConfigManager C = new ConfigManager();
+
+    public static EventManager E = new EventManager();
 }

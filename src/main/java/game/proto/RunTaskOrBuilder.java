@@ -3,8 +3,8 @@
 
 package game.proto;
 
-public interface TaskReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Message.TaskReq)
+public interface RunTaskOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Message.RunTask)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -12,4 +12,10 @@ public interface TaskReqOrBuilder extends
    * @return The taskId.
    */
   int getTaskId();
+
+  /**
+   * <code>int32 status = 2;</code>
+   * @return The status.
+   */
+  int getStatus();
 }

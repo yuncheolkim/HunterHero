@@ -50,6 +50,21 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerCreateNameReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerTask_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerTask_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_RunTask_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_RunTask_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_TaskInfo_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_TaskInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_TaskReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -67,10 +82,16 @@ public final class MessageOuterClass {
       "ersion\030\001 \001(\005\022\r\n\005msgNo\030\002 \001(\005\022\r\n\005error\030\003 \001" +
       "(\005\022\013\n\003seq\030\004 \001(\005\022\014\n\004body\030\n \001(\014\"\007\n\005Empty\"\t" +
       "\n\007Success\"*\n\010LoginReq\022\020\n\010playerId\030\001 \001(\003\022" +
-      "\014\n\004code\030\002 \001(\t\"9\n\010LoginRes\022\020\n\010playerId\030\001 " +
-      "\001(\003\022\014\n\004name\030\002 \001(\t\022\r\n\005first\030\003 \001(\010\"\n\n\010Kick" +
-      "Push\"#\n\023PlayerCreateNameReq\022\014\n\004name\030\001 \001(" +
-      "\t\"\t\n\007TaskReqB\020\n\ngame.protoH\001P\001b\006proto3"
+      "\014\n\004code\030\002 \001(\t\"\\\n\010LoginRes\022\020\n\010playerId\030\001 " +
+      "\001(\003\022\014\n\004name\030\002 \001(\t\022\r\n\005first\030\003 \001(\010\022!\n\004task" +
+      "\030\004 \001(\0132\023.Message.PlayerTask\"\n\n\010KickPush\"" +
+      "#\n\023PlayerCreateNameReq\022\014\n\004name\030\001 \001(\t\"Y\n\n" +
+      "PlayerTask\022\024\n\014completeTask\030\001 \003(\005\022\022\n\nacce" +
+      "ptTask\030\002 \003(\005\022!\n\007runTask\030\003 \003(\0132\020.Message." +
+      "RunTask\")\n\007RunTask\022\016\n\006taskId\030\001 \001(\005\022\016\n\006st" +
+      "atus\030\002 \001(\005\"\032\n\010TaskInfo\022\016\n\006taskId\030\001 \001(\005\"\031" +
+      "\n\007TaskReq\022\016\n\006taskId\030\001 \001(\005B\020\n\ngame.protoH" +
+      "\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -105,7 +126,7 @@ public final class MessageOuterClass {
     internal_static_Message_LoginRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LoginRes_descriptor,
-        new java.lang.String[] { "PlayerId", "Name", "First", });
+        new java.lang.String[] { "PlayerId", "Name", "First", "Task", });
     internal_static_Message_KickPush_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_Message_KickPush_fieldAccessorTable = new
@@ -118,12 +139,30 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerCreateNameReq_descriptor,
         new java.lang.String[] { "Name", });
-    internal_static_Message_TaskReq_descriptor =
+    internal_static_Message_PlayerTask_descriptor =
       getDescriptor().getMessageTypes().get(7);
+    internal_static_Message_PlayerTask_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerTask_descriptor,
+        new java.lang.String[] { "CompleteTask", "AcceptTask", "RunTask", });
+    internal_static_Message_RunTask_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_Message_RunTask_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_RunTask_descriptor,
+        new java.lang.String[] { "TaskId", "Status", });
+    internal_static_Message_TaskInfo_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_Message_TaskInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_TaskInfo_descriptor,
+        new java.lang.String[] { "TaskId", });
+    internal_static_Message_TaskReq_descriptor =
+      getDescriptor().getMessageTypes().get(10);
     internal_static_Message_TaskReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TaskReq_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "TaskId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

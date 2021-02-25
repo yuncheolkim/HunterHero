@@ -1,14 +1,12 @@
-package game.module.data;
+package game.module.player;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import game.base.Copy;
+import game.module.task.TaskData;
 import game.player.Player;
 import org.joda.time.LocalDateTime;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.*;
 
 /**
  * @author Yunzhe.Jin
@@ -29,25 +27,31 @@ public class PlayerData implements Copy {
      * 已完成的任务
      */
     @JsonProperty
-    public List<Integer> completeTask = new ArrayList<>();
+    public Set<Integer> completeTask = new HashSet<>();
 
     /**
      * 可接受的任务
      */
     @JsonProperty
-    public List<Integer> acceptTask = new ArrayList<>();
+    public Set<Integer> acceptTask = new HashSet<>();
 
     /**
      * 进行中的任务
      */
     @JsonProperty
-    public List<TaskData> runTask = new ArrayList<>();
+    public Map<Integer, TaskData> runTask = new HashMap<>();
 
     @JsonProperty
     public long lastLoginTime;
 
     @JsonProperty
     public long updateTime;
+
+    /**
+     * 体力
+     */
+    @JsonProperty
+    public int power;
 
 
     public void read(Player player) {
@@ -67,9 +71,13 @@ public class PlayerData implements Copy {
         data.pid = pid;
         data.name = name;
         data.account = account;
-        data.completeTask = new ArrayList<>(completeTask);
-        data.acceptTask = new ArrayList<>(acceptTask);
-        data.runTask = runTask.stream().map(TaskData::copy).collect(Collectors.toList());
+        data.completeTask = new HashSet<>(completeTask);
+        data.acceptTask = new HashSet<>(acceptTask);
+        Map<Integer, TaskData> temp = new HashMap<>();
+        for (Map.Entry<Integer, TaskData> integerTaskDataEntry : runTask.entrySet()) {
+            temp.put(integerTaskDataEntry.getKey(), integerTaskDataEntry.getValue().copy());
+        }
+        data.runTask = temp;
         data.lastLoginTime = lastLoginTime;
         data.updateTime = updateTime;
         return data;

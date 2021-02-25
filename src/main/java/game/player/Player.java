@@ -4,7 +4,7 @@ import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
 import game.base.Work;
-import game.module.data.PlayerData;
+import game.module.player.PlayerData;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
@@ -76,8 +76,13 @@ public class Player {
             playerData.write(this);
         } else {// 创建用户
             playerData.account = account;
+            initFirstPlayer();
             playerRepo.save(playerData);
         }
+    }
+
+    private void initFirstPlayer() {
+        playerData.acceptTask.add(1);
     }
 
     /**

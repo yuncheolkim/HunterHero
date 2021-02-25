@@ -1,6 +1,10 @@
-package game.module.data;
+package game.module.task;
 
 import game.base.Copy;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Yunzhe.Jin
@@ -15,11 +19,16 @@ public class TaskData implements Copy {
      */
     public int status;
 
+    /**
+     * 完成目标
+     */
+    public List<TaskProcessData> processDataList = new ArrayList<>();
 
     public TaskData copy() {
         TaskData data = new TaskData();
         data.taskId = taskId;
         data.status = status;
+        data.processDataList = processDataList.stream().map(TaskProcessData::copy).collect(Collectors.toList());
         return data;
     }
 }

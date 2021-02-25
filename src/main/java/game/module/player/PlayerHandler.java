@@ -39,6 +39,12 @@ public class PlayerHandler {
         return null;
     }
 
+    /**
+     * 定时存db
+     * @param player
+     * @param o
+     * @return
+     */
     public static MessageLite dataFlush(Player player, Empty o) {
         Logs.C.info("保存玩家数据:{}", player.getPid());
         player.saveData();
