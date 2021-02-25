@@ -5,5 +5,6 @@ package game.module.event;
  * 2021/2/25 10:59
  */
 public enum EventType {
-    KILL
+    KILL,
+    ITEM_TAKE,
 }

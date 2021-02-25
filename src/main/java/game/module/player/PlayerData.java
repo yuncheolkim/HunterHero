@@ -23,6 +23,26 @@ public class PlayerData implements Copy {
     @JsonProperty
     public String account;
 
+    @JsonProperty
+    public long lastLoginTime;
+
+    @JsonProperty
+    public long updateTime;
+
+    /**
+     * 体力
+     */
+    @JsonProperty
+    public int power;
+
+    /**
+     * 恢复一点体力需要多少秒
+     */
+    @JsonProperty
+    public int powerRecoverSecond;
+
+    //////////////////////////////////////////////////////////////// task
+
     /**
      * 已完成的任务
      */
@@ -41,18 +61,7 @@ public class PlayerData implements Copy {
     @JsonProperty
     public Map<Integer, TaskData> runTask = new HashMap<>();
 
-    @JsonProperty
-    public long lastLoginTime;
-
-    @JsonProperty
-    public long updateTime;
-
-    /**
-     * 体力
-     */
-    @JsonProperty
-    public int power;
-
+    //////////////////////////////////////////////////////////////// task
 
     public void read(Player player) {
 
@@ -80,6 +89,9 @@ public class PlayerData implements Copy {
         data.runTask = temp;
         data.lastLoginTime = lastLoginTime;
         data.updateTime = updateTime;
+        data.power = power;
+        data.powerRecoverSecond = powerRecoverSecond;
+
         return data;
 
     }

@@ -68,6 +68,9 @@ dependencies {
     compile "ch.qos.logback:logback-classic:${lib.logback}"
 
     compile group: 'org.codehaus.groovy', name: 'groovy-all', version: '2.4.15'
+
+    implementation group: 'com.googlecode.aviator', name: 'aviator', version: '5.2.3'
+
 }
 jar {
     enabled = true

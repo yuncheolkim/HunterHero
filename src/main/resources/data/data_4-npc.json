@@ -5,7 +5,7 @@
         "inHouse": 1,
         "name": "左右",
         "pos": "5,-12",
-        "speakID": 1001
+        "speakId": 1001
     },
     "10": {
         "area": "建业",
@@ -13,14 +13,14 @@
         "id": 10,
         "inHouse": 2,
         "name": "李无花",
-        "speakID": 1002
+        "speakId": 1002
     },
     "11": {
         "area": "建业",
         "id": 11,
         "inHouse": 1,
         "name": "渔夫",
-        "speakID": 1001
+        "speakId": 1001
     },
     "12": {
         "id": 12
@@ -51,7 +51,7 @@
         "id": 2,
         "inHouse": 1,
         "name": "青宁",
-        "speakID": 1001
+        "speakId": 1001
     },
     "20": {
         "id": 20
@@ -89,7 +89,7 @@
         "id": 3,
         "inHouse": 2,
         "name": "如花",
-        "speakID": 1001
+        "speakId": 1001
     },
     "4": {
         "area": "建业",
@@ -97,7 +97,7 @@
         "id": 4,
         "inHouse": 2,
         "name": "旧守财",
-        "speakID": 1001
+        "speakId": 1001
     },
     "5": {
         "area": "建业",
@@ -105,7 +105,7 @@
         "id": 5,
         "inHouse": 2,
         "name": "乔小",
-        "speakID": 1001
+        "speakId": 1001
     },
     "6": {
         "area": "建业",
@@ -113,7 +113,7 @@
         "id": 6,
         "inHouse": 2,
         "name": "王小拿",
-        "speakID": 1001
+        "speakId": 1001
     },
     "7": {
         "area": "建业",
@@ -121,7 +121,7 @@
         "id": 7,
         "inHouse": 2,
         "name": "王小二",
-        "speakID": 1003
+        "speakId": 1003
     },
     "8": {
         "area": "建业",
@@ -129,7 +129,7 @@
         "id": 8,
         "inHouse": 2,
         "name": "正光明",
-        "speakID": 1001
+        "speakId": 1001
     },
     "9": {
         "area": "建业",
@@ -137,6 +137,6 @@
         "id": 9,
         "inHouse": 2,
         "name": "钢强",
-        "speakID": 1001
+        "speakId": 1001
     }
 }
