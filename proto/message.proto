@@ -29,6 +29,9 @@ message LoginRes {
     string name = 2;
     bool first = 3;
     PlayerTask task = 4;
+    int32 exp = 5;
+    int32 levelUpExp = 6;
+    int32 level = 7;
 }
 //2
 message KickPush {

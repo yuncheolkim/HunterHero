@@ -45,4 +45,22 @@ public interface LoginResOrBuilder extends
    * <code>.Message.PlayerTask task = 4;</code>
    */
   game.proto.PlayerTaskOrBuilder getTaskOrBuilder();
+
+  /**
+   * <code>int32 exp = 5;</code>
+   * @return The exp.
+   */
+  int getExp();
+
+  /**
+   * <code>int32 levelUpExp = 6;</code>
+   * @return The levelUpExp.
+   */
+  int getLevelUpExp();
+
+  /**
+   * <code>int32 level = 7;</code>
+   * @return The level.
+   */
+  int getLevel();
 }

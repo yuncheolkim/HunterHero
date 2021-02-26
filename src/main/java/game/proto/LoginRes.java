@@ -82,6 +82,21 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 40: {
+
+            exp_ = input.readInt32();
+            break;
+          }
+          case 48: {
+
+            levelUpExp_ = input.readInt32();
+            break;
+          }
+          case 56: {
+
+            level_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -200,6 +215,39 @@ private static final long serialVersionUID = 0L;
     return getTask();
   }
 
+  public static final int EXP_FIELD_NUMBER = 5;
+  private int exp_;
+  /**
+   * <code>int32 exp = 5;</code>
+   * @return The exp.
+   */
+  @java.lang.Override
+  public int getExp() {
+    return exp_;
+  }
+
+  public static final int LEVELUPEXP_FIELD_NUMBER = 6;
+  private int levelUpExp_;
+  /**
+   * <code>int32 levelUpExp = 6;</code>
+   * @return The levelUpExp.
+   */
+  @java.lang.Override
+  public int getLevelUpExp() {
+    return levelUpExp_;
+  }
+
+  public static final int LEVEL_FIELD_NUMBER = 7;
+  private int level_;
+  /**
+   * <code>int32 level = 7;</code>
+   * @return The level.
+   */
+  @java.lang.Override
+  public int getLevel() {
+    return level_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -226,6 +274,15 @@ private static final long serialVersionUID = 0L;
     if (task_ != null) {
       output.writeMessage(4, getTask());
     }
+    if (exp_ != 0) {
+      output.writeInt32(5, exp_);
+    }
+    if (levelUpExp_ != 0) {
+      output.writeInt32(6, levelUpExp_);
+    }
+    if (level_ != 0) {
+      output.writeInt32(7, level_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -249,6 +306,18 @@ private static final long serialVersionUID = 0L;
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getTask());
+    }
+    if (exp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, exp_);
+    }
+    if (levelUpExp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, levelUpExp_);
+    }
+    if (level_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(7, level_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -276,6 +345,12 @@ private static final long serialVersionUID = 0L;
       if (!getTask()
           .equals(other.getTask())) return false;
     }
+    if (getExp()
+        != other.getExp()) return false;
+    if (getLevelUpExp()
+        != other.getLevelUpExp()) return false;
+    if (getLevel()
+        != other.getLevel()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -299,6 +374,12 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
     }
+    hash = (37 * hash) + EXP_FIELD_NUMBER;
+    hash = (53 * hash) + getExp();
+    hash = (37 * hash) + LEVELUPEXP_FIELD_NUMBER;
+    hash = (53 * hash) + getLevelUpExp();
+    hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getLevel();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -448,6 +529,12 @@ private static final long serialVersionUID = 0L;
         task_ = null;
         taskBuilder_ = null;
       }
+      exp_ = 0;
+
+      levelUpExp_ = 0;
+
+      level_ = 0;
+
       return this;
     }
 
@@ -482,6 +569,9 @@ private static final long serialVersionUID = 0L;
       } else {
         result.task_ = taskBuilder_.build();
       }
+      result.exp_ = exp_;
+      result.levelUpExp_ = levelUpExp_;
+      result.level_ = level_;
       onBuilt();
       return result;
     }
@@ -542,6 +632,15 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
+      }
+      if (other.getExp() != 0) {
+        setExp(other.getExp());
+      }
+      if (other.getLevelUpExp() != 0) {
+        setLevelUpExp(other.getLevelUpExp());
+      }
+      if (other.getLevel() != 0) {
+        setLevel(other.getLevel());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -827,6 +926,99 @@ private static final long serialVersionUID = 0L;
         task_ = null;
       }
       return taskBuilder_;
+    }
+
+    private int exp_ ;
+    /**
+     * <code>int32 exp = 5;</code>
+     * @return The exp.
+     */
+    @java.lang.Override
+    public int getExp() {
+      return exp_;
+    }
+    /**
+     * <code>int32 exp = 5;</code>
+     * @param value The exp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExp(int value) {
+      
+      exp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 exp = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExp() {
+      
+      exp_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int levelUpExp_ ;
+    /**
+     * <code>int32 levelUpExp = 6;</code>
+     * @return The levelUpExp.
+     */
+    @java.lang.Override
+    public int getLevelUpExp() {
+      return levelUpExp_;
+    }
+    /**
+     * <code>int32 levelUpExp = 6;</code>
+     * @param value The levelUpExp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLevelUpExp(int value) {
+      
+      levelUpExp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 levelUpExp = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLevelUpExp() {
+      
+      levelUpExp_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int level_ ;
+    /**
+     * <code>int32 level = 7;</code>
+     * @return The level.
+     */
+    @java.lang.Override
+    public int getLevel() {
+      return level_;
+    }
+    /**
+     * <code>int32 level = 7;</code>
+     * @param value The level to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLevel(int value) {
+      
+      level_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 level = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLevel() {
+      
+      level_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

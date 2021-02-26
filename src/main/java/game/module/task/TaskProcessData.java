@@ -1,5 +1,6 @@
 package game.module.task;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import game.base.Copy;
 
 /**
@@ -8,6 +9,7 @@ import game.base.Copy;
  */
 public class TaskProcessData implements Copy {
 
+    @JsonProperty
     public int id;
 
     /**
@@ -15,16 +17,19 @@ public class TaskProcessData implements Copy {
      * 2	打怪
      * 3	搜集物品
      */
+    @JsonProperty
     public int taskType;
 
     /**
      * 需求量
      */
+    @JsonProperty
     public int need;
 
     /**
      * 当前量
      */
+    @JsonProperty
     public int current;
 
     public TaskProcessData copy() {

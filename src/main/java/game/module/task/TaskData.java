@@ -1,5 +1,6 @@
 package game.module.task;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import game.base.Copy;
 
 import java.util.ArrayList;
@@ -12,16 +13,19 @@ import java.util.stream.Collectors;
  */
 public class TaskData implements Copy {
 
+    @JsonProperty
     public int taskId;
 
     /**
      * 2:进行中，3:已完成未提交, 4:已完成
      */
+    @JsonProperty
     public int status;
 
     /**
      * 完成目标
      */
+    @JsonProperty
     public List<TaskProcessData> processDataList = new ArrayList<>();
 
     public TaskData copy() {

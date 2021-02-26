@@ -82,16 +82,17 @@ public final class MessageOuterClass {
       "ersion\030\001 \001(\005\022\r\n\005msgNo\030\002 \001(\005\022\r\n\005error\030\003 \001" +
       "(\005\022\013\n\003seq\030\004 \001(\005\022\014\n\004body\030\n \001(\014\"\007\n\005Empty\"\t" +
       "\n\007Success\"*\n\010LoginReq\022\020\n\010playerId\030\001 \001(\003\022" +
-      "\014\n\004code\030\002 \001(\t\"\\\n\010LoginRes\022\020\n\010playerId\030\001 " +
-      "\001(\003\022\014\n\004name\030\002 \001(\t\022\r\n\005first\030\003 \001(\010\022!\n\004task" +
-      "\030\004 \001(\0132\023.Message.PlayerTask\"\n\n\010KickPush\"" +
-      "#\n\023PlayerCreateNameReq\022\014\n\004name\030\001 \001(\t\"Y\n\n" +
-      "PlayerTask\022\024\n\014completeTask\030\001 \003(\005\022\022\n\nacce" +
-      "ptTask\030\002 \003(\005\022!\n\007runTask\030\003 \003(\0132\020.Message." +
-      "RunTask\")\n\007RunTask\022\016\n\006taskId\030\001 \001(\005\022\016\n\006st" +
-      "atus\030\002 \001(\005\"\032\n\010TaskInfo\022\016\n\006taskId\030\001 \001(\005\"\031" +
-      "\n\007TaskReq\022\016\n\006taskId\030\001 \001(\005B\020\n\ngame.protoH" +
-      "\001P\001b\006proto3"
+      "\014\n\004code\030\002 \001(\t\"\214\001\n\010LoginRes\022\020\n\010playerId\030\001" +
+      " \001(\003\022\014\n\004name\030\002 \001(\t\022\r\n\005first\030\003 \001(\010\022!\n\004tas" +
+      "k\030\004 \001(\0132\023.Message.PlayerTask\022\013\n\003exp\030\005 \001(" +
+      "\005\022\022\n\nlevelUpExp\030\006 \001(\005\022\r\n\005level\030\007 \001(\005\"\n\n\010" +
+      "KickPush\"#\n\023PlayerCreateNameReq\022\014\n\004name\030" +
+      "\001 \001(\t\"Y\n\nPlayerTask\022\024\n\014completeTask\030\001 \003(" +
+      "\005\022\022\n\nacceptTask\030\002 \003(\005\022!\n\007runTask\030\003 \003(\0132\020" +
+      ".Message.RunTask\")\n\007RunTask\022\016\n\006taskId\030\001 " +
+      "\001(\005\022\016\n\006status\030\002 \001(\005\"\032\n\010TaskInfo\022\016\n\006taskI" +
+      "d\030\001 \001(\005\"\031\n\007TaskReq\022\016\n\006taskId\030\001 \001(\005B\020\n\nga" +
+      "me.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -126,7 +127,7 @@ public final class MessageOuterClass {
     internal_static_Message_LoginRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LoginRes_descriptor,
-        new java.lang.String[] { "PlayerId", "Name", "First", "Task", });
+        new java.lang.String[] { "PlayerId", "Name", "First", "Task", "Exp", "LevelUpExp", "Level", });
     internal_static_Message_KickPush_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_Message_KickPush_fieldAccessorTable = new
