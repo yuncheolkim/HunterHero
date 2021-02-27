@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private RunTask() {
+    target_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -38,6 +39,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -58,6 +60,15 @@ private static final long serialVersionUID = 0L;
             status_ = input.readInt32();
             break;
           }
+          case 26: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              target_ = new java.util.ArrayList<game.proto.TaskTarget>();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            target_.add(
+                input.readMessage(game.proto.TaskTarget.parser(), extensionRegistry));
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -73,6 +84,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        target_ = java.util.Collections.unmodifiableList(target_);
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -112,6 +126,46 @@ private static final long serialVersionUID = 0L;
     return status_;
   }
 
+  public static final int TARGET_FIELD_NUMBER = 3;
+  private java.util.List<game.proto.TaskTarget> target_;
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  @java.lang.Override
+  public java.util.List<game.proto.TaskTarget> getTargetList() {
+    return target_;
+  }
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.TaskTargetOrBuilder> 
+      getTargetOrBuilderList() {
+    return target_;
+  }
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  @java.lang.Override
+  public int getTargetCount() {
+    return target_.size();
+  }
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  @java.lang.Override
+  public game.proto.TaskTarget getTarget(int index) {
+    return target_.get(index);
+  }
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  @java.lang.Override
+  public game.proto.TaskTargetOrBuilder getTargetOrBuilder(
+      int index) {
+    return target_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +186,9 @@ private static final long serialVersionUID = 0L;
     if (status_ != 0) {
       output.writeInt32(2, status_);
     }
+    for (int i = 0; i < target_.size(); i++) {
+      output.writeMessage(3, target_.get(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -148,6 +205,10 @@ private static final long serialVersionUID = 0L;
     if (status_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, status_);
+    }
+    for (int i = 0; i < target_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(3, target_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,6 +229,8 @@ private static final long serialVersionUID = 0L;
         != other.getTaskId()) return false;
     if (getStatus()
         != other.getStatus()) return false;
+    if (!getTargetList()
+        .equals(other.getTargetList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -183,6 +246,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getTaskId();
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
     hash = (53 * hash) + getStatus();
+    if (getTargetCount() > 0) {
+      hash = (37 * hash) + TARGET_FIELD_NUMBER;
+      hash = (53 * hash) + getTargetList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -311,6 +378,7 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getTargetFieldBuilder();
       }
     }
     @java.lang.Override
@@ -320,6 +388,12 @@ private static final long serialVersionUID = 0L;
 
       status_ = 0;
 
+      if (targetBuilder_ == null) {
+        target_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      } else {
+        targetBuilder_.clear();
+      }
       return this;
     }
 
@@ -346,8 +420,18 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.RunTask buildPartial() {
       game.proto.RunTask result = new game.proto.RunTask(this);
+      int from_bitField0_ = bitField0_;
       result.taskId_ = taskId_;
       result.status_ = status_;
+      if (targetBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          target_ = java.util.Collections.unmodifiableList(target_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.target_ = target_;
+      } else {
+        result.target_ = targetBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -402,6 +486,32 @@ private static final long serialVersionUID = 0L;
       if (other.getStatus() != 0) {
         setStatus(other.getStatus());
       }
+      if (targetBuilder_ == null) {
+        if (!other.target_.isEmpty()) {
+          if (target_.isEmpty()) {
+            target_ = other.target_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureTargetIsMutable();
+            target_.addAll(other.target_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.target_.isEmpty()) {
+          if (targetBuilder_.isEmpty()) {
+            targetBuilder_.dispose();
+            targetBuilder_ = null;
+            target_ = other.target_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            targetBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getTargetFieldBuilder() : null;
+          } else {
+            targetBuilder_.addAllMessages(other.target_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -430,6 +540,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private int taskId_ ;
     /**
@@ -491,6 +602,246 @@ private static final long serialVersionUID = 0L;
       status_ = 0;
       onChanged();
       return this;
+    }
+
+    private java.util.List<game.proto.TaskTarget> target_ =
+      java.util.Collections.emptyList();
+    private void ensureTargetIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        target_ = new java.util.ArrayList<game.proto.TaskTarget>(target_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.TaskTarget, game.proto.TaskTarget.Builder, game.proto.TaskTargetOrBuilder> targetBuilder_;
+
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public java.util.List<game.proto.TaskTarget> getTargetList() {
+      if (targetBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(target_);
+      } else {
+        return targetBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public int getTargetCount() {
+      if (targetBuilder_ == null) {
+        return target_.size();
+      } else {
+        return targetBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public game.proto.TaskTarget getTarget(int index) {
+      if (targetBuilder_ == null) {
+        return target_.get(index);
+      } else {
+        return targetBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder setTarget(
+        int index, game.proto.TaskTarget value) {
+      if (targetBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTargetIsMutable();
+        target_.set(index, value);
+        onChanged();
+      } else {
+        targetBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder setTarget(
+        int index, game.proto.TaskTarget.Builder builderForValue) {
+      if (targetBuilder_ == null) {
+        ensureTargetIsMutable();
+        target_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        targetBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder addTarget(game.proto.TaskTarget value) {
+      if (targetBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTargetIsMutable();
+        target_.add(value);
+        onChanged();
+      } else {
+        targetBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder addTarget(
+        int index, game.proto.TaskTarget value) {
+      if (targetBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureTargetIsMutable();
+        target_.add(index, value);
+        onChanged();
+      } else {
+        targetBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder addTarget(
+        game.proto.TaskTarget.Builder builderForValue) {
+      if (targetBuilder_ == null) {
+        ensureTargetIsMutable();
+        target_.add(builderForValue.build());
+        onChanged();
+      } else {
+        targetBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder addTarget(
+        int index, game.proto.TaskTarget.Builder builderForValue) {
+      if (targetBuilder_ == null) {
+        ensureTargetIsMutable();
+        target_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        targetBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder addAllTarget(
+        java.lang.Iterable<? extends game.proto.TaskTarget> values) {
+      if (targetBuilder_ == null) {
+        ensureTargetIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, target_);
+        onChanged();
+      } else {
+        targetBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder clearTarget() {
+      if (targetBuilder_ == null) {
+        target_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        targetBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public Builder removeTarget(int index) {
+      if (targetBuilder_ == null) {
+        ensureTargetIsMutable();
+        target_.remove(index);
+        onChanged();
+      } else {
+        targetBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public game.proto.TaskTarget.Builder getTargetBuilder(
+        int index) {
+      return getTargetFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public game.proto.TaskTargetOrBuilder getTargetOrBuilder(
+        int index) {
+      if (targetBuilder_ == null) {
+        return target_.get(index);  } else {
+        return targetBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public java.util.List<? extends game.proto.TaskTargetOrBuilder> 
+         getTargetOrBuilderList() {
+      if (targetBuilder_ != null) {
+        return targetBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(target_);
+      }
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public game.proto.TaskTarget.Builder addTargetBuilder() {
+      return getTargetFieldBuilder().addBuilder(
+          game.proto.TaskTarget.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public game.proto.TaskTarget.Builder addTargetBuilder(
+        int index) {
+      return getTargetFieldBuilder().addBuilder(
+          index, game.proto.TaskTarget.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.TaskTarget target = 3;</code>
+     */
+    public java.util.List<game.proto.TaskTarget.Builder> 
+         getTargetBuilderList() {
+      return getTargetFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.TaskTarget, game.proto.TaskTarget.Builder, game.proto.TaskTargetOrBuilder> 
+        getTargetFieldBuilder() {
+      if (targetBuilder_ == null) {
+        targetBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.TaskTarget, game.proto.TaskTarget.Builder, game.proto.TaskTargetOrBuilder>(
+                target_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        target_ = null;
+      }
+      return targetBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

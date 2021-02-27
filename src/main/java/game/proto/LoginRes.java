@@ -5,7 +5,7 @@ package game.proto;
 
 /**
  * <pre>
- * 1
+ * 1 登录信息
  * </pre>
  *
  * Protobuf type {@code Message.LoginRes}
@@ -95,6 +95,19 @@ private static final long serialVersionUID = 0L;
           case 56: {
 
             level_ = input.readInt32();
+            break;
+          }
+          case 66: {
+            game.proto.SceneData.Builder subBuilder = null;
+            if (sceneData_ != null) {
+              subBuilder = sceneData_.toBuilder();
+            }
+            sceneData_ = input.readMessage(game.proto.SceneData.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(sceneData_);
+              sceneData_ = subBuilder.buildPartial();
+            }
+
             break;
           }
           default: {
@@ -248,6 +261,32 @@ private static final long serialVersionUID = 0L;
     return level_;
   }
 
+  public static final int SCENEDATA_FIELD_NUMBER = 8;
+  private game.proto.SceneData sceneData_;
+  /**
+   * <code>.Message.SceneData sceneData = 8;</code>
+   * @return Whether the sceneData field is set.
+   */
+  @java.lang.Override
+  public boolean hasSceneData() {
+    return sceneData_ != null;
+  }
+  /**
+   * <code>.Message.SceneData sceneData = 8;</code>
+   * @return The sceneData.
+   */
+  @java.lang.Override
+  public game.proto.SceneData getSceneData() {
+    return sceneData_ == null ? game.proto.SceneData.getDefaultInstance() : sceneData_;
+  }
+  /**
+   * <code>.Message.SceneData sceneData = 8;</code>
+   */
+  @java.lang.Override
+  public game.proto.SceneDataOrBuilder getSceneDataOrBuilder() {
+    return getSceneData();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -282,6 +321,9 @@ private static final long serialVersionUID = 0L;
     }
     if (level_ != 0) {
       output.writeInt32(7, level_);
+    }
+    if (sceneData_ != null) {
+      output.writeMessage(8, getSceneData());
     }
     unknownFields.writeTo(output);
   }
@@ -319,6 +361,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, level_);
     }
+    if (sceneData_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(8, getSceneData());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -351,6 +397,11 @@ private static final long serialVersionUID = 0L;
         != other.getLevelUpExp()) return false;
     if (getLevel()
         != other.getLevel()) return false;
+    if (hasSceneData() != other.hasSceneData()) return false;
+    if (hasSceneData()) {
+      if (!getSceneData()
+          .equals(other.getSceneData())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -380,6 +431,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getLevelUpExp();
     hash = (37 * hash) + LEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getLevel();
+    if (hasSceneData()) {
+      hash = (37 * hash) + SCENEDATA_FIELD_NUMBER;
+      hash = (53 * hash) + getSceneData().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -477,7 +532,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 1
+   * 1 登录信息
    * </pre>
    *
    * Protobuf type {@code Message.LoginRes}
@@ -535,6 +590,12 @@ private static final long serialVersionUID = 0L;
 
       level_ = 0;
 
+      if (sceneDataBuilder_ == null) {
+        sceneData_ = null;
+      } else {
+        sceneData_ = null;
+        sceneDataBuilder_ = null;
+      }
       return this;
     }
 
@@ -572,6 +633,11 @@ private static final long serialVersionUID = 0L;
       result.exp_ = exp_;
       result.levelUpExp_ = levelUpExp_;
       result.level_ = level_;
+      if (sceneDataBuilder_ == null) {
+        result.sceneData_ = sceneData_;
+      } else {
+        result.sceneData_ = sceneDataBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -641,6 +707,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getLevel() != 0) {
         setLevel(other.getLevel());
+      }
+      if (other.hasSceneData()) {
+        mergeSceneData(other.getSceneData());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1019,6 +1088,125 @@ private static final long serialVersionUID = 0L;
       level_ = 0;
       onChanged();
       return this;
+    }
+
+    private game.proto.SceneData sceneData_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.SceneData, game.proto.SceneData.Builder, game.proto.SceneDataOrBuilder> sceneDataBuilder_;
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     * @return Whether the sceneData field is set.
+     */
+    public boolean hasSceneData() {
+      return sceneDataBuilder_ != null || sceneData_ != null;
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     * @return The sceneData.
+     */
+    public game.proto.SceneData getSceneData() {
+      if (sceneDataBuilder_ == null) {
+        return sceneData_ == null ? game.proto.SceneData.getDefaultInstance() : sceneData_;
+      } else {
+        return sceneDataBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    public Builder setSceneData(game.proto.SceneData value) {
+      if (sceneDataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        sceneData_ = value;
+        onChanged();
+      } else {
+        sceneDataBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    public Builder setSceneData(
+        game.proto.SceneData.Builder builderForValue) {
+      if (sceneDataBuilder_ == null) {
+        sceneData_ = builderForValue.build();
+        onChanged();
+      } else {
+        sceneDataBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    public Builder mergeSceneData(game.proto.SceneData value) {
+      if (sceneDataBuilder_ == null) {
+        if (sceneData_ != null) {
+          sceneData_ =
+            game.proto.SceneData.newBuilder(sceneData_).mergeFrom(value).buildPartial();
+        } else {
+          sceneData_ = value;
+        }
+        onChanged();
+      } else {
+        sceneDataBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    public Builder clearSceneData() {
+      if (sceneDataBuilder_ == null) {
+        sceneData_ = null;
+        onChanged();
+      } else {
+        sceneData_ = null;
+        sceneDataBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    public game.proto.SceneData.Builder getSceneDataBuilder() {
+      
+      onChanged();
+      return getSceneDataFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    public game.proto.SceneDataOrBuilder getSceneDataOrBuilder() {
+      if (sceneDataBuilder_ != null) {
+        return sceneDataBuilder_.getMessageOrBuilder();
+      } else {
+        return sceneData_ == null ?
+            game.proto.SceneData.getDefaultInstance() : sceneData_;
+      }
+    }
+    /**
+     * <code>.Message.SceneData sceneData = 8;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.SceneData, game.proto.SceneData.Builder, game.proto.SceneDataOrBuilder> 
+        getSceneDataFieldBuilder() {
+      if (sceneDataBuilder_ == null) {
+        sceneDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.SceneData, game.proto.SceneData.Builder, game.proto.SceneDataOrBuilder>(
+                getSceneData(),
+                getParentForChildren(),
+                isClean());
+        sceneData_ = null;
+      }
+      return sceneDataBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

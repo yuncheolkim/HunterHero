@@ -21,6 +21,7 @@ public class GameManager extends AbsLifecycle {
     private ConcurrentHashMap<Integer, Invoker<? extends MessageLite>> handlerMap = new ConcurrentHashMap<>();
 
     private LoginHandler loginHandler = new LoginHandler();
+    private int version = 1;
 
     public GameManager() {
         addHandler(new Invoker<>(1001, TaskHandler::addTask, TaskReq::parser));
@@ -48,7 +49,14 @@ public class GameManager extends AbsLifecycle {
     @Override
     public void start() {
 
-
         super.start();
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
     }
 }

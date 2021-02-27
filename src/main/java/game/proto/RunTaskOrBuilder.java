@@ -18,4 +18,28 @@ public interface RunTaskOrBuilder extends
    * @return The status.
    */
   int getStatus();
+
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  java.util.List<game.proto.TaskTarget> 
+      getTargetList();
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  game.proto.TaskTarget getTarget(int index);
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  int getTargetCount();
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  java.util.List<? extends game.proto.TaskTargetOrBuilder> 
+      getTargetOrBuilderList();
+  /**
+   * <code>repeated .Message.TaskTarget target = 3;</code>
+   */
+  game.proto.TaskTargetOrBuilder getTargetOrBuilder(
+      int index);
 }

@@ -4,11 +4,11 @@ option java_package = "game.proto";
 option optimize_for = SPEED;
 option java_multiple_files = true;
 message Message {
-    int32 version = 1;
-    int32 msgNo = 2;
-    int32 error = 3;
-    int32 seq = 4;
-    bytes body = 10;
+  int32 version = 1;
+  int32 msgNo = 2;
+  int32 error = 3;
+  int32 seq = 4;
+  bytes body = 10;
 
 }
 message Empty {
@@ -19,19 +19,21 @@ message Success {
 // 登录
 // 1
 message LoginReq {
-    int64 playerId = 1;
-    string code = 2;
+  int64 playerId = 1;
+  string code = 2;
 }
 
-// 1
+// 1 登录信息
 message LoginRes {
-    int64 playerId = 1;
-    string name = 2;
-    bool first = 3;
-    PlayerTask task = 4;
-    int32 exp = 5;
-    int32 levelUpExp = 6;
-    int32 level = 7;
+  int64 playerId = 1;
+  string name = 2;
+  bool first = 3;
+  PlayerTask task = 4;
+  int32 exp = 5;
+  int32 levelUpExp = 6;
+  int32 level = 7;
+  SceneData sceneData = 8;
+
 }
 //2
 message KickPush {
@@ -39,27 +41,45 @@ message KickPush {
 
 //3
 message PlayerCreateNameReq {
-    string name = 1;
+  string name = 1;
 }
 //10~1000 后端使用
 // 10 tick
 // 11 dataSave
 
 message PlayerTask {
-    repeated int32 completeTask = 1;
-    repeated int32 acceptTask = 2;
-    repeated RunTask runTask = 3;
+  repeated int32 completeTask = 1;
+  repeated int32 acceptTask = 2;
+  repeated RunTask runTask = 3;
 }
 
+
 message RunTask {
-    int32 taskId = 1;
-    int32 status = 2;
+  int32 taskId = 1;
+  int32 status = 2;
+  repeated TaskTarget target = 3;
+}
+
+message TaskTarget{
+  int32 id = 1;
+  int32 value1 = 2;
 }
 
 message TaskInfo {
-    int32 taskId = 1;
+  int32 taskId = 1;
 }
+
+message ScenePos {
+  float x = 1;
+  float y = 2;
+}
+message SceneData {
+  int32 id = 1;
+  ScenePos pos = 2;
+}
+
+
 // 1001 接受任务
 message TaskReq {
-    int32 taskId = 1;
+  int32 taskId = 1;
 }

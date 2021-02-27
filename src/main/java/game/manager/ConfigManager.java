@@ -25,6 +25,9 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, DataConfigData6> dataMap6;
 
     public Map<Integer, DataConfigData7> dataMap7;
+    public Map<Integer, DataConfigData8> dataMap8;
+
+    public Map<Integer, DataConfigData9> dataMap9;
 
     public Map<Integer, TaskConfigData1> taskMap1;
 
@@ -36,6 +39,7 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, TaskConfigData5> taskMap5;
 
+    public Map<Integer, HeroConfigData1> heroMap1;
     @Override
     public void start() {
         super.start();
@@ -88,6 +92,20 @@ public class ConfigManager extends AbsLifecycle {
                 };
             }
         }.load();
+        dataMap8 = new JsonConfig("data/data_8-参数.json") {
+            @Override
+            protected TypeReference type() {
+                return new TypeReference<Map<Integer, DataConfigData8>>() {
+                };
+            }
+        }.load();
+        dataMap9 = new JsonConfig("data/data_9-经验.json") {
+            @Override
+            protected TypeReference type() {
+                return new TypeReference<Map<Integer, DataConfigData9>>() {
+                };
+            }
+        }.load();
         taskMap1 = new JsonConfig("data/task_1-对话.json") {
             @Override
             protected TypeReference type() {
@@ -121,6 +139,13 @@ public class ConfigManager extends AbsLifecycle {
             @Override
             protected TypeReference type() {
                 return new TypeReference<Map<Integer, TaskConfigData5>>() {
+                };
+            }
+        }.load();
+        heroMap1 = new JsonConfig("data/hero_1-base.json") {
+            @Override
+            protected TypeReference type() {
+                return new TypeReference<Map<Integer, HeroConfigData1>>() {
                 };
             }
         }.load();

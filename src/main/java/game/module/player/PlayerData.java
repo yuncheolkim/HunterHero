@@ -1,7 +1,9 @@
 package game.module.player;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import game.base.Copy;
+import game.module.scene.SceneData;
 import game.module.task.TaskData;
 import game.player.Player;
 import org.joda.time.LocalDateTime;
@@ -13,6 +15,9 @@ import java.util.*;
  * 2021/2/22 11:08
  */
 public class PlayerData implements Copy {
+
+    @JsonProperty
+    public long version;
 
     @JsonProperty
     public long pid;
@@ -40,6 +45,17 @@ public class PlayerData implements Copy {
      */
     @JsonProperty
     public int powerRecoverSecond;
+
+    @JsonProperty
+    public int level;
+
+    @JsonProperty
+    public int exp;
+    @JsonIgnore
+    public int needExp;
+
+    @JsonProperty
+    public SceneData sceneData;
 
     //////////////////////////////////////////////////////////////// task
 
@@ -91,6 +107,10 @@ public class PlayerData implements Copy {
         data.updateTime = updateTime;
         data.power = power;
         data.powerRecoverSecond = powerRecoverSecond;
+        data.level = level;
+        data.exp = exp;
+        data.version = version;
+        data.sceneData = sceneData.copy();
 
         return data;
 

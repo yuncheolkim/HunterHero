@@ -63,4 +63,19 @@ public interface LoginResOrBuilder extends
    * @return The level.
    */
   int getLevel();
+
+  /**
+   * <code>.Message.SceneData sceneData = 8;</code>
+   * @return Whether the sceneData field is set.
+   */
+  boolean hasSceneData();
+  /**
+   * <code>.Message.SceneData sceneData = 8;</code>
+   * @return The sceneData.
+   */
+  game.proto.SceneData getSceneData();
+  /**
+   * <code>.Message.SceneData sceneData = 8;</code>
+   */
+  game.proto.SceneDataOrBuilder getSceneDataOrBuilder();
 }
