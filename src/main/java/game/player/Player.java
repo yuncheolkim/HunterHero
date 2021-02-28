@@ -8,12 +8,15 @@ import game.game.ScenePos;
 import game.module.player.PlayerData;
 import game.module.scene.SceneData;
 import game.net.Transport;
-import game.proto.LoginRes;
-import game.proto.Message;
+import game.proto.*;
 import game.repo.PlayerRepo;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
 
 /**
  * 线程安全
@@ -51,6 +54,7 @@ public class Player {
         loginTime = LocalDateTime.now();
 
         LoginRes.Builder builder = LoginRes.newBuilder();
+        builder.setPlayerId(pid);
         if (StringUtils.isEmpty(playerData.name)) {
             builder.setFirst(true);
         } else {
@@ -59,7 +63,9 @@ public class Player {
         builder.setLevel(playerData.level);
         builder.setExp(playerData.exp);
         builder.setLevelUpExp(playerData.needExp);
-        builder.setPlayerId(pid);
+        builder.setPower(playerData.power);
+        builder.setMaxPower(playerData.maxPower);
+
         // scene
         builder.setSceneData(game.proto.SceneData.newBuilder()
                 .setId(playerData.sceneData.id)
@@ -68,6 +74,22 @@ public class Player {
                         .setY(playerData.sceneData.scenePos.y)
                 )
         );
+        // task
+        Iterable<RunTask> runTasks = playerData.runTask.values().stream().map(taskData -> RunTask.newBuilder()
+                .setTaskId(taskData.taskId)
+                .setStatus(taskData.status)
+                .addAllTarget(taskData.processDataList.stream().map(taskProcessData -> TaskTarget.newBuilder()
+                        .setId(taskProcessData.id)
+                        .setValue(taskProcessData.current)
+                        .build()).collect(Collectors.toList()))
+                .build()).collect(Collectors.toList());
+
+        builder.setTask(PlayerTask.newBuilder()
+                .addAllAcceptTask(playerData.acceptTask)
+                .addAllCompleteTask(playerData.completeTask)
+                .addAllRunTask(runTasks)
+                .build());
+
 
         transport.send(Message.newBuilder().setMsgNo(1).setBody(builder.build().toByteString()).build());
     }
@@ -109,10 +131,15 @@ public class Player {
         playerData.level = 1;
         //经验
         playerData.needExp = G.C.dataMap9.get(1).exp;
+
+        playerData.power = G.C.dataMap8.get(1).count;
+        playerData.maxPower = G.C.dataMap8.get(1).count;
+        playerData.powerRecoverSecond = G.C.dataMap8.get(2).count;
+
         // 场景 新手村
         SceneData sceneData = new SceneData();
         sceneData.id = 1;
-        sceneData.scenePos = new ScenePos(4,-20);
+        sceneData.scenePos = new ScenePos(4, -20);
         playerData.sceneData = sceneData;
 
     }

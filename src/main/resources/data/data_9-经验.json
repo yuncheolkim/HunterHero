@@ -1,1 +1,362 @@
-{"1":{"exp":400,"id":1,"monsterExp":50,"taskExp":133},"10":{"exp":6200,"id":10,"monsterExp":140,"taskExp":1033},"11":{"exp":7850,"id":11,"monsterExp":150,"taskExp":1308},"12":{"exp":9650,"id":12,"monsterExp":160,"taskExp":1378},"13":{"exp":11600,"id":13,"monsterExp":170,"taskExp":1657},"14":{"exp":13700,"id":14,"monsterExp":180,"taskExp":1712},"15":{"exp":15950,"id":15,"monsterExp":190,"taskExp":1993},"16":{"exp":18350,"id":16,"monsterExp":200,"taskExp":2038},"17":{"exp":20900,"id":17,"monsterExp":210,"taskExp":2322},"18":{"exp":23600,"id":18,"monsterExp":220,"taskExp":2622},"19":{"exp":26450,"id":19,"monsterExp":230,"taskExp":2938},"2":{"exp":900,"id":2,"monsterExp":60,"taskExp":300},"20":{"exp":29450,"id":20,"monsterExp":240,"taskExp":2945},"21":{"exp":33650,"id":21,"monsterExp":250,"taskExp":3059},"22":{"exp":38050,"id":22,"monsterExp":260,"taskExp":3170},"23":{"exp":42650,"id":23,"monsterExp":270,"taskExp":3280},"24":{"exp":47450,"id":24,"monsterExp":280,"taskExp":3389},"25":{"exp":52450,"id":25,"monsterExp":290,"taskExp":3496},"26":{"exp":57650,"id":26,"monsterExp":300,"taskExp":3603},"27":{"exp":63050,"id":27,"monsterExp":310,"taskExp":3708},"28":{"exp":68650,"id":28,"monsterExp":320,"taskExp":3813},"29":{"exp":74450,"id":29,"monsterExp":330,"taskExp":3918},"3":{"exp":1200,"id":3,"monsterExp":70,"taskExp":400},"30":{"exp":80450,"id":30,"monsterExp":340,"taskExp":4022},"31":{"exp":88200,"id":31,"monsterExp":350,"taskExp":4200},"32":{"exp":96200,"id":32,"monsterExp":360,"taskExp":4372},"33":{"exp":104450,"id":33,"monsterExp":370,"taskExp":4541},"34":{"exp":112950,"id":34,"monsterExp":380,"taskExp":4706},"35":{"exp":121700,"id":35,"monsterExp":390,"taskExp":4868},"36":{"exp":130700,"id":36,"monsterExp":400,"taskExp":5026},"37":{"exp":139950,"id":37,"monsterExp":410,"taskExp":5183},"38":{"exp":149450,"id":38,"monsterExp":420,"taskExp":5337},"39":{"exp":159200,"id":39,"monsterExp":430,"taskExp":5489},"4":{"exp":1600,"id":4,"monsterExp":80,"taskExp":400},"40":{"exp":169200,"id":40,"monsterExp":440,"taskExp":5640},"41":{"exp":181500,"id":41,"monsterExp":450,"taskExp":5854},"42":{"exp":194100,"id":42,"monsterExp":460,"taskExp":6065},"43":{"exp":207000,"id":43,"monsterExp":470,"taskExp":6272},"44":{"exp":220200,"id":44,"monsterExp":480,"taskExp":6476},"45":{"exp":233700,"id":45,"monsterExp":490,"taskExp":6677},"46":{"exp":247500,"id":46,"monsterExp":500,"taskExp":6875},"47":{"exp":261600,"id":47,"monsterExp":510,"taskExp":7070},"48":{"exp":276000,"id":48,"monsterExp":520,"taskExp":7263},"49":{"exp":290700,"id":49,"monsterExp":530,"taskExp":7453},"5":{"exp":2100,"id":5,"monsterExp":90,"taskExp":525},"50":{"exp":310700,"id":50,"monsterExp":540,"taskExp":7767},"51":{"exp":331100,"id":51,"monsterExp":550,"taskExp":8075},"52":{"exp":351900,"id":52,"monsterExp":560,"taskExp":8378},"53":{"exp":373100,"id":53,"monsterExp":570,"taskExp":8676},"54":{"exp":394700,"id":54,"monsterExp":580,"taskExp":8970},"55":{"exp":416700,"id":55,"monsterExp":590,"taskExp":9260},"56":{"exp":439100,"id":56,"monsterExp":600,"taskExp":9545},"57":{"exp":461900,"id":57,"monsterExp":610,"taskExp":9827},"58":{"exp":485100,"id":58,"monsterExp":620,"taskExp":10106},"59":{"exp":508700,"id":59,"monsterExp":630,"taskExp":10381},"6":{"exp":2700,"id":6,"monsterExp":100,"taskExp":675},"60":{"exp":532700,"id":60,"monsterExp":640,"taskExp":10654},"7":{"exp":3400,"id":7,"monsterExp":110,"taskExp":680},"8":{"exp":4200,"id":8,"monsterExp":120,"taskExp":840},"9":{"exp":5100,"id":9,"monsterExp":130,"taskExp":1020}}
+{
+    "1": {
+        "exp": 400,
+        "id": 1,
+        "monsterExp": 50,
+        "taskExp": 133
+    },
+    "10": {
+        "exp": 6200,
+        "id": 10,
+        "monsterExp": 140,
+        "taskExp": 1033
+    },
+    "11": {
+        "exp": 7850,
+        "id": 11,
+        "monsterExp": 150,
+        "taskExp": 1308
+    },
+    "12": {
+        "exp": 9650,
+        "id": 12,
+        "monsterExp": 160,
+        "taskExp": 1378
+    },
+    "13": {
+        "exp": 11600,
+        "id": 13,
+        "monsterExp": 170,
+        "taskExp": 1657
+    },
+    "14": {
+        "exp": 13700,
+        "id": 14,
+        "monsterExp": 180,
+        "taskExp": 1712
+    },
+    "15": {
+        "exp": 15950,
+        "id": 15,
+        "monsterExp": 190,
+        "taskExp": 1993
+    },
+    "16": {
+        "exp": 18350,
+        "id": 16,
+        "monsterExp": 200,
+        "taskExp": 2038
+    },
+    "17": {
+        "exp": 20900,
+        "id": 17,
+        "monsterExp": 210,
+        "taskExp": 2322
+    },
+    "18": {
+        "exp": 23600,
+        "id": 18,
+        "monsterExp": 220,
+        "taskExp": 2622
+    },
+    "19": {
+        "exp": 26450,
+        "id": 19,
+        "monsterExp": 230,
+        "taskExp": 2938
+    },
+    "2": {
+        "exp": 900,
+        "id": 2,
+        "monsterExp": 60,
+        "taskExp": 300
+    },
+    "20": {
+        "exp": 29450,
+        "id": 20,
+        "monsterExp": 240,
+        "taskExp": 2945
+    },
+    "21": {
+        "exp": 33650,
+        "id": 21,
+        "monsterExp": 250,
+        "taskExp": 3059
+    },
+    "22": {
+        "exp": 38050,
+        "id": 22,
+        "monsterExp": 260,
+        "taskExp": 3170
+    },
+    "23": {
+        "exp": 42650,
+        "id": 23,
+        "monsterExp": 270,
+        "taskExp": 3280
+    },
+    "24": {
+        "exp": 47450,
+        "id": 24,
+        "monsterExp": 280,
+        "taskExp": 3389
+    },
+    "25": {
+        "exp": 52450,
+        "id": 25,
+        "monsterExp": 290,
+        "taskExp": 3496
+    },
+    "26": {
+        "exp": 57650,
+        "id": 26,
+        "monsterExp": 300,
+        "taskExp": 3603
+    },
+    "27": {
+        "exp": 63050,
+        "id": 27,
+        "monsterExp": 310,
+        "taskExp": 3708
+    },
+    "28": {
+        "exp": 68650,
+        "id": 28,
+        "monsterExp": 320,
+        "taskExp": 3813
+    },
+    "29": {
+        "exp": 74450,
+        "id": 29,
+        "monsterExp": 330,
+        "taskExp": 3918
+    },
+    "3": {
+        "exp": 1200,
+        "id": 3,
+        "monsterExp": 70,
+        "taskExp": 400
+    },
+    "30": {
+        "exp": 80450,
+        "id": 30,
+        "monsterExp": 340,
+        "taskExp": 4022
+    },
+    "31": {
+        "exp": 88200,
+        "id": 31,
+        "monsterExp": 350,
+        "taskExp": 4200
+    },
+    "32": {
+        "exp": 96200,
+        "id": 32,
+        "monsterExp": 360,
+        "taskExp": 4372
+    },
+    "33": {
+        "exp": 104450,
+        "id": 33,
+        "monsterExp": 370,
+        "taskExp": 4541
+    },
+    "34": {
+        "exp": 112950,
+        "id": 34,
+        "monsterExp": 380,
+        "taskExp": 4706
+    },
+    "35": {
+        "exp": 121700,
+        "id": 35,
+        "monsterExp": 390,
+        "taskExp": 4868
+    },
+    "36": {
+        "exp": 130700,
+        "id": 36,
+        "monsterExp": 400,
+        "taskExp": 5026
+    },
+    "37": {
+        "exp": 139950,
+        "id": 37,
+        "monsterExp": 410,
+        "taskExp": 5183
+    },
+    "38": {
+        "exp": 149450,
+        "id": 38,
+        "monsterExp": 420,
+        "taskExp": 5337
+    },
+    "39": {
+        "exp": 159200,
+        "id": 39,
+        "monsterExp": 430,
+        "taskExp": 5489
+    },
+    "4": {
+        "exp": 1600,
+        "id": 4,
+        "monsterExp": 80,
+        "taskExp": 400
+    },
+    "40": {
+        "exp": 169200,
+        "id": 40,
+        "monsterExp": 440,
+        "taskExp": 5640
+    },
+    "41": {
+        "exp": 181500,
+        "id": 41,
+        "monsterExp": 450,
+        "taskExp": 5854
+    },
+    "42": {
+        "exp": 194100,
+        "id": 42,
+        "monsterExp": 460,
+        "taskExp": 6065
+    },
+    "43": {
+        "exp": 207000,
+        "id": 43,
+        "monsterExp": 470,
+        "taskExp": 6272
+    },
+    "44": {
+        "exp": 220200,
+        "id": 44,
+        "monsterExp": 480,
+        "taskExp": 6476
+    },
+    "45": {
+        "exp": 233700,
+        "id": 45,
+        "monsterExp": 490,
+        "taskExp": 6677
+    },
+    "46": {
+        "exp": 247500,
+        "id": 46,
+        "monsterExp": 500,
+        "taskExp": 6875
+    },
+    "47": {
+        "exp": 261600,
+        "id": 47,
+        "monsterExp": 510,
+        "taskExp": 7070
+    },
+    "48": {
+        "exp": 276000,
+        "id": 48,
+        "monsterExp": 520,
+        "taskExp": 7263
+    },
+    "49": {
+        "exp": 290700,
+        "id": 49,
+        "monsterExp": 530,
+        "taskExp": 7453
+    },
+    "5": {
+        "exp": 2100,
+        "id": 5,
+        "monsterExp": 90,
+        "taskExp": 525
+    },
+    "50": {
+        "exp": 310700,
+        "id": 50,
+        "monsterExp": 540,
+        "taskExp": 7767
+    },
+    "51": {
+        "exp": 331100,
+        "id": 51,
+        "monsterExp": 550,
+        "taskExp": 8075
+    },
+    "52": {
+        "exp": 351900,
+        "id": 52,
+        "monsterExp": 560,
+        "taskExp": 8378
+    },
+    "53": {
+        "exp": 373100,
+        "id": 53,
+        "monsterExp": 570,
+        "taskExp": 8676
+    },
+    "54": {
+        "exp": 394700,
+        "id": 54,
+        "monsterExp": 580,
+        "taskExp": 8970
+    },
+    "55": {
+        "exp": 416700,
+        "id": 55,
+        "monsterExp": 590,
+        "taskExp": 9260
+    },
+    "56": {
+        "exp": 439100,
+        "id": 56,
+        "monsterExp": 600,
+        "taskExp": 9545
+    },
+    "57": {
+        "exp": 461900,
+        "id": 57,
+        "monsterExp": 610,
+        "taskExp": 9827
+    },
+    "58": {
+        "exp": 485100,
+        "id": 58,
+        "monsterExp": 620,
+        "taskExp": 10106
+    },
+    "59": {
+        "exp": 508700,
+        "id": 59,
+        "monsterExp": 630,
+        "taskExp": 10381
+    },
+    "6": {
+        "exp": 2700,
+        "id": 6,
+        "monsterExp": 100,
+        "taskExp": 675
+    },
+    "60": {
+        "exp": 532700,
+        "id": 60,
+        "monsterExp": 640,
+        "taskExp": 10654
+    },
+    "7": {
+        "exp": 3400,
+        "id": 7,
+        "monsterExp": 110,
+        "taskExp": 680
+    },
+    "8": {
+        "exp": 4200,
+        "id": 8,
+        "monsterExp": 120,
+        "taskExp": 840
+    },
+    "9": {
+        "exp": 5100,
+        "id": 9,
+        "monsterExp": 130,
+        "taskExp": 1020
+    }
+}

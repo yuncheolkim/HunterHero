@@ -78,4 +78,28 @@ public interface LoginResOrBuilder extends
    * <code>.Message.SceneData sceneData = 8;</code>
    */
   game.proto.SceneDataOrBuilder getSceneDataOrBuilder();
+
+  /**
+   * <code>int32 gold = 9;</code>
+   * @return The gold.
+   */
+  int getGold();
+
+  /**
+   * <code>int32 lei = 10;</code>
+   * @return The lei.
+   */
+  int getLei();
+
+  /**
+   * <code>int32 power = 11;</code>
+   * @return The power.
+   */
+  int getPower();
+
+  /**
+   * <code>int32 maxPower = 12;</code>
+   * @return The maxPower.
+   */
+  int getMaxPower();
 }

@@ -14,8 +14,8 @@ public interface TaskTargetOrBuilder extends
   int getId();
 
   /**
-   * <code>int32 value1 = 2;</code>
-   * @return The value1.
+   * <code>int32 value = 2;</code>
+   * @return The value.
    */
-  int getValue1();
+  int getValue();
 }

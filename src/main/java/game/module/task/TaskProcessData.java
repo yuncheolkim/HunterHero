@@ -13,20 +13,6 @@ public class TaskProcessData implements Copy {
     public int id;
 
     /**
-     * 1	送信
-     * 2	打怪
-     * 3	搜集物品
-     */
-    @JsonProperty
-    public int taskType;
-
-    /**
-     * 需求量
-     */
-    @JsonProperty
-    public int need;
-
-    /**
      * 当前量
      */
     @JsonProperty
@@ -35,8 +21,6 @@ public class TaskProcessData implements Copy {
     public TaskProcessData copy() {
         TaskProcessData data = new TaskProcessData();
         data.id = id;
-        data.taskType = taskType;
-        data.need = need;
         data.current = current;
         return data;
     }

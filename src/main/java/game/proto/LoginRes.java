@@ -110,6 +110,26 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 72: {
+
+            gold_ = input.readInt32();
+            break;
+          }
+          case 80: {
+
+            lei_ = input.readInt32();
+            break;
+          }
+          case 88: {
+
+            power_ = input.readInt32();
+            break;
+          }
+          case 96: {
+
+            maxPower_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -287,6 +307,50 @@ private static final long serialVersionUID = 0L;
     return getSceneData();
   }
 
+  public static final int GOLD_FIELD_NUMBER = 9;
+  private int gold_;
+  /**
+   * <code>int32 gold = 9;</code>
+   * @return The gold.
+   */
+  @java.lang.Override
+  public int getGold() {
+    return gold_;
+  }
+
+  public static final int LEI_FIELD_NUMBER = 10;
+  private int lei_;
+  /**
+   * <code>int32 lei = 10;</code>
+   * @return The lei.
+   */
+  @java.lang.Override
+  public int getLei() {
+    return lei_;
+  }
+
+  public static final int POWER_FIELD_NUMBER = 11;
+  private int power_;
+  /**
+   * <code>int32 power = 11;</code>
+   * @return The power.
+   */
+  @java.lang.Override
+  public int getPower() {
+    return power_;
+  }
+
+  public static final int MAXPOWER_FIELD_NUMBER = 12;
+  private int maxPower_;
+  /**
+   * <code>int32 maxPower = 12;</code>
+   * @return The maxPower.
+   */
+  @java.lang.Override
+  public int getMaxPower() {
+    return maxPower_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -324,6 +388,18 @@ private static final long serialVersionUID = 0L;
     }
     if (sceneData_ != null) {
       output.writeMessage(8, getSceneData());
+    }
+    if (gold_ != 0) {
+      output.writeInt32(9, gold_);
+    }
+    if (lei_ != 0) {
+      output.writeInt32(10, lei_);
+    }
+    if (power_ != 0) {
+      output.writeInt32(11, power_);
+    }
+    if (maxPower_ != 0) {
+      output.writeInt32(12, maxPower_);
     }
     unknownFields.writeTo(output);
   }
@@ -365,6 +441,22 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(8, getSceneData());
     }
+    if (gold_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(9, gold_);
+    }
+    if (lei_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(10, lei_);
+    }
+    if (power_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(11, power_);
+    }
+    if (maxPower_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(12, maxPower_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -402,6 +494,14 @@ private static final long serialVersionUID = 0L;
       if (!getSceneData()
           .equals(other.getSceneData())) return false;
     }
+    if (getGold()
+        != other.getGold()) return false;
+    if (getLei()
+        != other.getLei()) return false;
+    if (getPower()
+        != other.getPower()) return false;
+    if (getMaxPower()
+        != other.getMaxPower()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -435,6 +535,14 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + SCENEDATA_FIELD_NUMBER;
       hash = (53 * hash) + getSceneData().hashCode();
     }
+    hash = (37 * hash) + GOLD_FIELD_NUMBER;
+    hash = (53 * hash) + getGold();
+    hash = (37 * hash) + LEI_FIELD_NUMBER;
+    hash = (53 * hash) + getLei();
+    hash = (37 * hash) + POWER_FIELD_NUMBER;
+    hash = (53 * hash) + getPower();
+    hash = (37 * hash) + MAXPOWER_FIELD_NUMBER;
+    hash = (53 * hash) + getMaxPower();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -596,6 +704,14 @@ private static final long serialVersionUID = 0L;
         sceneData_ = null;
         sceneDataBuilder_ = null;
       }
+      gold_ = 0;
+
+      lei_ = 0;
+
+      power_ = 0;
+
+      maxPower_ = 0;
+
       return this;
     }
 
@@ -638,6 +754,10 @@ private static final long serialVersionUID = 0L;
       } else {
         result.sceneData_ = sceneDataBuilder_.build();
       }
+      result.gold_ = gold_;
+      result.lei_ = lei_;
+      result.power_ = power_;
+      result.maxPower_ = maxPower_;
       onBuilt();
       return result;
     }
@@ -710,6 +830,18 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasSceneData()) {
         mergeSceneData(other.getSceneData());
+      }
+      if (other.getGold() != 0) {
+        setGold(other.getGold());
+      }
+      if (other.getLei() != 0) {
+        setLei(other.getLei());
+      }
+      if (other.getPower() != 0) {
+        setPower(other.getPower());
+      }
+      if (other.getMaxPower() != 0) {
+        setMaxPower(other.getMaxPower());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1207,6 +1339,130 @@ private static final long serialVersionUID = 0L;
         sceneData_ = null;
       }
       return sceneDataBuilder_;
+    }
+
+    private int gold_ ;
+    /**
+     * <code>int32 gold = 9;</code>
+     * @return The gold.
+     */
+    @java.lang.Override
+    public int getGold() {
+      return gold_;
+    }
+    /**
+     * <code>int32 gold = 9;</code>
+     * @param value The gold to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGold(int value) {
+      
+      gold_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 gold = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearGold() {
+      
+      gold_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int lei_ ;
+    /**
+     * <code>int32 lei = 10;</code>
+     * @return The lei.
+     */
+    @java.lang.Override
+    public int getLei() {
+      return lei_;
+    }
+    /**
+     * <code>int32 lei = 10;</code>
+     * @param value The lei to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLei(int value) {
+      
+      lei_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 lei = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLei() {
+      
+      lei_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int power_ ;
+    /**
+     * <code>int32 power = 11;</code>
+     * @return The power.
+     */
+    @java.lang.Override
+    public int getPower() {
+      return power_;
+    }
+    /**
+     * <code>int32 power = 11;</code>
+     * @param value The power to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPower(int value) {
+      
+      power_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 power = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPower() {
+      
+      power_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int maxPower_ ;
+    /**
+     * <code>int32 maxPower = 12;</code>
+     * @return The maxPower.
+     */
+    @java.lang.Override
+    public int getMaxPower() {
+      return maxPower_;
+    }
+    /**
+     * <code>int32 maxPower = 12;</code>
+     * @param value The maxPower to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMaxPower(int value) {
+      
+      maxPower_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 maxPower = 12;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMaxPower() {
+      
+      maxPower_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

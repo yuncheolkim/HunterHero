@@ -55,7 +55,7 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
 
-            value1_ = input.readInt32();
+            value_ = input.readInt32();
             break;
           }
           default: {
@@ -101,15 +101,15 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int VALUE1_FIELD_NUMBER = 2;
-  private int value1_;
+  public static final int VALUE_FIELD_NUMBER = 2;
+  private int value_;
   /**
-   * <code>int32 value1 = 2;</code>
-   * @return The value1.
+   * <code>int32 value = 2;</code>
+   * @return The value.
    */
   @java.lang.Override
-  public int getValue1() {
-    return value1_;
+  public int getValue() {
+    return value_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -129,8 +129,8 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeInt32(1, id_);
     }
-    if (value1_ != 0) {
-      output.writeInt32(2, value1_);
+    if (value_ != 0) {
+      output.writeInt32(2, value_);
     }
     unknownFields.writeTo(output);
   }
@@ -145,9 +145,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, id_);
     }
-    if (value1_ != 0) {
+    if (value_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, value1_);
+        .computeInt32Size(2, value_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -166,8 +166,8 @@ private static final long serialVersionUID = 0L;
 
     if (getId()
         != other.getId()) return false;
-    if (getValue1()
-        != other.getValue1()) return false;
+    if (getValue()
+        != other.getValue()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -181,8 +181,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
-    hash = (37 * hash) + VALUE1_FIELD_NUMBER;
-    hash = (53 * hash) + getValue1();
+    hash = (37 * hash) + VALUE_FIELD_NUMBER;
+    hash = (53 * hash) + getValue();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -318,7 +318,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       id_ = 0;
 
-      value1_ = 0;
+      value_ = 0;
 
       return this;
     }
@@ -347,7 +347,7 @@ private static final long serialVersionUID = 0L;
     public game.proto.TaskTarget buildPartial() {
       game.proto.TaskTarget result = new game.proto.TaskTarget(this);
       result.id_ = id_;
-      result.value1_ = value1_;
+      result.value_ = value_;
       onBuilt();
       return result;
     }
@@ -399,8 +399,8 @@ private static final long serialVersionUID = 0L;
       if (other.getId() != 0) {
         setId(other.getId());
       }
-      if (other.getValue1() != 0) {
-        setValue1(other.getValue1());
+      if (other.getValue() != 0) {
+        setValue(other.getValue());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -462,33 +462,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int value1_ ;
+    private int value_ ;
     /**
-     * <code>int32 value1 = 2;</code>
-     * @return The value1.
+     * <code>int32 value = 2;</code>
+     * @return The value.
      */
     @java.lang.Override
-    public int getValue1() {
-      return value1_;
+    public int getValue() {
+      return value_;
     }
     /**
-     * <code>int32 value1 = 2;</code>
-     * @param value The value1 to set.
+     * <code>int32 value = 2;</code>
+     * @param value The value to set.
      * @return This builder for chaining.
      */
-    public Builder setValue1(int value) {
+    public Builder setValue(int value) {
       
-      value1_ = value;
+      value_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 value1 = 2;</code>
+     * <code>int32 value = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearValue1() {
+    public Builder clearValue() {
       
-      value1_ = 0;
+      value_ = 0;
       onChanged();
       return this;
     }

@@ -33,13 +33,15 @@ public class PlayerData implements Copy {
 
     @JsonProperty
     public long updateTime;
-
+    //////////////////////////////////////////////////////////////// resource
     /**
-     * 体力
+     * 能量
      */
     @JsonProperty
     public int power;
 
+    @JsonProperty
+    public int maxPower;
     /**
      * 恢复一点体力需要多少秒
      */
@@ -49,10 +51,31 @@ public class PlayerData implements Copy {
     @JsonProperty
     public int level;
 
+    /**
+     * current exp
+     */
     @JsonProperty
     public int exp;
+
+    /**
+     * level up need exp
+     */
     @JsonIgnore
     public int needExp;
+
+    /**
+     * gold
+     */
+    @JsonIgnore
+    public int gold;
+
+    /**
+     * lei stone
+     */
+    @JsonIgnore
+    public int lei;
+
+    //////////////////////////////////////////////////////////////// scene
 
     @JsonProperty
     public SceneData sceneData;
@@ -111,6 +134,9 @@ public class PlayerData implements Copy {
         data.exp = exp;
         data.version = version;
         data.sceneData = sceneData.copy();
+        data.gold = gold;
+        data.lei = lei;
+        data.maxPower = maxPower;
 
         return data;
 
