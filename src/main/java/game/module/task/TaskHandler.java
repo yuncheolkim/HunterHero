@@ -24,7 +24,7 @@ public class TaskHandler {
 
         ModuleAssert.notNull(player.getPd().getTaskBuilder().getAcceptableTaskMap().get(o.getTaskId()));
 
-        player.getPd().getTaskBuilder().getAcceptableTaskMap().remove(o.getTaskId());
+        player.getPd().getTaskBuilder().removeAcceptableTask(o.getTaskId());
 
         TaskConfigData4 taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
         RunTask.Builder data = RunTask.newBuilder();
