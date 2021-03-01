@@ -4,9 +4,9 @@ import com.google.protobuf.MessageLite;
 import game.base.G;
 import game.config.TaskConfigData4;
 import game.exception.ModuleAssert;
-import game.module.player.PlayerData;
 import game.player.Player;
 import game.proto.TaskReq;
+import game.proto.data.RunTask;
 
 /**
  * @author Yunzhe.Jin
@@ -20,21 +20,21 @@ public class TaskHandler {
      * @param o
      * @return
      */
-    public static MessageLite addTask(Player player, TaskReq o) {
+    public static MessageLite acceptTask(Player player, TaskReq o) {
 
-        ModuleAssert.isTrue(player.getPlayerData().acceptTask.contains(o.getTaskId()));
+        ModuleAssert.notNull(player.getPd().getTaskBuilder().getAcceptableTaskMap().get(o.getTaskId()));
 
-        player.getPlayerData().acceptTask.remove(o.getTaskId());
+        player.getPd().getTaskBuilder().getAcceptableTaskMap().remove(o.getTaskId());
 
         TaskConfigData4 taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
-        TaskData data = new TaskData();
-        data.taskId = o.getTaskId();
+        RunTask.Builder data = RunTask.newBuilder();
+        data.setTaskId(o.getTaskId());
         if (taskConfigData4.completeType == 2) {// 立即完成
-            data.status = 3;
+            data.setStatus(3);
         } else {
-            data.status = 2;
+            data.setStatus(2);
         }
-        player.getPlayerData().runTask.put(data.taskId, data);
+        player.getPd().getTaskBuilder().putRunTask(o.getTaskId(), data.build());
 
         return null;
     }
@@ -46,11 +46,6 @@ public class TaskHandler {
      * @return
      */
     public static MessageLite completeTask(Player player, TaskReq o) {
-        PlayerData playerData = player.getPlayerData();
-        TaskData data = playerData.runTask.remove(o.getTaskId());
-        if (data != null) {
-            playerData.completeTask.add(data.taskId);
-        }
         return null;
     }
 

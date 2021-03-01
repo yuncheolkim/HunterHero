@@ -4,23 +4,19 @@ import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
 import game.base.Work;
-import game.game.ScenePos;
-import game.module.player.PlayerData;
-import game.module.scene.SceneData;
 import game.net.Transport;
-import game.proto.*;
+import game.proto.LoginRes;
+import game.proto.Message;
+import game.proto.data.PlayerData;
 import game.repo.PlayerRepo;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.stream.Collectors;
+import java.util.Date;
 
 /**
  * 线程安全
- *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -33,7 +29,8 @@ public class Player {
 
     private LocalDateTime loginTime;
 
-    private PlayerData playerData = new PlayerData();
+    //    private PlayerData playerData = new PlayerData();
+    private PlayerData.Builder pd = PlayerData.newBuilder();
 
     private LocalDateTime updateTime;
 
@@ -54,42 +51,10 @@ public class Player {
         loginTime = LocalDateTime.now();
 
         LoginRes.Builder builder = LoginRes.newBuilder();
-        builder.setPlayerId(pid);
-        if (StringUtils.isEmpty(playerData.name)) {
+        builder.setData(pd);
+        if (StringUtils.isEmpty(pd.getName())) {
             builder.setFirst(true);
-        } else {
-            builder.setName(playerData.name);
         }
-        builder.setLevel(playerData.level);
-        builder.setExp(playerData.exp);
-        builder.setLevelUpExp(playerData.needExp);
-        builder.setPower(playerData.power);
-        builder.setMaxPower(playerData.maxPower);
-
-        // scene
-        builder.setSceneData(game.proto.SceneData.newBuilder()
-                .setId(playerData.sceneData.id)
-                .setPos(game.proto.ScenePos.newBuilder()
-                        .setX(playerData.sceneData.scenePos.x)
-                        .setY(playerData.sceneData.scenePos.y)
-                )
-        );
-        // task
-        Iterable<RunTask> runTasks = playerData.runTask.values().stream().map(taskData -> RunTask.newBuilder()
-                .setTaskId(taskData.taskId)
-                .setStatus(taskData.status)
-                .addAllTarget(taskData.processDataList.stream().map(taskProcessData -> TaskTarget.newBuilder()
-                        .setId(taskProcessData.id)
-                        .setValue(taskProcessData.current)
-                        .build()).collect(Collectors.toList()))
-                .build()).collect(Collectors.toList());
-
-        builder.setTask(PlayerTask.newBuilder()
-                .addAllAcceptTask(playerData.acceptTask)
-                .addAllCompleteTask(playerData.completeTask)
-                .addAllRunTask(runTasks)
-                .build());
-
 
         transport.send(Message.newBuilder().setMsgNo(1).setBody(builder.build().toByteString()).build());
     }
@@ -97,7 +62,6 @@ public class Player {
 
     /**
      * 加载用户数据
-     *
      * @param code
      */
     public void load(String code) {
@@ -106,41 +70,38 @@ public class Player {
         PlayerRepo playerRepo = G.R.getPlayerRepo();
         String account = code;// todo for test
 
-        if (playerRepo.has(code)) {
-            playerData = playerRepo.load(account);
-            playerData.write(this);
-            initData();
+        if (playerRepo.has(account)) {
+            pd = playerRepo.load(account);
         } else {// 创建用户
-            playerData.account = account;
+            pd.setAccount(account);
             initFirstPlayer();
-            playerRepo.save(playerData);
+            playerRepo.save(pd.build());
         }
+        afterLoad();
     }
 
-    private void initData() {
-        playerData.needExp = G.C.dataMap9.get(playerData.level).exp;
+    private void afterLoad() {
+        loginTime = LocalDateTime.fromDateFields(new Date(pd.getLastLoginTime()));
+        updateTime = LocalDateTime.fromDateFields(new Date(pd.getUpdateTime()));
+        pd.getResourceBuilder().setNeedExp(G.C.dataMap9.get(pd.getLevel()).exp);
     }
 
     /**
      * 创建角色数据
      */
     private void initFirstPlayer() {
-        // 初始化任务
-        playerData.acceptTask.add(1);
         // 等级
-        playerData.level = 1;
-        //经验
-        playerData.needExp = G.C.dataMap9.get(1).exp;
+        pd.setLevel(1);
 
-        playerData.power = G.C.dataMap8.get(1).count;
-        playerData.maxPower = G.C.dataMap8.get(1).count;
-        playerData.powerRecoverSecond = G.C.dataMap8.get(2).count;
+        pd.getResourceBuilder().setPower(G.C.dataMap8.get(1).count);
+        pd.getResourceBuilder().setMaxPower(G.C.dataMap8.get(1).count);
+        pd.getResourceBuilder().setPowerRecoverSecond(G.C.dataMap8.get(2).count);
+
+        // 初始化任务
+        pd.getTaskBuilder().putAcceptableTask(1, true);
 
         // 场景 新手村
-        SceneData sceneData = new SceneData();
-        sceneData.id = 1;
-        sceneData.scenePos = new ScenePos(4, -20);
-        playerData.sceneData = sceneData;
+        pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
 
     }
 
@@ -149,8 +110,10 @@ public class Player {
      */
     public void saveData() {
 
-        playerData.read(this);
-        PlayerData copy = playerData.copy();
+        pd.setLastLoginTime(loginTime.toDate().getTime());
+        pd.setUpdateTime(updateTime.toDate().getTime());
+
+        PlayerData copy = pd.build();
         Work dataPersistenceWork = G.W.getDataPersistenceWork(pid);
 
         dataPersistenceWork.addTask(() -> {
@@ -185,8 +148,8 @@ public class Player {
         return createTime;
     }
 
-    public PlayerData getPlayerData() {
-        return playerData;
+    public PlayerData.Builder getPd() {
+        return pd;
     }
 
     public Transport getTransport() {

@@ -8,98 +8,23 @@ public interface LoginResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int64 playerId = 1;</code>
-   * @return The playerId.
+   * <code>.Message.PlayerData data = 1;</code>
+   * @return Whether the data field is set.
    */
-  long getPlayerId();
-
+  boolean hasData();
   /**
-   * <code>string name = 2;</code>
-   * @return The name.
+   * <code>.Message.PlayerData data = 1;</code>
+   * @return The data.
    */
-  java.lang.String getName();
+  game.proto.data.PlayerData getData();
   /**
-   * <code>string name = 2;</code>
-   * @return The bytes for name.
+   * <code>.Message.PlayerData data = 1;</code>
    */
-  com.google.protobuf.ByteString
-      getNameBytes();
+  game.proto.data.PlayerDataOrBuilder getDataOrBuilder();
 
   /**
    * <code>bool first = 3;</code>
    * @return The first.
    */
   boolean getFirst();
-
-  /**
-   * <code>.Message.PlayerTask task = 4;</code>
-   * @return Whether the task field is set.
-   */
-  boolean hasTask();
-  /**
-   * <code>.Message.PlayerTask task = 4;</code>
-   * @return The task.
-   */
-  game.proto.PlayerTask getTask();
-  /**
-   * <code>.Message.PlayerTask task = 4;</code>
-   */
-  game.proto.PlayerTaskOrBuilder getTaskOrBuilder();
-
-  /**
-   * <code>int32 exp = 5;</code>
-   * @return The exp.
-   */
-  int getExp();
-
-  /**
-   * <code>int32 levelUpExp = 6;</code>
-   * @return The levelUpExp.
-   */
-  int getLevelUpExp();
-
-  /**
-   * <code>int32 level = 7;</code>
-   * @return The level.
-   */
-  int getLevel();
-
-  /**
-   * <code>.Message.SceneData sceneData = 8;</code>
-   * @return Whether the sceneData field is set.
-   */
-  boolean hasSceneData();
-  /**
-   * <code>.Message.SceneData sceneData = 8;</code>
-   * @return The sceneData.
-   */
-  game.proto.SceneData getSceneData();
-  /**
-   * <code>.Message.SceneData sceneData = 8;</code>
-   */
-  game.proto.SceneDataOrBuilder getSceneDataOrBuilder();
-
-  /**
-   * <code>int32 gold = 9;</code>
-   * @return The gold.
-   */
-  int getGold();
-
-  /**
-   * <code>int32 lei = 10;</code>
-   * @return The lei.
-   */
-  int getLei();
-
-  /**
-   * <code>int32 power = 11;</code>
-   * @return The power.
-   */
-  int getPower();
-
-  /**
-   * <code>int32 maxPower = 12;</code>
-   * @return The maxPower.
-   */
-  int getMaxPower();
 }

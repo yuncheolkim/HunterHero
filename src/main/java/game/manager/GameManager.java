@@ -24,7 +24,7 @@ public class GameManager extends AbsLifecycle {
     private int version = 1;
 
     public GameManager() {
-        addHandler(new Invoker<>(1001, TaskHandler::addTask, TaskReq::parser));
+        addHandler(new Invoker<>(1001, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(1002, TaskHandler::completeTask, TaskReq::parser));
         addHandler(new Invoker<>(3, PlayerHandler::createName, PlayerCreateNameReq::parser));
 

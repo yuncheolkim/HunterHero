@@ -1,5 +1,6 @@
 package utils;
 
+import game.proto.data.PlayerData;
 import game.utils.FileUtils;
 import org.junit.Test;
 
@@ -27,6 +28,22 @@ public class FileUtilsTest {
     public void test3() throws IOException, URISyntaxException {
         String s = FileUtils.readFile(getClass().getClassLoader().getResource("data/task_对话.json").toURI());
         System.out.println(s);
+    }
+
+    @Test
+    public void test4(){
+        PlayerData.Builder b = PlayerData.newBuilder();
+        b.setName("a");
+        System.out.println(b.build());
+        b.setName("b");
+        System.out.println(b.build());
+
+        b.getResourceBuilder().setPower(1);
+        System.out.println(b.build());
+        b.getTaskBuilder().putAcceptableTask(1, true);
+        System.out.println(b.build());
+
+
     }
 
 }

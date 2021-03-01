@@ -50,36 +50,6 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerCreateNameReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_PlayerTask_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_PlayerTask_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_RunTask_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_RunTask_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_TaskTarget_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_TaskTarget_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_TaskInfo_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_TaskInfo_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_ScenePos_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_ScenePos_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_SceneData_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_SceneData_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_TaskReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -93,32 +63,20 @@ public final class MessageOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rmessage.proto\022\007Message\"S\n\007Message\022\017\n\007v" +
-      "ersion\030\001 \001(\005\022\r\n\005msgNo\030\002 \001(\005\022\r\n\005error\030\003 \001" +
-      "(\005\022\013\n\003seq\030\004 \001(\005\022\014\n\004body\030\n \001(\014\"\007\n\005Empty\"\t" +
-      "\n\007Success\"*\n\010LoginReq\022\020\n\010playerId\030\001 \001(\003\022" +
-      "\014\n\004code\030\002 \001(\t\"\357\001\n\010LoginRes\022\020\n\010playerId\030\001" +
-      " \001(\003\022\014\n\004name\030\002 \001(\t\022\r\n\005first\030\003 \001(\010\022!\n\004tas" +
-      "k\030\004 \001(\0132\023.Message.PlayerTask\022\013\n\003exp\030\005 \001(" +
-      "\005\022\022\n\nlevelUpExp\030\006 \001(\005\022\r\n\005level\030\007 \001(\005\022%\n\t" +
-      "sceneData\030\010 \001(\0132\022.Message.SceneData\022\014\n\004g" +
-      "old\030\t \001(\005\022\013\n\003lei\030\n \001(\005\022\r\n\005power\030\013 \001(\005\022\020\n" +
-      "\010maxPower\030\014 \001(\005\"\n\n\010KickPush\"#\n\023PlayerCre" +
-      "ateNameReq\022\014\n\004name\030\001 \001(\t\"Y\n\nPlayerTask\022\024" +
-      "\n\014completeTask\030\001 \003(\005\022\022\n\nacceptTask\030\002 \003(\005" +
-      "\022!\n\007runTask\030\003 \003(\0132\020.Message.RunTask\"N\n\007R" +
-      "unTask\022\016\n\006taskId\030\001 \001(\005\022\016\n\006status\030\002 \001(\005\022#" +
-      "\n\006target\030\003 \003(\0132\023.Message.TaskTarget\"\'\n\nT" +
-      "askTarget\022\n\n\002id\030\001 \001(\005\022\r\n\005value\030\002 \001(\005\"\032\n\010" +
-      "TaskInfo\022\016\n\006taskId\030\001 \001(\005\" \n\010ScenePos\022\t\n\001" +
-      "x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneData\022\n\n\002id\030\001 " +
-      "\001(\005\022\036\n\003pos\030\002 \001(\0132\021.Message.ScenePos\"\031\n\007T" +
-      "askReq\022\016\n\006taskId\030\001 \001(\005B\020\n\ngame.protoH\001P\001" +
-      "b\006proto3"
+      "\n\rmessage.proto\022\007Message\032\ndata.proto\"S\n\007" +
+      "Message\022\017\n\007version\030\001 \001(\005\022\r\n\005msgNo\030\002 \001(\005\022" +
+      "\r\n\005error\030\003 \001(\005\022\013\n\003seq\030\004 \001(\005\022\014\n\004body\030\n \001(" +
+      "\014\"\007\n\005Empty\"\t\n\007Success\"*\n\010LoginReq\022\020\n\010pla" +
+      "yerId\030\001 \001(\003\022\014\n\004code\030\002 \001(\t\"<\n\010LoginRes\022!\n" +
+      "\004data\030\001 \001(\0132\023.Message.PlayerData\022\r\n\005firs" +
+      "t\030\003 \001(\010\"\n\n\010KickPush\"#\n\023PlayerCreateNameR" +
+      "eq\022\014\n\004name\030\001 \001(\t\"\031\n\007TaskReq\022\016\n\006taskId\030\001 " +
+      "\001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          game.proto.data.Data.getDescriptor(),
         });
     internal_static_Message_Message_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -149,7 +107,7 @@ public final class MessageOuterClass {
     internal_static_Message_LoginRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LoginRes_descriptor,
-        new java.lang.String[] { "PlayerId", "Name", "First", "Task", "Exp", "LevelUpExp", "Level", "SceneData", "Gold", "Lei", "Power", "MaxPower", });
+        new java.lang.String[] { "Data", "First", });
     internal_static_Message_KickPush_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_Message_KickPush_fieldAccessorTable = new
@@ -162,48 +120,13 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerCreateNameReq_descriptor,
         new java.lang.String[] { "Name", });
-    internal_static_Message_PlayerTask_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_Message_PlayerTask_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_PlayerTask_descriptor,
-        new java.lang.String[] { "CompleteTask", "AcceptTask", "RunTask", });
-    internal_static_Message_RunTask_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_Message_RunTask_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_RunTask_descriptor,
-        new java.lang.String[] { "TaskId", "Status", "Target", });
-    internal_static_Message_TaskTarget_descriptor =
-      getDescriptor().getMessageTypes().get(9);
-    internal_static_Message_TaskTarget_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_TaskTarget_descriptor,
-        new java.lang.String[] { "Id", "Value", });
-    internal_static_Message_TaskInfo_descriptor =
-      getDescriptor().getMessageTypes().get(10);
-    internal_static_Message_TaskInfo_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_TaskInfo_descriptor,
-        new java.lang.String[] { "TaskId", });
-    internal_static_Message_ScenePos_descriptor =
-      getDescriptor().getMessageTypes().get(11);
-    internal_static_Message_ScenePos_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_ScenePos_descriptor,
-        new java.lang.String[] { "X", "Y", });
-    internal_static_Message_SceneData_descriptor =
-      getDescriptor().getMessageTypes().get(12);
-    internal_static_Message_SceneData_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_SceneData_descriptor,
-        new java.lang.String[] { "Id", "Pos", });
     internal_static_Message_TaskReq_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_Message_TaskReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TaskReq_descriptor,
         new java.lang.String[] { "TaskId", });
+    game.proto.data.Data.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

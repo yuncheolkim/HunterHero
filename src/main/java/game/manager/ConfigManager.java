@@ -150,5 +150,6 @@ public class ConfigManager extends AbsLifecycle {
             }
         }.load();
 
+        /////
     }
 }

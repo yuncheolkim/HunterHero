@@ -21,7 +21,7 @@ public class PlayerHandler {
      */
     public static MessageLite createName(Player player, PlayerCreateNameReq o) {
 
-        player.getPlayerData().name = o.getName();
+        player.getPd().setName(o.getName());
 
         return Success.getDefaultInstance();
     }

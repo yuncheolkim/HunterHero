@@ -1,8 +1,7 @@
 package game.repo;
 
-import game.module.player.PlayerData;
+import game.proto.data.PlayerData;
 import game.utils.FileUtils;
-import game.utils.JsonUtil;
 
 import java.io.IOException;
 
@@ -17,14 +16,14 @@ public class PlayerRepo extends FileRepo {
         return FileUtils.hasFile(path);
     }
 
-    public PlayerData load(String account) {
+    public PlayerData.Builder load(String account) {
         try {
             String path = "data/" + account;
             if (!FileUtils.hasFile(path)) {
                 return null;
             }
-            String s = FileUtils.readFile(path);
-            return JsonUtil.fromJsonString(s, PlayerData.class);
+            byte[] s = FileUtils.readByteFile(path);
+            return PlayerData.newBuilder().mergeFrom(s);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -35,7 +34,7 @@ public class PlayerRepo extends FileRepo {
 
     public void save(PlayerData data) {
         try {
-            FileUtils.writeFile("data/" + data.account, JsonUtil.toJsonString(data));
+            FileUtils.writeByteFile("data/" + data.getAccount(), data.toByteArray());
         } catch (IOException e) {
             e.printStackTrace();
         }
