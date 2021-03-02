@@ -5,91 +5,100 @@ option optimize_for = SPEED;
 option java_multiple_files = true;
 
 message PlayerData {
-    int64 pid = 1;
-    string name = 2;
-    string account = 3;
-    int64 lastLoginTime = 4;
-    int64 updateTime = 5;
-    int32 level = 9;
-    PlayerTask task = 101;
-    SceneData sceneData = 201;
-
-    Resource resource = 301;
+  int64 pid = 1;
+  string name = 2;
+  string account = 3;
+  int64 lastLoginTime = 4;
+  int64 updateTime = 5;
+  int32 level = 9;
+  PlayerTask task = 101;
+  SceneData sceneData = 201;
+  Resource resource = 301;
+  repeated PlayerHero hero = 401;
 }
 
 // 资源
 message Resource {
-    int32 exp = 10;
-    int32 needExp = 11;
-    int64 gold = 12;
-    int32 lei = 13;
-    int32 power = 6;
-    int32 maxPower = 7;
-    int32 powerRecoverSecond = 8;
+  int32 exp = 10;
+  int32 needExp = 11;
+  int64 gold = 12;
+  int32 lei = 13;
+  int32 power = 6;
+  int32 maxPower = 7;
+  int32 powerRecoverSecond = 8;
 
 }
 
 message ScenePos {
-    float x = 1;
-    float y = 2;
+  float x = 1;
+  float y = 2;
 }
 message SceneData {
-    int32 id = 1;
-    ScenePos pos = 2;
+  int32 id = 1;
+  ScenePos pos = 2;
 }
+
+message PlayerTask {
+  map<int32, bool> completeTask = 1;
+  map<int32, bool> acceptableTask = 2;
+  map<int32, RunTask> runTask = 3;
+}
+
+message RunTask {
+  int32 taskId = 1;
+  int32 status = 2;
+  repeated TaskTarget target = 3;
+}
+
+message TaskTarget {
+  int32 id = 1;
+  int32 value = 2;
+}
+//////////// hero
 
 // 英雄信息
 message PlayerHero {
-    int32 id = 1;
-    string name = 2;
-    int32 level = 3;
-    repeated Equipment equipment = 4;
-    Property property = 5;
-    PropertyEffect propertyEffect = 6;
-    Talent talent = 7;
+  int32 id = 1;
+  int32 level = 2;
+  int32 exp = 3;
+  Property property = 5;
+  PropertyEffect propertyEffect = 6;
+  Talent talent = 7;
+  repeated Equipment equipment = 8;
+  map<int32, HeroRealm> liLian = 9;
+  map<int32, HeroRealm> xiuLian = 10;
+}
+// 修炼等级
+message HeroRealm{
+  int32 id = 1;
+  int32 level = 2;
 }
 // 装备
 message Equipment {
-    int32 id = 1;
-    int32 level = 2;
-    Property property = 4;
+  int32 id = 1;
+  int32 level = 2;
+  Property property = 4;
 }
 
 //属性
 message Property {
-    int32 hp = 1;
-    int32 damage = 2;
-    int32 def = 3;
-    int32 avoid = 4;
-    int32 critical = 5;
-    int32 criticalDamage = 6;
-    int32 speed = 7;
+  int32 hp = 1;
+  int32 damage = 2;
+  int32 def = 3;
+  int32 avoid = 4;
+  int32 critical = 5;
+  int32 criticalDamage = 6;
+  int32 speed = 7;
 }
 
 // 属性效果 v/100
 message PropertyEffect {
-    int32 defRate = 1; //减伤(百分比)
-    int32 avoidRate = 2; //暴击概率
-    int32 criticalRate = 3; //闪避概率
+  int32 defRate = 1; //减伤(百分比)
+  int32 avoidRate = 2; //暴击概率
+  int32 criticalRate = 3; //闪避概率
 }
 // 天赋
 message Talent {
-    repeated int32 use = 2; // 天赋选择
+  repeated int32 use = 2; // 天赋选择
 }
 
-message PlayerTask {
-    map<int32, bool> completeTask = 1;
-    map<int32, bool> acceptableTask = 2;
-    map<int32, RunTask> runTask = 3;
-}
-
-message RunTask {
-    int32 taskId = 1;
-    int32 status = 2;
-    repeated TaskTarget target = 3;
-}
-
-message TaskTarget {
-    int32 id = 1;
-    int32 value = 2;
-}

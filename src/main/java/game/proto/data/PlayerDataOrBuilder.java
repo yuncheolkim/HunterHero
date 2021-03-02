@@ -99,4 +99,28 @@ public interface PlayerDataOrBuilder extends
    * <code>.Message.Resource resource = 301;</code>
    */
   game.proto.data.ResourceOrBuilder getResourceOrBuilder();
+
+  /**
+   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   */
+  java.util.List<game.proto.data.PlayerHero> 
+      getHeroList();
+  /**
+   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   */
+  game.proto.data.PlayerHero getHero(int index);
+  /**
+   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   */
+  int getHeroCount();
+  /**
+   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   */
+  java.util.List<? extends game.proto.data.PlayerHeroOrBuilder> 
+      getHeroOrBuilderList();
+  /**
+   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   */
+  game.proto.data.PlayerHeroOrBuilder getHeroOrBuilder(
+      int index);
 }

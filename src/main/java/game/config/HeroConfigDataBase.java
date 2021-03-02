@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @author Yunzhe.Jin
  * 2021/2/24 17:02
  */
-public class HeroConfigData1 {
+public class HeroConfigDataBase {
 
     @JsonProperty
     public int id;

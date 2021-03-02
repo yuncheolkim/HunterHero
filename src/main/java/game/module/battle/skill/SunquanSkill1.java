@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.CalcUtil;
+import game.utils.CalcUtil;
 import game.module.battle.Constant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;

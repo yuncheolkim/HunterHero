@@ -2,7 +2,7 @@ package game.module.battle.skill;
 
 import game.base.Logs;
 import game.module.battle.Battle;
-import game.module.battle.CalcUtil;
+import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;

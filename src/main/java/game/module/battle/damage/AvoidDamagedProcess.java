@@ -1,6 +1,6 @@
 package game.module.battle.damage;
 
-import game.module.battle.CalcUtil;
+import game.utils.CalcUtil;
 
 /**
  * 受到伤害时计算闪避

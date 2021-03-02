@@ -14,46 +14,16 @@ public interface PlayerHeroOrBuilder extends
   int getId();
 
   /**
-   * <code>string name = 2;</code>
-   * @return The name.
-   */
-  java.lang.String getName();
-  /**
-   * <code>string name = 2;</code>
-   * @return The bytes for name.
-   */
-  com.google.protobuf.ByteString
-      getNameBytes();
-
-  /**
-   * <code>int32 level = 3;</code>
+   * <code>int32 level = 2;</code>
    * @return The level.
    */
   int getLevel();
 
   /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
+   * <code>int32 exp = 3;</code>
+   * @return The exp.
    */
-  java.util.List<game.proto.data.Equipment> 
-      getEquipmentList();
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  game.proto.data.Equipment getEquipment(int index);
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  int getEquipmentCount();
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
-      getEquipmentOrBuilderList();
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
-      int index);
+  int getExp();
 
   /**
    * <code>.Message.Property property = 5;</code>
@@ -99,4 +69,96 @@ public interface PlayerHeroOrBuilder extends
    * <code>.Message.Talent talent = 7;</code>
    */
   game.proto.data.TalentOrBuilder getTalentOrBuilder();
+
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  java.util.List<game.proto.data.Equipment> 
+      getEquipmentList();
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  game.proto.data.Equipment getEquipment(int index);
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  int getEquipmentCount();
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
+      getEquipmentOrBuilderList();
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
+      int index);
+
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+  int getLiLianCount();
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+  boolean containsLiLian(
+      int key);
+  /**
+   * Use {@link #getLiLianMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
+  getLiLian();
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
+  getLiLianMap();
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+
+  game.proto.data.HeroRealm getLiLianOrDefault(
+      int key,
+      game.proto.data.HeroRealm defaultValue);
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+
+  game.proto.data.HeroRealm getLiLianOrThrow(
+      int key);
+
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+  int getXiuLianCount();
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+  boolean containsXiuLian(
+      int key);
+  /**
+   * Use {@link #getXiuLianMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
+  getXiuLian();
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
+  getXiuLianMap();
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+
+  game.proto.data.HeroRealm getXiuLianOrDefault(
+      int key,
+      game.proto.data.HeroRealm defaultValue);
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+
+  game.proto.data.HeroRealm getXiuLianOrThrow(
+      int key);
 }

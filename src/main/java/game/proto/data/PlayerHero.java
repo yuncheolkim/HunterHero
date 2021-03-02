@@ -20,7 +20,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private PlayerHero() {
-    name_ = "";
     equipment_ = java.util.Collections.emptyList();
   }
 
@@ -60,24 +59,14 @@ private static final long serialVersionUID = 0L;
             id_ = input.readInt32();
             break;
           }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            name_ = s;
-            break;
-          }
-          case 24: {
+          case 16: {
 
             level_ = input.readInt32();
             break;
           }
-          case 34: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              equipment_ = new java.util.ArrayList<game.proto.data.Equipment>();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            equipment_.add(
-                input.readMessage(game.proto.data.Equipment.parser(), extensionRegistry));
+          case 24: {
+
+            exp_ = input.readInt32();
             break;
           }
           case 42: {
@@ -119,6 +108,41 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 66: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              equipment_ = new java.util.ArrayList<game.proto.data.Equipment>();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            equipment_.add(
+                input.readMessage(game.proto.data.Equipment.parser(), extensionRegistry));
+            break;
+          }
+          case 74: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              liLian_ = com.google.protobuf.MapField.newMapField(
+                  LiLianDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000002;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HeroRealm>
+            liLian__ = input.readMessage(
+                LiLianDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            liLian_.getMutableMap().put(
+                liLian__.getKey(), liLian__.getValue());
+            break;
+          }
+          case 82: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              xiuLian_ = com.google.protobuf.MapField.newMapField(
+                  XiuLianDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000004;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HeroRealm>
+            xiuLian__ = input.readMessage(
+                XiuLianDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            xiuLian_.getMutableMap().put(
+                xiuLian__.getKey(), xiuLian__.getValue());
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -146,6 +170,20 @@ private static final long serialVersionUID = 0L;
     return game.proto.data.Data.internal_static_Message_PlayerHero_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 9:
+        return internalGetLiLian();
+      case 10:
+        return internalGetXiuLian();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -165,48 +203,10 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int NAME_FIELD_NUMBER = 2;
-  private volatile java.lang.Object name_;
-  /**
-   * <code>string name = 2;</code>
-   * @return The name.
-   */
-  @java.lang.Override
-  public java.lang.String getName() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      name_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string name = 2;</code>
-   * @return The bytes for name.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getNameBytes() {
-    java.lang.Object ref = name_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      name_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int LEVEL_FIELD_NUMBER = 3;
+  public static final int LEVEL_FIELD_NUMBER = 2;
   private int level_;
   /**
-   * <code>int32 level = 3;</code>
+   * <code>int32 level = 2;</code>
    * @return The level.
    */
   @java.lang.Override
@@ -214,44 +214,15 @@ private static final long serialVersionUID = 0L;
     return level_;
   }
 
-  public static final int EQUIPMENT_FIELD_NUMBER = 4;
-  private java.util.List<game.proto.data.Equipment> equipment_;
+  public static final int EXP_FIELD_NUMBER = 3;
+  private int exp_;
   /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
+   * <code>int32 exp = 3;</code>
+   * @return The exp.
    */
   @java.lang.Override
-  public java.util.List<game.proto.data.Equipment> getEquipmentList() {
-    return equipment_;
-  }
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
-      getEquipmentOrBuilderList() {
-    return equipment_;
-  }
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  @java.lang.Override
-  public int getEquipmentCount() {
-    return equipment_.size();
-  }
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.Equipment getEquipment(int index) {
-    return equipment_.get(index);
-  }
-  /**
-   * <code>repeated .Message.Equipment equipment = 4;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
-      int index) {
-    return equipment_.get(index);
+  public int getExp() {
+    return exp_;
   }
 
   public static final int PROPERTY_FIELD_NUMBER = 5;
@@ -332,6 +303,208 @@ private static final long serialVersionUID = 0L;
     return getTalent();
   }
 
+  public static final int EQUIPMENT_FIELD_NUMBER = 8;
+  private java.util.List<game.proto.data.Equipment> equipment_;
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  @java.lang.Override
+  public java.util.List<game.proto.data.Equipment> getEquipmentList() {
+    return equipment_;
+  }
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
+      getEquipmentOrBuilderList() {
+    return equipment_;
+  }
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  @java.lang.Override
+  public int getEquipmentCount() {
+    return equipment_.size();
+  }
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.Equipment getEquipment(int index) {
+    return equipment_.get(index);
+  }
+  /**
+   * <code>repeated .Message.Equipment equipment = 8;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
+      int index) {
+    return equipment_.get(index);
+  }
+
+  public static final int LILIAN_FIELD_NUMBER = 9;
+  private static final class LiLianDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.HeroRealm> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.HeroRealm>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerHero_LiLianEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.HeroRealm.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.HeroRealm> liLian_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HeroRealm>
+  internalGetLiLian() {
+    if (liLian_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          LiLianDefaultEntryHolder.defaultEntry);
+    }
+    return liLian_;
+  }
+
+  public int getLiLianCount() {
+    return internalGetLiLian().getMap().size();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsLiLian(
+      int key) {
+    
+    return internalGetLiLian().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getLiLianMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getLiLian() {
+    return getLiLianMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getLiLianMap() {
+    return internalGetLiLian().getMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.HeroRealm getLiLianOrDefault(
+      int key,
+      game.proto.data.HeroRealm defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+        internalGetLiLian().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.HeroRealm getLiLianOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+        internalGetLiLian().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
+  public static final int XIULIAN_FIELD_NUMBER = 10;
+  private static final class XiuLianDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.HeroRealm> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.HeroRealm>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerHero_XiuLianEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.HeroRealm.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.HeroRealm> xiuLian_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HeroRealm>
+  internalGetXiuLian() {
+    if (xiuLian_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          XiuLianDefaultEntryHolder.defaultEntry);
+    }
+    return xiuLian_;
+  }
+
+  public int getXiuLianCount() {
+    return internalGetXiuLian().getMap().size();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsXiuLian(
+      int key) {
+    
+    return internalGetXiuLian().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getXiuLianMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getXiuLian() {
+    return getXiuLianMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getXiuLianMap() {
+    return internalGetXiuLian().getMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.HeroRealm getXiuLianOrDefault(
+      int key,
+      game.proto.data.HeroRealm defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+        internalGetXiuLian().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.HeroRealm getXiuLianOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+        internalGetXiuLian().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -349,14 +522,11 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeInt32(1, id_);
     }
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
-    }
     if (level_ != 0) {
-      output.writeInt32(3, level_);
+      output.writeInt32(2, level_);
     }
-    for (int i = 0; i < equipment_.size(); i++) {
-      output.writeMessage(4, equipment_.get(i));
+    if (exp_ != 0) {
+      output.writeInt32(3, exp_);
     }
     if (property_ != null) {
       output.writeMessage(5, getProperty());
@@ -367,6 +537,21 @@ private static final long serialVersionUID = 0L;
     if (talent_ != null) {
       output.writeMessage(7, getTalent());
     }
+    for (int i = 0; i < equipment_.size(); i++) {
+      output.writeMessage(8, equipment_.get(i));
+    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetLiLian(),
+        LiLianDefaultEntryHolder.defaultEntry,
+        9);
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetXiuLian(),
+        XiuLianDefaultEntryHolder.defaultEntry,
+        10);
     unknownFields.writeTo(output);
   }
 
@@ -380,16 +565,13 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, id_);
     }
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
-    }
     if (level_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, level_);
+        .computeInt32Size(2, level_);
     }
-    for (int i = 0; i < equipment_.size(); i++) {
+    if (exp_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, equipment_.get(i));
+        .computeInt32Size(3, exp_);
     }
     if (property_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -402,6 +584,30 @@ private static final long serialVersionUID = 0L;
     if (talent_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, getTalent());
+    }
+    for (int i = 0; i < equipment_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(8, equipment_.get(i));
+    }
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HeroRealm> entry
+         : internalGetLiLian().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HeroRealm>
+      liLian__ = LiLianDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(9, liLian__);
+    }
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HeroRealm> entry
+         : internalGetXiuLian().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HeroRealm>
+      xiuLian__ = XiuLianDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(10, xiuLian__);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -420,12 +626,10 @@ private static final long serialVersionUID = 0L;
 
     if (getId()
         != other.getId()) return false;
-    if (!getName()
-        .equals(other.getName())) return false;
     if (getLevel()
         != other.getLevel()) return false;
-    if (!getEquipmentList()
-        .equals(other.getEquipmentList())) return false;
+    if (getExp()
+        != other.getExp()) return false;
     if (hasProperty() != other.hasProperty()) return false;
     if (hasProperty()) {
       if (!getProperty()
@@ -441,6 +645,12 @@ private static final long serialVersionUID = 0L;
       if (!getTalent()
           .equals(other.getTalent())) return false;
     }
+    if (!getEquipmentList()
+        .equals(other.getEquipmentList())) return false;
+    if (!internalGetLiLian().equals(
+        other.internalGetLiLian())) return false;
+    if (!internalGetXiuLian().equals(
+        other.internalGetXiuLian())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -454,14 +664,10 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
-    hash = (37 * hash) + NAME_FIELD_NUMBER;
-    hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + LEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getLevel();
-    if (getEquipmentCount() > 0) {
-      hash = (37 * hash) + EQUIPMENT_FIELD_NUMBER;
-      hash = (53 * hash) + getEquipmentList().hashCode();
-    }
+    hash = (37 * hash) + EXP_FIELD_NUMBER;
+    hash = (53 * hash) + getExp();
     if (hasProperty()) {
       hash = (37 * hash) + PROPERTY_FIELD_NUMBER;
       hash = (53 * hash) + getProperty().hashCode();
@@ -473,6 +679,18 @@ private static final long serialVersionUID = 0L;
     if (hasTalent()) {
       hash = (37 * hash) + TALENT_FIELD_NUMBER;
       hash = (53 * hash) + getTalent().hashCode();
+    }
+    if (getEquipmentCount() > 0) {
+      hash = (37 * hash) + EQUIPMENT_FIELD_NUMBER;
+      hash = (53 * hash) + getEquipmentList().hashCode();
+    }
+    if (!internalGetLiLian().getMap().isEmpty()) {
+      hash = (37 * hash) + LILIAN_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetLiLian().hashCode();
+    }
+    if (!internalGetXiuLian().getMap().isEmpty()) {
+      hash = (37 * hash) + XIULIAN_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetXiuLian().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -585,6 +803,32 @@ private static final long serialVersionUID = 0L;
       return game.proto.data.Data.internal_static_Message_PlayerHero_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 9:
+          return internalGetLiLian();
+        case 10:
+          return internalGetXiuLian();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 9:
+          return internalGetMutableLiLian();
+        case 10:
+          return internalGetMutableXiuLian();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -614,16 +858,10 @@ private static final long serialVersionUID = 0L;
       super.clear();
       id_ = 0;
 
-      name_ = "";
-
       level_ = 0;
 
-      if (equipmentBuilder_ == null) {
-        equipment_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        equipmentBuilder_.clear();
-      }
+      exp_ = 0;
+
       if (propertyBuilder_ == null) {
         property_ = null;
       } else {
@@ -642,6 +880,14 @@ private static final long serialVersionUID = 0L;
         talent_ = null;
         talentBuilder_ = null;
       }
+      if (equipmentBuilder_ == null) {
+        equipment_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      } else {
+        equipmentBuilder_.clear();
+      }
+      internalGetMutableLiLian().clear();
+      internalGetMutableXiuLian().clear();
       return this;
     }
 
@@ -670,17 +916,8 @@ private static final long serialVersionUID = 0L;
       game.proto.data.PlayerHero result = new game.proto.data.PlayerHero(this);
       int from_bitField0_ = bitField0_;
       result.id_ = id_;
-      result.name_ = name_;
       result.level_ = level_;
-      if (equipmentBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          equipment_ = java.util.Collections.unmodifiableList(equipment_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.equipment_ = equipment_;
-      } else {
-        result.equipment_ = equipmentBuilder_.build();
-      }
+      result.exp_ = exp_;
       if (propertyBuilder_ == null) {
         result.property_ = property_;
       } else {
@@ -696,6 +933,19 @@ private static final long serialVersionUID = 0L;
       } else {
         result.talent_ = talentBuilder_.build();
       }
+      if (equipmentBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          equipment_ = java.util.Collections.unmodifiableList(equipment_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.equipment_ = equipment_;
+      } else {
+        result.equipment_ = equipmentBuilder_.build();
+      }
+      result.liLian_ = internalGetLiLian();
+      result.liLian_.makeImmutable();
+      result.xiuLian_ = internalGetXiuLian();
+      result.xiuLian_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -747,12 +997,20 @@ private static final long serialVersionUID = 0L;
       if (other.getId() != 0) {
         setId(other.getId());
       }
-      if (!other.getName().isEmpty()) {
-        name_ = other.name_;
-        onChanged();
-      }
       if (other.getLevel() != 0) {
         setLevel(other.getLevel());
+      }
+      if (other.getExp() != 0) {
+        setExp(other.getExp());
+      }
+      if (other.hasProperty()) {
+        mergeProperty(other.getProperty());
+      }
+      if (other.hasPropertyEffect()) {
+        mergePropertyEffect(other.getPropertyEffect());
+      }
+      if (other.hasTalent()) {
+        mergeTalent(other.getTalent());
       }
       if (equipmentBuilder_ == null) {
         if (!other.equipment_.isEmpty()) {
@@ -780,15 +1038,10 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (other.hasProperty()) {
-        mergeProperty(other.getProperty());
-      }
-      if (other.hasPropertyEffect()) {
-        mergePropertyEffect(other.getPropertyEffect());
-      }
-      if (other.hasTalent()) {
-        mergeTalent(other.getTalent());
-      }
+      internalGetMutableLiLian().mergeFrom(
+          other.internalGetLiLian());
+      internalGetMutableXiuLian().mergeFrom(
+          other.internalGetXiuLian());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -850,85 +1103,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object name_ = "";
-    /**
-     * <code>string name = 2;</code>
-     * @return The name.
-     */
-    public java.lang.String getName() {
-      java.lang.Object ref = name_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        name_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string name = 2;</code>
-     * @return The bytes for name.
-     */
-    public com.google.protobuf.ByteString
-        getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string name = 2;</code>
-     * @param value The name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setName(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      name_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearName() {
-      
-      name_ = getDefaultInstance().getName();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string name = 2;</code>
-     * @param value The bytes for name to set.
-     * @return This builder for chaining.
-     */
-    public Builder setNameBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      name_ = value;
-      onChanged();
-      return this;
-    }
-
     private int level_ ;
     /**
-     * <code>int32 level = 3;</code>
+     * <code>int32 level = 2;</code>
      * @return The level.
      */
     @java.lang.Override
@@ -936,7 +1113,7 @@ private static final long serialVersionUID = 0L;
       return level_;
     }
     /**
-     * <code>int32 level = 3;</code>
+     * <code>int32 level = 2;</code>
      * @param value The level to set.
      * @return This builder for chaining.
      */
@@ -947,7 +1124,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 level = 3;</code>
+     * <code>int32 level = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearLevel() {
@@ -957,244 +1134,35 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<game.proto.data.Equipment> equipment_ =
-      java.util.Collections.emptyList();
-    private void ensureEquipmentIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        equipment_ = new java.util.ArrayList<game.proto.data.Equipment>(equipment_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder> equipmentBuilder_;
-
+    private int exp_ ;
     /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
+     * <code>int32 exp = 3;</code>
+     * @return The exp.
      */
-    public java.util.List<game.proto.data.Equipment> getEquipmentList() {
-      if (equipmentBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(equipment_);
-      } else {
-        return equipmentBuilder_.getMessageList();
-      }
+    @java.lang.Override
+    public int getExp() {
+      return exp_;
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
+     * <code>int32 exp = 3;</code>
+     * @param value The exp to set.
+     * @return This builder for chaining.
      */
-    public int getEquipmentCount() {
-      if (equipmentBuilder_ == null) {
-        return equipment_.size();
-      } else {
-        return equipmentBuilder_.getCount();
-      }
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public game.proto.data.Equipment getEquipment(int index) {
-      if (equipmentBuilder_ == null) {
-        return equipment_.get(index);
-      } else {
-        return equipmentBuilder_.getMessage(index);
-      }
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder setEquipment(
-        int index, game.proto.data.Equipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEquipmentIsMutable();
-        equipment_.set(index, value);
-        onChanged();
-      } else {
-        equipmentBuilder_.setMessage(index, value);
-      }
+    public Builder setExp(int value) {
+      
+      exp_ = value;
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
+     * <code>int32 exp = 3;</code>
+     * @return This builder for chaining.
      */
-    public Builder setEquipment(
-        int index, game.proto.data.Equipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        equipmentBuilder_.setMessage(index, builderForValue.build());
-      }
+    public Builder clearExp() {
+      
+      exp_ = 0;
+      onChanged();
       return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder addEquipment(game.proto.data.Equipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEquipmentIsMutable();
-        equipment_.add(value);
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder addEquipment(
-        int index, game.proto.data.Equipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEquipmentIsMutable();
-        equipment_.add(index, value);
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(index, value);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder addEquipment(
-        game.proto.data.Equipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.add(builderForValue.build());
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder addEquipment(
-        int index, game.proto.data.Equipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder addAllEquipment(
-        java.lang.Iterable<? extends game.proto.data.Equipment> values) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, equipment_);
-        onChanged();
-      } else {
-        equipmentBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder clearEquipment() {
-      if (equipmentBuilder_ == null) {
-        equipment_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        equipmentBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public Builder removeEquipment(int index) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.remove(index);
-        onChanged();
-      } else {
-        equipmentBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public game.proto.data.Equipment.Builder getEquipmentBuilder(
-        int index) {
-      return getEquipmentFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
-        int index) {
-      if (equipmentBuilder_ == null) {
-        return equipment_.get(index);  } else {
-        return equipmentBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
-         getEquipmentOrBuilderList() {
-      if (equipmentBuilder_ != null) {
-        return equipmentBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(equipment_);
-      }
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public game.proto.data.Equipment.Builder addEquipmentBuilder() {
-      return getEquipmentFieldBuilder().addBuilder(
-          game.proto.data.Equipment.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public game.proto.data.Equipment.Builder addEquipmentBuilder(
-        int index) {
-      return getEquipmentFieldBuilder().addBuilder(
-          index, game.proto.data.Equipment.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 4;</code>
-     */
-    public java.util.List<game.proto.data.Equipment.Builder> 
-         getEquipmentBuilderList() {
-      return getEquipmentFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder> 
-        getEquipmentFieldBuilder() {
-      if (equipmentBuilder_ == null) {
-        equipmentBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder>(
-                equipment_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        equipment_ = null;
-      }
-      return equipmentBuilder_;
     }
 
     private game.proto.data.Property property_;
@@ -1552,6 +1520,502 @@ private static final long serialVersionUID = 0L;
         talent_ = null;
       }
       return talentBuilder_;
+    }
+
+    private java.util.List<game.proto.data.Equipment> equipment_ =
+      java.util.Collections.emptyList();
+    private void ensureEquipmentIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        equipment_ = new java.util.ArrayList<game.proto.data.Equipment>(equipment_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder> equipmentBuilder_;
+
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public java.util.List<game.proto.data.Equipment> getEquipmentList() {
+      if (equipmentBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(equipment_);
+      } else {
+        return equipmentBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public int getEquipmentCount() {
+      if (equipmentBuilder_ == null) {
+        return equipment_.size();
+      } else {
+        return equipmentBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public game.proto.data.Equipment getEquipment(int index) {
+      if (equipmentBuilder_ == null) {
+        return equipment_.get(index);
+      } else {
+        return equipmentBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder setEquipment(
+        int index, game.proto.data.Equipment value) {
+      if (equipmentBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEquipmentIsMutable();
+        equipment_.set(index, value);
+        onChanged();
+      } else {
+        equipmentBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder setEquipment(
+        int index, game.proto.data.Equipment.Builder builderForValue) {
+      if (equipmentBuilder_ == null) {
+        ensureEquipmentIsMutable();
+        equipment_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        equipmentBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder addEquipment(game.proto.data.Equipment value) {
+      if (equipmentBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEquipmentIsMutable();
+        equipment_.add(value);
+        onChanged();
+      } else {
+        equipmentBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder addEquipment(
+        int index, game.proto.data.Equipment value) {
+      if (equipmentBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEquipmentIsMutable();
+        equipment_.add(index, value);
+        onChanged();
+      } else {
+        equipmentBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder addEquipment(
+        game.proto.data.Equipment.Builder builderForValue) {
+      if (equipmentBuilder_ == null) {
+        ensureEquipmentIsMutable();
+        equipment_.add(builderForValue.build());
+        onChanged();
+      } else {
+        equipmentBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder addEquipment(
+        int index, game.proto.data.Equipment.Builder builderForValue) {
+      if (equipmentBuilder_ == null) {
+        ensureEquipmentIsMutable();
+        equipment_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        equipmentBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder addAllEquipment(
+        java.lang.Iterable<? extends game.proto.data.Equipment> values) {
+      if (equipmentBuilder_ == null) {
+        ensureEquipmentIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, equipment_);
+        onChanged();
+      } else {
+        equipmentBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder clearEquipment() {
+      if (equipmentBuilder_ == null) {
+        equipment_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        equipmentBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public Builder removeEquipment(int index) {
+      if (equipmentBuilder_ == null) {
+        ensureEquipmentIsMutable();
+        equipment_.remove(index);
+        onChanged();
+      } else {
+        equipmentBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public game.proto.data.Equipment.Builder getEquipmentBuilder(
+        int index) {
+      return getEquipmentFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
+        int index) {
+      if (equipmentBuilder_ == null) {
+        return equipment_.get(index);  } else {
+        return equipmentBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
+         getEquipmentOrBuilderList() {
+      if (equipmentBuilder_ != null) {
+        return equipmentBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(equipment_);
+      }
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public game.proto.data.Equipment.Builder addEquipmentBuilder() {
+      return getEquipmentFieldBuilder().addBuilder(
+          game.proto.data.Equipment.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public game.proto.data.Equipment.Builder addEquipmentBuilder(
+        int index) {
+      return getEquipmentFieldBuilder().addBuilder(
+          index, game.proto.data.Equipment.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.Equipment equipment = 8;</code>
+     */
+    public java.util.List<game.proto.data.Equipment.Builder> 
+         getEquipmentBuilderList() {
+      return getEquipmentFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder> 
+        getEquipmentFieldBuilder() {
+      if (equipmentBuilder_ == null) {
+        equipmentBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder>(
+                equipment_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        equipment_ = null;
+      }
+      return equipmentBuilder_;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.HeroRealm> liLian_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HeroRealm>
+    internalGetLiLian() {
+      if (liLian_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            LiLianDefaultEntryHolder.defaultEntry);
+      }
+      return liLian_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HeroRealm>
+    internalGetMutableLiLian() {
+      onChanged();;
+      if (liLian_ == null) {
+        liLian_ = com.google.protobuf.MapField.newMapField(
+            LiLianDefaultEntryHolder.defaultEntry);
+      }
+      if (!liLian_.isMutable()) {
+        liLian_ = liLian_.copy();
+      }
+      return liLian_;
+    }
+
+    public int getLiLianCount() {
+      return internalGetLiLian().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsLiLian(
+        int key) {
+      
+      return internalGetLiLian().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getLiLianMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getLiLian() {
+      return getLiLianMap();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getLiLianMap() {
+      return internalGetLiLian().getMap();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.HeroRealm getLiLianOrDefault(
+        int key,
+        game.proto.data.HeroRealm defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+          internalGetLiLian().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.HeroRealm getLiLianOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+          internalGetLiLian().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearLiLian() {
+      internalGetMutableLiLian().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+
+    public Builder removeLiLian(
+        int key) {
+      
+      internalGetMutableLiLian().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
+    getMutableLiLian() {
+      return internalGetMutableLiLian().getMutableMap();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+    public Builder putLiLian(
+        int key,
+        game.proto.data.HeroRealm value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableLiLian().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+     */
+
+    public Builder putAllLiLian(
+        java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> values) {
+      internalGetMutableLiLian().getMutableMap()
+          .putAll(values);
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.HeroRealm> xiuLian_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HeroRealm>
+    internalGetXiuLian() {
+      if (xiuLian_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            XiuLianDefaultEntryHolder.defaultEntry);
+      }
+      return xiuLian_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HeroRealm>
+    internalGetMutableXiuLian() {
+      onChanged();;
+      if (xiuLian_ == null) {
+        xiuLian_ = com.google.protobuf.MapField.newMapField(
+            XiuLianDefaultEntryHolder.defaultEntry);
+      }
+      if (!xiuLian_.isMutable()) {
+        xiuLian_ = xiuLian_.copy();
+      }
+      return xiuLian_;
+    }
+
+    public int getXiuLianCount() {
+      return internalGetXiuLian().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsXiuLian(
+        int key) {
+      
+      return internalGetXiuLian().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getXiuLianMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getXiuLian() {
+      return getXiuLianMap();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> getXiuLianMap() {
+      return internalGetXiuLian().getMap();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.HeroRealm getXiuLianOrDefault(
+        int key,
+        game.proto.data.HeroRealm defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+          internalGetXiuLian().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.HeroRealm getXiuLianOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> map =
+          internalGetXiuLian().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearXiuLian() {
+      internalGetMutableXiuLian().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+
+    public Builder removeXiuLian(
+        int key) {
+      
+      internalGetMutableXiuLian().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
+    getMutableXiuLian() {
+      return internalGetMutableXiuLian().getMutableMap();
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+    public Builder putXiuLian(
+        int key,
+        game.proto.data.HeroRealm value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableXiuLian().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
+     */
+
+    public Builder putAllXiuLian(
+        java.util.Map<java.lang.Integer, game.proto.data.HeroRealm> values) {
+      internalGetMutableXiuLian().getMutableMap()
+          .putAll(values);
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

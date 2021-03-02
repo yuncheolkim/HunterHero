@@ -35,31 +35,6 @@ public final class Data {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_SceneData_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_PlayerHero_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_PlayerHero_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_Equipment_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_Equipment_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_Property_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_Property_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_PropertyEffect_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_PropertyEffect_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_Talent_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_Talent_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_PlayerTask_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -89,6 +64,46 @@ public final class Data {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_TaskTarget_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerHero_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerHero_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerHero_LiLianEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerHero_LiLianEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerHero_XiuLianEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerHero_XiuLianEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HeroRealm_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HeroRealm_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_Equipment_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_Equipment_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_Property_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_Property_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PropertyEffect_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PropertyEffect_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_Talent_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_Talent_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -98,44 +113,52 @@ public final class Data {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ndata.proto\022\007Message\"\343\001\n\nPlayerData\022\013\n\003" +
+      "\n\ndata.proto\022\007Message\"\207\002\n\nPlayerData\022\013\n\003" +
       "pid\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\017\n\007account\030\003 \001(\t" +
       "\022\025\n\rlastLoginTime\030\004 \001(\003\022\022\n\nupdateTime\030\005 " +
       "\001(\003\022\r\n\005level\030\t \001(\005\022!\n\004task\030e \001(\0132\023.Messa" +
       "ge.PlayerTask\022&\n\tsceneData\030\311\001 \001(\0132\022.Mess" +
       "age.SceneData\022$\n\010resource\030\255\002 \001(\0132\021.Messa" +
-      "ge.Resource\"\200\001\n\010Resource\022\013\n\003exp\030\n \001(\005\022\017\n" +
-      "\007needExp\030\013 \001(\005\022\014\n\004gold\030\014 \001(\003\022\013\n\003lei\030\r \001(" +
-      "\005\022\r\n\005power\030\006 \001(\005\022\020\n\010maxPower\030\007 \001(\005\022\032\n\022po" +
-      "werRecoverSecond\030\010 \001(\005\" \n\010ScenePos\022\t\n\001x\030" +
-      "\001 \001(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneData\022\n\n\002id\030\001 \001(" +
-      "\005\022\036\n\003pos\030\002 \001(\0132\021.Message.ScenePos\"\323\001\n\nPl" +
-      "ayerHero\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\r\n\005le" +
-      "vel\030\003 \001(\005\022%\n\tequipment\030\004 \003(\0132\022.Message.E" +
-      "quipment\022#\n\010property\030\005 \001(\0132\021.Message.Pro" +
-      "perty\022/\n\016propertyEffect\030\006 \001(\0132\027.Message." +
-      "PropertyEffect\022\037\n\006talent\030\007 \001(\0132\017.Message" +
-      ".Talent\"K\n\tEquipment\022\n\n\002id\030\001 \001(\005\022\r\n\005leve" +
-      "l\030\002 \001(\005\022#\n\010property\030\004 \001(\0132\021.Message.Prop" +
-      "erty\"{\n\010Property\022\n\n\002hp\030\001 \001(\005\022\016\n\006damage\030\002" +
-      " \001(\005\022\013\n\003def\030\003 \001(\005\022\r\n\005avoid\030\004 \001(\005\022\020\n\010crit" +
-      "ical\030\005 \001(\005\022\026\n\016criticalDamage\030\006 \001(\005\022\r\n\005sp" +
-      "eed\030\007 \001(\005\"J\n\016PropertyEffect\022\017\n\007defRate\030\001" +
-      " \001(\005\022\021\n\tavoidRate\030\002 \001(\005\022\024\n\014criticalRate\030" +
-      "\003 \001(\005\"\025\n\006Talent\022\013\n\003use\030\002 \003(\005\"\353\002\n\nPlayerT" +
-      "ask\022;\n\014completeTask\030\001 \003(\0132%.Message.Play" +
-      "erTask.CompleteTaskEntry\022?\n\016acceptableTa" +
-      "sk\030\002 \003(\0132\'.Message.PlayerTask.Acceptable" +
-      "TaskEntry\0221\n\007runTask\030\003 \003(\0132 .Message.Pla" +
-      "yerTask.RunTaskEntry\0323\n\021CompleteTaskEntr" +
-      "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\0325\n\023Acc" +
-      "eptableTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002" +
-      " \001(\010:\0028\001\032@\n\014RunTaskEntry\022\013\n\003key\030\001 \001(\005\022\037\n" +
-      "\005value\030\002 \001(\0132\020.Message.RunTask:\0028\001\"N\n\007Ru" +
-      "nTask\022\016\n\006taskId\030\001 \001(\005\022\016\n\006status\030\002 \001(\005\022#\n" +
-      "\006target\030\003 \003(\0132\023.Message.TaskTarget\"\'\n\nTa" +
-      "skTarget\022\n\n\002id\030\001 \001(\005\022\r\n\005value\030\002 \001(\005B\025\n\017g" +
-      "ame.proto.dataH\001P\001b\006proto3"
+      "ge.Resource\022\"\n\004hero\030\221\003 \003(\0132\023.Message.Pla" +
+      "yerHero\"\200\001\n\010Resource\022\013\n\003exp\030\n \001(\005\022\017\n\007nee" +
+      "dExp\030\013 \001(\005\022\014\n\004gold\030\014 \001(\003\022\013\n\003lei\030\r \001(\005\022\r\n" +
+      "\005power\030\006 \001(\005\022\020\n\010maxPower\030\007 \001(\005\022\032\n\022powerR" +
+      "ecoverSecond\030\010 \001(\005\" \n\010ScenePos\022\t\n\001x\030\001 \001(" +
+      "\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneData\022\n\n\002id\030\001 \001(\005\022\036\n" +
+      "\003pos\030\002 \001(\0132\021.Message.ScenePos\"\353\002\n\nPlayer" +
+      "Task\022;\n\014completeTask\030\001 \003(\0132%.Message.Pla" +
+      "yerTask.CompleteTaskEntry\022?\n\016acceptableT" +
+      "ask\030\002 \003(\0132\'.Message.PlayerTask.Acceptabl" +
+      "eTaskEntry\0221\n\007runTask\030\003 \003(\0132 .Message.Pl" +
+      "ayerTask.RunTaskEntry\0323\n\021CompleteTaskEnt" +
+      "ry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\0325\n\023Ac" +
+      "ceptableTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030" +
+      "\002 \001(\010:\0028\001\032@\n\014RunTaskEntry\022\013\n\003key\030\001 \001(\005\022\037" +
+      "\n\005value\030\002 \001(\0132\020.Message.RunTask:\0028\001\"N\n\007R" +
+      "unTask\022\016\n\006taskId\030\001 \001(\005\022\016\n\006status\030\002 \001(\005\022#" +
+      "\n\006target\030\003 \003(\0132\023.Message.TaskTarget\"\'\n\nT" +
+      "askTarget\022\n\n\002id\030\001 \001(\005\022\r\n\005value\030\002 \001(\005\"\275\003\n" +
+      "\nPlayerHero\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\013" +
+      "\n\003exp\030\003 \001(\005\022#\n\010property\030\005 \001(\0132\021.Message." +
+      "Property\022/\n\016propertyEffect\030\006 \001(\0132\027.Messa" +
+      "ge.PropertyEffect\022\037\n\006talent\030\007 \001(\0132\017.Mess" +
+      "age.Talent\022%\n\tequipment\030\010 \003(\0132\022.Message." +
+      "Equipment\022/\n\006liLian\030\t \003(\0132\037.Message.Play" +
+      "erHero.LiLianEntry\0221\n\007xiuLian\030\n \003(\0132 .Me" +
+      "ssage.PlayerHero.XiuLianEntry\032A\n\013LiLianE" +
+      "ntry\022\013\n\003key\030\001 \001(\005\022!\n\005value\030\002 \001(\0132\022.Messa" +
+      "ge.HeroRealm:\0028\001\032B\n\014XiuLianEntry\022\013\n\003key\030" +
+      "\001 \001(\005\022!\n\005value\030\002 \001(\0132\022.Message.HeroRealm" +
+      ":\0028\001\"&\n\tHeroRealm\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002" +
+      " \001(\005\"K\n\tEquipment\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002" +
+      " \001(\005\022#\n\010property\030\004 \001(\0132\021.Message.Propert" +
+      "y\"{\n\010Property\022\n\n\002hp\030\001 \001(\005\022\016\n\006damage\030\002 \001(" +
+      "\005\022\013\n\003def\030\003 \001(\005\022\r\n\005avoid\030\004 \001(\005\022\020\n\010critica" +
+      "l\030\005 \001(\005\022\026\n\016criticalDamage\030\006 \001(\005\022\r\n\005speed" +
+      "\030\007 \001(\005\"J\n\016PropertyEffect\022\017\n\007defRate\030\001 \001(" +
+      "\005\022\021\n\tavoidRate\030\002 \001(\005\022\024\n\014criticalRate\030\003 \001" +
+      "(\005\"\025\n\006Talent\022\013\n\003use\030\002 \003(\005B\025\n\017game.proto." +
+      "dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -146,7 +169,7 @@ public final class Data {
     internal_static_Message_PlayerData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerData_descriptor,
-        new java.lang.String[] { "Pid", "Name", "Account", "LastLoginTime", "UpdateTime", "Level", "Task", "SceneData", "Resource", });
+        new java.lang.String[] { "Pid", "Name", "Account", "LastLoginTime", "UpdateTime", "Level", "Task", "SceneData", "Resource", "Hero", });
     internal_static_Message_Resource_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Message_Resource_fieldAccessorTable = new
@@ -165,38 +188,8 @@ public final class Data {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_SceneData_descriptor,
         new java.lang.String[] { "Id", "Pos", });
-    internal_static_Message_PlayerHero_descriptor =
-      getDescriptor().getMessageTypes().get(4);
-    internal_static_Message_PlayerHero_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_PlayerHero_descriptor,
-        new java.lang.String[] { "Id", "Name", "Level", "Equipment", "Property", "PropertyEffect", "Talent", });
-    internal_static_Message_Equipment_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_Message_Equipment_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_Equipment_descriptor,
-        new java.lang.String[] { "Id", "Level", "Property", });
-    internal_static_Message_Property_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_Message_Property_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_Property_descriptor,
-        new java.lang.String[] { "Hp", "Damage", "Def", "Avoid", "Critical", "CriticalDamage", "Speed", });
-    internal_static_Message_PropertyEffect_descriptor =
-      getDescriptor().getMessageTypes().get(7);
-    internal_static_Message_PropertyEffect_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_PropertyEffect_descriptor,
-        new java.lang.String[] { "DefRate", "AvoidRate", "CriticalRate", });
-    internal_static_Message_Talent_descriptor =
-      getDescriptor().getMessageTypes().get(8);
-    internal_static_Message_Talent_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_Talent_descriptor,
-        new java.lang.String[] { "Use", });
     internal_static_Message_PlayerTask_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_Message_PlayerTask_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerTask_descriptor,
@@ -220,17 +213,65 @@ public final class Data {
         internal_static_Message_PlayerTask_RunTaskEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_Message_RunTask_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Message_RunTask_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_RunTask_descriptor,
         new java.lang.String[] { "TaskId", "Status", "Target", });
     internal_static_Message_TaskTarget_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Message_TaskTarget_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TaskTarget_descriptor,
         new java.lang.String[] { "Id", "Value", });
+    internal_static_Message_PlayerHero_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_Message_PlayerHero_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerHero_descriptor,
+        new java.lang.String[] { "Id", "Level", "Exp", "Property", "PropertyEffect", "Talent", "Equipment", "LiLian", "XiuLian", });
+    internal_static_Message_PlayerHero_LiLianEntry_descriptor =
+      internal_static_Message_PlayerHero_descriptor.getNestedTypes().get(0);
+    internal_static_Message_PlayerHero_LiLianEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerHero_LiLianEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_Message_PlayerHero_XiuLianEntry_descriptor =
+      internal_static_Message_PlayerHero_descriptor.getNestedTypes().get(1);
+    internal_static_Message_PlayerHero_XiuLianEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerHero_XiuLianEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_Message_HeroRealm_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_Message_HeroRealm_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HeroRealm_descriptor,
+        new java.lang.String[] { "Id", "Level", });
+    internal_static_Message_Equipment_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_Message_Equipment_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_Equipment_descriptor,
+        new java.lang.String[] { "Id", "Level", "Property", });
+    internal_static_Message_Property_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_Message_Property_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_Property_descriptor,
+        new java.lang.String[] { "Hp", "Damage", "Def", "Avoid", "Critical", "CriticalDamage", "Speed", });
+    internal_static_Message_PropertyEffect_descriptor =
+      getDescriptor().getMessageTypes().get(11);
+    internal_static_Message_PropertyEffect_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PropertyEffect_descriptor,
+        new java.lang.String[] { "DefRate", "AvoidRate", "CriticalRate", });
+    internal_static_Message_Talent_descriptor =
+      getDescriptor().getMessageTypes().get(12);
+    internal_static_Message_Talent_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_Talent_descriptor,
+        new java.lang.String[] { "Use", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

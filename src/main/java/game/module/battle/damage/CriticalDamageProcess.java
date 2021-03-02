@@ -1,7 +1,7 @@
 package game.module.battle.damage;
 
 import game.base.Logs;
-import game.module.battle.CalcUtil;
+import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
 

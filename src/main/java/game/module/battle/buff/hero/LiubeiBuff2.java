@@ -1,6 +1,6 @@
 package game.module.battle.buff.hero;
 
-import game.module.battle.CalcUtil;
+import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.DefaultDataBuff;

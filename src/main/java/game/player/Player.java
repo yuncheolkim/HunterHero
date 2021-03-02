@@ -4,11 +4,14 @@ import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
 import game.base.Work;
+import game.config.HeroConfigDataBase;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
 import game.proto.data.PlayerData;
+import game.proto.data.PlayerHero;
 import game.repo.PlayerRepo;
+import game.utils.CalcUtil;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
@@ -17,6 +20,7 @@ import java.util.Date;
 
 /**
  * 线程安全
+ *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -62,6 +66,7 @@ public class Player {
 
     /**
      * 加载用户数据
+     *
      * @param code
      */
     public void load(String code) {
@@ -102,6 +107,26 @@ public class Player {
 
         // 场景 新手村
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
+
+        // 英雄
+        PlayerHero.Builder builder = pd.addHeroBuilder().setId(1001).setLevel(1);
+        HeroConfigDataBase d = G.C.heroMap1001.get(1);
+
+        builder.getPropertyBuilder()
+                .setHp(d.hp)
+                .setDamage(d.damage)
+                .setDef(d.def)
+                .setAvoid(d.avoid)
+                .setCritical(d.critical)
+                .setCriticalDamage(d.criticalDamage)
+                .setSpeed(d.speed);
+
+        builder.getPropertyEffectBuilder()
+                .setDefRate(CalcUtil.calcRateProperty(d.def,d.defBase))
+                .setAvoidRate(CalcUtil.calcRateProperty(d.avoid,d.avoidBase))
+                .setCriticalRate(CalcUtil.calcRateProperty(d.critical,d.criticalBase));
+
+
 
     }
 

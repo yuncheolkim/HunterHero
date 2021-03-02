@@ -1,6 +1,6 @@
 package game.module.battle.buff.effect;
 
-import game.module.battle.CalcUtil;
+import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.buff.Buff;
 import game.module.battle.buff.BuffEffect;

@@ -1,4 +1,4 @@
-package game.module.battle;
+package game.utils;
 
 import java.util.Random;
 
@@ -50,4 +50,16 @@ public class CalcUtil {
     public static boolean happened(Random r, int rate, int total) {
         return rate + 1 > r.nextInt(total);
     }
+
+    /**
+     * 计算属性
+     * 返回百分比
+     * @param v
+     * @param base
+     * @return 万分比 int
+     */
+    public static int calcRateProperty(int v,int base){
+        return (int) (v*10000.0/(v + base));
+    }
+
 }

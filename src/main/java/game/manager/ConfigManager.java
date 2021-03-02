@@ -39,7 +39,7 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, TaskConfigData5> taskMap5;
 
-    public Map<Integer, HeroConfigData1> heroMap1;
+    public Map<Integer, HeroConfigDataBase> heroMap1001;
     @Override
     public void start() {
         super.start();
@@ -142,10 +142,10 @@ public class ConfigManager extends AbsLifecycle {
                 };
             }
         }.load();
-        heroMap1 = new JsonConfig("data/hero_1-base.json") {
+        heroMap1001 = new JsonConfig("data/hero_1001.json") {
             @Override
             protected TypeReference type() {
-                return new TypeReference<Map<Integer, HeroConfigData1>>() {
+                return new TypeReference<Map<Integer, HeroConfigDataBase>>() {
                 };
             }
         }.load();
