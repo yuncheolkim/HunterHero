@@ -53,7 +53,7 @@ message FightStartReq {
 }
 // 2002 发上战斗推送
 message FightStartPush {
-
+    repeated FightEnemyInfo info = 1;
 }
 
 // 3001 进入场景

@@ -5,10 +5,11 @@ import game.config.DataConfigData;
 import game.config.JsonConfig;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
-import game.config.enmey.SceneAreaConfigData;
+import game.config.enmey.EnemyCountConfigData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -46,6 +47,7 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, DataConfigData> dataMap14;
 
     public Map<Integer, DataConfigData> dataMap15;
+    public Map<Integer, DataConfigData> dataMap16;
 
     public Map<Integer, DataConfigData> taskMap1;
 
@@ -61,7 +63,9 @@ public class ConfigManager extends AbsLifecycle {
 
     /////////////
 
-    public Map<Integer, SceneAreaConfigData> enemyInfoMap;
+    public Map<Integer, EnemyAreaConfigData> enemyInfoMap;
+
+    public Map<Integer, List<EnemyCountConfigData>> enemyCountMap;
 
 
     @Override
@@ -82,6 +86,7 @@ public class ConfigManager extends AbsLifecycle {
         dataMap13 = new JsonConfig("data/data_13-修炼.json").load();
         dataMap14 = new JsonConfig("data/data_14-历练修炼选项.json").load();
         dataMap15 = new JsonConfig("data/data_15-enemy.json").load();
+        dataMap16 = new JsonConfig("data/data_16-区域敌人数量.json").load();
         taskMap1 = new JsonConfig("data/task_1-对话.json").load();
 
         taskMap2 = new JsonConfig("data/task_2-对话选项.json").load();
@@ -91,17 +96,11 @@ public class ConfigManager extends AbsLifecycle {
         heroMap1001 = new JsonConfig("data/hero_1001.json").load();
 
         ///// 进一步加工
-        Map<Integer, SceneAreaConfigData> map = new HashMap<>();
+        Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
 
         for (DataConfigData value : dataMap15.values()) {
-            SceneAreaConfigData sceneAreaConfigData = map.computeIfAbsent(value.areaId, id -> {
-                SceneAreaConfigData d = new SceneAreaConfigData();
-                d.id = id;
-                d.map = new HashMap<>();
-                return d;
-            });
 
-            EnemyAreaConfigData enemyAreaConfigData = sceneAreaConfigData.map.computeIfAbsent(value.enemyAreaId, id -> {
+            EnemyAreaConfigData enemyAreaConfigData = map.computeIfAbsent(value.enemyAreaId, id -> {
                 EnemyAreaConfigData d = new EnemyAreaConfigData();
                 d.id = id;
                 d.enemyList = new ArrayList<>();
@@ -128,5 +127,18 @@ public class ConfigManager extends AbsLifecycle {
             enemyAreaConfigData.enemyList.add(enemyConfigData);
         }
         enemyInfoMap = map;
+
+        Map<Integer, List<EnemyCountConfigData>> map1 = new HashMap<>();
+        for (DataConfigData value : dataMap16.values()) {
+
+            List<EnemyCountConfigData> m2 = map1.computeIfAbsent(value.enemyAreaId, id -> new ArrayList<>());
+
+            EnemyCountConfigData e = new EnemyCountConfigData();
+            e.weight = value.weight;
+            e.count = value.count;
+            m2.add(e);
+        }
+
+        enemyCountMap = map1;
     }
 }

@@ -19,9 +19,8 @@ public class SceneHandler {
      * @param req
      * @return
      */
-    public static MessageLite enterScene(Player player, EnterSceneReq req) {
+    public static void enterScene(Player player, EnterSceneReq req) {
         player.getPd().mergeSceneData(req.getData());
-        return null;
     }
 
     /**
@@ -30,14 +29,12 @@ public class SceneHandler {
      * @param req
      * @return
      */
-    public static MessageLite enterFightArea(Player player, EnterFightAreaReq req) {
+    public static void enterFightArea(Player player, EnterFightAreaReq req) {
 
         if (!player.getPd().getFightAreaList().contains(req.getId())) {
             player.getPd().addFightArea(req.getId());
         }
 
-
-        return null;
     }
 
     /**
@@ -46,9 +43,8 @@ public class SceneHandler {
      * @param req
      * @return
      */
-    public static MessageLite exitFightArea(Player player, ExitFightAreaReq req) {
+    public static void exitFightArea(Player player, ExitFightAreaReq req) {
 
-        return null;
     }
 
 }

@@ -6,6 +6,7 @@ import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
 import game.module.task.TaskHandler;
+import game.msg.IInvoke;
 import game.msg.Invoker;
 import game.proto.*;
 
@@ -17,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GameManager extends AbsLifecycle {
 
-    private ConcurrentHashMap<Integer, Invoker<? extends MessageLite>> handlerMap = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<Integer, IInvoke> handlerMap = new ConcurrentHashMap<>();
 
     private LoginHandler loginHandler = new LoginHandler();
 
@@ -42,8 +43,8 @@ public class GameManager extends AbsLifecycle {
         handlerMap.put(taskReqInvoker.getMsgNo(), taskReqInvoker);
     }
 
-    public <T extends MessageLite> Invoker<T> getHandler(Integer msgNo) {
-        return (Invoker<T>) handlerMap.get(msgNo);
+    public IInvoke getHandler(Integer msgNo) {
+        return  handlerMap.get(msgNo);
     }
 
 

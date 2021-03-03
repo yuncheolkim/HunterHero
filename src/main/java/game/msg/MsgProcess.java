@@ -1,6 +1,5 @@
 package game.msg;
 
-import com.google.protobuf.MessageLite;
 import game.base.G;
 import game.base.Logs;
 import game.player.Player;
@@ -23,7 +22,7 @@ public class MsgProcess implements Runnable {
     @Override
     public void run() {
 
-        Invoker<MessageLite> handler = G.G.getHandler(message.getMsgNo());
+        IInvoke handler = G.G.getHandler(message.getMsgNo());
         if (handler != null) {
             handler.invoke(player, message);
         } else {

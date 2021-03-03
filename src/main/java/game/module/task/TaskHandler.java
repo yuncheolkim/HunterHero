@@ -20,7 +20,7 @@ public class TaskHandler {
      * @param o
      * @return
      */
-    public static MessageLite acceptTask(Player player, TaskReq o) {
+    public static void acceptTask(Player player, TaskReq o) {
 
         ModuleAssert.notNull(player.getPd().getTaskBuilder().getAcceptableTaskMap().get(o.getTaskId()));
 
@@ -36,7 +36,6 @@ public class TaskHandler {
         }
         player.getPd().getTaskBuilder().putRunTask(o.getTaskId(), data.build());
 
-        return null;
     }
 
     /**
@@ -45,8 +44,7 @@ public class TaskHandler {
      * @param o
      * @return
      */
-    public static MessageLite completeTask(Player player, TaskReq o) {
-        return null;
+    public static void completeTask(Player player, TaskReq o) {
     }
 
 }

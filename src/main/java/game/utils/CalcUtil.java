@@ -72,7 +72,7 @@ public class CalcUtil {
      * @param weightAll
      * @return
      */
-    public static IWeight weightRandom(List<IWeight> weightList, int weightAll) {
+    public static IWeight weightRandom(List<? extends IWeight> weightList, int weightAll) {
 
         int i = DEFAULT_RANDOM.nextInt(weightAll) + 1;
         int sum = 0;
@@ -92,7 +92,7 @@ public class CalcUtil {
      * @param weightList
      * @return
      */
-    public static IWeight weightRandom(List<IWeight> weightList) {
+    public static IWeight weightRandom(List<? extends IWeight> weightList) {
         int sum = 0;
         for (IWeight iWeight : weightList) {
             sum += iWeight.weight();

@@ -8,6 +8,7 @@ import game.config.DataConfigData;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
+import game.proto.back.PlayerBackData;
 import game.proto.data.PlayerData;
 import game.proto.data.PlayerHero;
 import game.repo.PlayerRepo;
@@ -20,6 +21,7 @@ import java.util.Date;
 
 /**
  * 线程安全
+ *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -29,6 +31,10 @@ public class Player {
     private Transport transport = new Transport();
 
     private PlayerData.Builder pd = PlayerData.newBuilder();
+    /**
+     * 后端数据
+     */
+    public PlayerBackData.Builder D = PlayerBackData.newBuilder();
 
     private LocalDateTime createTime;
 
@@ -37,14 +43,11 @@ public class Player {
     private LocalDateTime updateTime;
 
     /**
-     * 最后一次战斗时间
-     */
-    private LocalDateTime fightTime;
-
-    /**
      * 体力最后一次恢复时间
      */
-    private LocalDateTime powerRecoverTime;
+    private long powerRecoverTime;
+
+    public long nextFightTime;
 
     public Player(long pid) {
         this.pid = pid;
@@ -74,6 +77,7 @@ public class Player {
 
     /**
      * 加载用户数据
+     *
      * @param code
      */
     public void load(String code) {
@@ -208,11 +212,13 @@ public class Player {
         this.updateTime = updateTime;
     }
 
-    public LocalDateTime getPowerRecoverTime() {
+    public long getPowerRecoverTime() {
         return powerRecoverTime;
     }
 
-    public void setPowerRecoverTime(LocalDateTime powerRecoverTime) {
+    public void setPowerRecoverTime(long powerRecoverTime) {
         this.powerRecoverTime = powerRecoverTime;
     }
+
+
 }

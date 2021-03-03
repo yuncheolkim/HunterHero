@@ -128,58 +128,60 @@ public final class Data {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ndata.proto\022\007Message\"\347\002\n\nPlayerData\022\013\n\003" +
+      "\n\ndata.proto\022\007Message\"\224\003\n\nPlayerData\022\013\n\003" +
       "pid\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\017\n\007account\030\003 \001(\t" +
       "\022\025\n\rlastLoginTime\030\004 \001(\003\022\022\n\nupdateTime\030\005 " +
       "\001(\003\022\r\n\005level\030\t \001(\005\022!\n\004task\030e \001(\0132\023.Messa" +
       "ge.PlayerTask\022&\n\tsceneData\030\311\001 \001(\0132\022.Mess" +
       "age.SceneData\022\022\n\tfightArea\030\312\001 \003(\005\022$\n\010res" +
       "ource\030\255\002 \001(\0132\021.Message.Resource\022,\n\004hero\030" +
-      "\221\003 \003(\0132\035.Message.PlayerData.HeroEntry\032@\n" +
-      "\tHeroEntry\022\013\n\003key\030\001 \001(\005\022\"\n\005value\030\002 \001(\0132\023" +
-      ".Message.PlayerHero:\0028\001\"\200\001\n\010Resource\022\013\n\003" +
-      "exp\030\n \001(\005\022\017\n\007needExp\030\013 \001(\005\022\014\n\004gold\030\014 \001(\003" +
-      "\022\013\n\003lei\030\r \001(\005\022\r\n\005power\030\006 \001(\005\022\020\n\010maxPower" +
-      "\030\007 \001(\005\022\032\n\022powerRecoverSecond\030\010 \001(\005\" \n\010Sc" +
-      "enePos\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneDat" +
-      "a\022\n\n\002id\030\001 \001(\005\022\036\n\003pos\030\002 \001(\0132\021.Message.Sce" +
-      "nePos\"\353\002\n\nPlayerTask\022;\n\014completeTask\030\001 \003" +
-      "(\0132%.Message.PlayerTask.CompleteTaskEntr" +
-      "y\022?\n\016acceptableTask\030\002 \003(\0132\'.Message.Play" +
-      "erTask.AcceptableTaskEntry\0221\n\007runTask\030\003 " +
-      "\003(\0132 .Message.PlayerTask.RunTaskEntry\0323\n" +
-      "\021CompleteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value" +
-      "\030\002 \001(\010:\0028\001\0325\n\023AcceptableTaskEntry\022\013\n\003key" +
-      "\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032@\n\014RunTaskEntr" +
-      "y\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020.Message." +
-      "RunTask:\0028\001\"N\n\007RunTask\022\016\n\006taskId\030\001 \001(\005\022\016" +
-      "\n\006status\030\002 \001(\005\022#\n\006target\030\003 \003(\0132\023.Message" +
-      ".TaskTarget\"\'\n\nTaskTarget\022\n\n\002id\030\001 \001(\005\022\r\n" +
-      "\005value\030\002 \001(\005\"\275\003\n\nPlayerHero\022\n\n\002id\030\001 \001(\005\022" +
-      "\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\022#\n\010property\030" +
-      "\005 \001(\0132\021.Message.Property\022/\n\016propertyEffe" +
-      "ct\030\006 \001(\0132\027.Message.PropertyEffect\022\037\n\006tal" +
-      "ent\030\007 \001(\0132\017.Message.Talent\022%\n\tequipment\030" +
-      "\010 \003(\0132\022.Message.Equipment\022/\n\006liLian\030\t \003(" +
-      "\0132\037.Message.PlayerHero.LiLianEntry\0221\n\007xi" +
-      "uLian\030\n \003(\0132 .Message.PlayerHero.XiuLian" +
-      "Entry\032A\n\013LiLianEntry\022\013\n\003key\030\001 \001(\005\022!\n\005val" +
-      "ue\030\002 \001(\0132\022.Message.HeroRealm:\0028\001\032B\n\014XiuL" +
-      "ianEntry\022\013\n\003key\030\001 \001(\005\022!\n\005value\030\002 \001(\0132\022.M" +
-      "essage.HeroRealm:\0028\001\"&\n\tHeroRealm\022\n\n\002id\030" +
-      "\001 \001(\005\022\r\n\005level\030\002 \001(\005\"K\n\tEquipment\022\n\n\002id\030" +
-      "\001 \001(\005\022\r\n\005level\030\002 \001(\005\022#\n\010property\030\004 \001(\0132\021" +
-      ".Message.Property\"{\n\010Property\022\n\n\002hp\030\001 \001(" +
-      "\005\022\016\n\006damage\030\002 \001(\005\022\013\n\003def\030\003 \001(\005\022\r\n\005avoid\030" +
-      "\004 \001(\005\022\020\n\010critical\030\005 \001(\005\022\026\n\016criticalDamag" +
-      "e\030\006 \001(\005\022\r\n\005speed\030\007 \001(\005\"J\n\016PropertyEffect" +
-      "\022\017\n\007defRate\030\001 \001(\005\022\021\n\tavoidRate\030\002 \001(\005\022\024\n\014" +
-      "criticalRate\030\003 \001(\005\"\025\n\006Talent\022\013\n\003use\030\002 \003(" +
-      "\005\"+\n\014FightHeroPos\022\016\n\006heroId\030\001 \001(\005\022\013\n\003pos" +
-      "\030\002 \001(\005\"]\n\016FightEnemyInfo\022\n\n\002id\030\001 \001(\005\022\013\n\003" +
-      "pos\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022#\n\010property\030\004 \001" +
-      "(\0132\021.Message.PropertyB\025\n\017game.proto.data" +
-      "H\001P\001b\006proto3"
+      "\221\003 \003(\0132\035.Message.PlayerData.HeroEntry\022+\n" +
+      "\tfightInfo\030\365\003 \003(\0132\027.Message.FightEnemyIn" +
+      "fo\032@\n\tHeroEntry\022\013\n\003key\030\001 \001(\005\022\"\n\005value\030\002 " +
+      "\001(\0132\023.Message.PlayerHero:\0028\001\"\200\001\n\010Resourc" +
+      "e\022\013\n\003exp\030\n \001(\005\022\017\n\007needExp\030\013 \001(\005\022\014\n\004gold\030" +
+      "\014 \001(\003\022\013\n\003lei\030\r \001(\005\022\r\n\005power\030\006 \001(\005\022\020\n\010max" +
+      "Power\030\007 \001(\005\022\032\n\022powerRecoverSecond\030\010 \001(\005\"" +
+      " \n\010ScenePos\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSce" +
+      "neData\022\n\n\002id\030\001 \001(\005\022\036\n\003pos\030\002 \001(\0132\021.Messag" +
+      "e.ScenePos\"\353\002\n\nPlayerTask\022;\n\014completeTas" +
+      "k\030\001 \003(\0132%.Message.PlayerTask.CompleteTas" +
+      "kEntry\022?\n\016acceptableTask\030\002 \003(\0132\'.Message" +
+      ".PlayerTask.AcceptableTaskEntry\0221\n\007runTa" +
+      "sk\030\003 \003(\0132 .Message.PlayerTask.RunTaskEnt" +
+      "ry\0323\n\021CompleteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005" +
+      "value\030\002 \001(\010:\0028\001\0325\n\023AcceptableTaskEntry\022\013" +
+      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032@\n\014RunTas" +
+      "kEntry\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020.Mes" +
+      "sage.RunTask:\0028\001\"N\n\007RunTask\022\016\n\006taskId\030\001 " +
+      "\001(\005\022\016\n\006status\030\002 \001(\005\022#\n\006target\030\003 \003(\0132\023.Me" +
+      "ssage.TaskTarget\"\'\n\nTaskTarget\022\n\n\002id\030\001 \001" +
+      "(\005\022\r\n\005value\030\002 \001(\005\"\275\003\n\nPlayerHero\022\n\n\002id\030\001" +
+      " \001(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\022#\n\010prop" +
+      "erty\030\005 \001(\0132\021.Message.Property\022/\n\016propert" +
+      "yEffect\030\006 \001(\0132\027.Message.PropertyEffect\022\037" +
+      "\n\006talent\030\007 \001(\0132\017.Message.Talent\022%\n\tequip" +
+      "ment\030\010 \003(\0132\022.Message.Equipment\022/\n\006liLian" +
+      "\030\t \003(\0132\037.Message.PlayerHero.LiLianEntry\022" +
+      "1\n\007xiuLian\030\n \003(\0132 .Message.PlayerHero.Xi" +
+      "uLianEntry\032A\n\013LiLianEntry\022\013\n\003key\030\001 \001(\005\022!" +
+      "\n\005value\030\002 \001(\0132\022.Message.HeroRealm:\0028\001\032B\n" +
+      "\014XiuLianEntry\022\013\n\003key\030\001 \001(\005\022!\n\005value\030\002 \001(" +
+      "\0132\022.Message.HeroRealm:\0028\001\"&\n\tHeroRealm\022\n" +
+      "\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"K\n\tEquipment\022\n" +
+      "\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022#\n\010property\030\004 " +
+      "\001(\0132\021.Message.Property\"\265\001\n\010Property\022\n\n\002h" +
+      "p\030\001 \001(\005\022\016\n\006damage\030\002 \001(\005\022\013\n\003def\030\003 \001(\005\022\r\n\005" +
+      "avoid\030\004 \001(\005\022\020\n\010critical\030\005 \001(\005\022\026\n\016critica" +
+      "lDamage\030\006 \001(\005\022\r\n\005speed\030\007 \001(\005\022\021\n\tavoidBas" +
+      "e\030\010 \001(\005\022\024\n\014criticalBase\030\t \001(\005\022\017\n\007defBase" +
+      "\030\n \001(\005\"J\n\016PropertyEffect\022\017\n\007defRate\030\001 \001(" +
+      "\005\022\021\n\tavoidRate\030\002 \001(\005\022\024\n\014criticalRate\030\003 \001" +
+      "(\005\"\025\n\006Talent\022\013\n\003use\030\002 \003(\005\"+\n\014FightHeroPo" +
+      "s\022\016\n\006heroId\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\"]\n\016FightE" +
+      "nemyInfo\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\r\n\005lev" +
+      "el\030\003 \001(\005\022#\n\010property\030\004 \001(\0132\021.Message.Pro" +
+      "pertyB\025\n\017game.proto.dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -190,7 +192,7 @@ public final class Data {
     internal_static_Message_PlayerData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerData_descriptor,
-        new java.lang.String[] { "Pid", "Name", "Account", "LastLoginTime", "UpdateTime", "Level", "Task", "SceneData", "FightArea", "Resource", "Hero", });
+        new java.lang.String[] { "Pid", "Name", "Account", "LastLoginTime", "UpdateTime", "Level", "Task", "SceneData", "FightArea", "Resource", "Hero", "FightInfo", });
     internal_static_Message_PlayerData_HeroEntry_descriptor =
       internal_static_Message_PlayerData_descriptor.getNestedTypes().get(0);
     internal_static_Message_PlayerData_HeroEntry_fieldAccessorTable = new
@@ -286,7 +288,7 @@ public final class Data {
     internal_static_Message_Property_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_Property_descriptor,
-        new java.lang.String[] { "Hp", "Damage", "Def", "Avoid", "Critical", "CriticalDamage", "Speed", });
+        new java.lang.String[] { "Hp", "Damage", "Def", "Avoid", "Critical", "CriticalDamage", "Speed", "AvoidBase", "CriticalBase", "DefBase", });
     internal_static_Message_PropertyEffect_descriptor =
       getDescriptor().getMessageTypes().get(11);
     internal_static_Message_PropertyEffect_fieldAccessorTable = new

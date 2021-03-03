@@ -19,14 +19,13 @@ public class FightHandler {
      * @param req
      * @return
      */
-    public static MessageLite fight(Player player, FightStartReq req) {
+    public static void fight(Player player, FightStartReq req) {
 
         for (FightHeroPos fightHeroPos : req.getPosList()) {
             PlayerHero playerHero = player.getPd().getHeroMap().get(fightHeroPos.getHeroId());
             if (playerHero == null) {
-                return null;
+                return;
             }
         }
-        return null;
     }
 }

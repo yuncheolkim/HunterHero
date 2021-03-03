@@ -48,4 +48,22 @@ public interface PropertyOrBuilder extends
    * @return The speed.
    */
   int getSpeed();
+
+  /**
+   * <code>int32 avoidBase = 8;</code>
+   * @return The avoidBase.
+   */
+  int getAvoidBase();
+
+  /**
+   * <code>int32 criticalBase = 9;</code>
+   * @return The criticalBase.
+   */
+  int getCriticalBase();
+
+  /**
+   * <code>int32 defBase = 10;</code>
+   * @return The defBase.
+   */
+  int getDefBase();
 }

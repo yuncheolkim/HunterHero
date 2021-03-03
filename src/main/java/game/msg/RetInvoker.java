@@ -14,16 +14,16 @@ import java.util.function.Supplier;
  * @author Yunzhe.Jin
  * 2021/2/22 15:10
  */
-public class Invoker<T extends MessageLite> implements IInvoke {
+public class RetInvoker<T extends MessageLite> implements IInvoke {
 
-    private final IMsgHandler<T> handler;
+    private final IMsgRetHandler<T> handler;
 
     private final int msgNo;
 
     private final Supplier<Parser<T>> supplier;
 
 
-    public Invoker(int msgNo, IMsgHandler<T> handler, Supplier<Parser<T>> supplier) {
+    public RetInvoker(int msgNo, IMsgRetHandler<T> handler, Supplier<Parser<T>> supplier) {
         this.handler = handler;
         this.msgNo = msgNo;
         this.supplier = supplier;
@@ -32,7 +32,10 @@ public class Invoker<T extends MessageLite> implements IInvoke {
     public void invoke(Player player, Message msg) {
         try {
             T req = supplier.get().parseFrom(msg.getBody());
-            handler.handler(player, req);
+            MessageLite ret = this.handler.handler(player, req);
+            if (ret != null) {
+                player.getTransport().send(Message.newBuilder(msg).setBody(ret.toByteString()).build());
+            }
         } catch (ModuleException e) {
             Logs.M.error("", e);
             player.getTransport().sendError(msg, e.getErrorNo());

@@ -7,7 +7,7 @@ import game.player.Player;
  * @author Yunzhe.Jin
  * 2021/2/20 14:10
  */
-public interface IMsgHandler<T extends MessageLite> {
+public interface IMsgRetHandler<T extends MessageLite> {
 
-    void handler(Player player, T request);
+    MessageLite handler(Player player, T request);
 }

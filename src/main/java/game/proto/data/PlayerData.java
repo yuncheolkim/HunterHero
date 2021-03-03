@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     name_ = "";
     account_ = "";
     fightArea_ = emptyIntList();
+    fightInfo_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -157,6 +158,15 @@ private static final long serialVersionUID = 0L;
                 hero__.getKey(), hero__.getValue());
             break;
           }
+          case 4010: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              fightInfo_ = new java.util.ArrayList<game.proto.data.FightEnemyInfo>();
+              mutable_bitField0_ |= 0x00000004;
+            }
+            fightInfo_.add(
+                input.readMessage(game.proto.data.FightEnemyInfo.parser(), extensionRegistry));
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -174,6 +184,9 @@ private static final long serialVersionUID = 0L;
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
         fightArea_.makeImmutable(); // C
+      }
+      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -511,6 +524,66 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int FIGHTINFO_FIELD_NUMBER = 501;
+  private java.util.List<game.proto.data.FightEnemyInfo> fightInfo_;
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  @java.lang.Override
+  public java.util.List<game.proto.data.FightEnemyInfo> getFightInfoList() {
+    return fightInfo_;
+  }
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.FightEnemyInfoOrBuilder> 
+      getFightInfoOrBuilderList() {
+    return fightInfo_;
+  }
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  @java.lang.Override
+  public int getFightInfoCount() {
+    return fightInfo_.size();
+  }
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FightEnemyInfo getFightInfo(int index) {
+    return fightInfo_.get(index);
+  }
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FightEnemyInfoOrBuilder getFightInfoOrBuilder(
+      int index) {
+    return fightInfo_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -566,6 +639,9 @@ private static final long serialVersionUID = 0L;
         internalGetHero(),
         HeroDefaultEntryHolder.defaultEntry,
         401);
+    for (int i = 0; i < fightInfo_.size(); i++) {
+      output.writeMessage(501, fightInfo_.get(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -633,6 +709,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(401, hero__);
     }
+    for (int i = 0; i < fightInfo_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(501, fightInfo_.get(i));
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -679,6 +759,8 @@ private static final long serialVersionUID = 0L;
     }
     if (!internalGetHero().equals(
         other.internalGetHero())) return false;
+    if (!getFightInfoList()
+        .equals(other.getFightInfoList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -724,6 +806,10 @@ private static final long serialVersionUID = 0L;
     if (!internalGetHero().getMap().isEmpty()) {
       hash = (37 * hash) + HERO_FIELD_NUMBER;
       hash = (53 * hash) + internalGetHero().hashCode();
+    }
+    if (getFightInfoCount() > 0) {
+      hash = (37 * hash) + FIGHTINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getFightInfoList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -875,6 +961,7 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getFightInfoFieldBuilder();
       }
     }
     @java.lang.Override
@@ -913,6 +1000,12 @@ private static final long serialVersionUID = 0L;
         resourceBuilder_ = null;
       }
       internalGetMutableHero().clear();
+      if (fightInfoBuilder_ == null) {
+        fightInfo_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+      } else {
+        fightInfoBuilder_.clear();
+      }
       return this;
     }
 
@@ -968,6 +1061,15 @@ private static final long serialVersionUID = 0L;
       }
       result.hero_ = internalGetHero();
       result.hero_.makeImmutable();
+      if (fightInfoBuilder_ == null) {
+        if (((bitField0_ & 0x00000004) != 0)) {
+          fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.fightInfo_ = fightInfo_;
+      } else {
+        result.fightInfo_ = fightInfoBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -1057,6 +1159,32 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableHero().mergeFrom(
           other.internalGetHero());
+      if (fightInfoBuilder_ == null) {
+        if (!other.fightInfo_.isEmpty()) {
+          if (fightInfo_.isEmpty()) {
+            fightInfo_ = other.fightInfo_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureFightInfoIsMutable();
+            fightInfo_.addAll(other.fightInfo_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.fightInfo_.isEmpty()) {
+          if (fightInfoBuilder_.isEmpty()) {
+            fightInfoBuilder_.dispose();
+            fightInfoBuilder_ = null;
+            fightInfo_ = other.fightInfo_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+            fightInfoBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getFightInfoFieldBuilder() : null;
+          } else {
+            fightInfoBuilder_.addAllMessages(other.fightInfo_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1925,6 +2053,318 @@ private static final long serialVersionUID = 0L;
       internalGetMutableHero().getMutableMap()
           .putAll(values);
       return this;
+    }
+
+    private java.util.List<game.proto.data.FightEnemyInfo> fightInfo_ =
+      java.util.Collections.emptyList();
+    private void ensureFightInfoIsMutable() {
+      if (!((bitField0_ & 0x00000004) != 0)) {
+        fightInfo_ = new java.util.ArrayList<game.proto.data.FightEnemyInfo>(fightInfo_);
+        bitField0_ |= 0x00000004;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.FightEnemyInfo, game.proto.data.FightEnemyInfo.Builder, game.proto.data.FightEnemyInfoOrBuilder> fightInfoBuilder_;
+
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public java.util.List<game.proto.data.FightEnemyInfo> getFightInfoList() {
+      if (fightInfoBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(fightInfo_);
+      } else {
+        return fightInfoBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public int getFightInfoCount() {
+      if (fightInfoBuilder_ == null) {
+        return fightInfo_.size();
+      } else {
+        return fightInfoBuilder_.getCount();
+      }
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public game.proto.data.FightEnemyInfo getFightInfo(int index) {
+      if (fightInfoBuilder_ == null) {
+        return fightInfo_.get(index);
+      } else {
+        return fightInfoBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder setFightInfo(
+        int index, game.proto.data.FightEnemyInfo value) {
+      if (fightInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFightInfoIsMutable();
+        fightInfo_.set(index, value);
+        onChanged();
+      } else {
+        fightInfoBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder setFightInfo(
+        int index, game.proto.data.FightEnemyInfo.Builder builderForValue) {
+      if (fightInfoBuilder_ == null) {
+        ensureFightInfoIsMutable();
+        fightInfo_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        fightInfoBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder addFightInfo(game.proto.data.FightEnemyInfo value) {
+      if (fightInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFightInfoIsMutable();
+        fightInfo_.add(value);
+        onChanged();
+      } else {
+        fightInfoBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder addFightInfo(
+        int index, game.proto.data.FightEnemyInfo value) {
+      if (fightInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFightInfoIsMutable();
+        fightInfo_.add(index, value);
+        onChanged();
+      } else {
+        fightInfoBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder addFightInfo(
+        game.proto.data.FightEnemyInfo.Builder builderForValue) {
+      if (fightInfoBuilder_ == null) {
+        ensureFightInfoIsMutable();
+        fightInfo_.add(builderForValue.build());
+        onChanged();
+      } else {
+        fightInfoBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder addFightInfo(
+        int index, game.proto.data.FightEnemyInfo.Builder builderForValue) {
+      if (fightInfoBuilder_ == null) {
+        ensureFightInfoIsMutable();
+        fightInfo_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        fightInfoBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder addAllFightInfo(
+        java.lang.Iterable<? extends game.proto.data.FightEnemyInfo> values) {
+      if (fightInfoBuilder_ == null) {
+        ensureFightInfoIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, fightInfo_);
+        onChanged();
+      } else {
+        fightInfoBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder clearFightInfo() {
+      if (fightInfoBuilder_ == null) {
+        fightInfo_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+      } else {
+        fightInfoBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public Builder removeFightInfo(int index) {
+      if (fightInfoBuilder_ == null) {
+        ensureFightInfoIsMutable();
+        fightInfo_.remove(index);
+        onChanged();
+      } else {
+        fightInfoBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public game.proto.data.FightEnemyInfo.Builder getFightInfoBuilder(
+        int index) {
+      return getFightInfoFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public game.proto.data.FightEnemyInfoOrBuilder getFightInfoOrBuilder(
+        int index) {
+      if (fightInfoBuilder_ == null) {
+        return fightInfo_.get(index);  } else {
+        return fightInfoBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public java.util.List<? extends game.proto.data.FightEnemyInfoOrBuilder> 
+         getFightInfoOrBuilderList() {
+      if (fightInfoBuilder_ != null) {
+        return fightInfoBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(fightInfo_);
+      }
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public game.proto.data.FightEnemyInfo.Builder addFightInfoBuilder() {
+      return getFightInfoFieldBuilder().addBuilder(
+          game.proto.data.FightEnemyInfo.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public game.proto.data.FightEnemyInfo.Builder addFightInfoBuilder(
+        int index) {
+      return getFightInfoFieldBuilder().addBuilder(
+          index, game.proto.data.FightEnemyInfo.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 战斗中的信息
+     * </pre>
+     *
+     * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+     */
+    public java.util.List<game.proto.data.FightEnemyInfo.Builder> 
+         getFightInfoBuilderList() {
+      return getFightInfoFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.FightEnemyInfo, game.proto.data.FightEnemyInfo.Builder, game.proto.data.FightEnemyInfoOrBuilder> 
+        getFightInfoFieldBuilder() {
+      if (fightInfoBuilder_ == null) {
+        fightInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.FightEnemyInfo, game.proto.data.FightEnemyInfo.Builder, game.proto.data.FightEnemyInfoOrBuilder>(
+                fightInfo_,
+                ((bitField0_ & 0x00000004) != 0),
+                getParentForChildren(),
+                isClean());
+        fightInfo_ = null;
+      }
+      return fightInfoBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

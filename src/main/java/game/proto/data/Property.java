@@ -87,6 +87,21 @@ private static final long serialVersionUID = 0L;
             speed_ = input.readInt32();
             break;
           }
+          case 64: {
+
+            avoidBase_ = input.readInt32();
+            break;
+          }
+          case 72: {
+
+            criticalBase_ = input.readInt32();
+            break;
+          }
+          case 80: {
+
+            defBase_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -196,6 +211,39 @@ private static final long serialVersionUID = 0L;
     return speed_;
   }
 
+  public static final int AVOIDBASE_FIELD_NUMBER = 8;
+  private int avoidBase_;
+  /**
+   * <code>int32 avoidBase = 8;</code>
+   * @return The avoidBase.
+   */
+  @java.lang.Override
+  public int getAvoidBase() {
+    return avoidBase_;
+  }
+
+  public static final int CRITICALBASE_FIELD_NUMBER = 9;
+  private int criticalBase_;
+  /**
+   * <code>int32 criticalBase = 9;</code>
+   * @return The criticalBase.
+   */
+  @java.lang.Override
+  public int getCriticalBase() {
+    return criticalBase_;
+  }
+
+  public static final int DEFBASE_FIELD_NUMBER = 10;
+  private int defBase_;
+  /**
+   * <code>int32 defBase = 10;</code>
+   * @return The defBase.
+   */
+  @java.lang.Override
+  public int getDefBase() {
+    return defBase_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -230,6 +278,15 @@ private static final long serialVersionUID = 0L;
     }
     if (speed_ != 0) {
       output.writeInt32(7, speed_);
+    }
+    if (avoidBase_ != 0) {
+      output.writeInt32(8, avoidBase_);
+    }
+    if (criticalBase_ != 0) {
+      output.writeInt32(9, criticalBase_);
+    }
+    if (defBase_ != 0) {
+      output.writeInt32(10, defBase_);
     }
     unknownFields.writeTo(output);
   }
@@ -268,6 +325,18 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, speed_);
     }
+    if (avoidBase_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(8, avoidBase_);
+    }
+    if (criticalBase_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(9, criticalBase_);
+    }
+    if (defBase_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(10, defBase_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -297,6 +366,12 @@ private static final long serialVersionUID = 0L;
         != other.getCriticalDamage()) return false;
     if (getSpeed()
         != other.getSpeed()) return false;
+    if (getAvoidBase()
+        != other.getAvoidBase()) return false;
+    if (getCriticalBase()
+        != other.getCriticalBase()) return false;
+    if (getDefBase()
+        != other.getDefBase()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -322,6 +397,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getCriticalDamage();
     hash = (37 * hash) + SPEED_FIELD_NUMBER;
     hash = (53 * hash) + getSpeed();
+    hash = (37 * hash) + AVOIDBASE_FIELD_NUMBER;
+    hash = (53 * hash) + getAvoidBase();
+    hash = (37 * hash) + CRITICALBASE_FIELD_NUMBER;
+    hash = (53 * hash) + getCriticalBase();
+    hash = (37 * hash) + DEFBASE_FIELD_NUMBER;
+    hash = (53 * hash) + getDefBase();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -473,6 +554,12 @@ private static final long serialVersionUID = 0L;
 
       speed_ = 0;
 
+      avoidBase_ = 0;
+
+      criticalBase_ = 0;
+
+      defBase_ = 0;
+
       return this;
     }
 
@@ -506,6 +593,9 @@ private static final long serialVersionUID = 0L;
       result.critical_ = critical_;
       result.criticalDamage_ = criticalDamage_;
       result.speed_ = speed_;
+      result.avoidBase_ = avoidBase_;
+      result.criticalBase_ = criticalBase_;
+      result.defBase_ = defBase_;
       onBuilt();
       return result;
     }
@@ -574,6 +664,15 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getSpeed() != 0) {
         setSpeed(other.getSpeed());
+      }
+      if (other.getAvoidBase() != 0) {
+        setAvoidBase(other.getAvoidBase());
+      }
+      if (other.getCriticalBase() != 0) {
+        setCriticalBase(other.getCriticalBase());
+      }
+      if (other.getDefBase() != 0) {
+        setDefBase(other.getDefBase());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -817,6 +916,99 @@ private static final long serialVersionUID = 0L;
     public Builder clearSpeed() {
       
       speed_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int avoidBase_ ;
+    /**
+     * <code>int32 avoidBase = 8;</code>
+     * @return The avoidBase.
+     */
+    @java.lang.Override
+    public int getAvoidBase() {
+      return avoidBase_;
+    }
+    /**
+     * <code>int32 avoidBase = 8;</code>
+     * @param value The avoidBase to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAvoidBase(int value) {
+      
+      avoidBase_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 avoidBase = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAvoidBase() {
+      
+      avoidBase_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int criticalBase_ ;
+    /**
+     * <code>int32 criticalBase = 9;</code>
+     * @return The criticalBase.
+     */
+    @java.lang.Override
+    public int getCriticalBase() {
+      return criticalBase_;
+    }
+    /**
+     * <code>int32 criticalBase = 9;</code>
+     * @param value The criticalBase to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCriticalBase(int value) {
+      
+      criticalBase_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 criticalBase = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCriticalBase() {
+      
+      criticalBase_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int defBase_ ;
+    /**
+     * <code>int32 defBase = 10;</code>
+     * @return The defBase.
+     */
+    @java.lang.Override
+    public int getDefBase() {
+      return defBase_;
+    }
+    /**
+     * <code>int32 defBase = 10;</code>
+     * @param value The defBase to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDefBase(int value) {
+      
+      defBase_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 defBase = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDefBase() {
+      
+      defBase_ = 0;
       onChanged();
       return this;
     }

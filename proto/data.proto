@@ -17,6 +17,8 @@ message PlayerData {
     Resource resource = 301;
     map<int32, PlayerHero> hero = 401;
 
+    // 战斗中的信息
+    repeated FightEnemyInfo fightInfo = 501;
 }
 
 // 资源
@@ -91,6 +93,9 @@ message Property {
     int32 critical = 5;
     int32 criticalDamage = 6;
     int32 speed = 7;
+    int32 avoidBase = 8;
+    int32 criticalBase = 9;
+    int32 defBase = 10;
 }
 
 // 属性效果 v/100

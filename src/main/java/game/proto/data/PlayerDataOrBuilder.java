@@ -150,4 +150,48 @@ public interface PlayerDataOrBuilder extends
 
   game.proto.data.PlayerHero getHeroOrThrow(
       int key);
+
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  java.util.List<game.proto.data.FightEnemyInfo> 
+      getFightInfoList();
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  game.proto.data.FightEnemyInfo getFightInfo(int index);
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  int getFightInfoCount();
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  java.util.List<? extends game.proto.data.FightEnemyInfoOrBuilder> 
+      getFightInfoOrBuilderList();
+  /**
+   * <pre>
+   * 战斗中的信息
+   * </pre>
+   *
+   * <code>repeated .Message.FightEnemyInfo fightInfo = 501;</code>
+   */
+  game.proto.data.FightEnemyInfoOrBuilder getFightInfoOrBuilder(
+      int index);
 }
