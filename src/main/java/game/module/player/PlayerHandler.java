@@ -1,17 +1,17 @@
 package game.module.player;
 
-import com.google.protobuf.MessageLite;
 import game.base.G;
 import game.base.Logs;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
 import game.player.Player;
-import game.proto.*;
+import game.proto.Empty;
+import game.proto.FightStartPush;
+import game.proto.Message;
+import game.proto.PlayerCreateNameReq;
 import game.proto.data.FightEnemyInfo;
 import game.utils.CalcUtil;
-import org.joda.time.LocalDateTime;
-import org.joda.time.Seconds;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,6 @@ import static game.module.battle.PosGen.RANDOM_8;
  * 2021/2/22 16:00
  */
 public class PlayerHandler {
-
     /**
      * 起名
      *
@@ -71,7 +70,6 @@ public class PlayerHandler {
             long now = System.currentTimeMillis();
             if (player.nextFightTime > now) {
                 // fight
-
                 FightStartPush fightStartPush = genEnemy(player);
                 player.getPd().addAllFightInfo(fightStartPush.getInfoList());
 
