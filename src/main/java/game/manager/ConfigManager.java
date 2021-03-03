@@ -3,7 +3,12 @@ package game.manager;
 import game.base.AbsLifecycle;
 import game.config.DataConfigData;
 import game.config.JsonConfig;
+import game.config.enmey.EnemyAreaConfigData;
+import game.config.enmey.EnemyConfigData;
+import game.config.enmey.SceneAreaConfigData;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -40,6 +45,8 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> dataMap14;
 
+    public Map<Integer, DataConfigData> dataMap15;
+
     public Map<Integer, DataConfigData> taskMap1;
 
     public Map<Integer, DataConfigData> taskMap2;
@@ -53,6 +60,8 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, DataConfigData> heroMap1001;
 
     /////////////
+
+    public Map<Integer, SceneAreaConfigData> enemyInfoMap;
 
 
     @Override
@@ -72,6 +81,7 @@ public class ConfigManager extends AbsLifecycle {
         dataMap12 = new JsonConfig("data/data_12-历练.json").load();
         dataMap13 = new JsonConfig("data/data_13-修炼.json").load();
         dataMap14 = new JsonConfig("data/data_14-历练修炼选项.json").load();
+        dataMap15 = new JsonConfig("data/data_15-enemy.json").load();
         taskMap1 = new JsonConfig("data/task_1-对话.json").load();
 
         taskMap2 = new JsonConfig("data/task_2-对话选项.json").load();
@@ -81,7 +91,42 @@ public class ConfigManager extends AbsLifecycle {
         heroMap1001 = new JsonConfig("data/hero_1001.json").load();
 
         ///// 进一步加工
+        Map<Integer, SceneAreaConfigData> map = new HashMap<>();
 
+        for (DataConfigData value : dataMap15.values()) {
+            SceneAreaConfigData sceneAreaConfigData = map.computeIfAbsent(value.areaId, id -> {
+                SceneAreaConfigData d = new SceneAreaConfigData();
+                d.id = id;
+                d.map = new HashMap<>();
+                return d;
+            });
 
+            EnemyAreaConfigData enemyAreaConfigData = sceneAreaConfigData.map.computeIfAbsent(value.enemyAreaId, id -> {
+                EnemyAreaConfigData d = new EnemyAreaConfigData();
+                d.id = id;
+                d.enemyList = new ArrayList<>();
+                return d;
+            });
+
+            EnemyConfigData enemyConfigData = new EnemyConfigData();
+
+            enemyConfigData.id = value.enemyId;
+            enemyConfigData.weight = value.weight;
+            enemyConfigData.level = value.level;
+            enemyConfigData.hp = value.hp;
+            enemyConfigData.damage = value.damage;
+            enemyConfigData.def = value.def;
+            enemyConfigData.defBase = value.defBase;
+            enemyConfigData.avoid = value.avoid;
+            enemyConfigData.avoidBase = value.avoidBase;
+            enemyConfigData.critical = value.critical;
+            enemyConfigData.criticalBase = value.criticalBase;
+            enemyConfigData.criticalDamage = value.criticalDamage;
+            enemyConfigData.speed = value.speed;
+            enemyAreaConfigData.weightAll += enemyConfigData.weight;
+
+            enemyAreaConfigData.enemyList.add(enemyConfigData);
+        }
+        enemyInfoMap = map;
     }
 }

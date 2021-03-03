@@ -10,4 +10,6 @@ public class SceneAreaConfigData {
     public int id;
 
     public Map<Integer, EnemyAreaConfigData> map;
+
+
 }
