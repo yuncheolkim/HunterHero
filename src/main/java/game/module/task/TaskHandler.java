@@ -2,7 +2,7 @@ package game.module.task;
 
 import com.google.protobuf.MessageLite;
 import game.base.G;
-import game.config.TaskConfigData4;
+import game.config.DataConfigData;
 import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.TaskReq;
@@ -26,7 +26,7 @@ public class TaskHandler {
 
         player.getPd().getTaskBuilder().removeAcceptableTask(o.getTaskId());
 
-        TaskConfigData4 taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
+        DataConfigData taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
         RunTask.Builder data = RunTask.newBuilder();
         data.setTaskId(o.getTaskId());
         if (taskConfigData4.completeType == 2) {// 立即完成

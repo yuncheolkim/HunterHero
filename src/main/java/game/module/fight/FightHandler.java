@@ -1,6 +1,10 @@
 package game.module.fight;
 
 import com.google.protobuf.MessageLite;
+import game.player.Player;
+import game.proto.FightStartReq;
+import game.proto.data.FightHeroPos;
+import game.proto.data.PlayerHero;
 
 /**
  * 战斗相关入口
@@ -9,8 +13,20 @@ import com.google.protobuf.MessageLite;
  */
 public class FightHandler {
 
-    public static MessageLite process(){
+    /**
+     * 战斗开始
+     * @param player
+     * @param req
+     * @return
+     */
+    public static MessageLite fight(Player player, FightStartReq req) {
 
+        for (FightHeroPos fightHeroPos : req.getPosList()) {
+            PlayerHero playerHero = player.getPd().getHeroMap().get(fightHeroPos.getHeroId());
+            if (playerHero == null) {
+                return null;
+            }
+        }
         return null;
     }
 }

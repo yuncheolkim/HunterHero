@@ -4,7 +4,7 @@ import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
 import game.base.Work;
-import game.config.HeroConfigDataBase;
+import game.config.DataConfigData;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
@@ -20,7 +20,6 @@ import java.util.Date;
 
 /**
  * 线程安全
- *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -29,14 +28,23 @@ public class Player {
 
     private Transport transport = new Transport();
 
+    private PlayerData.Builder pd = PlayerData.newBuilder();
+
     private LocalDateTime createTime;
 
     private LocalDateTime loginTime;
 
-    //    private PlayerData playerData = new PlayerData();
-    private PlayerData.Builder pd = PlayerData.newBuilder();
-
     private LocalDateTime updateTime;
+
+    /**
+     * 最后一次战斗时间
+     */
+    private LocalDateTime fightTime;
+
+    /**
+     * 体力最后一次恢复时间
+     */
+    private LocalDateTime powerRecoverTime;
 
     public Player(long pid) {
         this.pid = pid;
@@ -66,7 +74,6 @@ public class Player {
 
     /**
      * 加载用户数据
-     *
      * @param code
      */
     public void load(String code) {
@@ -109,8 +116,8 @@ public class Player {
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
 
         // 英雄
-        PlayerHero.Builder builder = pd.addHeroBuilder().setId(1001).setLevel(1);
-        HeroConfigDataBase d = G.C.heroMap1001.get(1);
+        PlayerHero.Builder builder = PlayerHero.newBuilder();
+        DataConfigData d = G.C.heroMap1001.get(1);
 
         builder.getPropertyBuilder()
                 .setHp(d.hp)
@@ -122,11 +129,11 @@ public class Player {
                 .setSpeed(d.speed);
 
         builder.getPropertyEffectBuilder()
-                .setDefRate(CalcUtil.calcRateProperty(d.def,d.defBase))
-                .setAvoidRate(CalcUtil.calcRateProperty(d.avoid,d.avoidBase))
-                .setCriticalRate(CalcUtil.calcRateProperty(d.critical,d.criticalBase));
+                .setDefRate(CalcUtil.calcRateProperty(d.def, d.defBase))
+                .setAvoidRate(CalcUtil.calcRateProperty(d.avoid, d.avoidBase))
+                .setCriticalRate(CalcUtil.calcRateProperty(d.critical, d.criticalBase));
 
-
+        pd.putHero(1001, builder.build());
 
     }
 
@@ -199,5 +206,13 @@ public class Player {
 
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public LocalDateTime getPowerRecoverTime() {
+        return powerRecoverTime;
+    }
+
+    public void setPowerRecoverTime(LocalDateTime powerRecoverTime) {
+        this.powerRecoverTime = powerRecoverTime;
     }
 }

@@ -10,7 +10,7 @@
         "npcId": 1,
         "reward": "3=40",
         "speakType": 1,
-        "targets": [
+        "targetList": [
             2
         ],
         "taskType": 1,
@@ -29,7 +29,7 @@
         "npcId": 11,
         "reward": "3=133#1=20",
         "speakType": 2,
-        "targets": [
+        "targetList": [
             1
         ],
         "taskType": 1,

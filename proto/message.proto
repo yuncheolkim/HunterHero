@@ -45,3 +45,37 @@ message PlayerCreateNameReq {
 message TaskReq {
     int32 taskId = 1;
 }
+
+// 2001 开始战斗
+message FightStartReq {
+
+    repeated FightHeroPos pos = 1;
+}
+// 2002 发上战斗推送
+message FightStartPush {
+
+}
+
+// 3001 进入场景
+message EnterSceneReq {
+    SceneData data = 1;
+}
+// 3002 进入战斗区域
+message EnterFightAreaReq {
+    int32 id = 1;
+}
+// 3003 离开战斗区域
+message ExitFightAreaReq {
+    int32 id = 1;
+}
+
+
+
+
+
+
+
+
+
+
+

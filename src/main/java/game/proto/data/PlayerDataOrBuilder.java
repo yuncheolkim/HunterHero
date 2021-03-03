@@ -86,6 +86,23 @@ public interface PlayerDataOrBuilder extends
   game.proto.data.SceneDataOrBuilder getSceneDataOrBuilder();
 
   /**
+   * <code>repeated int32 fightArea = 202;</code>
+   * @return A list containing the fightArea.
+   */
+  java.util.List<java.lang.Integer> getFightAreaList();
+  /**
+   * <code>repeated int32 fightArea = 202;</code>
+   * @return The count of fightArea.
+   */
+  int getFightAreaCount();
+  /**
+   * <code>repeated int32 fightArea = 202;</code>
+   * @param index The index of the element to return.
+   * @return The fightArea at the given index.
+   */
+  int getFightArea(int index);
+
+  /**
    * <code>.Message.Resource resource = 301;</code>
    * @return Whether the resource field is set.
    */
@@ -101,26 +118,36 @@ public interface PlayerDataOrBuilder extends
   game.proto.data.ResourceOrBuilder getResourceOrBuilder();
 
   /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
-   */
-  java.util.List<game.proto.data.PlayerHero> 
-      getHeroList();
-  /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
-   */
-  game.proto.data.PlayerHero getHero(int index);
-  /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   int getHeroCount();
   /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
-  java.util.List<? extends game.proto.data.PlayerHeroOrBuilder> 
-      getHeroOrBuilderList();
+  boolean containsHero(
+      int key);
   /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   * Use {@link #getHeroMap()} instead.
    */
-  game.proto.data.PlayerHeroOrBuilder getHeroOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.PlayerHero>
+  getHero();
+  /**
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.PlayerHero>
+  getHeroMap();
+  /**
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
+   */
+
+  game.proto.data.PlayerHero getHeroOrDefault(
+      int key,
+      game.proto.data.PlayerHero defaultValue);
+  /**
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
+   */
+
+  game.proto.data.PlayerHero getHeroOrThrow(
+      int key);
 }

@@ -1,5 +1,8 @@
 package game.utils;
 
+import game.base.IWeight;
+
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -8,6 +11,7 @@ import java.util.Random;
  * 2021/1/8 17:24
  */
 public class CalcUtil {
+    public final static Random DEFAULT_RANDOM = new Random();
 
     /**
      * 计算比例
@@ -58,8 +62,41 @@ public class CalcUtil {
      * @param base
      * @return 万分比 int
      */
-    public static int calcRateProperty(int v,int base){
-        return (int) (v*10000.0/(v + base));
+    public static int calcRateProperty(int v, int base) {
+        return (int) (v * 10000.0 / (v + base));
     }
 
+    /**
+     * 根据权重随机元素
+     * @param weightList
+     * @param weightAll
+     * @return
+     */
+    public static IWeight weightRandom(List<IWeight> weightList, int weightAll) {
+
+        int i = DEFAULT_RANDOM.nextInt(weightAll) + 1;
+        int sum = 0;
+        for (IWeight iWeight : weightList) {
+
+            sum += iWeight.weight();
+            if (sum >= i) {
+                return iWeight;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 根据权重随机元素
+     * @param weightList
+     * @return
+     */
+    public static IWeight weightRandom(List<IWeight> weightList) {
+        int sum = 0;
+        for (IWeight iWeight : weightList) {
+            sum += iWeight.weight();
+        }
+        return weightRandom(weightList, sum);
+    }
 }

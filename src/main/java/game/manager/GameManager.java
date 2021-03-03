@@ -4,11 +4,10 @@ import com.google.protobuf.MessageLite;
 import game.base.AbsLifecycle;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
+import game.module.scene.SceneHandler;
 import game.module.task.TaskHandler;
 import game.msg.Invoker;
-import game.proto.Empty;
-import game.proto.PlayerCreateNameReq;
-import game.proto.TaskReq;
+import game.proto.*;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -21,12 +20,18 @@ public class GameManager extends AbsLifecycle {
     private ConcurrentHashMap<Integer, Invoker<? extends MessageLite>> handlerMap = new ConcurrentHashMap<>();
 
     private LoginHandler loginHandler = new LoginHandler();
+
     private int version = 1;
 
     public GameManager() {
+        addHandler(new Invoker<>(3, PlayerHandler::createName, PlayerCreateNameReq::parser));
         addHandler(new Invoker<>(1001, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(1002, TaskHandler::completeTask, TaskReq::parser));
-        addHandler(new Invoker<>(3, PlayerHandler::createName, PlayerCreateNameReq::parser));
+
+        // scene
+        addHandler(new Invoker<>(3001, SceneHandler::enterScene, EnterSceneReq::parser));
+        addHandler(new Invoker<>(3002, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
+        addHandler(new Invoker<>(3003, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
 
         // inner
         addHandler(new Invoker<>(10, PlayerHandler::tick, Empty::parser));

@@ -18,7 +18,7 @@ private static final long serialVersionUID = 0L;
   private PlayerData() {
     name_ = "";
     account_ = "";
-    hero_ = java.util.Collections.emptyList();
+    fightArea_ = emptyIntList();
   }
 
   @java.lang.Override
@@ -110,6 +110,27 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 1616: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              fightArea_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            fightArea_.addInt(input.readInt32());
+            break;
+          }
+          case 1618: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+              fightArea_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              fightArea_.addInt(input.readInt32());
+            }
+            input.popLimit(limit);
+            break;
+          }
           case 2410: {
             game.proto.data.Resource.Builder subBuilder = null;
             if (resource_ != null) {
@@ -124,12 +145,16 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 3210: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              hero_ = new java.util.ArrayList<game.proto.data.PlayerHero>();
-              mutable_bitField0_ |= 0x00000001;
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              hero_ = com.google.protobuf.MapField.newMapField(
+                  HeroDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000002;
             }
-            hero_.add(
-                input.readMessage(game.proto.data.PlayerHero.parser(), extensionRegistry));
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.PlayerHero>
+            hero__ = input.readMessage(
+                HeroDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            hero_.getMutableMap().put(
+                hero__.getKey(), hero__.getValue());
             break;
           }
           default: {
@@ -148,7 +173,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        hero_ = java.util.Collections.unmodifiableList(hero_);
+        fightArea_.makeImmutable(); // C
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -159,6 +184,18 @@ private static final long serialVersionUID = 0L;
     return game.proto.data.Data.internal_static_Message_PlayerData_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 401:
+        return internalGetHero();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -339,6 +376,34 @@ private static final long serialVersionUID = 0L;
     return getSceneData();
   }
 
+  public static final int FIGHTAREA_FIELD_NUMBER = 202;
+  private com.google.protobuf.Internal.IntList fightArea_;
+  /**
+   * <code>repeated int32 fightArea = 202;</code>
+   * @return A list containing the fightArea.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Integer>
+      getFightAreaList() {
+    return fightArea_;
+  }
+  /**
+   * <code>repeated int32 fightArea = 202;</code>
+   * @return The count of fightArea.
+   */
+  public int getFightAreaCount() {
+    return fightArea_.size();
+  }
+  /**
+   * <code>repeated int32 fightArea = 202;</code>
+   * @param index The index of the element to return.
+   * @return The fightArea at the given index.
+   */
+  public int getFightArea(int index) {
+    return fightArea_.getInt(index);
+  }
+  private int fightAreaMemoizedSerializedSize = -1;
+
   public static final int RESOURCE_FIELD_NUMBER = 301;
   private game.proto.data.Resource resource_;
   /**
@@ -366,43 +431,84 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int HERO_FIELD_NUMBER = 401;
-  private java.util.List<game.proto.data.PlayerHero> hero_;
-  /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
-   */
-  @java.lang.Override
-  public java.util.List<game.proto.data.PlayerHero> getHeroList() {
+  private static final class HeroDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.PlayerHero> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.PlayerHero>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerData_HeroEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.PlayerHero.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.PlayerHero> hero_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.PlayerHero>
+  internalGetHero() {
+    if (hero_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          HeroDefaultEntryHolder.defaultEntry);
+    }
     return hero_;
   }
-  /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends game.proto.data.PlayerHeroOrBuilder> 
-      getHeroOrBuilderList() {
-    return hero_;
-  }
-  /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
-   */
-  @java.lang.Override
+
   public int getHeroCount() {
-    return hero_.size();
+    return internalGetHero().getMap().size();
   }
   /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
+
   @java.lang.Override
-  public game.proto.data.PlayerHero getHero(int index) {
-    return hero_.get(index);
+  public boolean containsHero(
+      int key) {
+    
+    return internalGetHero().getMap().containsKey(key);
   }
   /**
-   * <code>repeated .Message.PlayerHero hero = 401;</code>
+   * Use {@link #getHeroMap()} instead.
    */
   @java.lang.Override
-  public game.proto.data.PlayerHeroOrBuilder getHeroOrBuilder(
-      int index) {
-    return hero_.get(index);
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> getHero() {
+    return getHeroMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> getHeroMap() {
+    return internalGetHero().getMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.PlayerHero getHeroOrDefault(
+      int key,
+      game.proto.data.PlayerHero defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> map =
+        internalGetHero().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.PlayerHero getHeroOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> map =
+        internalGetHero().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -419,6 +525,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    getSerializedSize();
     if (pid_ != 0L) {
       output.writeInt64(1, pid_);
     }
@@ -443,12 +550,22 @@ private static final long serialVersionUID = 0L;
     if (sceneData_ != null) {
       output.writeMessage(201, getSceneData());
     }
+    if (getFightAreaList().size() > 0) {
+      output.writeUInt32NoTag(1618);
+      output.writeUInt32NoTag(fightAreaMemoizedSerializedSize);
+    }
+    for (int i = 0; i < fightArea_.size(); i++) {
+      output.writeInt32NoTag(fightArea_.getInt(i));
+    }
     if (resource_ != null) {
       output.writeMessage(301, getResource());
     }
-    for (int i = 0; i < hero_.size(); i++) {
-      output.writeMessage(401, hero_.get(i));
-    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetHero(),
+        HeroDefaultEntryHolder.defaultEntry,
+        401);
     unknownFields.writeTo(output);
   }
 
@@ -488,13 +605,33 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(201, getSceneData());
     }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < fightArea_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(fightArea_.getInt(i));
+      }
+      size += dataSize;
+      if (!getFightAreaList().isEmpty()) {
+        size += 2;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      fightAreaMemoizedSerializedSize = dataSize;
+    }
     if (resource_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(301, getResource());
     }
-    for (int i = 0; i < hero_.size(); i++) {
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.PlayerHero> entry
+         : internalGetHero().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.PlayerHero>
+      hero__ = HeroDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(401, hero_.get(i));
+          .computeMessageSize(401, hero__);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -533,13 +670,15 @@ private static final long serialVersionUID = 0L;
       if (!getSceneData()
           .equals(other.getSceneData())) return false;
     }
+    if (!getFightAreaList()
+        .equals(other.getFightAreaList())) return false;
     if (hasResource() != other.hasResource()) return false;
     if (hasResource()) {
       if (!getResource()
           .equals(other.getResource())) return false;
     }
-    if (!getHeroList()
-        .equals(other.getHeroList())) return false;
+    if (!internalGetHero().equals(
+        other.internalGetHero())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -574,13 +713,17 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + SCENEDATA_FIELD_NUMBER;
       hash = (53 * hash) + getSceneData().hashCode();
     }
+    if (getFightAreaCount() > 0) {
+      hash = (37 * hash) + FIGHTAREA_FIELD_NUMBER;
+      hash = (53 * hash) + getFightAreaList().hashCode();
+    }
     if (hasResource()) {
       hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
       hash = (53 * hash) + getResource().hashCode();
     }
-    if (getHeroCount() > 0) {
+    if (!internalGetHero().getMap().isEmpty()) {
       hash = (37 * hash) + HERO_FIELD_NUMBER;
-      hash = (53 * hash) + getHeroList().hashCode();
+      hash = (53 * hash) + internalGetHero().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -689,6 +832,28 @@ private static final long serialVersionUID = 0L;
       return game.proto.data.Data.internal_static_Message_PlayerData_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 401:
+          return internalGetHero();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 401:
+          return internalGetMutableHero();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -710,7 +875,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getHeroFieldBuilder();
       }
     }
     @java.lang.Override
@@ -740,18 +904,15 @@ private static final long serialVersionUID = 0L;
         sceneData_ = null;
         sceneDataBuilder_ = null;
       }
+      fightArea_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       if (resourceBuilder_ == null) {
         resource_ = null;
       } else {
         resource_ = null;
         resourceBuilder_ = null;
       }
-      if (heroBuilder_ == null) {
-        hero_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        heroBuilder_.clear();
-      }
+      internalGetMutableHero().clear();
       return this;
     }
 
@@ -795,20 +956,18 @@ private static final long serialVersionUID = 0L;
       } else {
         result.sceneData_ = sceneDataBuilder_.build();
       }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        fightArea_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.fightArea_ = fightArea_;
       if (resourceBuilder_ == null) {
         result.resource_ = resource_;
       } else {
         result.resource_ = resourceBuilder_.build();
       }
-      if (heroBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          hero_ = java.util.Collections.unmodifiableList(hero_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.hero_ = hero_;
-      } else {
-        result.hero_ = heroBuilder_.build();
-      }
+      result.hero_ = internalGetHero();
+      result.hero_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -883,35 +1042,21 @@ private static final long serialVersionUID = 0L;
       if (other.hasSceneData()) {
         mergeSceneData(other.getSceneData());
       }
+      if (!other.fightArea_.isEmpty()) {
+        if (fightArea_.isEmpty()) {
+          fightArea_ = other.fightArea_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureFightAreaIsMutable();
+          fightArea_.addAll(other.fightArea_);
+        }
+        onChanged();
+      }
       if (other.hasResource()) {
         mergeResource(other.getResource());
       }
-      if (heroBuilder_ == null) {
-        if (!other.hero_.isEmpty()) {
-          if (hero_.isEmpty()) {
-            hero_ = other.hero_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureHeroIsMutable();
-            hero_.addAll(other.hero_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.hero_.isEmpty()) {
-          if (heroBuilder_.isEmpty()) {
-            heroBuilder_.dispose();
-            heroBuilder_ = null;
-            hero_ = other.hero_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            heroBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getHeroFieldBuilder() : null;
-          } else {
-            heroBuilder_.addAllMessages(other.hero_);
-          }
-        }
-      }
+      internalGetMutableHero().mergeFrom(
+          other.internalGetHero());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1456,6 +1601,85 @@ private static final long serialVersionUID = 0L;
       return sceneDataBuilder_;
     }
 
+    private com.google.protobuf.Internal.IntList fightArea_ = emptyIntList();
+    private void ensureFightAreaIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        fightArea_ = mutableCopy(fightArea_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @return A list containing the fightArea.
+     */
+    public java.util.List<java.lang.Integer>
+        getFightAreaList() {
+      return ((bitField0_ & 0x00000001) != 0) ?
+               java.util.Collections.unmodifiableList(fightArea_) : fightArea_;
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @return The count of fightArea.
+     */
+    public int getFightAreaCount() {
+      return fightArea_.size();
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @param index The index of the element to return.
+     * @return The fightArea at the given index.
+     */
+    public int getFightArea(int index) {
+      return fightArea_.getInt(index);
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @param index The index to set the value at.
+     * @param value The fightArea to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFightArea(
+        int index, int value) {
+      ensureFightAreaIsMutable();
+      fightArea_.setInt(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @param value The fightArea to add.
+     * @return This builder for chaining.
+     */
+    public Builder addFightArea(int value) {
+      ensureFightAreaIsMutable();
+      fightArea_.addInt(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @param values The fightArea to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllFightArea(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureFightAreaIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, fightArea_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 fightArea = 202;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFightArea() {
+      fightArea_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+
     private game.proto.data.Resource resource_;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.Resource, game.proto.data.Resource.Builder, game.proto.data.ResourceOrBuilder> resourceBuilder_;
@@ -1575,244 +1799,132 @@ private static final long serialVersionUID = 0L;
       return resourceBuilder_;
     }
 
-    private java.util.List<game.proto.data.PlayerHero> hero_ =
-      java.util.Collections.emptyList();
-    private void ensureHeroIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        hero_ = new java.util.ArrayList<game.proto.data.PlayerHero>(hero_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.PlayerHero, game.proto.data.PlayerHero.Builder, game.proto.data.PlayerHeroOrBuilder> heroBuilder_;
-
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public java.util.List<game.proto.data.PlayerHero> getHeroList() {
-      if (heroBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(hero_);
-      } else {
-        return heroBuilder_.getMessageList();
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.PlayerHero> hero_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.PlayerHero>
+    internalGetHero() {
+      if (hero_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            HeroDefaultEntryHolder.defaultEntry);
       }
+      return hero_;
     }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.PlayerHero>
+    internalGetMutableHero() {
+      onChanged();;
+      if (hero_ == null) {
+        hero_ = com.google.protobuf.MapField.newMapField(
+            HeroDefaultEntryHolder.defaultEntry);
+      }
+      if (!hero_.isMutable()) {
+        hero_ = hero_.copy();
+      }
+      return hero_;
+    }
+
     public int getHeroCount() {
-      if (heroBuilder_ == null) {
-        return hero_.size();
-      } else {
-        return heroBuilder_.getCount();
-      }
+      return internalGetHero().getMap().size();
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public game.proto.data.PlayerHero getHero(int index) {
-      if (heroBuilder_ == null) {
-        return hero_.get(index);
-      } else {
-        return heroBuilder_.getMessage(index);
-      }
+
+    @java.lang.Override
+    public boolean containsHero(
+        int key) {
+      
+      return internalGetHero().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * Use {@link #getHeroMap()} instead.
      */
-    public Builder setHero(
-        int index, game.proto.data.PlayerHero value) {
-      if (heroBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureHeroIsMutable();
-        hero_.set(index, value);
-        onChanged();
-      } else {
-        heroBuilder_.setMessage(index, value);
-      }
-      return this;
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> getHero() {
+      return getHeroMap();
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public Builder setHero(
-        int index, game.proto.data.PlayerHero.Builder builderForValue) {
-      if (heroBuilder_ == null) {
-        ensureHeroIsMutable();
-        hero_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        heroBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> getHeroMap() {
+      return internalGetHero().getMap();
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public Builder addHero(game.proto.data.PlayerHero value) {
-      if (heroBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureHeroIsMutable();
-        hero_.add(value);
-        onChanged();
-      } else {
-        heroBuilder_.addMessage(value);
-      }
-      return this;
+    @java.lang.Override
+
+    public game.proto.data.PlayerHero getHeroOrDefault(
+        int key,
+        game.proto.data.PlayerHero defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> map =
+          internalGetHero().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public Builder addHero(
-        int index, game.proto.data.PlayerHero value) {
-      if (heroBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureHeroIsMutable();
-        hero_.add(index, value);
-        onChanged();
-      } else {
-        heroBuilder_.addMessage(index, value);
+    @java.lang.Override
+
+    public game.proto.data.PlayerHero getHeroOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> map =
+          internalGetHero().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
+      return map.get(key);
     }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public Builder addHero(
-        game.proto.data.PlayerHero.Builder builderForValue) {
-      if (heroBuilder_ == null) {
-        ensureHeroIsMutable();
-        hero_.add(builderForValue.build());
-        onChanged();
-      } else {
-        heroBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public Builder addHero(
-        int index, game.proto.data.PlayerHero.Builder builderForValue) {
-      if (heroBuilder_ == null) {
-        ensureHeroIsMutable();
-        hero_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        heroBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public Builder addAllHero(
-        java.lang.Iterable<? extends game.proto.data.PlayerHero> values) {
-      if (heroBuilder_ == null) {
-        ensureHeroIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, hero_);
-        onChanged();
-      } else {
-        heroBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
+
     public Builder clearHero() {
-      if (heroBuilder_ == null) {
-        hero_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        heroBuilder_.clear();
-      }
+      internalGetMutableHero().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public Builder removeHero(int index) {
-      if (heroBuilder_ == null) {
-        ensureHeroIsMutable();
-        hero_.remove(index);
-        onChanged();
-      } else {
-        heroBuilder_.remove(index);
-      }
+
+    public Builder removeHero(
+        int key) {
+      
+      internalGetMutableHero().getMutableMap()
+          .remove(key);
       return this;
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * Use alternate mutation accessors instead.
      */
-    public game.proto.data.PlayerHero.Builder getHeroBuilder(
-        int index) {
-      return getHeroFieldBuilder().getBuilder(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.PlayerHero>
+    getMutableHero() {
+      return internalGetMutableHero().getMutableMap();
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public game.proto.data.PlayerHeroOrBuilder getHeroOrBuilder(
-        int index) {
-      if (heroBuilder_ == null) {
-        return hero_.get(index);  } else {
-        return heroBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder putHero(
+        int key,
+        game.proto.data.PlayerHero value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableHero().getMutableMap()
+          .put(key, value);
+      return this;
     }
     /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
+     * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
-    public java.util.List<? extends game.proto.data.PlayerHeroOrBuilder> 
-         getHeroOrBuilderList() {
-      if (heroBuilder_ != null) {
-        return heroBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(hero_);
-      }
-    }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public game.proto.data.PlayerHero.Builder addHeroBuilder() {
-      return getHeroFieldBuilder().addBuilder(
-          game.proto.data.PlayerHero.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public game.proto.data.PlayerHero.Builder addHeroBuilder(
-        int index) {
-      return getHeroFieldBuilder().addBuilder(
-          index, game.proto.data.PlayerHero.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.PlayerHero hero = 401;</code>
-     */
-    public java.util.List<game.proto.data.PlayerHero.Builder> 
-         getHeroBuilderList() {
-      return getHeroFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.PlayerHero, game.proto.data.PlayerHero.Builder, game.proto.data.PlayerHeroOrBuilder> 
-        getHeroFieldBuilder() {
-      if (heroBuilder_ == null) {
-        heroBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            game.proto.data.PlayerHero, game.proto.data.PlayerHero.Builder, game.proto.data.PlayerHeroOrBuilder>(
-                hero_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        hero_ = null;
-      }
-      return heroBuilder_;
+
+    public Builder putAllHero(
+        java.util.Map<java.lang.Integer, game.proto.data.PlayerHero> values) {
+      internalGetMutableHero().getMutableMap()
+          .putAll(values);
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

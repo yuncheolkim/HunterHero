@@ -18,17 +18,19 @@ public class JsonConfig {
 
     private String fileName;
 
+    private Map<Integer, DataConfigData> map;
 
     public JsonConfig(String fileName) {
         this.fileName = fileName;
     }
 
-    public <T> Map<Integer, T> load() {
+    public Map<Integer, DataConfigData> load() {
         try {
             Logs.C.info(Constants.TOKEN_START + "加载配置文件:{}", fileName);
             String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
-            ImmutableMap.Builder<Integer, T> b = ImmutableMap.builder();
-            return b.putAll(JsonUtil.fromJsonString(s, type())).build();
+            ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builder();
+            return b.putAll(JsonUtil.fromJsonString(s, new TypeReference<Map<Integer, DataConfigData>>() {
+            })).build();
         } catch (Exception e) {
             Logs.C.error(fileName, e);
             throw new RuntimeException(e);
@@ -37,8 +39,7 @@ public class JsonConfig {
         }
     }
 
-    protected <T> TypeReference<Map<Integer, T>> type() {
-        return new TypeReference<Map<Integer, T>>() {
-        };
+    public Map<Integer, DataConfigData> getMap() {
+        return map;
     }
 }

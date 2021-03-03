@@ -1,9 +1,54 @@
 package game.module.scene;
 
+import com.google.protobuf.MessageLite;
+import game.player.Player;
+import game.proto.EnterFightAreaReq;
+import game.proto.EnterSceneReq;
+import game.proto.ExitFightAreaReq;
+
 /**
  * 场景处理
  * @author Yunzhe.Jin
  * 2021/2/25 11:13
  */
 public class SceneHandler {
+
+    /**
+     * 进入场景
+     * @param player
+     * @param req
+     * @return
+     */
+    public static MessageLite enterScene(Player player, EnterSceneReq req) {
+        player.getPd().mergeSceneData(req.getData());
+        return null;
+    }
+
+    /**
+     * 进入战斗区域
+     * @param player
+     * @param req
+     * @return
+     */
+    public static MessageLite enterFightArea(Player player, EnterFightAreaReq req) {
+
+        if (!player.getPd().getFightAreaList().contains(req.getId())) {
+            player.getPd().addFightArea(req.getId());
+        }
+
+
+        return null;
+    }
+
+    /**
+     * 离开战斗区域
+     * @param player
+     * @param req
+     * @return
+     */
+    public static MessageLite exitFightArea(Player player, ExitFightAreaReq req) {
+
+        return null;
+    }
+
 }
