@@ -33,5 +33,7 @@ public class Round {
         this.roundCount = roundCount;
     }
 
-
+    public List<Record> getRecordList() {
+        return recordList;
+    }
 }

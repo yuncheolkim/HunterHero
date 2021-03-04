@@ -1,11 +1,11 @@
 package game.module.battle.skill;
 
-import game.utils.CalcUtil;
 import game.module.battle.Constant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
+import game.utils.CalcUtil;
 
 /**
  * 每1回合恢复失去血量的20%血量
@@ -24,8 +24,8 @@ public class SunquanSkill1 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(ActionPoint actionPoint, Hero hero) {
-        UseSkillRecord process = super.process(actionPoint, hero);
+    public Record process(ActionPoint actionPoint, Hero hero) {
+        Record process = super.process(actionPoint, hero);
 
         int maxHp = hero.property.getMaxHp();
         int hp = hero.getHp();

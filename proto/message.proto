@@ -51,9 +51,18 @@ message FightStartReq {
 
     repeated FightHeroPos pos = 1;
 }
-// 2002 发上战斗推送
+// 2002 发生战斗推送
 message FightStartPush {
     repeated FightEnemyInfo info = 1;
+}
+
+// 2003
+message FightRecord {
+
+    repeated RoundRecord round = 1;
+    repeated HeroDataRecord sideA = 2;
+    repeated HeroDataRecord sideB = 3;
+
 }
 
 // 3001 进入场景
@@ -68,6 +77,7 @@ message EnterFightAreaReq {
 message ExitFightAreaReq {
     int32 id = 1;
 }
+
 
 
 

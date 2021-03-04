@@ -9,12 +9,20 @@ import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.Buff;
 import game.module.battle.damage.DamageInfo;
 import game.module.battle.damage.DamageSourceType;
-import game.module.battle.record.*;
+import game.module.battle.record.BuffData;
+import game.module.battle.record.HeroRecordData;
+import game.module.battle.record.HeroRecordSimple;
+import game.module.battle.record.Record;
 import game.module.battle.status.HealthChangeInfo;
 import game.module.battle.status.HeroStatusChangeListener;
+import game.proto.data.DamageType;
+import game.proto.data.RecordType;
 
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static game.proto.data.RecordType.ACTION;
+import static game.proto.data.RecordType.ATTACK;
 
 /**
  * @author Yunzhe.Jin
@@ -31,6 +39,8 @@ public class Hero {
      * 所在位置
      */
     protected Pos pos;
+
+    protected String name;
 
     /**
      * 英雄原始数据，开局后永远不变
@@ -144,7 +154,7 @@ public class Hero {
     }
 
     public void action() {
-        ActionStartRecord record = new ActionStartRecord();
+        Record record = new Record(ACTION);
         record.hero = this.getSimple();
         battle.addRecord(record);
         attack();
@@ -219,8 +229,8 @@ public class Hero {
 
 
     private void attackRecord() {
-        AttackRecord attackRecord = new AttackRecord();
-        attackRecord.source = damageInfo.source.getSimple();
+        Record attackRecord = new Record(ATTACK);
+        attackRecord.hero = damageInfo.source.getSimple();
         attackRecord.target = Lists.newArrayList(damageInfo.target.getSimple());
         battle.addRecord(attackRecord);
     }
@@ -261,7 +271,7 @@ public class Hero {
     public void removeBuff(ActionPoint actionPoint, Buff buff) {
         Logs.trace("移除buff", buff);
         contextData = buff;
-        RemoveBuffRecord record = new RemoveBuffRecord();
+        Record record = new Record(RecordType.BUFF_REMOVE);
         record.actionPoint = actionPoint;
         record.hero = getSimple();
         record.id = buff.getId();
@@ -291,7 +301,7 @@ public class Hero {
                 Logs.trace("使用技能", this);
 
                 // 使用技能
-                UseSkillRecord record = skill.process(actionPoint, this);
+                Record record = skill.process(actionPoint, this);
                 if (record != null) {
                     battle.addRecord(record);
                 }
@@ -326,7 +336,7 @@ public class Hero {
             processAll(ActionPoint.闪避之前);
         }
         if (info.avoid) {
-            AvoidRecord r = new AvoidRecord();
+            Record r = new Record(RecordType.AVOID);
             r.hero = this.getSimple();
             battle.addRecord(r);
             processAll(ActionPoint.闪避之后);
@@ -435,7 +445,7 @@ public class Hero {
             return;
         }
         BuffData data = buff.buffData();
-        AddBuffRecord addBuffRecord = new AddBuffRecord();
+        Record addBuffRecord = new Record(RecordType.BUFF_ADD);
         addBuffRecord.buffData = data;
         addBuffRecord.hero = getSimple();
 
@@ -448,6 +458,7 @@ public class Hero {
         simple.pos = pos;
         simple.hp = heroStats.hp;
         simple.angry = heroStats.angry;
+        simple.name = getName();
         return simple;
     }
 
@@ -474,10 +485,10 @@ public class Hero {
     }
 
     private void addHpRecord(int add) {
-        HealthChangeRecord record = new HealthChangeRecord();
+        Record record = new Record(RecordType.HEALTH_CHANGE);
         record.hero = this.getSimple();
         record.value = add;
-        record.damageType = DamageType.NONE;
+        record.damageType = DamageType.DAMAGE_NONE;
         battle.addRecord(record);
     }
 
@@ -486,18 +497,18 @@ public class Hero {
      * @param info
      */
     private void addDamageRecord(DamageInfo info) {
-        HealthChangeRecord record = new HealthChangeRecord();
+        Record record = new Record(RecordType.HEALTH_CHANGE);
         record.hero = info.target.getSimple();
         record.value = info.sourceDamage * -1;
-        record.damageType = DamageType.ATTACK;
+        record.damageType = DamageType.DAMAGE_NORMAL;
         battle.addRecord(record);
 
         // 暴击
         if (info.sourceCriticalDamage > 0) {
-            record = new HealthChangeRecord();
+            record =  new Record(RecordType.HEALTH_CHANGE);
             record.hero = info.target.getSimple();
             record.value = info.sourceCriticalDamage * -1;
-            record.damageType = DamageType.CRITICAL;
+            record.damageType = DamageType.DAMAGE_CRITICAL;
             battle.addRecord(record);
         }
     }
@@ -569,6 +580,15 @@ public class Hero {
 
     public int getHp() {
         return heroStats.hp;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override

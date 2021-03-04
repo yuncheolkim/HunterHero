@@ -71,8 +71,9 @@ public class Battle {
 
     /**
      * 开始一场战斗
+     * @return
      */
-    public void start() {
+    public BattleRecord start() {
 
         BattleRecord battleRecord = new BattleRecord(this);
         currentRound = new Round();
@@ -108,6 +109,8 @@ public class Battle {
         Logs.trace("游戏结束", "胜利：", winSide);
         battleRecord.setRoundList(roundList);
         Logs.C.info("end:\n{}", JacksonUtil.toStr(battleRecord));
+
+        return battleRecord;
     }
 
     /**

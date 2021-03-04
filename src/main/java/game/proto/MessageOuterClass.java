@@ -65,6 +65,11 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FightStartPush_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FightRecord_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FightRecord_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_EnterSceneReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -98,11 +103,14 @@ public final class MessageOuterClass {
       "eq\022\014\n\004name\030\001 \001(\t\"\031\n\007TaskReq\022\016\n\006taskId\030\001 " +
       "\001(\005\"3\n\rFightStartReq\022\"\n\003pos\030\001 \003(\0132\025.Mess" +
       "age.FightHeroPos\"7\n\016FightStartPush\022%\n\004in" +
-      "fo\030\001 \003(\0132\027.Message.FightEnemyInfo\"1\n\rEnt" +
-      "erSceneReq\022 \n\004data\030\001 \001(\0132\022.Message.Scene" +
-      "Data\"\037\n\021EnterFightAreaReq\022\n\n\002id\030\001 \001(\005\"\036\n" +
-      "\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005B\020\n\ngame.pr" +
-      "otoH\001P\001b\006proto3"
+      "fo\030\001 \003(\0132\027.Message.FightEnemyInfo\"\202\001\n\013Fi" +
+      "ghtRecord\022#\n\005round\030\001 \003(\0132\024.Message.Round" +
+      "Record\022&\n\005sideA\030\002 \003(\0132\027.Message.HeroData" +
+      "Record\022&\n\005sideB\030\003 \003(\0132\027.Message.HeroData" +
+      "Record\"1\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022." +
+      "Message.SceneData\"\037\n\021EnterFightAreaReq\022\n" +
+      "\n\002id\030\001 \001(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001" +
+      "(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -169,20 +177,26 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FightStartPush_descriptor,
         new java.lang.String[] { "Info", });
-    internal_static_Message_EnterSceneReq_descriptor =
+    internal_static_Message_FightRecord_descriptor =
       getDescriptor().getMessageTypes().get(10);
+    internal_static_Message_FightRecord_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FightRecord_descriptor,
+        new java.lang.String[] { "Round", "SideA", "SideB", });
+    internal_static_Message_EnterSceneReq_descriptor =
+      getDescriptor().getMessageTypes().get(11);
     internal_static_Message_EnterSceneReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_EnterSceneReq_descriptor,
         new java.lang.String[] { "Data", });
     internal_static_Message_EnterFightAreaReq_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_Message_EnterFightAreaReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_EnterFightAreaReq_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_Message_ExitFightAreaReq_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_Message_ExitFightAreaReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ExitFightAreaReq_descriptor,

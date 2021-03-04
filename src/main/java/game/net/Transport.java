@@ -1,8 +1,8 @@
 package game.net;
 
+import com.google.protobuf.MessageLite;
 import game.exception.ErrorEnum;
 import game.exception.ModuleErrorNoResolve;
-import game.msg.MsgUtil;
 import game.proto.Message;
 import io.netty.channel.Channel;
 
@@ -14,6 +14,11 @@ import io.netty.channel.Channel;
 public class Transport {
     protected volatile Channel channel;
 
+    public void send(int msgNo, MessageLite msg) {
+        if (channel.isActive()) {
+            channel.writeAndFlush(Message.newBuilder().setMsgNo(msgNo).setBody(msg.toByteString()));
+        }
+    }
 
     public void send(Message message) {
         if (channel.isActive()) {
@@ -37,7 +42,7 @@ public class Transport {
     }
 
     public void close() {
-        if(channel.isActive()){
+        if (channel.isActive()) {
             channel.close();
         }
     }

@@ -2,12 +2,12 @@ package game.module.battle.skill;
 
 import game.base.Logs;
 import game.module.battle.Battle;
-import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.hero.Caocao;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
+import game.utils.CalcUtil;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -30,8 +30,8 @@ public class CaocaoSkill2 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(ActionPoint point, Hero hero) {
-        UseSkillRecord record = super.process(point, hero);
+    public Record process(ActionPoint point, Hero hero) {
+        Record record = super.process(point, hero);
 
         Battle battle = hero.getBattle();
         boolean happened = CalcUtil.happened(battle.getRandom(), rate, 100);

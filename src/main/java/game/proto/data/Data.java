@@ -119,6 +119,26 @@ public final class Data {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FightEnemyInfo_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HeroDataRecord_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HeroDataRecord_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_RoundRecord_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_RoundRecord_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_Record_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_Record_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_BuffRecord_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_BuffRecord_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -181,7 +201,26 @@ public final class Data {
       "s\022\016\n\006heroId\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\"]\n\016FightE" +
       "nemyInfo\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\r\n\005lev" +
       "el\030\003 \001(\005\022#\n\010property\030\004 \001(\0132\021.Message.Pro" +
-      "pertyB\025\n\017game.proto.dataH\001P\001b\006proto3"
+      "perty\"C\n\016HeroDataRecord\022\n\n\002id\030\001 \001(\005\022\013\n\003P" +
+      "os\030\002 \001(\005\022\n\n\002hp\030\003 \001(\005\022\014\n\004name\030\004 \001(\t\"=\n\013Ro" +
+      "undRecord\022\r\n\005round\030\001 \001(\005\022\037\n\006record\030\002 \003(\013" +
+      "2\017.Message.Record\"\315\001\n\006Record\022!\n\004type\030\001 \001" +
+      "(\0162\023.Message.RecordType\022\016\n\006heroId\030\002 \001(\005\022" +
+      "\n\n\002id\030\003 \001(\005\022\016\n\006target\030\013 \003(\005\022\'\n\ndamageTyp" +
+      "e\030\025 \001(\0162\023.Message.DamageType\022\r\n\005value\030\026 " +
+      "\001(\005\022\023\n\013actionPoint\030  \001(\t\022\'\n\nbuffRecord\030)" +
+      " \001(\0132\023.Message.BuffRecord\"\270\001\n\nBuffRecord" +
+      "\022\016\n\006buffId\030\001 \001(\005\022\r\n\005round\030\002 \001(\005\022\023\n\013remai" +
+      "nRound\030\003 \001(\005\022\n\n\002i1\030\004 \001(\005\022\n\n\002i2\030\005 \001(\005\022\n\n\002" +
+      "i3\030\006 \001(\005\022\n\n\002i4\030\007 \001(\005\022\n\n\002i5\030\010 \001(\005\022\n\n\002f1\030\025" +
+      " \001(\002\022\n\n\002f2\030\026 \001(\002\022\n\n\002f3\030\027 \001(\002\022\n\n\002f4\030\030 \001(\002" +
+      "\022\n\n\002f5\030\031 \001(\002*\222\001\n\nRecordType\022\n\n\006ACTION\020\000\022" +
+      "\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n\005AVOID\020" +
+      "\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF" +
+      "_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKILL_USE\020" +
+      "\010*E\n\nDamageType\022\021\n\rDAMAGE_NORMAL\020\000\022\023\n\017DA" +
+      "MAGE_CRITICAL\020\001\022\017\n\013DAMAGE_NONE\020\002B\025\n\017game" +
+      ".proto.dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -313,6 +352,30 @@ public final class Data {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FightEnemyInfo_descriptor,
         new java.lang.String[] { "Id", "Pos", "Level", "Property", });
+    internal_static_Message_HeroDataRecord_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_Message_HeroDataRecord_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HeroDataRecord_descriptor,
+        new java.lang.String[] { "Id", "Pos", "Hp", "Name", });
+    internal_static_Message_RoundRecord_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_Message_RoundRecord_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_RoundRecord_descriptor,
+        new java.lang.String[] { "Round", "Record", });
+    internal_static_Message_Record_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_Message_Record_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_Record_descriptor,
+        new java.lang.String[] { "Type", "HeroId", "Id", "Target", "DamageType", "Value", "ActionPoint", "BuffRecord", });
+    internal_static_Message_BuffRecord_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_Message_BuffRecord_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_BuffRecord_descriptor,
+        new java.lang.String[] { "BuffId", "Round", "RemainRound", "I1", "I2", "I3", "I4", "I5", "F1", "F2", "F3", "F4", "F5", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

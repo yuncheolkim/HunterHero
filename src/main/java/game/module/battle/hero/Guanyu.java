@@ -16,7 +16,6 @@ public class Guanyu extends Hero {
 
     public Guanyu() {
 
-        id = 100001;
         addSkill(new GuanyuSkill2());
         addSkill(new GuanyuSkill1());
         targetStrategies.add(new OneAttackBuffFindTargetStrategy());

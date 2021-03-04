@@ -5,7 +5,7 @@ import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.OneAttackBuff;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
 
 /**
  * 关羽技能1
@@ -24,8 +24,8 @@ public class GuanyuSkill1 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(ActionPoint point, Hero hero) {
-        UseSkillRecord record = super.process(point, hero);
+    public Record process(ActionPoint point, Hero hero) {
+        Record record = super.process(point, hero);
         hero.addBuff(new OneAttackBuff(hero.damageInfo.target));
         return record;
     }

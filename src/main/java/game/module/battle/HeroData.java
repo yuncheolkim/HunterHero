@@ -17,6 +17,7 @@ public class HeroData {
      * 护甲
      */
     private int def;
+    private int defBase;
 
     /**
      * 伤害
@@ -27,12 +28,18 @@ public class HeroData {
      * 闪避
      */
     private int avoid;
+    private int avoidBase;
 
     /**
      * 暴击概率
      * x/(x+200)
      */
     private int critical;
+
+    /**
+     * 基数
+     */
+    private int criticalBase;
 
     /**
      * 暴击伤害比例
@@ -112,6 +119,31 @@ public class HeroData {
 
     public void setCriticalDamageRate(int criticalDamageRate) {
         this.criticalDamageRate = criticalDamageRate;
+    }
+
+
+    public int getDefBase() {
+        return defBase;
+    }
+
+    public void setDefBase(int defBase) {
+        this.defBase = defBase;
+    }
+
+    public int getAvoidBase() {
+        return avoidBase;
+    }
+
+    public void setAvoidBase(int avoidBase) {
+        this.avoidBase = avoidBase;
+    }
+
+    public int getCriticalBase() {
+        return criticalBase;
+    }
+
+    public void setCriticalBase(int criticalBase) {
+        this.criticalBase = criticalBase;
     }
 
     @Override

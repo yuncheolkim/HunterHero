@@ -3,7 +3,8 @@ package game.module.battle;
 import com.google.common.base.MoreObjects;
 import game.base.Logs;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
+import game.proto.data.RecordType;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -43,10 +44,10 @@ public class Skill {
 
     protected SkillType skillType = SkillType.B;
 
-    public UseSkillRecord process(ActionPoint actionPoint, Hero hero) {
-        UseSkillRecord record = new UseSkillRecord(id);
+    public Record process(ActionPoint actionPoint, Hero hero) {
+        Record record = new Record(RecordType.SKILL_USE);
         record.hero = hero.getSimple();
-        record.skillId = id;
+        record.id = id;
         record.actionPoint = actionPoint;
 
         return record;

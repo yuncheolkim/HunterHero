@@ -1,13 +1,13 @@
 package game.module.battle.skill;
 
-import game.utils.CalcUtil;
 import game.module.battle.Constant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.damage.DamageInfo;
 import game.module.battle.damage.DamageSourceType;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
+import game.utils.CalcUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,8 +52,8 @@ public class GuanyuSkill2 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(ActionPoint point, Hero hero) {
-        UseSkillRecord process = super.process(point,hero);
+    public Record process(ActionPoint point, Hero hero) {
+        Record process = super.process(point,hero);
         List<Hero> collect = attackHero(hero);
         process.target = collect.stream().map(Hero::getSimple).collect(Collectors.toList());
 

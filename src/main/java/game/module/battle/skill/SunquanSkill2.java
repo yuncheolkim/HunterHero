@@ -4,7 +4,7 @@ import game.module.battle.Constant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
 
 /**
  * 受到的伤害减少20%
@@ -24,8 +24,8 @@ public class SunquanSkill2 extends Skill {
 
 
     @Override
-    public UseSkillRecord process(ActionPoint actionPoint, Hero hero) {
-        UseSkillRecord process = super.process(actionPoint, hero);
+    public Record process(ActionPoint actionPoint, Hero hero) {
+        Record process = super.process(actionPoint, hero);
 
         hero.damageInfo.reduceDamage(rate);
 

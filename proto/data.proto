@@ -121,3 +121,76 @@ message FightEnemyInfo {
     int32 level = 3;
     Property property = 4;
 }
+
+message HeroDataRecord {
+    int32 id = 1;
+    int32 Pos = 2;
+    int32 hp = 3;
+    string name = 4;
+}
+
+message RoundRecord {
+    int32 round = 1;
+    repeated Record record = 2;
+}
+
+enum RecordType {
+    ACTION = 0;
+    ATTACK = 1;
+    HEALTH_CHANGE = 2;
+    AVOID = 3;
+    BUFF_ADD = 4;
+    BUFF_REMOVE = 5;
+    BUFF_UPDATE = 6;
+    HERO_ACTION = 7;
+    SKILL_USE = 8;
+}
+enum DamageType {
+    DAMAGE_NORMAL = 0;
+    DAMAGE_CRITICAL = 1;
+    DAMAGE_NONE = 2;
+}
+
+message Record {
+    RecordType type = 1;
+    int32 heroId = 2;
+    int32 id = 3;
+    repeated int32 target = 11;
+    DamageType damageType = 21;
+    int32 value = 22;
+    string actionPoint = 32;
+    BuffRecord buffRecord = 41;
+
+
+}
+
+message BuffRecord {
+
+    int32 buffId = 1;
+
+    int32 round = 2;
+
+    int32 remainRound = 3;
+
+    int32 i1 = 4;
+
+    int32 i2 = 5;
+
+    int32 i3 = 6;
+
+    int32 i4 = 7;
+
+    int32 i5 = 8;
+
+    float f1 = 21;
+
+    float f2 = 22;
+
+    float f3 = 23;
+
+    float f4 = 24;
+
+    float f5 = 25;
+
+
+}

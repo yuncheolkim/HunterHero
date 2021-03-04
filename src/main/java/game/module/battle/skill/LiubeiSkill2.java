@@ -4,7 +4,7 @@ import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.hero.LiubeiBuff2;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
 
 /**
  * @author Yunzhe.Jin
@@ -20,8 +20,8 @@ public class LiubeiSkill2 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(ActionPoint point, Hero hero) {
-        UseSkillRecord record = super.process(point, hero);
+    public Record process(ActionPoint point, Hero hero) {
+        Record record = super.process(point, hero);
 
         hero.addBuff(new LiubeiBuff2());
 

@@ -16,6 +16,8 @@ public class HeroRecordSimple {
 
     public int angry;
 
+    public String name;
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)

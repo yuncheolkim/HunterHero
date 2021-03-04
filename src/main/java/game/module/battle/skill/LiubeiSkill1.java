@@ -4,7 +4,7 @@ import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.hero.LiubeiBuff1;
-import game.module.battle.record.UseSkillRecord;
+import game.module.battle.record.Record;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,8 +22,8 @@ public class LiubeiSkill1 extends Skill {
     }
 
     @Override
-    public UseSkillRecord process(ActionPoint point, Hero hero) {
-        UseSkillRecord record = super.process(point, hero);
+    public Record process(ActionPoint point, Hero hero) {
+        Record record = super.process(point, hero);
 
         List<Hero> list = hero.getBattle().mySideHeroes(hero.getSide());
 
