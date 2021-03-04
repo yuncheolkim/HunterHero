@@ -4,8 +4,11 @@ import game.base.G;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
 import game.module.battle.hero.Guanyu;
+import game.module.battle.hero.creature.CreatureTarget;
 import game.player.Player;
+import game.proto.data.FightEnemyInfo;
 import game.proto.data.PlayerHero;
+import game.proto.data.Property;
 
 /**
  * @author Yunzhe.Jin
@@ -26,17 +29,7 @@ public class HeroFactory {
         if (hero != null) {
             hero.setId(heroId);
             // property data
-            HeroData data = new HeroData();
-            data.setMaxHp(playerHero.getProperty().getHp());
-            data.setDef(playerHero.getProperty().getDef());
-            data.setDamage(playerHero.getProperty().getDamage());
-            data.setAvoid(playerHero.getProperty().getAvoid());
-            data.setCritical(playerHero.getProperty().getCritical());
-            data.setCriticalDamageRate(playerHero.getProperty().getCriticalDamage());
-            data.setSpeed(playerHero.getProperty().getSpeed());
-            data.setAvoidBase(playerHero.getProperty().getAvoidBase());
-            data.setCriticalBase(playerHero.getProperty().getCriticalBase());
-            data.setDefBase(playerHero.getProperty().getDefBase());
+            HeroData data = makeData(playerHero.getProperty());
 
             hero.setName(G.C.heroMap1001.get(heroId).name);
             hero.origin = data;
@@ -46,4 +39,33 @@ public class HeroFactory {
 
         return hero;
     }
+
+    private static HeroData makeData(Property property) {
+        HeroData data = new HeroData();
+        data.setMaxHp(property.getHp());
+        data.setDef(property.getDef());
+        data.setDamage(property.getDamage());
+        data.setAvoid(property.getAvoid());
+        data.setCritical(property.getCritical());
+        data.setCriticalDamageRate(property.getCriticalDamage());
+        data.setSpeed(property.getSpeed());
+        data.setAvoidBase(property.getAvoidBase());
+        data.setCriticalBase(property.getCriticalBase());
+        data.setDefBase(property.getDefBase());
+        return data;
+    }
+
+    public static CreatureTarget createFightEnemy(FightEnemyInfo info) {
+
+        CreatureTarget target = new CreatureTarget();
+        target.setId(info.getId());
+        target.setName(info.getName());
+        HeroData data = makeData(info.getProperty());
+        target.origin = data;
+        target.heroStats.hp = data.getMaxHp();
+
+        return target;
+    }
+
+
 }

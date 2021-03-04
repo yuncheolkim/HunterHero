@@ -1,6 +1,5 @@
 package game.manager;
 
-import com.google.protobuf.MessageLite;
 import game.base.AbsLifecycle;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
@@ -44,7 +43,7 @@ public class GameManager extends AbsLifecycle {
     }
 
     public IInvoke getHandler(Integer msgNo) {
-        return  handlerMap.get(msgNo);
+        return handlerMap.get(msgNo);
     }
 
 

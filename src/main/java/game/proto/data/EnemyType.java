@@ -4,37 +4,37 @@
 package game.proto.data;
 
 /**
- * Protobuf enum {@code Message.DamageType}
+ * Protobuf enum {@code Message.EnemyType}
  */
-public enum DamageType
+public enum EnemyType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>DAMAGE_NORMAL = 0;</code>
+   * <code>CREATURE = 0;</code>
    */
-  DAMAGE_NORMAL(0),
+  CREATURE(0),
   /**
-   * <code>DAMAGE_CRITICAL = 1;</code>
+   * <code>PLAYER = 1;</code>
    */
-  DAMAGE_CRITICAL(1),
+  PLAYER(1),
   /**
-   * <code>DAMAGE_NONE = 2;</code>
+   * <code>NPC = 2;</code>
    */
-  DAMAGE_NONE(2),
+  NPC(2),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>DAMAGE_NORMAL = 0;</code>
+   * <code>CREATURE = 0;</code>
    */
-  public static final int DAMAGE_NORMAL_VALUE = 0;
+  public static final int CREATURE_VALUE = 0;
   /**
-   * <code>DAMAGE_CRITICAL = 1;</code>
+   * <code>PLAYER = 1;</code>
    */
-  public static final int DAMAGE_CRITICAL_VALUE = 1;
+  public static final int PLAYER_VALUE = 1;
   /**
-   * <code>DAMAGE_NONE = 2;</code>
+   * <code>NPC = 2;</code>
    */
-  public static final int DAMAGE_NONE_VALUE = 2;
+  public static final int NPC_VALUE = 2;
 
 
   public final int getNumber() {
@@ -51,7 +51,7 @@ public enum DamageType
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static DamageType valueOf(int value) {
+  public static EnemyType valueOf(int value) {
     return forNumber(value);
   }
 
@@ -59,24 +59,24 @@ public enum DamageType
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static DamageType forNumber(int value) {
+  public static EnemyType forNumber(int value) {
     switch (value) {
-      case 0: return DAMAGE_NORMAL;
-      case 1: return DAMAGE_CRITICAL;
-      case 2: return DAMAGE_NONE;
+      case 0: return CREATURE;
+      case 1: return PLAYER;
+      case 2: return NPC;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<DamageType>
+  public static com.google.protobuf.Internal.EnumLiteMap<EnemyType>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      DamageType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<DamageType>() {
-          public DamageType findValueByNumber(int number) {
-            return DamageType.forNumber(number);
+      EnemyType> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<EnemyType>() {
+          public EnemyType findValueByNumber(int number) {
+            return EnemyType.forNumber(number);
           }
         };
 
@@ -94,12 +94,12 @@ public enum DamageType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(2);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(0);
   }
 
-  private static final DamageType[] VALUES = values();
+  private static final EnemyType[] VALUES = values();
 
-  public static DamageType valueOf(
+  public static EnemyType valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -113,10 +113,10 @@ public enum DamageType
 
   private final int value;
 
-  private DamageType(int value) {
+  private EnemyType(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:Message.DamageType)
+  // @@protoc_insertion_point(enum_scope:Message.EnemyType)
 }
 

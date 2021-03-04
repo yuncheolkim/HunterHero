@@ -1,6 +1,7 @@
 package game.module.fight;
 
 import game.module.battle.*;
+import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.HeroRecordData;
 import game.module.battle.record.HeroRecordSimple;
@@ -8,13 +9,11 @@ import game.module.battle.record.Record;
 import game.player.Player;
 import game.proto.FightRecord;
 import game.proto.FightStartReq;
-import game.proto.data.FightHeroPos;
-import game.proto.data.HeroDataRecord;
-import game.proto.data.PlayerHero;
-import game.proto.data.RoundRecord;
+import game.proto.data.*;
 
 /**
  * 战斗相关入口
+ *
  * @author Yunzhe.Jin
  * 2021/2/25 10:04
  */
@@ -22,14 +21,26 @@ public class FightHandler {
 
     /**
      * 战斗开始
+     *
      * @param player
      * @param req
      * @return
      */
     public static void fight(Player player, FightStartReq req) {
+        if (player.getPd().getFightInfoCount() == 0) {
+            return;
+        }
 
-        Battle newBattle = new Battle();
+        Battle battle = new Battle();
         // enemy
+        for (FightEnemyInfo enemy : player.getPd().getFightInfoList()) {
+            CreatureTarget fightEnemy = HeroFactory.createFightEnemy(enemy);
+            fightEnemy.setSide(Side.B);
+            fightEnemy.setPos(Pos.from(enemy.getPos()));
+            fightEnemy.init();
+            fightEnemy.setBattle(battle);
+            battle.getSideBhero().add(fightEnemy);
+        }
 
         // player
         for (FightHeroPos fightHeroPos : req.getPosList()) {
@@ -41,12 +52,12 @@ public class FightHandler {
             hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
             hero.init();
-            hero.setBattle(newBattle);
+            hero.setBattle(battle);
 
-            newBattle.getSideAhero().add(hero);
+            battle.getSideAhero().add(hero);
         }
 
-        BattleRecord start = newBattle.start();
+        BattleRecord start = battle.start();
         player.getTransport().send(2003, buildFightRecord(start));
 
     }

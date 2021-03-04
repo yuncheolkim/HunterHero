@@ -16,6 +16,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FightEnemyInfo() {
+    type_ = 0;
+    name_ = "";
   }
 
   @java.lang.Override
@@ -74,6 +76,18 @@ private static final long serialVersionUID = 0L;
               property_ = subBuilder.buildPartial();
             }
 
+            break;
+          }
+          case 40: {
+            int rawValue = input.readEnum();
+
+            type_ = rawValue;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            name_ = s;
             break;
           }
           default: {
@@ -167,6 +181,63 @@ private static final long serialVersionUID = 0L;
     return getProperty();
   }
 
+  public static final int TYPE_FIELD_NUMBER = 5;
+  private int type_;
+  /**
+   * <code>.Message.EnemyType type = 5;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  @java.lang.Override public int getTypeValue() {
+    return type_;
+  }
+  /**
+   * <code>.Message.EnemyType type = 5;</code>
+   * @return The type.
+   */
+  @java.lang.Override public game.proto.data.EnemyType getType() {
+    @SuppressWarnings("deprecation")
+    game.proto.data.EnemyType result = game.proto.data.EnemyType.valueOf(type_);
+    return result == null ? game.proto.data.EnemyType.UNRECOGNIZED : result;
+  }
+
+  public static final int NAME_FIELD_NUMBER = 6;
+  private volatile java.lang.Object name_;
+  /**
+   * <code>string name = 6;</code>
+   * @return The name.
+   */
+  @java.lang.Override
+  public java.lang.String getName() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      name_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string name = 6;</code>
+   * @return The bytes for name.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getNameBytes() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      name_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -193,6 +264,12 @@ private static final long serialVersionUID = 0L;
     if (property_ != null) {
       output.writeMessage(4, getProperty());
     }
+    if (type_ != game.proto.data.EnemyType.CREATURE.getNumber()) {
+      output.writeEnum(5, type_);
+    }
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, name_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -217,6 +294,13 @@ private static final long serialVersionUID = 0L;
     if (property_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getProperty());
+    }
+    if (type_ != game.proto.data.EnemyType.CREATURE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(5, type_);
+    }
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, name_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -244,6 +328,9 @@ private static final long serialVersionUID = 0L;
       if (!getProperty()
           .equals(other.getProperty())) return false;
     }
+    if (type_ != other.type_) return false;
+    if (!getName()
+        .equals(other.getName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -265,6 +352,10 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + PROPERTY_FIELD_NUMBER;
       hash = (53 * hash) + getProperty().hashCode();
     }
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + type_;
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -410,6 +501,10 @@ private static final long serialVersionUID = 0L;
         property_ = null;
         propertyBuilder_ = null;
       }
+      type_ = 0;
+
+      name_ = "";
+
       return this;
     }
 
@@ -444,6 +539,8 @@ private static final long serialVersionUID = 0L;
       } else {
         result.property_ = propertyBuilder_.build();
       }
+      result.type_ = type_;
+      result.name_ = name_;
       onBuilt();
       return result;
     }
@@ -503,6 +600,13 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasProperty()) {
         mergeProperty(other.getProperty());
+      }
+      if (other.type_ != 0) {
+        setTypeValue(other.getTypeValue());
+      }
+      if (!other.getName().isEmpty()) {
+        name_ = other.name_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -743,6 +847,136 @@ private static final long serialVersionUID = 0L;
         property_ = null;
       }
       return propertyBuilder_;
+    }
+
+    private int type_ = 0;
+    /**
+     * <code>.Message.EnemyType type = 5;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    @java.lang.Override public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.Message.EnemyType type = 5;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeValue(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.EnemyType type = 5;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public game.proto.data.EnemyType getType() {
+      @SuppressWarnings("deprecation")
+      game.proto.data.EnemyType result = game.proto.data.EnemyType.valueOf(type_);
+      return result == null ? game.proto.data.EnemyType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.Message.EnemyType type = 5;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(game.proto.data.EnemyType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.EnemyType type = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object name_ = "";
+    /**
+     * <code>string name = 6;</code>
+     * @return The name.
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string name = 6;</code>
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string name = 6;</code>
+     * @param value The name to set.
+     * @return This builder for chaining.
+     */
+    public Builder setName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string name = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearName() {
+      
+      name_ = getDefaultInstance().getName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string name = 6;</code>
+     * @param value The bytes for name to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

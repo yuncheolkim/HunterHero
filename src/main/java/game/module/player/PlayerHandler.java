@@ -10,6 +10,7 @@ import game.proto.Empty;
 import game.proto.FightStartPush;
 import game.proto.Message;
 import game.proto.PlayerCreateNameReq;
+import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
 import game.utils.CalcUtil;
 
@@ -125,6 +126,8 @@ public class PlayerHandler {
             builder.setId(d.id);
             builder.setPos(pos.get(i));
             builder.setLevel(d.level);
+            builder.setType(EnemyType.CREATURE);
+            builder.setName(G.C.dataMap5.get(d.id).name);
             builder.getPropertyBuilder()
                     .setHp(d.hp)
                     .setDamage(d.damage)

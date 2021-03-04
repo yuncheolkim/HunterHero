@@ -39,4 +39,27 @@ public interface FightEnemyInfoOrBuilder extends
    * <code>.Message.Property property = 4;</code>
    */
   game.proto.data.PropertyOrBuilder getPropertyOrBuilder();
+
+  /**
+   * <code>.Message.EnemyType type = 5;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  int getTypeValue();
+  /**
+   * <code>.Message.EnemyType type = 5;</code>
+   * @return The type.
+   */
+  game.proto.data.EnemyType getType();
+
+  /**
+   * <code>string name = 6;</code>
+   * @return The name.
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 6;</code>
+   * @return The bytes for name.
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
 }
