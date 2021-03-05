@@ -37,6 +37,15 @@ message KickPush {
 message PlayerCreateNameReq {
     string name = 1;
 }
+// 4
+message HeartbeatReq {
+
+}
+// 5
+message HeartbeatRes {
+
+}
+
 //10~1000 后端使用
 // 10 tick
 // 11 dataSave

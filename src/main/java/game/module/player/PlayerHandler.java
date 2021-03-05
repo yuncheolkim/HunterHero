@@ -6,10 +6,7 @@ import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
 import game.player.Player;
-import game.proto.Empty;
-import game.proto.FightStartPush;
-import game.proto.Message;
-import game.proto.PlayerCreateNameReq;
+import game.proto.*;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
 import game.utils.CalcUtil;
@@ -25,9 +22,12 @@ import static game.module.battle.PosGen.RANDOM_8;
  * 2021/2/22 16:00
  */
 public class PlayerHandler {
+    public static void heartbeat(Player player, HeartbeatReq o) {
+        player.getTransport().send(4, HeartbeatRes.getDefaultInstance());
+    }
+
     /**
      * 起名
-     *
      * @param player
      * @param o
      * @return
@@ -43,7 +43,6 @@ public class PlayerHandler {
     /**
      * 玩家定时器
      * 每5秒执行一次
-     *
      * @param player
      * @param o
      * @return
@@ -61,7 +60,6 @@ public class PlayerHandler {
 
     /**
      * 检查战斗
-     *
      * @param player
      */
     private static void checkFight(Player player) {
@@ -87,7 +85,6 @@ public class PlayerHandler {
 
     /**
      * 生成小怪
-     *
      * @param player
      * @return
      */
@@ -170,7 +167,6 @@ public class PlayerHandler {
 
     /**
      * 定时存db
-     *
      * @param player
      * @param o
      * @return
