@@ -15,8 +15,8 @@ public enum ResourceEnum implements INoDisplay {
      */
     GOLD(1, "金币"),
     LEI(2, "雷石"),
-    EXP(1, "经验"),
-    POWER(1, "能量"),
+    EXP(3, "经验"),
+    POWER(4, "能量"),
     ;
 
     public final int id;
@@ -55,7 +55,7 @@ public enum ResourceEnum implements INoDisplay {
 
     @Override
     public String toString() {
-        return "ErrorEnum{" +
+        return "{" +
                 "id=" + id +
                 ", module='" + display + '\'' +
                 '}';

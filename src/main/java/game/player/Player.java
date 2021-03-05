@@ -47,6 +47,9 @@ public class Player {
      */
     private long powerRecoverTime;
 
+    /**
+     * 下一次触发战斗时间
+     */
     public long nextFightTime;
 
     public Player(long pid) {
