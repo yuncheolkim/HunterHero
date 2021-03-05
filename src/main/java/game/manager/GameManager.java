@@ -1,6 +1,7 @@
 package game.manager;
 
 import game.base.AbsLifecycle;
+import game.module.fight.FightHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
@@ -32,6 +33,8 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(3001, SceneHandler::enterScene, EnterSceneReq::parser));
         addHandler(new Invoker<>(3002, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
         addHandler(new Invoker<>(3003, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
+        // fight
+        addHandler(new Invoker<>(2001, FightHandler::fight, FightStartReq::parser));
 
         // inner
         addHandler(new Invoker<>(10, PlayerHandler::tick, Empty::parser));

@@ -5,6 +5,7 @@ import game.module.battle.action.ActionPoint;
 import game.module.battle.damage.*;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.Record;
+import game.utils.JacksonUtil;
 
 import java.util.ArrayList;
 import java.util.List;
