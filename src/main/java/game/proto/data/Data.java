@@ -139,6 +139,11 @@ public final class Data {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_BuffRecord_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_Reward_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_Reward_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -215,14 +220,16 @@ public final class Data {
       "\022\023\n\013remainRound\030\003 \001(\005\022\n\n\002i1\030\004 \001(\005\022\n\n\002i2\030" +
       "\005 \001(\005\022\n\n\002i3\030\006 \001(\005\022\n\n\002i4\030\007 \001(\005\022\n\n\002i5\030\010 \001(" +
       "\005\022\n\n\002f1\030\025 \001(\002\022\n\n\002f2\030\026 \001(\002\022\n\n\002f3\030\027 \001(\002\022\n\n" +
-      "\002f4\030\030 \001(\002\022\n\n\002f5\030\031 \001(\002*.\n\tEnemyType\022\014\n\010CR" +
-      "EATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n\003NPC\020\002*\222\001\n\nRecord" +
-      "Type\022\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_C" +
-      "HANGE\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF" +
-      "_REMOVE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTIO" +
-      "N\020\007\022\r\n\tSKILL_USE\020\010*E\n\nDamageType\022\021\n\rDAMA" +
-      "GE_NORMAL\020\000\022\023\n\017DAMAGE_CRITICAL\020\001\022\017\n\013DAMA" +
-      "GE_NONE\020\002B\025\n\017game.proto.dataH\001P\001b\006proto3"
+      "\002f4\030\030 \001(\002\022\n\n\002f5\030\031 \001(\002\"9\n\006Reward\022\020\n\010rewar" +
+      "dId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006heroId\030\003 \001(\005" +
+      "*.\n\tEnemyType\022\014\n\010CREATURE\020\000\022\n\n\006PLAYER\020\001\022" +
+      "\007\n\003NPC\020\002*\222\001\n\nRecordType\022\n\n\006ACTION\020\000\022\n\n\006A" +
+      "TTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n\005AVOID\020\003\022\014\n" +
+      "\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF_UPD" +
+      "ATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKILL_USE\020\010*E\n" +
+      "\nDamageType\022\021\n\rDAMAGE_NORMAL\020\000\022\023\n\017DAMAGE" +
+      "_CRITICAL\020\001\022\017\n\013DAMAGE_NONE\020\002B\025\n\017game.pro" +
+      "to.dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -378,6 +385,12 @@ public final class Data {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_BuffRecord_descriptor,
         new java.lang.String[] { "BuffId", "Round", "RemainRound", "I1", "I2", "I3", "I4", "I5", "F1", "F2", "F3", "F4", "F5", });
+    internal_static_Message_Reward_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_Message_Reward_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_Reward_descriptor,
+        new java.lang.String[] { "RewardId", "Count", "HeroId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

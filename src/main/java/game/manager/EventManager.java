@@ -1,5 +1,7 @@
 package game.manager;
 
+import game.base.G;
+import game.base.Work;
 import game.module.event.EventType;
 import game.module.event.IEvent;
 import game.module.event.IPlayerEventHandler;
@@ -7,6 +9,7 @@ import game.player.Player;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 /**
  * @author Yunzhe.Jin
@@ -25,7 +28,25 @@ public class EventManager {
         });
     }
 
+    /**
+     * 玩家线程
+     * @param player
+     * @param event
+     */
     public void firePlayerEvent(Player player, IEvent event) {
-        playerEventMap.get(event.type()).handler(player, event);
+        IPlayerEventHandler iPlayerEventHandler = playerEventMap.get(event.type());
+        iPlayerEventHandler.handler(player, event);
+    }
+
+    public void firePlayerEvent(long pid, IEvent event) {
+        IPlayerEventHandler iPlayerEventHandler = playerEventMap.get(event.type());
+        Optional<Player> f = G.P.findPlayer(pid);
+        if (f.isPresent()) {
+            Work playerWork = G.W.getPlayerWork(pid);
+            Player player = f.get();
+            playerWork.addTask(() -> {
+                iPlayerEventHandler.handler(player, event);
+            });
+        }
     }
 }

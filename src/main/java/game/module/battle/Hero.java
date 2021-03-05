@@ -40,7 +40,12 @@ public class Hero {
      */
     protected Pos pos;
 
+    /**
+     * 名称
+     */
     protected String name;
+
+    protected int level;
 
     /**
      * 英雄原始数据，开局后永远不变
@@ -459,6 +464,7 @@ public class Hero {
         simple.hp = heroStats.hp;
         simple.angry = heroStats.angry;
         simple.name = getName();
+        simple.level = level;
         return simple;
     }
 
@@ -589,6 +595,14 @@ public class Hero {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     @Override

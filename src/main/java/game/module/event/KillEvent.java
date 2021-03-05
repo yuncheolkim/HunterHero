@@ -9,9 +9,13 @@ import game.game.TargetType;
  */
 public class KillEvent implements IEvent {
 
-    public int targetId;
+    public final int targetId;
 
-    public TargetType targetType;
+    private TargetType targetType;
+
+    public KillEvent(int targetId) {
+        this.targetId = targetId;
+    }
 
     @Override
     public EventType type() {

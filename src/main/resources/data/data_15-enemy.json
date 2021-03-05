@@ -1,5 +1,6 @@
 {
     "1": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -8,7 +9,7 @@
         "damage": 7,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 201,
+        "enemyAreaId": 1,
         "enemyId": 1,
         "hp": 50,
         "id": 1,
@@ -18,6 +19,7 @@
         "weight": 8
     },
     "10": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -26,7 +28,7 @@
         "damage": 17,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 1,
         "hp": 59,
         "id": 10,
@@ -36,6 +38,7 @@
         "weight": 8
     },
     "11": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -44,7 +47,7 @@
         "damage": 7,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 201,
+        "enemyAreaId": 1,
         "enemyId": 2,
         "hp": 50,
         "id": 11,
@@ -54,6 +57,7 @@
         "weight": 8
     },
     "12": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -62,7 +66,7 @@
         "damage": 8,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 201,
+        "enemyAreaId": 1,
         "enemyId": 2,
         "hp": 51,
         "id": 12,
@@ -72,6 +76,7 @@
         "weight": 8
     },
     "13": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -80,7 +85,7 @@
         "damage": 9,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 202,
+        "enemyAreaId": 2,
         "enemyId": 2,
         "hp": 52,
         "id": 13,
@@ -90,6 +95,7 @@
         "weight": 8
     },
     "14": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -98,7 +104,7 @@
         "damage": 10,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 202,
+        "enemyAreaId": 2,
         "enemyId": 2,
         "hp": 53,
         "id": 14,
@@ -108,6 +114,7 @@
         "weight": 8
     },
     "15": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -116,7 +123,7 @@
         "damage": 11,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 203,
+        "enemyAreaId": 3,
         "enemyId": 2,
         "hp": 54,
         "id": 15,
@@ -126,6 +133,7 @@
         "weight": 8
     },
     "16": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -134,7 +142,7 @@
         "damage": 12,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 203,
+        "enemyAreaId": 3,
         "enemyId": 2,
         "hp": 55,
         "id": 16,
@@ -144,6 +152,7 @@
         "weight": 8
     },
     "17": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -152,7 +161,7 @@
         "damage": 13,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 2,
         "hp": 56,
         "id": 17,
@@ -162,6 +171,7 @@
         "weight": 8
     },
     "18": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -170,7 +180,7 @@
         "damage": 14,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 2,
         "hp": 57,
         "id": 18,
@@ -180,6 +190,7 @@
         "weight": 8
     },
     "19": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -188,7 +199,7 @@
         "damage": 15,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 2,
         "hp": 58,
         "id": 19,
@@ -198,6 +209,7 @@
         "weight": 8
     },
     "2": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -206,7 +218,7 @@
         "damage": 8,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 201,
+        "enemyAreaId": 1,
         "enemyId": 1,
         "hp": 51,
         "id": 2,
@@ -216,6 +228,7 @@
         "weight": 8
     },
     "20": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -224,7 +237,7 @@
         "damage": 17,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 2,
         "hp": 59,
         "id": 20,
@@ -234,6 +247,7 @@
         "weight": 8
     },
     "21": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -242,7 +256,7 @@
         "damage": 11,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 203,
+        "enemyAreaId": 3,
         "enemyId": 3,
         "hp": 54,
         "id": 21,
@@ -252,6 +266,7 @@
         "weight": 8
     },
     "22": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -260,7 +275,7 @@
         "damage": 12,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 203,
+        "enemyAreaId": 3,
         "enemyId": 3,
         "hp": 55,
         "id": 22,
@@ -270,6 +285,7 @@
         "weight": 8
     },
     "23": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -278,7 +294,7 @@
         "damage": 13,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 3,
         "hp": 56,
         "id": 23,
@@ -288,6 +304,7 @@
         "weight": 8
     },
     "24": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -296,7 +313,7 @@
         "damage": 14,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 3,
         "hp": 57,
         "id": 24,
@@ -306,6 +323,7 @@
         "weight": 8
     },
     "25": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -314,7 +332,7 @@
         "damage": 15,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 3,
         "hp": 58,
         "id": 25,
@@ -324,6 +342,7 @@
         "weight": 8
     },
     "26": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -332,7 +351,7 @@
         "damage": 17,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 3,
         "hp": 59,
         "id": 26,
@@ -342,6 +361,7 @@
         "weight": 8
     },
     "27": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -350,7 +370,7 @@
         "damage": 13,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 4,
         "hp": 56,
         "id": 27,
@@ -360,6 +380,7 @@
         "weight": 8
     },
     "28": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -368,7 +389,7 @@
         "damage": 14,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 4,
         "hp": 57,
         "id": 28,
@@ -378,6 +399,7 @@
         "weight": 8
     },
     "29": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -386,7 +408,7 @@
         "damage": 15,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 4,
         "hp": 58,
         "id": 29,
@@ -396,6 +418,7 @@
         "weight": 8
     },
     "3": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -404,7 +427,7 @@
         "damage": 9,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 202,
+        "enemyAreaId": 2,
         "enemyId": 1,
         "hp": 52,
         "id": 3,
@@ -414,6 +437,7 @@
         "weight": 8
     },
     "30": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -422,7 +446,7 @@
         "damage": 17,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 4,
         "hp": 59,
         "id": 30,
@@ -432,6 +456,7 @@
         "weight": 8
     },
     "4": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -440,7 +465,7 @@
         "damage": 10,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 202,
+        "enemyAreaId": 2,
         "enemyId": 1,
         "hp": 53,
         "id": 4,
@@ -450,6 +475,7 @@
         "weight": 8
     },
     "5": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -458,7 +484,7 @@
         "damage": 11,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 203,
+        "enemyAreaId": 3,
         "enemyId": 1,
         "hp": 54,
         "id": 5,
@@ -468,6 +494,7 @@
         "weight": 8
     },
     "6": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -476,7 +503,7 @@
         "damage": 12,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 203,
+        "enemyAreaId": 3,
         "enemyId": 1,
         "hp": 55,
         "id": 6,
@@ -486,6 +513,7 @@
         "weight": 8
     },
     "7": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -494,7 +522,7 @@
         "damage": 13,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 1,
         "hp": 56,
         "id": 7,
@@ -504,6 +532,7 @@
         "weight": 8
     },
     "8": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -512,7 +541,7 @@
         "damage": 14,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 204,
+        "enemyAreaId": 4,
         "enemyId": 1,
         "hp": 57,
         "id": 8,
@@ -522,6 +551,7 @@
         "weight": 8
     },
     "9": {
+        "areaId": 2,
         "avoid": 50,
         "avoidBase": 300,
         "critical": 50,
@@ -530,7 +560,7 @@
         "damage": 15,
         "def": 50,
         "defBase": 300,
-        "enemyAreaId": 205,
+        "enemyAreaId": 5,
         "enemyId": 1,
         "hp": 58,
         "id": 9,

@@ -30,6 +30,12 @@ public class DataConfigData {
     public int count;
 
     @JsonProperty
+    public int min;
+
+    @JsonProperty
+    public int max;
+
+    @JsonProperty
     public String title;
 
     ///// property

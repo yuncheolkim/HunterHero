@@ -1,6 +1,5 @@
 package game.module.scene;
 
-import com.google.protobuf.MessageLite;
 import game.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
@@ -21,6 +20,8 @@ public class SceneHandler {
      */
     public static void enterScene(Player player, EnterSceneReq req) {
         player.getPd().mergeSceneData(req.getData());
+        player.getPd().clearFightArea();
+
     }
 
     /**
@@ -44,6 +45,7 @@ public class SceneHandler {
      * @return
      */
     public static void exitFightArea(Player player, ExitFightAreaReq req) {
+        player.getPd().removeFightInfo(req.getId());
 
     }
 

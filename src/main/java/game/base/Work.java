@@ -9,8 +9,11 @@ import java.util.concurrent.TimeUnit;
  */
 public class Work extends AbsLifecycle {
 
-    private ExecutorService executor;
+    protected ExecutorService executor;
 
+    public Work() {
+
+    }
 
     public Work(ExecutorService executor) {
         this.executor = executor;
@@ -21,6 +24,7 @@ public class Work extends AbsLifecycle {
         if (stopped.get()) {
             return false;
         }
+
         try {
             executor.execute(msg);
         } catch (Exception e) {
@@ -28,6 +32,10 @@ public class Work extends AbsLifecycle {
             return false;
         }
         return true;
+    }
+
+    public long getThreadId() {
+        return -1;
     }
 
     public void start() {

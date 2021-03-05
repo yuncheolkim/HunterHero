@@ -114,14 +114,15 @@ public final class MessageOuterClass {
       "tbeatRes\"\031\n\007TaskReq\022\016\n\006taskId\030\001 \001(\005\"3\n\rF" +
       "ightStartReq\022\"\n\003pos\030\001 \003(\0132\025.Message.Figh" +
       "tHeroPos\"7\n\016FightStartPush\022%\n\004info\030\001 \003(\013" +
-      "2\027.Message.FightEnemyInfo\"\202\001\n\013FightRecor" +
+      "2\027.Message.FightEnemyInfo\"\260\001\n\013FightRecor" +
       "d\022#\n\005round\030\001 \003(\0132\024.Message.RoundRecord\022&" +
       "\n\005sideA\030\002 \003(\0132\027.Message.HeroDataRecord\022&" +
-      "\n\005sideB\030\003 \003(\0132\027.Message.HeroDataRecord\"1" +
-      "\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022.Message." +
-      "SceneData\"\037\n\021EnterFightAreaReq\022\n\n\002id\030\001 \001" +
-      "(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005B\020\n\nga" +
-      "me.protoH\001P\001b\006proto3"
+      "\n\005sideB\030\003 \003(\0132\027.Message.HeroDataRecord\022\013" +
+      "\n\003win\030\004 \001(\010\022\037\n\006reward\030\005 \003(\0132\017.Message.Re" +
+      "ward\"1\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022.Me" +
+      "ssage.SceneData\"\037\n\021EnterFightAreaReq\022\n\n\002" +
+      "id\030\001 \001(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005" +
+      "B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -205,7 +206,7 @@ public final class MessageOuterClass {
     internal_static_Message_FightRecord_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FightRecord_descriptor,
-        new java.lang.String[] { "Round", "SideA", "SideB", });
+        new java.lang.String[] { "Round", "SideA", "SideB", "Win", "Reward", });
     internal_static_Message_EnterSceneReq_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_Message_EnterSceneReq_fieldAccessorTable = new

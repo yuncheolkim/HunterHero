@@ -3,6 +3,7 @@ package game.module.battle.record;
 import game.module.battle.Battle;
 import game.module.battle.Hero;
 import game.module.battle.Round;
+import game.module.battle.Side;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
  */
 public class BattleRecord {
 
+    private Side winSide;
     private List<Round> roundList;
 
     private List<HeroRecordData> sideAhero;
@@ -49,5 +51,13 @@ public class BattleRecord {
 
     public void setSideBhero(List<HeroRecordData> sideBhero) {
         this.sideBhero = sideBhero;
+    }
+
+    public Side getWinSide() {
+        return winSide;
+    }
+
+    public void setWinSide(Side winSide) {
+        this.winSide = winSide;
     }
 }

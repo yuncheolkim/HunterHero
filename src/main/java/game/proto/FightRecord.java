@@ -23,6 +23,7 @@ private static final long serialVersionUID = 0L;
     round_ = java.util.Collections.emptyList();
     sideA_ = java.util.Collections.emptyList();
     sideB_ = java.util.Collections.emptyList();
+    reward_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -83,6 +84,20 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.HeroDataRecord.parser(), extensionRegistry));
             break;
           }
+          case 32: {
+
+            win_ = input.readBool();
+            break;
+          }
+          case 42: {
+            if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+              reward_ = new java.util.ArrayList<game.proto.data.Reward>();
+              mutable_bitField0_ |= 0x00000008;
+            }
+            reward_.add(
+                input.readMessage(game.proto.data.Reward.parser(), extensionRegistry));
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -106,6 +121,9 @@ private static final long serialVersionUID = 0L;
       }
       if (((mutable_bitField0_ & 0x00000004) != 0)) {
         sideB_ = java.util.Collections.unmodifiableList(sideB_);
+      }
+      if (((mutable_bitField0_ & 0x00000008) != 0)) {
+        reward_ = java.util.Collections.unmodifiableList(reward_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -244,6 +262,81 @@ private static final long serialVersionUID = 0L;
     return sideB_.get(index);
   }
 
+  public static final int WIN_FIELD_NUMBER = 4;
+  private boolean win_;
+  /**
+   * <pre>
+   * 是否胜利
+   * </pre>
+   *
+   * <code>bool win = 4;</code>
+   * @return The win.
+   */
+  @java.lang.Override
+  public boolean getWin() {
+    return win_;
+  }
+
+  public static final int REWARD_FIELD_NUMBER = 5;
+  private java.util.List<game.proto.data.Reward> reward_;
+  /**
+   * <pre>
+   * 奖励
+   * </pre>
+   *
+   * <code>repeated .Message.Reward reward = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.List<game.proto.data.Reward> getRewardList() {
+    return reward_;
+  }
+  /**
+   * <pre>
+   * 奖励
+   * </pre>
+   *
+   * <code>repeated .Message.Reward reward = 5;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.RewardOrBuilder> 
+      getRewardOrBuilderList() {
+    return reward_;
+  }
+  /**
+   * <pre>
+   * 奖励
+   * </pre>
+   *
+   * <code>repeated .Message.Reward reward = 5;</code>
+   */
+  @java.lang.Override
+  public int getRewardCount() {
+    return reward_.size();
+  }
+  /**
+   * <pre>
+   * 奖励
+   * </pre>
+   *
+   * <code>repeated .Message.Reward reward = 5;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.Reward getReward(int index) {
+    return reward_.get(index);
+  }
+  /**
+   * <pre>
+   * 奖励
+   * </pre>
+   *
+   * <code>repeated .Message.Reward reward = 5;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.RewardOrBuilder getRewardOrBuilder(
+      int index) {
+    return reward_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -267,6 +360,12 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < sideB_.size(); i++) {
       output.writeMessage(3, sideB_.get(i));
     }
+    if (win_ != false) {
+      output.writeBool(4, win_);
+    }
+    for (int i = 0; i < reward_.size(); i++) {
+      output.writeMessage(5, reward_.get(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -287,6 +386,14 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < sideB_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, sideB_.get(i));
+    }
+    if (win_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(4, win_);
+    }
+    for (int i = 0; i < reward_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(5, reward_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -309,6 +416,10 @@ private static final long serialVersionUID = 0L;
         .equals(other.getSideAList())) return false;
     if (!getSideBList()
         .equals(other.getSideBList())) return false;
+    if (getWin()
+        != other.getWin()) return false;
+    if (!getRewardList()
+        .equals(other.getRewardList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -331,6 +442,13 @@ private static final long serialVersionUID = 0L;
     if (getSideBCount() > 0) {
       hash = (37 * hash) + SIDEB_FIELD_NUMBER;
       hash = (53 * hash) + getSideBList().hashCode();
+    }
+    hash = (37 * hash) + WIN_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getWin());
+    if (getRewardCount() > 0) {
+      hash = (37 * hash) + REWARD_FIELD_NUMBER;
+      hash = (53 * hash) + getRewardList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -467,6 +585,7 @@ private static final long serialVersionUID = 0L;
         getRoundFieldBuilder();
         getSideAFieldBuilder();
         getSideBFieldBuilder();
+        getRewardFieldBuilder();
       }
     }
     @java.lang.Override
@@ -489,6 +608,14 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
       } else {
         sideBBuilder_.clear();
+      }
+      win_ = false;
+
+      if (rewardBuilder_ == null) {
+        reward_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+      } else {
+        rewardBuilder_.clear();
       }
       return this;
     }
@@ -543,6 +670,16 @@ private static final long serialVersionUID = 0L;
         result.sideB_ = sideB_;
       } else {
         result.sideB_ = sideBBuilder_.build();
+      }
+      result.win_ = win_;
+      if (rewardBuilder_ == null) {
+        if (((bitField0_ & 0x00000008) != 0)) {
+          reward_ = java.util.Collections.unmodifiableList(reward_);
+          bitField0_ = (bitField0_ & ~0x00000008);
+        }
+        result.reward_ = reward_;
+      } else {
+        result.reward_ = rewardBuilder_.build();
       }
       onBuilt();
       return result;
@@ -667,6 +804,35 @@ private static final long serialVersionUID = 0L;
                  getSideBFieldBuilder() : null;
           } else {
             sideBBuilder_.addAllMessages(other.sideB_);
+          }
+        }
+      }
+      if (other.getWin() != false) {
+        setWin(other.getWin());
+      }
+      if (rewardBuilder_ == null) {
+        if (!other.reward_.isEmpty()) {
+          if (reward_.isEmpty()) {
+            reward_ = other.reward_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+          } else {
+            ensureRewardIsMutable();
+            reward_.addAll(other.reward_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.reward_.isEmpty()) {
+          if (rewardBuilder_.isEmpty()) {
+            rewardBuilder_.dispose();
+            rewardBuilder_ = null;
+            reward_ = other.reward_;
+            bitField0_ = (bitField0_ & ~0x00000008);
+            rewardBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getRewardFieldBuilder() : null;
+          } else {
+            rewardBuilder_.addAllMessages(other.reward_);
           }
         }
       }
@@ -1418,6 +1584,361 @@ private static final long serialVersionUID = 0L;
         sideB_ = null;
       }
       return sideBBuilder_;
+    }
+
+    private boolean win_ ;
+    /**
+     * <pre>
+     * 是否胜利
+     * </pre>
+     *
+     * <code>bool win = 4;</code>
+     * @return The win.
+     */
+    @java.lang.Override
+    public boolean getWin() {
+      return win_;
+    }
+    /**
+     * <pre>
+     * 是否胜利
+     * </pre>
+     *
+     * <code>bool win = 4;</code>
+     * @param value The win to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWin(boolean value) {
+      
+      win_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 是否胜利
+     * </pre>
+     *
+     * <code>bool win = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearWin() {
+      
+      win_ = false;
+      onChanged();
+      return this;
+    }
+
+    private java.util.List<game.proto.data.Reward> reward_ =
+      java.util.Collections.emptyList();
+    private void ensureRewardIsMutable() {
+      if (!((bitField0_ & 0x00000008) != 0)) {
+        reward_ = new java.util.ArrayList<game.proto.data.Reward>(reward_);
+        bitField0_ |= 0x00000008;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.Reward, game.proto.data.Reward.Builder, game.proto.data.RewardOrBuilder> rewardBuilder_;
+
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public java.util.List<game.proto.data.Reward> getRewardList() {
+      if (rewardBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(reward_);
+      } else {
+        return rewardBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public int getRewardCount() {
+      if (rewardBuilder_ == null) {
+        return reward_.size();
+      } else {
+        return rewardBuilder_.getCount();
+      }
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public game.proto.data.Reward getReward(int index) {
+      if (rewardBuilder_ == null) {
+        return reward_.get(index);
+      } else {
+        return rewardBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder setReward(
+        int index, game.proto.data.Reward value) {
+      if (rewardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRewardIsMutable();
+        reward_.set(index, value);
+        onChanged();
+      } else {
+        rewardBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder setReward(
+        int index, game.proto.data.Reward.Builder builderForValue) {
+      if (rewardBuilder_ == null) {
+        ensureRewardIsMutable();
+        reward_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        rewardBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder addReward(game.proto.data.Reward value) {
+      if (rewardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRewardIsMutable();
+        reward_.add(value);
+        onChanged();
+      } else {
+        rewardBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder addReward(
+        int index, game.proto.data.Reward value) {
+      if (rewardBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRewardIsMutable();
+        reward_.add(index, value);
+        onChanged();
+      } else {
+        rewardBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder addReward(
+        game.proto.data.Reward.Builder builderForValue) {
+      if (rewardBuilder_ == null) {
+        ensureRewardIsMutable();
+        reward_.add(builderForValue.build());
+        onChanged();
+      } else {
+        rewardBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder addReward(
+        int index, game.proto.data.Reward.Builder builderForValue) {
+      if (rewardBuilder_ == null) {
+        ensureRewardIsMutable();
+        reward_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        rewardBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder addAllReward(
+        java.lang.Iterable<? extends game.proto.data.Reward> values) {
+      if (rewardBuilder_ == null) {
+        ensureRewardIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, reward_);
+        onChanged();
+      } else {
+        rewardBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder clearReward() {
+      if (rewardBuilder_ == null) {
+        reward_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+      } else {
+        rewardBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public Builder removeReward(int index) {
+      if (rewardBuilder_ == null) {
+        ensureRewardIsMutable();
+        reward_.remove(index);
+        onChanged();
+      } else {
+        rewardBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public game.proto.data.Reward.Builder getRewardBuilder(
+        int index) {
+      return getRewardFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public game.proto.data.RewardOrBuilder getRewardOrBuilder(
+        int index) {
+      if (rewardBuilder_ == null) {
+        return reward_.get(index);  } else {
+        return rewardBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public java.util.List<? extends game.proto.data.RewardOrBuilder> 
+         getRewardOrBuilderList() {
+      if (rewardBuilder_ != null) {
+        return rewardBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(reward_);
+      }
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public game.proto.data.Reward.Builder addRewardBuilder() {
+      return getRewardFieldBuilder().addBuilder(
+          game.proto.data.Reward.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public game.proto.data.Reward.Builder addRewardBuilder(
+        int index) {
+      return getRewardFieldBuilder().addBuilder(
+          index, game.proto.data.Reward.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 奖励
+     * </pre>
+     *
+     * <code>repeated .Message.Reward reward = 5;</code>
+     */
+    public java.util.List<game.proto.data.Reward.Builder> 
+         getRewardBuilderList() {
+      return getRewardFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.Reward, game.proto.data.Reward.Builder, game.proto.data.RewardOrBuilder> 
+        getRewardFieldBuilder() {
+      if (rewardBuilder_ == null) {
+        rewardBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.Reward, game.proto.data.Reward.Builder, game.proto.data.RewardOrBuilder>(
+                reward_,
+                ((bitField0_ & 0x00000008) != 0),
+                getParentForChildren(),
+                isClean());
+        reward_ = null;
+      }
+      return rewardBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

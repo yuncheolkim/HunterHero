@@ -14,6 +14,17 @@ public class CalcUtil {
     public final static Random DEFAULT_RANDOM = new Random();
 
     /**
+     * 随机
+     * @param min 包含
+     * @param max 包含
+     * @return
+     */
+    public static int random(int min, int max) {
+        return DEFAULT_RANDOM.nextInt(max - min + 1) + min;
+    }
+
+
+    /**
      * 计算比例
      * @param val  计算值
      * @param rate 比例

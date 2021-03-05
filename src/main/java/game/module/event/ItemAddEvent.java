@@ -5,7 +5,7 @@ package game.module.event;
  * @author Yunzhe.Jin
  * 2021/2/25 11:03
  */
-public class TakeItemEvent implements IEvent {
+public class ItemAddEvent implements IEvent {
 
     public int itemId;
 

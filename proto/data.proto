@@ -114,7 +114,7 @@ message FightHeroPos {
     int32 pos = 2;
 }
 
-enum EnemyType{
+enum EnemyType {
     CREATURE = 0;
     PLAYER = 1;
     NPC = 2;
@@ -198,6 +198,25 @@ message BuffRecord {
     float f4 = 24;
 
     float f5 = 25;
-
-
 }
+
+// Reward
+message Reward {
+    int32 rewardId = 1;
+    int32 count = 2;
+    // 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
+    int32 heroId = 3;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,4 +7,5 @@ package game.module.event;
 public enum EventType {
     KILL,
     ITEM_TAKE,
+    RESOURCE_ADD,
 }

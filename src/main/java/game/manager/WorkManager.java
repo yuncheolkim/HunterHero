@@ -2,6 +2,7 @@ package game.manager;
 
 import game.base.AbsLifecycle;
 import game.base.Constants;
+import game.base.SingleWork;
 import game.base.Work;
 
 import java.util.concurrent.ExecutorService;
@@ -13,15 +14,21 @@ import java.util.concurrent.Executors;
  */
 public class WorkManager extends AbsLifecycle {
 
-    private Work[] playerWork = new Work[Constants.CORE_PROCESS_COUNT * 2];
+    private Work[] playerWork = new SingleWork[Constants.CORE_PROCESS_COUNT * 2];
 
     private Work[] dataPersistenceWork = new Work[Constants.CORE_PROCESS_COUNT * 3];
 
     private Work loginWork = new Work(Executors.newFixedThreadPool(Constants.CORE_PROCESS_COUNT * 2));
 
     public WorkManager() {
-        initWork(playerWork, Executors.newSingleThreadExecutor());
+        initSingleWork(playerWork);
         initWork(dataPersistenceWork, Executors.newSingleThreadExecutor());
+    }
+
+    private void initSingleWork(Work[] w) {
+        for (int i = 0; i < w.length; i++) {
+            w[i] = new SingleWork();
+        }
     }
 
     private void initWork(Work[] w, ExecutorService e) {

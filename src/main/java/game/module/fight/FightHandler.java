@@ -1,19 +1,25 @@
 package game.module.fight;
 
+import game.base.G;
+import game.config.DataConfigData;
+import game.game.ResourceEnum;
 import game.module.battle.*;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.HeroRecordData;
 import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
+import game.module.event.KillEvent;
+import game.module.event.ResourceAddEvent;
+import game.module.event.ResourceSourceEnum;
 import game.player.Player;
 import game.proto.FightRecord;
 import game.proto.FightStartReq;
 import game.proto.data.*;
+import game.utils.CalcUtil;
 
 /**
  * 战斗相关入口
- *
  * @author Yunzhe.Jin
  * 2021/2/25 10:04
  */
@@ -21,7 +27,6 @@ public class FightHandler {
 
     /**
      * 战斗开始
-     *
      * @param player
      * @param req
      * @return
@@ -57,12 +62,43 @@ public class FightHandler {
             battle.getSideAhero().add(hero);
         }
 
-        BattleRecord start = battle.start();
-        player.getTransport().send(2003, buildFightRecord(start));
+        BattleRecord record = battle.start();
+
+        FightRecord.Builder result = buildFightRecord(record);
+        result.setWin(record.getWinSide() == Side.A);
+        if (result.getWin()) {
+            int exp = 0;
+            int gold = 0;
+
+            // 杀敌
+            for (HeroRecordData sideBhero : record.getSideBhero()) {
+                G.E.firePlayerEvent(player, new KillEvent(sideBhero.simple.id));
+                DataConfigData dataConfigData = G.C.dataMap9.get(sideBhero.simple.level);
+                exp += dataConfigData.monsterExp;
+                gold += CalcUtil.random(dataConfigData.min, dataConfigData.max);
+            }
+            // 奖励
+            result.addReward(Reward.newBuilder()
+                    .setHeroId(-1)
+                    .setRewardId(ResourceEnum.EXP.id)
+                    .setCount(exp)
+                    .build());
+
+            if (gold > 0) {
+                result.addReward(Reward.newBuilder()
+                        .setHeroId(0)
+                        .setRewardId(ResourceEnum.GOLD.id)
+                        .setCount(gold)
+                        .build());
+
+                G.E.firePlayerEvent(player,new ResourceAddEvent(ResourceEnum.GOLD,gold, ResourceSourceEnum.打怪));
+            }
+        }
+        player.getTransport().send(2003, result.build());
 
     }
 
-    private static FightRecord buildFightRecord(BattleRecord record) {
+    private static FightRecord.Builder buildFightRecord(BattleRecord record) {
         FightRecord.Builder builder = FightRecord.newBuilder();
         for (HeroRecordData hero : record.getSideAhero()) {
             builder.addSideA(HeroDataRecord.newBuilder()
@@ -124,7 +160,7 @@ public class FightHandler {
             builder.addRound(rb.build());
         }
 
-        return builder.build();
+        return builder;
 
     }
 

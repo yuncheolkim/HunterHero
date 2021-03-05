@@ -10,6 +10,8 @@ import game.module.battle.Pos;
 public class HeroRecordSimple {
     public int id;
 
+    public int level;
+
     public Pos pos;
 
     public int hp;

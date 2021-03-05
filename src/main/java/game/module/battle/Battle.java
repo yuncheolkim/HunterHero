@@ -109,6 +109,7 @@ public class Battle {
         // 结算
         Logs.trace("游戏结束", "胜利：", winSide);
         battleRecord.setRoundList(roundList);
+        battleRecord.setWinSide(winSide);
         Logs.C.info("end:\n{}", JacksonUtil.toStr(battleRecord));
 
         return battleRecord;
