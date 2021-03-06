@@ -4,6 +4,7 @@ import game.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
 import game.proto.ExitFightAreaReq;
+import game.utils.CalcUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +27,6 @@ public class SceneHandler {
     public static void enterScene(Player player, EnterSceneReq req) {
         player.getPd().mergeSceneData(req.getData());
         player.D.clearFightArea();
-
     }
 
     /**
@@ -40,6 +40,10 @@ public class SceneHandler {
 
         if (!player.D.getFightAreaList().contains(req.getId())) {
             player.D.addFightArea(req.getId());
+            long now = System.currentTimeMillis();
+            if (player.nextFightTime < now) {
+                player.nextFightTime = now + CalcUtil.random(5000, 20000);
+            }
         }
 
     }
@@ -55,6 +59,7 @@ public class SceneHandler {
         List<Integer> l = new ArrayList<>(player.D.getFightAreaList());
         l.remove(req.getId());
         player.D.clearFightArea().addAllFightArea(l);
+        player.nextFightTime = 0;
     }
 
 }

@@ -10,6 +10,7 @@ import game.proto.*;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
 import game.utils.CalcUtil;
+import game.utils.DateUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,12 +71,8 @@ public class PlayerHandler {
     private static void checkFight(Player player) {
 
         if (player.D.getFightAreaCount() > 0) {
-            if (player.getPd().getFightInfoCount() > 0) {
-                // 已经在战斗中
-                return;
-            }
-            long now = System.currentTimeMillis();
-            if (player.nextFightTime > now) {
+            long now = DateUtils.now();
+            if (player.nextFightTime < now) {
                 // fight
                 FightStartPush fightStartPush = genEnemy(player);
                 player.getPd().addAllFightInfo(fightStartPush.getInfoList());
@@ -85,7 +82,6 @@ public class PlayerHandler {
                         .setBody(fightStartPush.toByteString())
                         .build());
             }
-            player.nextFightTime = now + CalcUtil.DEFAULT_RANDOM.nextInt(15_000) + 5_000;
         } else {
             player.nextFightTime = 0;
         }

@@ -9,6 +9,7 @@ import game.module.task.TaskHandler;
 import game.msg.IInvoke;
 import game.msg.Invoker;
 import game.proto.*;
+import game.proto.back.MsgNo;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,16 +26,17 @@ public class GameManager extends AbsLifecycle {
     private int version = 1;
 
     public GameManager() {
-        addHandler(new Invoker<>(3, PlayerHandler::createName, PlayerCreateNameReq::parser));
-        addHandler(new Invoker<>(1001, TaskHandler::acceptTask, TaskReq::parser));
-        addHandler(new Invoker<>(1002, TaskHandler::completeTask, TaskReq::parser));
+        addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
+        addHandler(new Invoker<>(MsgNo.task_accept_VALUE, TaskHandler::acceptTask, TaskReq::parser));
+        addHandler(new Invoker<>(MsgNo.task_complete_VALUE, TaskHandler::completeTask, TaskReq::parser));
 
         // scene
-        addHandler(new Invoker<>(3001, SceneHandler::enterScene, EnterSceneReq::parser));
-        addHandler(new Invoker<>(3002, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
-        addHandler(new Invoker<>(3003, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
+        addHandler(new Invoker<>(MsgNo.scene_enter_VALUE, SceneHandler::enterScene, EnterSceneReq::parser));
+        addHandler(new Invoker<>(MsgNo.scene_enter_fight_area_VALUE, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
+        addHandler(new Invoker<>(MsgNo.scene_leave_fight_area_VALUE, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
         // fight
-        addHandler(new Invoker<>(2001, FightHandler::fight, FightStartReq::parser));
+        addHandler(new Invoker<>(MsgNo.fight_start_VALUE, FightHandler::fight, FightStartReq::parser));
+        addHandler(new Invoker<>(MsgNo.fight_end_VALUE, FightHandler::endFight, Empty::parser));
 
         // inner
         addHandler(new Invoker<>(10, PlayerHandler::tick, Empty::parser));

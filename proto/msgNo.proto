@@ -1,0 +1,38 @@
+syntax = "proto3";
+package Message;
+option java_package = "game.proto.back";
+option optimize_for = SPEED;
+option java_multiple_files = true;
+
+enum MsgNo{
+    NONE = 0;
+    // 登录
+    login_req = 1;
+
+    // 踢下线
+    kick_push = 2;
+    // 创建名称
+    player_create_name = 3;
+
+    // 心跳
+    heartbeat = 4;
+
+    // 接受任务
+    task_accept = 1001;
+    // 完成任务
+    task_complete = 1002;
+
+    // 开始战斗
+    fight_start = 2001;
+    // 发生战斗push
+    fight_start_push = 2002;
+    // 结束战斗
+    fight_end = 2004;
+
+    // 进入场景
+    scene_enter = 3001;
+    // 进入战斗区
+    scene_enter_fight_area = 3002;
+    // 离开战斗区
+    scene_leave_fight_area = 3003;
+}

@@ -4,10 +4,6 @@ option java_package = "game.proto.data";
 option optimize_for = SPEED;
 option java_multiple_files = true;
 
-enum ErrorCode{
-    NONE = 0;
-
-}
 
 //////////////////////////////
 

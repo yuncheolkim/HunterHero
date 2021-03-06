@@ -5,7 +5,7 @@ package game.proto;
 
 /**
  * <pre>
- * 2003
+ * 2003 战斗结果res
  * </pre>
  *
  * Protobuf type {@code Message.FightRecord}
@@ -547,7 +547,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 2003
+   * 2003 战斗结果res
    * </pre>
    *
    * Protobuf type {@code Message.FightRecord}

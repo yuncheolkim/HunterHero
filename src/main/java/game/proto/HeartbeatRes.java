@@ -4,10 +4,6 @@
 package game.proto;
 
 /**
- * <pre>
- * 5
- * </pre>
- *
  * Protobuf type {@code Message.HeartbeatRes}
  */
 public final class HeartbeatRes extends
@@ -229,10 +225,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * 5
-   * </pre>
-   *
    * Protobuf type {@code Message.HeartbeatRes}
    */
   public static final class Builder extends

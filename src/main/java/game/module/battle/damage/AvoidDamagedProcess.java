@@ -1,5 +1,6 @@
 package game.module.battle.damage;
 
+import game.base.Logs;
 import game.utils.CalcUtil;
 
 /**
@@ -16,6 +17,7 @@ public class AvoidDamagedProcess implements DamagedProcess {
         boolean happened = CalcUtil.happened(info.source.getBattle().getRandom(), avoid, avoid + 200);
         if (happened) {
             info.avoid = (true);
+            Logs.trace("闪避成功");
             return false;
         }
         return true;

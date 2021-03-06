@@ -41,7 +41,6 @@ message PlayerCreateNameReq {
 message HeartbeatReq {
 
 }
-// 5
 message HeartbeatRes {
 
 }
@@ -57,7 +56,6 @@ message TaskReq {
 
 // 2001 开始战斗
 message FightStartReq {
-
     repeated FightHeroPos pos = 1;
 }
 // 2002 发生战斗推送
@@ -65,9 +63,8 @@ message FightStartPush {
     repeated FightEnemyInfo info = 1;
 }
 
-// 2003
+// 2003 战斗结果res
 message FightRecord {
-
     repeated RoundRecord round = 1;
     repeated HeroDataRecord sideA = 2;
     repeated HeroDataRecord sideB = 3;

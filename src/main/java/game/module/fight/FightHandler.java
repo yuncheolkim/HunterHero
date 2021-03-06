@@ -13,10 +13,15 @@ import game.module.event.KillEvent;
 import game.module.event.ResourceAddEvent;
 import game.module.event.ResourceSourceEnum;
 import game.player.Player;
+import game.proto.Empty;
 import game.proto.FightRecord;
 import game.proto.FightStartReq;
+import game.proto.back.MsgNo;
 import game.proto.data.*;
 import game.utils.CalcUtil;
+import game.utils.DateUtils;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * 战斗相关入口
@@ -37,6 +42,8 @@ public class FightHandler {
         if (player.getPd().getFightInfoCount() == 0) {
             return;
         }
+        // 观看战斗设定为10分钟
+        player.nextFightTime = DateUtils.now() + TimeUnit.MINUTES.toMillis(10);
 
         Battle battle = new Battle();
         // enemy
@@ -96,7 +103,7 @@ public class FightHandler {
                 G.E.firePlayerEvent(player, new ResourceAddEvent(ResourceEnum.GOLD, gold, ResourceSourceEnum.打怪));
             }
         }
-        player.getTransport().send(2003, result.build());
+        player.getTransport().send(MsgNo.fight_start_VALUE, result.build());
 
     }
 
@@ -167,5 +174,16 @@ public class FightHandler {
 
     }
 
-
+    /**
+     * 结束战斗
+     *
+     * @param player
+     * @param req
+     */
+    public static void endFight(Player player, Empty req) {
+        player.getPd().clearFightInfo();
+        if (player.getPd().getFightInfoCount() > 0) {
+            player.nextFightTime = DateUtils.now() + CalcUtil.random(5000, 20000);
+        }
+    }
 }

@@ -37,16 +37,28 @@ public interface RecordOrBuilder extends
   int getPos();
 
   /**
+   * <pre>
+   * pos
+   * </pre>
+   *
    * <code>repeated int32 target = 11;</code>
    * @return A list containing the target.
    */
   java.util.List<java.lang.Integer> getTargetList();
   /**
+   * <pre>
+   * pos
+   * </pre>
+   *
    * <code>repeated int32 target = 11;</code>
    * @return The count of target.
    */
   int getTargetCount();
   /**
+   * <pre>
+   * pos
+   * </pre>
+   *
    * <code>repeated int32 target = 11;</code>
    * @param index The index of the element to return.
    * @return The target at the given index.
