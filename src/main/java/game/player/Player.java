@@ -125,6 +125,8 @@ public class Player {
         // 英雄
         PlayerHero.Builder builder = PlayerHero.newBuilder();
         DataConfigData d = G.C.heroMap1001.get(1);
+        builder.setId(1001);
+        builder.setLevel(1);
 
         builder.getPropertyBuilder()
                 .setHp(d.hp)

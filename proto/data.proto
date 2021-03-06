@@ -4,6 +4,13 @@ option java_package = "game.proto.data";
 option optimize_for = SPEED;
 option java_multiple_files = true;
 
+enum ErrorCode{
+    NONE = 0;
+
+}
+
+//////////////////////////////
+
 message PlayerData {
     int64 pid = 1;
     string name = 2;
@@ -13,7 +20,6 @@ message PlayerData {
     int32 level = 9;
     PlayerTask task = 101;
     SceneData sceneData = 201;
-    repeated int32 fightArea = 202;
     Resource resource = 301;
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息
@@ -162,12 +168,13 @@ message Record {
     RecordType type = 1;
     int32 heroId = 2;
     int32 id = 3;
+    int32 pos = 4;
+    // pos
     repeated int32 target = 11;
     DamageType damageType = 21;
     int32 value = 22;
     string actionPoint = 32;
     BuffRecord buffRecord = 41;
-
 
 }
 

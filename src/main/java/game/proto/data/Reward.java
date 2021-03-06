@@ -125,7 +125,7 @@ private static final long serialVersionUID = 0L;
   private int heroId_;
   /**
    * <pre>
-   * 奖励英雄经验
+   * 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
    * </pre>
    *
    * <code>int32 heroId = 3;</code>
@@ -541,7 +541,7 @@ private static final long serialVersionUID = 0L;
     private int heroId_ ;
     /**
      * <pre>
-     * 奖励英雄经验
+     * 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
      * </pre>
      *
      * <code>int32 heroId = 3;</code>
@@ -553,7 +553,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 奖励英雄经验
+     * 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
      * </pre>
      *
      * <code>int32 heroId = 3;</code>
@@ -568,7 +568,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 奖励英雄经验
+     * 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
      * </pre>
      *
      * <code>int32 heroId = 3;</code>

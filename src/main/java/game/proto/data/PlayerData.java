@@ -18,7 +18,6 @@ private static final long serialVersionUID = 0L;
   private PlayerData() {
     name_ = "";
     account_ = "";
-    fightArea_ = emptyIntList();
     fightInfo_ = java.util.Collections.emptyList();
   }
 
@@ -111,27 +110,6 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
-          case 1616: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              fightArea_ = newIntList();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            fightArea_.addInt(input.readInt32());
-            break;
-          }
-          case 1618: {
-            int length = input.readRawVarint32();
-            int limit = input.pushLimit(length);
-            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-              fightArea_ = newIntList();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            while (input.getBytesUntilLimit() > 0) {
-              fightArea_.addInt(input.readInt32());
-            }
-            input.popLimit(limit);
-            break;
-          }
           case 2410: {
             game.proto.data.Resource.Builder subBuilder = null;
             if (resource_ != null) {
@@ -146,10 +124,10 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 3210: {
-            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               hero_ = com.google.protobuf.MapField.newMapField(
                   HeroDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000002;
+              mutable_bitField0_ |= 0x00000001;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.PlayerHero>
             hero__ = input.readMessage(
@@ -159,9 +137,9 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 4010: {
-            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
               fightInfo_ = new java.util.ArrayList<game.proto.data.FightEnemyInfo>();
-              mutable_bitField0_ |= 0x00000004;
+              mutable_bitField0_ |= 0x00000002;
             }
             fightInfo_.add(
                 input.readMessage(game.proto.data.FightEnemyInfo.parser(), extensionRegistry));
@@ -182,10 +160,7 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        fightArea_.makeImmutable(); // C
-      }
-      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
         fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
       }
       this.unknownFields = unknownFields.build();
@@ -389,34 +364,6 @@ private static final long serialVersionUID = 0L;
     return getSceneData();
   }
 
-  public static final int FIGHTAREA_FIELD_NUMBER = 202;
-  private com.google.protobuf.Internal.IntList fightArea_;
-  /**
-   * <code>repeated int32 fightArea = 202;</code>
-   * @return A list containing the fightArea.
-   */
-  @java.lang.Override
-  public java.util.List<java.lang.Integer>
-      getFightAreaList() {
-    return fightArea_;
-  }
-  /**
-   * <code>repeated int32 fightArea = 202;</code>
-   * @return The count of fightArea.
-   */
-  public int getFightAreaCount() {
-    return fightArea_.size();
-  }
-  /**
-   * <code>repeated int32 fightArea = 202;</code>
-   * @param index The index of the element to return.
-   * @return The fightArea at the given index.
-   */
-  public int getFightArea(int index) {
-    return fightArea_.getInt(index);
-  }
-  private int fightAreaMemoizedSerializedSize = -1;
-
   public static final int RESOURCE_FIELD_NUMBER = 301;
   private game.proto.data.Resource resource_;
   /**
@@ -598,7 +545,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    getSerializedSize();
     if (pid_ != 0L) {
       output.writeInt64(1, pid_);
     }
@@ -622,13 +568,6 @@ private static final long serialVersionUID = 0L;
     }
     if (sceneData_ != null) {
       output.writeMessage(201, getSceneData());
-    }
-    if (getFightAreaList().size() > 0) {
-      output.writeUInt32NoTag(1618);
-      output.writeUInt32NoTag(fightAreaMemoizedSerializedSize);
-    }
-    for (int i = 0; i < fightArea_.size(); i++) {
-      output.writeInt32NoTag(fightArea_.getInt(i));
     }
     if (resource_ != null) {
       output.writeMessage(301, getResource());
@@ -680,20 +619,6 @@ private static final long serialVersionUID = 0L;
     if (sceneData_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(201, getSceneData());
-    }
-    {
-      int dataSize = 0;
-      for (int i = 0; i < fightArea_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeInt32SizeNoTag(fightArea_.getInt(i));
-      }
-      size += dataSize;
-      if (!getFightAreaList().isEmpty()) {
-        size += 2;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
-      }
-      fightAreaMemoizedSerializedSize = dataSize;
     }
     if (resource_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -750,8 +675,6 @@ private static final long serialVersionUID = 0L;
       if (!getSceneData()
           .equals(other.getSceneData())) return false;
     }
-    if (!getFightAreaList()
-        .equals(other.getFightAreaList())) return false;
     if (hasResource() != other.hasResource()) return false;
     if (hasResource()) {
       if (!getResource()
@@ -794,10 +717,6 @@ private static final long serialVersionUID = 0L;
     if (hasSceneData()) {
       hash = (37 * hash) + SCENEDATA_FIELD_NUMBER;
       hash = (53 * hash) + getSceneData().hashCode();
-    }
-    if (getFightAreaCount() > 0) {
-      hash = (37 * hash) + FIGHTAREA_FIELD_NUMBER;
-      hash = (53 * hash) + getFightAreaList().hashCode();
     }
     if (hasResource()) {
       hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
@@ -991,8 +910,6 @@ private static final long serialVersionUID = 0L;
         sceneData_ = null;
         sceneDataBuilder_ = null;
       }
-      fightArea_ = emptyIntList();
-      bitField0_ = (bitField0_ & ~0x00000001);
       if (resourceBuilder_ == null) {
         resource_ = null;
       } else {
@@ -1002,7 +919,7 @@ private static final long serialVersionUID = 0L;
       internalGetMutableHero().clear();
       if (fightInfoBuilder_ == null) {
         fightInfo_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
       } else {
         fightInfoBuilder_.clear();
       }
@@ -1049,11 +966,6 @@ private static final long serialVersionUID = 0L;
       } else {
         result.sceneData_ = sceneDataBuilder_.build();
       }
-      if (((bitField0_ & 0x00000001) != 0)) {
-        fightArea_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      }
-      result.fightArea_ = fightArea_;
       if (resourceBuilder_ == null) {
         result.resource_ = resource_;
       } else {
@@ -1062,9 +974,9 @@ private static final long serialVersionUID = 0L;
       result.hero_ = internalGetHero();
       result.hero_.makeImmutable();
       if (fightInfoBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0)) {
+        if (((bitField0_ & 0x00000002) != 0)) {
           fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000002);
         }
         result.fightInfo_ = fightInfo_;
       } else {
@@ -1144,16 +1056,6 @@ private static final long serialVersionUID = 0L;
       if (other.hasSceneData()) {
         mergeSceneData(other.getSceneData());
       }
-      if (!other.fightArea_.isEmpty()) {
-        if (fightArea_.isEmpty()) {
-          fightArea_ = other.fightArea_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureFightAreaIsMutable();
-          fightArea_.addAll(other.fightArea_);
-        }
-        onChanged();
-      }
       if (other.hasResource()) {
         mergeResource(other.getResource());
       }
@@ -1163,7 +1065,7 @@ private static final long serialVersionUID = 0L;
         if (!other.fightInfo_.isEmpty()) {
           if (fightInfo_.isEmpty()) {
             fightInfo_ = other.fightInfo_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
           } else {
             ensureFightInfoIsMutable();
             fightInfo_.addAll(other.fightInfo_);
@@ -1176,7 +1078,7 @@ private static final long serialVersionUID = 0L;
             fightInfoBuilder_.dispose();
             fightInfoBuilder_ = null;
             fightInfo_ = other.fightInfo_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000002);
             fightInfoBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getFightInfoFieldBuilder() : null;
@@ -1729,85 +1631,6 @@ private static final long serialVersionUID = 0L;
       return sceneDataBuilder_;
     }
 
-    private com.google.protobuf.Internal.IntList fightArea_ = emptyIntList();
-    private void ensureFightAreaIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        fightArea_ = mutableCopy(fightArea_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @return A list containing the fightArea.
-     */
-    public java.util.List<java.lang.Integer>
-        getFightAreaList() {
-      return ((bitField0_ & 0x00000001) != 0) ?
-               java.util.Collections.unmodifiableList(fightArea_) : fightArea_;
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @return The count of fightArea.
-     */
-    public int getFightAreaCount() {
-      return fightArea_.size();
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @param index The index of the element to return.
-     * @return The fightArea at the given index.
-     */
-    public int getFightArea(int index) {
-      return fightArea_.getInt(index);
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @param index The index to set the value at.
-     * @param value The fightArea to set.
-     * @return This builder for chaining.
-     */
-    public Builder setFightArea(
-        int index, int value) {
-      ensureFightAreaIsMutable();
-      fightArea_.setInt(index, value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @param value The fightArea to add.
-     * @return This builder for chaining.
-     */
-    public Builder addFightArea(int value) {
-      ensureFightAreaIsMutable();
-      fightArea_.addInt(value);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @param values The fightArea to add.
-     * @return This builder for chaining.
-     */
-    public Builder addAllFightArea(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
-      ensureFightAreaIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, fightArea_);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>repeated int32 fightArea = 202;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearFightArea() {
-      fightArea_ = emptyIntList();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
-      return this;
-    }
-
     private game.proto.data.Resource resource_;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.Resource, game.proto.data.Resource.Builder, game.proto.data.ResourceOrBuilder> resourceBuilder_;
@@ -2058,9 +1881,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<game.proto.data.FightEnemyInfo> fightInfo_ =
       java.util.Collections.emptyList();
     private void ensureFightInfoIsMutable() {
-      if (!((bitField0_ & 0x00000004) != 0)) {
+      if (!((bitField0_ & 0x00000002) != 0)) {
         fightInfo_ = new java.util.ArrayList<game.proto.data.FightEnemyInfo>(fightInfo_);
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000002;
        }
     }
 
@@ -2254,7 +2077,7 @@ private static final long serialVersionUID = 0L;
     public Builder clearFightInfo() {
       if (fightInfoBuilder_ == null) {
         fightInfo_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000002);
         onChanged();
       } else {
         fightInfoBuilder_.clear();
@@ -2359,7 +2182,7 @@ private static final long serialVersionUID = 0L;
         fightInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             game.proto.data.FightEnemyInfo, game.proto.data.FightEnemyInfo.Builder, game.proto.data.FightEnemyInfoOrBuilder>(
                 fightInfo_,
-                ((bitField0_ & 0x00000004) != 0),
+                ((bitField0_ & 0x00000002) != 0),
                 getParentForChildren(),
                 isClean());
         fightInfo_ = null;

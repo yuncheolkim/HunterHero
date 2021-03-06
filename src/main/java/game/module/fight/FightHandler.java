@@ -20,6 +20,7 @@ import game.utils.CalcUtil;
 
 /**
  * 战斗相关入口
+ *
  * @author Yunzhe.Jin
  * 2021/2/25 10:04
  */
@@ -27,6 +28,7 @@ public class FightHandler {
 
     /**
      * 战斗开始
+     *
      * @param player
      * @param req
      * @return
@@ -91,7 +93,7 @@ public class FightHandler {
                         .setCount(gold)
                         .build());
 
-                G.E.firePlayerEvent(player,new ResourceAddEvent(ResourceEnum.GOLD,gold, ResourceSourceEnum.打怪));
+                G.E.firePlayerEvent(player, new ResourceAddEvent(ResourceEnum.GOLD, gold, ResourceSourceEnum.打怪));
             }
         }
         player.getTransport().send(2003, result.build());
@@ -125,6 +127,7 @@ public class FightHandler {
                 re.setType(r.type);
                 re.setId(r.id);
                 re.setValue(r.value);
+                re.setPos(r.hero.pos.getIndex());
                 if (r.damageType != null) {
                     re.setDamageType(r.damageType);
                 }
@@ -136,7 +139,7 @@ public class FightHandler {
                 }
                 if (r.target != null) {
                     for (HeroRecordSimple heroRecordSimple : r.target) {
-                        re.addTarget(heroRecordSimple.id);
+                        re.addTarget(heroRecordSimple.pos.getIndex());
                     }
                 }
                 if (r.buffData != null) {
@@ -154,7 +157,7 @@ public class FightHandler {
                     re.getBuffRecordBuilder().setF4(r.buffData.f4);
                     re.getBuffRecordBuilder().setF5(r.buffData.f5);
                 }
-
+                rb.addRecord(re.build());
             }
 
             builder.addRound(rb.build());

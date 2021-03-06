@@ -7,6 +7,7 @@ import java.util.Random;
 
 /**
  * 计算数值
+ *
  * @author Yunzhe.Jin
  * 2021/1/8 17:24
  */
@@ -15,6 +16,7 @@ public class CalcUtil {
 
     /**
      * 随机
+     *
      * @param min 包含
      * @param max 包含
      * @return
@@ -26,6 +28,7 @@ public class CalcUtil {
 
     /**
      * 计算比例
+     *
      * @param val  计算值
      * @param rate 比例
      * @return 最终算好的值
@@ -46,6 +49,7 @@ public class CalcUtil {
 
     /**
      * 减少比例
+     *
      * @param val
      * @param rate
      * @return
@@ -69,6 +73,7 @@ public class CalcUtil {
     /**
      * 计算属性
      * 返回百分比
+     *
      * @param v
      * @param base
      * @return 万分比 int
@@ -79,11 +84,12 @@ public class CalcUtil {
 
     /**
      * 根据权重随机元素
+     *
      * @param weightList
      * @param weightAll
      * @return
      */
-    public static IWeight weightRandom(List<? extends IWeight> weightList, int weightAll) {
+    public static <T extends IWeight> T weightRandom(List<T> weightList, int weightAll) {
 
         int i = DEFAULT_RANDOM.nextInt(weightAll) + 1;
         int sum = 0;
@@ -91,7 +97,7 @@ public class CalcUtil {
 
             sum += iWeight.weight();
             if (sum >= i) {
-                return iWeight;
+                return (T) iWeight;
             }
         }
 
@@ -100,10 +106,11 @@ public class CalcUtil {
 
     /**
      * 根据权重随机元素
+     *
      * @param weightList
      * @return
      */
-    public static IWeight weightRandom(List<? extends IWeight> weightList) {
+    public static <T extends IWeight> T weightRandom(List<T> weightList) {
         int sum = 0;
         for (IWeight iWeight : weightList) {
             sum += iWeight.weight();

@@ -31,6 +31,12 @@ public interface RecordOrBuilder extends
   int getId();
 
   /**
+   * <code>int32 pos = 4;</code>
+   * @return The pos.
+   */
+  int getPos();
+
+  /**
    * <code>repeated int32 target = 11;</code>
    * @return A list containing the target.
    */

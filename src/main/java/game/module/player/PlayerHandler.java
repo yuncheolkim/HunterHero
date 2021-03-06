@@ -28,6 +28,7 @@ public class PlayerHandler {
 
     /**
      * 起名
+     *
      * @param player
      * @param o
      * @return
@@ -35,6 +36,8 @@ public class PlayerHandler {
     public static void createName(Player player, PlayerCreateNameReq o) {
 
         player.getPd().setName(o.getName());
+        player.getTransport().send(3, Empty.getDefaultInstance());
+
     }
 
 
@@ -43,6 +46,7 @@ public class PlayerHandler {
     /**
      * 玩家定时器
      * 每5秒执行一次
+     *
      * @param player
      * @param o
      * @return
@@ -60,12 +64,16 @@ public class PlayerHandler {
 
     /**
      * 检查战斗
+     *
      * @param player
      */
     private static void checkFight(Player player) {
 
-        if (G.C.enemyInfoMap.containsKey(player.getPd().getSceneData().getId()) &&
-                player.D.getFightAreaCount() > 0) {
+        if (player.D.getFightAreaCount() > 0) {
+            if (player.getPd().getFightInfoCount() > 0) {
+                // 已经在战斗中
+                return;
+            }
             long now = System.currentTimeMillis();
             if (player.nextFightTime > now) {
                 // fight
@@ -85,6 +93,7 @@ public class PlayerHandler {
 
     /**
      * 生成小怪
+     *
      * @param player
      * @return
      */
@@ -105,7 +114,7 @@ public class PlayerHandler {
             List<EnemyCountConfigData> list = G.C.enemyCountMap.get(enemyAreaId);
             enemyCountList.addAll(list);
         }
-        int count = CalcUtil.weightRandom(enemyCountList).weight();
+        int count = CalcUtil.weightRandom(enemyCountList).count;
         // hero info
         List<EnemyConfigData> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
@@ -167,6 +176,7 @@ public class PlayerHandler {
 
     /**
      * 定时存db
+     *
      * @param player
      * @param o
      * @return

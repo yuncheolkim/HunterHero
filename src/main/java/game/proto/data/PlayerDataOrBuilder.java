@@ -86,23 +86,6 @@ public interface PlayerDataOrBuilder extends
   game.proto.data.SceneDataOrBuilder getSceneDataOrBuilder();
 
   /**
-   * <code>repeated int32 fightArea = 202;</code>
-   * @return A list containing the fightArea.
-   */
-  java.util.List<java.lang.Integer> getFightAreaList();
-  /**
-   * <code>repeated int32 fightArea = 202;</code>
-   * @return The count of fightArea.
-   */
-  int getFightAreaCount();
-  /**
-   * <code>repeated int32 fightArea = 202;</code>
-   * @param index The index of the element to return.
-   * @return The fightArea at the given index.
-   */
-  int getFightArea(int index);
-
-  /**
    * <code>.Message.Resource resource = 301;</code>
    * @return Whether the resource field is set.
    */

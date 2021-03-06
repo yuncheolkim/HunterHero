@@ -29,7 +29,7 @@ public class HeroFactory {
         if (hero != null) {
             hero.setId(heroId);
             hero.setLevel(playerHero.getLevel());
-            hero.setName(G.C.heroMap1001.get(heroId).name);
+            hero.setName(G.C.dataMap1.get(heroId).name);
             // property data
             HeroData data = makeData(playerHero.getProperty());
 

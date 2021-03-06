@@ -129,6 +129,7 @@ public class Hero {
 
     /**
      * 执行动作
+     *
      * @param actionPoint 相应的动作
      */
     public void processAction(ActionPoint actionPoint) {
@@ -213,6 +214,7 @@ public class Hero {
     /**
      * 对一个敌人造成伤害
      * 伤害可能来自技能，buff
+     *
      * @param target 目标
      */
     public void damage(DamageInfo info) {
@@ -324,6 +326,7 @@ public class Hero {
 
     /**
      * 被攻击
+     *
      * @param info
      */
     public void attacked(DamageInfo info) {
@@ -359,6 +362,7 @@ public class Hero {
 
     /**
      * 最终减少的血量，所有减血操作都要通过这个方法，不能直接修改属性
+     *
      * @param num
      */
     public void reduceHp(DamageInfo i) {
@@ -396,6 +400,7 @@ public class Hero {
 
     /**
      * 添加buff
+     *
      * @param addBuff
      */
     public void addBuff(Buff addBuff) {
@@ -471,6 +476,7 @@ public class Hero {
     /**
      * 增加血量
      * todo
+     *
      * @param num
      */
     public void addHp(int num) {
@@ -500,6 +506,7 @@ public class Hero {
 
     /**
      * 战斗记录
+     *
      * @param info
      */
     private void addDamageRecord(DamageInfo info) {
@@ -511,7 +518,7 @@ public class Hero {
 
         // 暴击
         if (info.sourceCriticalDamage > 0) {
-            record =  new Record(RecordType.HEALTH_CHANGE);
+            record = new Record(RecordType.HEALTH_CHANGE);
             record.hero = info.target.getSimple();
             record.value = info.sourceCriticalDamage * -1;
             record.damageType = DamageType.DAMAGE_CRITICAL;
@@ -612,6 +619,7 @@ public class Hero {
                 .add("id", id)
                 .add("pos", pos)
                 .add("side", side)
+                .add("hp", heroStats.hp)
                 .toString();
     }
 

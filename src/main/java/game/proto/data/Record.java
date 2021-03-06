@@ -69,6 +69,11 @@ private static final long serialVersionUID = 0L;
             id_ = input.readInt32();
             break;
           }
+          case 32: {
+
+            pos_ = input.readInt32();
+            break;
+          }
           case 88: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               target_ = newIntList();
@@ -194,6 +199,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getId() {
     return id_;
+  }
+
+  public static final int POS_FIELD_NUMBER = 4;
+  private int pos_;
+  /**
+   * <code>int32 pos = 4;</code>
+   * @return The pos.
+   */
+  @java.lang.Override
+  public int getPos() {
+    return pos_;
   }
 
   public static final int TARGET_FIELD_NUMBER = 11;
@@ -342,6 +358,9 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeInt32(3, id_);
     }
+    if (pos_ != 0) {
+      output.writeInt32(4, pos_);
+    }
     if (getTargetList().size() > 0) {
       output.writeUInt32NoTag(90);
       output.writeUInt32NoTag(targetMemoizedSerializedSize);
@@ -381,6 +400,10 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, id_);
+    }
+    if (pos_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, pos_);
     }
     {
       int dataSize = 0;
@@ -431,6 +454,8 @@ private static final long serialVersionUID = 0L;
         != other.getHeroId()) return false;
     if (getId()
         != other.getId()) return false;
+    if (getPos()
+        != other.getPos()) return false;
     if (!getTargetList()
         .equals(other.getTargetList())) return false;
     if (damageType_ != other.damageType_) return false;
@@ -460,6 +485,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getHeroId();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
+    hash = (37 * hash) + POS_FIELD_NUMBER;
+    hash = (53 * hash) + getPos();
     if (getTargetCount() > 0) {
       hash = (37 * hash) + TARGET_FIELD_NUMBER;
       hash = (53 * hash) + getTargetList().hashCode();
@@ -613,6 +640,8 @@ private static final long serialVersionUID = 0L;
 
       id_ = 0;
 
+      pos_ = 0;
+
       target_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
       damageType_ = 0;
@@ -657,6 +686,7 @@ private static final long serialVersionUID = 0L;
       result.type_ = type_;
       result.heroId_ = heroId_;
       result.id_ = id_;
+      result.pos_ = pos_;
       if (((bitField0_ & 0x00000001) != 0)) {
         target_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -726,6 +756,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getId() != 0) {
         setId(other.getId());
+      }
+      if (other.getPos() != 0) {
+        setPos(other.getPos());
       }
       if (!other.target_.isEmpty()) {
         if (target_.isEmpty()) {
@@ -892,6 +925,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearId() {
       
       id_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int pos_ ;
+    /**
+     * <code>int32 pos = 4;</code>
+     * @return The pos.
+     */
+    @java.lang.Override
+    public int getPos() {
+      return pos_;
+    }
+    /**
+     * <code>int32 pos = 4;</code>
+     * @param value The pos to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPos(int value) {
+      
+      pos_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 pos = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPos() {
+      
+      pos_ = 0;
       onChanged();
       return this;
     }
