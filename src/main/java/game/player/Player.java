@@ -122,6 +122,9 @@ public class Player {
                 D.addFightArea(areaId);
             }
         }
+        if (D.getFightAreaCount() == 0) {
+            pd.clearFightInfo();
+        }
     }
 
     /**

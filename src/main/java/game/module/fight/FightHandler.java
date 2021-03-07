@@ -86,11 +86,6 @@ public class FightHandler {
                 gold += CalcUtil.random(dataConfigData.min, dataConfigData.max);
             }
             // 奖励
-            result.addReward(Reward.newBuilder()
-                    .setHeroId(-1)
-                    .setRewardId(ResourceEnum.EXP.id)
-                    .setCount(exp)
-                    .build());
 
             if (gold > 0) {
                 result.addReward(Reward.newBuilder()
@@ -104,9 +99,19 @@ public class FightHandler {
 
             // Add player exp
             player.addPlayerExp(exp, ResourceSourceEnum.打怪);
+            result.addReward(Reward.newBuilder()
+                    .setHeroId(0)
+                    .setRewardId(ResourceEnum.EXP.id)
+                    .setCount(exp)
+                    .build());
             // Add hero exp
             for (HeroRecordData sideAhero : record.getSideAhero()) {
                 player.addHeroExp(sideAhero.simple.id, exp, ResourceSourceEnum.打怪);
+                result.addReward(Reward.newBuilder()
+                        .setHeroId(sideAhero.simple.id)
+                        .setRewardId(ResourceEnum.EXP.id)
+                        .setCount(exp)
+                        .build());
             }
 
         }
