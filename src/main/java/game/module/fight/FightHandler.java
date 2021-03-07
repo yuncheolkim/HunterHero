@@ -10,7 +10,6 @@ import game.module.battle.record.HeroRecordData;
 import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.module.event.KillEvent;
-import game.module.event.ResourceAddEvent;
 import game.module.event.ResourceSourceEnum;
 import game.player.Player;
 import game.proto.Empty;
@@ -100,8 +99,16 @@ public class FightHandler {
                         .setCount(gold)
                         .build());
 
-                G.E.firePlayerEvent(player, new ResourceAddEvent(ResourceEnum.GOLD, gold, ResourceSourceEnum.打怪));
+                player.addGold(gold, ResourceSourceEnum.打怪);
             }
+
+            // Add player exp
+            player.addPlayerExp(exp, ResourceSourceEnum.打怪);
+            // Add hero exp
+            for (HeroRecordData sideAhero : record.getSideAhero()) {
+                player.addHeroExp(sideAhero.simple.id, exp, ResourceSourceEnum.打怪);
+            }
+
         }
         player.getTransport().send(MsgNo.fight_start_VALUE, result.build());
 
@@ -182,7 +189,7 @@ public class FightHandler {
      */
     public static void endFight(Player player, Empty req) {
         player.getPd().clearFightInfo();
-        if (player.getPd().getFightInfoCount() > 0) {
+        if (player.D.getFightAreaCount() > 0) {
             player.nextFightTime = DateUtils.now() + CalcUtil.random(5000, 20000);
         }
     }

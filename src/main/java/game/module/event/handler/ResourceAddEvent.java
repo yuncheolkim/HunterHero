@@ -1,6 +1,9 @@
-package game.module.event;
+package game.module.event.handler;
 
 import game.game.ResourceEnum;
+import game.module.event.EventType;
+import game.module.event.IEvent;
+import game.module.event.ResourceSourceEnum;
 
 /**
  * @author Yunzhe.Jin
@@ -8,10 +11,12 @@ import game.game.ResourceEnum;
  */
 public class ResourceAddEvent implements IEvent {
     public final ResourceEnum resource;
+    public final int heroId;
     public final int count;
     public final ResourceSourceEnum source;
 
-    public ResourceAddEvent(ResourceEnum resource, int count, ResourceSourceEnum source) {
+    public ResourceAddEvent(ResourceEnum resource, int heroId, int count, ResourceSourceEnum source) {
+        this.heroId = heroId;
         this.count = count;
         this.source = source;
         this.resource = resource;

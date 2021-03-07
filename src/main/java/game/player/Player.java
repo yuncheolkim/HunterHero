@@ -5,6 +5,10 @@ import game.base.G;
 import game.base.Logs;
 import game.base.Work;
 import game.config.DataConfigData;
+import game.game.ResourceEnum;
+import game.module.event.ResourceSourceEnum;
+import game.module.event.handler.LevelUpEvent;
+import game.module.event.handler.ResourceAddEvent;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
@@ -17,7 +21,9 @@ import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 线程安全
@@ -103,6 +109,19 @@ public class Player {
         loginTime = LocalDateTime.fromDateFields(new Date(pd.getLastLoginTime()));
         updateTime = LocalDateTime.fromDateFields(new Date(pd.getUpdateTime()));
         pd.getResourceBuilder().setNeedExp(G.C.dataMap9.get(pd.getLevel()).exp);
+
+        // 检查战斗区域
+        int id = pd.getSceneDataBuilder().getId();
+        DataConfigData dataConfigData = G.C.dataMap7.get(id);
+
+        List<Integer> l = new ArrayList<>(D.getFightAreaList());
+        D.clearFightArea();
+
+        for (Integer areaId : l) {
+            if (dataConfigData.enemyAreaList.contains(areaId)) {
+                D.addFightArea(areaId);
+            }
+        }
     }
 
     /**
@@ -161,6 +180,68 @@ public class Player {
             PlayerRepo playerRepo = G.R.getPlayerRepo();
             playerRepo.save(copy);
         });
+    }
+
+    public void addGold(int count, ResourceSourceEnum from) {
+        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.GOLD, 0, count, from));
+
+    }
+
+    /**
+     * 增加玩家经验
+     *
+     * @param count
+     * @param from
+     */
+    public void addPlayerExp(int count, ResourceSourceEnum from) {
+        int exp = pd.getResourceBuilder().getExp() + count;
+        int level = pd.getLevel();
+        int maxExp = G.C.needExp(level);
+
+        while (exp >= maxExp) {
+            level++;
+            // 升级
+            G.E.firePlayerEvent(this, new LevelUpEvent(level));
+
+            exp -= maxExp;
+            maxExp = G.C.needExp(level);
+        }
+
+        pd.getResourceBuilder().setExp(exp);
+        pd.setLevel(level);
+
+
+        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, count, from));
+    }
+
+    /**
+     * 增加英雄经验
+     *
+     * @param heroId
+     * @param count
+     * @param from
+     */
+    public void addHeroExp(int heroId, int count, ResourceSourceEnum from) {
+        PlayerHero playerHero = pd.getHeroMap().get(heroId);
+
+        PlayerHero.Builder builder = playerHero.toBuilder();
+        int exp = builder.getExp();
+        int level = playerHero.getLevel();
+        int maxExp = G.C.needExp(level);
+
+        while (exp >= maxExp) {
+            level++;
+            // 升级
+            G.E.firePlayerEvent(this, new LevelUpEvent(heroId, level));
+
+            exp -= maxExp;
+            maxExp = G.C.needExp(level);
+        }
+        builder.setExp(exp);
+        builder.setLevel(level);
+        pd.putHero(heroId, builder.build());
+
+        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, heroId, count, from));
     }
 
     /**

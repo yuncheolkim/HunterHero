@@ -81,6 +81,8 @@ public class PlayerHandler {
                         .setMsgNo(2002)
                         .setBody(fightStartPush.toByteString())
                         .build());
+                // 选择英雄时间
+                player.nextFightTime = DateUtils.now() + TimeUnit.MINUTES.toMillis(10);
             }
         } else {
             player.nextFightTime = 0;

@@ -78,6 +78,9 @@ public class DataConfigData {
     public int enemyAreaId;
 
     @JsonProperty
+    public List<Integer> enemyAreaList;
+
+    @JsonProperty
     public int enemyId;
 
 

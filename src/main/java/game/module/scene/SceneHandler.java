@@ -57,7 +57,7 @@ public class SceneHandler {
      */
     public static void exitFightArea(Player player, ExitFightAreaReq req) {
         List<Integer> l = new ArrayList<>(player.D.getFightAreaList());
-        l.remove(req.getId());
+        l.remove(new Integer(req.getId()));
         player.D.clearFightArea().addAllFightArea(l);
         player.nextFightTime = 0;
     }

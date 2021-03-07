@@ -8,4 +8,7 @@ public enum EventType {
     KILL,
     ITEM_TAKE,
     RESOURCE_ADD,
+    EXP_ADD,
+    //升级
+    LEVEL_UP
 }

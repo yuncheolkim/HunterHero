@@ -141,4 +141,19 @@ public class ConfigManager extends AbsLifecycle {
 
         enemyCountMap = map1;
     }
+
+    /**
+     * 升级需要的经验
+     *
+     * @param level
+     * @return
+     */
+    public int needExp(int level) {
+        DataConfigData dataConfigData = dataMap9.get(level);
+        if (dataConfigData == null) {
+            return Integer.MAX_VALUE;
+        }
+        return dataConfigData.exp;
+
+    }
 }

@@ -5,6 +5,8 @@ import game.base.Work;
 import game.module.event.EventType;
 import game.module.event.IEvent;
 import game.module.event.IPlayerEventHandler;
+import game.module.event.handler.LevelUpEventHandler;
+import game.module.event.handler.ResourceAddEventHandler;
 import game.player.Player;
 
 import java.util.HashMap;
@@ -26,10 +28,14 @@ public class EventManager {
         playerEventMap.put(EventType.KILL, (player, data) -> {
 
         });
+        // 不包括经验
+        playerEventMap.put(EventType.RESOURCE_ADD, new ResourceAddEventHandler());
+        playerEventMap.put(EventType.LEVEL_UP, new LevelUpEventHandler());
     }
 
     /**
      * 玩家线程
+     *
      * @param player
      * @param event
      */
