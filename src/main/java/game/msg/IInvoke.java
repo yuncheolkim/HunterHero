@@ -9,4 +9,5 @@ import game.proto.Message;
  */
 public interface IInvoke {
     void invoke(Player player, Message msg);
+    int getMsgNo();
 }

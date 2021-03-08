@@ -11,8 +11,12 @@ import game.module.event.ResourceSourceEnum;
  */
 public class ResourceAddEvent implements IEvent {
     public final ResourceEnum resource;
+
+    // 0:player,other:hero
     public final int heroId;
+
     public final int count;
+
     public final ResourceSourceEnum source;
 
     public ResourceAddEvent(ResourceEnum resource, int heroId, int count, ResourceSourceEnum source) {

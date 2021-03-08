@@ -124,6 +124,14 @@ public enum MsgNo
    * <code>hero_update_xiulian = 4002;</code>
    */
   hero_update_xiulian(4002),
+  /**
+   * <pre>
+   * 英雄变化
+   * </pre>
+   *
+   * <code>hero_change = 4003;</code>
+   */
+  hero_change(4003),
   UNRECOGNIZED(-1),
   ;
 
@@ -243,6 +251,14 @@ public enum MsgNo
    * <code>hero_update_xiulian = 4002;</code>
    */
   public static final int hero_update_xiulian_VALUE = 4002;
+  /**
+   * <pre>
+   * 英雄变化
+   * </pre>
+   *
+   * <code>hero_change = 4003;</code>
+   */
+  public static final int hero_change_VALUE = 4003;
 
 
   public final int getNumber() {
@@ -284,6 +300,7 @@ public enum MsgNo
       case 3003: return scene_leave_fight_area;
       case 4001: return hero_update_lilian;
       case 4002: return hero_update_xiulian;
+      case 4003: return hero_change;
       default: return null;
     }
   }

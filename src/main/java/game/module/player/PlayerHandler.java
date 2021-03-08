@@ -7,8 +7,10 @@ import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
 import game.player.Player;
 import game.proto.*;
+import game.proto.back.MsgNo;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
+import game.proto.data.PlayerHero;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
 
@@ -29,7 +31,6 @@ public class PlayerHandler {
 
     /**
      * 起名
-     *
      * @param player
      * @param o
      * @return
@@ -41,18 +42,28 @@ public class PlayerHandler {
 
     }
 
+    /**
+     * 更新英雄属性
+     * @param player
+     * @param hero
+     */
+    public static void updateHero(Player player, PlayerHero hero) {
+        player.getPd().putHero(hero.getId(), hero);
+        // Push
+        player.getTransport().send(MsgNo.hero_change_VALUE, HeroChangePush.newBuilder().setHero(hero).build());
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 
     /**
      * 玩家定时器
      * 每5秒执行一次
-     *
      * @param player
      * @param o
      * @return
      */
-    public static void tick(Player player, Empty o) {
+    public static void tick(Player player) {
         Logs.C.info("定时器:{}", player.getPid());
 
         // 体力恢复
@@ -65,7 +76,6 @@ public class PlayerHandler {
 
     /**
      * 检查战斗
-     *
      * @param player
      */
     private static void checkFight(Player player) {
@@ -91,7 +101,6 @@ public class PlayerHandler {
 
     /**
      * 生成小怪
-     *
      * @param player
      * @return
      */
@@ -174,7 +183,6 @@ public class PlayerHandler {
 
     /**
      * 定时存db
-     *
      * @param player
      * @param o
      * @return

@@ -2,6 +2,7 @@ package game.manager;
 
 import game.base.AbsLifecycle;
 import game.module.fight.FightHandler;
+import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
@@ -9,8 +10,10 @@ import game.module.scene.SceneHandler;
 import game.module.task.TaskHandler;
 import game.msg.IInvoke;
 import game.msg.Invoker;
+import game.msg.InvokerNoParam;
 import game.proto.*;
 import game.proto.back.MsgNo;
+import game.proto.data.PlayerHero;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -25,6 +28,8 @@ public class GameManager extends AbsLifecycle {
     private LoginHandler loginHandler = new LoginHandler();
 
     private int version = 1;
+
+    private DefaultHeroCalcProcess heroCalcProcess = new DefaultHeroCalcProcess();
 
     public GameManager() {
         // player
@@ -48,11 +53,12 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.hero_update_xiulian_VALUE, HeroHandler::xiulian, HeroUpReq::parser));
 
         // inner
-        addHandler(new Invoker<>(10, PlayerHandler::tick, Empty::parser));
+        addHandler(new InvokerNoParam(10, PlayerHandler::tick));
         addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
+        addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
     }
 
-    private void addHandler(Invoker<?> taskReqInvoker) {
+    private void addHandler(IInvoke taskReqInvoker) {
         handlerMap.put(taskReqInvoker.getMsgNo(), taskReqInvoker);
     }
 
@@ -77,5 +83,9 @@ public class GameManager extends AbsLifecycle {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public DefaultHeroCalcProcess getHeroCalcProcess() {
+        return heroCalcProcess;
     }
 }

@@ -1,6 +1,8 @@
-package game.module.event;
+package game.module.event.handler;
 
 import game.game.TargetType;
+import game.module.event.EventType;
+import game.module.event.IEvent;
 
 /**
  * 杀敌事件

@@ -40,4 +40,6 @@ enum MsgNo {
     hero_update_lilian = 4001;
     // 修炼
     hero_update_xiulian = 4002;
+    // 英雄变化
+    hero_change = 4003;
 }

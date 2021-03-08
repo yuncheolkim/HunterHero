@@ -1,10 +1,13 @@
 package game.manager;
 
 import game.base.G;
+import game.base.Logs;
 import game.base.Work;
 import game.module.event.EventType;
 import game.module.event.IEvent;
 import game.module.event.IPlayerEventHandler;
+import game.module.event.handler.HeroPowerUpEventHandler;
+import game.module.event.handler.KillEventHandler;
 import game.module.event.handler.LevelUpEventHandler;
 import game.module.event.handler.ResourceAddEventHandler;
 import game.player.Player;
@@ -25,12 +28,13 @@ public class EventManager {
 
     public EventManager() {
         // 杀敌事件
-        playerEventMap.put(EventType.KILL, (player, data) -> {
-
-        });
-        // 不包括经验
+        playerEventMap.put(EventType.KILL, new KillEventHandler());
+        // 增加资源
         playerEventMap.put(EventType.RESOURCE_ADD, new ResourceAddEventHandler());
+        // 升级
         playerEventMap.put(EventType.LEVEL_UP, new LevelUpEventHandler());
+        // 英雄提升
+        playerEventMap.put(EventType.HERO_POWER_UP, new HeroPowerUpEventHandler());
     }
 
     /**
@@ -40,7 +44,11 @@ public class EventManager {
      */
     public <T extends IEvent> void firePlayerEvent(Player player, T event) {
         IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
-        iPlayerEventHandler.handler(player, event);
+        try {
+            iPlayerEventHandler.handler(player, event);
+        } catch (Exception e) {
+            Logs.C.error("", e);
+        }
     }
 
     public <T extends IEvent> void firePlayerEvent(long pid, T event) {
@@ -50,7 +58,11 @@ public class EventManager {
             Work playerWork = G.W.getPlayerWork(pid);
             Player player = f.get();
             playerWork.addTask(() -> {
-                iPlayerEventHandler.handler(player, event);
+                try {
+                    iPlayerEventHandler.handler(player, event);
+                } catch (Exception e) {
+                    Logs.C.error("", e);
+                }
             });
         }
     }

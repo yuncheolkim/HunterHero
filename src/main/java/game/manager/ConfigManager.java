@@ -47,6 +47,7 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, DataConfigData> dataMap14;
 
     public Map<Integer, DataConfigData> dataMap15;
+
     public Map<Integer, DataConfigData> dataMap16;
 
     public Map<Integer, DataConfigData> taskMap1;
@@ -144,7 +145,6 @@ public class ConfigManager extends AbsLifecycle {
 
     /**
      * 升级需要的经验
-     *
      * @param level
      * @return
      */
@@ -154,6 +154,16 @@ public class ConfigManager extends AbsLifecycle {
             return Integer.MAX_VALUE;
         }
         return dataConfigData.exp;
+    }
 
+    /**
+     * 获得英雄基础属性
+     * @param heroId
+     * @param level
+     * @return
+     */
+    public DataConfigData heroBaseProperty(int heroId, int level) {
+        // tood
+        return heroMap1001.get(level);
     }
 }

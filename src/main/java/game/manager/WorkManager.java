@@ -14,7 +14,9 @@ import java.util.concurrent.Executors;
  */
 public class WorkManager extends AbsLifecycle {
 
-    private Work[] playerWork = new SingleWork[Constants.CORE_PROCESS_COUNT * 2];
+    private Work[] playerWork = new SingleWork[Constants.CORE_PROCESS_COUNT];
+
+    private Work heroCalcWork = new Work(Executors.newFixedThreadPool(Constants.CORE_PROCESS_COUNT));
 
     private Work[] dataPersistenceWork = new Work[Constants.CORE_PROCESS_COUNT * 3];
 
@@ -41,6 +43,18 @@ public class WorkManager extends AbsLifecycle {
         int index = (int) (pid % playerWork.length);
         return playerWork[index];
     }
+
+
+    /**
+     * 英雄属性计算线程
+     * @param pid
+     * @return
+     */
+    public Work getHeroCalcWork() {
+        return heroCalcWork;
+    }
+
+
 
     public Work getDataPersistenceWork(long pid) {
         int index = (int) (pid % dataPersistenceWork.length);

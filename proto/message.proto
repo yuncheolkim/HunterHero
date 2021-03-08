@@ -91,6 +91,10 @@ message HeroUpReq {
     int32 stepId = 2;
 }
 
+// 4003 英雄变化
+message HeroChangePush{
+    PlayerHero hero = 1;
+}
 
 
 

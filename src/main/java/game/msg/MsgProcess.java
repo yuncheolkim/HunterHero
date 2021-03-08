@@ -12,6 +12,8 @@ import game.proto.Message;
 public class MsgProcess implements Runnable {
     protected Message message;
 
+    private long pid;
+
     protected Player player;
 
     public MsgProcess(Message message, Player player) {
@@ -19,12 +21,21 @@ public class MsgProcess implements Runnable {
         this.player = player;
     }
 
+    public MsgProcess(Message message, long pid) {
+        this.message = message;
+        this.pid = pid;
+    }
+
     @Override
     public void run() {
 
         IInvoke handler = G.G.getHandler(message.getMsgNo());
         if (handler != null) {
-            handler.invoke(player, message);
+            if (player == null) {
+                handler.invoke(G.P.findPlayer(pid).get(), message);
+            } else {
+                handler.invoke(player, message);
+            }
         } else {
             Logs.C.warn("不存在handler:{}", message.getMsgNo());
         }
