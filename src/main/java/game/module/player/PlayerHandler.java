@@ -26,7 +26,7 @@ import static game.module.battle.PosGen.RANDOM_8;
  */
 public class PlayerHandler {
     public static void heartbeat(Player player, HeartbeatReq o) {
-        player.getTransport().send(4, HeartbeatRes.getDefaultInstance());
+        player.getTransport().send(MsgNo.heartbeat_VALUE, HeartbeatRes.getDefaultInstance());
     }
 
     /**

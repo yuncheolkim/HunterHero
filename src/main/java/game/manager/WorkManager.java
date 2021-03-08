@@ -16,7 +16,7 @@ public class WorkManager extends AbsLifecycle {
 
     private Work[] playerWork = new SingleWork[Constants.CORE_PROCESS_COUNT];
 
-    private Work heroCalcWork = new Work(Executors.newFixedThreadPool(Constants.CORE_PROCESS_COUNT));
+    private Work[] heroCalcWork = new SingleWork[Constants.CORE_PROCESS_COUNT];
 
     private Work[] dataPersistenceWork = new Work[Constants.CORE_PROCESS_COUNT * 3];
 
@@ -24,6 +24,7 @@ public class WorkManager extends AbsLifecycle {
 
     public WorkManager() {
         initSingleWork(playerWork);
+        initSingleWork(heroCalcWork);
         initWork(dataPersistenceWork, Executors.newSingleThreadExecutor());
     }
 
@@ -50,10 +51,9 @@ public class WorkManager extends AbsLifecycle {
      * @param pid
      * @return
      */
-    public Work getHeroCalcWork() {
-        return heroCalcWork;
+    public Work getHeroCalcWork(long pid) {
+        return heroCalcWork[(int) (pid % heroCalcWork.length)];
     }
-
 
 
     public Work getDataPersistenceWork(long pid) {

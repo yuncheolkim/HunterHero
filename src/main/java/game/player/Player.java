@@ -108,6 +108,9 @@ public class Player {
         afterLoad();
     }
 
+    /**
+     * 加载基本数据后处理
+     */
     private void afterLoad() {
         loginTime = LocalDateTime.fromDateFields(new Date(pd.getLastLoginTime()));
         updateTime = LocalDateTime.fromDateFields(new Date(pd.getUpdateTime()));
@@ -194,7 +197,7 @@ public class Player {
         G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.GOLD, 0, count, from));
     }
 
-    public boolean hasGold(int count) {
+    private boolean hasGold(int count) {
         return pd.getResourceBuilder().getGold() >= count;
     }
 
@@ -273,7 +276,6 @@ public class Player {
     }
 
     public void update() {
-
 
         updateTime = LocalDateTime.now();
     }
