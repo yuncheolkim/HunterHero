@@ -44,7 +44,6 @@ public class HeroHandler {
         PlayerHero.Builder builder = hero.toBuilder().putLiLian(req.getStepId(), realm);
         pd.putHero(req.getHeroId(), builder.build());
 
-
         G.E.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
 
     }
