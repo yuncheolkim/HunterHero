@@ -21,7 +21,7 @@ public class EventManager {
     /**
      * 玩家事件，只在玩家线程处理
      */
-    private Map<EventType, IPlayerEventHandler> playerEventMap = new HashMap<>();
+    private Map<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = new HashMap<>();
 
     public EventManager() {
         // 杀敌事件
@@ -35,17 +35,16 @@ public class EventManager {
 
     /**
      * 玩家线程
-     *
      * @param player
      * @param event
      */
-    public void firePlayerEvent(Player player, IEvent event) {
-        IPlayerEventHandler iPlayerEventHandler = playerEventMap.get(event.type());
+    public <T extends IEvent> void firePlayerEvent(Player player, T event) {
+        IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
         iPlayerEventHandler.handler(player, event);
     }
 
-    public void firePlayerEvent(long pid, IEvent event) {
-        IPlayerEventHandler iPlayerEventHandler = playerEventMap.get(event.type());
+    public <T extends IEvent> void firePlayerEvent(long pid, T event) {
+        IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
         Optional<Player> f = G.P.findPlayer(pid);
         if (f.isPresent()) {
             Work playerWork = G.W.getPlayerWork(pid);

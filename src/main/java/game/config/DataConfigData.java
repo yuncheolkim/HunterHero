@@ -38,6 +38,8 @@ public class DataConfigData {
     @JsonProperty
     public String title;
 
+    @JsonProperty
+    public int gold;
     ///// property
     @JsonProperty
     public int hp;

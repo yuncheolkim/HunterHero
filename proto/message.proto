@@ -85,6 +85,12 @@ message ExitFightAreaReq {
     int32 id = 1;
 }
 
+// 4001,4002 修炼，历练
+message HeroUpReq {
+    int32 heroId = 1;
+    int32 stepId = 2;
+}
+
 
 
 

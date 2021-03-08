@@ -94,6 +94,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ExitFightAreaReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HeroUpReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HeroUpReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -122,7 +127,8 @@ public final class MessageOuterClass {
       "ward\"1\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022.Me" +
       "ssage.SceneData\"\037\n\021EnterFightAreaReq\022\n\n\002" +
       "id\030\001 \001(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005" +
-      "B\020\n\ngame.protoH\001P\001b\006proto3"
+      "\"+\n\tHeroUpReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030" +
+      "\002 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -225,6 +231,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ExitFightAreaReq_descriptor,
         new java.lang.String[] { "Id", });
+    internal_static_Message_HeroUpReq_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_Message_HeroUpReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HeroUpReq_descriptor,
+        new java.lang.String[] { "HeroId", "StepId", });
     game.proto.data.Data.getDescriptor();
   }
 

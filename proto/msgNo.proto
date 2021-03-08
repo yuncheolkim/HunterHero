@@ -4,7 +4,7 @@ option java_package = "game.proto.back";
 option optimize_for = SPEED;
 option java_multiple_files = true;
 
-enum MsgNo{
+enum MsgNo {
     NONE = 0;
     // 登录
     login_req = 1;
@@ -35,4 +35,9 @@ enum MsgNo{
     scene_enter_fight_area = 3002;
     // 离开战斗区
     scene_leave_fight_area = 3003;
+
+    // 历练
+    hero_update_lilian = 4001;
+    // 修炼
+    hero_update_xiulian = 4002;
 }

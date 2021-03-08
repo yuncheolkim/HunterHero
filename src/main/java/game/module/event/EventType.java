@@ -10,5 +10,9 @@ public enum EventType {
     RESOURCE_ADD,
     EXP_ADD,
     //升级
-    LEVEL_UP
+    LEVEL_UP,
+    // 消耗金币
+    CONSUME_GOLD,
+    // 英雄战力提升
+    HERO_POWER_UP
 }

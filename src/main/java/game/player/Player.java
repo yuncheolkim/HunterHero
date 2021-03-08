@@ -5,8 +5,12 @@ import game.base.G;
 import game.base.Logs;
 import game.base.Work;
 import game.config.DataConfigData;
+import game.exception.ErrorEnum;
+import game.exception.ModuleAssert;
+import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.module.event.ResourceSourceEnum;
+import game.module.event.handler.ConsumeGoldEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceAddEvent;
 import game.net.Transport;
@@ -27,7 +31,6 @@ import java.util.List;
 
 /**
  * 线程安全
- *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -37,6 +40,7 @@ public class Player {
     private Transport transport = new Transport();
 
     private PlayerData.Builder pd = PlayerData.newBuilder();
+
     /**
      * 后端数据
      */
@@ -86,7 +90,6 @@ public class Player {
 
     /**
      * 加载用户数据
-     *
      * @param code
      */
     public void load(String code) {
@@ -186,13 +189,30 @@ public class Player {
     }
 
     public void addGold(int count, ResourceSourceEnum from) {
-        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.GOLD, 0, count, from));
+        pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + count);
 
+        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.GOLD, 0, count, from));
+    }
+
+    public boolean hasGold(int count) {
+        return pd.getResourceBuilder().getGold() >= count;
+    }
+
+    /**
+     * 消耗金币
+     * @param gold
+     * @param consume
+     */
+    public void consumeGold(int gold, ConsumeTypeEnum consume) {
+        ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_101);
+
+        pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + gold);
+
+        G.E.firePlayerEvent(this, new ConsumeGoldEvent(gold, consume));
     }
 
     /**
      * 增加玩家经验
-     *
      * @param count
      * @param from
      */
@@ -213,13 +233,11 @@ public class Player {
         pd.getResourceBuilder().setExp(exp);
         pd.setLevel(level);
 
-
         G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, count, from));
     }
 
     /**
      * 增加英雄经验
-     *
      * @param heroId
      * @param count
      * @param from

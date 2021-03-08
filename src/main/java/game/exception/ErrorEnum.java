@@ -17,6 +17,8 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
      * 系统异常
      */
     ERR_1(1, "系统异常"),
+    ERR_101(101, "金币不足"),
+    ERR_102(102, "已最高级"),
 
     ;
 
