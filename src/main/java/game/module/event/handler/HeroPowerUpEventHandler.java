@@ -4,6 +4,7 @@ import game.module.event.IPlayerEventHandler;
 import game.player.Player;
 
 /**
+ * 英雄属性变化，重新计算属性
  * @author Yunzhe.Jin
  * 2021/3/8 11:21
  */
