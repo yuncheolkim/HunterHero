@@ -9,7 +9,7 @@ import cn.hutool.log.level.Level;
  * @author Yunzhe.Jin
  * 2021/3/9 18:00
  */
-public class DefaultLog   {
+public class DefaultLog implements Log {
     private static final String FQCN = DefaultLog.class.getName();
 
     public static Log get(Class<?> clazz) {
@@ -90,19 +90,19 @@ public class DefaultLog   {
     }
 
     public void info(Throwable t) {
-        log.info(t);
+        info(FQCN, t, null, null);
     }
 
     public void info(String format, Object... arguments) {
-        log.info(format, arguments);
+        info(FQCN, null, format, arguments);
     }
 
     public void info(Throwable t, String format, Object... arguments) {
-        log.info(t, format, arguments);
+        info(FQCN, t, format, arguments);
     }
 
     public void info(String fqcn, Throwable t, String format, Object... arguments) {
-        log.info(fqcn, t, format, arguments);
+        log.info(fqcn, t, prefix + format, arguments);
     }
 
     public boolean isWarnEnabled() {
@@ -110,19 +110,19 @@ public class DefaultLog   {
     }
 
     public void warn(Throwable t) {
-        log.warn(t);
+        warn(FQCN, t, null, null);
     }
 
     public void warn(String format, Object... arguments) {
-        log.warn(format, arguments);
+        warn(FQCN, null, format, arguments);
     }
 
     public void warn(Throwable t, String format, Object... arguments) {
-        log.warn(t, format, arguments);
+        warn(FQCN, t, format, arguments);
     }
 
     public void warn(String fqcn, Throwable t, String format, Object... arguments) {
-        log.warn(fqcn, t, format, arguments);
+        log.warn(fqcn, t, prefix + format, arguments);
     }
 
     public boolean isErrorEnabled() {
@@ -130,19 +130,19 @@ public class DefaultLog   {
     }
 
     public void error(Throwable t) {
-        log.error(t);
+        error(FQCN, t, null, null);
     }
 
     public void error(String format, Object... arguments) {
-        log.error(format, arguments);
+        error(FQCN, null, format, arguments);
     }
 
     public void error(Throwable t, String format, Object... arguments) {
-        log.error(t, format, arguments);
+        error(FQCN, t, format, arguments);
     }
 
     public void error(String fqcn, Throwable t, String format, Object... arguments) {
-        log.error(fqcn, t, format, arguments);
+        log.error(fqcn, t, prefix + format, arguments);
     }
 
     private Log log;

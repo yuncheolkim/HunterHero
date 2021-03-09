@@ -1,9 +1,8 @@
 package utils;
 
-import cn.hutool.core.lang.caller.CallerUtil;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
-import cn.hutool.log.StaticLog;
+import game.base.DefaultLog;
 import org.junit.Test;
 
 /**
@@ -13,10 +12,11 @@ import org.junit.Test;
 public class LogTest {
     @Test
     public void test1() {
+        Log l = new DefaultLog("abc");
 
-        StaticLog.info("test");
-        new Loggerwrap().info("good");
-
+        l.info("okc:{}", "123");
+        l.info(new NullPointerException());
+        l.info(new NullPointerException(), "okc:{}", "123");
     }
 }
 
@@ -24,9 +24,9 @@ public class LogTest {
 class Loggerwrap {
     private static final String FQCN = Loggerwrap.class.getName();
 
-    Log log =LogFactory.get(CallerUtil.getCallerCaller());
+    Log log = LogFactory.get("ok");
 
     public void info(String s) {
-        log.info(FQCN,null,s,"");
+        log.info(FQCN, null, s, "");
     }
 }
