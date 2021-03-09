@@ -6,10 +6,7 @@ import game.base.Work;
 import game.module.event.EventType;
 import game.module.event.IEvent;
 import game.module.event.IPlayerEventHandler;
-import game.module.event.handler.HeroPowerUpEventHandler;
-import game.module.event.handler.KillEventHandler;
-import game.module.event.handler.LevelUpEventHandler;
-import game.module.event.handler.ResourceAddEventHandler;
+import game.module.event.handler.*;
 import game.player.Player;
 
 import java.util.HashMap;
@@ -35,10 +32,13 @@ public class EventManager {
         playerEventMap.put(EventType.LEVEL_UP, new LevelUpEventHandler());
         // 英雄提升
         playerEventMap.put(EventType.HERO_POWER_UP, new HeroPowerUpEventHandler());
+        // 消耗金币
+        playerEventMap.put(EventType.CONSUME_GOLD, new ConsumeGoldEventHandler());
     }
 
     /**
      * 玩家线程
+     *
      * @param player
      * @param event
      */

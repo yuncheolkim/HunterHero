@@ -13,6 +13,7 @@ import game.module.event.ResourceSourceEnum;
 import game.module.event.handler.ConsumeGoldEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceAddEvent;
+import game.module.hero.HeroService;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
@@ -20,7 +21,6 @@ import game.proto.back.PlayerBackData;
 import game.proto.data.PlayerData;
 import game.proto.data.PlayerHero;
 import game.repo.PlayerRepo;
-import game.utils.CalcUtil;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
@@ -31,6 +31,7 @@ import java.util.List;
 
 /**
  * 线程安全
+ *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -90,6 +91,7 @@ public class Player {
 
     /**
      * 加载用户数据
+     *
      * @param code
      */
     public void load(String code) {
@@ -151,26 +153,11 @@ public class Player {
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
 
         // 英雄
-        PlayerHero.Builder builder = PlayerHero.newBuilder();
-        DataConfigData d = G.C.heroMap1001.get(1);
-        builder.setId(1001);
-        builder.setLevel(1);
+        HeroService.addHero(this, 1001);
+        HeroService.addHero(this, 1002);
 
-        builder.getPropertyBuilder()
-                .setHp(d.hp)
-                .setDamage(d.damage)
-                .setDef(d.def)
-                .setAvoid(d.avoid)
-                .setCritical(d.critical)
-                .setCriticalDamage(d.criticalDamage)
-                .setSpeed(d.speed);
-
-        builder.getPropertyEffectBuilder()
-                .setDefRate(CalcUtil.calcRateProperty(d.def, d.defBase))
-                .setAvoidRate(CalcUtil.calcRateProperty(d.avoid, d.avoidBase))
-                .setCriticalRate(CalcUtil.calcRateProperty(d.critical, d.criticalBase));
-
-        pd.putHero(1001, builder.build());
+        // 资源
+        addGold(400000, ResourceSourceEnum.TEST);
 
     }
 
@@ -203,19 +190,21 @@ public class Player {
 
     /**
      * 消耗金币
+     *
      * @param gold
      * @param consume
      */
     public void consumeGold(int gold, ConsumeTypeEnum consume) {
         ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_101);
 
-        pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + gold);
+        pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() - gold);
 
         G.E.firePlayerEvent(this, new ConsumeGoldEvent(gold, consume));
     }
 
     /**
      * 增加玩家经验
+     *
      * @param count
      * @param from
      */
@@ -241,6 +230,7 @@ public class Player {
 
     /**
      * 增加英雄经验
+     *
      * @param heroId
      * @param count
      * @param from

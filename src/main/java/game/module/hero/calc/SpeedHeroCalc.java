@@ -9,6 +9,7 @@ import game.utils.CalcUtil;
 
 /**
  * 计算血量
+ *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
@@ -18,29 +19,29 @@ public class SpeedHeroCalc implements IHeroCalc {
         DataConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
-        int damage = data.damage;
+        int speed = data.speed;
 
         // equipment
         if (old.getEquipmentCount() > 0) {
             for (Equipment equipment : old.getEquipmentList()) {
-                damage += equipment.getProperty().getDamage();
+                speed += equipment.getProperty().getSpeed();
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(1);
+        HeroRealm realm = old.getLiLianMap().get(5);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
-            damage += dataConfigData.damage;
+            speed += dataConfigData.speed;
         }
-        realm = old.getXiuLianMap().get(1);
+        realm = old.getXiuLianMap().get(5);
 
         // 修炼
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            damage = CalcUtil.calcRate(damage, dataConfigData.damage);
+            speed = CalcUtil.calcRate(speed, dataConfigData.speed);
         }
-        builder.getPropertyBuilder().setDamage(damage);
+        builder.getPropertyBuilder().setSpeed(speed);
 
     }
 }

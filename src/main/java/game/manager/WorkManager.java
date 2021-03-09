@@ -48,6 +48,7 @@ public class WorkManager extends AbsLifecycle {
 
     /**
      * 英雄属性计算线程
+     *
      * @param pid
      * @return
      */
@@ -74,6 +75,9 @@ public class WorkManager extends AbsLifecycle {
         for (Work work : dataPersistenceWork) {
             work.start();
         }
+        for (Work work : heroCalcWork) {
+            work.start();
+        }
         loginWork.start();
         super.start();
     }
@@ -81,5 +85,15 @@ public class WorkManager extends AbsLifecycle {
     @Override
     public void stop() {
         super.stop();
+        for (Work work : playerWork) {
+            work.stop();
+        }
+        for (Work work : dataPersistenceWork) {
+            work.stop();
+        }
+        for (Work work : heroCalcWork) {
+            work.stop();
+        }
+        loginWork.stop();
     }
 }

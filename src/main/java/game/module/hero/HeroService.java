@@ -14,6 +14,7 @@ public class HeroService {
 
     /**
      * 获得新英雄
+     *
      * @param player
      */
     public static void addHero(Player player, int heroId) {
@@ -37,7 +38,7 @@ public class HeroService {
                 .setAvoidRate(CalcUtil.calcRateProperty(d.avoid, d.avoidBase))
                 .setCriticalRate(CalcUtil.calcRateProperty(d.critical, d.criticalBase));
 
-        player.getPd().putHero(1001, builder.build());
+        player.getPd().putHero(heroId, builder.build());
 
     }
 }

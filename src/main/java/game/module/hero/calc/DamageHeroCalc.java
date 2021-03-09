@@ -9,6 +9,7 @@ import game.utils.CalcUtil;
 
 /**
  * 计算血量
+ *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
@@ -27,12 +28,12 @@ public class DamageHeroCalc implements IHeroCalc {
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(1);
+        HeroRealm realm = old.getLiLianMap().get(2);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             damage += dataConfigData.damage;
         }
-        realm = old.getXiuLianMap().get(1);
+        realm = old.getXiuLianMap().get(2);
 
         // 修炼
         if (realm != null) {
