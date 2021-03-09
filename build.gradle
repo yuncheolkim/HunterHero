@@ -71,6 +71,9 @@ dependencies {
 
     implementation group: 'com.googlecode.aviator', name: 'aviator', version: '5.2.3'
 
+    compile 'cn.hutool:hutool-all:5.5.9'
+
+
 }
 jar {
     enabled = true
