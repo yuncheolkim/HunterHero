@@ -5,12 +5,14 @@ import game.base.Logs;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
+import game.module.event.ResourceSourceEnum;
 import game.player.Player;
 import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
 import game.proto.data.PlayerHero;
+import game.proto.data.Resource;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
 
@@ -31,6 +33,7 @@ public class PlayerHandler {
 
     /**
      * 起名
+     *
      * @param player
      * @param o
      * @return
@@ -44,6 +47,7 @@ public class PlayerHandler {
 
     /**
      * 更新英雄属性
+     *
      * @param player
      * @param hero
      */
@@ -59,6 +63,7 @@ public class PlayerHandler {
     /**
      * 玩家定时器
      * 每5秒执行一次
+     *
      * @param player
      * @param o
      * @return
@@ -76,6 +81,7 @@ public class PlayerHandler {
 
     /**
      * 检查战斗
+     *
      * @param player
      */
     private static void checkFight(Player player) {
@@ -101,6 +107,7 @@ public class PlayerHandler {
 
     /**
      * 生成小怪
+     *
      * @param player
      * @return
      */
@@ -168,14 +175,11 @@ public class PlayerHandler {
         long now = System.currentTimeMillis();
 
         long second = TimeUnit.MILLISECONDS.toSeconds(now - player.getPowerRecoverTime());
-        int powerRecoverSecond = player.getPd().getResourceBuilder().getPowerRecoverSecond();
+        Resource.Builder resourceBuilder = player.getPd().getResourceBuilder();
+        int powerRecoverSecond = resourceBuilder.getPowerRecoverSecond();
         if (second >= powerRecoverSecond) {
             long recover = second / powerRecoverSecond;
-            long power = player.getPd().getResourceBuilder().getPower() + recover;
-            if (power > player.getPd().getResourceBuilder().getMaxPower()) {
-                power = player.getPd().getResourceBuilder().getMaxPower();
-            }
-            player.getPd().getResourceBuilder().setPower((int) power);
+            player.addPower(recover, ResourceSourceEnum.自动恢复);
             player.setPowerRecoverTime(player.getPowerRecoverTime() + 1000L * recover * powerRecoverSecond);
         }
     }
@@ -183,6 +187,7 @@ public class PlayerHandler {
 
     /**
      * 定时存db
+     *
      * @param player
      * @param o
      * @return

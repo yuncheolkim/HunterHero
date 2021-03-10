@@ -43,5 +43,8 @@ enum MsgNo {
     // 英雄变化
     hero_change = 4003;
 
+    // 资源变化
     resource_change_push = 5001;
+    // 玩家等级变化
+    PlayerLevelChangePushNo = 5002;
 }

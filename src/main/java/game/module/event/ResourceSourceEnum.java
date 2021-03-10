@@ -8,5 +8,5 @@ package game.module.event;
  */
 public enum ResourceSourceEnum {
 
-    打怪, TEST
+    打怪, TEST, 自动恢复
 }

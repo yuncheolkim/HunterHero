@@ -2,6 +2,9 @@ package game.base;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static game.base.Constants.TOKEN_END;
+import static game.base.Constants.TOKEN_START;
+
 /**
  * @author Yunzhe.Jin
  * 2021/2/20 10:42
@@ -11,14 +14,14 @@ public abstract class AbsLifecycle implements Lifecycle {
 
     @Override
     public void start() {
-        Logs.C.info(">>>>>>>>>>>>>>>>>>>start {}", getClass().getSimpleName());
+        Logs.C.info(TOKEN_START + "start {}", getClass().getSimpleName());
         stopped.set(false);
     }
 
     @Override
     public void stop() {
-        Logs.C.info("<<<<<<<<<<<<<<<<<<<stop {}", getClass().getSimpleName());
         stopped.set(true);
+        Logs.C.info(TOKEN_END + "stop {}", getClass().getSimpleName());
     }
 
     @Override

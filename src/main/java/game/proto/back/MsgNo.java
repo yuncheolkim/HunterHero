@@ -133,9 +133,21 @@ public enum MsgNo
    */
   hero_change(4003),
   /**
+   * <pre>
+   * 资源变化
+   * </pre>
+   *
    * <code>resource_change_push = 5001;</code>
    */
   resource_change_push(5001),
+  /**
+   * <pre>
+   * 玩家等级变化
+   * </pre>
+   *
+   * <code>PlayerLevelChangePushNo = 5002;</code>
+   */
+  PlayerLevelChangePushNo(5002),
   UNRECOGNIZED(-1),
   ;
 
@@ -264,9 +276,21 @@ public enum MsgNo
    */
   public static final int hero_change_VALUE = 4003;
   /**
+   * <pre>
+   * 资源变化
+   * </pre>
+   *
    * <code>resource_change_push = 5001;</code>
    */
   public static final int resource_change_push_VALUE = 5001;
+  /**
+   * <pre>
+   * 玩家等级变化
+   * </pre>
+   *
+   * <code>PlayerLevelChangePushNo = 5002;</code>
+   */
+  public static final int PlayerLevelChangePushNo_VALUE = 5002;
 
 
   public final int getNumber() {
@@ -310,6 +334,7 @@ public enum MsgNo
       case 4002: return hero_update_xiulian;
       case 4003: return hero_change;
       case 5001: return resource_change_push;
+      case 5002: return PlayerLevelChangePushNo;
       default: return null;
     }
   }

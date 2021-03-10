@@ -102,6 +102,12 @@ message ResourceChangePush {
     int32 heroId = 2;
     int32 count = 3;
 }
+message PlayerLevelChangePush {
+    int32 value = 1;
+
+}
+
+
 
 
 

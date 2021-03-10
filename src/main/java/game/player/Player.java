@@ -20,6 +20,7 @@ import game.proto.Message;
 import game.proto.back.PlayerBackData;
 import game.proto.data.PlayerData;
 import game.proto.data.PlayerHero;
+import game.proto.data.Resource;
 import game.repo.PlayerRepo;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
@@ -178,6 +179,12 @@ public class Player {
         });
     }
 
+    /**
+     * 增加金币
+     *
+     * @param count
+     * @param from
+     */
     public void addGold(int count, ResourceSourceEnum from) {
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + count);
 
@@ -225,7 +232,7 @@ public class Player {
         pd.getResourceBuilder().setExp(exp);
         pd.setLevel(level);
 
-        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, count, from));
+        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, exp, from));
     }
 
     /**
@@ -239,7 +246,7 @@ public class Player {
         PlayerHero playerHero = pd.getHeroMap().get(heroId);
 
         PlayerHero.Builder builder = playerHero.toBuilder();
-        int exp = builder.getExp();
+        int exp = builder.getExp() + count;
         int level = playerHero.getLevel();
         int maxExp = G.C.needExp(level);
 
@@ -255,7 +262,24 @@ public class Player {
         builder.setLevel(level);
         pd.putHero(heroId, builder.build());
 
-        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, heroId, count, from));
+        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, heroId, exp, from));
+    }
+
+    /**
+     * 增加能量
+     *
+     * @param count
+     */
+    public void addPower(long count, ResourceSourceEnum from) {
+
+        Resource.Builder resourceBuilder = pd.getResourceBuilder();
+        int old = resourceBuilder.getPower();
+
+        resourceBuilder.setPower((int) Math.min(old + count, resourceBuilder.getMaxPower()));
+        int add = resourceBuilder.getPower() - old;
+        if (add > 0) {
+            G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, add, from));
+        }
     }
 
     /**
