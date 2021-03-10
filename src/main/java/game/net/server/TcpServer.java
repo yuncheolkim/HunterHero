@@ -46,7 +46,7 @@ public class TcpServer implements IServer {
     }
 
     public void start() {
-        Thread thread = new DefaultThreadFactory("server-服务").newThread(() -> {
+        Thread thread = new DefaultThreadFactory("GameServer-服务").newThread(() -> {
 
             NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
             NioEventLoopGroup workerGroup = new NioEventLoopGroup();

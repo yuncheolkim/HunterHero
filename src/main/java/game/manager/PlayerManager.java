@@ -9,6 +9,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
 
 /**
+ * 玩家信息管理
+ *
  * @author Yunzhe.Jin
  * 2021/2/20 11:10
  */

@@ -41,10 +41,15 @@ public class Player {
 
     private Transport transport = new Transport();
 
+    /**
+     * 前后端都需要的数据
+     * 需持久化
+     */
     private PlayerData.Builder pd = PlayerData.newBuilder();
 
     /**
      * 后端数据
+     * 需要
      */
     public PlayerBackData.Builder D = PlayerBackData.newBuilder();
 
@@ -71,7 +76,9 @@ public class Player {
         updateTime = createTime;
     }
 
-    // 踢下线
+    /**
+     * 踢下线
+     */
     public void kick() {
         Logs.C.info("踢出用户:{},{}", pid, transport.getChannel());
         transport.close();

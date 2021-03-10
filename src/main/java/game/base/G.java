@@ -7,17 +7,14 @@ import game.manager.*;
  * 2021/2/20 10:35
  */
 public class G {
+    ///////////// Lifecycle
     public static WorkManager W = new WorkManager();
-
-    public static PlayerManager P = new PlayerManager();
-
     public static GameManager G = new GameManager();
-
-    public static RepoManager R = new RepoManager();
-
     public static ScheduleManager S = new ScheduleManager();
-
     public static ConfigManager C = new ConfigManager();
 
+    ///////////// No Lifecycle
+    public static RepoManager R = new RepoManager();
+    public static PlayerManager P = new PlayerManager();
     public static EventManager E = new EventManager();
 }

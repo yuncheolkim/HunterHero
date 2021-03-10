@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
+ * 事件集中管理注册
+ *
  * @author Yunzhe.Jin
  * 2021/2/25 10:56
  */

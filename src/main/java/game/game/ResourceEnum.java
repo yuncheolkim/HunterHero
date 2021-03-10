@@ -1,6 +1,7 @@
 package game.game;
 
 import com.google.common.collect.ImmutableMap;
+import game.base.IIdDisplay;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -9,7 +10,7 @@ import java.util.Set;
  * @author Yunzhe.Jin
  * 2021/3/5 14:56
  */
-public enum ResourceEnum implements INoDisplay {
+public enum ResourceEnum implements IIdDisplay {
     /**
      * 系统异常
      */
@@ -29,10 +30,10 @@ public enum ResourceEnum implements INoDisplay {
         this.display = module;
     }
 
-    private static final ImmutableMap<Integer, INoDisplay> map;
+    private static final ImmutableMap<Integer, IIdDisplay> map;
 
     static {
-        ImmutableMap.Builder<Integer, INoDisplay> builder = ImmutableMap.builder();
+        ImmutableMap.Builder<Integer, IIdDisplay> builder = ImmutableMap.builder();
         HashSet<Integer> ids = new HashSet<>();
 
         for (ResourceEnum value : ResourceEnum.values()) {
@@ -45,7 +46,7 @@ public enum ResourceEnum implements INoDisplay {
         map = builder.build();
     }
 
-    public static INoDisplay display(int errNo) {
+    public static IIdDisplay display(int errNo) {
         return map.get(errNo);
     }
 

@@ -16,6 +16,10 @@ message Empty {
 }
 message Success {
 }
+// -1 Test cmd
+message CmdReq{
+    string params = 1;
+}
 
 // 登录
 // 1

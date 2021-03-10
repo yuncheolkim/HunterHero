@@ -17,6 +17,7 @@ public class GameMain {
         tcpServer.addStart(G.S);
         tcpServer.addStart(G.C);
         tcpServer.start();
+
         Logs.C.info("Start game");
 
     }

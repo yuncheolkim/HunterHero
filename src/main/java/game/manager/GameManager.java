@@ -1,6 +1,7 @@
 package game.manager;
 
 import game.base.AbsLifecycle;
+import game.module.cmd.CmdHandler;
 import game.module.fight.FightHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
@@ -18,6 +19,9 @@ import game.proto.data.PlayerHero;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 游戏管理
+ * 消息注册
+ *
  * @author Yunzhe.Jin
  * 2021/2/20 14:28
  */
@@ -56,6 +60,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new InvokerNoParam(10, PlayerHandler::tick));
         addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
         addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
+
     }
 
     private void addHandler(IInvoke taskReqInvoker) {
@@ -73,6 +78,8 @@ public class GameManager extends AbsLifecycle {
 
     @Override
     public void start() {
+        // 测试
+        addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
 
         super.start();
     }

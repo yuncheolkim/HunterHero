@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 所有游戏配置表
+ *
  * @author Yunzhe.Jin
  * 2021/2/24 18:58
  */
@@ -145,6 +147,7 @@ public class ConfigManager extends AbsLifecycle {
 
     /**
      * 升级需要的经验
+     *
      * @param level
      * @return
      */
@@ -158,6 +161,7 @@ public class ConfigManager extends AbsLifecycle {
 
     /**
      * 获得英雄基础属性
+     *
      * @param heroId
      * @param level
      * @return

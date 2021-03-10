@@ -1,6 +1,5 @@
 package game.base;
 
-import cn.hutool.core.lang.caller.CallerUtil;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import cn.hutool.log.level.Level;
@@ -145,12 +144,12 @@ public class DefaultLog implements Log {
         log.error(fqcn, t, prefix + format, arguments);
     }
 
-    private Log log;
+    private final Log log;
 
     private String prefix = "";
 
     public DefaultLog(String name) {
-        this.log = LogFactory.get(CallerUtil.getCallerCaller());
+        this.log = LogFactory.get(name);
     }
 
     public DefaultLog(Log log) {
@@ -158,7 +157,7 @@ public class DefaultLog implements Log {
     }
 
     public DefaultLog(String name, String prefix) {
-        this.log = LogFactory.get(CallerUtil.getCallerCaller());
+        this.log = LogFactory.get(name);
         this.prefix = prefix;
     }
 
