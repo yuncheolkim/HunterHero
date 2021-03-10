@@ -92,8 +92,15 @@ message HeroUpReq {
 }
 
 // 4003 英雄变化
-message HeroChangePush{
+message HeroChangePush {
     PlayerHero hero = 1;
+}
+
+// 5001 资源变化
+message ResourceChangePush {
+    int32 resourceId = 1;
+    int32 heroId = 2;
+    int32 count = 3;
 }
 
 

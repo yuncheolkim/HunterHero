@@ -6,7 +6,7 @@ import game.proto.data.Equipment;
 import game.proto.data.PlayerHero;
 
 /**
- * 计算血量
+ * 计算暴击基数
  *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17

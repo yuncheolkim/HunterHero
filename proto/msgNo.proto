@@ -42,4 +42,6 @@ enum MsgNo {
     hero_update_xiulian = 4002;
     // 英雄变化
     hero_change = 4003;
+
+    resource_change_push = 5001;
 }

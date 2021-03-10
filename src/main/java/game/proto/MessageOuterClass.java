@@ -104,6 +104,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_HeroChangePush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ResourceChangePush_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ResourceChangePush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -134,8 +139,9 @@ public final class MessageOuterClass {
       "id\030\001 \001(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005" +
       "\"+\n\tHeroUpReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030" +
       "\002 \001(\005\"3\n\016HeroChangePush\022!\n\004hero\030\001 \001(\0132\023." +
-      "Message.PlayerHeroB\020\n\ngame.protoH\001P\001b\006pr" +
-      "oto3"
+      "Message.PlayerHero\"G\n\022ResourceChangePush" +
+      "\022\022\n\nresourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005" +
+      "count\030\003 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -250,6 +256,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HeroChangePush_descriptor,
         new java.lang.String[] { "Hero", });
+    internal_static_Message_ResourceChangePush_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_Message_ResourceChangePush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ResourceChangePush_descriptor,
+        new java.lang.String[] { "ResourceId", "HeroId", "Count", });
     game.proto.data.Data.getDescriptor();
   }
 

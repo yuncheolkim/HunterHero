@@ -132,6 +132,10 @@ public enum MsgNo
    * <code>hero_change = 4003;</code>
    */
   hero_change(4003),
+  /**
+   * <code>resource_change_push = 5001;</code>
+   */
+  resource_change_push(5001),
   UNRECOGNIZED(-1),
   ;
 
@@ -259,6 +263,10 @@ public enum MsgNo
    * <code>hero_change = 4003;</code>
    */
   public static final int hero_change_VALUE = 4003;
+  /**
+   * <code>resource_change_push = 5001;</code>
+   */
+  public static final int resource_change_push_VALUE = 5001;
 
 
   public final int getNumber() {
@@ -301,6 +309,7 @@ public enum MsgNo
       case 4001: return hero_update_lilian;
       case 4002: return hero_update_xiulian;
       case 4003: return hero_change;
+      case 5001: return resource_change_push;
       default: return null;
     }
   }

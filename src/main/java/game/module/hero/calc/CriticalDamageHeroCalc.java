@@ -8,7 +8,7 @@ import game.proto.data.PlayerHero;
 import game.utils.CalcUtil;
 
 /**
- * 计算血量
+ * 计算暴击伤害
  *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
