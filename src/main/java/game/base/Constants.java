@@ -15,4 +15,6 @@ public class Constants {
 
     public static final AttributeKey<Long> pid = AttributeKey.newInstance("pid");
 
+    public static final int MAX_PLAYER_LEVEL = 60;
+
 }

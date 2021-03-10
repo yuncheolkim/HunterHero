@@ -30,6 +30,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static game.base.Constants.MAX_PLAYER_LEVEL;
+
 /**
  * 线程安全
  *
@@ -224,22 +226,41 @@ public class Player {
      */
     public void addPlayerExp(int count, ResourceSourceEnum from) {
         int exp = pd.getResourceBuilder().getExp() + count;
+        int oldLevel = pd.getLevel();
         int level = pd.getLevel();
+
+        if (level >= MAX_PLAYER_LEVEL) {
+            return;
+        }
         int maxExp = G.C.needExp(level);
 
-        while (exp >= maxExp) {
+        while (exp >= maxExp && level < MAX_PLAYER_LEVEL) {
             level++;
-            // 升级
-            G.E.firePlayerEvent(this, new LevelUpEvent(level));
 
             exp -= maxExp;
             maxExp = G.C.needExp(level);
         }
 
         pd.getResourceBuilder().setExp(exp);
-        pd.setLevel(level);
 
+        if (oldLevel != level) {
+            // 升级
+            setPlayerLevel(level);
+        }
         G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, exp, from));
+    }
+
+    /**
+     * 设置等级
+     *
+     * @param level
+     */
+    public void setPlayerLevel(int level) {
+        if (level >= MAX_PLAYER_LEVEL) {
+            return;
+        }
+        pd.setLevel(level);
+        G.E.firePlayerEvent(this, new LevelUpEvent(level));
     }
 
     /**

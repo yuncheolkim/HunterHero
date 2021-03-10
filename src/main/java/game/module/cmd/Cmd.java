@@ -1,6 +1,7 @@
 package game.module.cmd;
 
 import com.google.common.collect.ImmutableMap;
+import game.module.event.ResourceSourceEnum;
 import game.player.Player;
 
 import java.util.HashSet;
@@ -14,9 +15,22 @@ public enum Cmd {
     AddGoldCmd(1, "增加金币") {
         @Override
         public void run(Player player, List<String> line) {
-
+            player.addGold(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
         }
-    };
+    },
+    AddExpCmd(1, "增加经验") {
+        @Override
+        public void run(Player player, List<String> line) {
+            player.addPlayerExp(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
+        }
+    },
+    AddLevelCmd(1, "增加等级") {
+        @Override
+        public void run(Player player, List<String> line) {
+            player.setPlayerLevel(Integer.parseInt(line.get(0)));
+        }
+    },
+    ;
 
     public final int id;
 
