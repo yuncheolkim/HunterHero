@@ -18,13 +18,13 @@ public enum Cmd {
             player.addGold(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
         }
     },
-    AddExpCmd(1, "增加经验") {
+    AddExpCmd(2, "增加经验") {
         @Override
         public void run(Player player, List<String> line) {
             player.addPlayerExp(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
         }
     },
-    AddLevelCmd(1, "增加等级") {
+    SetLevelCmd(3, "设置等级") {
         @Override
         public void run(Player player, List<String> line) {
             player.setPlayerLevel(Integer.parseInt(line.get(0)));
