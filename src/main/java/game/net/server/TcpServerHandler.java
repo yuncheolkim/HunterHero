@@ -1,5 +1,6 @@
 package game.net.server;
 
+import cn.hutool.log.Log;
 import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
@@ -11,10 +12,8 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.util.Attribute;
-import org.slf4j.Logger;
 
 import java.util.Optional;
-import java.util.concurrent.TimeUnit;
 
 /**
  * @author Yunzhe.Jin
@@ -23,7 +22,7 @@ import java.util.concurrent.TimeUnit;
 @ChannelHandler.Sharable
 public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
 
-    private static Logger log = Logs.C;
+    private static Log log = Logs.C;
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

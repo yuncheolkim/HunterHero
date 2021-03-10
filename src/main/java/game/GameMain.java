@@ -1,6 +1,7 @@
 package game;
 
 import game.base.G;
+import game.base.Logs;
 import game.net.server.TcpServer;
 
 /**
@@ -16,6 +17,7 @@ public class GameMain {
         tcpServer.addStart(G.S);
         tcpServer.addStart(G.C);
         tcpServer.start();
+        Logs.C.info("Start game");
 
     }
 }

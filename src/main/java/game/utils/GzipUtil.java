@@ -1,8 +1,8 @@
 package game.utils;
 
+import cn.hutool.log.Log;
 import game.base.Logs;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -18,10 +18,11 @@ import java.util.zip.Inflater;
 public class GzipUtil {
 
 
-    private static Logger log = Logs.C;
+    private static Log log = Logs.C;
 
     /**
      * 压缩
+     *
      * @param unzip
      * @return
      */
@@ -31,6 +32,7 @@ public class GzipUtil {
 
     /**
      * 对cpspJson进行解压
+     *
      * @param zip
      * @return
      */
@@ -57,6 +59,7 @@ public class GzipUtil {
 
     /**
      * 压缩
+     *
      * @param unzip
      * @return
      */
@@ -76,6 +79,7 @@ public class GzipUtil {
 
     /**
      * 解压缩
+     *
      * @param decode
      * @return
      */

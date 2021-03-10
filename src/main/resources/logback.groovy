@@ -1,5 +1,5 @@
-def PATTERN = "%d{yyyy-MM-dd HH:mm:ss.SSS}-[%35.35F:%4.4line] [%25.25thread] %-5level [%25.25logger{35}] - %msg %n"
-def PATTERN_GAME = "[game]%d{yyyy-MM-dd HH:mm:ss.SSS}-[%35.35F:%4.4line] [%25.25thread] %-5level [%25.25logger{35}] - %msg %n%rEx"
+def PATTERN = "%d{yyyy-MM-dd HH:mm:ss.SSS}-[%35.35F:%4.4line] [%25.25thread] %-5level - %msg %n"
+def PATTERN_GAME = "[game]%d{yyyy-MM-dd HH:mm:ss.SSS}-[%35.35F:%4.4line] [%25.25thread] %-5level - %msg %n%rEx"
 def PATTERN_TRACE = "%d{yyyy-MM-dd HH:mm:ss.SSS}-[%20.20thread] - %msg %n%rEx"
 def PATTERN_KLOG = "%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg %n%rEx"
 
@@ -67,7 +67,6 @@ appender("klog", RollingFileAppender) {
         fileNamePattern = "logs/klog_%d{yyyy-MM-dd}.log"
     }
 }
-
 
 
 logger("klog", INFO, ["klog"])
