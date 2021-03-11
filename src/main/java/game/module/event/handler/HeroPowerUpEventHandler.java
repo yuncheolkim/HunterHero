@@ -26,7 +26,6 @@ public class HeroPowerUpEventHandler implements IPlayerEventHandler<HeroPowerUpE
             PlayerHero.Builder heroBuild = PlayerHero.newBuilder().mergeFrom(h);
             G.G.getHeroCalcProcess().doProcess(h, heroBuild);
 
-
             Property.Builder property = heroBuild.getPropertyBuilder();
             heroBuild.getPropertyEffectBuilder()
                     .setDefRate(CalcUtil.calcRateProperty(property.getDef(), property.getDefBase()))
