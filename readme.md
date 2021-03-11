@@ -13,8 +13,7 @@ F:\tools\protoc.exe --java_out=F:\gitee\HunterHero\src\main\java --proto_path=F:
 
 ### unity
 
-F:\tools\protoc.exe --csharp_out=E:\unity_project\HerosHunter\Assets\Scripts\net\proto --proto_path=F:
-\gitee\HunterHero\proto F:\gitee\HunterHero\proto\*.proto
+F:\tools\protoc.exe --csharp_out=E:\unity_project\HerosHunter\Assets\Scripts\net\proto --proto_path=F:\gitee\HunterHero\proto F:\gitee\HunterHero\proto\*.proto
 
 ## excel
 

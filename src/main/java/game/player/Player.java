@@ -35,6 +35,7 @@ import static game.base.Constants.MAX_PLAYER_LEVEL;
 
 /**
  * 线程安全
+ *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -101,6 +102,7 @@ public class Player {
 
     /**
      * 加载用户数据
+     *
      * @param code
      */
     public void load(String code) {
@@ -189,10 +191,13 @@ public class Player {
 
     /**
      * 增加金币
+     *
      * @param count
      * @param from
      */
     public void addGold(int count, ResourceSourceEnum from) {
+        ModuleAssert.isTrue(count > 0, ErrorEnum.ERR_103);
+
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + count);
 
         G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.GOLD, 0, count, from));
@@ -204,10 +209,12 @@ public class Player {
 
     /**
      * 消耗金币
+     *
      * @param gold
      * @param consume
      */
     public void consumeGold(int gold, ConsumeTypeEnum consume) {
+        ModuleAssert.isTrue(gold > 0, ErrorEnum.ERR_103);
         ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_101);
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() - gold);
@@ -217,6 +224,7 @@ public class Player {
 
     /**
      * 增加玩家经验
+     *
      * @param count
      * @param from
      */
@@ -248,6 +256,7 @@ public class Player {
 
     /**
      * 设置等级
+     *
      * @param level
      */
     public void setPlayerLevel(int level) {
@@ -260,6 +269,7 @@ public class Player {
 
     /**
      * 增加英雄经验
+     *
      * @param heroId
      * @param count
      * @param from
@@ -289,6 +299,7 @@ public class Player {
 
     /**
      * 增加能量
+     *
      * @param count
      */
     public void addPower(long count, ResourceSourceEnum from) {

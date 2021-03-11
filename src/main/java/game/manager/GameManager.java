@@ -56,10 +56,6 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.hero_update_lilian_VALUE, HeroHandler::lilian, HeroUpReq::parser));
         addHandler(new Invoker<>(MsgNo.hero_update_xiulian_VALUE, HeroHandler::xiulian, HeroUpReq::parser));
 
-        // inner
-        addHandler(new InvokerNoParam(10, PlayerHandler::tick));
-        addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
-        addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
 
     }
 
@@ -80,6 +76,10 @@ public class GameManager extends AbsLifecycle {
     public void start() {
         // 测试
         addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
+        // inner
+        addHandler(new InvokerNoParam(10, PlayerHandler::tick));
+        addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
+        addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
 
         super.start();
     }

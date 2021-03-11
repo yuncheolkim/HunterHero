@@ -18,7 +18,7 @@ public class ExpAddEventHandler implements IPlayerEventHandler<ExpAddEvent> {
     public void handler(Player player, ExpAddEvent data) {
 
         // Push
-        player.getTransport().send(MsgNo.resource_change_push_VALUE, ExpChangePush.newBuilder()
+        player.getTransport().send(MsgNo.ExpChangePushNo_VALUE, ExpChangePush.newBuilder()
                 .setHeroId(data.heroId)
                 .setAddExp(data.addExp)
                 .setCurExp(data.curExp)

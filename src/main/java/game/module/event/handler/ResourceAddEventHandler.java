@@ -18,7 +18,7 @@ public class ResourceAddEventHandler implements IPlayerEventHandler<ResourceAddE
     public void handler(Player player, ResourceAddEvent data) {
 
         ResourceChangePush push = ResourceChangePush.newBuilder()
-                .setResourceId(data.count)
+                .setCount(data.count)
                 .setHeroId(data.heroId)
                 .setResourceId(data.resource.id).build();
 
