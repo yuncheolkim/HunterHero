@@ -47,4 +47,5 @@ enum MsgNo {
     resource_change_push = 5001;
     // 玩家等级变化
     PlayerLevelChangePushNo = 5002;
+    ExpChangePushNo = 5003;
 }

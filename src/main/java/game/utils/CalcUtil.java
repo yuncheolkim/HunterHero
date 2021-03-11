@@ -4,19 +4,18 @@ import game.base.IWeight;
 
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * 计算数值
- *
  * @author Yunzhe.Jin
  * 2021/1/8 17:24
  */
 public class CalcUtil {
-    public final static Random DEFAULT_RANDOM = new Random();
+    public final static ThreadLocalRandom DEFAULT_RANDOM = ThreadLocalRandom.current();
 
     /**
      * 随机
-     *
      * @param min 包含
      * @param max 包含
      * @return
@@ -28,7 +27,6 @@ public class CalcUtil {
 
     /**
      * 计算比例
-     *
      * @param val  计算值
      * @param rate 比例
      * @return 最终算好的值
@@ -49,7 +47,6 @@ public class CalcUtil {
 
     /**
      * 减少比例
-     *
      * @param val
      * @param rate
      * @return
@@ -73,7 +70,6 @@ public class CalcUtil {
     /**
      * 计算属性
      * 返回百分比
-     *
      * @param v
      * @param base
      * @return 万分比 int
@@ -84,7 +80,6 @@ public class CalcUtil {
 
     /**
      * 根据权重随机元素
-     *
      * @param weightList
      * @param weightAll
      * @return
@@ -106,7 +101,6 @@ public class CalcUtil {
 
     /**
      * 根据权重随机元素
-     *
      * @param weightList
      * @return
      */

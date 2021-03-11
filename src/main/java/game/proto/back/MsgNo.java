@@ -148,6 +148,10 @@ public enum MsgNo
    * <code>PlayerLevelChangePushNo = 5002;</code>
    */
   PlayerLevelChangePushNo(5002),
+  /**
+   * <code>ExpChangePushNo = 5003;</code>
+   */
+  ExpChangePushNo(5003),
   UNRECOGNIZED(-1),
   ;
 
@@ -291,6 +295,10 @@ public enum MsgNo
    * <code>PlayerLevelChangePushNo = 5002;</code>
    */
   public static final int PlayerLevelChangePushNo_VALUE = 5002;
+  /**
+   * <code>ExpChangePushNo = 5003;</code>
+   */
+  public static final int ExpChangePushNo_VALUE = 5003;
 
 
   public final int getNumber() {
@@ -335,6 +343,7 @@ public enum MsgNo
       case 4003: return hero_change;
       case 5001: return resource_change_push;
       case 5002: return PlayerLevelChangePushNo;
+      case 5003: return ExpChangePushNo;
       default: return null;
     }
   }

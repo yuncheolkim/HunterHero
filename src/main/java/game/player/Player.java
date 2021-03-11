@@ -11,6 +11,7 @@ import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.module.event.ResourceSourceEnum;
 import game.module.event.handler.ConsumeGoldEvent;
+import game.module.event.handler.ExpAddEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceAddEvent;
 import game.module.hero.HeroService;
@@ -34,7 +35,6 @@ import static game.base.Constants.MAX_PLAYER_LEVEL;
 
 /**
  * 线程安全
- *
  * @author Yunzhe.Jin
  * 2021/2/19 18:09
  */
@@ -101,7 +101,6 @@ public class Player {
 
     /**
      * 加载用户数据
-     *
      * @param code
      */
     public void load(String code) {
@@ -190,7 +189,6 @@ public class Player {
 
     /**
      * 增加金币
-     *
      * @param count
      * @param from
      */
@@ -206,7 +204,6 @@ public class Player {
 
     /**
      * 消耗金币
-     *
      * @param gold
      * @param consume
      */
@@ -220,7 +217,6 @@ public class Player {
 
     /**
      * 增加玩家经验
-     *
      * @param count
      * @param from
      */
@@ -247,12 +243,11 @@ public class Player {
             // 升级
             setPlayerLevel(level);
         }
-        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, exp, from));
+        G.E.firePlayerEvent(this, new ExpAddEvent(0, count, exp, from));
     }
 
     /**
      * 设置等级
-     *
      * @param level
      */
     public void setPlayerLevel(int level) {
@@ -265,7 +260,6 @@ public class Player {
 
     /**
      * 增加英雄经验
-     *
      * @param heroId
      * @param count
      * @param from
@@ -290,12 +284,11 @@ public class Player {
         builder.setLevel(level);
         pd.putHero(heroId, builder.build());
 
-        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, heroId, exp, from));
+        G.E.firePlayerEvent(this, new ExpAddEvent(heroId, count, exp, from));
     }
 
     /**
      * 增加能量
-     *
      * @param count
      */
     public void addPower(long count, ResourceSourceEnum from) {

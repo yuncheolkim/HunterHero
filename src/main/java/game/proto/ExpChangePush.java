@@ -5,28 +5,28 @@ package game.proto;
 
 /**
  * <pre>
- * 玩家等级变化
+ * 经验变化推送
  * </pre>
  *
- * Protobuf type {@code Message.PlayerLevelChangePush}
+ * Protobuf type {@code Message.ExpChangePush}
  */
-public final class PlayerLevelChangePush extends
+public final class ExpChangePush extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.PlayerLevelChangePush)
-    PlayerLevelChangePushOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.ExpChangePush)
+    ExpChangePushOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use PlayerLevelChangePush.newBuilder() to construct.
-  private PlayerLevelChangePush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ExpChangePush.newBuilder() to construct.
+  private ExpChangePush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private PlayerLevelChangePush() {
+  private ExpChangePush() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new PlayerLevelChangePush();
+    return new ExpChangePush();
   }
 
   @java.lang.Override
@@ -34,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private PlayerLevelChangePush(
+  private ExpChangePush(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,7 +54,17 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            value_ = input.readInt32();
+            heroId_ = input.readInt32();
+            break;
+          }
+          case 16: {
+
+            addExp_ = input.readInt32();
+            break;
+          }
+          case 24: {
+
+            curExp_ = input.readInt32();
             break;
           }
           default: {
@@ -78,26 +88,48 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_ExpChangePush_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_ExpChangePush_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.PlayerLevelChangePush.class, game.proto.PlayerLevelChangePush.Builder.class);
+            game.proto.ExpChangePush.class, game.proto.ExpChangePush.Builder.class);
   }
 
-  public static final int VALUE_FIELD_NUMBER = 1;
-  private int value_;
+  public static final int HEROID_FIELD_NUMBER = 1;
+  private int heroId_;
   /**
-   * <code>int32 value = 1;</code>
-   * @return The value.
+   * <code>int32 heroId = 1;</code>
+   * @return The heroId.
    */
   @java.lang.Override
-  public int getValue() {
-    return value_;
+  public int getHeroId() {
+    return heroId_;
+  }
+
+  public static final int ADDEXP_FIELD_NUMBER = 2;
+  private int addExp_;
+  /**
+   * <code>int32 addExp = 2;</code>
+   * @return The addExp.
+   */
+  @java.lang.Override
+  public int getAddExp() {
+    return addExp_;
+  }
+
+  public static final int CUREXP_FIELD_NUMBER = 3;
+  private int curExp_;
+  /**
+   * <code>int32 curExp = 3;</code>
+   * @return The curExp.
+   */
+  @java.lang.Override
+  public int getCurExp() {
+    return curExp_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -114,8 +146,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (value_ != 0) {
-      output.writeInt32(1, value_);
+    if (heroId_ != 0) {
+      output.writeInt32(1, heroId_);
+    }
+    if (addExp_ != 0) {
+      output.writeInt32(2, addExp_);
+    }
+    if (curExp_ != 0) {
+      output.writeInt32(3, curExp_);
     }
     unknownFields.writeTo(output);
   }
@@ -126,9 +164,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (value_ != 0) {
+    if (heroId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, value_);
+        .computeInt32Size(1, heroId_);
+    }
+    if (addExp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, addExp_);
+    }
+    if (curExp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, curExp_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -140,13 +186,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.PlayerLevelChangePush)) {
+    if (!(obj instanceof game.proto.ExpChangePush)) {
       return super.equals(obj);
     }
-    game.proto.PlayerLevelChangePush other = (game.proto.PlayerLevelChangePush) obj;
+    game.proto.ExpChangePush other = (game.proto.ExpChangePush) obj;
 
-    if (getValue()
-        != other.getValue()) return false;
+    if (getHeroId()
+        != other.getHeroId()) return false;
+    if (getAddExp()
+        != other.getAddExp()) return false;
+    if (getCurExp()
+        != other.getCurExp()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -158,76 +208,80 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VALUE_FIELD_NUMBER;
-    hash = (53 * hash) + getValue();
+    hash = (37 * hash) + HEROID_FIELD_NUMBER;
+    hash = (53 * hash) + getHeroId();
+    hash = (37 * hash) + ADDEXP_FIELD_NUMBER;
+    hash = (53 * hash) + getAddExp();
+    hash = (37 * hash) + CUREXP_FIELD_NUMBER;
+    hash = (53 * hash) + getCurExp();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(byte[] data)
+  public static game.proto.ExpChangePush parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(java.io.InputStream input)
+  public static game.proto.ExpChangePush parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.ExpChangePush parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.PlayerLevelChangePush parseDelimitedFrom(
+  public static game.proto.ExpChangePush parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.ExpChangePush parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -240,7 +294,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.PlayerLevelChangePush prototype) {
+  public static Builder newBuilder(game.proto.ExpChangePush prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -257,29 +311,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 玩家等级变化
+   * 经验变化推送
    * </pre>
    *
-   * Protobuf type {@code Message.PlayerLevelChangePush}
+   * Protobuf type {@code Message.ExpChangePush}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.PlayerLevelChangePush)
-      game.proto.PlayerLevelChangePushOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.ExpChangePush)
+      game.proto.ExpChangePushOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_ExpChangePush_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_ExpChangePush_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.PlayerLevelChangePush.class, game.proto.PlayerLevelChangePush.Builder.class);
+              game.proto.ExpChangePush.class, game.proto.ExpChangePush.Builder.class);
     }
 
-    // Construct using game.proto.PlayerLevelChangePush.newBuilder()
+    // Construct using game.proto.ExpChangePush.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -297,7 +351,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      value_ = 0;
+      heroId_ = 0;
+
+      addExp_ = 0;
+
+      curExp_ = 0;
 
       return this;
     }
@@ -305,17 +363,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_ExpChangePush_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.PlayerLevelChangePush getDefaultInstanceForType() {
-      return game.proto.PlayerLevelChangePush.getDefaultInstance();
+    public game.proto.ExpChangePush getDefaultInstanceForType() {
+      return game.proto.ExpChangePush.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.PlayerLevelChangePush build() {
-      game.proto.PlayerLevelChangePush result = buildPartial();
+    public game.proto.ExpChangePush build() {
+      game.proto.ExpChangePush result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -323,9 +381,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.PlayerLevelChangePush buildPartial() {
-      game.proto.PlayerLevelChangePush result = new game.proto.PlayerLevelChangePush(this);
-      result.value_ = value_;
+    public game.proto.ExpChangePush buildPartial() {
+      game.proto.ExpChangePush result = new game.proto.ExpChangePush(this);
+      result.heroId_ = heroId_;
+      result.addExp_ = addExp_;
+      result.curExp_ = curExp_;
       onBuilt();
       return result;
     }
@@ -364,18 +424,24 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.PlayerLevelChangePush) {
-        return mergeFrom((game.proto.PlayerLevelChangePush)other);
+      if (other instanceof game.proto.ExpChangePush) {
+        return mergeFrom((game.proto.ExpChangePush)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.PlayerLevelChangePush other) {
-      if (other == game.proto.PlayerLevelChangePush.getDefaultInstance()) return this;
-      if (other.getValue() != 0) {
-        setValue(other.getValue());
+    public Builder mergeFrom(game.proto.ExpChangePush other) {
+      if (other == game.proto.ExpChangePush.getDefaultInstance()) return this;
+      if (other.getHeroId() != 0) {
+        setHeroId(other.getHeroId());
+      }
+      if (other.getAddExp() != 0) {
+        setAddExp(other.getAddExp());
+      }
+      if (other.getCurExp() != 0) {
+        setCurExp(other.getCurExp());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -392,11 +458,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.PlayerLevelChangePush parsedMessage = null;
+      game.proto.ExpChangePush parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.PlayerLevelChangePush) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.ExpChangePush) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -406,33 +472,95 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int value_ ;
+    private int heroId_ ;
     /**
-     * <code>int32 value = 1;</code>
-     * @return The value.
+     * <code>int32 heroId = 1;</code>
+     * @return The heroId.
      */
     @java.lang.Override
-    public int getValue() {
-      return value_;
+    public int getHeroId() {
+      return heroId_;
     }
     /**
-     * <code>int32 value = 1;</code>
-     * @param value The value to set.
+     * <code>int32 heroId = 1;</code>
+     * @param value The heroId to set.
      * @return This builder for chaining.
      */
-    public Builder setValue(int value) {
+    public Builder setHeroId(int value) {
       
-      value_ = value;
+      heroId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 value = 1;</code>
+     * <code>int32 heroId = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearValue() {
+    public Builder clearHeroId() {
       
-      value_ = 0;
+      heroId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int addExp_ ;
+    /**
+     * <code>int32 addExp = 2;</code>
+     * @return The addExp.
+     */
+    @java.lang.Override
+    public int getAddExp() {
+      return addExp_;
+    }
+    /**
+     * <code>int32 addExp = 2;</code>
+     * @param value The addExp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAddExp(int value) {
+      
+      addExp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 addExp = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAddExp() {
+      
+      addExp_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int curExp_ ;
+    /**
+     * <code>int32 curExp = 3;</code>
+     * @return The curExp.
+     */
+    @java.lang.Override
+    public int getCurExp() {
+      return curExp_;
+    }
+    /**
+     * <code>int32 curExp = 3;</code>
+     * @param value The curExp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCurExp(int value) {
+      
+      curExp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 curExp = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCurExp() {
+      
+      curExp_ = 0;
       onChanged();
       return this;
     }
@@ -449,41 +577,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.PlayerLevelChangePush)
+    // @@protoc_insertion_point(builder_scope:Message.ExpChangePush)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.PlayerLevelChangePush)
-  private static final game.proto.PlayerLevelChangePush DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.ExpChangePush)
+  private static final game.proto.ExpChangePush DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.PlayerLevelChangePush();
+    DEFAULT_INSTANCE = new game.proto.ExpChangePush();
   }
 
-  public static game.proto.PlayerLevelChangePush getDefaultInstance() {
+  public static game.proto.ExpChangePush getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PlayerLevelChangePush>
-      PARSER = new com.google.protobuf.AbstractParser<PlayerLevelChangePush>() {
+  private static final com.google.protobuf.Parser<ExpChangePush>
+      PARSER = new com.google.protobuf.AbstractParser<ExpChangePush>() {
     @java.lang.Override
-    public PlayerLevelChangePush parsePartialFrom(
+    public ExpChangePush parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PlayerLevelChangePush(input, extensionRegistry);
+      return new ExpChangePush(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<PlayerLevelChangePush> parser() {
+  public static com.google.protobuf.Parser<ExpChangePush> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<PlayerLevelChangePush> getParserForType() {
+  public com.google.protobuf.Parser<ExpChangePush> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.PlayerLevelChangePush getDefaultInstanceForType() {
+  public game.proto.ExpChangePush getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

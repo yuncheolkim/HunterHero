@@ -9,13 +9,13 @@ import game.module.event.IPlayerEventHandler;
 import game.module.event.handler.*;
 import game.player.Player;
 
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
 /**
  * 事件集中管理注册
- *
  * @author Yunzhe.Jin
  * 2021/2/25 10:56
  */
@@ -36,11 +36,26 @@ public class EventManager {
         playerEventMap.put(EventType.HERO_POWER_UP, new HeroPowerUpEventHandler());
         // 消耗金币
         playerEventMap.put(EventType.CONSUME_GOLD, new ConsumeGoldEventHandler());
+        addEvent(new ExpAddEventHandler());
+    }
+
+    private void addEvent(IPlayerEventHandler<? extends IEvent> handler) {
+
+        try {
+            for (Method declaredMethod : handler.getClass().getMethods()) {
+                if (declaredMethod.getName().equals("handler") && !declaredMethod.isBridge()) {
+                    Class<?> idClazz = declaredMethod.getParameterTypes()[1];
+                    IEvent o = (IEvent) idClazz.newInstance();
+                    playerEventMap.put(o.type(), handler);
+                }
+            }
+        } catch (Exception e) {
+            Logs.C.error("", e);
+        }
     }
 
     /**
      * 玩家线程
-     *
      * @param player
      * @param event
      */

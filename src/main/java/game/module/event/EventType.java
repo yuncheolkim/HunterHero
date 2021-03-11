@@ -14,5 +14,5 @@ public enum EventType {
     // 消耗金币
     CONSUME_GOLD,
     // 英雄战力提升
-    HERO_POWER_UP
+    HERO_POWER_UP,
 }

@@ -17,7 +17,7 @@ message Empty {
 message Success {
 }
 // -1 Test cmd
-message CmdReq{
+message CmdReq {
     string params = 1;
 }
 
@@ -106,9 +106,16 @@ message ResourceChangePush {
     int32 heroId = 2;
     int32 count = 3;
 }
+// 玩家等级变化
 message PlayerLevelChangePush {
     int32 value = 1;
+}
 
+// 经验变化推送
+message ExpChangePush {
+    int32 heroId = 1;
+    int32 addExp = 2;
+    int32 curExp = 3;
 }
 
 
