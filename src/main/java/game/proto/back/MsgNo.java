@@ -152,6 +152,14 @@ public enum MsgNo
    * <code>ExpChangePushNo = 5003;</code>
    */
   ExpChangePushNo(5003),
+  /**
+   * <pre>
+   * 背包变化
+   * </pre>
+   *
+   * <code>BagInfoChangePushNo = 6001;</code>
+   */
+  BagInfoChangePushNo(6001),
   UNRECOGNIZED(-1),
   ;
 
@@ -299,6 +307,14 @@ public enum MsgNo
    * <code>ExpChangePushNo = 5003;</code>
    */
   public static final int ExpChangePushNo_VALUE = 5003;
+  /**
+   * <pre>
+   * 背包变化
+   * </pre>
+   *
+   * <code>BagInfoChangePushNo = 6001;</code>
+   */
+  public static final int BagInfoChangePushNo_VALUE = 6001;
 
 
   public final int getNumber() {
@@ -344,6 +360,7 @@ public enum MsgNo
       case 5001: return resource_change_push;
       case 5002: return PlayerLevelChangePushNo;
       case 5003: return ExpChangePushNo;
+      case 6001: return BagInfoChangePushNo;
       default: return null;
     }
   }

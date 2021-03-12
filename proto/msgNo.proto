@@ -48,4 +48,7 @@ enum MsgNo {
     // 玩家等级变化
     PlayerLevelChangePushNo = 5002;
     ExpChangePushNo = 5003;
+
+    // 背包变化
+    BagInfoChangePushNo = 6001;
 }

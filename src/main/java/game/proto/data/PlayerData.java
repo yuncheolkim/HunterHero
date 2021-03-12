@@ -158,6 +158,11 @@ private static final long serialVersionUID = 0L;
                 bag__.getKey(), bag__.getValue());
             break;
           }
+          case 4816: {
+
+            bagCapacity_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -643,6 +648,17 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int BAGCAPACITY_FIELD_NUMBER = 602;
+  private int bagCapacity_;
+  /**
+   * <code>int32 bagCapacity = 602;</code>
+   * @return The bagCapacity.
+   */
+  @java.lang.Override
+  public int getBagCapacity() {
+    return bagCapacity_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -699,6 +715,9 @@ private static final long serialVersionUID = 0L;
         internalGetBag(),
         BagDefaultEntryHolder.defaultEntry,
         601);
+    if (bagCapacity_ != 0) {
+      output.writeInt32(602, bagCapacity_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -766,6 +785,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(601, bag__);
     }
+    if (bagCapacity_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(602, bagCapacity_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -814,6 +837,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFightInfoList())) return false;
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
+    if (getBagCapacity()
+        != other.getBagCapacity()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -864,6 +889,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + BAG_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBag().hashCode();
     }
+    hash = (37 * hash) + BAGCAPACITY_FIELD_NUMBER;
+    hash = (53 * hash) + getBagCapacity();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1062,6 +1089,8 @@ private static final long serialVersionUID = 0L;
         fightInfoBuilder_.clear();
       }
       internalGetMutableBag().clear();
+      bagCapacity_ = 0;
+
       return this;
     }
 
@@ -1123,6 +1152,7 @@ private static final long serialVersionUID = 0L;
       }
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
+      result.bagCapacity_ = bagCapacity_;
       onBuilt();
       return result;
     }
@@ -1230,6 +1260,9 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
+      if (other.getBagCapacity() != 0) {
+        setBagCapacity(other.getBagCapacity());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -2486,6 +2519,37 @@ private static final long serialVersionUID = 0L;
         java.util.Map<java.lang.Integer, game.proto.data.BagSlot> values) {
       internalGetMutableBag().getMutableMap()
           .putAll(values);
+      return this;
+    }
+
+    private int bagCapacity_ ;
+    /**
+     * <code>int32 bagCapacity = 602;</code>
+     * @return The bagCapacity.
+     */
+    @java.lang.Override
+    public int getBagCapacity() {
+      return bagCapacity_;
+    }
+    /**
+     * <code>int32 bagCapacity = 602;</code>
+     * @param value The bagCapacity to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBagCapacity(int value) {
+      
+      bagCapacity_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 bagCapacity = 602;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBagCapacity() {
+      
+      bagCapacity_ = 0;
+      onChanged();
       return this;
     }
     @java.lang.Override

@@ -170,4 +170,9 @@ public class ConfigManager extends AbsLifecycle {
         // tood
         return heroMap1001.get(level);
     }
+
+    public int bagCapacity() {
+        return dataMap8.get(3).count;
+    }
 }
+

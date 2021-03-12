@@ -118,6 +118,12 @@ message ExpChangePush {
     int32 curExp = 3;
 }
 
+// 背包变化推送
+message BagInfoChangePush {
+    int32 capacity = 1;
+    repeated BagSlot slot = 2;
+}
+
 
 
 

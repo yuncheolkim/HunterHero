@@ -231,4 +231,10 @@ public interface PlayerDataOrBuilder extends
 
   game.proto.data.BagSlot getBagOrThrow(
       int key);
+
+  /**
+   * <code>int32 bagCapacity = 602;</code>
+   * @return The bagCapacity.
+   */
+  int getBagCapacity();
 }

@@ -17,7 +17,9 @@ F:\tools\protoc.exe --csharp_out=E:\unity_project\HerosHunter\Assets\Scripts\net
 
 ## excel
 
----- mac ./excelTool -inDir /Users/jinyunzhe/微云同步助手(1181483443)/同步/游戏/群雄逐鹿/data -outDir /Users/jinyunzhe/develop/gitee/HunterHero/src/main/resources/data ---- windows
+---- mac
+
+./excelTool -inDir /Users/jinyunzhe/develop/gitee/hunter-hero-config -outDir /Users/jinyunzhe/develop/gitee/HunterHero/src/main/resources/data ---- windows
 
 ### java
 

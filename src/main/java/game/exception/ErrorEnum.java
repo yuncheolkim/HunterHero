@@ -17,13 +17,16 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
      * 系统异常
      */
     ERR_1(1, "系统异常"),
+    ERR_2(2, "非法参数"),
     ERR_101(101, "金币不足"),
     ERR_102(102, "已最高级"),
     ERR_103(103, "数字不能小于等于0"),
+    ERR_104(104, "背包空间不足"),
 
     ;
 
     private final int id;
+
     private final String module;
 
     ErrorEnum(int id, String module) {

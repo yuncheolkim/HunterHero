@@ -21,6 +21,12 @@ public class DataConfigData {
     public int type;
 
     @JsonProperty
+    public int type1;
+
+    @JsonProperty
+    public int type2;
+
+    @JsonProperty
     public int weight;
 
     @JsonProperty
@@ -40,6 +46,10 @@ public class DataConfigData {
 
     @JsonProperty
     public int gold;
+
+    @JsonProperty
+    public int stack;
+
     ///// property
     @JsonProperty
     public int hp;

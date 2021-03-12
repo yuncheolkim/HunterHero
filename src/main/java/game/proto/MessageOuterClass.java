@@ -124,6 +124,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ExpChangePush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_BagInfoChangePush_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_BagInfoChangePush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -159,8 +164,9 @@ public final class MessageOuterClass {
       "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"&\n" +
       "\025PlayerLevelChangePush\022\r\n\005value\030\001 \001(\005\"?\n" +
       "\rExpChangePush\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp" +
-      "\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005B\020\n\ngame.protoH\001P\001" +
-      "b\006proto3"
+      "\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"E\n\021BagInfoChangeP" +
+      "ush\022\020\n\010capacity\030\001 \001(\005\022\036\n\004slot\030\002 \003(\0132\020.Me" +
+      "ssage.BagSlotB\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -299,6 +305,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ExpChangePush_descriptor,
         new java.lang.String[] { "HeroId", "AddExp", "CurExp", });
+    internal_static_Message_BagInfoChangePush_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_Message_BagInfoChangePush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_BagInfoChangePush_descriptor,
+        new java.lang.String[] { "Capacity", "Slot", });
     game.proto.data.Data.getDescriptor();
   }
 

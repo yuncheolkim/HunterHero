@@ -1,6 +1,6 @@
 package game.player;
 
-import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import game.anno.SaveData;
 import game.base.Constants;
@@ -15,8 +15,10 @@ import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.module.event.handler.*;
 import game.net.Transport;
+import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
 import game.proto.Message;
+import game.proto.back.MsgNo;
 import game.proto.back.PlayerBackData;
 import game.proto.data.*;
 import game.repo.PlayerRepo;
@@ -25,10 +27,8 @@ import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static game.base.Constants.MAX_PLAYER_LEVEL;
 
@@ -57,7 +57,6 @@ public class Player {
     @SaveData
     public PlayerBackData.Builder D = PlayerBackData.newBuilder();
 
-    @SaveData
     private LocalDateTime createTime;
 
     @SaveData
@@ -80,7 +79,7 @@ public class Player {
     /**
      * key: itemId
      */
-    private Multimap<Integer, BagSlot> bagSlotMap = ArrayListMultimap.create();
+    private final Multimap<Integer, BagSlot> bagSlotMap = HashMultimap.create();
 
     public Player(long pid) {
         this.pid = pid;
@@ -174,14 +173,15 @@ public class Player {
         // 初始化任务
         pd.getTaskBuilder().putAcceptableTask(1, true);
 
-        // 场景 新手村
+        // 场景: 新手村
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
+
+        // 背包容量
+        pd.setBagCapacity(G.C.bagCapacity());
 
         // 英雄 test
         addHero(1001);
         addHero(1002);
-
-
     }
 
     /**
@@ -366,14 +366,113 @@ public class Player {
      * @param data
      */
     public void addItem(ItemData data) {
+        ModuleAssert.isTrue(data.getCount() > 0, ErrorEnum.ERR_2);
 
-        PlayerData.Builder pd = getPd();
         Map<Integer, BagSlot> bagMap = pd.getBagMap();
+        DataConfigData dataConfigData = G.C.dataMap6.get(data.getItemId());
 
+        BagInfoChangePush.Builder bag = BagInfoChangePush.newBuilder();
 
+        final int stack = dataConfigData.stack;
+        List<BagSlot> change = new ArrayList<>(10);
+        int remainCount = stack * bagRemain();
+        if (stack > 1) {// 可堆叠
+            if (bagSlotMap.containsKey(data.getItemId())) {
+                // 已经有物品
+                Collection<BagSlot> bagSlots = bagSlotMap.get(data.getItemId());
+                for (BagSlot bagSlot : bagSlots) {
+                    if (bagSlot.getData().getCount() < stack) {
+                        remainCount += stack - bagSlot.getData().getCount();
+                        change.add(bagSlot);
+                    }
+                }
+            }
+        }
+
+        int count = data.getCount();
+        ModuleAssert.isTrue(remainCount > count, ErrorEnum.ERR_104);
+
+        for (BagSlot changedSlot : change) {
+            bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);
+
+            final int oldCount = changedSlot.getData().getCount();
+            final int added = Math.min(stack - oldCount, count);
+            count -= added;
+
+            BagSlot.Builder builder = changedSlot.toBuilder();
+            builder.getDataBuilder().setCount(oldCount + added);
+            BagSlot slot = builder.build();
+
+            // change info
+            bag.addSlot(slot);
+            if (count == 0) {
+                break;
+            }
+        }
+        // 如果还有剩余，则在寻找空闲的格子
+        if (count > 0) {
+
+            for (int i = 0; i < pd.getBagCapacity(); i++) {
+                if (!pd.containsBag(i)) {
+                    // 添加物品
+                    final int added = Math.min(stack, count);
+                    count -= added;
+
+                    BagSlot slot = BagSlot.newBuilder().setSlotId(i).setData(data.toBuilder().setCount(added)).build();
+                    // change info
+                    bag.addSlot(slot);
+                    if (count == 0) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        // Player data update
+        for (BagSlot bagSlot : bag.getSlotList()) {
+            pd.putBag(bagSlot.getSlotId(), bagSlot);
+            bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
+        }
+
+        // event
         ItemAddEvent event = new ItemAddEvent();
         event.itemData = data;
         G.E.firePlayerEvent(this, event);
+
+        // push
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bag.build());
+
+    }
+
+    /**
+     * 剩余背包空间数
+     *
+     * @return
+     */
+    private int bagRemain() {
+        return pd.getBagCapacity() - pd.getBagCount();
+    }
+
+    /**
+     * 整理背包
+     */
+    public void cleanBag() {
+        List<BagSlot> collect = pd.getBagMap().values().stream().sorted((o1, o2) -> {
+            if (o1.getData().getItemId() == o2.getData().getItemId()) {
+                return o2.getData().getCount() - o1.getData().getCount();
+            }
+            return o1.getData().getItemId() - o2.getData().getItemId();
+        }).collect(Collectors.toList());
+        bagSlotMap.clear();
+        pd.clearBag();
+        for (int i = 0; i < collect.size(); i++) {
+            BagSlot bagSlot = collect.get(i);
+            bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
+            pd.putBag(i, bagSlot);
+        }
+
+        // push
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, BagInfoChangePush.newBuilder().addAllSlot(pd.getBagMap().values()).build());
     }
 
     /**
