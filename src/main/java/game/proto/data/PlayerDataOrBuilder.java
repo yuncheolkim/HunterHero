@@ -177,4 +177,58 @@ public interface PlayerDataOrBuilder extends
    */
   game.proto.data.FightEnemyInfoOrBuilder getFightInfoOrBuilder(
       int index);
+
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+  int getBagCount();
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+  boolean containsBag(
+      int key);
+  /**
+   * Use {@link #getBagMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.BagSlot>
+  getBag();
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.BagSlot>
+  getBagMap();
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+
+  game.proto.data.BagSlot getBagOrDefault(
+      int key,
+      game.proto.data.BagSlot defaultValue);
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+
+  game.proto.data.BagSlot getBagOrThrow(
+      int key);
 }

@@ -10,9 +10,12 @@ import game.module.event.IEvent;
  */
 public class ConsumeGoldEvent implements IEvent {
 
-    public final int count;
+    public int count;
 
-    public final ConsumeTypeEnum type;
+    public ConsumeTypeEnum type;
+
+    public ConsumeGoldEvent() {
+    }
 
     public ConsumeGoldEvent(int count, ConsumeTypeEnum type) {
         this.count = count;

@@ -145,6 +145,19 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.FightEnemyInfo.parser(), extensionRegistry));
             break;
           }
+          case 4810: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              bag_ = com.google.protobuf.MapField.newMapField(
+                  BagDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000004;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
+            bag__ = input.readMessage(
+                BagDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            bag_.getMutableMap().put(
+                bag__.getKey(), bag__.getValue());
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -179,6 +192,8 @@ private static final long serialVersionUID = 0L;
     switch (number) {
       case 401:
         return internalGetHero();
+      case 601:
+        return internalGetBag();
       default:
         throw new RuntimeException(
             "Invalid map field number: " + number);
@@ -531,6 +546,103 @@ private static final long serialVersionUID = 0L;
     return fightInfo_.get(index);
   }
 
+  public static final int BAG_FIELD_NUMBER = 601;
+  private static final class BagDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.BagSlot> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.BagSlot>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerData_BagEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.BagSlot.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.BagSlot> bag_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.BagSlot>
+  internalGetBag() {
+    if (bag_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          BagDefaultEntryHolder.defaultEntry);
+    }
+    return bag_;
+  }
+
+  public int getBagCount() {
+    return internalGetBag().getMap().size();
+  }
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsBag(
+      int key) {
+    
+    return internalGetBag().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getBagMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBag() {
+    return getBagMap();
+  }
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBagMap() {
+    return internalGetBag().getMap();
+  }
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.BagSlot getBagOrDefault(
+      int key,
+      game.proto.data.BagSlot defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+        internalGetBag().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <pre>
+   * 背包
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.BagSlot getBagOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+        internalGetBag().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -581,6 +693,12 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < fightInfo_.size(); i++) {
       output.writeMessage(501, fightInfo_.get(i));
     }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetBag(),
+        BagDefaultEntryHolder.defaultEntry,
+        601);
     unknownFields.writeTo(output);
   }
 
@@ -638,6 +756,16 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(501, fightInfo_.get(i));
     }
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
+         : internalGetBag().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
+      bag__ = BagDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(601, bag__);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -684,6 +812,8 @@ private static final long serialVersionUID = 0L;
         other.internalGetHero())) return false;
     if (!getFightInfoList()
         .equals(other.getFightInfoList())) return false;
+    if (!internalGetBag().equals(
+        other.internalGetBag())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -729,6 +859,10 @@ private static final long serialVersionUID = 0L;
     if (getFightInfoCount() > 0) {
       hash = (37 * hash) + FIGHTINFO_FIELD_NUMBER;
       hash = (53 * hash) + getFightInfoList().hashCode();
+    }
+    if (!internalGetBag().getMap().isEmpty()) {
+      hash = (37 * hash) + BAG_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetBag().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -843,6 +977,8 @@ private static final long serialVersionUID = 0L;
       switch (number) {
         case 401:
           return internalGetHero();
+        case 601:
+          return internalGetBag();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -854,6 +990,8 @@ private static final long serialVersionUID = 0L;
       switch (number) {
         case 401:
           return internalGetMutableHero();
+        case 601:
+          return internalGetMutableBag();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -923,6 +1061,7 @@ private static final long serialVersionUID = 0L;
       } else {
         fightInfoBuilder_.clear();
       }
+      internalGetMutableBag().clear();
       return this;
     }
 
@@ -982,6 +1121,8 @@ private static final long serialVersionUID = 0L;
       } else {
         result.fightInfo_ = fightInfoBuilder_.build();
       }
+      result.bag_ = internalGetBag();
+      result.bag_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -1087,6 +1228,8 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
+      internalGetMutableBag().mergeFrom(
+          other.internalGetBag());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -2188,6 +2331,162 @@ private static final long serialVersionUID = 0L;
         fightInfo_ = null;
       }
       return fightInfoBuilder_;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.BagSlot> bag_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.BagSlot>
+    internalGetBag() {
+      if (bag_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            BagDefaultEntryHolder.defaultEntry);
+      }
+      return bag_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.BagSlot>
+    internalGetMutableBag() {
+      onChanged();;
+      if (bag_ == null) {
+        bag_ = com.google.protobuf.MapField.newMapField(
+            BagDefaultEntryHolder.defaultEntry);
+      }
+      if (!bag_.isMutable()) {
+        bag_ = bag_.copy();
+      }
+      return bag_;
+    }
+
+    public int getBagCount() {
+      return internalGetBag().getMap().size();
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsBag(
+        int key) {
+      
+      return internalGetBag().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getBagMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBag() {
+      return getBagMap();
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBagMap() {
+      return internalGetBag().getMap();
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.BagSlot getBagOrDefault(
+        int key,
+        game.proto.data.BagSlot defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+          internalGetBag().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.BagSlot getBagOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+          internalGetBag().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearBag() {
+      internalGetMutableBag().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+
+    public Builder removeBag(
+        int key) {
+      
+      internalGetMutableBag().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.BagSlot>
+    getMutableBag() {
+      return internalGetMutableBag().getMutableMap();
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+    public Builder putBag(
+        int key,
+        game.proto.data.BagSlot value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableBag().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <pre>
+     * 背包
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bag = 601;</code>
+     */
+
+    public Builder putAllBag(
+        java.util.Map<java.lang.Integer, game.proto.data.BagSlot> values) {
+      internalGetMutableBag().getMutableMap()
+          .putAll(values);
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -80,6 +80,26 @@ private static final long serialVersionUID = 0L;
             input.popLimit(limit);
             break;
           }
+          case 24: {
+
+            powerRecoverTime_ = input.readInt64();
+            break;
+          }
+          case 32: {
+
+            createTime_ = input.readInt64();
+            break;
+          }
+          case 40: {
+
+            loginTime_ = input.readInt64();
+            break;
+          }
+          case 48: {
+
+            updateTime_ = input.readInt64();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -154,6 +174,50 @@ private static final long serialVersionUID = 0L;
   }
   private int fightAreaMemoizedSerializedSize = -1;
 
+  public static final int POWERRECOVERTIME_FIELD_NUMBER = 3;
+  private long powerRecoverTime_;
+  /**
+   * <code>int64 powerRecoverTime = 3;</code>
+   * @return The powerRecoverTime.
+   */
+  @java.lang.Override
+  public long getPowerRecoverTime() {
+    return powerRecoverTime_;
+  }
+
+  public static final int CREATETIME_FIELD_NUMBER = 4;
+  private long createTime_;
+  /**
+   * <code>int64 createTime = 4;</code>
+   * @return The createTime.
+   */
+  @java.lang.Override
+  public long getCreateTime() {
+    return createTime_;
+  }
+
+  public static final int LOGINTIME_FIELD_NUMBER = 5;
+  private long loginTime_;
+  /**
+   * <code>int64 loginTime = 5;</code>
+   * @return The loginTime.
+   */
+  @java.lang.Override
+  public long getLoginTime() {
+    return loginTime_;
+  }
+
+  public static final int UPDATETIME_FIELD_NUMBER = 6;
+  private long updateTime_;
+  /**
+   * <code>int64 updateTime = 6;</code>
+   * @return The updateTime.
+   */
+  @java.lang.Override
+  public long getUpdateTime() {
+    return updateTime_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -178,6 +242,18 @@ private static final long serialVersionUID = 0L;
     }
     for (int i = 0; i < fightArea_.size(); i++) {
       output.writeInt32NoTag(fightArea_.getInt(i));
+    }
+    if (powerRecoverTime_ != 0L) {
+      output.writeInt64(3, powerRecoverTime_);
+    }
+    if (createTime_ != 0L) {
+      output.writeInt64(4, createTime_);
+    }
+    if (loginTime_ != 0L) {
+      output.writeInt64(5, loginTime_);
+    }
+    if (updateTime_ != 0L) {
+      output.writeInt64(6, updateTime_);
     }
     unknownFields.writeTo(output);
   }
@@ -206,6 +282,22 @@ private static final long serialVersionUID = 0L;
       }
       fightAreaMemoizedSerializedSize = dataSize;
     }
+    if (powerRecoverTime_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(3, powerRecoverTime_);
+    }
+    if (createTime_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, createTime_);
+    }
+    if (loginTime_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(5, loginTime_);
+    }
+    if (updateTime_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(6, updateTime_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -225,6 +317,14 @@ private static final long serialVersionUID = 0L;
         != other.getFightTime()) return false;
     if (!getFightAreaList()
         .equals(other.getFightAreaList())) return false;
+    if (getPowerRecoverTime()
+        != other.getPowerRecoverTime()) return false;
+    if (getCreateTime()
+        != other.getCreateTime()) return false;
+    if (getLoginTime()
+        != other.getLoginTime()) return false;
+    if (getUpdateTime()
+        != other.getUpdateTime()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -243,6 +343,18 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FIGHTAREA_FIELD_NUMBER;
       hash = (53 * hash) + getFightAreaList().hashCode();
     }
+    hash = (37 * hash) + POWERRECOVERTIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getPowerRecoverTime());
+    hash = (37 * hash) + CREATETIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getCreateTime());
+    hash = (37 * hash) + LOGINTIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getLoginTime());
+    hash = (37 * hash) + UPDATETIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getUpdateTime());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -384,6 +496,14 @@ private static final long serialVersionUID = 0L;
 
       fightArea_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      powerRecoverTime_ = 0L;
+
+      createTime_ = 0L;
+
+      loginTime_ = 0L;
+
+      updateTime_ = 0L;
+
       return this;
     }
 
@@ -417,6 +537,10 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.fightArea_ = fightArea_;
+      result.powerRecoverTime_ = powerRecoverTime_;
+      result.createTime_ = createTime_;
+      result.loginTime_ = loginTime_;
+      result.updateTime_ = updateTime_;
       onBuilt();
       return result;
     }
@@ -477,6 +601,18 @@ private static final long serialVersionUID = 0L;
           fightArea_.addAll(other.fightArea_);
         }
         onChanged();
+      }
+      if (other.getPowerRecoverTime() != 0L) {
+        setPowerRecoverTime(other.getPowerRecoverTime());
+      }
+      if (other.getCreateTime() != 0L) {
+        setCreateTime(other.getCreateTime());
+      }
+      if (other.getLoginTime() != 0L) {
+        setLoginTime(other.getLoginTime());
+      }
+      if (other.getUpdateTime() != 0L) {
+        setUpdateTime(other.getUpdateTime());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -614,6 +750,130 @@ private static final long serialVersionUID = 0L;
     public Builder clearFightArea() {
       fightArea_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+
+    private long powerRecoverTime_ ;
+    /**
+     * <code>int64 powerRecoverTime = 3;</code>
+     * @return The powerRecoverTime.
+     */
+    @java.lang.Override
+    public long getPowerRecoverTime() {
+      return powerRecoverTime_;
+    }
+    /**
+     * <code>int64 powerRecoverTime = 3;</code>
+     * @param value The powerRecoverTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setPowerRecoverTime(long value) {
+      
+      powerRecoverTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 powerRecoverTime = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearPowerRecoverTime() {
+      
+      powerRecoverTime_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long createTime_ ;
+    /**
+     * <code>int64 createTime = 4;</code>
+     * @return The createTime.
+     */
+    @java.lang.Override
+    public long getCreateTime() {
+      return createTime_;
+    }
+    /**
+     * <code>int64 createTime = 4;</code>
+     * @param value The createTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCreateTime(long value) {
+      
+      createTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 createTime = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCreateTime() {
+      
+      createTime_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long loginTime_ ;
+    /**
+     * <code>int64 loginTime = 5;</code>
+     * @return The loginTime.
+     */
+    @java.lang.Override
+    public long getLoginTime() {
+      return loginTime_;
+    }
+    /**
+     * <code>int64 loginTime = 5;</code>
+     * @param value The loginTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLoginTime(long value) {
+      
+      loginTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 loginTime = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLoginTime() {
+      
+      loginTime_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long updateTime_ ;
+    /**
+     * <code>int64 updateTime = 6;</code>
+     * @return The updateTime.
+     */
+    @java.lang.Override
+    public long getUpdateTime() {
+      return updateTime_;
+    }
+    /**
+     * <code>int64 updateTime = 6;</code>
+     * @param value The updateTime to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUpdateTime(long value) {
+      
+      updateTime_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 updateTime = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUpdateTime() {
+      
+      updateTime_ = 0L;
       onChanged();
       return this;
     }

@@ -15,4 +15,9 @@ public enum EventType {
     CONSUME_GOLD,
     // 英雄战力提升
     HERO_POWER_UP,
+    // 添加物品
+    ITEM_ADD,
+    // 增加英雄
+    HERO_ADD,
+
 }

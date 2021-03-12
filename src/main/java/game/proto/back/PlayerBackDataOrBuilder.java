@@ -29,4 +29,28 @@ public interface PlayerBackDataOrBuilder extends
    * @return The fightArea at the given index.
    */
   int getFightArea(int index);
+
+  /**
+   * <code>int64 powerRecoverTime = 3;</code>
+   * @return The powerRecoverTime.
+   */
+  long getPowerRecoverTime();
+
+  /**
+   * <code>int64 createTime = 4;</code>
+   * @return The createTime.
+   */
+  long getCreateTime();
+
+  /**
+   * <code>int64 loginTime = 5;</code>
+   * @return The loginTime.
+   */
+  long getLoginTime();
+
+  /**
+   * <code>int64 updateTime = 6;</code>
+   * @return The updateTime.
+   */
+  long getUpdateTime();
 }

@@ -4,7 +4,6 @@ option java_package = "game.proto.data";
 option optimize_for = SPEED;
 option java_multiple_files = true;
 
-
 //////////////////////////////
 
 message PlayerData {
@@ -20,6 +19,8 @@ message PlayerData {
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息
     repeated FightEnemyInfo fightInfo = 501;
+    // 背包
+    map<int32, BagSlot> bag = 601;
 }
 
 // 资源
@@ -209,6 +210,20 @@ message Reward {
     int32 count = 2;
     // 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
     int32 heroId = 3;
+}
+
+// item
+message ItemData {
+    int32 itemId = 1;
+    int32 count = 2;
+    // 装备
+    Property property = 3;
+}
+
+// Bag
+message BagSlot {
+    int32 slotId = 1;
+    ItemData data = 2;
 }
 
 

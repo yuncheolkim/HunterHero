@@ -16,29 +16,36 @@ import java.util.Optional;
 
 /**
  * 事件集中管理注册
+ * 玩家事件，只在玩家线程处理
+ *
  * @author Yunzhe.Jin
  * 2021/2/25 10:56
  */
 public class EventManager {
-    /**
-     * 玩家事件，只在玩家线程处理
-     */
     private Map<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = new HashMap<>();
 
     public EventManager() {
         // 杀敌事件
-        playerEventMap.put(EventType.KILL, new KillEventHandler());
+        addEvent(new KillEventHandler());
         // 增加资源
-        playerEventMap.put(EventType.RESOURCE_ADD, new ResourceAddEventHandler());
+        addEvent(new ResourceAddEventHandler());
         // 升级
-        playerEventMap.put(EventType.LEVEL_UP, new LevelUpEventHandler());
+        addEvent(new LevelUpEventHandler());
         // 英雄提升
-        playerEventMap.put(EventType.HERO_POWER_UP, new HeroPowerUpEventHandler());
+        addEvent(new HeroPowerUpEventHandler());
         // 消耗金币
-        playerEventMap.put(EventType.CONSUME_GOLD, new ConsumeGoldEventHandler());
+        addEvent(new ConsumeGoldEventHandler());
+        // 增加经验
         addEvent(new ExpAddEventHandler());
+        // 增加物品
+        addEvent(new ItemAddEventHandler());
+        // 增加英雄
+        addEvent(new HeroAddEventHandler());
     }
 
+    /**
+     * @param handler 必须要有默认构造函数
+     */
     private void addEvent(IPlayerEventHandler<? extends IEvent> handler) {
 
         try {
@@ -56,6 +63,7 @@ public class EventManager {
 
     /**
      * 玩家线程
+     *
      * @param player
      * @param event
      */

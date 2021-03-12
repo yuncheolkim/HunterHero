@@ -1,4 +1,4 @@
-package game.module.event;
+package game.game;
 
 /**
  * 资源来源

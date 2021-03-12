@@ -1,7 +1,7 @@
 package game.module.cmd;
 
 import com.google.common.collect.ImmutableMap;
-import game.module.event.ResourceSourceEnum;
+import game.game.ResourceSourceEnum;
 import game.player.Player;
 
 import java.util.HashSet;

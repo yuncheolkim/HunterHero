@@ -9,8 +9,12 @@ import game.module.event.IEvent;
  */
 public class LevelUpEvent implements IEvent {
     // 0:player,other hero
-    public final int heroId;
-    public final int level;
+    public int heroId;
+
+    public int level;
+
+    public LevelUpEvent() {
+    }
 
     public LevelUpEvent(int heroId, int level) {
         this.heroId = heroId;

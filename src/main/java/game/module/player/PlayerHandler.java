@@ -5,7 +5,7 @@ import game.base.Logs;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
-import game.module.event.ResourceSourceEnum;
+import game.game.ResourceSourceEnum;
 import game.player.Player;
 import game.proto.*;
 import game.proto.back.MsgNo;

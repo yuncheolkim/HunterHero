@@ -1,5 +1,8 @@
 package game.player;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
+import game.anno.SaveData;
 import game.base.Constants;
 import game.base.G;
 import game.base.Logs;
@@ -9,20 +12,15 @@ import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
-import game.module.event.ResourceSourceEnum;
-import game.module.event.handler.ConsumeGoldEvent;
-import game.module.event.handler.ExpAddEvent;
-import game.module.event.handler.LevelUpEvent;
-import game.module.event.handler.ResourceAddEvent;
-import game.module.hero.HeroService;
+import game.game.ResourceSourceEnum;
+import game.module.event.handler.*;
 import game.net.Transport;
 import game.proto.LoginRes;
 import game.proto.Message;
 import game.proto.back.PlayerBackData;
-import game.proto.data.PlayerData;
-import game.proto.data.PlayerHero;
-import game.proto.data.Resource;
+import game.proto.data.*;
 import game.repo.PlayerRepo;
+import game.utils.CalcUtil;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
@@ -30,6 +28,7 @@ import org.joda.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import static game.base.Constants.MAX_PLAYER_LEVEL;
 
@@ -48,29 +47,40 @@ public class Player {
      * 前后端都需要的数据
      * 需持久化
      */
+    @SaveData
     private PlayerData.Builder pd = PlayerData.newBuilder();
 
     /**
      * 后端数据
      * 需要
      */
+    @SaveData
     public PlayerBackData.Builder D = PlayerBackData.newBuilder();
 
+    @SaveData
     private LocalDateTime createTime;
 
+    @SaveData
     private LocalDateTime loginTime;
 
+    @SaveData
     private LocalDateTime updateTime;
 
     /**
      * 体力最后一次恢复时间
      */
+    @SaveData
     private long powerRecoverTime;
 
     /**
      * 下一次触发战斗时间
      */
     public long nextFightTime;
+
+    /**
+     * key: itemId
+     */
+    private Multimap<Integer, BagSlot> bagSlotMap = ArrayListMultimap.create();
 
     public Player(long pid) {
         this.pid = pid;
@@ -132,10 +142,8 @@ public class Player {
         // 检查战斗区域
         int id = pd.getSceneDataBuilder().getId();
         DataConfigData dataConfigData = G.C.dataMap7.get(id);
-
         List<Integer> l = new ArrayList<>(D.getFightAreaList());
         D.clearFightArea();
-
         for (Integer areaId : l) {
             if (dataConfigData.enemyAreaList.contains(areaId)) {
                 D.addFightArea(areaId);
@@ -144,6 +152,12 @@ public class Player {
         if (D.getFightAreaCount() == 0) {
             pd.clearFightInfo();
         }
+
+        // 背包
+        for (BagSlot bagSlot : pd.getBagMap().values()) {
+            bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
+        }
+
     }
 
     /**
@@ -163,12 +177,10 @@ public class Player {
         // 场景 新手村
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
 
-        // 英雄
-        HeroService.addHero(this, 1001);
-        HeroService.addHero(this, 1002);
+        // 英雄 test
+        addHero(1001);
+        addHero(1002);
 
-        // 资源
-        addGold(400000, ResourceSourceEnum.TEST);
 
     }
 
@@ -187,6 +199,40 @@ public class Player {
             PlayerRepo playerRepo = G.R.getPlayerRepo();
             playerRepo.save(copy);
         });
+    }
+
+    /**
+     * 获得英雄
+     *
+     * @param heroId
+     */
+    public void addHero(int heroId) {
+
+        if (getPd().getHeroMap().containsKey(heroId)) {
+            return;
+        }
+
+        PlayerHero.Builder builder = PlayerHero.newBuilder();
+        DataConfigData d = G.C.heroMap1001.get(1);
+        builder.setId(heroId);
+        builder.setLevel(1);
+
+        builder.getPropertyBuilder()
+                .setHp(d.hp)
+                .setDamage(d.damage)
+                .setDef(d.def)
+                .setAvoid(d.avoid)
+                .setCritical(d.critical)
+                .setCriticalDamage(d.criticalDamage)
+                .setSpeed(d.speed);
+
+        builder.getPropertyEffectBuilder()
+                .setDefRate(CalcUtil.calcRateProperty(d.def, d.defBase))
+                .setAvoidRate(CalcUtil.calcRateProperty(d.avoid, d.avoidBase))
+                .setCriticalRate(CalcUtil.calcRateProperty(d.critical, d.criticalBase));
+
+        getPd().putHero(heroId, builder.build());
+
     }
 
     /**
@@ -312,6 +358,22 @@ public class Player {
         if (add > 0) {
             G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, add, from));
         }
+    }
+
+    /**
+     * 添加物品
+     *
+     * @param data
+     */
+    public void addItem(ItemData data) {
+
+        PlayerData.Builder pd = getPd();
+        Map<Integer, BagSlot> bagMap = pd.getBagMap();
+
+
+        ItemAddEvent event = new ItemAddEvent();
+        event.itemData = data;
+        G.E.firePlayerEvent(this, event);
     }
 
     /**
