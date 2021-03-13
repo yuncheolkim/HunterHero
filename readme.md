@@ -8,8 +8,7 @@ protoc --java_out=/Users/jinyunzhe/develop/gitee/HunterHero/src/main/java --prot
 
 ### java
 
-F:\tools\protoc.exe --java_out=F:\gitee\HunterHero\src\main\java --proto_path=F:\gitee\HunterHero\proto F:
-\gitee\HunterHero\proto\*.proto
+F:\tools\protoc.exe --java_out=F:\gitee\HunterHero\src\main\java --proto_path=F:\gitee\HunterHero\proto F:\gitee\HunterHero\proto\*.proto
 
 ### unity
 

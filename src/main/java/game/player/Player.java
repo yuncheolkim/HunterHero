@@ -1,6 +1,6 @@
 package game.player;
 
-import com.google.common.collect.HashMultimap;
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
 import game.anno.SaveData;
 import game.base.Constants;
@@ -79,7 +79,7 @@ public class Player {
     /**
      * key: itemId
      */
-    private final Multimap<Integer, BagSlot> bagSlotMap = HashMultimap.create();
+    private final Multimap<Integer, BagSlot> bagSlotMap = LinkedHashMultimap.create();
 
     public Player(long pid) {
         this.pid = pid;
@@ -440,7 +440,7 @@ public class Player {
         G.E.firePlayerEvent(this, event);
 
         // push
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bag.build());
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bag.setType(1).build());
 
     }
 
@@ -465,14 +465,52 @@ public class Player {
         }).collect(Collectors.toList());
         bagSlotMap.clear();
         pd.clearBag();
+        List<BagSlot> zipItemList = new ArrayList<>(collect.size());
+        int lastIndex = 0;
+        Map<Integer, DataConfigData> itemConfigData = G.C.dataMap6;
         for (int i = 0; i < collect.size(); i++) {
             BagSlot bagSlot = collect.get(i);
+            if (i > 0) {
+                BagSlot beforeSlot = zipItemList.get(lastIndex);
+                if (beforeSlot.getData().getItemId() == bagSlot.getData().getItemId()) {
+
+                    DataConfigData dataConfigData = itemConfigData.get(beforeSlot.getData().getItemId());
+                    final int stack = dataConfigData.stack;
+                    int beforeCount = beforeSlot.getData().getCount();
+                    if (stack > 1 && beforeCount < stack) {
+                        int canAdd = stack - beforeCount;
+
+                        int count = bagSlot.getData().getCount();
+                        BagSlot.Builder beforeBagSlotBild = beforeSlot.toBuilder();
+                        if (canAdd < count) {
+                            beforeBagSlotBild.getDataBuilder().setCount(stack);
+                            bagSlot = bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(count - canAdd)).build();
+                        } else {
+                            beforeBagSlotBild.getDataBuilder().setCount(beforeCount + count);
+                            bagSlot = null;
+                        }
+                        zipItemList.set(lastIndex, beforeBagSlotBild.build());
+                    }
+                }
+            }
+            if (bagSlot != null) {
+                zipItemList.add(bagSlot);
+            }
+
+            lastIndex = zipItemList.size() - 1;
+        }
+
+        for (int i = 0; i < zipItemList.size(); i++) {
+            BagSlot bagSlot = zipItemList.get(i);
+            bagSlot = bagSlot.toBuilder().setSlotId(i).build();
             bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
             pd.putBag(i, bagSlot);
         }
 
         // push
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, BagInfoChangePush.newBuilder().addAllSlot(pd.getBagMap().values()).build());
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, BagInfoChangePush.newBuilder()
+                .setType(1)
+                .setClean(true).addAllSlot(pd.getBagMap().values()).build());
     }
 
     /**

@@ -160,6 +160,10 @@ public enum MsgNo
    * <code>BagInfoChangePushNo = 6001;</code>
    */
   BagInfoChangePushNo(6001),
+  /**
+   * <code>BagCleanReqNo = 6002;</code>
+   */
+  BagCleanReqNo(6002),
   UNRECOGNIZED(-1),
   ;
 
@@ -315,6 +319,10 @@ public enum MsgNo
    * <code>BagInfoChangePushNo = 6001;</code>
    */
   public static final int BagInfoChangePushNo_VALUE = 6001;
+  /**
+   * <code>BagCleanReqNo = 6002;</code>
+   */
+  public static final int BagCleanReqNo_VALUE = 6002;
 
 
   public final int getNumber() {
@@ -361,6 +369,7 @@ public enum MsgNo
       case 5002: return PlayerLevelChangePushNo;
       case 5003: return ExpChangePushNo;
       case 6001: return BagInfoChangePushNo;
+      case 6002: return BagCleanReqNo;
       default: return null;
     }
   }

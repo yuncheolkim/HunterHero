@@ -129,6 +129,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_BagInfoChangePush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_BagCleanReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_BagCleanReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -164,9 +169,11 @@ public final class MessageOuterClass {
       "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"&\n" +
       "\025PlayerLevelChangePush\022\r\n\005value\030\001 \001(\005\"?\n" +
       "\rExpChangePush\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp" +
-      "\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"E\n\021BagInfoChangeP" +
-      "ush\022\020\n\010capacity\030\001 \001(\005\022\036\n\004slot\030\002 \003(\0132\020.Me" +
-      "ssage.BagSlotB\020\n\ngame.protoH\001P\001b\006proto3"
+      "\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagInfoChangeP" +
+      "ush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capa" +
+      "city\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSl" +
+      "ot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005B\020\n\ngame." +
+      "protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -310,7 +317,13 @@ public final class MessageOuterClass {
     internal_static_Message_BagInfoChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_BagInfoChangePush_descriptor,
-        new java.lang.String[] { "Capacity", "Slot", });
+        new java.lang.String[] { "Clean", "Type", "Capacity", "Slot", });
+    internal_static_Message_BagCleanReq_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_Message_BagCleanReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_BagCleanReq_descriptor,
+        new java.lang.String[] { "Type", });
     game.proto.data.Data.getDescriptor();
   }
 

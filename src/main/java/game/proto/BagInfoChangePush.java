@@ -54,12 +54,22 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 72: {
+
+            clean_ = input.readBool();
+            break;
+          }
+          case 80: {
+
+            type_ = input.readInt32();
+            break;
+          }
+          case 160: {
 
             capacity_ = input.readInt32();
             break;
           }
-          case 18: {
+          case 242: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               slot_ = new java.util.ArrayList<game.proto.data.BagSlot>();
               mutable_bitField0_ |= 0x00000001;
@@ -103,10 +113,40 @@ private static final long serialVersionUID = 0L;
             game.proto.BagInfoChangePush.class, game.proto.BagInfoChangePush.Builder.class);
   }
 
-  public static final int CAPACITY_FIELD_NUMBER = 1;
+  public static final int CLEAN_FIELD_NUMBER = 9;
+  private boolean clean_;
+  /**
+   * <pre>
+   * 是否整理
+   * </pre>
+   *
+   * <code>bool clean = 9;</code>
+   * @return The clean.
+   */
+  @java.lang.Override
+  public boolean getClean() {
+    return clean_;
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 10;
+  private int type_;
+  /**
+   * <pre>
+   * 1:bag, 2:bank
+   * </pre>
+   *
+   * <code>int32 type = 10;</code>
+   * @return The type.
+   */
+  @java.lang.Override
+  public int getType() {
+    return type_;
+  }
+
+  public static final int CAPACITY_FIELD_NUMBER = 20;
   private int capacity_;
   /**
-   * <code>int32 capacity = 1;</code>
+   * <code>int32 capacity = 20;</code>
    * @return The capacity.
    */
   @java.lang.Override
@@ -114,17 +154,17 @@ private static final long serialVersionUID = 0L;
     return capacity_;
   }
 
-  public static final int SLOT_FIELD_NUMBER = 2;
+  public static final int SLOT_FIELD_NUMBER = 30;
   private java.util.List<game.proto.data.BagSlot> slot_;
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   @java.lang.Override
   public java.util.List<game.proto.data.BagSlot> getSlotList() {
     return slot_;
   }
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   @java.lang.Override
   public java.util.List<? extends game.proto.data.BagSlotOrBuilder> 
@@ -132,21 +172,21 @@ private static final long serialVersionUID = 0L;
     return slot_;
   }
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   @java.lang.Override
   public int getSlotCount() {
     return slot_.size();
   }
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   @java.lang.Override
   public game.proto.data.BagSlot getSlot(int index) {
     return slot_.get(index);
   }
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   @java.lang.Override
   public game.proto.data.BagSlotOrBuilder getSlotOrBuilder(
@@ -168,11 +208,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (clean_ != false) {
+      output.writeBool(9, clean_);
+    }
+    if (type_ != 0) {
+      output.writeInt32(10, type_);
+    }
     if (capacity_ != 0) {
-      output.writeInt32(1, capacity_);
+      output.writeInt32(20, capacity_);
     }
     for (int i = 0; i < slot_.size(); i++) {
-      output.writeMessage(2, slot_.get(i));
+      output.writeMessage(30, slot_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -183,13 +229,21 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (clean_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(9, clean_);
+    }
+    if (type_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(10, type_);
+    }
     if (capacity_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, capacity_);
+        .computeInt32Size(20, capacity_);
     }
     for (int i = 0; i < slot_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, slot_.get(i));
+        .computeMessageSize(30, slot_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -206,6 +260,10 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.BagInfoChangePush other = (game.proto.BagInfoChangePush) obj;
 
+    if (getClean()
+        != other.getClean()) return false;
+    if (getType()
+        != other.getType()) return false;
     if (getCapacity()
         != other.getCapacity()) return false;
     if (!getSlotList()
@@ -221,6 +279,11 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + CLEAN_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getClean());
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getType();
     hash = (37 * hash) + CAPACITY_FIELD_NUMBER;
     hash = (53 * hash) + getCapacity();
     if (getSlotCount() > 0) {
@@ -365,6 +428,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      clean_ = false;
+
+      type_ = 0;
+
       capacity_ = 0;
 
       if (slotBuilder_ == null) {
@@ -400,6 +467,8 @@ private static final long serialVersionUID = 0L;
     public game.proto.BagInfoChangePush buildPartial() {
       game.proto.BagInfoChangePush result = new game.proto.BagInfoChangePush(this);
       int from_bitField0_ = bitField0_;
+      result.clean_ = clean_;
+      result.type_ = type_;
       result.capacity_ = capacity_;
       if (slotBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -458,6 +527,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.BagInfoChangePush other) {
       if (other == game.proto.BagInfoChangePush.getDefaultInstance()) return this;
+      if (other.getClean() != false) {
+        setClean(other.getClean());
+      }
+      if (other.getType() != 0) {
+        setType(other.getType());
+      }
       if (other.getCapacity() != 0) {
         setCapacity(other.getCapacity());
       }
@@ -517,9 +592,95 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
+    private boolean clean_ ;
+    /**
+     * <pre>
+     * 是否整理
+     * </pre>
+     *
+     * <code>bool clean = 9;</code>
+     * @return The clean.
+     */
+    @java.lang.Override
+    public boolean getClean() {
+      return clean_;
+    }
+    /**
+     * <pre>
+     * 是否整理
+     * </pre>
+     *
+     * <code>bool clean = 9;</code>
+     * @param value The clean to set.
+     * @return This builder for chaining.
+     */
+    public Builder setClean(boolean value) {
+      
+      clean_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 是否整理
+     * </pre>
+     *
+     * <code>bool clean = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearClean() {
+      
+      clean_ = false;
+      onChanged();
+      return this;
+    }
+
+    private int type_ ;
+    /**
+     * <pre>
+     * 1:bag, 2:bank
+     * </pre>
+     *
+     * <code>int32 type = 10;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public int getType() {
+      return type_;
+    }
+    /**
+     * <pre>
+     * 1:bag, 2:bank
+     * </pre>
+     *
+     * <code>int32 type = 10;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 1:bag, 2:bank
+     * </pre>
+     *
+     * <code>int32 type = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
+      return this;
+    }
+
     private int capacity_ ;
     /**
-     * <code>int32 capacity = 1;</code>
+     * <code>int32 capacity = 20;</code>
      * @return The capacity.
      */
     @java.lang.Override
@@ -527,7 +688,7 @@ private static final long serialVersionUID = 0L;
       return capacity_;
     }
     /**
-     * <code>int32 capacity = 1;</code>
+     * <code>int32 capacity = 20;</code>
      * @param value The capacity to set.
      * @return This builder for chaining.
      */
@@ -538,7 +699,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 capacity = 1;</code>
+     * <code>int32 capacity = 20;</code>
      * @return This builder for chaining.
      */
     public Builder clearCapacity() {
@@ -561,7 +722,7 @@ private static final long serialVersionUID = 0L;
         game.proto.data.BagSlot, game.proto.data.BagSlot.Builder, game.proto.data.BagSlotOrBuilder> slotBuilder_;
 
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public java.util.List<game.proto.data.BagSlot> getSlotList() {
       if (slotBuilder_ == null) {
@@ -571,7 +732,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public int getSlotCount() {
       if (slotBuilder_ == null) {
@@ -581,7 +742,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public game.proto.data.BagSlot getSlot(int index) {
       if (slotBuilder_ == null) {
@@ -591,7 +752,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder setSlot(
         int index, game.proto.data.BagSlot value) {
@@ -608,7 +769,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder setSlot(
         int index, game.proto.data.BagSlot.Builder builderForValue) {
@@ -622,7 +783,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder addSlot(game.proto.data.BagSlot value) {
       if (slotBuilder_ == null) {
@@ -638,7 +799,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder addSlot(
         int index, game.proto.data.BagSlot value) {
@@ -655,7 +816,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder addSlot(
         game.proto.data.BagSlot.Builder builderForValue) {
@@ -669,7 +830,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder addSlot(
         int index, game.proto.data.BagSlot.Builder builderForValue) {
@@ -683,7 +844,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder addAllSlot(
         java.lang.Iterable<? extends game.proto.data.BagSlot> values) {
@@ -698,7 +859,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder clearSlot() {
       if (slotBuilder_ == null) {
@@ -711,7 +872,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public Builder removeSlot(int index) {
       if (slotBuilder_ == null) {
@@ -724,14 +885,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public game.proto.data.BagSlot.Builder getSlotBuilder(
         int index) {
       return getSlotFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public game.proto.data.BagSlotOrBuilder getSlotOrBuilder(
         int index) {
@@ -741,7 +902,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public java.util.List<? extends game.proto.data.BagSlotOrBuilder> 
          getSlotOrBuilderList() {
@@ -752,14 +913,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public game.proto.data.BagSlot.Builder addSlotBuilder() {
       return getSlotFieldBuilder().addBuilder(
           game.proto.data.BagSlot.getDefaultInstance());
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public game.proto.data.BagSlot.Builder addSlotBuilder(
         int index) {
@@ -767,7 +928,7 @@ private static final long serialVersionUID = 0L;
           index, game.proto.data.BagSlot.getDefaultInstance());
     }
     /**
-     * <code>repeated .Message.BagSlot slot = 2;</code>
+     * <code>repeated .Message.BagSlot slot = 30;</code>
      */
     public java.util.List<game.proto.data.BagSlot.Builder> 
          getSlotBuilderList() {

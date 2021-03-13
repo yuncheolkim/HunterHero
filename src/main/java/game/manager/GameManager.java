@@ -1,6 +1,7 @@
 package game.manager;
 
 import game.base.AbsLifecycle;
+import game.module.bag.BagHandler;
 import game.module.cmd.CmdHandler;
 import game.module.fight.FightHandler;
 import game.module.hero.DefaultHeroCalcProcess;
@@ -38,23 +39,21 @@ public class GameManager extends AbsLifecycle {
     public GameManager() {
         // player
         addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
-
         // task
         addHandler(new Invoker<>(MsgNo.task_accept_VALUE, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(MsgNo.task_complete_VALUE, TaskHandler::completeTask, TaskReq::parser));
-
         // scene
         addHandler(new Invoker<>(MsgNo.scene_enter_VALUE, SceneHandler::enterScene, EnterSceneReq::parser));
         addHandler(new Invoker<>(MsgNo.scene_enter_fight_area_VALUE, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
         addHandler(new Invoker<>(MsgNo.scene_leave_fight_area_VALUE, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
-
         // fight
         addHandler(new Invoker<>(MsgNo.fight_start_VALUE, FightHandler::fight, FightStartReq::parser));
         addHandler(new Invoker<>(MsgNo.fight_end_VALUE, FightHandler::endFight, Empty::parser));
-
         // hero
         addHandler(new Invoker<>(MsgNo.hero_update_lilian_VALUE, HeroHandler::lilian, HeroUpReq::parser));
         addHandler(new Invoker<>(MsgNo.hero_update_xiulian_VALUE, HeroHandler::xiulian, HeroUpReq::parser));
+        // bag
+        addHandler(new Invoker<>(MsgNo.BagCleanReqNo_VALUE, BagHandler::clean, BagCleanReq::parser));
 
 
     }

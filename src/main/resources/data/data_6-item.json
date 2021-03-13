@@ -1,28 +1,31 @@
 {
     "101001": {
-        "gold": 1,
+        "icon": "woodIcon",
         "id": 101001,
         "name": "蜡烛",
         "num": 1,
+        "sell": 1,
         "stack": 1,
         "type1": 1,
         "type2": 1
     },
     "201001": {
-        "gold": 1,
+        "icon": "woodIcon",
         "id": 201001,
         "name": "龟壳",
         "num": 1,
-        "stack": 1,
+        "sell": 1,
+        "stack": 10,
         "type1": 2,
         "type2": 1
     },
     "201002": {
-        "gold": 1,
+        "icon": "woodIcon",
         "id": 201002,
         "name": "碎木",
         "num": 2,
-        "stack": 1,
+        "sell": 1,
+        "stack": 20,
         "type1": 2,
         "type2": 1
     }

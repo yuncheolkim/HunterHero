@@ -120,8 +120,17 @@ message ExpChangePush {
 
 // 背包变化推送
 message BagInfoChangePush {
-    int32 capacity = 1;
-    repeated BagSlot slot = 2;
+    // 是否整理
+    bool clean = 9;
+    // 1:bag, 2:bank
+    int32 type = 10;
+    int32 capacity = 20;
+    repeated BagSlot slot = 30;
+}
+
+message BagCleanReq{
+
+    int32 type = 1;
 }
 
 

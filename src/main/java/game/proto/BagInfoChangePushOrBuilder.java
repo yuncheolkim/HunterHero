@@ -8,31 +8,51 @@ public interface BagInfoChangePushOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 capacity = 1;</code>
+   * <pre>
+   * 是否整理
+   * </pre>
+   *
+   * <code>bool clean = 9;</code>
+   * @return The clean.
+   */
+  boolean getClean();
+
+  /**
+   * <pre>
+   * 1:bag, 2:bank
+   * </pre>
+   *
+   * <code>int32 type = 10;</code>
+   * @return The type.
+   */
+  int getType();
+
+  /**
+   * <code>int32 capacity = 20;</code>
    * @return The capacity.
    */
   int getCapacity();
 
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   java.util.List<game.proto.data.BagSlot> 
       getSlotList();
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   game.proto.data.BagSlot getSlot(int index);
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   int getSlotCount();
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   java.util.List<? extends game.proto.data.BagSlotOrBuilder> 
       getSlotOrBuilderList();
   /**
-   * <code>repeated .Message.BagSlot slot = 2;</code>
+   * <code>repeated .Message.BagSlot slot = 30;</code>
    */
   game.proto.data.BagSlotOrBuilder getSlotOrBuilder(
       int index);

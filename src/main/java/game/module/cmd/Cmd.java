@@ -3,6 +3,7 @@ package game.module.cmd;
 import com.google.common.collect.ImmutableMap;
 import game.game.ResourceSourceEnum;
 import game.player.Player;
+import game.proto.data.ItemData;
 
 import java.util.HashSet;
 import java.util.List;
@@ -28,6 +29,13 @@ public enum Cmd {
         @Override
         public void run(Player player, List<String> line) {
             player.setPlayerLevel(Integer.parseInt(line.get(0)));
+        }
+    },
+    AddItem(4, "增加物品") {
+        @Override
+        public void run(Player player, List<String> line) {
+
+            player.addItem(ItemData.newBuilder().setItemId(Integer.parseInt(line.get(0))).setCount(Integer.parseInt(line.get(1))).build());
         }
     },
     ;
