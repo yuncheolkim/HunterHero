@@ -129,11 +129,17 @@ message BagInfoChangePush {
 }
 
 message BagCleanReq{
-
     int32 type = 1;
 }
 
-
+// 丢弃物品
+message ItemDiscardReq{
+    int32 itemId = 1;
+    int32 count = 2;
+    int32 slotId = 3;
+    // 1:bag, 2:bank
+    int32 type = 4;
+}
 
 
 

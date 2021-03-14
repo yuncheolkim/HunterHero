@@ -164,6 +164,14 @@ public enum MsgNo
    * <code>BagCleanReqNo = 6002;</code>
    */
   BagCleanReqNo(6002),
+  /**
+   * <pre>
+   * Item
+   * </pre>
+   *
+   * <code>ItemDiscardReqNo = 7001;</code>
+   */
+  ItemDiscardReqNo(7001),
   UNRECOGNIZED(-1),
   ;
 
@@ -323,6 +331,14 @@ public enum MsgNo
    * <code>BagCleanReqNo = 6002;</code>
    */
   public static final int BagCleanReqNo_VALUE = 6002;
+  /**
+   * <pre>
+   * Item
+   * </pre>
+   *
+   * <code>ItemDiscardReqNo = 7001;</code>
+   */
+  public static final int ItemDiscardReqNo_VALUE = 7001;
 
 
   public final int getNumber() {
@@ -370,6 +386,7 @@ public enum MsgNo
       case 5003: return ExpChangePushNo;
       case 6001: return BagInfoChangePushNo;
       case 6002: return BagCleanReqNo;
+      case 7001: return ItemDiscardReqNo;
       default: return null;
     }
   }

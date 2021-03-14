@@ -23,7 +23,7 @@ public final class MsgNoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013msgNo.proto\022\007Message*\303\003\n\005MsgNo\022\010\n\004NONE" +
+      "\n\013msgNo.proto\022\007Message*\332\003\n\005MsgNo\022\010\n\004NONE" +
       "\020\000\022\r\n\tlogin_req\020\001\022\r\n\tkick_push\020\002\022\026\n\022play" +
       "er_create_name\020\003\022\r\n\theartbeat\020\004\022\020\n\013task_" +
       "accept\020\351\007\022\022\n\rtask_complete\020\352\007\022\020\n\013fight_s" +
@@ -34,8 +34,9 @@ public final class MsgNoOuterClass {
       "te_xiulian\020\242\037\022\020\n\013hero_change\020\243\037\022\031\n\024resou" +
       "rce_change_push\020\211\'\022\034\n\027PlayerLevelChangeP" +
       "ushNo\020\212\'\022\024\n\017ExpChangePushNo\020\213\'\022\030\n\023BagInf" +
-      "oChangePushNo\020\361.\022\022\n\rBagCleanReqNo\020\362.B\025\n\017" +
-      "game.proto.backH\001P\001b\006proto3"
+      "oChangePushNo\020\361.\022\022\n\rBagCleanReqNo\020\362.\022\025\n\020" +
+      "ItemDiscardReqNo\020\3316B\025\n\017game.proto.backH\001" +
+      "P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

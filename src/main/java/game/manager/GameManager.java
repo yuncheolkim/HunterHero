@@ -54,6 +54,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.hero_update_xiulian_VALUE, HeroHandler::xiulian, HeroUpReq::parser));
         // bag
         addHandler(new Invoker<>(MsgNo.BagCleanReqNo_VALUE, BagHandler::clean, BagCleanReq::parser));
+        addHandler(new Invoker<>(MsgNo.ItemDiscardReqNo_VALUE, BagHandler::discardItem, ItemDiscardReq::parser));
 
 
     }

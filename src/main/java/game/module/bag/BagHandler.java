@@ -1,7 +1,9 @@
 package game.module.bag;
 
+import game.base.Logs;
 import game.player.Player;
 import game.proto.BagCleanReq;
+import game.proto.ItemDiscardReq;
 
 /**
  * @author Yunzhe.Jin
@@ -13,7 +15,21 @@ public class BagHandler {
         if (req.getType() == 1) {
             player.cleanBag();
         }
-
     }
+
+    /**
+     * 丢弃物品
+     *
+     * @param player
+     * @param req
+     */
+    public static void discardItem(Player player, ItemDiscardReq req) {
+        Logs.C.info("{}", req);
+        if (req.getType() == 1) {
+            player.discardBagItem(req.getItemId(), req.getCount(), req.getSlotId());
+
+        }
+    }
+
 
 }

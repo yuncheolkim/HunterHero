@@ -134,6 +134,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_BagCleanReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ItemDiscardReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ItemDiscardReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -172,8 +177,10 @@ public final class MessageOuterClass {
       "\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagInfoChangeP" +
       "ush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capa" +
       "city\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSl" +
-      "ot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005B\020\n\ngame." +
-      "protoH\001P\001b\006proto3"
+      "ot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemD" +
+      "iscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
+      "\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005B\020\n\ngame.p" +
+      "rotoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -324,6 +331,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_BagCleanReq_descriptor,
         new java.lang.String[] { "Type", });
+    internal_static_Message_ItemDiscardReq_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_Message_ItemDiscardReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ItemDiscardReq_descriptor,
+        new java.lang.String[] { "ItemId", "Count", "SlotId", "Type", });
     game.proto.data.Data.getDescriptor();
   }
 

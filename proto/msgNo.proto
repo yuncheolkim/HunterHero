@@ -52,4 +52,7 @@ enum MsgNo {
     // 背包变化
     BagInfoChangePushNo = 6001;
     BagCleanReqNo = 6002;
+
+    // Item
+    ItemDiscardReqNo = 7001;
 }

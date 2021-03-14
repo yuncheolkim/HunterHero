@@ -514,6 +514,31 @@ public class Player {
     }
 
     /**
+     * 丢弃物品
+     *
+     * @param itemId
+     * @param count
+     * @param slotId
+     */
+    public void discardBagItem(int itemId, int count, int slotId) {
+
+        BagSlot bagSlot = pd.getBagMap().get(slotId);
+        int remain = Math.max(bagSlot.getData().getCount() - count, 0);
+        if (remain == 0) {
+            bagSlotMap.remove(itemId, bagSlot);
+            pd.removeBag(slotId);
+        } else {
+            bagSlot = bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain)).build();
+            bagSlotMap.put(itemId, bagSlot);
+            pd.putBag(slotId, bagSlot);
+        }
+
+        BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(1);
+        builder.addSlot(bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain).build()).build());
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, builder.build());
+    }
+
+    /**
      * 下线
      */
     public void offline() {
