@@ -141,6 +141,11 @@ message ItemDiscardReq{
     int32 type = 4;
 }
 
+message ItemBuyReq{
+    int32 itemId = 1;
+    int32 count = 2;
+}
+
 
 
 

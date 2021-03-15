@@ -1,32 +1,41 @@
 {
     "101001": {
-        "icon": "woodIcon",
+        "desc": "一支蜡烛",
+        "icon": "lazhu",
         "id": 101001,
         "name": "蜡烛",
         "num": 1,
-        "sell": 1,
+        "resourceId": 1,
+        "sell": 5,
         "stack": 1,
         "type1": 1,
-        "type2": 1
+        "type2": 1,
+        "value": 10
     },
     "201001": {
-        "icon": "woodIcon",
+        "desc": "龟壳",
+        "icon": "guike",
         "id": 201001,
         "name": "龟壳",
         "num": 1,
+        "resourceId": 1,
         "sell": 1,
         "stack": 10,
         "type1": 2,
-        "type2": 1
+        "type2": 1,
+        "value": 2
     },
     "201002": {
+        "desc": "破碎的\u003ccolor=red\u003e船只\u003c/color\u003e木屑",
         "icon": "woodIcon",
         "id": 201002,
         "name": "碎木",
         "num": 2,
+        "resourceId": 1,
         "sell": 1,
         "stack": 20,
         "type1": 2,
-        "type2": 1
+        "type2": 1,
+        "value": 2
     }
 }

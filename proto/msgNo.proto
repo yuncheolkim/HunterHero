@@ -55,4 +55,6 @@ enum MsgNo {
 
     // Item
     ItemDiscardReqNo = 7001;
+    // 购买物品
+    ItemBuyReqNo = 7002;
 }

@@ -111,7 +111,6 @@ public class DataConfigData {
     @JsonProperty
     public int speakId;
 
-
     @JsonProperty
     public int exp;
 
@@ -191,4 +190,12 @@ public class DataConfigData {
 
     @JsonProperty
     public String content1;
+    @JsonProperty
+    public int resourceId;
+    @JsonProperty
+    public int value;
+    @JsonProperty
+    public int itemId;
+    @JsonProperty
+    public int sell;
 }
