@@ -29,7 +29,7 @@ public class LoginMsgProcess implements Runnable {
         try {
             G.G.getLoginHandler().login(ch, LoginReq.parseFrom(message.getBody()));
         } catch (Exception e) {
-            Logs.C.error("", e);
+            Logs.C.error(e);
         }
     }
 }

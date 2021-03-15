@@ -13,7 +13,10 @@ import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
-import game.module.event.handler.*;
+import game.module.event.handler.ExpAddEvent;
+import game.module.event.handler.ItemAddEvent;
+import game.module.event.handler.LevelUpEvent;
+import game.module.event.handler.ResourceChangeEvent;
 import game.net.Transport;
 import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
@@ -246,10 +249,10 @@ public class Player {
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + count);
 
-        G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.GOLD, 0, count, from));
+        G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, count, from));
     }
 
-    private boolean hasGold(int count) {
+    public boolean hasGold(int count) {
         return pd.getResourceBuilder().getGold() >= count;
     }
 
@@ -264,8 +267,8 @@ public class Player {
         ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_101);
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() - gold);
+        G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, gold * -1, consume));
 
-        G.E.firePlayerEvent(this, new ConsumeGoldEvent(gold, consume));
     }
 
     /**
@@ -356,7 +359,7 @@ public class Player {
         resourceBuilder.setPower((int) Math.min(old + count, resourceBuilder.getMaxPower()));
         int add = resourceBuilder.getPower() - old;
         if (add > 0) {
-            G.E.firePlayerEvent(this, new ResourceAddEvent(ResourceEnum.EXP, 0, add, from));
+            G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.EXP, 0, add, from));
         }
     }
 
@@ -390,7 +393,7 @@ public class Player {
         }
 
         int count = data.getCount();
-        ModuleAssert.isTrue(remainCount > count, ErrorEnum.ERR_104);
+        ModuleAssert.isTrue(remainCount >= count, ErrorEnum.ERR_104);
 
         for (BagSlot changedSlot : change) {
             bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);

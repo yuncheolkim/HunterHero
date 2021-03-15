@@ -18,4 +18,10 @@ public interface ItemBuyReqOrBuilder extends
    * @return The count.
    */
   int getCount();
+
+  /**
+   * <code>int32 shopId = 3;</code>
+   * @return The shopId.
+   */
+  int getShopId();
 }

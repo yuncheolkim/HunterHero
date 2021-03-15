@@ -7,4 +7,5 @@ package game.game;
 public enum ConsumeTypeEnum {
     历练,
     修炼,
+    商店,
 }

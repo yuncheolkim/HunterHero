@@ -144,6 +144,7 @@ message ItemDiscardReq{
 message ItemBuyReq{
     int32 itemId = 1;
     int32 count = 2;
+    int32 shopId = 3;
 }
 
 

@@ -7,6 +7,7 @@ import game.manager.*;
  * 2021/2/20 10:35
  */
 public class G {
+
     ///////////// Lifecycle
     public static WorkManager W = new WorkManager();
     public static GameManager G = new GameManager();
@@ -17,4 +18,10 @@ public class G {
     public static RepoManager R = new RepoManager();
     public static PlayerManager P = new PlayerManager();
     public static EventManager E = new EventManager();
+
+
+    public static void findException(Exception e) {
+        Logs.C.error(e);
+        System.exit(-1);
+    }
 }

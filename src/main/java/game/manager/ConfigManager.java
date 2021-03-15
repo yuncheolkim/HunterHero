@@ -174,5 +174,9 @@ public class ConfigManager extends AbsLifecycle {
     public int bagCapacity() {
         return dataMap8.get(3).count;
     }
+
+    public DataConfigData getItem(int itemId) {
+        return dataMap6.get(itemId);
+    }
 }
 

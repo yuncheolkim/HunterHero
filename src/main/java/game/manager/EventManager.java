@@ -27,14 +27,12 @@ public class EventManager {
     public EventManager() {
         // 杀敌事件
         addEvent(new KillEventHandler());
-        // 增加资源
-        addEvent(new ResourceAddEventHandler());
+        // 资源变化
+        addEvent(new ResourceChangeEventHandler());
         // 升级
         addEvent(new LevelUpEventHandler());
         // 英雄提升
         addEvent(new HeroPowerUpEventHandler());
-        // 消耗金币
-        addEvent(new ConsumeGoldEventHandler());
         // 增加经验
         addEvent(new ExpAddEventHandler());
         // 增加物品
@@ -57,7 +55,7 @@ public class EventManager {
                 }
             }
         } catch (Exception e) {
-            Logs.C.error("", e);
+            G.findException(e);
         }
     }
 
@@ -72,7 +70,7 @@ public class EventManager {
         try {
             iPlayerEventHandler.handler(player, event);
         } catch (Exception e) {
-            Logs.C.error("", e);
+            Logs.C.error(e);
         }
     }
 
@@ -86,7 +84,7 @@ public class EventManager {
                 try {
                     iPlayerEventHandler.handler(player, event);
                 } catch (Exception e) {
-                    Logs.C.error("", e);
+                    Logs.C.error(e);
                 }
             });
         }

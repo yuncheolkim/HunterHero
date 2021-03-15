@@ -26,7 +26,7 @@ public class JacksonUtil {
             return mapper.readValue(body, new TypeReference<Map<String, Object>>() {
             });
         } catch (IOException e) {
-            Logs.C.error("", e);
+            Logs.C.error(e);
         }
 
         return new HashMap<>();
@@ -36,7 +36,7 @@ public class JacksonUtil {
         try {
             return mapper.readValue(body, clazz);
         } catch (IOException e) {
-            Logs.C.error("", e);
+            Logs.C.error(e);
         }
 
         return null;
@@ -46,7 +46,7 @@ public class JacksonUtil {
         try {
             return mapper.writeValueAsString(o);
         } catch (JsonProcessingException e) {
-            Logs.C.error("", e);
+            Logs.C.error(e);
             return "";
         }
     }

@@ -12,10 +12,10 @@ import game.proto.back.MsgNo;
  * @author Yunzhe.Jin
  * 2021/3/7 15:52
  */
-public class ResourceAddEventHandler implements IPlayerEventHandler<ResourceAddEvent> {
+public class ResourceChangeEventHandler implements IPlayerEventHandler<ResourceChangeEvent> {
 
     @Override
-    public void handler(Player player, ResourceAddEvent data) {
+    public void handler(Player player, ResourceChangeEvent data) {
 
         ResourceChangePush push = ResourceChangePush.newBuilder()
                 .setCount(data.count)

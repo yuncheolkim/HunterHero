@@ -9,6 +9,7 @@ import game.module.hero.HeroHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
+import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
 import game.msg.IInvoke;
 import game.msg.Invoker;
@@ -55,6 +56,7 @@ public class GameManager extends AbsLifecycle {
         // bag
         addHandler(new Invoker<>(MsgNo.BagCleanReqNo_VALUE, BagHandler::clean, BagCleanReq::parser));
         addHandler(new Invoker<>(MsgNo.ItemDiscardReqNo_VALUE, BagHandler::discardItem, ItemDiscardReq::parser));
+        addHandler(new Invoker<>(MsgNo.ItemBuyReqNo_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
 
 
     }

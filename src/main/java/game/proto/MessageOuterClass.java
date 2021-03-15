@@ -184,9 +184,9 @@ public final class MessageOuterClass {
       "city\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSl" +
       "ot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemD" +
       "iscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
-      "\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\"+\n\nItemBu" +
-      "yReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005B\020\n\ng" +
-      "ame.protoH\001P\001b\006proto3"
+      "\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBu" +
+      "yReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006s" +
+      "hopId\030\003 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -348,7 +348,7 @@ public final class MessageOuterClass {
     internal_static_Message_ItemBuyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemBuyReq_descriptor,
-        new java.lang.String[] { "ItemId", "Count", });
+        new java.lang.String[] { "ItemId", "Count", "ShopId", });
     game.proto.data.Data.getDescriptor();
   }
 

@@ -58,6 +58,11 @@ private static final long serialVersionUID = 0L;
             count_ = input.readInt32();
             break;
           }
+          case 24: {
+
+            shopId_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -112,6 +117,17 @@ private static final long serialVersionUID = 0L;
     return count_;
   }
 
+  public static final int SHOPID_FIELD_NUMBER = 3;
+  private int shopId_;
+  /**
+   * <code>int32 shopId = 3;</code>
+   * @return The shopId.
+   */
+  @java.lang.Override
+  public int getShopId() {
+    return shopId_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -132,6 +148,9 @@ private static final long serialVersionUID = 0L;
     if (count_ != 0) {
       output.writeInt32(2, count_);
     }
+    if (shopId_ != 0) {
+      output.writeInt32(3, shopId_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -148,6 +167,10 @@ private static final long serialVersionUID = 0L;
     if (count_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(2, count_);
+    }
+    if (shopId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, shopId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,6 +191,8 @@ private static final long serialVersionUID = 0L;
         != other.getItemId()) return false;
     if (getCount()
         != other.getCount()) return false;
+    if (getShopId()
+        != other.getShopId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -183,6 +208,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getItemId();
     hash = (37 * hash) + COUNT_FIELD_NUMBER;
     hash = (53 * hash) + getCount();
+    hash = (37 * hash) + SHOPID_FIELD_NUMBER;
+    hash = (53 * hash) + getShopId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -320,6 +347,8 @@ private static final long serialVersionUID = 0L;
 
       count_ = 0;
 
+      shopId_ = 0;
+
       return this;
     }
 
@@ -348,6 +377,7 @@ private static final long serialVersionUID = 0L;
       game.proto.ItemBuyReq result = new game.proto.ItemBuyReq(this);
       result.itemId_ = itemId_;
       result.count_ = count_;
+      result.shopId_ = shopId_;
       onBuilt();
       return result;
     }
@@ -401,6 +431,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getCount() != 0) {
         setCount(other.getCount());
+      }
+      if (other.getShopId() != 0) {
+        setShopId(other.getShopId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -489,6 +522,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearCount() {
       
       count_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int shopId_ ;
+    /**
+     * <code>int32 shopId = 3;</code>
+     * @return The shopId.
+     */
+    @java.lang.Override
+    public int getShopId() {
+      return shopId_;
+    }
+    /**
+     * <code>int32 shopId = 3;</code>
+     * @param value The shopId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setShopId(int value) {
+      
+      shopId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 shopId = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearShopId() {
+      
+      shopId_ = 0;
       onChanged();
       return this;
     }

@@ -37,7 +37,7 @@ public class Invoker<T extends MessageLite> implements IInvoke {
             Logs.M.error("", e);
             player.getTransport().sendError(msg, e.getErrorNo());
         } catch (Throwable e) {
-            Logs.C.error("", e);
+            Logs.C.error(e);
             player.getTransport().sendError(msg, ErrorEnum.ERR_1);
         }
     }

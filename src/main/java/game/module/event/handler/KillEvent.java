@@ -12,9 +12,12 @@ import game.module.event.IEvent;
  */
 public class KillEvent implements IEvent {
 
-    public final int targetId;
+    public int targetId;
 
     private TargetType targetType;
+
+    public KillEvent() {
+    }
 
     public KillEvent(int targetId) {
         this.targetId = targetId;
