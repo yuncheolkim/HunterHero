@@ -144,6 +144,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ItemBuyReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ItemExchangeReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ItemExchangeReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -186,7 +191,9 @@ public final class MessageOuterClass {
       "iscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
       "\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBu" +
       "yReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006s" +
-      "hopId\030\003 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "hopId\030\003 \001(\005\"/\n\017ItemExchangeReq\022\014\n\004type\030\001" +
+      " \001(\005\022\016\n\006slotId\030\002 \001(\005B\020\n\ngame.protoH\001P\001b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -349,6 +356,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemBuyReq_descriptor,
         new java.lang.String[] { "ItemId", "Count", "ShopId", });
+    internal_static_Message_ItemExchangeReq_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_Message_ItemExchangeReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ItemExchangeReq_descriptor,
+        new java.lang.String[] { "Type", "SlotId", });
     game.proto.data.Data.getDescriptor();
   }
 

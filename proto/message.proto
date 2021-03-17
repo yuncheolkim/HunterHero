@@ -141,12 +141,18 @@ message ItemDiscardReq{
     int32 type = 4;
 }
 
+// 购买物品
 message ItemBuyReq{
     int32 itemId = 1;
     int32 count = 2;
     int32 shopId = 3;
 }
 
+// 仓库背包,转移物品
+message ItemExchangeReq{
+    int32 type = 1; // 1: bank -> bag, 2: bag -> bank
+    int32 slotId = 2;
+}
 
 
 

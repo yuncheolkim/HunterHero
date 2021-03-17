@@ -163,6 +163,24 @@ private static final long serialVersionUID = 0L;
             bagCapacity_ = input.readInt32();
             break;
           }
+          case 4824: {
+
+            bankCapacity_ = input.readInt32();
+            break;
+          }
+          case 4834: {
+            if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+              bank_ = com.google.protobuf.MapField.newMapField(
+                  BankDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000008;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
+            bank__ = input.readMessage(
+                BankDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            bank_.getMutableMap().put(
+                bank__.getKey(), bank__.getValue());
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -199,6 +217,8 @@ private static final long serialVersionUID = 0L;
         return internalGetHero();
       case 601:
         return internalGetBag();
+      case 604:
+        return internalGetBank();
       default:
         throw new RuntimeException(
             "Invalid map field number: " + number);
@@ -651,12 +671,128 @@ private static final long serialVersionUID = 0L;
   public static final int BAGCAPACITY_FIELD_NUMBER = 602;
   private int bagCapacity_;
   /**
+   * <pre>
+   * 背包容量
+   * </pre>
+   *
    * <code>int32 bagCapacity = 602;</code>
    * @return The bagCapacity.
    */
   @java.lang.Override
   public int getBagCapacity() {
     return bagCapacity_;
+  }
+
+  public static final int BANKCAPACITY_FIELD_NUMBER = 603;
+  private int bankCapacity_;
+  /**
+   * <pre>
+   * 银行容量
+   * </pre>
+   *
+   * <code>int32 bankCapacity = 603;</code>
+   * @return The bankCapacity.
+   */
+  @java.lang.Override
+  public int getBankCapacity() {
+    return bankCapacity_;
+  }
+
+  public static final int BANK_FIELD_NUMBER = 604;
+  private static final class BankDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.BagSlot> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.BagSlot>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerData_BankEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.BagSlot.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.BagSlot> bank_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.BagSlot>
+  internalGetBank() {
+    if (bank_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          BankDefaultEntryHolder.defaultEntry);
+    }
+    return bank_;
+  }
+
+  public int getBankCount() {
+    return internalGetBank().getMap().size();
+  }
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsBank(
+      int key) {
+    
+    return internalGetBank().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getBankMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBank() {
+    return getBankMap();
+  }
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBankMap() {
+    return internalGetBank().getMap();
+  }
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.BagSlot getBankOrDefault(
+      int key,
+      game.proto.data.BagSlot defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+        internalGetBank().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.BagSlot getBankOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+        internalGetBank().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -718,6 +854,15 @@ private static final long serialVersionUID = 0L;
     if (bagCapacity_ != 0) {
       output.writeInt32(602, bagCapacity_);
     }
+    if (bankCapacity_ != 0) {
+      output.writeInt32(603, bankCapacity_);
+    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetBank(),
+        BankDefaultEntryHolder.defaultEntry,
+        604);
     unknownFields.writeTo(output);
   }
 
@@ -789,6 +934,20 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(602, bagCapacity_);
     }
+    if (bankCapacity_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(603, bankCapacity_);
+    }
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
+         : internalGetBank().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
+      bank__ = BankDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(604, bank__);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -839,6 +998,10 @@ private static final long serialVersionUID = 0L;
         other.internalGetBag())) return false;
     if (getBagCapacity()
         != other.getBagCapacity()) return false;
+    if (getBankCapacity()
+        != other.getBankCapacity()) return false;
+    if (!internalGetBank().equals(
+        other.internalGetBank())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -891,6 +1054,12 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + BAGCAPACITY_FIELD_NUMBER;
     hash = (53 * hash) + getBagCapacity();
+    hash = (37 * hash) + BANKCAPACITY_FIELD_NUMBER;
+    hash = (53 * hash) + getBankCapacity();
+    if (!internalGetBank().getMap().isEmpty()) {
+      hash = (37 * hash) + BANK_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetBank().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1006,6 +1175,8 @@ private static final long serialVersionUID = 0L;
           return internalGetHero();
         case 601:
           return internalGetBag();
+        case 604:
+          return internalGetBank();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -1019,6 +1190,8 @@ private static final long serialVersionUID = 0L;
           return internalGetMutableHero();
         case 601:
           return internalGetMutableBag();
+        case 604:
+          return internalGetMutableBank();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -1091,6 +1264,9 @@ private static final long serialVersionUID = 0L;
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
+      bankCapacity_ = 0;
+
+      internalGetMutableBank().clear();
       return this;
     }
 
@@ -1153,6 +1329,9 @@ private static final long serialVersionUID = 0L;
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
       result.bagCapacity_ = bagCapacity_;
+      result.bankCapacity_ = bankCapacity_;
+      result.bank_ = internalGetBank();
+      result.bank_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -1263,6 +1442,11 @@ private static final long serialVersionUID = 0L;
       if (other.getBagCapacity() != 0) {
         setBagCapacity(other.getBagCapacity());
       }
+      if (other.getBankCapacity() != 0) {
+        setBankCapacity(other.getBankCapacity());
+      }
+      internalGetMutableBank().mergeFrom(
+          other.internalGetBank());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -2524,6 +2708,10 @@ private static final long serialVersionUID = 0L;
 
     private int bagCapacity_ ;
     /**
+     * <pre>
+     * 背包容量
+     * </pre>
+     *
      * <code>int32 bagCapacity = 602;</code>
      * @return The bagCapacity.
      */
@@ -2532,6 +2720,10 @@ private static final long serialVersionUID = 0L;
       return bagCapacity_;
     }
     /**
+     * <pre>
+     * 背包容量
+     * </pre>
+     *
      * <code>int32 bagCapacity = 602;</code>
      * @param value The bagCapacity to set.
      * @return This builder for chaining.
@@ -2543,6 +2735,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 背包容量
+     * </pre>
+     *
      * <code>int32 bagCapacity = 602;</code>
      * @return This builder for chaining.
      */
@@ -2550,6 +2746,205 @@ private static final long serialVersionUID = 0L;
       
       bagCapacity_ = 0;
       onChanged();
+      return this;
+    }
+
+    private int bankCapacity_ ;
+    /**
+     * <pre>
+     * 银行容量
+     * </pre>
+     *
+     * <code>int32 bankCapacity = 603;</code>
+     * @return The bankCapacity.
+     */
+    @java.lang.Override
+    public int getBankCapacity() {
+      return bankCapacity_;
+    }
+    /**
+     * <pre>
+     * 银行容量
+     * </pre>
+     *
+     * <code>int32 bankCapacity = 603;</code>
+     * @param value The bankCapacity to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBankCapacity(int value) {
+      
+      bankCapacity_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 银行容量
+     * </pre>
+     *
+     * <code>int32 bankCapacity = 603;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBankCapacity() {
+      
+      bankCapacity_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.BagSlot> bank_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.BagSlot>
+    internalGetBank() {
+      if (bank_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            BankDefaultEntryHolder.defaultEntry);
+      }
+      return bank_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.BagSlot>
+    internalGetMutableBank() {
+      onChanged();;
+      if (bank_ == null) {
+        bank_ = com.google.protobuf.MapField.newMapField(
+            BankDefaultEntryHolder.defaultEntry);
+      }
+      if (!bank_.isMutable()) {
+        bank_ = bank_.copy();
+      }
+      return bank_;
+    }
+
+    public int getBankCount() {
+      return internalGetBank().getMap().size();
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsBank(
+        int key) {
+      
+      return internalGetBank().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getBankMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBank() {
+      return getBankMap();
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.BagSlot> getBankMap() {
+      return internalGetBank().getMap();
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.BagSlot getBankOrDefault(
+        int key,
+        game.proto.data.BagSlot defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+          internalGetBank().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.BagSlot getBankOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.BagSlot> map =
+          internalGetBank().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearBank() {
+      internalGetMutableBank().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+
+    public Builder removeBank(
+        int key) {
+      
+      internalGetMutableBank().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.BagSlot>
+    getMutableBank() {
+      return internalGetMutableBank().getMutableMap();
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+    public Builder putBank(
+        int key,
+        game.proto.data.BagSlot value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableBank().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <pre>
+     * 银行
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+     */
+
+    public Builder putAllBank(
+        java.util.Map<java.lang.Integer, game.proto.data.BagSlot> values) {
+      internalGetMutableBank().getMutableMap()
+          .putAll(values);
       return this;
     }
     @java.lang.Override

@@ -171,8 +171,22 @@ public class ConfigManager extends AbsLifecycle {
         return heroMap1001.get(level);
     }
 
+    /**
+     * 背包初始容量
+     *
+     * @return
+     */
     public int bagCapacity() {
         return dataMap8.get(3).count;
+    }
+
+    /**
+     * 银行初始容量
+     *
+     * @return
+     */
+    public int bankCapacity() {
+        return dataMap8.get(4).count;
     }
 
     public DataConfigData getItem(int itemId) {

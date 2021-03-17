@@ -1,5 +1,6 @@
 {
     "101001": {
+        "content": "一支蜡烛",
         "desc": "一支蜡烛",
         "icon": "lazhu",
         "id": 101001,
@@ -13,6 +14,7 @@
         "value": 10
     },
     "201001": {
+        "content": "龟壳",
         "desc": "龟壳",
         "icon": "guike",
         "id": 201001,
@@ -26,6 +28,7 @@
         "value": 2
     },
     "201002": {
+        "content": "破碎的\u003ccolor=red\u003e船只\u003c/color\u003e木屑",
         "desc": "破碎的\u003ccolor=red\u003e船只\u003c/color\u003e木屑",
         "icon": "woodIcon",
         "id": 201002,

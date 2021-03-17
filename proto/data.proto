@@ -21,7 +21,12 @@ message PlayerData {
     repeated FightEnemyInfo fightInfo = 501;
     // 背包
     map<int32, BagSlot> bag = 601;
+    // 背包容量
     int32 bagCapacity = 602;
+    // 银行容量
+    int32 bankCapacity = 603;
+    // 银行
+    map<int32, BagSlot> bank = 604;
 }
 
 // 资源

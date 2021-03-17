@@ -233,8 +233,76 @@ public interface PlayerDataOrBuilder extends
       int key);
 
   /**
+   * <pre>
+   * 背包容量
+   * </pre>
+   *
    * <code>int32 bagCapacity = 602;</code>
    * @return The bagCapacity.
    */
   int getBagCapacity();
+
+  /**
+   * <pre>
+   * 银行容量
+   * </pre>
+   *
+   * <code>int32 bankCapacity = 603;</code>
+   * @return The bankCapacity.
+   */
+  int getBankCapacity();
+
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+  int getBankCount();
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+  boolean containsBank(
+      int key);
+  /**
+   * Use {@link #getBankMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.BagSlot>
+  getBank();
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.BagSlot>
+  getBankMap();
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+
+  game.proto.data.BagSlot getBankOrDefault(
+      int key,
+      game.proto.data.BagSlot defaultValue);
+  /**
+   * <pre>
+   * 银行
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.BagSlot&gt; bank = 604;</code>
+   */
+
+  game.proto.data.BagSlot getBankOrThrow(
+      int key);
 }
