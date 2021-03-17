@@ -1,6 +1,7 @@
 package game.module.cmd;
 
 import com.google.common.collect.ImmutableMap;
+import game.base.GameConstants;
 import game.game.ResourceSourceEnum;
 import game.player.Player;
 import game.proto.data.ItemData;
@@ -35,7 +36,7 @@ public enum Cmd {
         @Override
         public void run(Player player, List<String> line) {
 
-            player.addItem(ItemData.newBuilder().setItemId(Integer.parseInt(line.get(0))).setCount(Integer.parseInt(line.get(1))).build());
+            player.addItem(ItemData.newBuilder().setItemId(Integer.parseInt(line.get(0))).setCount(Integer.parseInt(line.get(1))).build(), GameConstants.ITEM_BAG);
         }
     },
     ;

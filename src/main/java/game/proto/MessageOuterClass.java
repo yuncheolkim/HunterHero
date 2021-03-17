@@ -149,6 +149,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ItemExchangeReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ItemSellReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ItemSellReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -191,9 +196,10 @@ public final class MessageOuterClass {
       "iscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
       "\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBu" +
       "yReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006s" +
-      "hopId\030\003 \001(\005\"/\n\017ItemExchangeReq\022\014\n\004type\030\001" +
-      " \001(\005\022\016\n\006slotId\030\002 \001(\005B\020\n\ngame.protoH\001P\001b\006" +
-      "proto3"
+      "hopId\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type\030\001" +
+      " \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013I" +
+      "temSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(" +
+      "\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -361,7 +367,13 @@ public final class MessageOuterClass {
     internal_static_Message_ItemExchangeReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemExchangeReq_descriptor,
-        new java.lang.String[] { "Type", "SlotId", });
+        new java.lang.String[] { "Type", "SlotId", "Count", });
+    internal_static_Message_ItemSellReq_descriptor =
+      getDescriptor().getMessageTypes().get(27);
+    internal_static_Message_ItemSellReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ItemSellReq_descriptor,
+        new java.lang.String[] { "SlotId", "Count", });
     game.proto.data.Data.getDescriptor();
   }
 

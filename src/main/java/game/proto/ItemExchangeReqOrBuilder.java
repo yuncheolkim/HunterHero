@@ -22,4 +22,10 @@ public interface ItemExchangeReqOrBuilder extends
    * @return The slotId.
    */
   int getSlotId();
+
+  /**
+   * <code>int32 count = 3;</code>
+   * @return The count.
+   */
+  int getCount();
 }

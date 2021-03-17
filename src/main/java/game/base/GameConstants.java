@@ -6,7 +6,7 @@ import io.netty.util.AttributeKey;
  * @author Yunzhe.Jin
  * 2021/2/20 14:21
  */
-public class Constants {
+public class GameConstants {
     public static final String TOKEN_START = ">>>>>>>>>>>>>>>>>>>>";
 
     public static final String TOKEN_END = "<<<<<<<<<<<<<<<<<<<<";
@@ -17,4 +17,13 @@ public class Constants {
 
     public static final int MAX_PLAYER_LEVEL = 60;
 
+    /**
+     * 背包
+     */
+    public static final int ITEM_BAG = 1;
+
+    /**
+     * 银行
+     */
+    public static final int ITEM_BANK = 2;
 }

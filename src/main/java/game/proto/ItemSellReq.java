@@ -5,28 +5,28 @@ package game.proto;
 
 /**
  * <pre>
- * 银行背包,转移物品
+ * 出售物品
  * </pre>
  *
- * Protobuf type {@code Message.ItemExchangeReq}
+ * Protobuf type {@code Message.ItemSellReq}
  */
-public final class ItemExchangeReq extends
+public final class ItemSellReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.ItemExchangeReq)
-    ItemExchangeReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.ItemSellReq)
+    ItemSellReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use ItemExchangeReq.newBuilder() to construct.
-  private ItemExchangeReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use ItemSellReq.newBuilder() to construct.
+  private ItemSellReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private ItemExchangeReq() {
+  private ItemSellReq() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new ItemExchangeReq();
+    return new ItemSellReq();
   }
 
   @java.lang.Override
@@ -34,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private ItemExchangeReq(
+  private ItemSellReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,15 +54,10 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            type_ = input.readInt32();
-            break;
-          }
-          case 16: {
-
             slotId_ = input.readInt32();
             break;
           }
-          case 24: {
+          case 16: {
 
             count_ = input.readInt32();
             break;
@@ -88,36 +83,21 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_ItemExchangeReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_ItemSellReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_ItemExchangeReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_ItemSellReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.ItemExchangeReq.class, game.proto.ItemExchangeReq.Builder.class);
+            game.proto.ItemSellReq.class, game.proto.ItemSellReq.Builder.class);
   }
 
-  public static final int TYPE_FIELD_NUMBER = 1;
-  private int type_;
-  /**
-   * <pre>
-   * 1: bank -&gt; bag, 2: bag -&gt; bank
-   * </pre>
-   *
-   * <code>int32 type = 1;</code>
-   * @return The type.
-   */
-  @java.lang.Override
-  public int getType() {
-    return type_;
-  }
-
-  public static final int SLOTID_FIELD_NUMBER = 2;
+  public static final int SLOTID_FIELD_NUMBER = 1;
   private int slotId_;
   /**
-   * <code>int32 slotId = 2;</code>
+   * <code>int32 slotId = 1;</code>
    * @return The slotId.
    */
   @java.lang.Override
@@ -125,10 +105,10 @@ private static final long serialVersionUID = 0L;
     return slotId_;
   }
 
-  public static final int COUNT_FIELD_NUMBER = 3;
+  public static final int COUNT_FIELD_NUMBER = 2;
   private int count_;
   /**
-   * <code>int32 count = 3;</code>
+   * <code>int32 count = 2;</code>
    * @return The count.
    */
   @java.lang.Override
@@ -150,14 +130,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (type_ != 0) {
-      output.writeInt32(1, type_);
-    }
     if (slotId_ != 0) {
-      output.writeInt32(2, slotId_);
+      output.writeInt32(1, slotId_);
     }
     if (count_ != 0) {
-      output.writeInt32(3, count_);
+      output.writeInt32(2, count_);
     }
     unknownFields.writeTo(output);
   }
@@ -168,17 +145,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (type_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, type_);
-    }
     if (slotId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, slotId_);
+        .computeInt32Size(1, slotId_);
     }
     if (count_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, count_);
+        .computeInt32Size(2, count_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -190,13 +163,11 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.ItemExchangeReq)) {
+    if (!(obj instanceof game.proto.ItemSellReq)) {
       return super.equals(obj);
     }
-    game.proto.ItemExchangeReq other = (game.proto.ItemExchangeReq) obj;
+    game.proto.ItemSellReq other = (game.proto.ItemSellReq) obj;
 
-    if (getType()
-        != other.getType()) return false;
     if (getSlotId()
         != other.getSlotId()) return false;
     if (getCount()
@@ -212,8 +183,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getType();
     hash = (37 * hash) + SLOTID_FIELD_NUMBER;
     hash = (53 * hash) + getSlotId();
     hash = (37 * hash) + COUNT_FIELD_NUMBER;
@@ -223,69 +192,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.ItemExchangeReq parseFrom(byte[] data)
+  public static game.proto.ItemSellReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.ItemExchangeReq parseFrom(java.io.InputStream input)
+  public static game.proto.ItemSellReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.ItemExchangeReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.ItemSellReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.ItemExchangeReq parseDelimitedFrom(
+  public static game.proto.ItemSellReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.ItemExchangeReq parseFrom(
+  public static game.proto.ItemSellReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -298,7 +267,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.ItemExchangeReq prototype) {
+  public static Builder newBuilder(game.proto.ItemSellReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -315,29 +284,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 银行背包,转移物品
+   * 出售物品
    * </pre>
    *
-   * Protobuf type {@code Message.ItemExchangeReq}
+   * Protobuf type {@code Message.ItemSellReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.ItemExchangeReq)
-      game.proto.ItemExchangeReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.ItemSellReq)
+      game.proto.ItemSellReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_ItemExchangeReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_ItemSellReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_ItemExchangeReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_ItemSellReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.ItemExchangeReq.class, game.proto.ItemExchangeReq.Builder.class);
+              game.proto.ItemSellReq.class, game.proto.ItemSellReq.Builder.class);
     }
 
-    // Construct using game.proto.ItemExchangeReq.newBuilder()
+    // Construct using game.proto.ItemSellReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -355,8 +324,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      type_ = 0;
-
       slotId_ = 0;
 
       count_ = 0;
@@ -367,17 +334,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_ItemExchangeReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_ItemSellReq_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.ItemExchangeReq getDefaultInstanceForType() {
-      return game.proto.ItemExchangeReq.getDefaultInstance();
+    public game.proto.ItemSellReq getDefaultInstanceForType() {
+      return game.proto.ItemSellReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.ItemExchangeReq build() {
-      game.proto.ItemExchangeReq result = buildPartial();
+    public game.proto.ItemSellReq build() {
+      game.proto.ItemSellReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -385,9 +352,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.ItemExchangeReq buildPartial() {
-      game.proto.ItemExchangeReq result = new game.proto.ItemExchangeReq(this);
-      result.type_ = type_;
+    public game.proto.ItemSellReq buildPartial() {
+      game.proto.ItemSellReq result = new game.proto.ItemSellReq(this);
       result.slotId_ = slotId_;
       result.count_ = count_;
       onBuilt();
@@ -428,19 +394,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.ItemExchangeReq) {
-        return mergeFrom((game.proto.ItemExchangeReq)other);
+      if (other instanceof game.proto.ItemSellReq) {
+        return mergeFrom((game.proto.ItemSellReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.ItemExchangeReq other) {
-      if (other == game.proto.ItemExchangeReq.getDefaultInstance()) return this;
-      if (other.getType() != 0) {
-        setType(other.getType());
-      }
+    public Builder mergeFrom(game.proto.ItemSellReq other) {
+      if (other == game.proto.ItemSellReq.getDefaultInstance()) return this;
       if (other.getSlotId() != 0) {
         setSlotId(other.getSlotId());
       }
@@ -462,11 +425,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.ItemExchangeReq parsedMessage = null;
+      game.proto.ItemSellReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.ItemExchangeReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.ItemSellReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -476,52 +439,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int type_ ;
-    /**
-     * <pre>
-     * 1: bank -&gt; bag, 2: bag -&gt; bank
-     * </pre>
-     *
-     * <code>int32 type = 1;</code>
-     * @return The type.
-     */
-    @java.lang.Override
-    public int getType() {
-      return type_;
-    }
-    /**
-     * <pre>
-     * 1: bank -&gt; bag, 2: bag -&gt; bank
-     * </pre>
-     *
-     * <code>int32 type = 1;</code>
-     * @param value The type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setType(int value) {
-      
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 1: bank -&gt; bag, 2: bag -&gt; bank
-     * </pre>
-     *
-     * <code>int32 type = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearType() {
-      
-      type_ = 0;
-      onChanged();
-      return this;
-    }
-
     private int slotId_ ;
     /**
-     * <code>int32 slotId = 2;</code>
+     * <code>int32 slotId = 1;</code>
      * @return The slotId.
      */
     @java.lang.Override
@@ -529,7 +449,7 @@ private static final long serialVersionUID = 0L;
       return slotId_;
     }
     /**
-     * <code>int32 slotId = 2;</code>
+     * <code>int32 slotId = 1;</code>
      * @param value The slotId to set.
      * @return This builder for chaining.
      */
@@ -540,7 +460,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 slotId = 2;</code>
+     * <code>int32 slotId = 1;</code>
      * @return This builder for chaining.
      */
     public Builder clearSlotId() {
@@ -552,7 +472,7 @@ private static final long serialVersionUID = 0L;
 
     private int count_ ;
     /**
-     * <code>int32 count = 3;</code>
+     * <code>int32 count = 2;</code>
      * @return The count.
      */
     @java.lang.Override
@@ -560,7 +480,7 @@ private static final long serialVersionUID = 0L;
       return count_;
     }
     /**
-     * <code>int32 count = 3;</code>
+     * <code>int32 count = 2;</code>
      * @param value The count to set.
      * @return This builder for chaining.
      */
@@ -571,7 +491,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 count = 3;</code>
+     * <code>int32 count = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearCount() {
@@ -593,41 +513,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.ItemExchangeReq)
+    // @@protoc_insertion_point(builder_scope:Message.ItemSellReq)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.ItemExchangeReq)
-  private static final game.proto.ItemExchangeReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.ItemSellReq)
+  private static final game.proto.ItemSellReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.ItemExchangeReq();
+    DEFAULT_INSTANCE = new game.proto.ItemSellReq();
   }
 
-  public static game.proto.ItemExchangeReq getDefaultInstance() {
+  public static game.proto.ItemSellReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<ItemExchangeReq>
-      PARSER = new com.google.protobuf.AbstractParser<ItemExchangeReq>() {
+  private static final com.google.protobuf.Parser<ItemSellReq>
+      PARSER = new com.google.protobuf.AbstractParser<ItemSellReq>() {
     @java.lang.Override
-    public ItemExchangeReq parsePartialFrom(
+    public ItemSellReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new ItemExchangeReq(input, extensionRegistry);
+      return new ItemSellReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<ItemExchangeReq> parser() {
+  public static com.google.protobuf.Parser<ItemSellReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<ItemExchangeReq> getParserForType() {
+  public com.google.protobuf.Parser<ItemSellReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.ItemExchangeReq getDefaultInstanceForType() {
+  public game.proto.ItemSellReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

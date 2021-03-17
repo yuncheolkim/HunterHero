@@ -47,14 +47,21 @@ enum MsgNo {
     resource_change_push = 5001;
     // 玩家等级变化
     PlayerLevelChangePushNo = 5002;
+    // 经验变化推送
     ExpChangePushNo = 5003;
 
     // 背包变化
     BagInfoChangePushNo = 6001;
     BagCleanReqNo = 6002;
 
-    // Item
+    // 丢弃物品
     ItemDiscardReqNo = 7001;
     // 购买物品
     ItemBuyReqNo = 7002;
+    // 银行背包,转移物品
+    ItemExchangeReqNo = 7003;
+    // 出售物品
+    ItemSellReqNo = 7004;
+
+
 }

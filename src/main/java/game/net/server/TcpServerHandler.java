@@ -1,8 +1,8 @@
 package game.net.server;
 
 import cn.hutool.log.Log;
-import game.base.Constants;
 import game.base.G;
+import game.base.GameConstants;
 import game.base.Logs;
 import game.msg.LoginMsgProcess;
 import game.msg.MsgProcess;
@@ -38,16 +38,16 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
         int msgNo = msg.getMsgNo();
 
         if (isLogin(msgNo)) {
-            if (ctx.channel().hasAttr(Constants.pid)) {
+            if (ctx.channel().hasAttr(GameConstants.pid)) {
                 // 重复登录
                 return;
             }
             G.W.getLoginWork().addTask(new LoginMsgProcess(ctx.channel(), msg));
-        } else if (!ctx.channel().hasAttr(Constants.pid)) {
+        } else if (!ctx.channel().hasAttr(GameConstants.pid)) {
             // 没有登录
             return;
         } else {
-            Attribute<Long> attr = ctx.channel().attr(Constants.pid);
+            Attribute<Long> attr = ctx.channel().attr(GameConstants.pid);
             Optional<Player> player = G.P.findPlayer(attr.get());
             if (player.isPresent()) {
                 G.W.getPlayerWork(player.get().getPid()).addTask(new MsgProcess(msg, player.get()));

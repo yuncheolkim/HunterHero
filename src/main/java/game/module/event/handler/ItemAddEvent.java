@@ -14,6 +14,10 @@ public class ItemAddEvent implements IEvent {
     public ItemAddEvent() {
     }
 
+    public ItemAddEvent(ItemData itemData) {
+        this.itemData = itemData;
+    }
+
     @Override
     public EventType type() {
         return EventType.ITEM_ADD;

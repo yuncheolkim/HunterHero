@@ -2,7 +2,7 @@ package game.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableMap;
-import game.base.Constants;
+import game.base.GameConstants;
 import game.base.Logs;
 import game.utils.FileUtils;
 import game.utils.JsonUtil;
@@ -26,7 +26,7 @@ public class JsonConfig {
 
     public Map<Integer, DataConfigData> load() {
         try {
-            Logs.C.info(Constants.TOKEN_START + "加载配置文件:{}", fileName);
+            Logs.C.info(GameConstants.TOKEN_START + "加载配置文件:{}", fileName);
             String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
             ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builder();
             return b.putAll(JsonUtil.fromJsonString(s, new TypeReference<Map<Integer, DataConfigData>>() {
@@ -35,7 +35,7 @@ public class JsonConfig {
             Logs.C.error(fileName, e);
             throw new RuntimeException(e);
         } finally {
-            Logs.C.info(Constants.TOKEN_END + "加载配置文件结束:{}", fileName);
+            Logs.C.info(GameConstants.TOKEN_END + "加载配置文件结束:{}", fileName);
         }
     }
 

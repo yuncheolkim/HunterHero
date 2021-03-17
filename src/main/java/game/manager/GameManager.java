@@ -38,6 +38,23 @@ public class GameManager extends AbsLifecycle {
     private DefaultHeroCalcProcess heroCalcProcess = new DefaultHeroCalcProcess();
 
     public GameManager() {
+    }
+
+    private void addHandler(IInvoke taskReqInvoker) {
+        handlerMap.put(taskReqInvoker.getMsgNo(), taskReqInvoker);
+    }
+
+    public IInvoke getHandler(Integer msgNo) {
+        return handlerMap.get(msgNo);
+    }
+
+
+    public LoginHandler getLoginHandler() {
+        return loginHandler;
+    }
+
+    @Override
+    public void start() {
         // player
         addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
         // task
@@ -56,26 +73,11 @@ public class GameManager extends AbsLifecycle {
         // bag
         addHandler(new Invoker<>(MsgNo.BagCleanReqNo_VALUE, BagHandler::clean, BagCleanReq::parser));
         addHandler(new Invoker<>(MsgNo.ItemDiscardReqNo_VALUE, BagHandler::discardItem, ItemDiscardReq::parser));
+        addHandler(new Invoker<>(MsgNo.ItemExchangeReqNo_VALUE, BagHandler::exchangeItem, ItemExchangeReq::parser));
+        // 购买物品
         addHandler(new Invoker<>(MsgNo.ItemBuyReqNo_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
-
-
-    }
-
-    private void addHandler(IInvoke taskReqInvoker) {
-        handlerMap.put(taskReqInvoker.getMsgNo(), taskReqInvoker);
-    }
-
-    public IInvoke getHandler(Integer msgNo) {
-        return handlerMap.get(msgNo);
-    }
-
-
-    public LoginHandler getLoginHandler() {
-        return loginHandler;
-    }
-
-    @Override
-    public void start() {
+        // 出售物品
+        addHandler(new Invoker<>(MsgNo.ItemSellReqNo_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
         // 测试
         addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
         // inner

@@ -149,6 +149,10 @@ public enum MsgNo
    */
   PlayerLevelChangePushNo(5002),
   /**
+   * <pre>
+   * 经验变化推送
+   * </pre>
+   *
    * <code>ExpChangePushNo = 5003;</code>
    */
   ExpChangePushNo(5003),
@@ -166,7 +170,7 @@ public enum MsgNo
   BagCleanReqNo(6002),
   /**
    * <pre>
-   * Item
+   * 丢弃物品
    * </pre>
    *
    * <code>ItemDiscardReqNo = 7001;</code>
@@ -180,6 +184,22 @@ public enum MsgNo
    * <code>ItemBuyReqNo = 7002;</code>
    */
   ItemBuyReqNo(7002),
+  /**
+   * <pre>
+   * 银行背包,转移物品
+   * </pre>
+   *
+   * <code>ItemExchangeReqNo = 7003;</code>
+   */
+  ItemExchangeReqNo(7003),
+  /**
+   * <pre>
+   * 出售物品
+   * </pre>
+   *
+   * <code>ItemSellReqNo = 7004;</code>
+   */
+  ItemSellReqNo(7004),
   UNRECOGNIZED(-1),
   ;
 
@@ -324,6 +344,10 @@ public enum MsgNo
    */
   public static final int PlayerLevelChangePushNo_VALUE = 5002;
   /**
+   * <pre>
+   * 经验变化推送
+   * </pre>
+   *
    * <code>ExpChangePushNo = 5003;</code>
    */
   public static final int ExpChangePushNo_VALUE = 5003;
@@ -341,7 +365,7 @@ public enum MsgNo
   public static final int BagCleanReqNo_VALUE = 6002;
   /**
    * <pre>
-   * Item
+   * 丢弃物品
    * </pre>
    *
    * <code>ItemDiscardReqNo = 7001;</code>
@@ -355,6 +379,22 @@ public enum MsgNo
    * <code>ItemBuyReqNo = 7002;</code>
    */
   public static final int ItemBuyReqNo_VALUE = 7002;
+  /**
+   * <pre>
+   * 银行背包,转移物品
+   * </pre>
+   *
+   * <code>ItemExchangeReqNo = 7003;</code>
+   */
+  public static final int ItemExchangeReqNo_VALUE = 7003;
+  /**
+   * <pre>
+   * 出售物品
+   * </pre>
+   *
+   * <code>ItemSellReqNo = 7004;</code>
+   */
+  public static final int ItemSellReqNo_VALUE = 7004;
 
 
   public final int getNumber() {
@@ -404,6 +444,8 @@ public enum MsgNo
       case 6002: return BagCleanReqNo;
       case 7001: return ItemDiscardReqNo;
       case 7002: return ItemBuyReqNo;
+      case 7003: return ItemExchangeReqNo;
+      case 7004: return ItemSellReqNo;
       default: return null;
     }
   }

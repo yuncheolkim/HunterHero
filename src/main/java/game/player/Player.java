@@ -1,10 +1,8 @@
 package game.player;
 
-import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Multimap;
 import game.anno.SaveData;
-import game.base.Constants;
 import game.base.G;
+import game.base.GameConstants;
 import game.base.Logs;
 import game.base.Work;
 import game.config.DataConfigData;
@@ -13,6 +11,8 @@ import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
+import game.module.bag.BagUpdateService;
+import game.module.bag.ItemBoxData;
 import game.module.event.handler.ExpAddEvent;
 import game.module.event.handler.ItemAddEvent;
 import game.module.event.handler.LevelUpEvent;
@@ -33,7 +33,8 @@ import org.joda.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static game.base.Constants.MAX_PLAYER_LEVEL;
+import static game.base.GameConstants.MAX_PLAYER_LEVEL;
+import static game.module.bag.BagUpdateService.updatePlayerBank;
 
 /**
  * 线程安全
@@ -51,7 +52,7 @@ public class Player {
      * 需持久化
      */
     @SaveData
-    private PlayerData.Builder pd = PlayerData.newBuilder();
+    public PlayerData.Builder pd = PlayerData.newBuilder();
 
     /**
      * 后端数据
@@ -82,7 +83,9 @@ public class Player {
     /**
      * key: itemId
      */
-    private final Multimap<Integer, BagSlot> bagSlotMap = LinkedHashMultimap.create();
+
+    public final ItemBoxData bag = new ItemBoxData();
+    public final ItemBoxData bank = new ItemBoxData();
 
     public Player(long pid) {
         this.pid = pid;
@@ -157,7 +160,11 @@ public class Player {
 
         // 背包
         for (BagSlot bagSlot : pd.getBagMap().values()) {
-            bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
+            bag.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
+        }
+        // 银行
+        for (BagSlot bagSlot : pd.getBankMap().values()) {
+            bank.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
         }
 
     }
@@ -370,21 +377,22 @@ public class Player {
      *
      * @param data
      */
-    public void addItem(ItemData data) {
+    public void addItem(ItemData data, int type) {
+        BagUpdateService bagUpdateService = findBagUpdateService(type);
+        ItemBoxData box = bagUpdateService.box(this);
         ModuleAssert.isTrue(data.getCount() > 0, ErrorEnum.ERR_2);
 
-        Map<Integer, BagSlot> bagMap = pd.getBagMap();
         DataConfigData dataConfigData = G.C.dataMap6.get(data.getItemId());
 
-        BagInfoChangePush.Builder bag = BagInfoChangePush.newBuilder();
+        BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
 
         final int stack = dataConfigData.stack;
         List<BagSlot> change = new ArrayList<>(10);
         int remainCount = stack * bagRemain();
         if (stack > 1) {// 可堆叠
-            if (bagSlotMap.containsKey(data.getItemId())) {
+            if (box.bagSlotMap.containsKey(data.getItemId())) {
                 // 已经有物品
-                Collection<BagSlot> bagSlots = bagSlotMap.get(data.getItemId());
+                Collection<BagSlot> bagSlots = box.bagSlotMap.get(data.getItemId());
                 for (BagSlot bagSlot : bagSlots) {
                     if (bagSlot.getData().getCount() < stack) {
                         remainCount += stack - bagSlot.getData().getCount();
@@ -398,7 +406,7 @@ public class Player {
         ModuleAssert.isTrue(remainCount >= count, ErrorEnum.ERR_104);
 
         for (BagSlot changedSlot : change) {
-            bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);
+            box.bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);
 
             final int oldCount = changedSlot.getData().getCount();
             final int added = Math.min(stack - oldCount, count);
@@ -409,7 +417,7 @@ public class Player {
             BagSlot slot = builder.build();
 
             // change info
-            bag.addSlot(slot);
+            bagPushBuilder.addSlot(slot);
             if (count == 0) {
                 break;
             }
@@ -425,7 +433,7 @@ public class Player {
 
                     BagSlot slot = BagSlot.newBuilder().setSlotId(i).setData(data.toBuilder().setCount(added)).build();
                     // change info
-                    bag.addSlot(slot);
+                    bagPushBuilder.addSlot(slot);
                     if (count == 0) {
                         break;
                     }
@@ -434,19 +442,23 @@ public class Player {
         }
 
         // Player data update
-        for (BagSlot bagSlot : bag.getSlotList()) {
-            pd.putBag(bagSlot.getSlotId(), bagSlot);
-            bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
+        for (BagSlot bagSlot : bagPushBuilder.getSlotList()) {
+            bagUpdateService.update(this, bagSlot);
         }
 
         // event
-        ItemAddEvent event = new ItemAddEvent();
-        event.itemData = data;
-        G.E.firePlayerEvent(this, event);
+        G.E.firePlayerEvent(this, new ItemAddEvent(data));
 
         // push
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bag.setType(1).build());
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
 
+    }
+
+    private BagUpdateService findBagUpdateService(int type) {
+        if (type == 1) {
+            return BagUpdateService.updatePlayerBag;
+        }
+        return updatePlayerBank;
     }
 
     /**
@@ -460,16 +472,18 @@ public class Player {
 
     /**
      * 整理背包
+     * 1:bag
+     * 2:bank
      */
-    public void cleanBag() {
+    public void cleanBag(int type) {
+        BagUpdateService bagUpdateService = findBagUpdateService(type);
         List<BagSlot> collect = pd.getBagMap().values().stream().sorted((o1, o2) -> {
             if (o1.getData().getItemId() == o2.getData().getItemId()) {
                 return o2.getData().getCount() - o1.getData().getCount();
             }
             return o1.getData().getItemId() - o2.getData().getItemId();
         }).collect(Collectors.toList());
-        bagSlotMap.clear();
-        pd.clearBag();
+        bagUpdateService.clean(this);
         List<BagSlot> zipItemList = new ArrayList<>(collect.size());
         int lastIndex = 0;
         Map<Integer, DataConfigData> itemConfigData = G.C.dataMap6;
@@ -508,37 +522,36 @@ public class Player {
         for (int i = 0; i < zipItemList.size(); i++) {
             BagSlot bagSlot = zipItemList.get(i);
             bagSlot = bagSlot.toBuilder().setSlotId(i).build();
-            bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
-            pd.putBag(i, bagSlot);
+            bagUpdateService.update(this, bagSlot);
         }
 
         // push
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, BagInfoChangePush.newBuilder()
-                .setType(1)
+                .setType(type)
                 .setClean(true).addAllSlot(pd.getBagMap().values()).build());
     }
 
     /**
-     * 丢弃物品
+     * 从背包移除物品
      *
-     * @param itemId
+     * @param type   1:bag,2:bank
      * @param count
      * @param slotId
      */
-    public void discardBagItem(int itemId, int count, int slotId) {
+    public void removeBagItem(int type, int count, int slotId) {
+        if (count <= 0) {
+            return;
+        }
+        BagUpdateService bagUpdateService = findBagUpdateService(type);
 
         BagSlot bagSlot = pd.getBagMap().get(slotId);
+        bagUpdateService.box(this).bagSlotMap.remove(bagSlot.getData().getItemId(), bagSlot);
         int remain = Math.max(bagSlot.getData().getCount() - count, 0);
-        if (remain == 0) {
-            bagSlotMap.remove(itemId, bagSlot);
-            pd.removeBag(slotId);
-        } else {
-            bagSlot = bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain)).build();
-            bagSlotMap.put(itemId, bagSlot);
-            pd.putBag(slotId, bagSlot);
-        }
 
-        BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(1);
+        bagSlot = bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain)).build();
+        bagUpdateService.update(this, bagSlot);
+
+        BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(type);
         builder.addSlot(bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain).build()).build());
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, builder.build());
     }
@@ -557,7 +570,7 @@ public class Player {
 
     public void setChannel(Channel channel) {
         transport.setChannel(channel);
-        transport.getChannel().attr(Constants.pid).set(pid);
+        transport.getChannel().attr(GameConstants.pid).set(pid);
     }
 
     public long getPid() {
