@@ -163,10 +163,14 @@ public class Player {
         for (BagSlot bagSlot : pd.getBagMap().values()) {
             bag.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
         }
+        bag.capacity = pd.getBagCapacity();
+        bag.count = pd.getBagCount();
         // 银行
         for (BagSlot bagSlot : pd.getBankMap().values()) {
             bank.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
         }
+        bank.capacity = pd.getBankCapacity();
+        bank.count = pd.getBankCount();
 
     }
 
@@ -389,7 +393,7 @@ public class Player {
 
         final int stack = dataConfigData.stack;
         List<BagSlot> change = new ArrayList<>(10);
-        int remainCount = stack * bagRemain();
+        int remainCount = stack * box.remain();
         if (stack > 1) {// 可堆叠
             if (box.bagSlotMap.containsKey(data.getItemId())) {
                 // 已经有物品
@@ -426,8 +430,8 @@ public class Player {
         // 如果还有剩余，则在寻找空闲的格子
         if (count > 0) {
 
-            for (int i = 0; i < pd.getBagCapacity(); i++) {
-                if (!pd.containsBag(i)) {
+            for (int i = 0; i < box.capacity; i++) {
+                if (bagUpdateService.find(this, i) == null) {
                     // 添加物品
                     final int added = Math.min(stack, count);
                     count -= added;
@@ -460,15 +464,6 @@ public class Player {
             return BagUpdateService.updatePlayerBag;
         }
         return updatePlayerBank;
-    }
-
-    /**
-     * 剩余背包空间数
-     *
-     * @return
-     */
-    private int bagRemain() {
-        return pd.getBagCapacity() - pd.getBagCount();
     }
 
     /**
@@ -545,7 +540,7 @@ public class Player {
         }
         BagUpdateService bagUpdateService = findBagUpdateService(type);
 
-        BagSlot bagSlot = pd.getBagMap().get(slotId);
+        BagSlot bagSlot = bagUpdateService.find(this, slotId);
         bagUpdateService.box(this).bagSlotMap.remove(bagSlot.getData().getItemId(), bagSlot);
         int remain = Math.max(bagSlot.getData().getCount() - count, 0);
 

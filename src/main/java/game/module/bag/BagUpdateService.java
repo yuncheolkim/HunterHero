@@ -17,6 +17,8 @@ public interface BagUpdateService {
 
     ItemBoxData box(Player p);
 
+    BagSlot find(Player p, int slotId);
+
     /**
      * 更新银行
      */
@@ -24,9 +26,13 @@ public interface BagUpdateService {
         @Override
         public void update(Player p, BagSlot d) {
             if (d.getData().getCount() == 0) {
-                box(p).bagSlotMap.remove(d.getData().getItemId(), d);
+                p.pd.removeBank(d.getSlotId());
+                box(p).count -= 1;
 
             } else {
+                if (!p.pd.containsBank(d.getSlotId())) {
+                    box(p).count += 1;
+                }
                 p.getPd().putBank(d.getSlotId(), d);
                 box(p).bagSlotMap.put(d.getData().getItemId(), d);
             }
@@ -44,6 +50,11 @@ public interface BagUpdateService {
             return p.bank;
         }
 
+        @Override
+        public BagSlot find(Player p, int slotId) {
+            return p.pd.getBankMap().get(slotId);
+        }
+
     };
     /**
      * 更新背包
@@ -52,8 +63,12 @@ public interface BagUpdateService {
         @Override
         public void update(Player p, BagSlot d) {
             if (d.getData().getCount() == 0) {
-                box(p).bagSlotMap.remove(d.getData().getItemId(), d);
+                p.pd.removeBag(d.getSlotId());
+                box(p).count -= 1;
             } else {
+                if (!p.pd.containsBag(d.getSlotId())) {
+                    box(p).count += 1;
+                }
                 p.pd.putBag(d.getSlotId(), d);
                 box(p).bagSlotMap.put(d.getData().getItemId(), d);
             }
@@ -68,6 +83,11 @@ public interface BagUpdateService {
         @Override
         public ItemBoxData box(Player p) {
             return p.bag;
+        }
+
+        @Override
+        public BagSlot find(Player p, int slotId) {
+            return p.pd.getBagMap().get(slotId);
         }
 
 

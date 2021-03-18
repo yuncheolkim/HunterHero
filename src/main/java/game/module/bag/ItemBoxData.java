@@ -16,6 +16,11 @@ public class ItemBoxData {
     public final Multimap<Integer, BagSlot> bagSlotMap = LinkedHashMultimap.create();
 
     public int count;
+    public int capacity;
 
+
+    public int remain() {
+        return Math.max(0, capacity - count);
+    }
 
 }
