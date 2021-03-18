@@ -473,7 +473,7 @@ public class Player {
      */
     public void cleanBag(int type) {
         BagUpdateService bagUpdateService = findBagUpdateService(type);
-        List<BagSlot> collect = pd.getBagMap().values().stream().sorted((o1, o2) -> {
+        List<BagSlot> collect = bagUpdateService.findAll(this).values().stream().sorted((o1, o2) -> {
             if (o1.getData().getItemId() == o2.getData().getItemId()) {
                 return o2.getData().getCount() - o1.getData().getCount();
             }
@@ -524,7 +524,7 @@ public class Player {
         // push
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, BagInfoChangePush.newBuilder()
                 .setType(type)
-                .setClean(true).addAllSlot(pd.getBagMap().values()).build());
+                .setClean(true).addAllSlot(bagUpdateService.findAll(this).values()).build());
     }
 
     /**

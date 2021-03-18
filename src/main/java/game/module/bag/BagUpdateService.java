@@ -3,6 +3,8 @@ package game.module.bag;
 import game.player.Player;
 import game.proto.data.BagSlot;
 
+import java.util.Map;
+
 /**
  * @author Yunzhe.Jin
  * 2021/3/17 23:20
@@ -18,6 +20,8 @@ public interface BagUpdateService {
     ItemBoxData box(Player p);
 
     BagSlot find(Player p, int slotId);
+
+    Map<Integer, BagSlot> findAll(Player p);
 
     /**
      * 更新银行
@@ -55,6 +59,11 @@ public interface BagUpdateService {
             return p.pd.getBankMap().get(slotId);
         }
 
+        @Override
+        public Map<Integer, BagSlot> findAll(Player p) {
+            return p.pd.getBankMap();
+        }
+
     };
     /**
      * 更新背包
@@ -88,6 +97,11 @@ public interface BagUpdateService {
         @Override
         public BagSlot find(Player p, int slotId) {
             return p.pd.getBagMap().get(slotId);
+        }
+
+        @Override
+        public Map<Integer, BagSlot> findAll(Player p) {
+            return p.pd.getBagMap();
         }
 
 
