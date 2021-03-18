@@ -114,4 +114,12 @@ public class ModuleAssert {
     public static void notBlank(CharSequence o, ModuleErrorNoResolve error) {
         notBlank(o, error, (Object) null);
     }
+
+    //
+    public static void isPositive(int num) {
+        if (num <= 0) {
+            throw new ModuleException(ErrorEnum.ERR_3);
+        }
+    }
+
 }

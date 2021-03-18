@@ -85,6 +85,7 @@ public class Player {
      */
 
     public final ItemBoxData bag = new ItemBoxData();
+
     public final ItemBoxData bank = new ItemBoxData();
 
     public Player(long pid) {
@@ -380,7 +381,7 @@ public class Player {
     public void addItem(ItemData data, int type) {
         BagUpdateService bagUpdateService = findBagUpdateService(type);
         ItemBoxData box = bagUpdateService.box(this);
-        ModuleAssert.isTrue(data.getCount() > 0, ErrorEnum.ERR_2);
+        ModuleAssert.isPositive(data.getCount());
 
         DataConfigData dataConfigData = G.C.dataMap6.get(data.getItemId());
 
@@ -532,7 +533,7 @@ public class Player {
     }
 
     /**
-     * 从背包移除物品
+     * 从背包/银行移除物品
      *
      * @param type   1:bag,2:bank
      * @param count

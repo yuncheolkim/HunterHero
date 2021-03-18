@@ -47,20 +47,18 @@ public class ShopHandler {
      */
     public static void sellItem(Player player, ItemSellReq req) {
         BagSlot bagSlot = player.getPd().getBagMap().get(req.getSlotId());
-        if (bagSlot != null) {
+        ModuleAssert.notNull(bagSlot);
 
-            DataConfigData item = G.C.getItem(bagSlot.getData().getItemId());
+        DataConfigData item = G.C.getItem(bagSlot.getData().getItemId());
 
-            IIdDisplay display = ResourceEnum.display(item.resourceId);
+        IIdDisplay display = ResourceEnum.display(item.resourceId);
 
-            int count = Math.min(bagSlot.getData().getCount(), req.getCount());
+        int count = Math.min(bagSlot.getData().getCount(), req.getCount());
 
-            if (display == ResourceEnum.GOLD) {
-                player.addGold(count * item.sell, ResourceSourceEnum.出售物品);
-
-                // 移除物品
-                player.removeBagItem(1, count, req.getSlotId());
-            }
+        if (display == ResourceEnum.GOLD) {
+            // 移除物品
+            player.removeBagItem(1, count, req.getSlotId());
+            player.addGold(count * item.sell, ResourceSourceEnum.出售物品);
         }
     }
 }

@@ -53,7 +53,6 @@ public interface BagUpdateService {
         public void update(Player p, BagSlot d) {
             if (d.getData().getCount() == 0) {
                 box(p).bagSlotMap.remove(d.getData().getItemId(), d);
-
             } else {
                 p.pd.putBag(d.getSlotId(), d);
                 box(p).bagSlotMap.put(d.getData().getItemId(), d);

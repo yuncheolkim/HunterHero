@@ -55,6 +55,13 @@ public class GameManager extends AbsLifecycle {
 
     @Override
     public void start() {
+        // 测试
+        addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
+        // inner
+        addHandler(new InvokerNoParam(10, PlayerHandler::tick));
+        addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
+        addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
+
         // player
         addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
         // task
@@ -78,13 +85,6 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.ItemBuyReqNo_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
         // 出售物品
         addHandler(new Invoker<>(MsgNo.ItemSellReqNo_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
-        // 测试
-        addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
-        // inner
-        addHandler(new InvokerNoParam(10, PlayerHandler::tick));
-        addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
-        addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
-
         super.start();
     }
 
