@@ -10,12 +10,14 @@ message PlayerData {
     int64 pid = 1;
     string name = 2;
     string account = 3;
-    int64 lastLoginTime = 4;
-    int64 updateTime = 5;
     int32 level = 9;
+    // 任务信息
     PlayerTask task = 101;
+    // 所在场景
     SceneData sceneData = 201;
+    // 资源信息
     Resource resource = 301;
+    // 英雄信息
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息
     repeated FightEnemyInfo fightInfo = 501;
@@ -209,9 +211,14 @@ message BuffRecord {
 
     float f5 = 25;
 }
-
+enum RewardType {
+    REWARD_NORMAL = 0;
+    REWARD_RESOURCE = 1;
+    REWARD_ITEM = 2;
+}
 // Reward
 message Reward {
+    RewardType type = 100;
     int32 rewardId = 1;
     int32 count = 2;
     // 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验

@@ -85,11 +85,6 @@ private static final long serialVersionUID = 0L;
             powerRecoverTime_ = input.readInt64();
             break;
           }
-          case 32: {
-
-            createTime_ = input.readInt64();
-            break;
-          }
           case 40: {
 
             loginTime_ = input.readInt64();
@@ -138,6 +133,10 @@ private static final long serialVersionUID = 0L;
   public static final int FIGHTTIME_FIELD_NUMBER = 1;
   private long fightTime_;
   /**
+   * <pre>
+   * 下一次触发战斗时间
+   * </pre>
+   *
    * <code>int64 fightTime = 1;</code>
    * @return The fightTime.
    */
@@ -177,23 +176,16 @@ private static final long serialVersionUID = 0L;
   public static final int POWERRECOVERTIME_FIELD_NUMBER = 3;
   private long powerRecoverTime_;
   /**
+   * <pre>
+   * 体力最后一次恢复时间
+   * </pre>
+   *
    * <code>int64 powerRecoverTime = 3;</code>
    * @return The powerRecoverTime.
    */
   @java.lang.Override
   public long getPowerRecoverTime() {
     return powerRecoverTime_;
-  }
-
-  public static final int CREATETIME_FIELD_NUMBER = 4;
-  private long createTime_;
-  /**
-   * <code>int64 createTime = 4;</code>
-   * @return The createTime.
-   */
-  @java.lang.Override
-  public long getCreateTime() {
-    return createTime_;
   }
 
   public static final int LOGINTIME_FIELD_NUMBER = 5;
@@ -246,9 +238,6 @@ private static final long serialVersionUID = 0L;
     if (powerRecoverTime_ != 0L) {
       output.writeInt64(3, powerRecoverTime_);
     }
-    if (createTime_ != 0L) {
-      output.writeInt64(4, createTime_);
-    }
     if (loginTime_ != 0L) {
       output.writeInt64(5, loginTime_);
     }
@@ -286,10 +275,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(3, powerRecoverTime_);
     }
-    if (createTime_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(4, createTime_);
-    }
     if (loginTime_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(5, loginTime_);
@@ -319,8 +304,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFightAreaList())) return false;
     if (getPowerRecoverTime()
         != other.getPowerRecoverTime()) return false;
-    if (getCreateTime()
-        != other.getCreateTime()) return false;
     if (getLoginTime()
         != other.getLoginTime()) return false;
     if (getUpdateTime()
@@ -346,9 +329,6 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + POWERRECOVERTIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getPowerRecoverTime());
-    hash = (37 * hash) + CREATETIME_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getCreateTime());
     hash = (37 * hash) + LOGINTIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getLoginTime());
@@ -498,8 +478,6 @@ private static final long serialVersionUID = 0L;
       bitField0_ = (bitField0_ & ~0x00000001);
       powerRecoverTime_ = 0L;
 
-      createTime_ = 0L;
-
       loginTime_ = 0L;
 
       updateTime_ = 0L;
@@ -538,7 +516,6 @@ private static final long serialVersionUID = 0L;
       }
       result.fightArea_ = fightArea_;
       result.powerRecoverTime_ = powerRecoverTime_;
-      result.createTime_ = createTime_;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
       onBuilt();
@@ -605,9 +582,6 @@ private static final long serialVersionUID = 0L;
       if (other.getPowerRecoverTime() != 0L) {
         setPowerRecoverTime(other.getPowerRecoverTime());
       }
-      if (other.getCreateTime() != 0L) {
-        setCreateTime(other.getCreateTime());
-      }
       if (other.getLoginTime() != 0L) {
         setLoginTime(other.getLoginTime());
       }
@@ -646,6 +620,10 @@ private static final long serialVersionUID = 0L;
 
     private long fightTime_ ;
     /**
+     * <pre>
+     * 下一次触发战斗时间
+     * </pre>
+     *
      * <code>int64 fightTime = 1;</code>
      * @return The fightTime.
      */
@@ -654,6 +632,10 @@ private static final long serialVersionUID = 0L;
       return fightTime_;
     }
     /**
+     * <pre>
+     * 下一次触发战斗时间
+     * </pre>
+     *
      * <code>int64 fightTime = 1;</code>
      * @param value The fightTime to set.
      * @return This builder for chaining.
@@ -665,6 +647,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 下一次触发战斗时间
+     * </pre>
+     *
      * <code>int64 fightTime = 1;</code>
      * @return This builder for chaining.
      */
@@ -756,6 +742,10 @@ private static final long serialVersionUID = 0L;
 
     private long powerRecoverTime_ ;
     /**
+     * <pre>
+     * 体力最后一次恢复时间
+     * </pre>
+     *
      * <code>int64 powerRecoverTime = 3;</code>
      * @return The powerRecoverTime.
      */
@@ -764,6 +754,10 @@ private static final long serialVersionUID = 0L;
       return powerRecoverTime_;
     }
     /**
+     * <pre>
+     * 体力最后一次恢复时间
+     * </pre>
+     *
      * <code>int64 powerRecoverTime = 3;</code>
      * @param value The powerRecoverTime to set.
      * @return This builder for chaining.
@@ -775,43 +769,16 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 体力最后一次恢复时间
+     * </pre>
+     *
      * <code>int64 powerRecoverTime = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearPowerRecoverTime() {
       
       powerRecoverTime_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long createTime_ ;
-    /**
-     * <code>int64 createTime = 4;</code>
-     * @return The createTime.
-     */
-    @java.lang.Override
-    public long getCreateTime() {
-      return createTime_;
-    }
-    /**
-     * <code>int64 createTime = 4;</code>
-     * @param value The createTime to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCreateTime(long value) {
-      
-      createTime_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 createTime = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCreateTime() {
-      
-      createTime_ = 0L;
       onChanged();
       return this;
     }

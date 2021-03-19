@@ -62,6 +62,8 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
         addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
 
+        // heart
+        addHandler(new Invoker<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
         addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
         // task

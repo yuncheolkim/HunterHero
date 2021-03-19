@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Reward() {
+    type_ = 0;
   }
 
   @java.lang.Override
@@ -67,6 +68,12 @@ private static final long serialVersionUID = 0L;
             heroId_ = input.readInt32();
             break;
           }
+          case 800: {
+            int rawValue = input.readEnum();
+
+            type_ = rawValue;
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -97,6 +104,25 @@ private static final long serialVersionUID = 0L;
     return game.proto.data.Data.internal_static_Message_Reward_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             game.proto.data.Reward.class, game.proto.data.Reward.Builder.class);
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 100;
+  private int type_;
+  /**
+   * <code>.Message.RewardType type = 100;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  @java.lang.Override public int getTypeValue() {
+    return type_;
+  }
+  /**
+   * <code>.Message.RewardType type = 100;</code>
+   * @return The type.
+   */
+  @java.lang.Override public game.proto.data.RewardType getType() {
+    @SuppressWarnings("deprecation")
+    game.proto.data.RewardType result = game.proto.data.RewardType.valueOf(type_);
+    return result == null ? game.proto.data.RewardType.UNRECOGNIZED : result;
   }
 
   public static final int REWARDID_FIELD_NUMBER = 1;
@@ -159,6 +185,9 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       output.writeInt32(3, heroId_);
     }
+    if (type_ != game.proto.data.RewardType.REWARD_NORMAL.getNumber()) {
+      output.writeEnum(100, type_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -180,6 +209,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, heroId_);
     }
+    if (type_ != game.proto.data.RewardType.REWARD_NORMAL.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(100, type_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -195,6 +228,7 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.data.Reward other = (game.proto.data.Reward) obj;
 
+    if (type_ != other.type_) return false;
     if (getRewardId()
         != other.getRewardId()) return false;
     if (getCount()
@@ -212,6 +246,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + type_;
     hash = (37 * hash) + REWARDID_FIELD_NUMBER;
     hash = (53 * hash) + getRewardId();
     hash = (37 * hash) + COUNT_FIELD_NUMBER;
@@ -355,6 +391,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      type_ = 0;
+
       rewardId_ = 0;
 
       count_ = 0;
@@ -387,6 +425,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.data.Reward buildPartial() {
       game.proto.data.Reward result = new game.proto.data.Reward(this);
+      result.type_ = type_;
       result.rewardId_ = rewardId_;
       result.count_ = count_;
       result.heroId_ = heroId_;
@@ -438,6 +477,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.data.Reward other) {
       if (other == game.proto.data.Reward.getDefaultInstance()) return this;
+      if (other.type_ != 0) {
+        setTypeValue(other.getTypeValue());
+      }
       if (other.getRewardId() != 0) {
         setRewardId(other.getRewardId());
       }
@@ -473,6 +515,60 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private int type_ = 0;
+    /**
+     * <code>.Message.RewardType type = 100;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    @java.lang.Override public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.Message.RewardType type = 100;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeValue(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.RewardType type = 100;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public game.proto.data.RewardType getType() {
+      @SuppressWarnings("deprecation")
+      game.proto.data.RewardType result = game.proto.data.RewardType.valueOf(type_);
+      return result == null ? game.proto.data.RewardType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.Message.RewardType type = 100;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(game.proto.data.RewardType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.RewardType type = 100;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
       return this;
     }
 

@@ -8,6 +8,10 @@ public interface PlayerBackDataOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * 下一次触发战斗时间
+   * </pre>
+   *
    * <code>int64 fightTime = 1;</code>
    * @return The fightTime.
    */
@@ -31,16 +35,14 @@ public interface PlayerBackDataOrBuilder extends
   int getFightArea(int index);
 
   /**
+   * <pre>
+   * 体力最后一次恢复时间
+   * </pre>
+   *
    * <code>int64 powerRecoverTime = 3;</code>
    * @return The powerRecoverTime.
    */
   long getPowerRecoverTime();
-
-  /**
-   * <code>int64 createTime = 4;</code>
-   * @return The createTime.
-   */
-  long getCreateTime();
 
   /**
    * <code>int64 loginTime = 5;</code>

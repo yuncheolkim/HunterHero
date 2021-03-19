@@ -1,5 +1,6 @@
 package game.player;
 
+import game.anno.ProcessPersistenceData;
 import game.anno.SaveData;
 import game.base.G;
 import game.base.GameConstants;
@@ -63,30 +64,24 @@ public class Player {
 
     private LocalDateTime createTime;
 
-    @SaveData
+    @ProcessPersistenceData
     private LocalDateTime loginTime;
 
-    @SaveData
+    @ProcessPersistenceData
     private LocalDateTime updateTime;
 
-    /**
-     * 体力最后一次恢复时间
-     */
-    @SaveData
-    private long powerRecoverTime;
 
     /**
-     * 下一次触发战斗时间
+     * 背包数据
      */
-    public long nextFightTime;
+    @ProcessPersistenceData
+    public ItemBoxData bag = new ItemBoxData();
 
     /**
-     * key: itemId
+     * 银行数据
      */
-
-    public final ItemBoxData bag = new ItemBoxData();
-
-    public final ItemBoxData bank = new ItemBoxData();
+    @ProcessPersistenceData
+    public ItemBoxData bank = new ItemBoxData();
 
     public Player(long pid) {
         this.pid = pid;
@@ -112,7 +107,7 @@ public class Player {
             builder.setFirst(true);
         }
 
-        transport.send(Message.newBuilder().setMsgNo(1).setBody(builder.build().toByteString()).build());
+        transport.send(Message.newBuilder().setMsgNo(MsgNo.login_req_VALUE).setBody(builder.build().toByteString()).build());
     }
 
 
@@ -134,15 +129,15 @@ public class Player {
             initFirstPlayer();
             playerRepo.save(pd.build());
         }
-        afterLoad();
+        prepareData();
     }
 
     /**
      * 加载基本数据后处理
      */
-    private void afterLoad() {
-        loginTime = LocalDateTime.fromDateFields(new Date(pd.getLastLoginTime()));
-        updateTime = LocalDateTime.fromDateFields(new Date(pd.getUpdateTime()));
+    private void prepareData() {
+        loginTime = LocalDateTime.fromDateFields(new Date(D.getLoginTime()));
+        updateTime = LocalDateTime.fromDateFields(new Date(D.getUpdateTime()));
         pd.getResourceBuilder().setNeedExp(G.C.dataMap9.get(pd.getLevel()).exp);
 
         // 检查战斗区域
@@ -160,11 +155,13 @@ public class Player {
         }
 
         // 背包
+        bag = new ItemBoxData();
         for (BagSlot bagSlot : pd.getBagMap().values()) {
             bag.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
         }
         bag.capacity = pd.getBagCapacity();
         bag.count = pd.getBagCount();
+        bank = new ItemBoxData();
         // 银行
         for (BagSlot bagSlot : pd.getBankMap().values()) {
             bank.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
@@ -206,8 +203,8 @@ public class Player {
      */
     public void saveData() {
 
-        pd.setLastLoginTime(loginTime.toDate().getTime());
-        pd.setUpdateTime(updateTime.toDate().getTime());
+        D.setLoginTime(loginTime.toDate().getTime());
+        D.setUpdateTime(updateTime.toDate().getTime());
 
         PlayerData copy = pd.build();
         Work dataPersistenceWork = G.W.getDataPersistenceWork(pid);
@@ -342,13 +339,13 @@ public class Player {
 
         PlayerHero.Builder builder = playerHero.toBuilder();
         int exp = builder.getExp() + count;
+        int oldLevel = playerHero.getLevel();
         int level = playerHero.getLevel();
         int maxExp = G.C.needExp(level);
 
         while (exp >= maxExp) {
             level++;
             // 升级
-            G.E.firePlayerEvent(this, new LevelUpEvent(heroId, level));
 
             exp -= maxExp;
             maxExp = G.C.needExp(level);
@@ -356,6 +353,10 @@ public class Player {
         builder.setExp(exp);
         builder.setLevel(level);
         pd.putHero(heroId, builder.build());
+
+        if (oldLevel != level) {
+            G.E.firePlayerEvent(this, new LevelUpEvent(heroId, level));
+        }
 
         G.E.firePlayerEvent(this, new ExpAddEvent(heroId, count, exp, from));
     }
@@ -373,7 +374,7 @@ public class Player {
         resourceBuilder.setPower((int) Math.min(old + count, resourceBuilder.getMaxPower()));
         int add = resourceBuilder.getPower() - old;
         if (add > 0) {
-            G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.EXP, 0, add, from));
+            G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, add, from));
         }
     }
 
@@ -604,14 +605,5 @@ public class Player {
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
-
-    public long getPowerRecoverTime() {
-        return powerRecoverTime;
-    }
-
-    public void setPowerRecoverTime(long powerRecoverTime) {
-        this.powerRecoverTime = powerRecoverTime;
-    }
-
 
 }

@@ -38,73 +38,105 @@ public interface PlayerDataOrBuilder extends
       getAccountBytes();
 
   /**
-   * <code>int64 lastLoginTime = 4;</code>
-   * @return The lastLoginTime.
-   */
-  long getLastLoginTime();
-
-  /**
-   * <code>int64 updateTime = 5;</code>
-   * @return The updateTime.
-   */
-  long getUpdateTime();
-
-  /**
    * <code>int32 level = 9;</code>
    * @return The level.
    */
   int getLevel();
 
   /**
+   * <pre>
+   * 任务信息
+   * </pre>
+   *
    * <code>.Message.PlayerTask task = 101;</code>
    * @return Whether the task field is set.
    */
   boolean hasTask();
   /**
+   * <pre>
+   * 任务信息
+   * </pre>
+   *
    * <code>.Message.PlayerTask task = 101;</code>
    * @return The task.
    */
   game.proto.data.PlayerTask getTask();
   /**
+   * <pre>
+   * 任务信息
+   * </pre>
+   *
    * <code>.Message.PlayerTask task = 101;</code>
    */
   game.proto.data.PlayerTaskOrBuilder getTaskOrBuilder();
 
   /**
+   * <pre>
+   * 所在场景
+   * </pre>
+   *
    * <code>.Message.SceneData sceneData = 201;</code>
    * @return Whether the sceneData field is set.
    */
   boolean hasSceneData();
   /**
+   * <pre>
+   * 所在场景
+   * </pre>
+   *
    * <code>.Message.SceneData sceneData = 201;</code>
    * @return The sceneData.
    */
   game.proto.data.SceneData getSceneData();
   /**
+   * <pre>
+   * 所在场景
+   * </pre>
+   *
    * <code>.Message.SceneData sceneData = 201;</code>
    */
   game.proto.data.SceneDataOrBuilder getSceneDataOrBuilder();
 
   /**
+   * <pre>
+   * 资源信息
+   * </pre>
+   *
    * <code>.Message.Resource resource = 301;</code>
    * @return Whether the resource field is set.
    */
   boolean hasResource();
   /**
+   * <pre>
+   * 资源信息
+   * </pre>
+   *
    * <code>.Message.Resource resource = 301;</code>
    * @return The resource.
    */
   game.proto.data.Resource getResource();
   /**
+   * <pre>
+   * 资源信息
+   * </pre>
+   *
    * <code>.Message.Resource resource = 301;</code>
    */
   game.proto.data.ResourceOrBuilder getResourceOrBuilder();
 
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   int getHeroCount();
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   boolean containsHero(
@@ -116,11 +148,19 @@ public interface PlayerDataOrBuilder extends
   java.util.Map<java.lang.Integer, game.proto.data.PlayerHero>
   getHero();
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   java.util.Map<java.lang.Integer, game.proto.data.PlayerHero>
   getHeroMap();
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
 
@@ -128,6 +168,10 @@ public interface PlayerDataOrBuilder extends
       int key,
       game.proto.data.PlayerHero defaultValue);
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
 

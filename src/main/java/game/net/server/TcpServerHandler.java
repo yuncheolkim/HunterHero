@@ -8,6 +8,7 @@ import game.msg.LoginMsgProcess;
 import game.msg.MsgProcess;
 import game.player.Player;
 import game.proto.Message;
+import game.proto.back.MsgNo;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
@@ -34,7 +35,7 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Message msg) throws Exception {
-        log.info("收到消息：{}-{}", ctx, msg);
+        log.info("收到消息：\n{}-{}\n{}", MsgNo.forNumber(msg.getMsgNo()), ctx, msg);
         int msgNo = msg.getMsgNo();
 
         if (isLogin(msgNo)) {

@@ -73,7 +73,7 @@ public class DefaultLog implements Log {
     }
 
     public void debug(String format, Object... arguments) {
-        log.debug(format, arguments);
+        log.debug(FQCN, null, format, arguments);
     }
 
     public void debug(Throwable t, String format, Object... arguments) {

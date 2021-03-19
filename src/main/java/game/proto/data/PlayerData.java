@@ -69,16 +69,6 @@ private static final long serialVersionUID = 0L;
             account_ = s;
             break;
           }
-          case 32: {
-
-            lastLoginTime_ = input.readInt64();
-            break;
-          }
-          case 40: {
-
-            updateTime_ = input.readInt64();
-            break;
-          }
           case 72: {
 
             level_ = input.readInt32();
@@ -319,28 +309,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int LASTLOGINTIME_FIELD_NUMBER = 4;
-  private long lastLoginTime_;
-  /**
-   * <code>int64 lastLoginTime = 4;</code>
-   * @return The lastLoginTime.
-   */
-  @java.lang.Override
-  public long getLastLoginTime() {
-    return lastLoginTime_;
-  }
-
-  public static final int UPDATETIME_FIELD_NUMBER = 5;
-  private long updateTime_;
-  /**
-   * <code>int64 updateTime = 5;</code>
-   * @return The updateTime.
-   */
-  @java.lang.Override
-  public long getUpdateTime() {
-    return updateTime_;
-  }
-
   public static final int LEVEL_FIELD_NUMBER = 9;
   private int level_;
   /**
@@ -355,6 +323,10 @@ private static final long serialVersionUID = 0L;
   public static final int TASK_FIELD_NUMBER = 101;
   private game.proto.data.PlayerTask task_;
   /**
+   * <pre>
+   * 任务信息
+   * </pre>
+   *
    * <code>.Message.PlayerTask task = 101;</code>
    * @return Whether the task field is set.
    */
@@ -363,6 +335,10 @@ private static final long serialVersionUID = 0L;
     return task_ != null;
   }
   /**
+   * <pre>
+   * 任务信息
+   * </pre>
+   *
    * <code>.Message.PlayerTask task = 101;</code>
    * @return The task.
    */
@@ -371,6 +347,10 @@ private static final long serialVersionUID = 0L;
     return task_ == null ? game.proto.data.PlayerTask.getDefaultInstance() : task_;
   }
   /**
+   * <pre>
+   * 任务信息
+   * </pre>
+   *
    * <code>.Message.PlayerTask task = 101;</code>
    */
   @java.lang.Override
@@ -381,6 +361,10 @@ private static final long serialVersionUID = 0L;
   public static final int SCENEDATA_FIELD_NUMBER = 201;
   private game.proto.data.SceneData sceneData_;
   /**
+   * <pre>
+   * 所在场景
+   * </pre>
+   *
    * <code>.Message.SceneData sceneData = 201;</code>
    * @return Whether the sceneData field is set.
    */
@@ -389,6 +373,10 @@ private static final long serialVersionUID = 0L;
     return sceneData_ != null;
   }
   /**
+   * <pre>
+   * 所在场景
+   * </pre>
+   *
    * <code>.Message.SceneData sceneData = 201;</code>
    * @return The sceneData.
    */
@@ -397,6 +385,10 @@ private static final long serialVersionUID = 0L;
     return sceneData_ == null ? game.proto.data.SceneData.getDefaultInstance() : sceneData_;
   }
   /**
+   * <pre>
+   * 所在场景
+   * </pre>
+   *
    * <code>.Message.SceneData sceneData = 201;</code>
    */
   @java.lang.Override
@@ -407,6 +399,10 @@ private static final long serialVersionUID = 0L;
   public static final int RESOURCE_FIELD_NUMBER = 301;
   private game.proto.data.Resource resource_;
   /**
+   * <pre>
+   * 资源信息
+   * </pre>
+   *
    * <code>.Message.Resource resource = 301;</code>
    * @return Whether the resource field is set.
    */
@@ -415,6 +411,10 @@ private static final long serialVersionUID = 0L;
     return resource_ != null;
   }
   /**
+   * <pre>
+   * 资源信息
+   * </pre>
+   *
    * <code>.Message.Resource resource = 301;</code>
    * @return The resource.
    */
@@ -423,6 +423,10 @@ private static final long serialVersionUID = 0L;
     return resource_ == null ? game.proto.data.Resource.getDefaultInstance() : resource_;
   }
   /**
+   * <pre>
+   * 资源信息
+   * </pre>
+   *
    * <code>.Message.Resource resource = 301;</code>
    */
   @java.lang.Override
@@ -457,6 +461,10 @@ private static final long serialVersionUID = 0L;
     return internalGetHero().getMap().size();
   }
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
 
@@ -475,6 +483,10 @@ private static final long serialVersionUID = 0L;
     return getHeroMap();
   }
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   @java.lang.Override
@@ -483,6 +495,10 @@ private static final long serialVersionUID = 0L;
     return internalGetHero().getMap();
   }
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   @java.lang.Override
@@ -496,6 +512,10 @@ private static final long serialVersionUID = 0L;
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
+   * <pre>
+   * 英雄信息
+   * </pre>
+   *
    * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
    */
   @java.lang.Override
@@ -818,12 +838,6 @@ private static final long serialVersionUID = 0L;
     if (!getAccountBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, account_);
     }
-    if (lastLoginTime_ != 0L) {
-      output.writeInt64(4, lastLoginTime_);
-    }
-    if (updateTime_ != 0L) {
-      output.writeInt64(5, updateTime_);
-    }
     if (level_ != 0) {
       output.writeInt32(9, level_);
     }
@@ -881,14 +895,6 @@ private static final long serialVersionUID = 0L;
     }
     if (!getAccountBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, account_);
-    }
-    if (lastLoginTime_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(4, lastLoginTime_);
-    }
-    if (updateTime_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(5, updateTime_);
     }
     if (level_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -969,10 +975,6 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName())) return false;
     if (!getAccount()
         .equals(other.getAccount())) return false;
-    if (getLastLoginTime()
-        != other.getLastLoginTime()) return false;
-    if (getUpdateTime()
-        != other.getUpdateTime()) return false;
     if (getLevel()
         != other.getLevel()) return false;
     if (hasTask() != other.hasTask()) return false;
@@ -1020,12 +1022,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + ACCOUNT_FIELD_NUMBER;
     hash = (53 * hash) + getAccount().hashCode();
-    hash = (37 * hash) + LASTLOGINTIME_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getLastLoginTime());
-    hash = (37 * hash) + UPDATETIME_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getUpdateTime());
     hash = (37 * hash) + LEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getLevel();
     if (hasTask()) {
@@ -1230,10 +1226,6 @@ private static final long serialVersionUID = 0L;
 
       account_ = "";
 
-      lastLoginTime_ = 0L;
-
-      updateTime_ = 0L;
-
       level_ = 0;
 
       if (taskBuilder_ == null) {
@@ -1297,8 +1289,6 @@ private static final long serialVersionUID = 0L;
       result.pid_ = pid_;
       result.name_ = name_;
       result.account_ = account_;
-      result.lastLoginTime_ = lastLoginTime_;
-      result.updateTime_ = updateTime_;
       result.level_ = level_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
@@ -1390,12 +1380,6 @@ private static final long serialVersionUID = 0L;
       if (!other.getAccount().isEmpty()) {
         account_ = other.account_;
         onChanged();
-      }
-      if (other.getLastLoginTime() != 0L) {
-        setLastLoginTime(other.getLastLoginTime());
-      }
-      if (other.getUpdateTime() != 0L) {
-        setUpdateTime(other.getUpdateTime());
       }
       if (other.getLevel() != 0) {
         setLevel(other.getLevel());
@@ -1660,68 +1644,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long lastLoginTime_ ;
-    /**
-     * <code>int64 lastLoginTime = 4;</code>
-     * @return The lastLoginTime.
-     */
-    @java.lang.Override
-    public long getLastLoginTime() {
-      return lastLoginTime_;
-    }
-    /**
-     * <code>int64 lastLoginTime = 4;</code>
-     * @param value The lastLoginTime to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLastLoginTime(long value) {
-      
-      lastLoginTime_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 lastLoginTime = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearLastLoginTime() {
-      
-      lastLoginTime_ = 0L;
-      onChanged();
-      return this;
-    }
-
-    private long updateTime_ ;
-    /**
-     * <code>int64 updateTime = 5;</code>
-     * @return The updateTime.
-     */
-    @java.lang.Override
-    public long getUpdateTime() {
-      return updateTime_;
-    }
-    /**
-     * <code>int64 updateTime = 5;</code>
-     * @param value The updateTime to set.
-     * @return This builder for chaining.
-     */
-    public Builder setUpdateTime(long value) {
-      
-      updateTime_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int64 updateTime = 5;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearUpdateTime() {
-      
-      updateTime_ = 0L;
-      onChanged();
-      return this;
-    }
-
     private int level_ ;
     /**
      * <code>int32 level = 9;</code>
@@ -1757,6 +1679,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.PlayerTask, game.proto.data.PlayerTask.Builder, game.proto.data.PlayerTaskOrBuilder> taskBuilder_;
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      * @return Whether the task field is set.
      */
@@ -1764,6 +1690,10 @@ private static final long serialVersionUID = 0L;
       return taskBuilder_ != null || task_ != null;
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      * @return The task.
      */
@@ -1775,6 +1705,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     public Builder setTask(game.proto.data.PlayerTask value) {
@@ -1791,6 +1725,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     public Builder setTask(
@@ -1805,6 +1743,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     public Builder mergeTask(game.proto.data.PlayerTask value) {
@@ -1823,6 +1765,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     public Builder clearTask() {
@@ -1837,6 +1783,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     public game.proto.data.PlayerTask.Builder getTaskBuilder() {
@@ -1845,6 +1795,10 @@ private static final long serialVersionUID = 0L;
       return getTaskFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     public game.proto.data.PlayerTaskOrBuilder getTaskOrBuilder() {
@@ -1856,6 +1810,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * 任务信息
+     * </pre>
+     *
      * <code>.Message.PlayerTask task = 101;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1876,6 +1834,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.SceneData, game.proto.data.SceneData.Builder, game.proto.data.SceneDataOrBuilder> sceneDataBuilder_;
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      * @return Whether the sceneData field is set.
      */
@@ -1883,6 +1845,10 @@ private static final long serialVersionUID = 0L;
       return sceneDataBuilder_ != null || sceneData_ != null;
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      * @return The sceneData.
      */
@@ -1894,6 +1860,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     public Builder setSceneData(game.proto.data.SceneData value) {
@@ -1910,6 +1880,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     public Builder setSceneData(
@@ -1924,6 +1898,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     public Builder mergeSceneData(game.proto.data.SceneData value) {
@@ -1942,6 +1920,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     public Builder clearSceneData() {
@@ -1956,6 +1938,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     public game.proto.data.SceneData.Builder getSceneDataBuilder() {
@@ -1964,6 +1950,10 @@ private static final long serialVersionUID = 0L;
       return getSceneDataFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     public game.proto.data.SceneDataOrBuilder getSceneDataOrBuilder() {
@@ -1975,6 +1965,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * 所在场景
+     * </pre>
+     *
      * <code>.Message.SceneData sceneData = 201;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -1995,6 +1989,10 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.Resource, game.proto.data.Resource.Builder, game.proto.data.ResourceOrBuilder> resourceBuilder_;
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      * @return Whether the resource field is set.
      */
@@ -2002,6 +2000,10 @@ private static final long serialVersionUID = 0L;
       return resourceBuilder_ != null || resource_ != null;
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      * @return The resource.
      */
@@ -2013,6 +2015,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     public Builder setResource(game.proto.data.Resource value) {
@@ -2029,6 +2035,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     public Builder setResource(
@@ -2043,6 +2053,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     public Builder mergeResource(game.proto.data.Resource value) {
@@ -2061,6 +2075,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     public Builder clearResource() {
@@ -2075,6 +2093,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     public game.proto.data.Resource.Builder getResourceBuilder() {
@@ -2083,6 +2105,10 @@ private static final long serialVersionUID = 0L;
       return getResourceFieldBuilder().getBuilder();
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     public game.proto.data.ResourceOrBuilder getResourceOrBuilder() {
@@ -2094,6 +2120,10 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
+     * <pre>
+     * 资源信息
+     * </pre>
+     *
      * <code>.Message.Resource resource = 301;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -2137,6 +2167,10 @@ private static final long serialVersionUID = 0L;
       return internalGetHero().getMap().size();
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
 
@@ -2155,6 +2189,10 @@ private static final long serialVersionUID = 0L;
       return getHeroMap();
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
     @java.lang.Override
@@ -2163,6 +2201,10 @@ private static final long serialVersionUID = 0L;
       return internalGetHero().getMap();
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
     @java.lang.Override
@@ -2176,6 +2218,10 @@ private static final long serialVersionUID = 0L;
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
     @java.lang.Override
@@ -2197,6 +2243,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
 
@@ -2216,6 +2266,10 @@ private static final long serialVersionUID = 0L;
       return internalGetMutableHero().getMutableMap();
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
     public Builder putHero(
@@ -2228,6 +2282,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 英雄信息
+     * </pre>
+     *
      * <code>map&lt;int32, .Message.PlayerHero&gt; hero = 401;</code>
      */
 

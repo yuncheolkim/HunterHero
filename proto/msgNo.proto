@@ -15,7 +15,7 @@ enum MsgNo {
     player_create_name = 3;
 
     // 心跳
-    heartbeat = 4;
+    heartbeat = 101;
 
     // 接受任务
     task_accept = 1001;

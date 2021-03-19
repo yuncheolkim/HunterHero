@@ -3,12 +3,21 @@ package Message;
 option java_package = "game.proto.back";
 option optimize_for = SPEED;
 option java_multiple_files = true;
+import "data.proto";
 // 后端需要的数据
 message PlayerBackData {
+    // 下一次触发战斗时间
     int64 fightTime = 1;
     repeated int32 fightArea = 2;
+    // 体力最后一次恢复时间
     int64 powerRecoverTime = 3;
-    int64 createTime = 4;
     int64 loginTime = 5;
     int64 updateTime = 6;
+}
+
+
+message SaveData{
+
+    PlayerBackData backData = 1;
+    PlayerData pd = 2;
 }

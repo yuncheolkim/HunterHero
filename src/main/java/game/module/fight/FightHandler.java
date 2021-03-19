@@ -31,7 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class FightHandler {
 
     /**
-     * 战斗开始
+     * 战斗开始,计算后推送给前端
      *
      * @param player
      * @param req
@@ -42,7 +42,7 @@ public class FightHandler {
             return;
         }
         // 观看战斗设定为10分钟
-        player.nextFightTime = DateUtils.now() + TimeUnit.MINUTES.toMillis(10);
+        player.D.setFightTime(DateUtils.now() + TimeUnit.MINUTES.toMillis(10));
 
         Battle battle = new Battle();
         // enemy
@@ -86,9 +86,9 @@ public class FightHandler {
                 gold += CalcUtil.random(dataConfigData.min, dataConfigData.max);
             }
             // 奖励
-
             if (gold > 0) {
                 result.addReward(Reward.newBuilder()
+                        .setType(RewardType.REWARD_RESOURCE)
                         .setHeroId(0)
                         .setRewardId(ResourceEnum.GOLD.id)
                         .setCount(gold)
@@ -100,6 +100,7 @@ public class FightHandler {
             // Add player exp
             player.addPlayerExp(exp, ResourceSourceEnum.打怪);
             result.addReward(Reward.newBuilder()
+                    .setType(RewardType.REWARD_RESOURCE)
                     .setHeroId(0)
                     .setRewardId(ResourceEnum.EXP.id)
                     .setCount(exp)
@@ -108,6 +109,7 @@ public class FightHandler {
             for (HeroRecordData sideAhero : record.getSideAhero()) {
                 player.addHeroExp(sideAhero.simple.id, exp, ResourceSourceEnum.打怪);
                 result.addReward(Reward.newBuilder()
+                        .setType(RewardType.REWARD_RESOURCE)
                         .setHeroId(sideAhero.simple.id)
                         .setRewardId(ResourceEnum.EXP.id)
                         .setCount(exp)
@@ -193,9 +195,10 @@ public class FightHandler {
      * @param req
      */
     public static void endFight(Player player, Empty req) {
-        player.getPd().clearFightInfo();
+        player.pd.clearFightInfo();
+        // 是否还在战斗区域
         if (player.D.getFightAreaCount() > 0) {
-            player.nextFightTime = DateUtils.now() + CalcUtil.random(5000, 20000);
+            player.D.setFightTime(DateUtils.now() + CalcUtil.random(5000, 20000));
         }
     }
 }

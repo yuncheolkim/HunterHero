@@ -41,8 +41,8 @@ public class SceneHandler {
         if (!player.D.getFightAreaList().contains(req.getId())) {
             player.D.addFightArea(req.getId());
             long now = System.currentTimeMillis();
-            if (player.nextFightTime < now) {
-                player.nextFightTime = now + CalcUtil.random(5000, 20000);
+            if (player.D.getFightTime() < now) {
+                player.D.setFightTime(now + CalcUtil.random(5000, 20000));
             }
         }
 
@@ -59,7 +59,7 @@ public class SceneHandler {
         List<Integer> l = new ArrayList<>(player.D.getFightAreaList());
         l.remove(new Integer(req.getId()));
         player.D.clearFightArea().addAllFightArea(l);
-        player.nextFightTime = 0;
+        player.D.setFightTime(0);
     }
 
 }

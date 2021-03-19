@@ -8,6 +8,17 @@ public interface RewardOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>.Message.RewardType type = 100;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  int getTypeValue();
+  /**
+   * <code>.Message.RewardType type = 100;</code>
+   * @return The type.
+   */
+  game.proto.data.RewardType getType();
+
+  /**
    * <code>int32 rewardId = 1;</code>
    * @return The rewardId.
    */

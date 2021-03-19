@@ -41,9 +41,9 @@ public enum MsgNo
    * 心跳
    * </pre>
    *
-   * <code>heartbeat = 4;</code>
+   * <code>heartbeat = 101;</code>
    */
-  heartbeat(4),
+  heartbeat(101),
   /**
    * <pre>
    * 接受任务
@@ -236,9 +236,9 @@ public enum MsgNo
    * 心跳
    * </pre>
    *
-   * <code>heartbeat = 4;</code>
+   * <code>heartbeat = 101;</code>
    */
-  public static final int heartbeat_VALUE = 4;
+  public static final int heartbeat_VALUE = 101;
   /**
    * <pre>
    * 接受任务
@@ -425,7 +425,7 @@ public enum MsgNo
       case 1: return login_req;
       case 2: return kick_push;
       case 3: return player_create_name;
-      case 4: return heartbeat;
+      case 101: return heartbeat;
       case 1001: return task_accept;
       case 1002: return task_complete;
       case 2001: return fight_start;
