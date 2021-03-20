@@ -1,5 +1,6 @@
 package game.module.scene;
 
+import game.base.G;
 import game.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
@@ -38,7 +39,7 @@ public class SceneHandler {
      */
     public static void enterFightArea(Player player, EnterFightAreaReq req) {
 
-        if (!player.D.getFightAreaList().contains(req.getId())) {
+        if (!player.D.getFightAreaList().contains(req.getId()) && G.C.getFightArea(req.getId()) != null) {
             player.D.addFightArea(req.getId());
             long now = System.currentTimeMillis();
             if (player.D.getFightTime() < now) {

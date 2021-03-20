@@ -1,16 +1,16 @@
 {
     "1": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 7,
+        "damage": 10,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 201,
         "enemyId": 1,
-        "hp": 50,
+        "hp": 80,
         "id": 1,
         "level": 1,
         "nName": "东海",
@@ -18,17 +18,17 @@
         "weight": 8
     },
     "10": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 17,
+        "damage": 82,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 205,
         "enemyId": 1,
-        "hp": 59,
+        "hp": 600,
         "id": 10,
         "level": 10,
         "nName": "东海",
@@ -36,7 +36,7 @@
         "weight": 8
     },
     "11": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -54,7 +54,7 @@
         "weight": 8
     },
     "12": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -72,7 +72,7 @@
         "weight": 8
     },
     "13": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -90,7 +90,7 @@
         "weight": 8
     },
     "14": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -108,7 +108,7 @@
         "weight": 8
     },
     "15": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -126,7 +126,7 @@
         "weight": 8
     },
     "16": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -144,7 +144,7 @@
         "weight": 8
     },
     "17": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -162,7 +162,7 @@
         "weight": 8
     },
     "18": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -180,7 +180,7 @@
         "weight": 8
     },
     "19": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -198,17 +198,17 @@
         "weight": 8
     },
     "2": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 8,
+        "damage": 14,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 201,
         "enemyId": 1,
-        "hp": 51,
+        "hp": 100,
         "id": 2,
         "level": 2,
         "nName": "东海",
@@ -216,7 +216,7 @@
         "weight": 8
     },
     "20": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -234,7 +234,7 @@
         "weight": 8
     },
     "21": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -252,7 +252,7 @@
         "weight": 8
     },
     "22": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -270,7 +270,7 @@
         "weight": 8
     },
     "23": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -288,7 +288,7 @@
         "weight": 8
     },
     "24": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -306,7 +306,7 @@
         "weight": 8
     },
     "25": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -324,7 +324,7 @@
         "weight": 8
     },
     "26": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -342,7 +342,7 @@
         "weight": 8
     },
     "27": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -360,7 +360,7 @@
         "weight": 8
     },
     "28": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -378,7 +378,7 @@
         "weight": 8
     },
     "29": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -396,17 +396,17 @@
         "weight": 8
     },
     "3": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 9,
+        "damage": 21,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 202,
         "enemyId": 1,
-        "hp": 52,
+        "hp": 150,
         "id": 3,
         "level": 3,
         "nName": "东海",
@@ -414,7 +414,7 @@
         "weight": 8
     },
     "30": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
@@ -432,17 +432,17 @@
         "weight": 8
     },
     "4": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 10,
+        "damage": 23,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 202,
         "enemyId": 1,
-        "hp": 53,
+        "hp": 165,
         "id": 4,
         "level": 4,
         "nName": "东海",
@@ -450,17 +450,17 @@
         "weight": 8
     },
     "5": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 11,
+        "damage": 41,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 203,
         "enemyId": 1,
-        "hp": 54,
+        "hp": 300,
         "id": 5,
         "level": 5,
         "nName": "东海",
@@ -468,17 +468,17 @@
         "weight": 8
     },
     "6": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 12,
+        "damage": 54,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 203,
         "enemyId": 1,
-        "hp": 55,
+        "hp": 400,
         "id": 6,
         "level": 6,
         "nName": "东海",
@@ -486,17 +486,17 @@
         "weight": 8
     },
     "7": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 13,
+        "damage": 61,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 204,
         "enemyId": 1,
-        "hp": 56,
+        "hp": 450,
         "id": 7,
         "level": 7,
         "nName": "东海",
@@ -504,17 +504,17 @@
         "weight": 8
     },
     "8": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 14,
+        "damage": 65,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 204,
         "enemyId": 1,
-        "hp": 57,
+        "hp": 480,
         "id": 8,
         "level": 8,
         "nName": "东海",
@@ -522,17 +522,17 @@
         "weight": 8
     },
     "9": {
-        "avoid": 50,
+        "avoid": 30,
         "avoidBase": 300,
         "critical": 50,
         "criticalBase": 300,
         "criticalDamage": 50,
-        "damage": 15,
+        "damage": 69,
         "def": 50,
         "defBase": 300,
         "enemyAreaId": 205,
         "enemyId": 1,
-        "hp": 58,
+        "hp": 500,
         "id": 9,
         "level": 9,
         "nName": "东海",

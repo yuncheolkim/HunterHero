@@ -89,8 +89,6 @@ public class DataConfigData {
     @JsonProperty
     public int enemyAreaId;
 
-    @JsonProperty
-    public List<Integer> enemyAreaList;
 
     @JsonProperty
     public int enemyId;
@@ -129,8 +127,6 @@ public class DataConfigData {
     @JsonProperty
     public int optionId;
 
-    @JsonProperty
-    public List<Integer> optionIdList;
 
     @JsonProperty("conversationId")
     public int conversationId;
@@ -168,9 +164,6 @@ public class DataConfigData {
 
 
     @JsonProperty
-    public List<Integer> targetList;
-
-    @JsonProperty
     public int processType;
 
     @JsonProperty
@@ -198,4 +191,11 @@ public class DataConfigData {
     public int itemId;
     @JsonProperty
     public int sell;
+    //////////// list
+    @JsonProperty
+    public List<Integer> enemyIdList;
+    @JsonProperty
+    public List<Integer> enemyAreaList;
+    @JsonProperty
+    public List<Integer> targetList;
 }

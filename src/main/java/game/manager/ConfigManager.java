@@ -3,6 +3,7 @@ package game.manager;
 import game.base.AbsLifecycle;
 import game.config.DataConfigData;
 import game.config.JsonConfig;
+import game.config.drop.DropItemConfigData;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
@@ -51,6 +52,8 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, DataConfigData> dataMap15;
 
     public Map<Integer, DataConfigData> dataMap16;
+    public Map<Integer, DataConfigData> dataMap17;
+    public Map<Integer, DataConfigData> dataMap18;
 
     public Map<Integer, DataConfigData> taskMap1;
 
@@ -70,26 +73,32 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, List<EnemyCountConfigData>> enemyCountMap;
 
+    // 区域掉落
+    public Map<Integer, List<DropItemConfigData>> areaDropMap;
+    // 敌人掉落
+    public Map<Integer, List<DropItemConfigData>> enemyDropMap;
 
     @Override
     public void start() {
         super.start();
-        dataMap1 = new JsonConfig("data/data_1-hero.json").load();
+        dataMap1 = new JsonConfig("data/data_1-hero.json", 32).load();
         dataMap2 = new JsonConfig("data/data_2-skill.json").load();
         dataMap3 = new JsonConfig("data/data_3-buff.json").load();
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
         dataMap6 = new JsonConfig("data/data_6-item.json").load();
-        dataMap7 = new JsonConfig("data/data_7-地区.json").load();
-        dataMap8 = new JsonConfig("data/data_8-参数.json").load();
-        dataMap9 = new JsonConfig("data/data_9-经验.json").load();
-        dataMap10 = new JsonConfig("data/data_10-资源.json").load();
-        dataMap11 = new JsonConfig("data/data_11-称谓.json").load();
-        dataMap12 = new JsonConfig("data/data_12-历练.json").load();
-        dataMap13 = new JsonConfig("data/data_13-修炼.json").load();
+        dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
+        dataMap8 = new JsonConfig("data/data_8-参数.json", 32).load();
+        dataMap9 = new JsonConfig("data/data_9-经验.json", 64).load();
+        dataMap10 = new JsonConfig("data/data_10-资源.json", 16).load();
+        dataMap11 = new JsonConfig("data/data_11-称谓.json", 32).load();
+        dataMap12 = new JsonConfig("data/data_12-历练.json", 64).load();
+        dataMap13 = new JsonConfig("data/data_13-修炼.json", 32).load();
         dataMap14 = new JsonConfig("data/data_14-历练修炼选项.json").load();
         dataMap15 = new JsonConfig("data/data_15-enemy.json").load();
         dataMap16 = new JsonConfig("data/data_16-区域敌人数量.json").load();
+        dataMap17 = new JsonConfig("data/data_17-掉落.json").load();
+        dataMap18 = new JsonConfig("data/data_18-商店.json").load();
         taskMap1 = new JsonConfig("data/task_1-对话.json").load();
 
         taskMap2 = new JsonConfig("data/task_2-对话选项.json").load();
@@ -143,6 +152,26 @@ public class ConfigManager extends AbsLifecycle {
         }
 
         enemyCountMap = map1;
+        // drop
+        Map<Integer, List<DropItemConfigData>> map2 = new HashMap<>();
+        Map<Integer, List<DropItemConfigData>> map3 = new HashMap<>();
+        for (DataConfigData value : dataMap17.values()) {
+            DropItemConfigData d = new DropItemConfigData();
+            d.count = value.count;
+            d.rate = value.weight;
+            d.itemId = value.itemId;
+            if (value.type == 1) {
+                List<DropItemConfigData> list = map3.computeIfAbsent(value.enemyId, integer -> new ArrayList<>());
+                list.add(d);
+            } else if (value.type == 2) {
+                List<DropItemConfigData> list = map2.computeIfAbsent(value.areaId, integer -> new ArrayList<>());
+                list.add(d);
+            }
+        }
+
+        areaDropMap = map2;
+        enemyDropMap = map3;
+
     }
 
     /**
@@ -187,6 +216,10 @@ public class ConfigManager extends AbsLifecycle {
      */
     public int bankCapacity() {
         return dataMap8.get(4).count;
+    }
+
+    public EnemyAreaConfigData getFightArea(int areaId) {
+        return enemyInfoMap.get(areaId);
     }
 
     public DataConfigData getItem(int itemId) {

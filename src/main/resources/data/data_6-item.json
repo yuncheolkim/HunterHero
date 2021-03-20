@@ -1,6 +1,6 @@
 {
     "101001": {
-        "content": "一支蜡烛",
+        "content": "春蚕到死丝方尽，\u003ccolor=red\u003e蜡炬\u003c/color\u003e成灰泪始干。",
         "desc": "一支蜡烛",
         "icon": "lazhu",
         "id": 101001,
@@ -14,7 +14,7 @@
         "value": 10
     },
     "201001": {
-        "content": "龟壳",
+        "content": "也许可以用来救命!",
         "desc": "龟壳",
         "icon": "guike",
         "id": 201001,
@@ -28,17 +28,16 @@
         "value": 2
     },
     "201002": {
-        "content": "破碎的\u003ccolor=red\u003e船只\u003c/color\u003e木屑",
-        "desc": "破碎的\u003ccolor=red\u003e船只\u003c/color\u003e木屑",
+        "content": "破碎的\u003ccolor=yellow\u003e船只\u003c/color\u003e木屑承载了多少风暴下亡灵?",
         "icon": "woodIcon",
         "id": 201002,
         "name": "碎木",
         "num": 2,
         "resourceId": 1,
-        "sell": 1,
+        "sell": 0,
         "stack": 20,
         "type1": 2,
         "type2": 1,
-        "value": 2
+        "value": 0
     }
 }

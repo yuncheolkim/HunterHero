@@ -16,19 +16,26 @@ import java.util.Objects;
  */
 public class JsonConfig {
 
-    private String fileName;
+    private final String fileName;
 
     private Map<Integer, DataConfigData> map;
 
+    private int initSize = 128;
+
     public JsonConfig(String fileName) {
         this.fileName = fileName;
+    }
+
+    public JsonConfig(String fileName, int size) {
+        this.fileName = fileName;
+        initSize = size;
     }
 
     public Map<Integer, DataConfigData> load() {
         try {
             Logs.C.info(GameConstants.TOKEN_START + "加载配置文件:{}", fileName);
             String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
-            ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builder();
+            ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builderWithExpectedSize(initSize);
             return b.putAll(JsonUtil.fromJsonString(s, new TypeReference<Map<Integer, DataConfigData>>() {
             })).build();
         } catch (Exception e) {

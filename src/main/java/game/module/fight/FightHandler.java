@@ -1,7 +1,10 @@
 package game.module.fight;
 
 import game.base.G;
-import game.config.DataConfigData;
+import game.base.GameConstants;
+import game.base.Logs;
+import game.exception.ErrorEnum;
+import game.exception.ModuleException;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.module.battle.*;
@@ -20,6 +23,7 @@ import game.proto.data.*;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -80,10 +84,16 @@ public class FightHandler {
 
             // 杀敌
             for (HeroRecordData sideBhero : record.getSideBhero()) {
-                G.E.firePlayerEvent(player, new KillEvent(sideBhero.simple.id));
-                DataConfigData dataConfigData = G.C.dataMap9.get(sideBhero.simple.level);
-                exp += dataConfigData.monsterExp;
-                gold += CalcUtil.random(dataConfigData.min, dataConfigData.max);
+                int enemyId = sideBhero.simple.id;
+                G.E.firePlayerEvent(player, new KillEvent(enemyId));
+                exp += FightDropService.dropExp(sideBhero.simple.level);
+                gold += FightDropService.dropGold(sideBhero.simple.level);
+
+                // enemy item
+                List<Reward> itemRewardList = FightDropService.dropEnemyItem(enemyId);
+                if (!itemRewardList.isEmpty()) {
+                    result.addAllReward(itemRewardList);
+                }
             }
             // 奖励
             if (gold > 0) {
@@ -96,6 +106,13 @@ public class FightHandler {
 
                 player.addGold(gold, ResourceSourceEnum.打怪);
             }
+
+            // area item
+            List<Reward> itemRewardList = FightDropService.dropAreaItem(player.pd.getSceneData().getId());
+            if (!itemRewardList.isEmpty()) {
+                result.addAllReward(itemRewardList);
+            }
+
 
             // Add player exp
             player.addPlayerExp(exp, ResourceSourceEnum.打怪);
@@ -114,6 +131,21 @@ public class FightHandler {
                         .setRewardId(ResourceEnum.EXP.id)
                         .setCount(exp)
                         .build());
+            }
+            // 发道具奖励
+            for (Reward reward : result.getRewardList()) {
+                if (reward.getType() == RewardType.REWARD_ITEM) {
+                    try {
+                        player.addItem(ItemData.newBuilder().setItemId(reward.getRewardId()).setCount(reward.getCount()).build(), GameConstants.ITEM_BAG);
+                    } catch (Exception e) {
+                        if (e instanceof ModuleException) {
+                            player.getTransport().sendError((ErrorEnum) ((ModuleException) e).getErrorNo());
+                        }
+                        // 加入失败, 背包满
+                        Logs.C.error(e);
+                        break;
+                    }
+                }
             }
 
         }
