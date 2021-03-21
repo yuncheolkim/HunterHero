@@ -57,6 +57,8 @@ public class GameManager extends AbsLifecycle {
     public void start() {
         // 测试
         addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
+        // relogin
+        addHandler(new InvokerNoParam(-2, loginHandler::relogin));
         // inner
         addHandler(new InvokerNoParam(10, PlayerHandler::tick));
         addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));

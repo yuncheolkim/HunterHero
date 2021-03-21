@@ -1,6 +1,8 @@
 package game.base;
 
 import game.manager.*;
+import game.msg.MsgProcess;
+import game.proto.Message;
 
 /**
  * @author Yunzhe.Jin
@@ -23,5 +25,17 @@ public class G {
     public static void findException(Exception e) {
         Logs.C.error(e);
         System.exit(-1);
+    }
+
+
+    public static void sendToPlayer(long pid, int msgNo, com.google.protobuf.Message message) {
+        W.getPlayerWork(pid).addTask(new MsgProcess(Message.newBuilder()
+                .setMsgNo(msgNo)
+                .setBody(message.toByteString()).build(), pid));
+    }
+
+    public static void sendToPlayer(long pid, int msgNo) {
+        W.getPlayerWork(pid).addTask(new MsgProcess(Message.newBuilder()
+                .setMsgNo(msgNo).build(), pid));
     }
 }

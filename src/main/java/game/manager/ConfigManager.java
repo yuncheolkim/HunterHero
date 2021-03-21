@@ -1,5 +1,6 @@
 package game.manager;
 
+import com.google.common.collect.ImmutableMap;
 import game.base.AbsLifecycle;
 import game.config.DataConfigData;
 import game.config.JsonConfig;
@@ -31,7 +32,6 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> dataMap5;
 
-    public Map<Integer, DataConfigData> dataMap6;
 
     public Map<Integer, DataConfigData> dataMap7;
 
@@ -67,6 +67,7 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> heroMap1001;
 
+
     /////////////
 
     public Map<Integer, EnemyAreaConfigData> enemyInfoMap;
@@ -77,6 +78,8 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, List<DropItemConfigData>> areaDropMap;
     // 敌人掉落
     public Map<Integer, List<DropItemConfigData>> enemyDropMap;
+    // item
+    private Map<Integer, DataConfigData> itemMap;
 
     @Override
     public void start() {
@@ -86,7 +89,6 @@ public class ConfigManager extends AbsLifecycle {
         dataMap3 = new JsonConfig("data/data_3-buff.json").load();
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
-        dataMap6 = new JsonConfig("data/data_6-item.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
         dataMap8 = new JsonConfig("data/data_8-参数.json", 32).load();
         dataMap9 = new JsonConfig("data/data_9-经验.json", 64).load();
@@ -106,6 +108,16 @@ public class ConfigManager extends AbsLifecycle {
         taskMap4 = new JsonConfig("data/task_4-任务.json").load();
         taskMap5 = new JsonConfig("data/task_5-任务目标.json").load();
         heroMap1001 = new JsonConfig("data/hero_1001.json").load();
+
+        // item
+        ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
+        itemConfigDataBuilder.putAll(new JsonConfig("data/item_base.json").load());
+        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-1.json").load());
+        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-2.json").load());
+        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-3.json").load());
+        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-4.json").load());
+        itemMap = itemConfigDataBuilder.build();
+
 
         ///// 进一步加工
         Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
@@ -223,7 +235,7 @@ public class ConfigManager extends AbsLifecycle {
     }
 
     public DataConfigData getItem(int itemId) {
-        return dataMap6.get(itemId);
+        return itemMap.get(itemId);
     }
 }
 

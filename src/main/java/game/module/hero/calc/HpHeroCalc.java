@@ -9,6 +9,7 @@ import game.utils.CalcUtil;
 
 /**
  * 计算血量
+ *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
@@ -22,7 +23,7 @@ public class HpHeroCalc implements IHeroCalc {
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentList()) {
+            for (Equipment equipment : old.getEquipmentMap().values()) {
                 hp += equipment.getProperty().getHp();
             }
         }
@@ -38,7 +39,7 @@ public class HpHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            hp = CalcUtil.calcRate(hp,dataConfigData.hp);
+            hp = CalcUtil.calcRate(hp, dataConfigData.hp);
         }
 
         builder.getPropertyBuilder().setHp(hp);

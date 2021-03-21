@@ -10,773 +10,773 @@
         "defBase": 150,
         "hp": 139,
         "id": 1,
-        "speed": 80
+        "speed": 1
     },
     "10": {
         "avoid": 66,
         "avoidBase": 449,
         "critical": 66,
         "criticalBase": 380,
-        "criticalDamage": 15,
+        "criticalDamage": 70,
         "damage": 152,
         "def": 66,
         "defBase": 299,
         "hp": 1188,
         "id": 10,
-        "speed": 80
+        "speed": 10
     },
     "11": {
         "avoid": 78,
         "avoidBase": 488,
         "critical": 78,
         "criticalBase": 426,
-        "criticalDamage": 15,
+        "criticalDamage": 72,
         "damage": 167,
         "def": 78,
         "defBase": 338,
         "hp": 1300,
         "id": 11,
-        "speed": 80
+        "speed": 11
     },
     "12": {
         "avoid": 91,
         "avoidBase": 533,
         "critical": 91,
         "criticalBase": 480,
-        "criticalDamage": 16,
+        "criticalDamage": 74,
         "damage": 181,
         "def": 91,
         "defBase": 383,
         "hp": 1411,
         "id": 12,
-        "speed": 80
+        "speed": 12
     },
     "13": {
         "avoid": 105,
         "avoidBase": 585,
         "critical": 105,
         "criticalBase": 543,
-        "criticalDamage": 16,
+        "criticalDamage": 76,
         "damage": 195,
         "def": 105,
         "defBase": 435,
         "hp": 1520,
         "id": 13,
-        "speed": 80
+        "speed": 13
     },
     "14": {
         "avoid": 120,
         "avoidBase": 645,
         "critical": 120,
         "criticalBase": 615,
-        "criticalDamage": 17,
+        "criticalDamage": 78,
         "damage": 209,
         "def": 120,
         "defBase": 495,
         "hp": 1628,
         "id": 14,
-        "speed": 80
+        "speed": 14
     },
     "15": {
         "avoid": 136,
         "avoidBase": 713,
         "critical": 136,
         "criticalBase": 696,
-        "criticalDamage": 17,
+        "criticalDamage": 80,
         "damage": 222,
         "def": 136,
         "defBase": 563,
         "hp": 1733,
         "id": 15,
-        "speed": 80
+        "speed": 15
     },
     "16": {
         "avoid": 153,
         "avoidBase": 789,
         "critical": 153,
         "criticalBase": 787,
-        "criticalDamage": 18,
+        "criticalDamage": 82,
         "damage": 236,
         "def": 153,
         "defBase": 639,
         "hp": 1838,
         "id": 16,
-        "speed": 80
+        "speed": 16
     },
     "17": {
         "avoid": 172,
         "avoidBase": 875,
         "critical": 172,
         "criticalBase": 890,
-        "criticalDamage": 18,
+        "criticalDamage": 84,
         "damage": 249,
         "def": 172,
         "defBase": 725,
         "hp": 1940,
         "id": 17,
-        "speed": 80
+        "speed": 17
     },
     "18": {
         "avoid": 192,
         "avoidBase": 971,
         "critical": 192,
         "criticalBase": 1005,
-        "criticalDamage": 19,
+        "criticalDamage": 86,
         "damage": 262,
         "def": 192,
         "defBase": 821,
         "hp": 2041,
         "id": 18,
-        "speed": 80
+        "speed": 18
     },
     "19": {
         "avoid": 213,
         "avoidBase": 1077,
         "critical": 213,
         "criticalBase": 1132,
-        "criticalDamage": 19,
+        "criticalDamage": 88,
         "damage": 275,
         "def": 213,
         "defBase": 927,
         "hp": 2139,
         "id": 19,
-        "speed": 80
+        "speed": 19
     },
     "2": {
         "avoid": 12,
         "avoidBase": 306,
         "critical": 12,
         "criticalBase": 207,
-        "criticalDamage": 11,
+        "criticalDamage": 54,
         "damage": 32,
         "def": 12,
         "defBase": 156,
         "hp": 258,
         "id": 2,
-        "speed": 80
+        "speed": 2
     },
     "20": {
         "avoid": 235,
         "avoidBase": 1194,
         "critical": 235,
         "criticalBase": 1273,
-        "criticalDamage": 20,
+        "criticalDamage": 90,
         "damage": 288,
         "def": 235,
         "defBase": 1044,
         "hp": 2236,
         "id": 20,
-        "speed": 80
+        "speed": 20
     },
     "21": {
         "avoid": 258,
         "avoidBase": 1323,
         "critical": 258,
         "criticalBase": 1427,
-        "criticalDamage": 20,
+        "criticalDamage": 92,
         "damage": 300,
         "def": 258,
         "defBase": 1173,
         "hp": 2331,
         "id": 21,
-        "speed": 80
+        "speed": 21
     },
     "22": {
         "avoid": 282,
         "avoidBase": 1464,
         "critical": 282,
         "criticalBase": 1596,
-        "criticalDamage": 21,
+        "criticalDamage": 94,
         "damage": 312,
         "def": 282,
         "defBase": 1314,
         "hp": 2423,
         "id": 22,
-        "speed": 80
+        "speed": 22
     },
     "23": {
         "avoid": 307,
         "avoidBase": 1617,
         "critical": 307,
         "criticalBase": 1780,
-        "criticalDamage": 21,
+        "criticalDamage": 96,
         "damage": 324,
         "def": 307,
         "defBase": 1467,
         "hp": 2514,
         "id": 23,
-        "speed": 80
+        "speed": 23
     },
     "24": {
         "avoid": 333,
         "avoidBase": 1783,
         "critical": 333,
         "criticalBase": 1979,
-        "criticalDamage": 22,
+        "criticalDamage": 98,
         "damage": 336,
         "def": 333,
         "defBase": 1633,
         "hp": 2602,
         "id": 24,
-        "speed": 80
+        "speed": 24
     },
     "25": {
         "avoid": 361,
         "avoidBase": 1963,
         "critical": 361,
         "criticalBase": 2195,
-        "criticalDamage": 22,
+        "criticalDamage": 100,
         "damage": 347,
         "def": 361,
         "defBase": 1813,
         "hp": 2688,
         "id": 25,
-        "speed": 80
+        "speed": 25
     },
     "26": {
         "avoid": 390,
         "avoidBase": 2158,
         "critical": 390,
         "criticalBase": 2429,
-        "criticalDamage": 23,
+        "criticalDamage": 102,
         "damage": 358,
         "def": 390,
         "defBase": 2008,
         "hp": 2772,
         "id": 26,
-        "speed": 80
+        "speed": 26
     },
     "27": {
         "avoid": 420,
         "avoidBase": 2368,
         "critical": 420,
         "criticalBase": 2681,
-        "criticalDamage": 23,
+        "criticalDamage": 104,
         "damage": 369,
         "def": 420,
         "defBase": 2218,
         "hp": 2854,
         "id": 27,
-        "speed": 80
+        "speed": 27
     },
     "28": {
         "avoid": 451,
         "avoidBase": 2593,
         "critical": 451,
         "criticalBase": 2951,
-        "criticalDamage": 24,
+        "criticalDamage": 106,
         "damage": 380,
         "def": 451,
         "defBase": 2443,
         "hp": 2934,
         "id": 28,
-        "speed": 80
+        "speed": 28
     },
     "29": {
         "avoid": 483,
         "avoidBase": 2834,
         "critical": 483,
         "criticalBase": 3240,
-        "criticalDamage": 24,
+        "criticalDamage": 108,
         "damage": 390,
         "def": 483,
         "defBase": 2684,
         "hp": 3011,
         "id": 29,
-        "speed": 80
+        "speed": 29
     },
     "3": {
         "avoid": 15,
         "avoidBase": 313,
         "critical": 15,
         "criticalBase": 216,
-        "criticalDamage": 11,
+        "criticalDamage": 56,
         "damage": 48,
         "def": 15,
         "defBase": 163,
         "hp": 377,
         "id": 3,
-        "speed": 80
+        "speed": 3
     },
     "30": {
         "avoid": 516,
         "avoidBase": 3092,
         "critical": 516,
         "criticalBase": 3549,
-        "criticalDamage": 25,
+        "criticalDamage": 110,
         "damage": 400,
         "def": 516,
         "defBase": 2942,
         "hp": 3087,
         "id": 30,
-        "speed": 80
+        "speed": 30
     },
     "31": {
         "avoid": 550,
         "avoidBase": 3367,
         "critical": 550,
         "criticalBase": 3879,
-        "criticalDamage": 25,
+        "criticalDamage": 112,
         "damage": 410,
         "def": 550,
         "defBase": 3217,
         "hp": 3160,
         "id": 31,
-        "speed": 80
+        "speed": 31
     },
     "32": {
         "avoid": 585,
         "avoidBase": 3659,
         "critical": 585,
         "criticalBase": 4230,
-        "criticalDamage": 26,
+        "criticalDamage": 114,
         "damage": 419,
         "def": 585,
         "defBase": 3509,
         "hp": 3231,
         "id": 32,
-        "speed": 80
+        "speed": 32
     },
     "33": {
         "avoid": 621,
         "avoidBase": 3969,
         "critical": 621,
         "criticalBase": 4602,
-        "criticalDamage": 26,
+        "criticalDamage": 116,
         "damage": 429,
         "def": 621,
         "defBase": 3819,
         "hp": 3300,
         "id": 33,
-        "speed": 80
+        "speed": 33
     },
     "34": {
         "avoid": 659,
         "avoidBase": 4298,
         "critical": 659,
         "criticalBase": 4997,
-        "criticalDamage": 27,
+        "criticalDamage": 118,
         "damage": 438,
         "def": 659,
         "defBase": 4148,
         "hp": 3367,
         "id": 34,
-        "speed": 80
+        "speed": 34
     },
     "35": {
         "avoid": 698,
         "avoidBase": 4647,
         "critical": 698,
         "criticalBase": 5415,
-        "criticalDamage": 27,
+        "criticalDamage": 120,
         "damage": 446,
         "def": 698,
         "defBase": 4497,
         "hp": 3431,
         "id": 35,
-        "speed": 80
+        "speed": 35
     },
     "36": {
         "avoid": 738,
         "avoidBase": 5016,
         "critical": 738,
         "criticalBase": 5857,
-        "criticalDamage": 28,
+        "criticalDamage": 122,
         "damage": 455,
         "def": 738,
         "defBase": 4866,
         "hp": 3494,
         "id": 36,
-        "speed": 80
+        "speed": 36
     },
     "37": {
         "avoid": 779,
         "avoidBase": 5405,
         "critical": 779,
         "criticalBase": 6324,
-        "criticalDamage": 28,
+        "criticalDamage": 124,
         "damage": 463,
         "def": 779,
         "defBase": 5255,
         "hp": 3554,
         "id": 37,
-        "speed": 80
+        "speed": 37
     },
     "38": {
         "avoid": 821,
         "avoidBase": 5815,
         "critical": 821,
         "criticalBase": 6816,
-        "criticalDamage": 29,
+        "criticalDamage": 126,
         "damage": 471,
         "def": 821,
         "defBase": 5665,
         "hp": 3613,
         "id": 38,
-        "speed": 80
+        "speed": 38
     },
     "39": {
         "avoid": 864,
         "avoidBase": 6247,
         "critical": 864,
         "criticalBase": 7334,
-        "criticalDamage": 29,
+        "criticalDamage": 128,
         "damage": 479,
         "def": 864,
         "defBase": 6097,
         "hp": 3670,
         "id": 39,
-        "speed": 80
+        "speed": 39
     },
     "4": {
         "avoid": 19,
         "avoidBase": 322,
         "critical": 19,
         "criticalBase": 227,
-        "criticalDamage": 12,
+        "criticalDamage": 58,
         "damage": 63,
         "def": 19,
         "defBase": 172,
         "hp": 495,
         "id": 4,
-        "speed": 80
+        "speed": 4
     },
     "40": {
         "avoid": 908,
         "avoidBase": 6701,
         "critical": 908,
         "criticalBase": 7878,
-        "criticalDamage": 30,
+        "criticalDamage": 130,
         "damage": 486,
         "def": 908,
         "defBase": 6551,
         "hp": 3724,
         "id": 40,
-        "speed": 80
+        "speed": 40
     },
     "41": {
         "avoid": 953,
         "avoidBase": 7177,
         "critical": 953,
         "criticalBase": 8449,
-        "criticalDamage": 30,
+        "criticalDamage": 132,
         "damage": 494,
         "def": 953,
         "defBase": 7027,
         "hp": 3777,
         "id": 41,
-        "speed": 80
+        "speed": 41
     },
     "42": {
         "avoid": 1000,
         "avoidBase": 7677,
         "critical": 1000,
         "criticalBase": 9049,
-        "criticalDamage": 31,
+        "criticalDamage": 134,
         "damage": 501,
         "def": 1000,
         "defBase": 7527,
         "hp": 3828,
         "id": 42,
-        "speed": 80
+        "speed": 42
     },
     "43": {
         "avoid": 1048,
         "avoidBase": 8201,
         "critical": 1048,
         "criticalBase": 9677,
-        "criticalDamage": 31,
+        "criticalDamage": 136,
         "damage": 508,
         "def": 1048,
         "defBase": 8051,
         "hp": 3877,
         "id": 43,
-        "speed": 80
+        "speed": 43
     },
     "44": {
         "avoid": 1097,
         "avoidBase": 8749,
         "critical": 1097,
         "criticalBase": 10335,
-        "criticalDamage": 32,
+        "criticalDamage": 138,
         "damage": 514,
         "def": 1097,
         "defBase": 8599,
         "hp": 3924,
         "id": 44,
-        "speed": 80
+        "speed": 44
     },
     "45": {
         "avoid": 1147,
         "avoidBase": 9322,
         "critical": 1147,
         "criticalBase": 11023,
-        "criticalDamage": 32,
+        "criticalDamage": 140,
         "damage": 521,
         "def": 1147,
         "defBase": 9172,
         "hp": 3970,
         "id": 45,
-        "speed": 80
+        "speed": 45
     },
     "46": {
         "avoid": 1198,
         "avoidBase": 9921,
         "critical": 1198,
         "criticalBase": 11741,
-        "criticalDamage": 33,
+        "criticalDamage": 142,
         "damage": 527,
         "def": 1198,
         "defBase": 9771,
         "hp": 4014,
         "id": 46,
-        "speed": 80
+        "speed": 46
     },
     "47": {
         "avoid": 1250,
         "avoidBase": 10546,
         "critical": 1250,
         "criticalBase": 12491,
-        "criticalDamage": 33,
+        "criticalDamage": 144,
         "damage": 533,
         "def": 1250,
         "defBase": 10396,
         "hp": 4056,
         "id": 47,
-        "speed": 80
+        "speed": 47
     },
     "48": {
         "avoid": 1303,
         "avoidBase": 11197,
         "critical": 1303,
         "criticalBase": 13272,
-        "criticalDamage": 34,
+        "criticalDamage": 146,
         "damage": 539,
         "def": 1303,
         "defBase": 11047,
         "hp": 4097,
         "id": 48,
-        "speed": 80
+        "speed": 48
     },
     "49": {
         "avoid": 1357,
         "avoidBase": 11875,
         "critical": 1357,
         "criticalBase": 14086,
-        "criticalDamage": 34,
+        "criticalDamage": 148,
         "damage": 545,
         "def": 1357,
         "defBase": 11725,
         "hp": 4136,
         "id": 49,
-        "speed": 80
+        "speed": 49
     },
     "5": {
         "avoid": 24,
         "avoidBase": 334,
         "critical": 24,
         "criticalBase": 241,
-        "criticalDamage": 12,
+        "criticalDamage": 60,
         "damage": 78,
         "def": 24,
         "defBase": 184,
         "hp": 612,
         "id": 5,
-        "speed": 80
+        "speed": 5
     },
     "50": {
         "avoid": 1413,
         "avoidBase": 12581,
         "critical": 1413,
         "criticalBase": 14933,
-        "criticalDamage": 35,
+        "criticalDamage": 150,
         "damage": 550,
         "def": 1413,
         "defBase": 12431,
         "hp": 4174,
         "id": 50,
-        "speed": 80
+        "speed": 50
     },
     "51": {
         "avoid": 1470,
         "avoidBase": 13316,
         "critical": 1470,
         "criticalBase": 15815,
-        "criticalDamage": 35,
+        "criticalDamage": 152,
         "damage": 556,
         "def": 1470,
         "defBase": 13166,
         "hp": 4210,
         "id": 51,
-        "speed": 80
+        "speed": 51
     },
     "52": {
         "avoid": 1528,
         "avoidBase": 14080,
         "critical": 1528,
         "criticalBase": 16731,
-        "criticalDamage": 36,
+        "criticalDamage": 154,
         "damage": 561,
         "def": 1528,
         "defBase": 13930,
         "hp": 4245,
         "id": 52,
-        "speed": 80
+        "speed": 52
     },
     "53": {
         "avoid": 1587,
         "avoidBase": 14873,
         "critical": 1587,
         "criticalBase": 17683,
-        "criticalDamage": 36,
+        "criticalDamage": 156,
         "damage": 566,
         "def": 1587,
         "defBase": 14723,
         "hp": 4278,
         "id": 53,
-        "speed": 80
+        "speed": 53
     },
     "54": {
         "avoid": 1647,
         "avoidBase": 15696,
         "critical": 1647,
         "criticalBase": 18671,
-        "criticalDamage": 37,
+        "criticalDamage": 158,
         "damage": 571,
         "def": 1647,
         "defBase": 15546,
         "hp": 4310,
         "id": 54,
-        "speed": 80
+        "speed": 54
     },
     "55": {
         "avoid": 1708,
         "avoidBase": 16550,
         "critical": 1708,
         "criticalBase": 19695,
-        "criticalDamage": 37,
+        "criticalDamage": 160,
         "damage": 575,
         "def": 1708,
         "defBase": 16400,
         "hp": 4341,
         "id": 55,
-        "speed": 80
+        "speed": 55
     },
     "56": {
         "avoid": 1770,
         "avoidBase": 17435,
         "critical": 1770,
         "criticalBase": 20757,
-        "criticalDamage": 38,
+        "criticalDamage": 162,
         "damage": 580,
         "def": 1770,
         "defBase": 17285,
         "hp": 4370,
         "id": 56,
-        "speed": 80
+        "speed": 56
     },
     "57": {
         "avoid": 1833,
         "avoidBase": 18351,
         "critical": 1833,
         "criticalBase": 21856,
-        "criticalDamage": 38,
+        "criticalDamage": 164,
         "damage": 584,
         "def": 1833,
         "defBase": 18201,
         "hp": 4399,
         "id": 57,
-        "speed": 80
+        "speed": 57
     },
     "58": {
         "avoid": 1897,
         "avoidBase": 19299,
         "critical": 1897,
         "criticalBase": 22994,
-        "criticalDamage": 39,
+        "criticalDamage": 166,
         "damage": 589,
         "def": 1897,
         "defBase": 19149,
         "hp": 4426,
         "id": 58,
-        "speed": 80
+        "speed": 58
     },
     "59": {
         "avoid": 1963,
         "avoidBase": 20280,
         "critical": 1963,
         "criticalBase": 24171,
-        "criticalDamage": 39,
+        "criticalDamage": 168,
         "damage": 593,
         "def": 1963,
         "defBase": 20130,
         "hp": 4452,
         "id": 59,
-        "speed": 80
+        "speed": 59
     },
     "6": {
         "avoid": 30,
         "avoidBase": 349,
         "critical": 30,
         "criticalBase": 259,
-        "criticalDamage": 13,
+        "criticalDamage": 62,
         "damage": 93,
         "def": 30,
         "defBase": 199,
         "hp": 729,
         "id": 6,
-        "speed": 80
+        "speed": 6
     },
     "60": {
         "avoid": 2030,
         "avoidBase": 21295,
         "critical": 2030,
         "criticalBase": 25389,
-        "criticalDamage": 40,
+        "criticalDamage": 170,
         "damage": 597,
         "def": 2030,
         "defBase": 21145,
         "hp": 4477,
         "id": 60,
-        "speed": 80
+        "speed": 60
     },
     "7": {
         "avoid": 37,
         "avoidBase": 367,
         "critical": 37,
         "criticalBase": 281,
-        "criticalDamage": 13,
+        "criticalDamage": 64,
         "damage": 108,
         "def": 37,
         "defBase": 217,
         "hp": 846,
         "id": 7,
-        "speed": 80
+        "speed": 7
     },
     "8": {
         "avoid": 45,
         "avoidBase": 389,
         "critical": 45,
         "criticalBase": 308,
-        "criticalDamage": 14,
+        "criticalDamage": 66,
         "damage": 123,
         "def": 45,
         "defBase": 239,
         "hp": 961,
         "id": 8,
-        "speed": 80
+        "speed": 8
     },
     "9": {
         "avoid": 55,
         "avoidBase": 416,
         "critical": 55,
         "criticalBase": 341,
-        "criticalDamage": 14,
+        "criticalDamage": 68,
         "damage": 138,
         "def": 55,
         "defBase": 266,
         "hp": 1075,
         "id": 9,
-        "speed": 80
+        "speed": 9
     }
 }

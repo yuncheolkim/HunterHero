@@ -20,7 +20,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private PlayerHero() {
-    equipment_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -110,11 +109,15 @@ private static final long serialVersionUID = 0L;
           }
           case 66: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              equipment_ = new java.util.ArrayList<game.proto.data.Equipment>();
+              equipment_ = com.google.protobuf.MapField.newMapField(
+                  EquipmentDefaultEntryHolder.defaultEntry);
               mutable_bitField0_ |= 0x00000001;
             }
-            equipment_.add(
-                input.readMessage(game.proto.data.Equipment.parser(), extensionRegistry));
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.Equipment>
+            equipment__ = input.readMessage(
+                EquipmentDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            equipment_.getMutableMap().put(
+                equipment__.getKey(), equipment__.getValue());
             break;
           }
           case 74: {
@@ -158,9 +161,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        equipment_ = java.util.Collections.unmodifiableList(equipment_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -175,6 +175,8 @@ private static final long serialVersionUID = 0L;
   protected com.google.protobuf.MapField internalGetMapField(
       int number) {
     switch (number) {
+      case 8:
+        return internalGetEquipment();
       case 9:
         return internalGetLiLian();
       case 10:
@@ -304,43 +306,84 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int EQUIPMENT_FIELD_NUMBER = 8;
-  private java.util.List<game.proto.data.Equipment> equipment_;
-  /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
-   */
-  @java.lang.Override
-  public java.util.List<game.proto.data.Equipment> getEquipmentList() {
+  private static final class EquipmentDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.Equipment> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.Equipment>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerHero_EquipmentEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.Equipment.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.Equipment> equipment_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.Equipment>
+  internalGetEquipment() {
+    if (equipment_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          EquipmentDefaultEntryHolder.defaultEntry);
+    }
     return equipment_;
   }
-  /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
-      getEquipmentOrBuilderList() {
-    return equipment_;
-  }
-  /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
-   */
-  @java.lang.Override
+
   public int getEquipmentCount() {
-    return equipment_.size();
+    return internalGetEquipment().getMap().size();
   }
   /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
    */
+
   @java.lang.Override
-  public game.proto.data.Equipment getEquipment(int index) {
-    return equipment_.get(index);
+  public boolean containsEquipment(
+      int key) {
+    
+    return internalGetEquipment().getMap().containsKey(key);
   }
   /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
+   * Use {@link #getEquipmentMap()} instead.
    */
   @java.lang.Override
-  public game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
-      int index) {
-    return equipment_.get(index);
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.Equipment> getEquipment() {
+    return getEquipmentMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.Equipment> getEquipmentMap() {
+    return internalGetEquipment().getMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.Equipment getEquipmentOrDefault(
+      int key,
+      game.proto.data.Equipment defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.Equipment> map =
+        internalGetEquipment().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.Equipment getEquipmentOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.Equipment> map =
+        internalGetEquipment().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   public static final int LILIAN_FIELD_NUMBER = 9;
@@ -537,9 +580,12 @@ private static final long serialVersionUID = 0L;
     if (talent_ != null) {
       output.writeMessage(7, getTalent());
     }
-    for (int i = 0; i < equipment_.size(); i++) {
-      output.writeMessage(8, equipment_.get(i));
-    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetEquipment(),
+        EquipmentDefaultEntryHolder.defaultEntry,
+        8);
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -585,9 +631,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, getTalent());
     }
-    for (int i = 0; i < equipment_.size(); i++) {
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.Equipment> entry
+         : internalGetEquipment().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.Equipment>
+      equipment__ = EquipmentDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(8, equipment_.get(i));
+          .computeMessageSize(8, equipment__);
     }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HeroRealm> entry
          : internalGetLiLian().getMap().entrySet()) {
@@ -645,8 +697,8 @@ private static final long serialVersionUID = 0L;
       if (!getTalent()
           .equals(other.getTalent())) return false;
     }
-    if (!getEquipmentList()
-        .equals(other.getEquipmentList())) return false;
+    if (!internalGetEquipment().equals(
+        other.internalGetEquipment())) return false;
     if (!internalGetLiLian().equals(
         other.internalGetLiLian())) return false;
     if (!internalGetXiuLian().equals(
@@ -680,9 +732,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + TALENT_FIELD_NUMBER;
       hash = (53 * hash) + getTalent().hashCode();
     }
-    if (getEquipmentCount() > 0) {
+    if (!internalGetEquipment().getMap().isEmpty()) {
       hash = (37 * hash) + EQUIPMENT_FIELD_NUMBER;
-      hash = (53 * hash) + getEquipmentList().hashCode();
+      hash = (53 * hash) + internalGetEquipment().hashCode();
     }
     if (!internalGetLiLian().getMap().isEmpty()) {
       hash = (37 * hash) + LILIAN_FIELD_NUMBER;
@@ -807,6 +859,8 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMapField(
         int number) {
       switch (number) {
+        case 8:
+          return internalGetEquipment();
         case 9:
           return internalGetLiLian();
         case 10:
@@ -820,6 +874,8 @@ private static final long serialVersionUID = 0L;
     protected com.google.protobuf.MapField internalGetMutableMapField(
         int number) {
       switch (number) {
+        case 8:
+          return internalGetMutableEquipment();
         case 9:
           return internalGetMutableLiLian();
         case 10:
@@ -850,7 +906,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getEquipmentFieldBuilder();
       }
     }
     @java.lang.Override
@@ -880,12 +935,7 @@ private static final long serialVersionUID = 0L;
         talent_ = null;
         talentBuilder_ = null;
       }
-      if (equipmentBuilder_ == null) {
-        equipment_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        equipmentBuilder_.clear();
-      }
+      internalGetMutableEquipment().clear();
       internalGetMutableLiLian().clear();
       internalGetMutableXiuLian().clear();
       return this;
@@ -933,15 +983,8 @@ private static final long serialVersionUID = 0L;
       } else {
         result.talent_ = talentBuilder_.build();
       }
-      if (equipmentBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          equipment_ = java.util.Collections.unmodifiableList(equipment_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.equipment_ = equipment_;
-      } else {
-        result.equipment_ = equipmentBuilder_.build();
-      }
+      result.equipment_ = internalGetEquipment();
+      result.equipment_.makeImmutable();
       result.liLian_ = internalGetLiLian();
       result.liLian_.makeImmutable();
       result.xiuLian_ = internalGetXiuLian();
@@ -1012,32 +1055,8 @@ private static final long serialVersionUID = 0L;
       if (other.hasTalent()) {
         mergeTalent(other.getTalent());
       }
-      if (equipmentBuilder_ == null) {
-        if (!other.equipment_.isEmpty()) {
-          if (equipment_.isEmpty()) {
-            equipment_ = other.equipment_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureEquipmentIsMutable();
-            equipment_.addAll(other.equipment_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.equipment_.isEmpty()) {
-          if (equipmentBuilder_.isEmpty()) {
-            equipmentBuilder_.dispose();
-            equipmentBuilder_ = null;
-            equipment_ = other.equipment_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            equipmentBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getEquipmentFieldBuilder() : null;
-          } else {
-            equipmentBuilder_.addAllMessages(other.equipment_);
-          }
-        }
-      }
+      internalGetMutableEquipment().mergeFrom(
+          other.internalGetEquipment());
       internalGetMutableLiLian().mergeFrom(
           other.internalGetLiLian());
       internalGetMutableXiuLian().mergeFrom(
@@ -1522,244 +1541,132 @@ private static final long serialVersionUID = 0L;
       return talentBuilder_;
     }
 
-    private java.util.List<game.proto.data.Equipment> equipment_ =
-      java.util.Collections.emptyList();
-    private void ensureEquipmentIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        equipment_ = new java.util.ArrayList<game.proto.data.Equipment>(equipment_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder> equipmentBuilder_;
-
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public java.util.List<game.proto.data.Equipment> getEquipmentList() {
-      if (equipmentBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(equipment_);
-      } else {
-        return equipmentBuilder_.getMessageList();
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.Equipment> equipment_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.Equipment>
+    internalGetEquipment() {
+      if (equipment_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            EquipmentDefaultEntryHolder.defaultEntry);
       }
+      return equipment_;
     }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.Equipment>
+    internalGetMutableEquipment() {
+      onChanged();;
+      if (equipment_ == null) {
+        equipment_ = com.google.protobuf.MapField.newMapField(
+            EquipmentDefaultEntryHolder.defaultEntry);
+      }
+      if (!equipment_.isMutable()) {
+        equipment_ = equipment_.copy();
+      }
+      return equipment_;
+    }
+
     public int getEquipmentCount() {
-      if (equipmentBuilder_ == null) {
-        return equipment_.size();
-      } else {
-        return equipmentBuilder_.getCount();
-      }
+      return internalGetEquipment().getMap().size();
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public game.proto.data.Equipment getEquipment(int index) {
-      if (equipmentBuilder_ == null) {
-        return equipment_.get(index);
-      } else {
-        return equipmentBuilder_.getMessage(index);
-      }
+
+    @java.lang.Override
+    public boolean containsEquipment(
+        int key) {
+      
+      return internalGetEquipment().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * Use {@link #getEquipmentMap()} instead.
      */
-    public Builder setEquipment(
-        int index, game.proto.data.Equipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEquipmentIsMutable();
-        equipment_.set(index, value);
-        onChanged();
-      } else {
-        equipmentBuilder_.setMessage(index, value);
-      }
-      return this;
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.Equipment> getEquipment() {
+      return getEquipmentMap();
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public Builder setEquipment(
-        int index, game.proto.data.Equipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        equipmentBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.Equipment> getEquipmentMap() {
+      return internalGetEquipment().getMap();
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public Builder addEquipment(game.proto.data.Equipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEquipmentIsMutable();
-        equipment_.add(value);
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(value);
-      }
-      return this;
+    @java.lang.Override
+
+    public game.proto.data.Equipment getEquipmentOrDefault(
+        int key,
+        game.proto.data.Equipment defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.Equipment> map =
+          internalGetEquipment().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public Builder addEquipment(
-        int index, game.proto.data.Equipment value) {
-      if (equipmentBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureEquipmentIsMutable();
-        equipment_.add(index, value);
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(index, value);
+    @java.lang.Override
+
+    public game.proto.data.Equipment getEquipmentOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.Equipment> map =
+          internalGetEquipment().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
+      return map.get(key);
     }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public Builder addEquipment(
-        game.proto.data.Equipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.add(builderForValue.build());
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public Builder addEquipment(
-        int index, game.proto.data.Equipment.Builder builderForValue) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        equipmentBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public Builder addAllEquipment(
-        java.lang.Iterable<? extends game.proto.data.Equipment> values) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, equipment_);
-        onChanged();
-      } else {
-        equipmentBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
+
     public Builder clearEquipment() {
-      if (equipmentBuilder_ == null) {
-        equipment_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        equipmentBuilder_.clear();
-      }
+      internalGetMutableEquipment().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public Builder removeEquipment(int index) {
-      if (equipmentBuilder_ == null) {
-        ensureEquipmentIsMutable();
-        equipment_.remove(index);
-        onChanged();
-      } else {
-        equipmentBuilder_.remove(index);
-      }
+
+    public Builder removeEquipment(
+        int key) {
+      
+      internalGetMutableEquipment().getMutableMap()
+          .remove(key);
       return this;
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * Use alternate mutation accessors instead.
      */
-    public game.proto.data.Equipment.Builder getEquipmentBuilder(
-        int index) {
-      return getEquipmentFieldBuilder().getBuilder(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.Equipment>
+    getMutableEquipment() {
+      return internalGetMutableEquipment().getMutableMap();
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
-        int index) {
-      if (equipmentBuilder_ == null) {
-        return equipment_.get(index);  } else {
-        return equipmentBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder putEquipment(
+        int key,
+        game.proto.data.Equipment value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableEquipment().getMutableMap()
+          .put(key, value);
+      return this;
     }
     /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
+     * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
      */
-    public java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
-         getEquipmentOrBuilderList() {
-      if (equipmentBuilder_ != null) {
-        return equipmentBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(equipment_);
-      }
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public game.proto.data.Equipment.Builder addEquipmentBuilder() {
-      return getEquipmentFieldBuilder().addBuilder(
-          game.proto.data.Equipment.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public game.proto.data.Equipment.Builder addEquipmentBuilder(
-        int index) {
-      return getEquipmentFieldBuilder().addBuilder(
-          index, game.proto.data.Equipment.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.Equipment equipment = 8;</code>
-     */
-    public java.util.List<game.proto.data.Equipment.Builder> 
-         getEquipmentBuilderList() {
-      return getEquipmentFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder> 
-        getEquipmentFieldBuilder() {
-      if (equipmentBuilder_ == null) {
-        equipmentBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            game.proto.data.Equipment, game.proto.data.Equipment.Builder, game.proto.data.EquipmentOrBuilder>(
-                equipment_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        equipment_ = null;
-      }
-      return equipmentBuilder_;
+
+    public Builder putAllEquipment(
+        java.util.Map<java.lang.Integer, game.proto.data.Equipment> values) {
+      internalGetMutableEquipment().getMutableMap()
+          .putAll(values);
+      return this;
     }
 
     private com.google.protobuf.MapField<

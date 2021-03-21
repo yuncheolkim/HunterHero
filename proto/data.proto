@@ -78,7 +78,7 @@ message PlayerHero {
     Property property = 5;
     PropertyEffect propertyEffect = 6;
     Talent talent = 7;
-    repeated Equipment equipment = 8;
+    map<int32, Equipment> equipment = 8;
     map<int32, HeroRealm> liLian = 9;
     map<int32, HeroRealm> xiuLian = 10;
 }

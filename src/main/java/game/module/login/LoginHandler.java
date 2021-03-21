@@ -25,13 +25,22 @@ public class LoginHandler {
                 player = new Player(pid);
                 player.setChannel(ch);
                 player.load(request.getCode());
+                player.login();
             } else {
                 // 踢出之前的登录
                 player.kick();
                 player.setChannel(ch);
+                G.sendToPlayer(pid, -2);
             }
-            player.login();
             return player;
         });
+    }
+
+    /**
+     * 重新登录
+     * 需要在用户现场进行一些操作
+     */
+    public void relogin(Player player) {
+        player.relogin();
     }
 }

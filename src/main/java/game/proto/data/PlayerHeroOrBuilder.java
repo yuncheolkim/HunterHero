@@ -71,28 +71,38 @@ public interface PlayerHeroOrBuilder extends
   game.proto.data.TalentOrBuilder getTalentOrBuilder();
 
   /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
-   */
-  java.util.List<game.proto.data.Equipment> 
-      getEquipmentList();
-  /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
-   */
-  game.proto.data.Equipment getEquipment(int index);
-  /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
    */
   int getEquipmentCount();
   /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
    */
-  java.util.List<? extends game.proto.data.EquipmentOrBuilder> 
-      getEquipmentOrBuilderList();
+  boolean containsEquipment(
+      int key);
   /**
-   * <code>repeated .Message.Equipment equipment = 8;</code>
+   * Use {@link #getEquipmentMap()} instead.
    */
-  game.proto.data.EquipmentOrBuilder getEquipmentOrBuilder(
-      int index);
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.Equipment>
+  getEquipment();
+  /**
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.Equipment>
+  getEquipmentMap();
+  /**
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
+   */
+
+  game.proto.data.Equipment getEquipmentOrDefault(
+      int key,
+      game.proto.data.Equipment defaultValue);
+  /**
+   * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
+   */
+
+  game.proto.data.Equipment getEquipmentOrThrow(
+      int key);
 
   /**
    * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>

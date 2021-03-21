@@ -9,6 +9,7 @@ import game.utils.CalcUtil;
 
 /**
  * 计算速度
+ *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
@@ -22,7 +23,7 @@ public class SpeedHeroCalc implements IHeroCalc {
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentList()) {
+            for (Equipment equipment : old.getEquipmentMap().values()) {
                 speed += equipment.getProperty().getSpeed();
             }
         }

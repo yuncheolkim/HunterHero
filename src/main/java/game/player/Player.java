@@ -31,7 +31,10 @@ import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import static game.base.GameConstants.MAX_PLAYER_LEVEL;
@@ -110,6 +113,18 @@ public class Player {
         transport.send(Message.newBuilder().setMsgNo(MsgNo.login_req_VALUE).setBody(builder.build().toByteString()).build());
     }
 
+    public void relogin() {
+        LoginRes.Builder builder = LoginRes.newBuilder();
+        builder.setData(pd);
+        if (StringUtils.isEmpty(pd.getName())) {
+            builder.setFirst(true);
+        }
+
+        transport.send(Message.newBuilder().setMsgNo(MsgNo.login_req_VALUE).setBody(builder.build().toByteString()).build());
+
+        prepareData();
+
+    }
 
     /**
      * 加载用户数据
@@ -135,7 +150,7 @@ public class Player {
     /**
      * 加载基本数据后处理
      */
-    private void prepareData() {
+    public void prepareData() {
         loginTime = LocalDateTime.fromDateFields(new Date(D.getLoginTime()));
         updateTime = LocalDateTime.fromDateFields(new Date(D.getUpdateTime()));
         pd.getResourceBuilder().setNeedExp(G.C.dataMap9.get(pd.getLevel()).exp);
@@ -388,7 +403,7 @@ public class Player {
         ItemBoxData box = bagUpdateService.box(this);
         ModuleAssert.isPositive(data.getCount());
 
-        DataConfigData dataConfigData = G.C.dataMap6.get(data.getItemId());
+        DataConfigData dataConfigData = G.C.getItem(data.getItemId());
 
         BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
 
@@ -483,14 +498,13 @@ public class Player {
         bagUpdateService.clean(this);
         List<BagSlot> zipItemList = new ArrayList<>(collect.size());
         int lastIndex = 0;
-        Map<Integer, DataConfigData> itemConfigData = G.C.dataMap6;
         for (int i = 0; i < collect.size(); i++) {
             BagSlot bagSlot = collect.get(i);
             if (i > 0) {
                 BagSlot beforeSlot = zipItemList.get(lastIndex);
                 if (beforeSlot.getData().getItemId() == bagSlot.getData().getItemId()) {
 
-                    DataConfigData dataConfigData = itemConfigData.get(beforeSlot.getData().getItemId());
+                    DataConfigData dataConfigData = G.C.getItem(beforeSlot.getData().getItemId());
                     final int stack = dataConfigData.stack;
                     int beforeCount = beforeSlot.getData().getCount();
                     if (stack > 1 && beforeCount < stack) {

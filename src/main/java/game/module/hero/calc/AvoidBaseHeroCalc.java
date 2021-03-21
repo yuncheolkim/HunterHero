@@ -21,7 +21,7 @@ public class AvoidBaseHeroCalc implements IHeroCalc {
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentList()) {
+            for (Equipment equipment : old.getEquipmentMap().values()) {
                 avoidBase += equipment.getProperty().getAvoidBase();
             }
         }

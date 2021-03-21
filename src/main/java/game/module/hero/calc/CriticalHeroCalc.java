@@ -23,7 +23,7 @@ public class CriticalHeroCalc implements IHeroCalc {
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentList()) {
+            for (Equipment equipment : old.getEquipmentMap().values()) {
                 critical += equipment.getProperty().getCritical();
             }
         }

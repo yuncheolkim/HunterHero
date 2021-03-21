@@ -1,0 +1,43 @@
+{
+    "101001": {
+        "content": "春蚕到死丝方尽，\u003ccolor=red\u003e蜡炬\u003c/color\u003e成灰泪始干。",
+        "desc": "一支蜡烛",
+        "icon": "lazhu",
+        "id": 101001,
+        "name": "蜡烛",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 5,
+        "stack": 1,
+        "type1": 1,
+        "type2": 1,
+        "value": 10
+    },
+    "201001": {
+        "content": "看着还挺好看.",
+        "desc": "贝壳",
+        "icon": "guike",
+        "id": 201001,
+        "name": "贝壳",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 5,
+        "stack": 10,
+        "type1": 2,
+        "type2": 1,
+        "value": 0
+    },
+    "201002": {
+        "content": "破碎的\u003ccolor=yellow\u003e船只\u003c/color\u003e木屑承载了多少风暴下亡灵?",
+        "icon": "woodIcon",
+        "id": 201002,
+        "name": "碎木",
+        "num": 2,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 20,
+        "type1": 2,
+        "type2": 1,
+        "value": 0
+    }
+}

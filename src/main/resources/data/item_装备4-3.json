@@ -1,0 +1,20 @@
+{
+    "403001": {
+        "avoid": 8,
+        "content": "破碎的\u003ccolor=yellow\u003e船只\u003c/color\u003e木屑承载了多少风暴下亡灵?",
+        "def": 8,
+        "hp": 100,
+        "icon": "woodIcon",
+        "id": 403001,
+        "level": 1,
+        "name": "龟壳",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 1,
+        "type": 1,
+        "type1": 4,
+        "type2": 3,
+        "value": 0
+    }
+}

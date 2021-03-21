@@ -1,0 +1,21 @@
+{
+    "402001": {
+        "content": "看着还挺好看.",
+        "def": 6,
+        "desc": "贝壳",
+        "hp": 62,
+        "icon": "guike",
+        "id": 402001,
+        "level": 1,
+        "name": "铁盆",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "speed": 1,
+        "stack": 1,
+        "type": 1,
+        "type1": 4,
+        "type2": 2,
+        "value": 0
+    }
+}

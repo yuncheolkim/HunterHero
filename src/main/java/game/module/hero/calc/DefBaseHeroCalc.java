@@ -7,6 +7,7 @@ import game.proto.data.PlayerHero;
 
 /**
  * 计算防御基数
+ *
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
@@ -20,7 +21,7 @@ public class DefBaseHeroCalc implements IHeroCalc {
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentList()) {
+            for (Equipment equipment : old.getEquipmentMap().values()) {
                 defBase += equipment.getProperty().getDefBase();
             }
         }
