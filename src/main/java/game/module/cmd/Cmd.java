@@ -3,6 +3,7 @@ package game.module.cmd;
 import com.google.common.collect.ImmutableMap;
 import game.base.GameConstants;
 import game.game.ResourceSourceEnum;
+import game.module.hero.HeroService;
 import game.player.Player;
 import game.proto.data.ItemData;
 
@@ -37,6 +38,12 @@ public enum Cmd {
         public void run(Player player, List<String> line) {
 
             player.addItem(ItemData.newBuilder().setItemId(Integer.parseInt(line.get(0))).setCount(Integer.parseInt(line.get(1))).build(), GameConstants.ITEM_BAG);
+        }
+    },
+    AddEquipment(5, "增加装备") {
+        @Override
+        public void run(Player player, List<String> line) {
+            HeroService.addEquipment(player, Integer.parseInt(line.get(0)));
         }
     },
     ;
