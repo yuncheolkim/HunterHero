@@ -154,6 +154,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ItemSellReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HeroEquipmentReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HeroEquipmentReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -199,7 +204,8 @@ public final class MessageOuterClass {
       "hopId\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type\030\001" +
       " \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013I" +
       "temSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(" +
-      "\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n" +
+      "\006heroId\030\002 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -374,6 +380,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemSellReq_descriptor,
         new java.lang.String[] { "SlotId", "Count", });
+    internal_static_Message_HeroEquipmentReq_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_Message_HeroEquipmentReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HeroEquipmentReq_descriptor,
+        new java.lang.String[] { "SlotId", "HeroId", });
     game.proto.data.Data.getDescriptor();
   }
 

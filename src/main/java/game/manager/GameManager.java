@@ -29,13 +29,13 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class GameManager extends AbsLifecycle {
 
-    private ConcurrentHashMap<Integer, IInvoke> handlerMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Integer, IInvoke> handlerMap = new ConcurrentHashMap<>();
 
-    private LoginHandler loginHandler = new LoginHandler();
+    private final LoginHandler loginHandler = new LoginHandler();
 
     private int version = 1;
 
-    private DefaultHeroCalcProcess heroCalcProcess = new DefaultHeroCalcProcess();
+    private final DefaultHeroCalcProcess heroCalcProcess = new DefaultHeroCalcProcess();
 
     public GameManager() {
     }
@@ -89,6 +89,8 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.ItemBuyReqNo_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
         // 出售物品
         addHandler(new Invoker<>(MsgNo.ItemSellReqNo_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
+        // 装备物品
+        addHandler(new Invoker<>(MsgNo.HeroEquipmentReqNo_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
         super.start();
     }
 

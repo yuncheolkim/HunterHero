@@ -1,16 +1,16 @@
 package game.module.hero;
 
 import game.base.G;
+import game.base.GameConstants;
 import game.config.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.module.event.handler.HeroPowerUpEvent;
 import game.player.Player;
+import game.proto.HeroEquipmentReq;
 import game.proto.HeroUpReq;
-import game.proto.data.HeroRealm;
-import game.proto.data.PlayerData;
-import game.proto.data.PlayerHero;
+import game.proto.data.*;
 
 /**
  * @author Yunzhe.Jin
@@ -20,6 +20,7 @@ public class HeroHandler {
 
     /**
      * 升级历练
+     *
      * @param player
      * @param req
      */
@@ -50,6 +51,7 @@ public class HeroHandler {
 
     /**
      * 升级修炼
+     *
      * @param player
      * @param req
      */
@@ -78,6 +80,41 @@ public class HeroHandler {
     }
 
 
+    /**
+     * 装备物品
+     */
+    public static void equip(Player player, HeroEquipmentReq req) {
+        BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
+        ModuleAssert.notNull(bagSlot);
+        DataConfigData item = G.C.getItem(bagSlot.getData().getItemId());
+        int type2 = item.type2;
+
+        PlayerHero hero = player.pd.getHeroOrThrow(req.getHeroId());
+        Equipment equipment = hero.getEquipmentMap().get(type2);
+        // 从背包删除
+        player.removeBagItem(GameConstants.ITEM_BAG, 1, bagSlot.getSlotId());
+
+        // 放到装备栏
+        PlayerHero.Builder builder = hero.toBuilder();
+        builder.putEquipment(type2, Equipment.newBuilder()
+                .setId(item.id)
+                .setLevel(item.level)
+                .setProperty(bagSlot.getData().getProperty())
+                .build());
+
+        player.pd.putHero(hero.getId(), builder.build());
+
+        G.E.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
+
+        // 旧物品返回到背包
+        if (equipment != null) {
+            player.addItem(ItemData.newBuilder()
+                    .setItemId(item.id).setCount(1).setProperty(equipment.getProperty())
+                    .build(), GameConstants.ITEM_BAG);
+
+        }
+
+    }
 
 
 }

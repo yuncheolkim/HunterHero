@@ -134,6 +134,14 @@ public enum MsgNo
   hero_change(4003),
   /**
    * <pre>
+   * 装备物品
+   * </pre>
+   *
+   * <code>HeroEquipmentReqNo = 4004;</code>
+   */
+  HeroEquipmentReqNo(4004),
+  /**
+   * <pre>
    * 资源变化
    * </pre>
    *
@@ -329,6 +337,14 @@ public enum MsgNo
   public static final int hero_change_VALUE = 4003;
   /**
    * <pre>
+   * 装备物品
+   * </pre>
+   *
+   * <code>HeroEquipmentReqNo = 4004;</code>
+   */
+  public static final int HeroEquipmentReqNo_VALUE = 4004;
+  /**
+   * <pre>
    * 资源变化
    * </pre>
    *
@@ -437,6 +453,7 @@ public enum MsgNo
       case 4001: return hero_update_lilian;
       case 4002: return hero_update_xiulian;
       case 4003: return hero_change;
+      case 4004: return HeroEquipmentReqNo;
       case 5001: return resource_change_push;
       case 5002: return PlayerLevelChangePushNo;
       case 5003: return ExpChangePushNo;

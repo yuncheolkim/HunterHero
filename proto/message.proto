@@ -128,12 +128,12 @@ message BagInfoChangePush {
     repeated BagSlot slot = 30;
 }
 
-message BagCleanReq{
+message BagCleanReq {
     int32 type = 1;
 }
 
 // 丢弃物品
-message ItemDiscardReq{
+message ItemDiscardReq {
     int32 itemId = 1;
     int32 count = 2;
     int32 slotId = 3;
@@ -142,26 +142,30 @@ message ItemDiscardReq{
 }
 
 // 购买物品
-message ItemBuyReq{
+message ItemBuyReq {
     int32 itemId = 1;
     int32 count = 2;
     int32 shopId = 3;
 }
 
 // 银行背包,转移物品
-message ItemExchangeReq{
+message ItemExchangeReq {
     int32 type = 1; // 1: bank -> bag, 2: bag -> bank
     int32 slotId = 2;
     int32 count = 3;
 }
 
 // 出售物品
-message ItemSellReq{
+message ItemSellReq {
     int32 slotId = 1;
     int32 count = 2;
 }
 
-
+// 装备物品
+message HeroEquipmentReq {
+    int32 slotId = 1; // 装备所在的背包位置
+    int32 heroId = 2;
+}
 
 
 
