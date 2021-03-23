@@ -394,6 +394,32 @@ public class Player {
     }
 
     /**
+     * 放置物品到背包指定位置
+     * todo 没有检查slotId是否已经有物品
+     *
+     * @param data
+     * @param type
+     */
+    public void setItem(int slotId, ItemData data, int type) {
+        BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
+        BagUpdateService bagUpdateService = findBagUpdateService(type);
+        BagSlot slot = BagSlot.newBuilder().setSlotId(slotId).setData(data).build();
+        bagPushBuilder.addSlot(slot);
+
+        // Player data update
+        for (BagSlot bagSlot : bagPushBuilder.getSlotList()) {
+            bagUpdateService.update(this, bagSlot);
+        }
+
+        // event
+        G.E.firePlayerEvent(this, new ItemAddEvent(data));
+
+        // push
+        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
+
+    }
+
+    /**
      * 添加物品
      *
      * @param data

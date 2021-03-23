@@ -108,7 +108,7 @@ public class HeroHandler {
 
         // 旧物品返回到背包
         if (equipment != null) {
-            player.addItem(ItemData.newBuilder()
+            player.setItem(req.getSlotId(), ItemData.newBuilder()
                     .setItemId(equipment.getId()).setCount(1).setProperty(equipment.getProperty())
                     .build(), GameConstants.ITEM_BAG);
 
