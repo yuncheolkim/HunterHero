@@ -48,6 +48,11 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+
+            time_ = input.readInt64();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -80,6 +85,17 @@ private static final long serialVersionUID = 0L;
             game.proto.HeartbeatRes.class, game.proto.HeartbeatRes.Builder.class);
   }
 
+  public static final int TIME_FIELD_NUMBER = 1;
+  private long time_;
+  /**
+   * <code>int64 time = 1;</code>
+   * @return The time.
+   */
+  @java.lang.Override
+  public long getTime() {
+    return time_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -94,6 +110,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (time_ != 0L) {
+      output.writeInt64(1, time_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -103,6 +122,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (time_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(1, time_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -118,6 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.HeartbeatRes other = (game.proto.HeartbeatRes) obj;
 
+    if (getTime()
+        != other.getTime()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -129,6 +154,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getTime());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -262,6 +290,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      time_ = 0L;
+
       return this;
     }
 
@@ -288,6 +318,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.HeartbeatRes buildPartial() {
       game.proto.HeartbeatRes result = new game.proto.HeartbeatRes(this);
+      result.time_ = time_;
       onBuilt();
       return result;
     }
@@ -336,6 +367,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.HeartbeatRes other) {
       if (other == game.proto.HeartbeatRes.getDefaultInstance()) return this;
+      if (other.getTime() != 0L) {
+        setTime(other.getTime());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -362,6 +396,37 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private long time_ ;
+    /**
+     * <code>int64 time = 1;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <code>int64 time = 1;</code>
+     * @param value The time to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTime(long value) {
+      
+      time_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 time = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTime() {
+      
+      time_ = 0L;
+      onChanged();
       return this;
     }
     @java.lang.Override

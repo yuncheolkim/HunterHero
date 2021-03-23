@@ -89,7 +89,7 @@ public class DefaultLog implements Log {
     }
 
     public void info(Throwable t) {
-        info(FQCN, t, null, null);
+        info(FQCN, t, null, (Object) null);
     }
 
     public void info(String format, Object... arguments) {
@@ -109,7 +109,7 @@ public class DefaultLog implements Log {
     }
 
     public void warn(Throwable t) {
-        warn(FQCN, t, null, null);
+        warn(FQCN, t, null, (Object) null);
     }
 
     public void warn(String format, Object... arguments) {
@@ -129,7 +129,7 @@ public class DefaultLog implements Log {
     }
 
     public void error(Throwable t) {
-        error(FQCN, t, null, null);
+        error(FQCN, t, null, (Object) null);
     }
 
     public void error(String format, Object... arguments) {

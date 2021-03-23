@@ -6,4 +6,10 @@ package game.proto;
 public interface HeartbeatResOrBuilder extends
     // @@protoc_insertion_point(interface_extends:Message.HeartbeatRes)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>int64 time = 1;</code>
+   * @return The time.
+   */
+  long getTime();
 }

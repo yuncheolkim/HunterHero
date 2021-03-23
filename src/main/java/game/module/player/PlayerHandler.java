@@ -16,8 +16,8 @@ import java.util.concurrent.TimeUnit;
  * 2021/2/22 16:00
  */
 public class PlayerHandler {
-    public static void heartbeat(Player player, HeartbeatReq o) {
-        player.getTransport().send(MsgNo.heartbeat_VALUE, HeartbeatRes.getDefaultInstance());
+    public static HeartbeatRes heartbeat(Player player, HeartbeatReq o) {
+        return HeartbeatRes.newBuilder().setTime(o.getTime()).buildPartial();
     }
 
     /**

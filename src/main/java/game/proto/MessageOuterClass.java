@@ -176,36 +176,37 @@ public final class MessageOuterClass {
       "\004code\030\002 \001(\t\"<\n\010LoginRes\022!\n\004data\030\001 \001(\0132\023." +
       "Message.PlayerData\022\r\n\005first\030\003 \001(\010\"\n\n\010Kic" +
       "kPush\"#\n\023PlayerCreateNameReq\022\014\n\004name\030\001 \001" +
-      "(\t\"\016\n\014HeartbeatReq\"\016\n\014HeartbeatRes\"\031\n\007Ta" +
-      "skReq\022\016\n\006taskId\030\001 \001(\005\"3\n\rFightStartReq\022\"" +
-      "\n\003pos\030\001 \003(\0132\025.Message.FightHeroPos\"7\n\016Fi" +
-      "ghtStartPush\022%\n\004info\030\001 \003(\0132\027.Message.Fig" +
-      "htEnemyInfo\"\260\001\n\013FightRecord\022#\n\005round\030\001 \003" +
-      "(\0132\024.Message.RoundRecord\022&\n\005sideA\030\002 \003(\0132" +
-      "\027.Message.HeroDataRecord\022&\n\005sideB\030\003 \003(\0132" +
-      "\027.Message.HeroDataRecord\022\013\n\003win\030\004 \001(\010\022\037\n" +
-      "\006reward\030\005 \003(\0132\017.Message.Reward\"1\n\rEnterS" +
-      "ceneReq\022 \n\004data\030\001 \001(\0132\022.Message.SceneDat" +
-      "a\"\037\n\021EnterFightAreaReq\022\n\n\002id\030\001 \001(\005\"\036\n\020Ex" +
-      "itFightAreaReq\022\n\n\002id\030\001 \001(\005\"+\n\tHeroUpReq\022" +
-      "\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030\002 \001(\005\"3\n\016HeroC" +
-      "hangePush\022!\n\004hero\030\001 \001(\0132\023.Message.Player" +
-      "Hero\"G\n\022ResourceChangePush\022\022\n\nresourceId" +
-      "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"&\n" +
-      "\025PlayerLevelChangePush\022\r\n\005value\030\001 \001(\005\"?\n" +
-      "\rExpChangePush\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp" +
-      "\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagInfoChangeP" +
-      "ush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capa" +
-      "city\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSl" +
-      "ot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemD" +
-      "iscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
-      "\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBu" +
-      "yReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006s" +
-      "hopId\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type\030\001" +
-      " \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013I" +
-      "temSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(" +
-      "\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n" +
-      "\006heroId\030\002 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "(\t\"\034\n\014HeartbeatReq\022\014\n\004time\030\001 \001(\003\"\034\n\014Hear" +
+      "tbeatRes\022\014\n\004time\030\001 \001(\003\"\031\n\007TaskReq\022\016\n\006tas" +
+      "kId\030\001 \001(\005\"3\n\rFightStartReq\022\"\n\003pos\030\001 \003(\0132" +
+      "\025.Message.FightHeroPos\"7\n\016FightStartPush" +
+      "\022%\n\004info\030\001 \003(\0132\027.Message.FightEnemyInfo\"" +
+      "\260\001\n\013FightRecord\022#\n\005round\030\001 \003(\0132\024.Message" +
+      ".RoundRecord\022&\n\005sideA\030\002 \003(\0132\027.Message.He" +
+      "roDataRecord\022&\n\005sideB\030\003 \003(\0132\027.Message.He" +
+      "roDataRecord\022\013\n\003win\030\004 \001(\010\022\037\n\006reward\030\005 \003(" +
+      "\0132\017.Message.Reward\"1\n\rEnterSceneReq\022 \n\004d" +
+      "ata\030\001 \001(\0132\022.Message.SceneData\"\037\n\021EnterFi" +
+      "ghtAreaReq\022\n\n\002id\030\001 \001(\005\"\036\n\020ExitFightAreaR" +
+      "eq\022\n\n\002id\030\001 \001(\005\"+\n\tHeroUpReq\022\016\n\006heroId\030\001 " +
+      "\001(\005\022\016\n\006stepId\030\002 \001(\005\"3\n\016HeroChangePush\022!\n" +
+      "\004hero\030\001 \001(\0132\023.Message.PlayerHero\"G\n\022Reso" +
+      "urceChangePush\022\022\n\nresourceId\030\001 \001(\005\022\016\n\006he" +
+      "roId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"&\n\025PlayerLevel" +
+      "ChangePush\022\r\n\005value\030\001 \001(\005\"?\n\rExpChangePu" +
+      "sh\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006cu" +
+      "rExp\030\003 \001(\005\"b\n\021BagInfoChangePush\022\r\n\005clean" +
+      "\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capacity\030\024 \001(\005\022\036" +
+      "\n\004slot\030\036 \003(\0132\020.Message.BagSlot\"\033\n\013BagCle" +
+      "anReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemDiscardReq\022\016\n" +
+      "\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006slotId\030\003" +
+      " \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBuyReq\022\016\n\006item" +
+      "Id\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\"" +
+      ">\n\017ItemExchangeReq\022\014\n\004type\030\001 \001(\005\022\016\n\006slot" +
+      "Id\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013ItemSellReq\022\016" +
+      "\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2\n\020HeroEqu" +
+      "ipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(" +
+      "\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -265,13 +266,13 @@ public final class MessageOuterClass {
     internal_static_Message_HeartbeatReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HeartbeatReq_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Time", });
     internal_static_Message_HeartbeatRes_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_Message_HeartbeatRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HeartbeatRes_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Time", });
     internal_static_Message_TaskReq_descriptor =
       getDescriptor().getMessageTypes().get(10);
     internal_static_Message_TaskReq_fieldAccessorTable = new

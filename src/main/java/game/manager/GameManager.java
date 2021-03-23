@@ -14,6 +14,7 @@ import game.module.task.TaskHandler;
 import game.msg.IInvoke;
 import game.msg.Invoker;
 import game.msg.InvokerNoParam;
+import game.msg.InvokerReturn;
 import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.PlayerHero;
@@ -65,7 +66,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
 
         // heart
-        addHandler(new Invoker<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
+        addHandler(new InvokerReturn<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
         addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
         // task

@@ -39,3 +39,11 @@ F:\tools\excel.exe -inDir F:\gitee\hunter-hero-config -outDir F:\gitee\HunterHer
 F:\tools\excel.exe -inDir F:\gitee\hunter-hero-config -outDir E:\unity_project\HerosHunter\Assets\Resources\Data
 
 Data + Service
+
+## ip
+
+111.229.175.151
+
+## port
+
+9001
