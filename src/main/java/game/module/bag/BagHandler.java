@@ -8,7 +8,6 @@ import game.proto.BagCleanReq;
 import game.proto.ItemDiscardReq;
 import game.proto.ItemExchangeReq;
 import game.proto.data.BagSlot;
-import game.proto.data.ItemData;
 
 /**
  * @author Yunzhe.Jin
@@ -51,7 +50,7 @@ public class BagHandler {
             ModuleAssert.notNull(bagSlot);
             int count = Math.min(req.getCount(), bagSlot.getData().getCount());
 
-            player.addItem(ItemData.newBuilder().setCount(count).setItemId(bagSlot.getData().getItemId()).build(), GameConstants.ITEM_BAG);
+            player.addItem(bagSlot.getData().toBuilder().setCount(count).build(), GameConstants.ITEM_BAG);
 
             player.removeBagItem(GameConstants.ITEM_BANK, count, req.getSlotId());
 
@@ -60,7 +59,7 @@ public class BagHandler {
             ModuleAssert.notNull(bagSlot);
             int count = Math.min(req.getCount(), bagSlot.getData().getCount());
 
-            player.addItem(ItemData.newBuilder().setCount(count).setItemId(bagSlot.getData().getItemId()).build(), GameConstants.ITEM_BANK);
+            player.addItem(bagSlot.getData().toBuilder().setCount(count).build(), GameConstants.ITEM_BANK);
 
             player.removeBagItem(GameConstants.ITEM_BAG, count, req.getSlotId());
 
