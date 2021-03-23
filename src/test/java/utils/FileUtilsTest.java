@@ -26,12 +26,12 @@ public class FileUtilsTest {
 
     @Test
     public void test3() throws IOException, URISyntaxException {
-        String s = FileUtils.readFile(getClass().getClassLoader().getResource("data/task_对话.json").toURI());
+        String s = FileUtils.readFile("data/task_对话.json");
         System.out.println(s);
     }
 
     @Test
-    public void test4(){
+    public void test4() {
         PlayerData.Builder b = PlayerData.newBuilder();
         b.setName("a");
         System.out.println(b.build());

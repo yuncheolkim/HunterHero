@@ -35,12 +35,12 @@ appender("game", RollingFileAppender) {
 }
 
 appender("server", RollingFileAppender) {
-    file = "logs/gameserver.log"
+    file = "logs/server.log"
     encoder(PatternLayoutEncoder) {
         pattern = PATTERN
     }
     rollingPolicy(TimeBasedRollingPolicy) {
-        fileNamePattern = "logs/gameserver_%d{yyyy-MM-dd}.log"
+        fileNamePattern = "logs/server_%d{yyyy-MM-dd}.log"
         maxHistory = 3
     }
 }

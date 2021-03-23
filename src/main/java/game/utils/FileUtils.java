@@ -2,8 +2,10 @@ package game.utils;
 
 import com.google.common.base.Charsets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
@@ -14,20 +16,42 @@ import java.nio.file.StandardOpenOption;
  */
 public class FileUtils {
 
-    public static String readFile(URI path) throws IOException {
-        byte[] contentBytes = Files.readAllBytes(Paths.get(path));
-
-        return new String(contentBytes, Charsets.UTF_8);
-    }
-
     public static String readFile(String path) throws IOException {
-        byte[] contentBytes = Files.readAllBytes(Paths.get(path));
+        InputStream inputStream = FileUtils.class.getClassLoader().getResourceAsStream(path);
+        BufferedReader bufferedReader = null;
+        StringBuilder builder;
+        try {
+            assert inputStream != null;
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
 
-        return new String(contentBytes, Charsets.UTF_8);
+            builder = new StringBuilder();
+            String s = bufferedReader.readLine();
+            while (s != null) {
+                builder.append(s);
+                s = bufferedReader.readLine();
+            }
+        } finally {
+
+            assert bufferedReader != null;
+            bufferedReader.close();
+        }
+
+        return builder.toString();
+//        byte[] contentBytes = Files.readAllBytes(Paths.get(path));
+//
+//        return new String(contentBytes, Charsets.UTF_8);
     }
 
     public static byte[] readByteFile(String path) throws IOException {
         return Files.readAllBytes(Paths.get(path));
+    }
+
+
+    public static void createDir(String path) throws IOException {
+
+        if (!hasFile(path)) {
+            Files.createDirectories(Paths.get(path));
+        }
     }
 
 

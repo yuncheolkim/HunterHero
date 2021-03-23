@@ -5,7 +5,6 @@ import game.base.Logs;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.Base64;
 import java.util.zip.DataFormatException;
 import java.util.zip.Deflater;
@@ -44,17 +43,6 @@ public class GzipUtil {
             return zip;
         }
         return unziqStr;
-    }
-
-
-    public static String unzipString1(String zip) {
-        try {
-            byte[] decode = new sun.misc.BASE64Decoder().decodeBuffer(zip);
-            return unzipByte(decode);
-        } catch (IOException ex) {
-            log.error("解压文件失败", ex);
-            return null;
-        }
     }
 
     /**

@@ -8,7 +8,6 @@ import game.utils.FileUtils;
 import game.utils.JsonUtil;
 
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author Yunzhe.Jin
@@ -34,7 +33,8 @@ public class JsonConfig {
     public Map<Integer, DataConfigData> load() {
         try {
             Logs.C.info(GameConstants.TOKEN_START + "加载配置文件:{}", fileName);
-            String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
+//            String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
+            String s = FileUtils.readFile(fileName);
             ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builderWithExpectedSize(initSize);
             return b.putAll(JsonUtil.fromJsonString(s, new TypeReference<Map<Integer, DataConfigData>>() {
             })).build();
@@ -42,7 +42,7 @@ public class JsonConfig {
             Logs.C.error(fileName, e);
             throw new RuntimeException(e);
         } finally {
-            Logs.C.info(GameConstants.TOKEN_END + "加载配置文件结束:{}", fileName);
+            Logs.M.info(GameConstants.TOKEN_END + "加载配置文件结束:{}", fileName);
         }
     }
 

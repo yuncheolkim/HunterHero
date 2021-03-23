@@ -1,5 +1,6 @@
 package game.net.server;
 
+import game.base.G;
 import game.base.Lifecycle;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -74,7 +75,12 @@ public class TcpServer implements IServer {
 
 
         // starter
-        starter.forEach(Lifecycle::start);
+        try {
+            starter.forEach(Lifecycle::start);
+        } catch (Exception e) {
+            thread.interrupt();
+            G.findException(e);
+        }
     }
 
     public void stop() {
