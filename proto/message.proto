@@ -53,9 +53,24 @@ message HeartbeatRes {
 // 10 tick
 // 11 dataSave
 
-// 1001 接受任务
+// 任务
 message TaskReq {
     int32 taskId = 1;
+}
+
+// 新任务
+message TaskNewPush{
+    int32 taskId = 1;
+}
+
+// 任务发生变化
+message TaskStatusChangePush{
+    int32 taskId = 1;
+    // 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
+    int32 status = 2;
+    // 任务进度
+    int32 count = 3;
+
 }
 
 // 2001 开始战斗

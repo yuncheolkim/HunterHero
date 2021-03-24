@@ -143,6 +143,7 @@ public class FightHandler {
                         }
                         // 加入失败, 背包满
                         Logs.C.error(e);
+                        player.getTransport().sendError(ErrorEnum.ERR_104);
                         break;
                     }
                 }

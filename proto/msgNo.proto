@@ -17,11 +17,11 @@ enum MsgNo {
     // 心跳
     heartbeat = 101;
 
-    // 接受任务
+    // 任务
     task_accept = 1001;
-    // 完成任务
     task_complete = 1002;
-
+    TaskNewPushNo = 1003;
+    TaskStatusChangePush = 1004;
     // 开始战斗
     fight_start = 2001;
     // 发生战斗push

@@ -4,11 +4,12 @@
         "completeNpcId": 11,
         "completeType": 2,
         "contentId": 2000101,
+        "conversationId": 0,
         "id": 1,
         "level": 1,
         "notCompleteContentId": 1006,
         "npcId": 1,
-        "reward": "3=40",
+        "reward": "3=133#1=20#402001=1#402002=1",
         "speakType": 1,
         "targetList": [
             2
@@ -34,8 +35,5 @@
         ],
         "taskType": 1,
         "title": "攻击性海龟"
-    },
-    "3": {
-        "id": 3
     }
 }
