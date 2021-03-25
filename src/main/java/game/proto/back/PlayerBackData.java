@@ -95,6 +95,19 @@ private static final long serialVersionUID = 0L;
             updateTime_ = input.readInt64();
             break;
           }
+          case 802: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              completeTask_ = com.google.protobuf.MapField.newMapField(
+                  CompleteTaskDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000002;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
+            completeTask__ = input.readMessage(
+                CompleteTaskDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            completeTask_.getMutableMap().put(
+                completeTask__.getKey(), completeTask__.getValue());
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -122,6 +135,18 @@ private static final long serialVersionUID = 0L;
     return game.proto.back.Back.internal_static_Message_PlayerBackData_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 100:
+        return internalGetCompleteTask();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -210,6 +235,87 @@ private static final long serialVersionUID = 0L;
     return updateTime_;
   }
 
+  public static final int COMPLETETASK_FIELD_NUMBER = 100;
+  private static final class CompleteTaskDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, java.lang.Boolean> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, java.lang.Boolean>newDefaultInstance(
+                game.proto.back.Back.internal_static_Message_PlayerBackData_CompleteTaskEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.BOOL,
+                false);
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, java.lang.Boolean> completeTask_;
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
+  internalGetCompleteTask() {
+    if (completeTask_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          CompleteTaskDefaultEntryHolder.defaultEntry);
+    }
+    return completeTask_;
+  }
+
+  public int getCompleteTaskCount() {
+    return internalGetCompleteTask().getMap().size();
+  }
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsCompleteTask(
+      int key) {
+    
+    return internalGetCompleteTask().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getCompleteTaskMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, java.lang.Boolean> getCompleteTask() {
+    return getCompleteTaskMap();
+  }
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, java.lang.Boolean> getCompleteTaskMap() {
+    return internalGetCompleteTask().getMap();
+  }
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+  @java.lang.Override
+
+  public boolean getCompleteTaskOrDefault(
+      int key,
+      boolean defaultValue) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+        internalGetCompleteTask().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+  @java.lang.Override
+
+  public boolean getCompleteTaskOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+        internalGetCompleteTask().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -244,6 +350,12 @@ private static final long serialVersionUID = 0L;
     if (updateTime_ != 0L) {
       output.writeInt64(6, updateTime_);
     }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetCompleteTask(),
+        CompleteTaskDefaultEntryHolder.defaultEntry,
+        100);
     unknownFields.writeTo(output);
   }
 
@@ -283,6 +395,16 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(6, updateTime_);
     }
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.Boolean> entry
+         : internalGetCompleteTask().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
+      completeTask__ = CompleteTaskDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(100, completeTask__);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -308,6 +430,8 @@ private static final long serialVersionUID = 0L;
         != other.getLoginTime()) return false;
     if (getUpdateTime()
         != other.getUpdateTime()) return false;
+    if (!internalGetCompleteTask().equals(
+        other.internalGetCompleteTask())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -335,6 +459,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + UPDATETIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getUpdateTime());
+    if (!internalGetCompleteTask().getMap().isEmpty()) {
+      hash = (37 * hash) + COMPLETETASK_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetCompleteTask().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -446,6 +574,28 @@ private static final long serialVersionUID = 0L;
       return game.proto.back.Back.internal_static_Message_PlayerBackData_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 100:
+          return internalGetCompleteTask();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 100:
+          return internalGetMutableCompleteTask();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -482,6 +632,7 @@ private static final long serialVersionUID = 0L;
 
       updateTime_ = 0L;
 
+      internalGetMutableCompleteTask().clear();
       return this;
     }
 
@@ -518,6 +669,8 @@ private static final long serialVersionUID = 0L;
       result.powerRecoverTime_ = powerRecoverTime_;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
+      result.completeTask_ = internalGetCompleteTask();
+      result.completeTask_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -588,6 +741,8 @@ private static final long serialVersionUID = 0L;
       if (other.getUpdateTime() != 0L) {
         setUpdateTime(other.getUpdateTime());
       }
+      internalGetMutableCompleteTask().mergeFrom(
+          other.internalGetCompleteTask());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -842,6 +997,134 @@ private static final long serialVersionUID = 0L;
       
       updateTime_ = 0L;
       onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Boolean> completeTask_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
+    internalGetCompleteTask() {
+      if (completeTask_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            CompleteTaskDefaultEntryHolder.defaultEntry);
+      }
+      return completeTask_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Boolean>
+    internalGetMutableCompleteTask() {
+      onChanged();;
+      if (completeTask_ == null) {
+        completeTask_ = com.google.protobuf.MapField.newMapField(
+            CompleteTaskDefaultEntryHolder.defaultEntry);
+      }
+      if (!completeTask_.isMutable()) {
+        completeTask_ = completeTask_.copy();
+      }
+      return completeTask_;
+    }
+
+    public int getCompleteTaskCount() {
+      return internalGetCompleteTask().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsCompleteTask(
+        int key) {
+      
+      return internalGetCompleteTask().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getCompleteTaskMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Boolean> getCompleteTask() {
+      return getCompleteTaskMap();
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, java.lang.Boolean> getCompleteTaskMap() {
+      return internalGetCompleteTask().getMap();
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+    @java.lang.Override
+
+    public boolean getCompleteTaskOrDefault(
+        int key,
+        boolean defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+          internalGetCompleteTask().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+    @java.lang.Override
+
+    public boolean getCompleteTaskOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Boolean> map =
+          internalGetCompleteTask().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearCompleteTask() {
+      internalGetMutableCompleteTask().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+
+    public Builder removeCompleteTask(
+        int key) {
+      
+      internalGetMutableCompleteTask().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Boolean>
+    getMutableCompleteTask() {
+      return internalGetMutableCompleteTask().getMutableMap();
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+    public Builder putCompleteTask(
+        int key,
+        boolean value) {
+      
+      
+      internalGetMutableCompleteTask().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+     */
+
+    public Builder putAllCompleteTask(
+        java.util.Map<java.lang.Integer, java.lang.Boolean> values) {
+      internalGetMutableCompleteTask().getMutableMap()
+          .putAll(values);
       return this;
     }
     @java.lang.Override

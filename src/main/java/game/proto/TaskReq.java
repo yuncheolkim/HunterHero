@@ -5,7 +5,7 @@ package game.proto;
 
 /**
  * <pre>
- * 1001 接受任务
+ *&#47;///////////////////////////  任务
  * </pre>
  *
  * Protobuf type {@code Message.TaskReq}
@@ -257,7 +257,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 1001 接受任务
+   *&#47;///////////////////////////  任务
    * </pre>
    *
    * Protobuf type {@code Message.TaskReq}

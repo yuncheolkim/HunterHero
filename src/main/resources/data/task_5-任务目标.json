@@ -3,7 +3,7 @@
         "content": "消灭{0}/{2}个大海龟",
         "content1": "消灭{1}个大海龟",
         "id": 1,
-        "processType": 2,
+        "type": 2,
         "v1": 1,
         "v2": 10
     },
@@ -41,7 +41,7 @@
         "content": "去找东边的渔夫",
         "content1": "去找东边的渔夫",
         "id": 2,
-        "processType": 1
+        "type": 1
     },
     "20": {
         "id": 20

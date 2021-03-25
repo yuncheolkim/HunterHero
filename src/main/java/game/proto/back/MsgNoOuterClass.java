@@ -23,22 +23,23 @@ public final class MsgNoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\013msgNo.proto\022\007Message*\262\004\n\005MsgNo\022\010\n\004NONE" +
+      "\n\013msgNo.proto\022\007Message*\343\004\n\005MsgNo\022\010\n\004NONE" +
       "\020\000\022\r\n\tlogin_req\020\001\022\r\n\tkick_push\020\002\022\026\n\022play" +
       "er_create_name\020\003\022\r\n\theartbeat\020e\022\020\n\013task_" +
-      "accept\020\351\007\022\022\n\rtask_complete\020\352\007\022\020\n\013fight_s" +
-      "tart\020\321\017\022\025\n\020fight_start_push\020\322\017\022\016\n\tfight_" +
-      "end\020\324\017\022\020\n\013scene_enter\020\271\027\022\033\n\026scene_enter_" +
-      "fight_area\020\272\027\022\033\n\026scene_leave_fight_area\020" +
-      "\273\027\022\027\n\022hero_update_lilian\020\241\037\022\030\n\023hero_upda" +
-      "te_xiulian\020\242\037\022\020\n\013hero_change\020\243\037\022\027\n\022HeroE" +
-      "quipmentReqNo\020\244\037\022\031\n\024resource_change_push" +
-      "\020\211\'\022\034\n\027PlayerLevelChangePushNo\020\212\'\022\024\n\017Exp" +
-      "ChangePushNo\020\213\'\022\030\n\023BagInfoChangePushNo\020\361" +
-      ".\022\022\n\rBagCleanReqNo\020\362.\022\025\n\020ItemDiscardReqN" +
-      "o\020\3316\022\021\n\014ItemBuyReqNo\020\3326\022\026\n\021ItemExchangeR" +
-      "eqNo\020\3336\022\022\n\rItemSellReqNo\020\3346B\025\n\017game.prot" +
-      "o.backH\001P\001b\006proto3"
+      "accept\020\351\007\022\022\n\rtask_complete\020\352\007\022\022\n\rTaskNew" +
+      "PushNo\020\353\007\022\033\n\026TaskStatusChangePushNo\020\354\007\022\020" +
+      "\n\013fight_start\020\321\017\022\025\n\020fight_start_push\020\322\017\022" +
+      "\016\n\tfight_end\020\324\017\022\020\n\013scene_enter\020\271\027\022\033\n\026sce" +
+      "ne_enter_fight_area\020\272\027\022\033\n\026scene_leave_fi" +
+      "ght_area\020\273\027\022\027\n\022hero_update_lilian\020\241\037\022\030\n\023" +
+      "hero_update_xiulian\020\242\037\022\020\n\013hero_change\020\243\037" +
+      "\022\027\n\022HeroEquipmentReqNo\020\244\037\022\031\n\024resource_ch" +
+      "ange_push\020\211\'\022\034\n\027PlayerLevelChangePushNo\020" +
+      "\212\'\022\024\n\017ExpChangePushNo\020\213\'\022\030\n\023BagInfoChang" +
+      "ePushNo\020\361.\022\022\n\rBagCleanReqNo\020\362.\022\025\n\020ItemDi" +
+      "scardReqNo\020\3316\022\021\n\014ItemBuyReqNo\020\3326\022\026\n\021Item" +
+      "ExchangeReqNo\020\3336\022\022\n\rItemSellReqNo\020\3346B\025\n\017" +
+      "game.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -57,7 +57,7 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
 
-            status_ = input.readInt32();
+            complete_ = input.readBool();
             break;
           }
           case 26: {
@@ -115,15 +115,15 @@ private static final long serialVersionUID = 0L;
     return taskId_;
   }
 
-  public static final int STATUS_FIELD_NUMBER = 2;
-  private int status_;
+  public static final int COMPLETE_FIELD_NUMBER = 2;
+  private boolean complete_;
   /**
-   * <code>int32 status = 2;</code>
-   * @return The status.
+   * <code>bool complete = 2;</code>
+   * @return The complete.
    */
   @java.lang.Override
-  public int getStatus() {
-    return status_;
+  public boolean getComplete() {
+    return complete_;
   }
 
   public static final int TARGET_FIELD_NUMBER = 3;
@@ -183,8 +183,8 @@ private static final long serialVersionUID = 0L;
     if (taskId_ != 0) {
       output.writeInt32(1, taskId_);
     }
-    if (status_ != 0) {
-      output.writeInt32(2, status_);
+    if (complete_ != false) {
+      output.writeBool(2, complete_);
     }
     for (int i = 0; i < target_.size(); i++) {
       output.writeMessage(3, target_.get(i));
@@ -202,9 +202,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, taskId_);
     }
-    if (status_ != 0) {
+    if (complete_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, status_);
+        .computeBoolSize(2, complete_);
     }
     for (int i = 0; i < target_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -227,8 +227,8 @@ private static final long serialVersionUID = 0L;
 
     if (getTaskId()
         != other.getTaskId()) return false;
-    if (getStatus()
-        != other.getStatus()) return false;
+    if (getComplete()
+        != other.getComplete()) return false;
     if (!getTargetList()
         .equals(other.getTargetList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -244,8 +244,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TASKID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskId();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus();
+    hash = (37 * hash) + COMPLETE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getComplete());
     if (getTargetCount() > 0) {
       hash = (37 * hash) + TARGET_FIELD_NUMBER;
       hash = (53 * hash) + getTargetList().hashCode();
@@ -386,7 +387,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       taskId_ = 0;
 
-      status_ = 0;
+      complete_ = false;
 
       if (targetBuilder_ == null) {
         target_ = java.util.Collections.emptyList();
@@ -422,7 +423,7 @@ private static final long serialVersionUID = 0L;
       game.proto.data.RunTask result = new game.proto.data.RunTask(this);
       int from_bitField0_ = bitField0_;
       result.taskId_ = taskId_;
-      result.status_ = status_;
+      result.complete_ = complete_;
       if (targetBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           target_ = java.util.Collections.unmodifiableList(target_);
@@ -483,8 +484,8 @@ private static final long serialVersionUID = 0L;
       if (other.getTaskId() != 0) {
         setTaskId(other.getTaskId());
       }
-      if (other.getStatus() != 0) {
-        setStatus(other.getStatus());
+      if (other.getComplete() != false) {
+        setComplete(other.getComplete());
       }
       if (targetBuilder_ == null) {
         if (!other.target_.isEmpty()) {
@@ -573,33 +574,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int status_ ;
+    private boolean complete_ ;
     /**
-     * <code>int32 status = 2;</code>
-     * @return The status.
+     * <code>bool complete = 2;</code>
+     * @return The complete.
      */
     @java.lang.Override
-    public int getStatus() {
-      return status_;
+    public boolean getComplete() {
+      return complete_;
     }
     /**
-     * <code>int32 status = 2;</code>
-     * @param value The status to set.
+     * <code>bool complete = 2;</code>
+     * @param value The complete to set.
      * @return This builder for chaining.
      */
-    public Builder setStatus(int value) {
+    public Builder setComplete(boolean value) {
       
-      status_ = value;
+      complete_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 status = 2;</code>
+     * <code>bool complete = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearStatus() {
+    public Builder clearComplete() {
       
-      status_ = 0;
+      complete_ = false;
       onChanged();
       return this;
     }

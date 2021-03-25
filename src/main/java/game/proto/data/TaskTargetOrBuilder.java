@@ -18,4 +18,10 @@ public interface TaskTargetOrBuilder extends
    * @return The value.
    */
   int getValue();
+
+  /**
+   * <code>bool complete = 3;</code>
+   * @return The complete.
+   */
+  boolean getComplete();
 }

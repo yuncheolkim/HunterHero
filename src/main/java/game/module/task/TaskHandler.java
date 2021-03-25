@@ -1,6 +1,5 @@
 package game.module.task;
 
-import com.google.protobuf.MessageLite;
 import game.base.G;
 import game.config.DataConfigData;
 import game.exception.ModuleAssert;
@@ -16,6 +15,7 @@ public class TaskHandler {
 
     /**
      * 接受任务
+     *
      * @param player
      * @param o
      * @return
@@ -23,7 +23,6 @@ public class TaskHandler {
     public static void acceptTask(Player player, TaskReq o) {
 
         ModuleAssert.notNull(player.getPd().getTaskBuilder().getAcceptableTaskMap().get(o.getTaskId()));
-
         player.getPd().getTaskBuilder().removeAcceptableTask(o.getTaskId());
 
         DataConfigData taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
@@ -40,6 +39,7 @@ public class TaskHandler {
 
     /**
      * 完成任务
+     *
      * @param player
      * @param o
      * @return

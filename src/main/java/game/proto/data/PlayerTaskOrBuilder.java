@@ -8,40 +8,6 @@ public interface PlayerTaskOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>map&lt;int32, bool&gt; completeTask = 1;</code>
-   */
-  int getCompleteTaskCount();
-  /**
-   * <code>map&lt;int32, bool&gt; completeTask = 1;</code>
-   */
-  boolean containsCompleteTask(
-      int key);
-  /**
-   * Use {@link #getCompleteTaskMap()} instead.
-   */
-  @java.lang.Deprecated
-  java.util.Map<java.lang.Integer, java.lang.Boolean>
-  getCompleteTask();
-  /**
-   * <code>map&lt;int32, bool&gt; completeTask = 1;</code>
-   */
-  java.util.Map<java.lang.Integer, java.lang.Boolean>
-  getCompleteTaskMap();
-  /**
-   * <code>map&lt;int32, bool&gt; completeTask = 1;</code>
-   */
-
-  boolean getCompleteTaskOrDefault(
-      int key,
-      boolean defaultValue);
-  /**
-   * <code>map&lt;int32, bool&gt; completeTask = 1;</code>
-   */
-
-  boolean getCompleteTaskOrThrow(
-      int key);
-
-  /**
    * <code>map&lt;int32, bool&gt; acceptableTask = 2;</code>
    */
   int getAcceptableTaskCount();

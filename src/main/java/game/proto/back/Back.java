@@ -20,6 +20,11 @@ public final class Back {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerBackData_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerBackData_CompleteTaskEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerBackData_CompleteTaskEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_SaveData_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -33,13 +38,16 @@ public final class Back {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nback.proto\022\007Message\032\ndata.proto\"w\n\016Pla" +
-      "yerBackData\022\021\n\tfightTime\030\001 \001(\003\022\021\n\tfightA" +
-      "rea\030\002 \003(\005\022\030\n\020powerRecoverTime\030\003 \001(\003\022\021\n\tl" +
-      "oginTime\030\005 \001(\003\022\022\n\nupdateTime\030\006 \001(\003\"V\n\010Sa" +
-      "veData\022)\n\010backData\030\001 \001(\0132\027.Message.Playe" +
-      "rBackData\022\037\n\002pd\030\002 \001(\0132\023.Message.PlayerDa" +
-      "taB\025\n\017game.proto.backH\001P\001b\006proto3"
+      "\n\nback.proto\022\007Message\032\ndata.proto\"\355\001\n\016Pl" +
+      "ayerBackData\022\021\n\tfightTime\030\001 \001(\003\022\021\n\tfight" +
+      "Area\030\002 \003(\005\022\030\n\020powerRecoverTime\030\003 \001(\003\022\021\n\t" +
+      "loginTime\030\005 \001(\003\022\022\n\nupdateTime\030\006 \001(\003\022?\n\014c" +
+      "ompleteTask\030d \003(\0132).Message.PlayerBackDa" +
+      "ta.CompleteTaskEntry\0323\n\021CompleteTaskEntr" +
+      "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\"V\n\010Sav" +
+      "eData\022)\n\010backData\030\001 \001(\0132\027.Message.Player" +
+      "BackData\022\037\n\002pd\030\002 \001(\0132\023.Message.PlayerDat" +
+      "aB\025\n\017game.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -51,7 +59,13 @@ public final class Back {
     internal_static_Message_PlayerBackData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerBackData_descriptor,
-        new java.lang.String[] { "FightTime", "FightArea", "PowerRecoverTime", "LoginTime", "UpdateTime", });
+        new java.lang.String[] { "FightTime", "FightArea", "PowerRecoverTime", "LoginTime", "UpdateTime", "CompleteTask", });
+    internal_static_Message_PlayerBackData_CompleteTaskEntry_descriptor =
+      internal_static_Message_PlayerBackData_descriptor.getNestedTypes().get(0);
+    internal_static_Message_PlayerBackData_CompleteTaskEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerBackData_CompleteTaskEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_Message_SaveData_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_Message_SaveData_fieldAccessorTable = new

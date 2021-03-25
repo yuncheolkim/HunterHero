@@ -53,20 +53,20 @@ message SceneData {
 }
 
 message PlayerTask {
-    map<int32, bool> completeTask = 1;
     map<int32, bool> acceptableTask = 2;
     map<int32, RunTask> runTask = 3;
 }
 
 message RunTask {
     int32 taskId = 1;
-    int32 status = 2;
+    bool  complete = 2;
     repeated TaskTarget target = 3;
 }
 
 message TaskTarget {
     int32 id = 1;
     int32 value = 2;
+    bool  complete = 3;
 }
 //////////// hero
 

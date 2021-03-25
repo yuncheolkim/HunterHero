@@ -14,10 +14,10 @@ public interface RunTaskOrBuilder extends
   int getTaskId();
 
   /**
-   * <code>int32 status = 2;</code>
-   * @return The status.
+   * <code>bool complete = 2;</code>
+   * @return The complete.
    */
-  int getStatus();
+  boolean getComplete();
 
   /**
    * <code>repeated .Message.TaskTarget target = 3;</code>

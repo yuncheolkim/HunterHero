@@ -53,7 +53,7 @@ message HeartbeatRes {
 // 10 tick
 // 11 dataSave
 
-// 任务
+//////////////////////////////  任务
 message TaskReq {
     int32 taskId = 1;
 }
@@ -70,6 +70,8 @@ message TaskStatusChangePush{
     int32 status = 2;
     // 任务进度
     int32 count = 3;
+
+    int32 targetId = 4;
 
 }
 

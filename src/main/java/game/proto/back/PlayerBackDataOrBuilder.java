@@ -55,4 +55,38 @@ public interface PlayerBackDataOrBuilder extends
    * @return The updateTime.
    */
   long getUpdateTime();
+
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+  int getCompleteTaskCount();
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+  boolean containsCompleteTask(
+      int key);
+  /**
+   * Use {@link #getCompleteTaskMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, java.lang.Boolean>
+  getCompleteTask();
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+  java.util.Map<java.lang.Integer, java.lang.Boolean>
+  getCompleteTaskMap();
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+
+  boolean getCompleteTaskOrDefault(
+      int key,
+      boolean defaultValue);
+  /**
+   * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
+   */
+
+  boolean getCompleteTaskOrThrow(
+      int key);
 }

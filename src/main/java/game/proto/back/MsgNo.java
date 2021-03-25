@@ -46,20 +46,24 @@ public enum MsgNo
   heartbeat(101),
   /**
    * <pre>
-   * 接受任务
+   * 任务
    * </pre>
    *
    * <code>task_accept = 1001;</code>
    */
   task_accept(1001),
   /**
-   * <pre>
-   * 完成任务
-   * </pre>
-   *
    * <code>task_complete = 1002;</code>
    */
   task_complete(1002),
+  /**
+   * <code>TaskNewPushNo = 1003;</code>
+   */
+  TaskNewPushNo(1003),
+  /**
+   * <code>TaskStatusChangePushNo = 1004;</code>
+   */
+  TaskStatusChangePushNo(1004),
   /**
    * <pre>
    * 开始战斗
@@ -249,20 +253,24 @@ public enum MsgNo
   public static final int heartbeat_VALUE = 101;
   /**
    * <pre>
-   * 接受任务
+   * 任务
    * </pre>
    *
    * <code>task_accept = 1001;</code>
    */
   public static final int task_accept_VALUE = 1001;
   /**
-   * <pre>
-   * 完成任务
-   * </pre>
-   *
    * <code>task_complete = 1002;</code>
    */
   public static final int task_complete_VALUE = 1002;
+  /**
+   * <code>TaskNewPushNo = 1003;</code>
+   */
+  public static final int TaskNewPushNo_VALUE = 1003;
+  /**
+   * <code>TaskStatusChangePushNo = 1004;</code>
+   */
+  public static final int TaskStatusChangePushNo_VALUE = 1004;
   /**
    * <pre>
    * 开始战斗
@@ -444,6 +452,8 @@ public enum MsgNo
       case 101: return heartbeat;
       case 1001: return task_accept;
       case 1002: return task_complete;
+      case 1003: return TaskNewPushNo;
+      case 1004: return TaskStatusChangePushNo;
       case 2001: return fight_start;
       case 2002: return fight_start_push;
       case 2004: return fight_end;
