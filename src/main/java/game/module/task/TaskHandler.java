@@ -29,9 +29,7 @@ public class TaskHandler {
         RunTask.Builder data = RunTask.newBuilder();
         data.setTaskId(o.getTaskId());
         if (taskConfigData4.completeType == 2) {// 立即完成
-            data.setStatus(3);
-        } else {
-            data.setStatus(2);
+            data.setComplete(true);
         }
         player.getPd().getTaskBuilder().putRunTask(o.getTaskId(), data.build());
 
