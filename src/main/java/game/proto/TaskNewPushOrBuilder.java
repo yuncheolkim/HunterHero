@@ -8,8 +8,19 @@ public interface TaskNewPushOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 taskId = 1;</code>
-   * @return The taskId.
+   * <code>repeated int32 taskId = 1;</code>
+   * @return A list containing the taskId.
    */
-  int getTaskId();
+  java.util.List<java.lang.Integer> getTaskIdList();
+  /**
+   * <code>repeated int32 taskId = 1;</code>
+   * @return The count of taskId.
+   */
+  int getTaskIdCount();
+  /**
+   * <code>repeated int32 taskId = 1;</code>
+   * @param index The index of the element to return.
+   * @return The taskId at the given index.
+   */
+  int getTaskId(int index);
 }

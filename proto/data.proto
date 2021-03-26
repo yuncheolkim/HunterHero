@@ -213,7 +213,9 @@ message BuffRecord {
 }
 enum RewardType {
     REWARD_NORMAL = 0;
+    // 资源
     REWARD_RESOURCE = 1;
+    // 物品
     REWARD_ITEM = 2;
 }
 // Reward

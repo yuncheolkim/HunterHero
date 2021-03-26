@@ -188,7 +188,7 @@ public final class MessageOuterClass {
       "kPush\"#\n\023PlayerCreateNameReq\022\014\n\004name\030\001 \001" +
       "(\t\"\034\n\014HeartbeatReq\022\014\n\004time\030\001 \001(\003\"\034\n\014Hear" +
       "tbeatRes\022\014\n\004time\030\001 \001(\003\"\031\n\007TaskReq\022\016\n\006tas" +
-      "kId\030\001 \001(\005\"\035\n\013TaskNewPush\022\016\n\006taskId\030\001 \001(\005" +
+      "kId\030\001 \001(\005\"\035\n\013TaskNewPush\022\016\n\006taskId\030\001 \003(\005" +
       "\"W\n\024TaskStatusChangePush\022\016\n\006taskId\030\001 \001(\005" +
       "\022\016\n\006status\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\020\n\010targe" +
       "tId\030\004 \001(\005\"3\n\rFightStartReq\022\"\n\003pos\030\001 \003(\0132" +

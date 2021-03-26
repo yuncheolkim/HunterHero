@@ -10,5 +10,7 @@ public enum ResourceSourceEnum {
 
     打怪, TEST, 自动恢复,
     出售物品,
+    任务,
+    ;
 
 }

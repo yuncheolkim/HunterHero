@@ -22,8 +22,10 @@ import game.proto.back.MsgNo;
 import game.proto.data.*;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
+import io.netty.util.collection.IntObjectHashMap;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -82,18 +84,29 @@ public class FightHandler {
             int exp = 0;
             int gold = 0;
 
+            IntObjectHashMap<Integer> enemyCountMap = new IntObjectHashMap<>(record.getSideBhero().size());
             // 杀敌
             for (HeroRecordData sideBhero : record.getSideBhero()) {
                 int enemyId = sideBhero.simple.id;
-                G.E.firePlayerEvent(player, new KillEvent(enemyId));
                 exp += FightDropService.dropExp(sideBhero.simple.level);
                 gold += FightDropService.dropGold(sideBhero.simple.level);
+                Integer enemyCount = enemyCountMap.get(enemyId);
+                if (enemyCount == null) {
+                    enemyCount = 0;
+                }
+                enemyCount += 1;
+                enemyCountMap.put(enemyId, enemyCount);
 
                 // enemy item
                 List<Reward> itemRewardList = FightDropService.dropEnemyItem(enemyId);
                 if (!itemRewardList.isEmpty()) {
                     result.addAllReward(itemRewardList);
                 }
+            }
+
+            // 记录杀敌
+            for (Map.Entry<Integer, Integer> entry : enemyCountMap.entrySet()) {
+                G.E.firePlayerEvent(player, new KillEvent(entry.getKey(), entry.getValue()));
             }
             // 奖励
             if (gold > 0) {

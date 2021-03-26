@@ -237,5 +237,29 @@ public class ConfigManager extends AbsLifecycle {
     public DataConfigData getItem(int itemId) {
         return itemMap.get(itemId);
     }
+
+    /**
+     * 任务
+     *
+     * @param taskId
+     * @return
+     */
+    public DataConfigData getTask(int taskId) {
+        return taskMap4.get(taskId);
+    }
+
+    /**
+     * 根据前置任务获取新任务
+     *
+     * @param beforeTaskId
+     * @return
+     */
+    public List<DataConfigData> acceptableTask(int beforeTaskId) {
+
+        List<DataConfigData> list = new ArrayList<>();
+
+
+        return list;
+    }
 }
 

@@ -23,7 +23,7 @@ public class TaskService {
      * @param targetId
      * @param addCount
      */
-    public static void calcTaskProcess(Player player, int targetId, int addCount) {
+    public static void calcTaskProcess(Player player, int targetId, int addCount, TaskTargetTypeEnum targetTypeEnum) {
         PlayerTask.Builder taskBuilder = player.pd.getTaskBuilder();
 
         if (taskBuilder.getRunTaskCount() > 0) {
@@ -34,7 +34,7 @@ public class TaskService {
                 for (int i = 0; i < task.getTargetCount(); i++) {
                     TaskTarget target = task.getTarget(i);
                     DataConfigData targetData = G.C.taskMap5.get(target.getId());
-                    if (targetData.type == TaskTargetTypeEnum.SEARCH.id
+                    if (targetData.type == targetTypeEnum.id
                             && targetData.v2 > target.getValue()
                             && targetData.v1 == targetId
                     ) {

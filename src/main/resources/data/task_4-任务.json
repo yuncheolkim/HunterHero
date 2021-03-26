@@ -7,6 +7,9 @@
         "conversationId": 0,
         "id": 1,
         "level": 1,
+        "list2": [
+            2
+        ],
         "notCompleteContentId": 1006,
         "npcId": 1,
         "reward": "3=133#1=20#402001=1#402002=1",
@@ -18,7 +21,6 @@
         "title": "帮助渔夫"
     },
     "2": {
-        "beforeTaskId": 1,
         "completeContentId": 2000203,
         "completeNpcId": 11,
         "completeType": 1,
@@ -26,6 +28,9 @@
         "conversationId": 2000201,
         "id": 2,
         "level": 1,
+        "list1": [
+            1
+        ],
         "notCompleteContentId": 2000202,
         "npcId": 11,
         "reward": "3=133#1=20",

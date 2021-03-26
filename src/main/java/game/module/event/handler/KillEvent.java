@@ -13,14 +13,16 @@ import game.module.event.IEvent;
 public class KillEvent implements IEvent {
 
     public int targetId;
+    public int count;
 
     private TargetType targetType;
 
     public KillEvent() {
     }
 
-    public KillEvent(int targetId) {
+    public KillEvent(int targetId, int count) {
         this.targetId = targetId;
+        this.count = count;
     }
 
     @Override

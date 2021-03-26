@@ -198,4 +198,8 @@ public class DataConfigData {
     public List<Integer> enemyAreaList;
     @JsonProperty
     public List<Integer> targetList;
+    @JsonProperty
+    public List<Integer> list1;
+    @JsonProperty
+    public List<Integer> list2;
 }

@@ -13,10 +13,18 @@ public enum RewardType
    */
   REWARD_NORMAL(0),
   /**
+   * <pre>
+   * 资源
+   * </pre>
+   *
    * <code>REWARD_RESOURCE = 1;</code>
    */
   REWARD_RESOURCE(1),
   /**
+   * <pre>
+   * 物品
+   * </pre>
+   *
    * <code>REWARD_ITEM = 2;</code>
    */
   REWARD_ITEM(2),
@@ -28,10 +36,18 @@ public enum RewardType
    */
   public static final int REWARD_NORMAL_VALUE = 0;
   /**
+   * <pre>
+   * 资源
+   * </pre>
+   *
    * <code>REWARD_RESOURCE = 1;</code>
    */
   public static final int REWARD_RESOURCE_VALUE = 1;
   /**
+   * <pre>
+   * 物品
+   * </pre>
+   *
    * <code>REWARD_ITEM = 2;</code>
    */
   public static final int REWARD_ITEM_VALUE = 2;
