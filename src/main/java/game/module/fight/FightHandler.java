@@ -14,6 +14,7 @@ import game.module.battle.record.HeroRecordData;
 import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.module.event.handler.KillEvent;
+import game.module.item.ItemDropService;
 import game.player.Player;
 import game.proto.Empty;
 import game.proto.FightRecord;
@@ -88,8 +89,8 @@ public class FightHandler {
             // 杀敌
             for (HeroRecordData sideBhero : record.getSideBhero()) {
                 int enemyId = sideBhero.simple.id;
-                exp += FightDropService.dropExp(sideBhero.simple.level);
-                gold += FightDropService.dropGold(sideBhero.simple.level);
+                exp += ItemDropService.dropExp(sideBhero.simple.level);
+                gold += ItemDropService.dropGold(sideBhero.simple.level);
                 Integer enemyCount = enemyCountMap.get(enemyId);
                 if (enemyCount == null) {
                     enemyCount = 0;
@@ -98,7 +99,7 @@ public class FightHandler {
                 enemyCountMap.put(enemyId, enemyCount);
 
                 // enemy item
-                List<Reward> itemRewardList = FightDropService.dropEnemyItem(enemyId);
+                List<Reward> itemRewardList = ItemDropService.dropEnemyItem(enemyId);
                 if (!itemRewardList.isEmpty()) {
                     result.addAllReward(itemRewardList);
                 }
@@ -121,7 +122,7 @@ public class FightHandler {
             }
 
             // area item
-            List<Reward> itemRewardList = FightDropService.dropAreaItem(player.pd.getSceneData().getId());
+            List<Reward> itemRewardList = ItemDropService.dropAreaItem(player.pd.getSceneData().getId());
             if (!itemRewardList.isEmpty()) {
                 result.addAllReward(itemRewardList);
             }

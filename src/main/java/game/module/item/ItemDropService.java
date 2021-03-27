@@ -1,4 +1,4 @@
-package game.module.fight;
+package game.module.item;
 
 import game.base.G;
 import game.config.DataConfigData;
@@ -15,13 +15,25 @@ import java.util.List;
  * @author Yunzhe.Jin
  * 2021/3/20 14:52
  */
-public class FightDropService {
+public class ItemDropService {
 
+    /**
+     * 掉落金币
+     *
+     * @param enemyLevel
+     * @return
+     */
     public static int dropGold(int enemyLevel) {
         DataConfigData dataConfigData = G.C.dataMap9.get(enemyLevel);
         return CalcUtil.random(dataConfigData.min, dataConfigData.max);
     }
 
+    /**
+     * 掉落经验
+     *
+     * @param enemyLevel
+     * @return
+     */
     public static int dropExp(int enemyLevel) {
         DataConfigData dataConfigData = G.C.dataMap9.get(enemyLevel);
         return dataConfigData.monsterExp;

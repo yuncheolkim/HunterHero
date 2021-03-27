@@ -1,6 +1,7 @@
 package game.module.shop;
 
 import game.base.G;
+import game.base.GameConstants;
 import game.base.IIdDisplay;
 import game.config.DataConfigData;
 import game.exception.ErrorEnum;
@@ -33,7 +34,7 @@ public class ShopHandler {
         // 暂时金币
         if (display == ResourceEnum.GOLD) {
             ModuleAssert.isTrue(player.hasGold(item.value), ErrorEnum.ERR_103);
-            player.addItem(ItemData.newBuilder().setItemId(req.getItemId()).setCount(req.getCount()).build(), 1);
+            player.addItem(ItemData.newBuilder().setItemId(req.getItemId()).setCount(req.getCount()).build(), GameConstants.ITEM_BAG);
             player.consumeGold(item.value, ConsumeTypeEnum.商店);
         }
     }
@@ -57,7 +58,7 @@ public class ShopHandler {
 
         if (display == ResourceEnum.GOLD) {
             // 移除物品
-            player.removeBagItem(1, count, req.getSlotId());
+            player.removeBagItem(GameConstants.ITEM_BAG, count, req.getSlotId());
             player.addGold(count * item.sell, ResourceSourceEnum.出售物品);
         }
     }

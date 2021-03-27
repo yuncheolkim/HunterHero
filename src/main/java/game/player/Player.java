@@ -138,11 +138,13 @@ public class Player {
         String account = code;// todo for test
 
         if (playerRepo.has(account)) {
-            pd = playerRepo.load(account);
+            game.proto.back.SaveData.Builder load = playerRepo.load(account);
+            pd = load.getPdBuilder();
+            D = load.getBackDataBuilder();
         } else {// 创建用户
             pd.setAccount(account);
             initFirstPlayer();
-            playerRepo.save(pd.build());
+            saveData();
         }
         prepareData();
     }
@@ -221,14 +223,19 @@ public class Player {
         D.setLoginTime(loginTime.toDate().getTime());
         D.setUpdateTime(updateTime.toDate().getTime());
 
-        PlayerData copy = pd.build();
         Work dataPersistenceWork = G.W.getDataPersistenceWork(pid);
+
+        game.proto.back.SaveData data = game.proto.back.SaveData.newBuilder()
+                .setBackData(D.build())
+                .setPd(pd.build())
+                .build();
 
         dataPersistenceWork.addTask(() -> {
             PlayerRepo playerRepo = G.R.getPlayerRepo();
-            playerRepo.save(copy);
+            playerRepo.save(data);
         });
     }
+
 
     /**
      * 获得英雄

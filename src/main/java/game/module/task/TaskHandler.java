@@ -113,9 +113,8 @@ public class TaskHandler {
             if (!newTaskList.isEmpty()) {
                 // 新任务
                 player.getTransport()
-                        .send(MsgNo.TaskNewPushNo_VALUE, TaskNewPush.newBuilder()
-                                .addAllTaskId(newTaskList).buildPartial()
-                        );
+                        .send(MsgNo.TaskNewPushNo_VALUE,
+                                TaskNewPush.newBuilder().addAllTaskId(newTaskList).buildPartial());
             }
         }
     }
