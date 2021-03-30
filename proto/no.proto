@@ -1,0 +1,69 @@
+syntax = "proto3";
+package No;
+option java_package = "game.proto.no";
+option optimize_for = SPEED;
+option java_multiple_files = true;
+
+enum MsgNo {
+    NONE = 0;
+    // 登录
+    login_req = 1;
+
+    // 踢下线
+    kick_push = 2;
+    // 创建名称
+    player_create_name = 3;
+
+    // 心跳
+    heartbeat = 101;
+
+    // 任务
+    task_accept = 1001;
+    task_complete = 1002;
+    TaskNewPushNo = 1003;
+    TaskStatusChangePushNo = 1004;
+    // 开始战斗
+    fight_start = 2001;
+    // 发生战斗push
+    fight_start_push = 2002;
+    // 结束战斗
+    fight_end = 2004;
+
+    // 进入场景
+    scene_enter = 3001;
+    // 进入战斗区
+    scene_enter_fight_area = 3002;
+    // 离开战斗区
+    scene_leave_fight_area = 3003;
+
+    // 历练
+    hero_update_lilian = 4001;
+    // 修炼
+    hero_update_xiulian = 4002;
+    // 英雄变化
+    hero_change = 4003;
+    // 装备物品
+    HeroEquipmentReqNo = 4004;
+
+    // 资源变化
+    resource_change_push = 5001;
+    // 玩家等级变化
+    PlayerLevelChangePushNo = 5002;
+    // 经验变化推送
+    ExpChangePushNo = 5003;
+
+    // 背包变化
+    BagInfoChangePushNo = 6001;
+    BagCleanReqNo = 6002;
+
+    // 丢弃物品
+    ItemDiscardReqNo = 7001;
+    // 购买物品
+    ItemBuyReqNo = 7002;
+    // 银行背包,转移物品
+    ItemExchangeReqNo = 7003;
+    // 出售物品
+    ItemSellReqNo = 7004;
+
+
+}
