@@ -1,6 +1,8 @@
 package game.manager;
 
+import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
 import game.config.DataConfigData;
 import game.config.JsonConfig;
@@ -9,10 +11,7 @@ import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 所有游戏配置表
@@ -80,6 +79,9 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, List<DropItemConfigData>> enemyDropMap;
     // item
     private Map<Integer, DataConfigData> itemMap;
+    // Npc任务
+    public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
+
 
     @Override
     public void start() {
@@ -184,6 +186,12 @@ public class ConfigManager extends AbsLifecycle {
         areaDropMap = map2;
         enemyDropMap = map3;
 
+        Map<Integer, List<DropItemConfigData>> map4 = new HashMap<>();
+
+        // npc
+        for (DataConfigData value : dataMap17.values()) {
+            npcTaskMap.put(value.npcId, value);
+        }
     }
 
     /**
@@ -249,17 +257,13 @@ public class ConfigManager extends AbsLifecycle {
     }
 
     /**
-     * 根据前置任务获取新任务
+     * npc任务
      *
-     * @param beforeTaskId
      * @return
      */
-    public List<DataConfigData> acceptableTask(int beforeTaskId) {
+    public Collection<DataConfigData> getNpcTask(int npcId) {
 
-        List<DataConfigData> list = new ArrayList<>();
-
-
-        return list;
+        return npcTaskMap.get(npcId);
     }
 }
 

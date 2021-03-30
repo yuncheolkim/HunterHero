@@ -18,10 +18,10 @@ public class GameMain {
         FileUtils.createDir("data");
         Integer port = PropsUtil.getSystemProps().getInt("server.port", 9001);
         TcpServer tcpServer = new TcpServer(port);
+        tcpServer.addStart(G.C);
         tcpServer.addStart(G.W);
         tcpServer.addStart(G.G);
         tcpServer.addStart(G.S);
-        tcpServer.addStart(G.C);
         tcpServer.start();
 
         System.out.println(port);

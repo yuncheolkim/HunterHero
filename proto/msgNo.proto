@@ -22,6 +22,7 @@ enum MsgNo {
     task_complete = 1002;
     TaskNewPushNo = 1003;
     TaskStatusChangePushNo = 1004;
+    TaskNpcReqNo = 1005;
     // 开始战斗
     fight_start = 2001;
     // 发生战斗push

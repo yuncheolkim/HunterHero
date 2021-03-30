@@ -55,11 +55,6 @@ public final class Data {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerTask_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_PlayerTask_AcceptableTaskEntry_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_PlayerTask_AcceptableTaskEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_PlayerTask_RunTaskEntry_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -194,11 +189,8 @@ public final class Data {
       "er\030\007 \001(\005\022\032\n\022powerRecoverSecond\030\010 \001(\005\" \n\010" +
       "ScenePos\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneD" +
       "ata\022\n\n\002id\030\001 \001(\005\022\036\n\003pos\030\002 \001(\0132\021.Message.S" +
-      "cenePos\"\371\001\n\nPlayerTask\022?\n\016acceptableTask" +
-      "\030\002 \003(\0132\'.Message.PlayerTask.AcceptableTa" +
-      "skEntry\0221\n\007runTask\030\003 \003(\0132 .Message.Playe" +
-      "rTask.RunTaskEntry\0325\n\023AcceptableTaskEntr" +
-      "y\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010:\0028\001\032@\n\014Run" +
+      "cenePos\"\201\001\n\nPlayerTask\0221\n\007runTask\030\003 \003(\0132" +
+      " .Message.PlayerTask.RunTaskEntry\032@\n\014Run" +
       "TaskEntry\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020." +
       "Message.RunTask:\0028\001\"P\n\007RunTask\022\016\n\006taskId" +
       "\030\001 \001(\005\022\020\n\010complete\030\002 \001(\010\022#\n\006target\030\003 \003(\013" +
@@ -313,15 +305,9 @@ public final class Data {
     internal_static_Message_PlayerTask_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerTask_descriptor,
-        new java.lang.String[] { "AcceptableTask", "RunTask", });
-    internal_static_Message_PlayerTask_AcceptableTaskEntry_descriptor =
-      internal_static_Message_PlayerTask_descriptor.getNestedTypes().get(0);
-    internal_static_Message_PlayerTask_AcceptableTaskEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_PlayerTask_AcceptableTaskEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        new java.lang.String[] { "RunTask", });
     internal_static_Message_PlayerTask_RunTaskEntry_descriptor =
-      internal_static_Message_PlayerTask_descriptor.getNestedTypes().get(1);
+      internal_static_Message_PlayerTask_descriptor.getNestedTypes().get(0);
     internal_static_Message_PlayerTask_RunTaskEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerTask_RunTaskEntry_descriptor,

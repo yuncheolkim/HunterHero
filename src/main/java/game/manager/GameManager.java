@@ -11,10 +11,7 @@ import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
 import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
-import game.msg.IInvoke;
-import game.msg.Invoker;
-import game.msg.InvokerNoParam;
-import game.msg.InvokerReturn;
+import game.msg.*;
 import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.PlayerHero;
@@ -72,6 +69,8 @@ public class GameManager extends AbsLifecycle {
         // task
         addHandler(new Invoker<>(MsgNo.task_accept_VALUE, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(MsgNo.task_complete_VALUE, TaskHandler::completeTask, TaskReq::parser));
+        addHandler(new RetInvoker<>(MsgNo.TaskNpcReqNo_VALUE, TaskHandler::findNpcTask, TaskNpcReq::parser));
+
         // scene
         addHandler(new Invoker<>(MsgNo.scene_enter_VALUE, SceneHandler::enterScene, EnterSceneReq::parser));
         addHandler(new Invoker<>(MsgNo.scene_enter_fight_area_VALUE, SceneHandler::enterFightArea, EnterFightAreaReq::parser));

@@ -47,6 +47,13 @@ public class TcpServer implements IServer {
     }
 
     public void start() {
+
+        // starter
+        try {
+            starter.forEach(Lifecycle::start);
+        } catch (Exception e) {
+            G.findException(e);
+        }
         Thread thread = new DefaultThreadFactory("GameServer-服务").newThread(() -> {
 
             NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
@@ -74,13 +81,6 @@ public class TcpServer implements IServer {
         thread.start();
 
 
-        // starter
-        try {
-            starter.forEach(Lifecycle::start);
-        } catch (Exception e) {
-            thread.interrupt();
-            G.findException(e);
-        }
     }
 
     public void stop() {

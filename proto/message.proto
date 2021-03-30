@@ -72,6 +72,15 @@ message TaskStatusChangePush{
     int32 count = 3;
 
     int32 targetId = 4;
+}
+// 获得npc的任务列表
+message TaskNpcReq{
+    int32 npcId = 1;
+}
+message TaskNpcRes{
+    int32 npcId = 1;
+    repeated int32 acceptableTask = 2;
+    map<int32, RunTask> runTask = 3;
 
 }
 

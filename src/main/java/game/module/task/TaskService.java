@@ -9,12 +9,42 @@ import game.proto.data.PlayerTask;
 import game.proto.data.RunTask;
 import game.proto.data.TaskTarget;
 
+import java.util.Map;
+
 /**
  * @author Yunzhe.Jin
  * 2021/3/24 22:02
  */
 public class TaskService {
 
+
+    /**
+     * 能否接受任务
+     *
+     * @param player
+     * @param taskId
+     * @return
+     */
+    public static boolean canAcceptTask(Player player, int taskId) {
+
+        Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
+        if (completeTaskMap.containsKey(taskId)) {
+            return false;
+        }
+
+        DataConfigData data = G.C.getTask(taskId);
+        boolean acceptable = true;
+        if (data.list1 != null) {
+            for (Integer beforeId : data.list1) {
+                if (!completeTaskMap.containsKey(beforeId)) {
+                    acceptable = false;
+                    break;
+                }
+            }
+        }
+        return acceptable;
+
+    }
 
     /**
      * 计算任务

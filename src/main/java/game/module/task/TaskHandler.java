@@ -10,12 +10,15 @@ import game.game.ResourceSourceEnum;
 import game.module.bag.BagService;
 import game.player.Player;
 import game.proto.TaskNewPush;
+import game.proto.TaskNpcReq;
+import game.proto.TaskNpcRes;
 import game.proto.TaskReq;
 import game.proto.back.MsgNo;
 import game.proto.data.*;
 import game.utils.RewardUtil;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,8 +38,7 @@ public class TaskHandler {
      */
     public static void acceptTask(Player player, TaskReq o) {
 
-        ModuleAssert.notNull(player.getPd().getTaskBuilder().getAcceptableTaskMap().get(o.getTaskId()));
-        player.getPd().getTaskBuilder().removeAcceptableTask(o.getTaskId());
+        ModuleAssert.isTrue(TaskService.canAcceptTask(player, o.getTaskId()));
 
         DataConfigData taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
         RunTask.Builder data = RunTask.newBuilder();
@@ -119,4 +121,45 @@ public class TaskHandler {
         }
     }
 
+    /**
+     * 找到npc任务
+     *
+     * @param player
+     * @param req
+     */
+    public static TaskNpcRes findNpcTask(Player player, TaskNpcReq req) {
+        TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
+
+        Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
+
+        if (npcTask != null) {
+            Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
+            for (DataConfigData data : npcTask) {
+                if (data.level > player.pd.getLevel()) {
+                    continue;
+                }
+
+                if (player.pd.getTaskBuilder().containsRunTask(data.id)) {
+                    builder.putRunTask(data.id, player.pd.getTaskBuilder().getRunTaskOrThrow(data.id));
+                } else {
+                    if (!completeTaskMap.containsKey(data.id)) {
+                        boolean add = true;
+                        if (data.list1 != null) {
+                            for (Integer beforeId : data.list1) {
+                                if (!completeTaskMap.containsKey(beforeId)) {
+                                    add = false;
+                                    break;
+                                }
+                            }
+                        }
+                        if (add) {
+                            builder.addAcceptableTask(data.id);
+                        }
+                    }
+                }
+            }
+        }
+
+        return builder.build();
+    }
 }
