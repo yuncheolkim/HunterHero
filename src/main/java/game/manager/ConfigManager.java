@@ -189,7 +189,7 @@ public class ConfigManager extends AbsLifecycle {
         Map<Integer, List<DropItemConfigData>> map4 = new HashMap<>();
 
         // npc
-        for (DataConfigData value : dataMap17.values()) {
+        for (DataConfigData value : taskMap4.values()) {
             npcTaskMap.put(value.npcId, value);
         }
     }

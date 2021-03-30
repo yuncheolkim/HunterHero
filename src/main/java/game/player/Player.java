@@ -199,9 +199,6 @@ public class Player {
         pd.getResourceBuilder().setMaxPower(G.C.dataMap8.get(1).count);
         pd.getResourceBuilder().setPowerRecoverSecond(G.C.dataMap8.get(2).count);
 
-        // 初始化任务
-        pd.getTaskBuilder().putAcceptableTask(1, true);
-
         // 场景: 新手村
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
 

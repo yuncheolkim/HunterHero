@@ -129,7 +129,7 @@ public class TaskHandler {
      */
     public static TaskNpcRes findNpcTask(Player player, TaskNpcReq req) {
         TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
-
+        builder.setNpcId(req.getNpcId());
         Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
 
         if (npcTask != null) {
