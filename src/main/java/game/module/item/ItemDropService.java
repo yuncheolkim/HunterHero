@@ -54,8 +54,7 @@ public class ItemDropService {
         }
 
         List<Reward> list = new ArrayList<>(2);
-        // nemey
-
+        // enemy
         for (DropItemConfigData d : dropItemConfigData) {
             if (CalcUtil.happened10000(d.rate)) {
                 list.add(Reward.newBuilder().setType(RewardType.REWARD_ITEM)

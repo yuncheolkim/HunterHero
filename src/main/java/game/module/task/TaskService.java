@@ -5,10 +5,11 @@ import game.config.DataConfigData;
 import game.player.Player;
 import game.proto.TaskStatusChangePush;
 import game.proto.back.MsgNo;
-import game.proto.data.PlayerTask;
-import game.proto.data.RunTask;
-import game.proto.data.TaskTarget;
+import game.proto.data.*;
+import game.utils.CalcUtil;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,6 +17,41 @@ import java.util.Map;
  * 2021/3/24 22:02
  */
 public class TaskService {
+
+    /**
+     * 任务物品掉落
+     *
+     * @param enemyId
+     * @return
+     */
+    public static List<Reward> dropEnemyItem(Player player, int enemyId) {
+        List<Reward> list = new ArrayList<>();
+        if (player.pd.getTaskBuilder().getRunTaskCount() > 0) {
+            for (RunTask task : player.pd.getTaskBuilder().getRunTaskMap().values()) {
+                if (!task.getComplete() && task.getTargetCount() > 0) {
+                    for (TaskTarget taskTarget : task.getTargetList()) {
+                        if (taskTarget.getComplete()) {
+                            continue;
+                        }
+                        DataConfigData dataConfigData = G.C.taskMap5.get(taskTarget.getId());
+                        if (dataConfigData.type == TaskTargetTypeEnum.KILL_SEARCH.id && dataConfigData.v1 == enemyId) {
+                            // 需要收集物品
+                            if (CalcUtil.happened10000(dataConfigData.v4)) {
+
+                                list.add(Reward.newBuilder()
+                                        .setRewardId(dataConfigData.v2)
+                                        .setCount(1)
+                                        .setType(RewardType.REWARD_ITEM).build());
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        return list;
+    }
 
 
     /**

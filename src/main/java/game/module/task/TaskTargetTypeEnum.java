@@ -8,6 +8,10 @@ public enum TaskTargetTypeEnum {
     ASK(1),
     KILL(2),
     SEARCH(3),
+    /**
+     * 打怪拿物品
+     */
+    KILL_SEARCH(4),
     ;
 
 

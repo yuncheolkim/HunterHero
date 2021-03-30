@@ -11,6 +11,6 @@ import game.player.Player;
 public interface ItemDropCondition {
 
 
-    boolean drop(Player player, int itemId);
+    boolean drop(Player player, int enemyId);
 
 }

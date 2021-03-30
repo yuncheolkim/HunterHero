@@ -15,6 +15,7 @@ import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.module.event.handler.KillEvent;
 import game.module.item.ItemDropService;
+import game.module.task.TaskService;
 import game.player.Player;
 import game.proto.Empty;
 import game.proto.FightRecord;
@@ -100,6 +101,11 @@ public class FightHandler {
 
                 // enemy item
                 List<Reward> itemRewardList = ItemDropService.dropEnemyItem(enemyId);
+                if (!itemRewardList.isEmpty()) {
+                    result.addAllReward(itemRewardList);
+                }
+                // task item
+                itemRewardList = TaskService.dropEnemyItem(player, enemyId);
                 if (!itemRewardList.isEmpty()) {
                     result.addAllReward(itemRewardList);
                 }
