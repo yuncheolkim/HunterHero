@@ -18,10 +18,10 @@ public interface TaskStatusChangePushOrBuilder extends
    * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
    * </pre>
    *
-   * <code>int32 status = 2;</code>
-   * @return The status.
+   * <code>bool complete = 2;</code>
+   * @return The complete.
    */
-  int getStatus();
+  boolean getComplete();
 
   /**
    * <pre>
@@ -38,4 +38,14 @@ public interface TaskStatusChangePushOrBuilder extends
    * @return The targetId.
    */
   int getTargetId();
+
+  /**
+   * <pre>
+   * 接受任务
+   * </pre>
+   *
+   * <code>bool accept = 5;</code>
+   * @return The accept.
+   */
+  boolean getAccept();
 }

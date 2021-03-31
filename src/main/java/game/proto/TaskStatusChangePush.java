@@ -59,7 +59,7 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
 
-            status_ = input.readInt32();
+            complete_ = input.readBool();
             break;
           }
           case 24: {
@@ -70,6 +70,11 @@ private static final long serialVersionUID = 0L;
           case 32: {
 
             targetId_ = input.readInt32();
+            break;
+          }
+          case 40: {
+
+            accept_ = input.readBool();
             break;
           }
           default: {
@@ -115,19 +120,19 @@ private static final long serialVersionUID = 0L;
     return taskId_;
   }
 
-  public static final int STATUS_FIELD_NUMBER = 2;
-  private int status_;
+  public static final int COMPLETE_FIELD_NUMBER = 2;
+  private boolean complete_;
   /**
    * <pre>
    * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
    * </pre>
    *
-   * <code>int32 status = 2;</code>
-   * @return The status.
+   * <code>bool complete = 2;</code>
+   * @return The complete.
    */
   @java.lang.Override
-  public int getStatus() {
-    return status_;
+  public boolean getComplete() {
+    return complete_;
   }
 
   public static final int COUNT_FIELD_NUMBER = 3;
@@ -156,6 +161,21 @@ private static final long serialVersionUID = 0L;
     return targetId_;
   }
 
+  public static final int ACCEPT_FIELD_NUMBER = 5;
+  private boolean accept_;
+  /**
+   * <pre>
+   * 接受任务
+   * </pre>
+   *
+   * <code>bool accept = 5;</code>
+   * @return The accept.
+   */
+  @java.lang.Override
+  public boolean getAccept() {
+    return accept_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -173,14 +193,17 @@ private static final long serialVersionUID = 0L;
     if (taskId_ != 0) {
       output.writeInt32(1, taskId_);
     }
-    if (status_ != 0) {
-      output.writeInt32(2, status_);
+    if (complete_ != false) {
+      output.writeBool(2, complete_);
     }
     if (count_ != 0) {
       output.writeInt32(3, count_);
     }
     if (targetId_ != 0) {
       output.writeInt32(4, targetId_);
+    }
+    if (accept_ != false) {
+      output.writeBool(5, accept_);
     }
     unknownFields.writeTo(output);
   }
@@ -195,9 +218,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, taskId_);
     }
-    if (status_ != 0) {
+    if (complete_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, status_);
+        .computeBoolSize(2, complete_);
     }
     if (count_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -206,6 +229,10 @@ private static final long serialVersionUID = 0L;
     if (targetId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, targetId_);
+    }
+    if (accept_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(5, accept_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -224,12 +251,14 @@ private static final long serialVersionUID = 0L;
 
     if (getTaskId()
         != other.getTaskId()) return false;
-    if (getStatus()
-        != other.getStatus()) return false;
+    if (getComplete()
+        != other.getComplete()) return false;
     if (getCount()
         != other.getCount()) return false;
     if (getTargetId()
         != other.getTargetId()) return false;
+    if (getAccept()
+        != other.getAccept()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -243,12 +272,16 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TASKID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskId();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus();
+    hash = (37 * hash) + COMPLETE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getComplete());
     hash = (37 * hash) + COUNT_FIELD_NUMBER;
     hash = (53 * hash) + getCount();
     hash = (37 * hash) + TARGETID_FIELD_NUMBER;
     hash = (53 * hash) + getTargetId();
+    hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getAccept());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -388,11 +421,13 @@ private static final long serialVersionUID = 0L;
       super.clear();
       taskId_ = 0;
 
-      status_ = 0;
+      complete_ = false;
 
       count_ = 0;
 
       targetId_ = 0;
+
+      accept_ = false;
 
       return this;
     }
@@ -421,9 +456,10 @@ private static final long serialVersionUID = 0L;
     public game.proto.TaskStatusChangePush buildPartial() {
       game.proto.TaskStatusChangePush result = new game.proto.TaskStatusChangePush(this);
       result.taskId_ = taskId_;
-      result.status_ = status_;
+      result.complete_ = complete_;
       result.count_ = count_;
       result.targetId_ = targetId_;
+      result.accept_ = accept_;
       onBuilt();
       return result;
     }
@@ -475,14 +511,17 @@ private static final long serialVersionUID = 0L;
       if (other.getTaskId() != 0) {
         setTaskId(other.getTaskId());
       }
-      if (other.getStatus() != 0) {
-        setStatus(other.getStatus());
+      if (other.getComplete() != false) {
+        setComplete(other.getComplete());
       }
       if (other.getCount() != 0) {
         setCount(other.getCount());
       }
       if (other.getTargetId() != 0) {
         setTargetId(other.getTargetId());
+      }
+      if (other.getAccept() != false) {
+        setAccept(other.getAccept());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -544,31 +583,31 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int status_ ;
+    private boolean complete_ ;
     /**
      * <pre>
      * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
      * </pre>
      *
-     * <code>int32 status = 2;</code>
-     * @return The status.
+     * <code>bool complete = 2;</code>
+     * @return The complete.
      */
     @java.lang.Override
-    public int getStatus() {
-      return status_;
+    public boolean getComplete() {
+      return complete_;
     }
     /**
      * <pre>
      * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
      * </pre>
      *
-     * <code>int32 status = 2;</code>
-     * @param value The status to set.
+     * <code>bool complete = 2;</code>
+     * @param value The complete to set.
      * @return This builder for chaining.
      */
-    public Builder setStatus(int value) {
+    public Builder setComplete(boolean value) {
       
-      status_ = value;
+      complete_ = value;
       onChanged();
       return this;
     }
@@ -577,12 +616,12 @@ private static final long serialVersionUID = 0L;
      * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
      * </pre>
      *
-     * <code>int32 status = 2;</code>
+     * <code>bool complete = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearStatus() {
+    public Builder clearComplete() {
       
-      status_ = 0;
+      complete_ = false;
       onChanged();
       return this;
     }
@@ -657,6 +696,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearTargetId() {
       
       targetId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private boolean accept_ ;
+    /**
+     * <pre>
+     * 接受任务
+     * </pre>
+     *
+     * <code>bool accept = 5;</code>
+     * @return The accept.
+     */
+    @java.lang.Override
+    public boolean getAccept() {
+      return accept_;
+    }
+    /**
+     * <pre>
+     * 接受任务
+     * </pre>
+     *
+     * <code>bool accept = 5;</code>
+     * @param value The accept to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAccept(boolean value) {
+      
+      accept_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 接受任务
+     * </pre>
+     *
+     * <code>bool accept = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAccept() {
+      
+      accept_ = false;
       onChanged();
       return this;
     }

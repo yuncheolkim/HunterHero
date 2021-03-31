@@ -39,5 +39,18 @@
         "type1": 2,
         "type2": 1,
         "value": 0
+    },
+    "601001": {
+        "desc": "一块螃蟹肉",
+        "icon": "icon10",
+        "id": 601001,
+        "name": "一块螃蟹肉",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 0,
+        "stack": 10,
+        "type1": 6,
+        "type2": 1,
+        "value": 0
     }
 }

@@ -9,10 +9,7 @@ import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.module.bag.BagService;
 import game.player.Player;
-import game.proto.TaskNewPush;
-import game.proto.TaskNpcReq;
-import game.proto.TaskNpcRes;
-import game.proto.TaskReq;
+import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.*;
 import game.utils.RewardUtil;
@@ -45,6 +42,25 @@ public class TaskHandler {
         data.setTaskId(o.getTaskId());
         if (taskConfigData4.completeType == 2) {// 立即完成
             data.setComplete(true);
+            // push
+            player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                    .setComplete(true)
+                    .setTaskId(o.getTaskId())
+                    .build()
+            );
+        } else {
+            List<Integer> targetList = taskConfigData4.targetList;
+            for (Integer target : targetList) {
+                data.addTarget(TaskTarget.newBuilder().setId(target).build());
+            }
+
+            // push
+            player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                    .setTaskId(o.getTaskId())
+                    .setAccept(true)
+                    .build());
+
+
         }
         player.getPd().getTaskBuilder().putRunTask(o.getTaskId(), data.build());
 

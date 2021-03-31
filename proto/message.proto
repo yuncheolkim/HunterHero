@@ -67,12 +67,15 @@ message TaskNewPush{
 message TaskStatusChangePush{
     int32 taskId = 1;
     // 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
-    int32 status = 2;
+    bool complete = 2;
     // 任务进度
     int32 count = 3;
 
     int32 targetId = 4;
+    // 第一次接受任务
+    bool accept = 5;
 }
+
 // 获得npc的任务列表
 message TaskNpcReq{
     int32 npcId = 1;

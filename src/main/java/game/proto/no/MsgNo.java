@@ -61,9 +61,9 @@ public enum MsgNo
    */
   TaskNewPushNo(1003),
   /**
-   * <code>TaskStatusChangePushNo = 1004;</code>
+   * <code>TaskStatusChangePush = 1004;</code>
    */
-  TaskStatusChangePushNo(1004),
+  TaskStatusChangePush(1004),
   /**
    * <pre>
    * 开始战斗
@@ -268,9 +268,9 @@ public enum MsgNo
    */
   public static final int TaskNewPushNo_VALUE = 1003;
   /**
-   * <code>TaskStatusChangePushNo = 1004;</code>
+   * <code>TaskStatusChangePush = 1004;</code>
    */
-  public static final int TaskStatusChangePushNo_VALUE = 1004;
+  public static final int TaskStatusChangePush_VALUE = 1004;
   /**
    * <pre>
    * 开始战斗
@@ -453,7 +453,7 @@ public enum MsgNo
       case 1001: return task_accept;
       case 1002: return task_complete;
       case 1003: return TaskNewPushNo;
-      case 1004: return TaskStatusChangePushNo;
+      case 1004: return TaskStatusChangePush;
       case 2001: return fight_start;
       case 2002: return fight_start_push;
       case 2004: return fight_end;
