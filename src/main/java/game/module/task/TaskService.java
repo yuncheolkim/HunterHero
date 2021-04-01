@@ -135,7 +135,7 @@ public class TaskService {
                 // push
                 player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
                         .setTaskId(build.getTaskId())
-                        .setStatus(complete ? 3 : 2)
+                        .setComplete(complete)
                         .setCount(taskTarget.getValue())
                         .setTargetId(taskTarget.getId())
                         .build()

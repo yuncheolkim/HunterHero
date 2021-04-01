@@ -58,6 +58,7 @@ public class TaskHandler {
             player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
                     .setTaskId(o.getTaskId())
                     .setAccept(true)
+                    .setRunTask(data.buildPartial())
                     .build());
 
 

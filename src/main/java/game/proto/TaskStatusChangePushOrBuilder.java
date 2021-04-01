@@ -14,10 +14,6 @@ public interface TaskStatusChangePushOrBuilder extends
   int getTaskId();
 
   /**
-   * <pre>
-   * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
-   * </pre>
-   *
    * <code>bool complete = 2;</code>
    * @return The complete.
    */
@@ -41,11 +37,26 @@ public interface TaskStatusChangePushOrBuilder extends
 
   /**
    * <pre>
-   * 接受任务
+   * 第一次接受任务
    * </pre>
    *
    * <code>bool accept = 5;</code>
    * @return The accept.
    */
   boolean getAccept();
+
+  /**
+   * <code>.Message.RunTask runTask = 6;</code>
+   * @return Whether the runTask field is set.
+   */
+  boolean hasRunTask();
+  /**
+   * <code>.Message.RunTask runTask = 6;</code>
+   * @return The runTask.
+   */
+  game.proto.data.RunTask getRunTask();
+  /**
+   * <code>.Message.RunTask runTask = 6;</code>
+   */
+  game.proto.data.RunTaskOrBuilder getRunTaskOrBuilder();
 }

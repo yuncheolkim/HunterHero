@@ -77,6 +77,19 @@ private static final long serialVersionUID = 0L;
             accept_ = input.readBool();
             break;
           }
+          case 50: {
+            game.proto.data.RunTask.Builder subBuilder = null;
+            if (runTask_ != null) {
+              subBuilder = runTask_.toBuilder();
+            }
+            runTask_ = input.readMessage(game.proto.data.RunTask.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(runTask_);
+              runTask_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -123,10 +136,6 @@ private static final long serialVersionUID = 0L;
   public static final int COMPLETE_FIELD_NUMBER = 2;
   private boolean complete_;
   /**
-   * <pre>
-   * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
-   * </pre>
-   *
    * <code>bool complete = 2;</code>
    * @return The complete.
    */
@@ -165,7 +174,7 @@ private static final long serialVersionUID = 0L;
   private boolean accept_;
   /**
    * <pre>
-   * 接受任务
+   * 第一次接受任务
    * </pre>
    *
    * <code>bool accept = 5;</code>
@@ -174,6 +183,32 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean getAccept() {
     return accept_;
+  }
+
+  public static final int RUNTASK_FIELD_NUMBER = 6;
+  private game.proto.data.RunTask runTask_;
+  /**
+   * <code>.Message.RunTask runTask = 6;</code>
+   * @return Whether the runTask field is set.
+   */
+  @java.lang.Override
+  public boolean hasRunTask() {
+    return runTask_ != null;
+  }
+  /**
+   * <code>.Message.RunTask runTask = 6;</code>
+   * @return The runTask.
+   */
+  @java.lang.Override
+  public game.proto.data.RunTask getRunTask() {
+    return runTask_ == null ? game.proto.data.RunTask.getDefaultInstance() : runTask_;
+  }
+  /**
+   * <code>.Message.RunTask runTask = 6;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.RunTaskOrBuilder getRunTaskOrBuilder() {
+    return getRunTask();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -205,6 +240,9 @@ private static final long serialVersionUID = 0L;
     if (accept_ != false) {
       output.writeBool(5, accept_);
     }
+    if (runTask_ != null) {
+      output.writeMessage(6, getRunTask());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -234,6 +272,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(5, accept_);
     }
+    if (runTask_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getRunTask());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -259,6 +301,11 @@ private static final long serialVersionUID = 0L;
         != other.getTargetId()) return false;
     if (getAccept()
         != other.getAccept()) return false;
+    if (hasRunTask() != other.hasRunTask()) return false;
+    if (hasRunTask()) {
+      if (!getRunTask()
+          .equals(other.getRunTask())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -282,6 +329,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getAccept());
+    if (hasRunTask()) {
+      hash = (37 * hash) + RUNTASK_FIELD_NUMBER;
+      hash = (53 * hash) + getRunTask().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -429,6 +480,12 @@ private static final long serialVersionUID = 0L;
 
       accept_ = false;
 
+      if (runTaskBuilder_ == null) {
+        runTask_ = null;
+      } else {
+        runTask_ = null;
+        runTaskBuilder_ = null;
+      }
       return this;
     }
 
@@ -460,6 +517,11 @@ private static final long serialVersionUID = 0L;
       result.count_ = count_;
       result.targetId_ = targetId_;
       result.accept_ = accept_;
+      if (runTaskBuilder_ == null) {
+        result.runTask_ = runTask_;
+      } else {
+        result.runTask_ = runTaskBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -523,6 +585,9 @@ private static final long serialVersionUID = 0L;
       if (other.getAccept() != false) {
         setAccept(other.getAccept());
       }
+      if (other.hasRunTask()) {
+        mergeRunTask(other.getRunTask());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -585,10 +650,6 @@ private static final long serialVersionUID = 0L;
 
     private boolean complete_ ;
     /**
-     * <pre>
-     * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
-     * </pre>
-     *
      * <code>bool complete = 2;</code>
      * @return The complete.
      */
@@ -597,10 +658,6 @@ private static final long serialVersionUID = 0L;
       return complete_;
     }
     /**
-     * <pre>
-     * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
-     * </pre>
-     *
      * <code>bool complete = 2;</code>
      * @param value The complete to set.
      * @return This builder for chaining.
@@ -612,10 +669,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * 0:不可用,1:可以接受,2:进行中,3:已完成未提交,4:完成提交
-     * </pre>
-     *
      * <code>bool complete = 2;</code>
      * @return This builder for chaining.
      */
@@ -703,7 +756,7 @@ private static final long serialVersionUID = 0L;
     private boolean accept_ ;
     /**
      * <pre>
-     * 接受任务
+     * 第一次接受任务
      * </pre>
      *
      * <code>bool accept = 5;</code>
@@ -715,7 +768,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 接受任务
+     * 第一次接受任务
      * </pre>
      *
      * <code>bool accept = 5;</code>
@@ -730,7 +783,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 接受任务
+     * 第一次接受任务
      * </pre>
      *
      * <code>bool accept = 5;</code>
@@ -741,6 +794,125 @@ private static final long serialVersionUID = 0L;
       accept_ = false;
       onChanged();
       return this;
+    }
+
+    private game.proto.data.RunTask runTask_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.RunTask, game.proto.data.RunTask.Builder, game.proto.data.RunTaskOrBuilder> runTaskBuilder_;
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     * @return Whether the runTask field is set.
+     */
+    public boolean hasRunTask() {
+      return runTaskBuilder_ != null || runTask_ != null;
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     * @return The runTask.
+     */
+    public game.proto.data.RunTask getRunTask() {
+      if (runTaskBuilder_ == null) {
+        return runTask_ == null ? game.proto.data.RunTask.getDefaultInstance() : runTask_;
+      } else {
+        return runTaskBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    public Builder setRunTask(game.proto.data.RunTask value) {
+      if (runTaskBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        runTask_ = value;
+        onChanged();
+      } else {
+        runTaskBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    public Builder setRunTask(
+        game.proto.data.RunTask.Builder builderForValue) {
+      if (runTaskBuilder_ == null) {
+        runTask_ = builderForValue.build();
+        onChanged();
+      } else {
+        runTaskBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    public Builder mergeRunTask(game.proto.data.RunTask value) {
+      if (runTaskBuilder_ == null) {
+        if (runTask_ != null) {
+          runTask_ =
+            game.proto.data.RunTask.newBuilder(runTask_).mergeFrom(value).buildPartial();
+        } else {
+          runTask_ = value;
+        }
+        onChanged();
+      } else {
+        runTaskBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    public Builder clearRunTask() {
+      if (runTaskBuilder_ == null) {
+        runTask_ = null;
+        onChanged();
+      } else {
+        runTask_ = null;
+        runTaskBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    public game.proto.data.RunTask.Builder getRunTaskBuilder() {
+      
+      onChanged();
+      return getRunTaskFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    public game.proto.data.RunTaskOrBuilder getRunTaskOrBuilder() {
+      if (runTaskBuilder_ != null) {
+        return runTaskBuilder_.getMessageOrBuilder();
+      } else {
+        return runTask_ == null ?
+            game.proto.data.RunTask.getDefaultInstance() : runTask_;
+      }
+    }
+    /**
+     * <code>.Message.RunTask runTask = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.RunTask, game.proto.data.RunTask.Builder, game.proto.data.RunTaskOrBuilder> 
+        getRunTaskFieldBuilder() {
+      if (runTaskBuilder_ == null) {
+        runTaskBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.RunTask, game.proto.data.RunTask.Builder, game.proto.data.RunTaskOrBuilder>(
+                getRunTask(),
+                getParentForChildren(),
+                isClean());
+        runTask_ = null;
+      }
+      return runTaskBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
