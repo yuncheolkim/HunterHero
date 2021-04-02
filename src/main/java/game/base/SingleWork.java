@@ -10,20 +10,24 @@ import java.util.concurrent.ThreadFactory;
  * 2021/3/5 16:04
  */
 public class SingleWork extends Work {
-    private long threadId;
-
-    private ThreadFactory factory = new DefaultThreadFactory("factory") {
-
-        @Override
-        public Thread newThread(Runnable r) {
-            Thread thread = super.newThread(r);
-            threadId = thread.getId();
-
-            return thread;
-        }
-    };
+    private volatile long threadId;
 
     public SingleWork() {
+        this("factory");
+    }
+
+    public SingleWork(String name) {
+        ThreadFactory factory = new DefaultThreadFactory(name) {
+
+            @Override
+            public Thread newThread(Runnable r) {
+                Thread thread = super.newThread(r);
+                threadId = thread.getId();
+
+                return thread;
+            }
+        };
+
         executor = Executors.newSingleThreadExecutor(factory);
     }
 

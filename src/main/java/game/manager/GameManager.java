@@ -1,6 +1,8 @@
 package game.manager;
 
 import game.base.AbsLifecycle;
+import game.base.G;
+import game.game.scene.GameScene;
 import game.module.bag.BagHandler;
 import game.module.cmd.CmdHandler;
 import game.module.fight.FightHandler;
@@ -8,6 +10,7 @@ import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
+import game.module.scene.ChatWorldScene;
 import game.module.scene.SceneHandler;
 import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
@@ -51,8 +54,20 @@ public class GameManager extends AbsLifecycle {
         return loginHandler;
     }
 
+    // scene
+    private GameScene chatScene = new ChatWorldScene();
+
     @Override
     public void start() {
+        // 初始化 业务逻辑处理
+        initHandler();
+
+        // 初始化 场景
+        initScene();
+        super.start();
+    }
+
+    private void initHandler() {
         // 测试
         addHandler(new Invoker<>(-1, CmdHandler::cmd, CmdReq::parser));
         // relogin
@@ -91,7 +106,12 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.ItemSellReqNo_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
         // 装备物品
         addHandler(new Invoker<>(MsgNo.HeroEquipmentReqNo_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
-        super.start();
+    }
+
+    private void initScene() {
+
+        chatScene.setWork(G.W.getSceneWork());
+
     }
 
     public int getVersion() {

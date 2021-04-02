@@ -7,6 +7,9 @@ import io.netty.util.AttributeKey;
  * 2021/2/20 14:21
  */
 public class GameConstants {
+
+    public static final LongIdGenerator ID_GENERATOR = new DefaultLongIdGenerator();
+
     public static final String TOKEN_START = ">>>>>>>>>>>>>>>>>>>>";
 
     public static final String TOKEN_END = "<<<<<<<<<<<<<<<<<<<<";
