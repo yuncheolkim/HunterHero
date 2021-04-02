@@ -59,7 +59,7 @@ message TaskReq {
 }
 
 // 新任务
-message TaskNewPush{
+message TaskNewPush {
     repeated int32 taskId = 1;
 }
 
@@ -79,10 +79,10 @@ message TaskStatusChangePush{
 }
 
 // 获得npc的任务列表
-message TaskNpcReq{
+message TaskNpcReq {
     int32 npcId = 1;
 }
-message TaskNpcRes{
+message TaskNpcRes {
     int32 npcId = 1;
     repeated int32 acceptableTask = 2;
     map<int32, RunTask> runTask = 3;
