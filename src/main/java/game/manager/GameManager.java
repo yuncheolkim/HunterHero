@@ -10,7 +10,7 @@ import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
-import game.module.scene.ChatWorldScene;
+import game.module.scene.ChatScene;
 import game.module.scene.SceneHandler;
 import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
@@ -55,7 +55,7 @@ public class GameManager extends AbsLifecycle {
     }
 
     // scene
-    private GameScene chatScene = new ChatWorldScene();
+    private GameScene chatScene = new ChatScene();
 
     @Override
     public void start() {
@@ -124,5 +124,9 @@ public class GameManager extends AbsLifecycle {
 
     public DefaultHeroCalcProcess getHeroCalcProcess() {
         return heroCalcProcess;
+    }
+
+    public GameScene getChatScene() {
+        return chatScene;
     }
 }
