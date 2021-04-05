@@ -49,6 +49,8 @@ public class DataConfigData {
 
     @JsonProperty
     public int stack;
+    @JsonProperty
+    public int round;
 
     ///// property
     @JsonProperty

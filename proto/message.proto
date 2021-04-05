@@ -68,6 +68,9 @@ message TaskStatusChangePush{
     int32 npcId = 10;
     int32 taskId = 20;
     bool complete = 30;
+
+    // 1:完成未提交,2:完成已提交
+    int32 status = 35;
     // 任务进度
     int32 count = 40;
 

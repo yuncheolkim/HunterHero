@@ -206,6 +206,8 @@ public class Player {
         pd.setBagCapacity(G.C.bagCapacity());
         // 银行容量
         pd.setBankCapacity(G.C.bankCapacity());
+        // Task
+        pd.setTask(PlayerTask.newBuilder());
 
         // 英雄 test
         addHero(1001);

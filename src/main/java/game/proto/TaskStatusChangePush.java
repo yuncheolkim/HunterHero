@@ -52,32 +52,42 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 80: {
+
+            npcId_ = input.readInt32();
+            break;
+          }
+          case 160: {
 
             taskId_ = input.readInt32();
             break;
           }
-          case 16: {
+          case 240: {
 
             complete_ = input.readBool();
             break;
           }
-          case 24: {
+          case 280: {
+
+            status_ = input.readInt32();
+            break;
+          }
+          case 320: {
 
             count_ = input.readInt32();
             break;
           }
-          case 32: {
+          case 400: {
 
             targetId_ = input.readInt32();
             break;
           }
-          case 40: {
+          case 480: {
 
             accept_ = input.readBool();
             break;
           }
-          case 50: {
+          case 562: {
             game.proto.data.RunTask.Builder subBuilder = null;
             if (runTask_ != null) {
               subBuilder = runTask_.toBuilder();
@@ -122,10 +132,21 @@ private static final long serialVersionUID = 0L;
             game.proto.TaskStatusChangePush.class, game.proto.TaskStatusChangePush.Builder.class);
   }
 
-  public static final int TASKID_FIELD_NUMBER = 1;
+  public static final int NPCID_FIELD_NUMBER = 10;
+  private int npcId_;
+  /**
+   * <code>int32 npcId = 10;</code>
+   * @return The npcId.
+   */
+  @java.lang.Override
+  public int getNpcId() {
+    return npcId_;
+  }
+
+  public static final int TASKID_FIELD_NUMBER = 20;
   private int taskId_;
   /**
-   * <code>int32 taskId = 1;</code>
+   * <code>int32 taskId = 20;</code>
    * @return The taskId.
    */
   @java.lang.Override
@@ -133,10 +154,10 @@ private static final long serialVersionUID = 0L;
     return taskId_;
   }
 
-  public static final int COMPLETE_FIELD_NUMBER = 2;
+  public static final int COMPLETE_FIELD_NUMBER = 30;
   private boolean complete_;
   /**
-   * <code>bool complete = 2;</code>
+   * <code>bool complete = 30;</code>
    * @return The complete.
    */
   @java.lang.Override
@@ -144,14 +165,29 @@ private static final long serialVersionUID = 0L;
     return complete_;
   }
 
-  public static final int COUNT_FIELD_NUMBER = 3;
+  public static final int STATUS_FIELD_NUMBER = 35;
+  private int status_;
+  /**
+   * <pre>
+   * 1:完成未提交,2:完成已提交
+   * </pre>
+   *
+   * <code>int32 status = 35;</code>
+   * @return The status.
+   */
+  @java.lang.Override
+  public int getStatus() {
+    return status_;
+  }
+
+  public static final int COUNT_FIELD_NUMBER = 40;
   private int count_;
   /**
    * <pre>
    * 任务进度
    * </pre>
    *
-   * <code>int32 count = 3;</code>
+   * <code>int32 count = 40;</code>
    * @return The count.
    */
   @java.lang.Override
@@ -159,10 +195,10 @@ private static final long serialVersionUID = 0L;
     return count_;
   }
 
-  public static final int TARGETID_FIELD_NUMBER = 4;
+  public static final int TARGETID_FIELD_NUMBER = 50;
   private int targetId_;
   /**
-   * <code>int32 targetId = 4;</code>
+   * <code>int32 targetId = 50;</code>
    * @return The targetId.
    */
   @java.lang.Override
@@ -170,14 +206,14 @@ private static final long serialVersionUID = 0L;
     return targetId_;
   }
 
-  public static final int ACCEPT_FIELD_NUMBER = 5;
+  public static final int ACCEPT_FIELD_NUMBER = 60;
   private boolean accept_;
   /**
    * <pre>
    * 第一次接受任务
    * </pre>
    *
-   * <code>bool accept = 5;</code>
+   * <code>bool accept = 60;</code>
    * @return The accept.
    */
   @java.lang.Override
@@ -185,10 +221,10 @@ private static final long serialVersionUID = 0L;
     return accept_;
   }
 
-  public static final int RUNTASK_FIELD_NUMBER = 6;
+  public static final int RUNTASK_FIELD_NUMBER = 70;
   private game.proto.data.RunTask runTask_;
   /**
-   * <code>.Message.RunTask runTask = 6;</code>
+   * <code>.Message.RunTask runTask = 70;</code>
    * @return Whether the runTask field is set.
    */
   @java.lang.Override
@@ -196,7 +232,7 @@ private static final long serialVersionUID = 0L;
     return runTask_ != null;
   }
   /**
-   * <code>.Message.RunTask runTask = 6;</code>
+   * <code>.Message.RunTask runTask = 70;</code>
    * @return The runTask.
    */
   @java.lang.Override
@@ -204,7 +240,7 @@ private static final long serialVersionUID = 0L;
     return runTask_ == null ? game.proto.data.RunTask.getDefaultInstance() : runTask_;
   }
   /**
-   * <code>.Message.RunTask runTask = 6;</code>
+   * <code>.Message.RunTask runTask = 70;</code>
    */
   @java.lang.Override
   public game.proto.data.RunTaskOrBuilder getRunTaskOrBuilder() {
@@ -225,23 +261,29 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (npcId_ != 0) {
+      output.writeInt32(10, npcId_);
+    }
     if (taskId_ != 0) {
-      output.writeInt32(1, taskId_);
+      output.writeInt32(20, taskId_);
     }
     if (complete_ != false) {
-      output.writeBool(2, complete_);
+      output.writeBool(30, complete_);
+    }
+    if (status_ != 0) {
+      output.writeInt32(35, status_);
     }
     if (count_ != 0) {
-      output.writeInt32(3, count_);
+      output.writeInt32(40, count_);
     }
     if (targetId_ != 0) {
-      output.writeInt32(4, targetId_);
+      output.writeInt32(50, targetId_);
     }
     if (accept_ != false) {
-      output.writeBool(5, accept_);
+      output.writeBool(60, accept_);
     }
     if (runTask_ != null) {
-      output.writeMessage(6, getRunTask());
+      output.writeMessage(70, getRunTask());
     }
     unknownFields.writeTo(output);
   }
@@ -252,29 +294,37 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (npcId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(10, npcId_);
+    }
     if (taskId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, taskId_);
+        .computeInt32Size(20, taskId_);
     }
     if (complete_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(2, complete_);
+        .computeBoolSize(30, complete_);
+    }
+    if (status_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(35, status_);
     }
     if (count_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, count_);
+        .computeInt32Size(40, count_);
     }
     if (targetId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, targetId_);
+        .computeInt32Size(50, targetId_);
     }
     if (accept_ != false) {
       size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(5, accept_);
+        .computeBoolSize(60, accept_);
     }
     if (runTask_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, getRunTask());
+        .computeMessageSize(70, getRunTask());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -291,10 +341,14 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.TaskStatusChangePush other = (game.proto.TaskStatusChangePush) obj;
 
+    if (getNpcId()
+        != other.getNpcId()) return false;
     if (getTaskId()
         != other.getTaskId()) return false;
     if (getComplete()
         != other.getComplete()) return false;
+    if (getStatus()
+        != other.getStatus()) return false;
     if (getCount()
         != other.getCount()) return false;
     if (getTargetId()
@@ -317,11 +371,15 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + NPCID_FIELD_NUMBER;
+    hash = (53 * hash) + getNpcId();
     hash = (37 * hash) + TASKID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskId();
     hash = (37 * hash) + COMPLETE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getComplete());
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus();
     hash = (37 * hash) + COUNT_FIELD_NUMBER;
     hash = (53 * hash) + getCount();
     hash = (37 * hash) + TARGETID_FIELD_NUMBER;
@@ -470,9 +528,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      npcId_ = 0;
+
       taskId_ = 0;
 
       complete_ = false;
+
+      status_ = 0;
 
       count_ = 0;
 
@@ -512,8 +574,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.TaskStatusChangePush buildPartial() {
       game.proto.TaskStatusChangePush result = new game.proto.TaskStatusChangePush(this);
+      result.npcId_ = npcId_;
       result.taskId_ = taskId_;
       result.complete_ = complete_;
+      result.status_ = status_;
       result.count_ = count_;
       result.targetId_ = targetId_;
       result.accept_ = accept_;
@@ -570,11 +634,17 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.TaskStatusChangePush other) {
       if (other == game.proto.TaskStatusChangePush.getDefaultInstance()) return this;
+      if (other.getNpcId() != 0) {
+        setNpcId(other.getNpcId());
+      }
       if (other.getTaskId() != 0) {
         setTaskId(other.getTaskId());
       }
       if (other.getComplete() != false) {
         setComplete(other.getComplete());
+      }
+      if (other.getStatus() != 0) {
+        setStatus(other.getStatus());
       }
       if (other.getCount() != 0) {
         setCount(other.getCount());
@@ -617,9 +687,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int npcId_ ;
+    /**
+     * <code>int32 npcId = 10;</code>
+     * @return The npcId.
+     */
+    @java.lang.Override
+    public int getNpcId() {
+      return npcId_;
+    }
+    /**
+     * <code>int32 npcId = 10;</code>
+     * @param value The npcId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNpcId(int value) {
+      
+      npcId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 npcId = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNpcId() {
+      
+      npcId_ = 0;
+      onChanged();
+      return this;
+    }
+
     private int taskId_ ;
     /**
-     * <code>int32 taskId = 1;</code>
+     * <code>int32 taskId = 20;</code>
      * @return The taskId.
      */
     @java.lang.Override
@@ -627,7 +728,7 @@ private static final long serialVersionUID = 0L;
       return taskId_;
     }
     /**
-     * <code>int32 taskId = 1;</code>
+     * <code>int32 taskId = 20;</code>
      * @param value The taskId to set.
      * @return This builder for chaining.
      */
@@ -638,7 +739,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 taskId = 1;</code>
+     * <code>int32 taskId = 20;</code>
      * @return This builder for chaining.
      */
     public Builder clearTaskId() {
@@ -650,7 +751,7 @@ private static final long serialVersionUID = 0L;
 
     private boolean complete_ ;
     /**
-     * <code>bool complete = 2;</code>
+     * <code>bool complete = 30;</code>
      * @return The complete.
      */
     @java.lang.Override
@@ -658,7 +759,7 @@ private static final long serialVersionUID = 0L;
       return complete_;
     }
     /**
-     * <code>bool complete = 2;</code>
+     * <code>bool complete = 30;</code>
      * @param value The complete to set.
      * @return This builder for chaining.
      */
@@ -669,12 +770,55 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>bool complete = 2;</code>
+     * <code>bool complete = 30;</code>
      * @return This builder for chaining.
      */
     public Builder clearComplete() {
       
       complete_ = false;
+      onChanged();
+      return this;
+    }
+
+    private int status_ ;
+    /**
+     * <pre>
+     * 1:完成未提交,2:完成已提交
+     * </pre>
+     *
+     * <code>int32 status = 35;</code>
+     * @return The status.
+     */
+    @java.lang.Override
+    public int getStatus() {
+      return status_;
+    }
+    /**
+     * <pre>
+     * 1:完成未提交,2:完成已提交
+     * </pre>
+     *
+     * <code>int32 status = 35;</code>
+     * @param value The status to set.
+     * @return This builder for chaining.
+     */
+    public Builder setStatus(int value) {
+      
+      status_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 1:完成未提交,2:完成已提交
+     * </pre>
+     *
+     * <code>int32 status = 35;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearStatus() {
+      
+      status_ = 0;
       onChanged();
       return this;
     }
@@ -685,7 +829,7 @@ private static final long serialVersionUID = 0L;
      * 任务进度
      * </pre>
      *
-     * <code>int32 count = 3;</code>
+     * <code>int32 count = 40;</code>
      * @return The count.
      */
     @java.lang.Override
@@ -697,7 +841,7 @@ private static final long serialVersionUID = 0L;
      * 任务进度
      * </pre>
      *
-     * <code>int32 count = 3;</code>
+     * <code>int32 count = 40;</code>
      * @param value The count to set.
      * @return This builder for chaining.
      */
@@ -712,7 +856,7 @@ private static final long serialVersionUID = 0L;
      * 任务进度
      * </pre>
      *
-     * <code>int32 count = 3;</code>
+     * <code>int32 count = 40;</code>
      * @return This builder for chaining.
      */
     public Builder clearCount() {
@@ -724,7 +868,7 @@ private static final long serialVersionUID = 0L;
 
     private int targetId_ ;
     /**
-     * <code>int32 targetId = 4;</code>
+     * <code>int32 targetId = 50;</code>
      * @return The targetId.
      */
     @java.lang.Override
@@ -732,7 +876,7 @@ private static final long serialVersionUID = 0L;
       return targetId_;
     }
     /**
-     * <code>int32 targetId = 4;</code>
+     * <code>int32 targetId = 50;</code>
      * @param value The targetId to set.
      * @return This builder for chaining.
      */
@@ -743,7 +887,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 targetId = 4;</code>
+     * <code>int32 targetId = 50;</code>
      * @return This builder for chaining.
      */
     public Builder clearTargetId() {
@@ -759,7 +903,7 @@ private static final long serialVersionUID = 0L;
      * 第一次接受任务
      * </pre>
      *
-     * <code>bool accept = 5;</code>
+     * <code>bool accept = 60;</code>
      * @return The accept.
      */
     @java.lang.Override
@@ -771,7 +915,7 @@ private static final long serialVersionUID = 0L;
      * 第一次接受任务
      * </pre>
      *
-     * <code>bool accept = 5;</code>
+     * <code>bool accept = 60;</code>
      * @param value The accept to set.
      * @return This builder for chaining.
      */
@@ -786,7 +930,7 @@ private static final long serialVersionUID = 0L;
      * 第一次接受任务
      * </pre>
      *
-     * <code>bool accept = 5;</code>
+     * <code>bool accept = 60;</code>
      * @return This builder for chaining.
      */
     public Builder clearAccept() {
@@ -800,14 +944,14 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.RunTask, game.proto.data.RunTask.Builder, game.proto.data.RunTaskOrBuilder> runTaskBuilder_;
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      * @return Whether the runTask field is set.
      */
     public boolean hasRunTask() {
       return runTaskBuilder_ != null || runTask_ != null;
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      * @return The runTask.
      */
     public game.proto.data.RunTask getRunTask() {
@@ -818,7 +962,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     public Builder setRunTask(game.proto.data.RunTask value) {
       if (runTaskBuilder_ == null) {
@@ -834,7 +978,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     public Builder setRunTask(
         game.proto.data.RunTask.Builder builderForValue) {
@@ -848,7 +992,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     public Builder mergeRunTask(game.proto.data.RunTask value) {
       if (runTaskBuilder_ == null) {
@@ -866,7 +1010,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     public Builder clearRunTask() {
       if (runTaskBuilder_ == null) {
@@ -880,7 +1024,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     public game.proto.data.RunTask.Builder getRunTaskBuilder() {
       
@@ -888,7 +1032,7 @@ private static final long serialVersionUID = 0L;
       return getRunTaskFieldBuilder().getBuilder();
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     public game.proto.data.RunTaskOrBuilder getRunTaskOrBuilder() {
       if (runTaskBuilder_ != null) {
@@ -899,7 +1043,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.Message.RunTask runTask = 6;</code>
+     * <code>.Message.RunTask runTask = 70;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.RunTask, game.proto.data.RunTask.Builder, game.proto.data.RunTaskOrBuilder> 

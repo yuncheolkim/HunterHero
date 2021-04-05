@@ -8,29 +8,45 @@ public interface TaskStatusChangePushOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 taskId = 1;</code>
+   * <code>int32 npcId = 10;</code>
+   * @return The npcId.
+   */
+  int getNpcId();
+
+  /**
+   * <code>int32 taskId = 20;</code>
    * @return The taskId.
    */
   int getTaskId();
 
   /**
-   * <code>bool complete = 2;</code>
+   * <code>bool complete = 30;</code>
    * @return The complete.
    */
   boolean getComplete();
 
   /**
    * <pre>
+   * 1:完成未提交,2:完成已提交
+   * </pre>
+   *
+   * <code>int32 status = 35;</code>
+   * @return The status.
+   */
+  int getStatus();
+
+  /**
+   * <pre>
    * 任务进度
    * </pre>
    *
-   * <code>int32 count = 3;</code>
+   * <code>int32 count = 40;</code>
    * @return The count.
    */
   int getCount();
 
   /**
-   * <code>int32 targetId = 4;</code>
+   * <code>int32 targetId = 50;</code>
    * @return The targetId.
    */
   int getTargetId();
@@ -40,23 +56,23 @@ public interface TaskStatusChangePushOrBuilder extends
    * 第一次接受任务
    * </pre>
    *
-   * <code>bool accept = 5;</code>
+   * <code>bool accept = 60;</code>
    * @return The accept.
    */
   boolean getAccept();
 
   /**
-   * <code>.Message.RunTask runTask = 6;</code>
+   * <code>.Message.RunTask runTask = 70;</code>
    * @return Whether the runTask field is set.
    */
   boolean hasRunTask();
   /**
-   * <code>.Message.RunTask runTask = 6;</code>
+   * <code>.Message.RunTask runTask = 70;</code>
    * @return The runTask.
    */
   game.proto.data.RunTask getRunTask();
   /**
-   * <code>.Message.RunTask runTask = 6;</code>
+   * <code>.Message.RunTask runTask = 70;</code>
    */
   game.proto.data.RunTaskOrBuilder getRunTaskOrBuilder();
 }

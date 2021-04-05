@@ -13,6 +13,48 @@
         "type2": 1,
         "value": 10
     },
+    "102001": {
+        "content": "喇叭喇叭",
+        "desc": "喇叭花",
+        "icon": "icon9",
+        "id": 102001,
+        "name": "喇叭花",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 20,
+        "type1": 1,
+        "type2": 2,
+        "value": 3
+    },
+    "102002": {
+        "content": "小小",
+        "desc": "马兰花",
+        "icon": "icon10",
+        "id": 102002,
+        "name": "马兰花",
+        "num": 2,
+        "resourceId": 1,
+        "sell": 2,
+        "stack": 20,
+        "type1": 1,
+        "type2": 2,
+        "value": 4
+    },
+    "102003": {
+        "content": "大大",
+        "desc": "狗尾草",
+        "icon": "icon11",
+        "id": 102003,
+        "name": "狗尾草",
+        "num": 3,
+        "resourceId": 1,
+        "sell": 2,
+        "stack": 20,
+        "type1": 1,
+        "type2": 2,
+        "value": 5
+    },
     "201001": {
         "content": "看着还挺好看.",
         "desc": "贝壳",

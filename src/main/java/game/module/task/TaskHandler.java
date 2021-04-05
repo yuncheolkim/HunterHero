@@ -37,19 +37,23 @@ public class TaskHandler {
 
         ModuleAssert.isTrue(TaskService.canAcceptTask(player, o.getTaskId()));
 
-        DataConfigData taskConfigData4 = G.C.taskMap4.get(o.getTaskId());
+        DataConfigData taskConfigData = G.C.getTask(o.getTaskId());
+        PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
         RunTask.Builder data = RunTask.newBuilder();
         data.setTaskId(o.getTaskId());
-        if (taskConfigData4.completeType == 2) {// 立即完成
+        if (taskConfigData.completeType == 2) {// 立即完成
             data.setComplete(true);
             // push
             player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                    .setNpcId(taskConfigData.completeNpcId)
                     .setComplete(true)
+                    .setStatus(1)
                     .setTaskId(o.getTaskId())
+                    .setRunTask(data.buildPartial())
                     .build()
             );
         } else {
-            List<Integer> targetList = taskConfigData4.targetList;
+            List<Integer> targetList = taskConfigData.targetList;
             for (Integer target : targetList) {
                 data.addTarget(TaskTarget.newBuilder().setId(target).build());
             }
@@ -57,13 +61,14 @@ public class TaskHandler {
             // push
             player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
                     .setTaskId(o.getTaskId())
+                    .setNpcId(taskConfigData.npcId)
                     .setAccept(true)
                     .setRunTask(data.buildPartial())
                     .build());
 
 
         }
-        player.getPd().getTaskBuilder().putRunTask(o.getTaskId(), data.build());
+        taskBuilder.putRunTask(o.getTaskId(), data.build());
 
     }
 
@@ -113,6 +118,14 @@ public class TaskHandler {
             taskBuilder.removeRunTask(req.getTaskId());
             player.D.putCompleteTask(req.getTaskId(), true);
 
+            // 推送变化
+            player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                    .setTaskId(runtask.getTaskId())
+                    .setNpcId(task.completeNpcId)
+                    .setComplete(true)
+                    .setStatus(2)
+                    .buildPartial());
+
             // 检查后续任务
             Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
             List<Integer> afterTaskList = task.list2;
@@ -157,7 +170,10 @@ public class TaskHandler {
                 }
 
                 if (player.pd.getTaskBuilder().containsRunTask(data.id)) {
-                    builder.putRunTask(data.id, player.pd.getTaskBuilder().getRunTaskOrThrow(data.id));
+                    RunTask runtask = player.pd.getTaskBuilder().getRunTaskOrThrow(data.id);
+                    if (!runtask.getComplete()) {
+                        builder.putRunTask(data.id, runtask);
+                    }
                 } else {
                     if (!completeTaskMap.containsKey(data.id)) {
                         boolean add = true;
@@ -172,6 +188,15 @@ public class TaskHandler {
                         if (add) {
                             builder.addAcceptableTask(data.id);
                         }
+                    }
+                }
+            }
+
+            for (RunTask value : player.pd.getTaskBuilder().getRunTaskMap().values()) {
+                if (value.getComplete()) {
+                    DataConfigData task = G.C.getTask(value.getTaskId());
+                    if (task.completeNpcId == req.getNpcId()) {
+                        builder.putRunTask(value.getTaskId(), value);
                     }
                 }
             }
