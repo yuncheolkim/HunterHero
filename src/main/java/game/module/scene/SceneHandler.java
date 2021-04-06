@@ -1,6 +1,7 @@
 package game.module.scene;
 
 import game.base.G;
+import game.base.Logs;
 import game.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
@@ -26,6 +27,7 @@ public class SceneHandler {
      * @return
      */
     public static void enterScene(Player player, EnterSceneReq req) {
+        Logs.C.info("进入场景：{}", req.getData().getId());
         player.getPd().mergeSceneData(req.getData());
         player.D.clearFightArea();
     }
@@ -39,6 +41,7 @@ public class SceneHandler {
      */
     public static void enterFightArea(Player player, EnterFightAreaReq req) {
 
+        Logs.C.info("进入战斗区域：{}", req.getId());
         if (!player.D.getFightAreaList().contains(req.getId()) && G.C.getFightArea(req.getId()) != null) {
             player.D.addFightArea(req.getId());
             long now = System.currentTimeMillis();
@@ -57,6 +60,8 @@ public class SceneHandler {
      * @return
      */
     public static void exitFightArea(Player player, ExitFightAreaReq req) {
+        Logs.C.info("离开战斗区域：{}", req.getId());
+
         List<Integer> l = new ArrayList<>(player.D.getFightAreaList());
         l.remove(new Integer(req.getId()));
         player.D.clearFightArea().addAllFightArea(l);

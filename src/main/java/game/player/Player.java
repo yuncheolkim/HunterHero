@@ -163,8 +163,10 @@ public class Player {
         List<Integer> l = new ArrayList<>(D.getFightAreaList());
         D.clearFightArea();
         for (Integer areaId : l) {
-            if (dataConfigData.enemyAreaList.contains(areaId)) {
-                D.addFightArea(areaId);
+            if (dataConfigData.enemyAreaList != null) {
+                if (dataConfigData.enemyAreaList.contains(areaId)) {
+                    D.addFightArea(areaId);
+                }
             }
         }
         if (D.getFightAreaCount() == 0) {

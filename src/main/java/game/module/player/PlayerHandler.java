@@ -1,6 +1,5 @@
 package game.module.player;
 
-import game.base.Logs;
 import game.game.ResourceSourceEnum;
 import game.module.fight.FightService;
 import game.player.Player;
@@ -58,7 +57,7 @@ public class PlayerHandler {
      * @return
      */
     public static void tick(Player player) {
-        Logs.C.info("定时器:{}", player.getPid());
+//        Logs.C.info("定时器:{}", player.getPid());
 
         // 体力恢复
         recoverPower(player);
@@ -95,7 +94,7 @@ public class PlayerHandler {
      * @return
      */
     public static void dataFlush(Player player, Empty o) {
-        Logs.C.info("保存玩家数据:{}", player.getPid());
+//        Logs.C.info("保存玩家数据:{}", player.getPid());
         player.saveData();
     }
 }
