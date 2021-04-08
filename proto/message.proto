@@ -64,7 +64,7 @@ message TaskNewPush {
 }
 
 // 任务发生变化
-message TaskStatusChangePush{
+message TaskStatusChangePush {
     int32 npcId = 10;
     int32 taskId = 20;
     bool complete = 30;
@@ -132,6 +132,32 @@ message HeroUpReq {
 // 4003 英雄变化
 message HeroChangePush {
     PlayerHero hero = 1;
+}
+// 创建阵型
+message FormationCreateReq {
+
+}
+// 查询阵型
+message FormationListReq {
+
+}
+// 查询阵型res
+message FormationListRes {
+
+}
+// 更新阵型
+message FormationUpdateReq {
+
+}
+// 删除阵型
+message FormationDeleteReq {
+
+}
+
+// 指定阵型用到哪里
+// 如竞技场，pvp等
+message FormationAssignReq {
+
 }
 
 // 5001 资源变化
