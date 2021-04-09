@@ -29,6 +29,21 @@ message PlayerData {
     int32 bankCapacity = 603;
     // 银行
     map<int32, BagSlot> bank = 604;
+    // 阵型
+    repeated Formation formation = 701;
+
+}
+
+// 阵型
+message Formation {
+    repeated FormationPos pos = 1;
+}
+// 阵型位置
+message FormationPos {
+    int32 index = 1;
+    int32 heroId = 2;
+    int32 order = 3;
+    int32 enhance = 4; // 法阵
 }
 
 // 资源
@@ -58,14 +73,14 @@ message PlayerTask {
 
 message RunTask {
     int32 taskId = 1;
-    bool  complete = 2;
+    bool complete = 2;
     repeated TaskTarget target = 3;
 }
 
 message TaskTarget {
     int32 id = 1;
     int32 value = 2;
-    bool  complete = 3;
+    bool complete = 3;
 }
 //////////// hero
 

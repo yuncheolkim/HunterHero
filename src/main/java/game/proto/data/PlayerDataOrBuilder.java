@@ -349,4 +349,48 @@ public interface PlayerDataOrBuilder extends
 
   game.proto.data.BagSlot getBankOrThrow(
       int key);
+
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  java.util.List<game.proto.data.Formation> 
+      getFormationList();
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  game.proto.data.Formation getFormation(int index);
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  int getFormationCount();
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  java.util.List<? extends game.proto.data.FormationOrBuilder> 
+      getFormationOrBuilderList();
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  game.proto.data.FormationOrBuilder getFormationOrBuilder(
+      int index);
 }

@@ -19,6 +19,7 @@ private static final long serialVersionUID = 0L;
     name_ = "";
     account_ = "";
     fightInfo_ = java.util.Collections.emptyList();
+    formation_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -171,6 +172,15 @@ private static final long serialVersionUID = 0L;
                 bank__.getKey(), bank__.getValue());
             break;
           }
+          case 5610: {
+            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              formation_ = new java.util.ArrayList<game.proto.data.Formation>();
+              mutable_bitField0_ |= 0x00000010;
+            }
+            formation_.add(
+                input.readMessage(game.proto.data.Formation.parser(), extensionRegistry));
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -188,6 +198,9 @@ private static final long serialVersionUID = 0L;
     } finally {
       if (((mutable_bitField0_ & 0x00000002) != 0)) {
         fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
+      }
+      if (((mutable_bitField0_ & 0x00000010) != 0)) {
+        formation_ = java.util.Collections.unmodifiableList(formation_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -815,6 +828,66 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int FORMATION_FIELD_NUMBER = 701;
+  private java.util.List<game.proto.data.Formation> formation_;
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  @java.lang.Override
+  public java.util.List<game.proto.data.Formation> getFormationList() {
+    return formation_;
+  }
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.FormationOrBuilder> 
+      getFormationOrBuilderList() {
+    return formation_;
+  }
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  @java.lang.Override
+  public int getFormationCount() {
+    return formation_.size();
+  }
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.Formation getFormation(int index) {
+    return formation_.get(index);
+  }
+  /**
+   * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>repeated .Message.Formation formation = 701;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FormationOrBuilder getFormationOrBuilder(
+      int index) {
+    return formation_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -877,6 +950,9 @@ private static final long serialVersionUID = 0L;
         internalGetBank(),
         BankDefaultEntryHolder.defaultEntry,
         604);
+    for (int i = 0; i < formation_.size(); i++) {
+      output.writeMessage(701, formation_.get(i));
+    }
     unknownFields.writeTo(output);
   }
 
@@ -954,6 +1030,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(604, bank__);
     }
+    for (int i = 0; i < formation_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(701, formation_.get(i));
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -1004,6 +1084,8 @@ private static final long serialVersionUID = 0L;
         != other.getBankCapacity()) return false;
     if (!internalGetBank().equals(
         other.internalGetBank())) return false;
+    if (!getFormationList()
+        .equals(other.getFormationList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -1055,6 +1137,10 @@ private static final long serialVersionUID = 0L;
     if (!internalGetBank().getMap().isEmpty()) {
       hash = (37 * hash) + BANK_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBank().hashCode();
+    }
+    if (getFormationCount() > 0) {
+      hash = (37 * hash) + FORMATION_FIELD_NUMBER;
+      hash = (53 * hash) + getFormationList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -1215,6 +1301,7 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
         getFightInfoFieldBuilder();
+        getFormationFieldBuilder();
       }
     }
     @java.lang.Override
@@ -1259,6 +1346,12 @@ private static final long serialVersionUID = 0L;
       bankCapacity_ = 0;
 
       internalGetMutableBank().clear();
+      if (formationBuilder_ == null) {
+        formation_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+      } else {
+        formationBuilder_.clear();
+      }
       return this;
     }
 
@@ -1322,6 +1415,15 @@ private static final long serialVersionUID = 0L;
       result.bankCapacity_ = bankCapacity_;
       result.bank_ = internalGetBank();
       result.bank_.makeImmutable();
+      if (formationBuilder_ == null) {
+        if (((bitField0_ & 0x00000010) != 0)) {
+          formation_ = java.util.Collections.unmodifiableList(formation_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.formation_ = formation_;
+      } else {
+        result.formation_ = formationBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -1431,6 +1533,32 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableBank().mergeFrom(
           other.internalGetBank());
+      if (formationBuilder_ == null) {
+        if (!other.formation_.isEmpty()) {
+          if (formation_.isEmpty()) {
+            formation_ = other.formation_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureFormationIsMutable();
+            formation_.addAll(other.formation_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.formation_.isEmpty()) {
+          if (formationBuilder_.isEmpty()) {
+            formationBuilder_.dispose();
+            formationBuilder_ = null;
+            formation_ = other.formation_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+            formationBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getFormationFieldBuilder() : null;
+          } else {
+            formationBuilder_.addAllMessages(other.formation_);
+          }
+        }
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -3004,6 +3132,318 @@ private static final long serialVersionUID = 0L;
       internalGetMutableBank().getMutableMap()
           .putAll(values);
       return this;
+    }
+
+    private java.util.List<game.proto.data.Formation> formation_ =
+      java.util.Collections.emptyList();
+    private void ensureFormationIsMutable() {
+      if (!((bitField0_ & 0x00000010) != 0)) {
+        formation_ = new java.util.ArrayList<game.proto.data.Formation>(formation_);
+        bitField0_ |= 0x00000010;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.Formation, game.proto.data.Formation.Builder, game.proto.data.FormationOrBuilder> formationBuilder_;
+
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public java.util.List<game.proto.data.Formation> getFormationList() {
+      if (formationBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(formation_);
+      } else {
+        return formationBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public int getFormationCount() {
+      if (formationBuilder_ == null) {
+        return formation_.size();
+      } else {
+        return formationBuilder_.getCount();
+      }
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public game.proto.data.Formation getFormation(int index) {
+      if (formationBuilder_ == null) {
+        return formation_.get(index);
+      } else {
+        return formationBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder setFormation(
+        int index, game.proto.data.Formation value) {
+      if (formationBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFormationIsMutable();
+        formation_.set(index, value);
+        onChanged();
+      } else {
+        formationBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder setFormation(
+        int index, game.proto.data.Formation.Builder builderForValue) {
+      if (formationBuilder_ == null) {
+        ensureFormationIsMutable();
+        formation_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        formationBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder addFormation(game.proto.data.Formation value) {
+      if (formationBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFormationIsMutable();
+        formation_.add(value);
+        onChanged();
+      } else {
+        formationBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder addFormation(
+        int index, game.proto.data.Formation value) {
+      if (formationBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureFormationIsMutable();
+        formation_.add(index, value);
+        onChanged();
+      } else {
+        formationBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder addFormation(
+        game.proto.data.Formation.Builder builderForValue) {
+      if (formationBuilder_ == null) {
+        ensureFormationIsMutable();
+        formation_.add(builderForValue.build());
+        onChanged();
+      } else {
+        formationBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder addFormation(
+        int index, game.proto.data.Formation.Builder builderForValue) {
+      if (formationBuilder_ == null) {
+        ensureFormationIsMutable();
+        formation_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        formationBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder addAllFormation(
+        java.lang.Iterable<? extends game.proto.data.Formation> values) {
+      if (formationBuilder_ == null) {
+        ensureFormationIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, formation_);
+        onChanged();
+      } else {
+        formationBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder clearFormation() {
+      if (formationBuilder_ == null) {
+        formation_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+      } else {
+        formationBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public Builder removeFormation(int index) {
+      if (formationBuilder_ == null) {
+        ensureFormationIsMutable();
+        formation_.remove(index);
+        onChanged();
+      } else {
+        formationBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public game.proto.data.Formation.Builder getFormationBuilder(
+        int index) {
+      return getFormationFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public game.proto.data.FormationOrBuilder getFormationOrBuilder(
+        int index) {
+      if (formationBuilder_ == null) {
+        return formation_.get(index);  } else {
+        return formationBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public java.util.List<? extends game.proto.data.FormationOrBuilder> 
+         getFormationOrBuilderList() {
+      if (formationBuilder_ != null) {
+        return formationBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(formation_);
+      }
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public game.proto.data.Formation.Builder addFormationBuilder() {
+      return getFormationFieldBuilder().addBuilder(
+          game.proto.data.Formation.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public game.proto.data.Formation.Builder addFormationBuilder(
+        int index) {
+      return getFormationFieldBuilder().addBuilder(
+          index, game.proto.data.Formation.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 阵型
+     * </pre>
+     *
+     * <code>repeated .Message.Formation formation = 701;</code>
+     */
+    public java.util.List<game.proto.data.Formation.Builder> 
+         getFormationBuilderList() {
+      return getFormationFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.Formation, game.proto.data.Formation.Builder, game.proto.data.FormationOrBuilder> 
+        getFormationFieldBuilder() {
+      if (formationBuilder_ == null) {
+        formationBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.Formation, game.proto.data.Formation.Builder, game.proto.data.FormationOrBuilder>(
+                formation_,
+                ((bitField0_ & 0x00000010) != 0),
+                getParentForChildren(),
+                isClean());
+        formation_ = null;
+      }
+      return formationBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -135,7 +135,8 @@ message HeroChangePush {
 }
 // 创建阵型
 message FormationCreateReq {
-
+}
+message FormationCreateRes {
 }
 // 查询阵型
 message FormationListReq {
@@ -151,13 +152,19 @@ message FormationUpdateReq {
 }
 // 删除阵型
 message FormationDeleteReq {
-
+    int32 id = 1;
+}
+enum FormationType {
+    FORMATION_NONE = 0;
+    FORMATION_DEFAULT = 1; //默认阵型
+    FORMATION_FIGHT = 2; //默认阵型
 }
 
 // 指定阵型用到哪里
 // 如竞技场，pvp等
-message FormationAssignReq {
-
+message FormationSettingReq {
+    string name = 1;
+    FormationType type = 2;
 }
 
 // 5001 资源变化

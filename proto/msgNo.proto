@@ -45,8 +45,13 @@ enum MsgNo {
     hero_change = 4003;
     // 装备物品
     HeroEquipmentReqNo = 4004;
-    // 创建阵型
-    HeroFormationCreateReqNo = 4100;
+
+    // 阵型
+    FormationCreateReqNo = 4101;
+    FormationListReqNo = 4102;
+    FormationUpdateReqNo = 4103;
+    FormationDeleteReqNo = 4104;
+    FormationAssignReqNo = 4105;
 
     // 资源变化
     resource_change_push = 5001;

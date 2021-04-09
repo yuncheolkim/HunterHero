@@ -150,6 +150,30 @@ public enum MsgNo
   HeroEquipmentReqNo(4004),
   /**
    * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>FormationCreateReqNo = 4101;</code>
+   */
+  FormationCreateReqNo(4101),
+  /**
+   * <code>FormationListReqNo = 4102;</code>
+   */
+  FormationListReqNo(4102),
+  /**
+   * <code>FormationUpdateReqNo = 4103;</code>
+   */
+  FormationUpdateReqNo(4103),
+  /**
+   * <code>FormationDeleteReqNo = 4104;</code>
+   */
+  FormationDeleteReqNo(4104),
+  /**
+   * <code>FormationAssignReqNo = 4105;</code>
+   */
+  FormationAssignReqNo(4105),
+  /**
+   * <pre>
    * 资源变化
    * </pre>
    *
@@ -361,6 +385,30 @@ public enum MsgNo
   public static final int HeroEquipmentReqNo_VALUE = 4004;
   /**
    * <pre>
+   * 阵型
+   * </pre>
+   *
+   * <code>FormationCreateReqNo = 4101;</code>
+   */
+  public static final int FormationCreateReqNo_VALUE = 4101;
+  /**
+   * <code>FormationListReqNo = 4102;</code>
+   */
+  public static final int FormationListReqNo_VALUE = 4102;
+  /**
+   * <code>FormationUpdateReqNo = 4103;</code>
+   */
+  public static final int FormationUpdateReqNo_VALUE = 4103;
+  /**
+   * <code>FormationDeleteReqNo = 4104;</code>
+   */
+  public static final int FormationDeleteReqNo_VALUE = 4104;
+  /**
+   * <code>FormationAssignReqNo = 4105;</code>
+   */
+  public static final int FormationAssignReqNo_VALUE = 4105;
+  /**
+   * <pre>
    * 资源变化
    * </pre>
    *
@@ -473,6 +521,11 @@ public enum MsgNo
       case 4002: return hero_update_xiulian;
       case 4003: return hero_change;
       case 4004: return HeroEquipmentReqNo;
+      case 4101: return FormationCreateReqNo;
+      case 4102: return FormationListReqNo;
+      case 4103: return FormationUpdateReqNo;
+      case 4104: return FormationDeleteReqNo;
+      case 4105: return FormationAssignReqNo;
       case 5001: return resource_change_push;
       case 5002: return PlayerLevelChangePushNo;
       case 5003: return ExpChangePushNo;
