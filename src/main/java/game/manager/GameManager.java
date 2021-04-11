@@ -6,6 +6,7 @@ import game.game.scene.GameScene;
 import game.module.bag.BagHandler;
 import game.module.cmd.CmdHandler;
 import game.module.fight.FightHandler;
+import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.login.LoginHandler;
@@ -106,6 +107,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.ItemSellReqNo_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
         // 装备物品
         addHandler(new Invoker<>(MsgNo.HeroEquipmentReqNo_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
+        // 阵型
+        addHandler(new RetInvoker<>(MsgNo.FormationCreateReqNo_VALUE, FormationHandler::create, FormationCreateReq::parser));
+
     }
 
     private void initScene() {
