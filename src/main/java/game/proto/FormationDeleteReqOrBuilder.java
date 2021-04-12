@@ -8,8 +8,12 @@ public interface FormationDeleteReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
-   * @return The id.
+   * <pre>
+   * 下标
+   * </pre>
+   *
+   * <code>int32 index = 1;</code>
+   * @return The index.
    */
-  int getId();
+  int getIndex();
 }

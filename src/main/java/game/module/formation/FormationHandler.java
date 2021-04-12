@@ -5,6 +5,7 @@ import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.FormationCreateReq;
 import game.proto.FormationCreateRes;
+import game.proto.FormationDeleteReq;
 import game.proto.data.Formation;
 import game.proto.data.FormationPos;
 
@@ -20,7 +21,7 @@ import java.util.List;
 public class FormationHandler {
 
     /**
-     * 创建阵容
+     * 创建阵型
      *
      * @param player
      * @param req
@@ -44,5 +45,22 @@ public class FormationHandler {
         }
 
         return pos;
+    }
+
+    /**
+     * 删除阵型
+     *
+     * @param player
+     * @param req
+     */
+    public static void delete(Player player, FormationDeleteReq req) {
+
+
+        ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
+
+
+        player.pd.addFormation(Formation.newBuilder()
+                .addAllPos(newFormation())
+                .build());
     }
 }

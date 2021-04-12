@@ -138,21 +138,21 @@ message FormationCreateReq {
 }
 message FormationCreateRes {
 }
-// 查询阵型
-message FormationListReq {
-
-}
-// 查询阵型res
-message FormationListRes {
-
-}
+//// 查询阵型
+//message FormationListReq {
+//
+//}
+//// 查询阵型res
+//message FormationListRes {
+//
+//}
 // 更新阵型
 message FormationUpdateReq {
 
 }
 // 删除阵型
 message FormationDeleteReq {
-    int32 id = 1;
+    int32 index = 1;// 下标
 }
 enum FormationType {
     FORMATION_NONE = 0;

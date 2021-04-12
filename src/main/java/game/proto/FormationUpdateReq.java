@@ -5,6 +5,12 @@ package game.proto;
 
 /**
  * <pre>
+ *&#47;/ 查询阵型
+ *message FormationListReq {
+ *}
+ * // 查询阵型res
+ *message FormationListRes {
+ *}
  * 更新阵型
  * </pre>
  *
@@ -230,6 +236,12 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
+   *&#47;/ 查询阵型
+   *message FormationListReq {
+   *}
+   * // 查询阵型res
+   *message FormationListRes {
+   *}
    * 更新阵型
    * </pre>
    *
