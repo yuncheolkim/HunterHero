@@ -148,23 +148,21 @@ message FormationCreateRes {
 //}
 // 更新阵型
 message FormationUpdateReq {
+    int32 index = 1;// 下标
+    FormationPos pos = 2;
 
 }
 // 删除阵型
 message FormationDeleteReq {
     int32 index = 1;// 下标
 }
-enum FormationType {
-    FORMATION_NONE = 0;
-    FORMATION_DEFAULT = 1; //默认阵型
-    FORMATION_FIGHT = 2; //默认阵型
-}
 
 // 指定阵型用到哪里
 // 如竞技场，pvp等
 message FormationSettingReq {
-    string name = 1;
-    FormationType type = 2;
+    int32 index = 1;
+    string name = 2;
+    FormationType type = 3;
 }
 
 // 5001 资源变化

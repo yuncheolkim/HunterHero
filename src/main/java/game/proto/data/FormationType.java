@@ -4,37 +4,53 @@
 package game.proto.data;
 
 /**
- * Protobuf enum {@code Message.EnemyType}
+ * Protobuf enum {@code Message.FormationType}
  */
-public enum EnemyType
+public enum FormationType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>CREATURE = 0;</code>
+   * <code>FORMATION_NONE = 0;</code>
    */
-  CREATURE(0),
+  FORMATION_NONE(0),
   /**
-   * <code>PLAYER = 1;</code>
+   * <pre>
+   *默认阵型
+   * </pre>
+   *
+   * <code>FORMATION_DEFAULT = 1;</code>
    */
-  PLAYER(1),
+  FORMATION_DEFAULT(1),
   /**
-   * <code>NPC = 2;</code>
+   * <pre>
+   * 竞技场防守
+   * </pre>
+   *
+   * <code>FORMATION_ARENA = 2;</code>
    */
-  NPC(2),
+  FORMATION_ARENA(2),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>CREATURE = 0;</code>
+   * <code>FORMATION_NONE = 0;</code>
    */
-  public static final int CREATURE_VALUE = 0;
+  public static final int FORMATION_NONE_VALUE = 0;
   /**
-   * <code>PLAYER = 1;</code>
+   * <pre>
+   *默认阵型
+   * </pre>
+   *
+   * <code>FORMATION_DEFAULT = 1;</code>
    */
-  public static final int PLAYER_VALUE = 1;
+  public static final int FORMATION_DEFAULT_VALUE = 1;
   /**
-   * <code>NPC = 2;</code>
+   * <pre>
+   * 竞技场防守
+   * </pre>
+   *
+   * <code>FORMATION_ARENA = 2;</code>
    */
-  public static final int NPC_VALUE = 2;
+  public static final int FORMATION_ARENA_VALUE = 2;
 
 
   public final int getNumber() {
@@ -51,7 +67,7 @@ public enum EnemyType
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static EnemyType valueOf(int value) {
+  public static FormationType valueOf(int value) {
     return forNumber(value);
   }
 
@@ -59,24 +75,24 @@ public enum EnemyType
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static EnemyType forNumber(int value) {
+  public static FormationType forNumber(int value) {
     switch (value) {
-      case 0: return CREATURE;
-      case 1: return PLAYER;
-      case 2: return NPC;
+      case 0: return FORMATION_NONE;
+      case 1: return FORMATION_DEFAULT;
+      case 2: return FORMATION_ARENA;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<EnemyType>
+  public static com.google.protobuf.Internal.EnumLiteMap<FormationType>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      EnemyType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<EnemyType>() {
-          public EnemyType findValueByNumber(int number) {
-            return EnemyType.forNumber(number);
+      FormationType> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<FormationType>() {
+          public FormationType findValueByNumber(int number) {
+            return FormationType.forNumber(number);
           }
         };
 
@@ -94,12 +110,12 @@ public enum EnemyType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(1);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(0);
   }
 
-  private static final EnemyType[] VALUES = values();
+  private static final FormationType[] VALUES = values();
 
-  public static EnemyType valueOf(
+  public static FormationType valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -113,10 +129,10 @@ public enum EnemyType
 
   private final int value;
 
-  private EnemyType(int value) {
+  private FormationType(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:Message.EnemyType)
+  // @@protoc_insertion_point(enum_scope:Message.FormationType)
 }
 

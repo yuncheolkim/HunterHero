@@ -8,25 +8,48 @@ public interface FormationOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>string name = 1;</code>
+   * @return The name.
+   */
+  java.lang.String getName();
+  /**
+   * <code>string name = 1;</code>
+   * @return The bytes for name.
+   */
+  com.google.protobuf.ByteString
+      getNameBytes();
+
+  /**
+   * <code>.Message.FormationType type = 2;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  int getTypeValue();
+  /**
+   * <code>.Message.FormationType type = 2;</code>
+   * @return The type.
+   */
+  game.proto.data.FormationType getType();
+
+  /**
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   java.util.List<game.proto.data.FormationPos> 
       getPosList();
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   game.proto.data.FormationPos getPos(int index);
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   int getPosCount();
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   java.util.List<? extends game.proto.data.FormationPosOrBuilder> 
       getPosOrBuilderList();
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   game.proto.data.FormationPosOrBuilder getPosOrBuilder(
       int index);

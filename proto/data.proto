@@ -33,10 +33,16 @@ message PlayerData {
     repeated Formation formation = 701;
 
 }
-
+enum FormationType {
+    FORMATION_NONE = 0;
+    FORMATION_DEFAULT = 1; //默认阵型
+    FORMATION_ARENA = 2; // 竞技场防守
+}
 // 阵型
 message Formation {
-    repeated FormationPos pos = 1;
+    string name = 1;
+    FormationType type = 2;
+    repeated FormationPos pos = 3;
 }
 // 阵型位置
 message FormationPos {

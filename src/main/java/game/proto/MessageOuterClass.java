@@ -252,28 +252,27 @@ public final class MessageOuterClass {
       "Id\030\001 \001(\005\022\016\n\006stepId\030\002 \001(\005\"3\n\016HeroChangePu" +
       "sh\022!\n\004hero\030\001 \001(\0132\023.Message.PlayerHero\"\024\n" +
       "\022FormationCreateReq\"\024\n\022FormationCreateRe" +
-      "s\"\024\n\022FormationUpdateReq\"#\n\022FormationDele" +
-      "teReq\022\r\n\005index\030\001 \001(\005\"I\n\023FormationSetting" +
-      "Req\022\014\n\004name\030\001 \001(\t\022$\n\004type\030\002 \001(\0162\026.Messag" +
-      "e.FormationType\"G\n\022ResourceChangePush\022\022\n" +
-      "\nresourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005cou" +
-      "nt\030\003 \001(\005\"&\n\025PlayerLevelChangePush\022\r\n\005val" +
-      "ue\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006heroId\030\001 \001(" +
-      "\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021Bag" +
-      "InfoChangePush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n " +
-      "\001(\005\022\020\n\010capacity\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Me" +
-      "ssage.BagSlot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001" +
-      "(\005\"M\n\016ItemDiscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005" +
-      "count\030\002 \001(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(" +
-      "\005\";\n\nItemBuyReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count" +
-      "\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\">\n\017ItemExchangeRe" +
-      "q\022\014\n\004type\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count" +
-      "\030\003 \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n" +
-      "\005count\030\002 \001(\005\"2\n\020HeroEquipmentReq\022\016\n\006slot" +
-      "Id\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005*O\n\rFormationTyp" +
-      "e\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FORMATION_DEFAU" +
-      "LT\020\001\022\023\n\017FORMATION_FIGHT\020\002B\020\n\ngame.protoH" +
-      "\001P\001b\006proto3"
+      "s\"G\n\022FormationUpdateReq\022\r\n\005index\030\001 \001(\005\022\"" +
+      "\n\003pos\030\002 \001(\0132\025.Message.FormationPos\"#\n\022Fo" +
+      "rmationDeleteReq\022\r\n\005index\030\001 \001(\005\"X\n\023Forma" +
+      "tionSettingReq\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 " +
+      "\001(\t\022$\n\004type\030\003 \001(\0162\026.Message.FormationTyp" +
+      "e\"G\n\022ResourceChangePush\022\022\n\nresourceId\030\001 " +
+      "\001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"&\n\025Pl" +
+      "ayerLevelChangePush\022\r\n\005value\030\001 \001(\005\"?\n\rEx" +
+      "pChangePush\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp\030\002 " +
+      "\001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagInfoChangePush" +
+      "\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capacit" +
+      "y\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSlot\"" +
+      "\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemDisc" +
+      "ardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n" +
+      "\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBuyRe" +
+      "q\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006shop" +
+      "Id\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type\030\001 \001(" +
+      "\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013Item" +
+      "SellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2" +
+      "\n\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006he" +
+      "roId\030\002 \001(\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -441,7 +440,7 @@ public final class MessageOuterClass {
     internal_static_Message_FormationUpdateReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationUpdateReq_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "Index", "Pos", });
     internal_static_Message_FormationDeleteReq_descriptor =
       getDescriptor().getMessageTypes().get(26);
     internal_static_Message_FormationDeleteReq_fieldAccessorTable = new
@@ -453,7 +452,7 @@ public final class MessageOuterClass {
     internal_static_Message_FormationSettingReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationSettingReq_descriptor,
-        new java.lang.String[] { "Name", "Type", });
+        new java.lang.String[] { "Index", "Name", "Type", });
     internal_static_Message_ResourceChangePush_descriptor =
       getDescriptor().getMessageTypes().get(28);
     internal_static_Message_ResourceChangePush_fieldAccessorTable = new

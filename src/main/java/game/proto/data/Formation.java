@@ -20,6 +20,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Formation() {
+    name_ = "";
+    type_ = 0;
     pos_ = java.util.Collections.emptyList();
   }
 
@@ -55,6 +57,18 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            name_ = s;
+            break;
+          }
+          case 16: {
+            int rawValue = input.readEnum();
+
+            type_ = rawValue;
+            break;
+          }
+          case 26: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               pos_ = new java.util.ArrayList<game.proto.data.FormationPos>();
               mutable_bitField0_ |= 0x00000001;
@@ -98,17 +112,74 @@ private static final long serialVersionUID = 0L;
             game.proto.data.Formation.class, game.proto.data.Formation.Builder.class);
   }
 
-  public static final int POS_FIELD_NUMBER = 1;
+  public static final int NAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object name_;
+  /**
+   * <code>string name = 1;</code>
+   * @return The name.
+   */
+  @java.lang.Override
+  public java.lang.String getName() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      name_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string name = 1;</code>
+   * @return The bytes for name.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getNameBytes() {
+    java.lang.Object ref = name_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      name_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 2;
+  private int type_;
+  /**
+   * <code>.Message.FormationType type = 2;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  @java.lang.Override public int getTypeValue() {
+    return type_;
+  }
+  /**
+   * <code>.Message.FormationType type = 2;</code>
+   * @return The type.
+   */
+  @java.lang.Override public game.proto.data.FormationType getType() {
+    @SuppressWarnings("deprecation")
+    game.proto.data.FormationType result = game.proto.data.FormationType.valueOf(type_);
+    return result == null ? game.proto.data.FormationType.UNRECOGNIZED : result;
+  }
+
+  public static final int POS_FIELD_NUMBER = 3;
   private java.util.List<game.proto.data.FormationPos> pos_;
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   @java.lang.Override
   public java.util.List<game.proto.data.FormationPos> getPosList() {
     return pos_;
   }
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   @java.lang.Override
   public java.util.List<? extends game.proto.data.FormationPosOrBuilder> 
@@ -116,21 +187,21 @@ private static final long serialVersionUID = 0L;
     return pos_;
   }
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   @java.lang.Override
   public int getPosCount() {
     return pos_.size();
   }
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   @java.lang.Override
   public game.proto.data.FormationPos getPos(int index) {
     return pos_.get(index);
   }
   /**
-   * <code>repeated .Message.FormationPos pos = 1;</code>
+   * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   @java.lang.Override
   public game.proto.data.FormationPosOrBuilder getPosOrBuilder(
@@ -152,8 +223,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+    }
+    if (type_ != game.proto.data.FormationType.FORMATION_NONE.getNumber()) {
+      output.writeEnum(2, type_);
+    }
     for (int i = 0; i < pos_.size(); i++) {
-      output.writeMessage(1, pos_.get(i));
+      output.writeMessage(3, pos_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -164,9 +241,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
+    }
+    if (type_ != game.proto.data.FormationType.FORMATION_NONE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(2, type_);
+    }
     for (int i = 0; i < pos_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, pos_.get(i));
+        .computeMessageSize(3, pos_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -183,6 +267,9 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.data.Formation other = (game.proto.data.Formation) obj;
 
+    if (!getName()
+        .equals(other.getName())) return false;
+    if (type_ != other.type_) return false;
     if (!getPosList()
         .equals(other.getPosList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -196,6 +283,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + NAME_FIELD_NUMBER;
+    hash = (53 * hash) + getName().hashCode();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + type_;
     if (getPosCount() > 0) {
       hash = (37 * hash) + POS_FIELD_NUMBER;
       hash = (53 * hash) + getPosList().hashCode();
@@ -338,6 +429,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      name_ = "";
+
+      type_ = 0;
+
       if (posBuilder_ == null) {
         pos_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -371,6 +466,8 @@ private static final long serialVersionUID = 0L;
     public game.proto.data.Formation buildPartial() {
       game.proto.data.Formation result = new game.proto.data.Formation(this);
       int from_bitField0_ = bitField0_;
+      result.name_ = name_;
+      result.type_ = type_;
       if (posBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           pos_ = java.util.Collections.unmodifiableList(pos_);
@@ -428,6 +525,13 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.data.Formation other) {
       if (other == game.proto.data.Formation.getDefaultInstance()) return this;
+      if (!other.getName().isEmpty()) {
+        name_ = other.name_;
+        onChanged();
+      }
+      if (other.type_ != 0) {
+        setTypeValue(other.getTypeValue());
+      }
       if (posBuilder_ == null) {
         if (!other.pos_.isEmpty()) {
           if (pos_.isEmpty()) {
@@ -484,6 +588,136 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
+    private java.lang.Object name_ = "";
+    /**
+     * <code>string name = 1;</code>
+     * @return The name.
+     */
+    public java.lang.String getName() {
+      java.lang.Object ref = name_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        name_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return The bytes for name.
+     */
+    public com.google.protobuf.ByteString
+        getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @param value The name to set.
+     * @return This builder for chaining.
+     */
+    public Builder setName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      name_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearName() {
+      
+      name_ = getDefaultInstance().getName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string name = 1;</code>
+     * @param value The bytes for name to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      name_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int type_ = 0;
+    /**
+     * <code>.Message.FormationType type = 2;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    @java.lang.Override public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.Message.FormationType type = 2;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeValue(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.FormationType type = 2;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public game.proto.data.FormationType getType() {
+      @SuppressWarnings("deprecation")
+      game.proto.data.FormationType result = game.proto.data.FormationType.valueOf(type_);
+      return result == null ? game.proto.data.FormationType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.Message.FormationType type = 2;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(game.proto.data.FormationType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.FormationType type = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
+      return this;
+    }
+
     private java.util.List<game.proto.data.FormationPos> pos_ =
       java.util.Collections.emptyList();
     private void ensurePosIsMutable() {
@@ -497,7 +731,7 @@ private static final long serialVersionUID = 0L;
         game.proto.data.FormationPos, game.proto.data.FormationPos.Builder, game.proto.data.FormationPosOrBuilder> posBuilder_;
 
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public java.util.List<game.proto.data.FormationPos> getPosList() {
       if (posBuilder_ == null) {
@@ -507,7 +741,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public int getPosCount() {
       if (posBuilder_ == null) {
@@ -517,7 +751,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public game.proto.data.FormationPos getPos(int index) {
       if (posBuilder_ == null) {
@@ -527,7 +761,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder setPos(
         int index, game.proto.data.FormationPos value) {
@@ -544,7 +778,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder setPos(
         int index, game.proto.data.FormationPos.Builder builderForValue) {
@@ -558,7 +792,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder addPos(game.proto.data.FormationPos value) {
       if (posBuilder_ == null) {
@@ -574,7 +808,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder addPos(
         int index, game.proto.data.FormationPos value) {
@@ -591,7 +825,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder addPos(
         game.proto.data.FormationPos.Builder builderForValue) {
@@ -605,7 +839,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder addPos(
         int index, game.proto.data.FormationPos.Builder builderForValue) {
@@ -619,7 +853,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder addAllPos(
         java.lang.Iterable<? extends game.proto.data.FormationPos> values) {
@@ -634,7 +868,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder clearPos() {
       if (posBuilder_ == null) {
@@ -647,7 +881,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public Builder removePos(int index) {
       if (posBuilder_ == null) {
@@ -660,14 +894,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public game.proto.data.FormationPos.Builder getPosBuilder(
         int index) {
       return getPosFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public game.proto.data.FormationPosOrBuilder getPosOrBuilder(
         int index) {
@@ -677,7 +911,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public java.util.List<? extends game.proto.data.FormationPosOrBuilder> 
          getPosOrBuilderList() {
@@ -688,14 +922,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public game.proto.data.FormationPos.Builder addPosBuilder() {
       return getPosFieldBuilder().addBuilder(
           game.proto.data.FormationPos.getDefaultInstance());
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public game.proto.data.FormationPos.Builder addPosBuilder(
         int index) {
@@ -703,7 +937,7 @@ private static final long serialVersionUID = 0L;
           index, game.proto.data.FormationPos.getDefaultInstance());
     }
     /**
-     * <code>repeated .Message.FormationPos pos = 1;</code>
+     * <code>repeated .Message.FormationPos pos = 3;</code>
      */
     public java.util.List<game.proto.data.FormationPos.Builder> 
          getPosBuilderList() {

@@ -55,13 +55,18 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
+          case 8: {
+
+            index_ = input.readInt32();
+            break;
+          }
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
             name_ = s;
             break;
           }
-          case 16: {
+          case 24: {
             int rawValue = input.readEnum();
 
             type_ = rawValue;
@@ -99,10 +104,21 @@ private static final long serialVersionUID = 0L;
             game.proto.FormationSettingReq.class, game.proto.FormationSettingReq.Builder.class);
   }
 
-  public static final int NAME_FIELD_NUMBER = 1;
+  public static final int INDEX_FIELD_NUMBER = 1;
+  private int index_;
+  /**
+   * <code>int32 index = 1;</code>
+   * @return The index.
+   */
+  @java.lang.Override
+  public int getIndex() {
+    return index_;
+  }
+
+  public static final int NAME_FIELD_NUMBER = 2;
   private volatile java.lang.Object name_;
   /**
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    * @return The name.
    */
   @java.lang.Override
@@ -119,7 +135,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    * @return The bytes for name.
    */
   @java.lang.Override
@@ -137,23 +153,23 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TYPE_FIELD_NUMBER = 2;
+  public static final int TYPE_FIELD_NUMBER = 3;
   private int type_;
   /**
-   * <code>.Message.FormationType type = 2;</code>
+   * <code>.Message.FormationType type = 3;</code>
    * @return The enum numeric value on the wire for type.
    */
   @java.lang.Override public int getTypeValue() {
     return type_;
   }
   /**
-   * <code>.Message.FormationType type = 2;</code>
+   * <code>.Message.FormationType type = 3;</code>
    * @return The type.
    */
-  @java.lang.Override public game.proto.FormationType getType() {
+  @java.lang.Override public game.proto.data.FormationType getType() {
     @SuppressWarnings("deprecation")
-    game.proto.FormationType result = game.proto.FormationType.valueOf(type_);
-    return result == null ? game.proto.FormationType.UNRECOGNIZED : result;
+    game.proto.data.FormationType result = game.proto.data.FormationType.valueOf(type_);
+    return result == null ? game.proto.data.FormationType.UNRECOGNIZED : result;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -170,11 +186,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, name_);
+    if (index_ != 0) {
+      output.writeInt32(1, index_);
     }
-    if (type_ != game.proto.FormationType.FORMATION_NONE.getNumber()) {
-      output.writeEnum(2, type_);
+    if (!getNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
+    }
+    if (type_ != game.proto.data.FormationType.FORMATION_NONE.getNumber()) {
+      output.writeEnum(3, type_);
     }
     unknownFields.writeTo(output);
   }
@@ -185,12 +204,16 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, name_);
-    }
-    if (type_ != game.proto.FormationType.FORMATION_NONE.getNumber()) {
+    if (index_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(2, type_);
+        .computeInt32Size(1, index_);
+    }
+    if (!getNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
+    }
+    if (type_ != game.proto.data.FormationType.FORMATION_NONE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(3, type_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -207,6 +230,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.FormationSettingReq other = (game.proto.FormationSettingReq) obj;
 
+    if (getIndex()
+        != other.getIndex()) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (type_ != other.type_) return false;
@@ -221,6 +246,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
@@ -363,6 +390,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      index_ = 0;
+
       name_ = "";
 
       type_ = 0;
@@ -393,6 +422,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.FormationSettingReq buildPartial() {
       game.proto.FormationSettingReq result = new game.proto.FormationSettingReq(this);
+      result.index_ = index_;
       result.name_ = name_;
       result.type_ = type_;
       onBuilt();
@@ -443,6 +473,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.FormationSettingReq other) {
       if (other == game.proto.FormationSettingReq.getDefaultInstance()) return this;
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
+      }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
         onChanged();
@@ -479,9 +512,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int index_ ;
+    /**
+     * <code>int32 index = 1;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <code>int32 index = 1;</code>
+     * @param value The index to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIndex(int value) {
+      
+      index_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 index = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIndex() {
+      
+      index_ = 0;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object name_ = "";
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      * @return The name.
      */
     public java.lang.String getName() {
@@ -497,7 +561,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
@@ -514,7 +578,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
@@ -529,7 +593,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearName() {
@@ -539,7 +603,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string name = 1;</code>
+     * <code>string name = 2;</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */
@@ -557,14 +621,14 @@ private static final long serialVersionUID = 0L;
 
     private int type_ = 0;
     /**
-     * <code>.Message.FormationType type = 2;</code>
+     * <code>.Message.FormationType type = 3;</code>
      * @return The enum numeric value on the wire for type.
      */
     @java.lang.Override public int getTypeValue() {
       return type_;
     }
     /**
-     * <code>.Message.FormationType type = 2;</code>
+     * <code>.Message.FormationType type = 3;</code>
      * @param value The enum numeric value on the wire for type to set.
      * @return This builder for chaining.
      */
@@ -575,21 +639,21 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Message.FormationType type = 2;</code>
+     * <code>.Message.FormationType type = 3;</code>
      * @return The type.
      */
     @java.lang.Override
-    public game.proto.FormationType getType() {
+    public game.proto.data.FormationType getType() {
       @SuppressWarnings("deprecation")
-      game.proto.FormationType result = game.proto.FormationType.valueOf(type_);
-      return result == null ? game.proto.FormationType.UNRECOGNIZED : result;
+      game.proto.data.FormationType result = game.proto.data.FormationType.valueOf(type_);
+      return result == null ? game.proto.data.FormationType.UNRECOGNIZED : result;
     }
     /**
-     * <code>.Message.FormationType type = 2;</code>
+     * <code>.Message.FormationType type = 3;</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
-    public Builder setType(game.proto.FormationType value) {
+    public Builder setType(game.proto.data.FormationType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -599,7 +663,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.Message.FormationType type = 2;</code>
+     * <code>.Message.FormationType type = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearType() {

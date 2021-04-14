@@ -6,4 +6,29 @@ package game.proto;
 public interface FormationUpdateReqOrBuilder extends
     // @@protoc_insertion_point(interface_extends:Message.FormationUpdateReq)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <pre>
+   * 下标
+   * </pre>
+   *
+   * <code>int32 index = 1;</code>
+   * @return The index.
+   */
+  int getIndex();
+
+  /**
+   * <code>.Message.FormationPos pos = 2;</code>
+   * @return Whether the pos field is set.
+   */
+  boolean hasPos();
+  /**
+   * <code>.Message.FormationPos pos = 2;</code>
+   * @return The pos.
+   */
+  game.proto.data.FormationPos getPos();
+  /**
+   * <code>.Message.FormationPos pos = 2;</code>
+   */
+  game.proto.data.FormationPosOrBuilder getPosOrBuilder();
 }

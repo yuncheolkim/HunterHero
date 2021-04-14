@@ -169,9 +169,9 @@ public enum MsgNo
    */
   FormationDeleteReqNo(4104),
   /**
-   * <code>FormationAssignReqNo = 4105;</code>
+   * <code>FormationSettingReqNo = 4105;</code>
    */
-  FormationAssignReqNo(4105),
+  FormationSettingReqNo(4105),
   /**
    * <pre>
    * 资源变化
@@ -404,9 +404,9 @@ public enum MsgNo
    */
   public static final int FormationDeleteReqNo_VALUE = 4104;
   /**
-   * <code>FormationAssignReqNo = 4105;</code>
+   * <code>FormationSettingReqNo = 4105;</code>
    */
-  public static final int FormationAssignReqNo_VALUE = 4105;
+  public static final int FormationSettingReqNo_VALUE = 4105;
   /**
    * <pre>
    * 资源变化
@@ -525,7 +525,7 @@ public enum MsgNo
       case 4102: return FormationListReqNo;
       case 4103: return FormationUpdateReqNo;
       case 4104: return FormationDeleteReqNo;
-      case 4105: return FormationAssignReqNo;
+      case 4105: return FormationSettingReqNo;
       case 5001: return resource_change_push;
       case 5002: return PlayerLevelChangePushNo;
       case 5003: return ExpChangePushNo;

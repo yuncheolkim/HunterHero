@@ -148,7 +148,7 @@ public enum RecordType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(1);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(2);
   }
 
   private static final RecordType[] VALUES = values();

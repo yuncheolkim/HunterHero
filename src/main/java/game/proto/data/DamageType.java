@@ -94,7 +94,7 @@ public enum DamageType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(2);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(3);
   }
 
   private static final DamageType[] VALUES = values();

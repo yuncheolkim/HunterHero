@@ -109,6 +109,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.HeroEquipmentReqNo_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
         // 阵型
         addHandler(new RetInvoker<>(MsgNo.FormationCreateReqNo_VALUE, FormationHandler::create, FormationCreateReq::parser));
+        addHandler(new Invoker<>(MsgNo.FormationDeleteReqNo_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
+        addHandler(new Invoker<>(MsgNo.FormationUpdateReqNo_VALUE, FormationHandler::update, FormationUpdateReq::parser));
+        addHandler(new Invoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
 
     }
 

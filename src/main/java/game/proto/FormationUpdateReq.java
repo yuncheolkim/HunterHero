@@ -58,6 +58,24 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+
+            index_ = input.readInt32();
+            break;
+          }
+          case 18: {
+            game.proto.data.FormationPos.Builder subBuilder = null;
+            if (pos_ != null) {
+              subBuilder = pos_.toBuilder();
+            }
+            pos_ = input.readMessage(game.proto.data.FormationPos.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(pos_);
+              pos_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -90,6 +108,47 @@ private static final long serialVersionUID = 0L;
             game.proto.FormationUpdateReq.class, game.proto.FormationUpdateReq.Builder.class);
   }
 
+  public static final int INDEX_FIELD_NUMBER = 1;
+  private int index_;
+  /**
+   * <pre>
+   * 下标
+   * </pre>
+   *
+   * <code>int32 index = 1;</code>
+   * @return The index.
+   */
+  @java.lang.Override
+  public int getIndex() {
+    return index_;
+  }
+
+  public static final int POS_FIELD_NUMBER = 2;
+  private game.proto.data.FormationPos pos_;
+  /**
+   * <code>.Message.FormationPos pos = 2;</code>
+   * @return Whether the pos field is set.
+   */
+  @java.lang.Override
+  public boolean hasPos() {
+    return pos_ != null;
+  }
+  /**
+   * <code>.Message.FormationPos pos = 2;</code>
+   * @return The pos.
+   */
+  @java.lang.Override
+  public game.proto.data.FormationPos getPos() {
+    return pos_ == null ? game.proto.data.FormationPos.getDefaultInstance() : pos_;
+  }
+  /**
+   * <code>.Message.FormationPos pos = 2;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FormationPosOrBuilder getPosOrBuilder() {
+    return getPos();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -104,6 +163,12 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (index_ != 0) {
+      output.writeInt32(1, index_);
+    }
+    if (pos_ != null) {
+      output.writeMessage(2, getPos());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -113,6 +178,14 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (index_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, index_);
+    }
+    if (pos_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, getPos());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -128,6 +201,13 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.FormationUpdateReq other = (game.proto.FormationUpdateReq) obj;
 
+    if (getIndex()
+        != other.getIndex()) return false;
+    if (hasPos() != other.hasPos()) return false;
+    if (hasPos()) {
+      if (!getPos()
+          .equals(other.getPos())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -139,6 +219,12 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
+    if (hasPos()) {
+      hash = (37 * hash) + POS_FIELD_NUMBER;
+      hash = (53 * hash) + getPos().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -282,6 +368,14 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      index_ = 0;
+
+      if (posBuilder_ == null) {
+        pos_ = null;
+      } else {
+        pos_ = null;
+        posBuilder_ = null;
+      }
       return this;
     }
 
@@ -308,6 +402,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.FormationUpdateReq buildPartial() {
       game.proto.FormationUpdateReq result = new game.proto.FormationUpdateReq(this);
+      result.index_ = index_;
+      if (posBuilder_ == null) {
+        result.pos_ = pos_;
+      } else {
+        result.pos_ = posBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -356,6 +456,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.FormationUpdateReq other) {
       if (other == game.proto.FormationUpdateReq.getDefaultInstance()) return this;
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
+      }
+      if (other.hasPos()) {
+        mergePos(other.getPos());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -383,6 +489,168 @@ private static final long serialVersionUID = 0L;
         }
       }
       return this;
+    }
+
+    private int index_ ;
+    /**
+     * <pre>
+     * 下标
+     * </pre>
+     *
+     * <code>int32 index = 1;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <pre>
+     * 下标
+     * </pre>
+     *
+     * <code>int32 index = 1;</code>
+     * @param value The index to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIndex(int value) {
+      
+      index_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 下标
+     * </pre>
+     *
+     * <code>int32 index = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIndex() {
+      
+      index_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private game.proto.data.FormationPos pos_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.FormationPos, game.proto.data.FormationPos.Builder, game.proto.data.FormationPosOrBuilder> posBuilder_;
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     * @return Whether the pos field is set.
+     */
+    public boolean hasPos() {
+      return posBuilder_ != null || pos_ != null;
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     * @return The pos.
+     */
+    public game.proto.data.FormationPos getPos() {
+      if (posBuilder_ == null) {
+        return pos_ == null ? game.proto.data.FormationPos.getDefaultInstance() : pos_;
+      } else {
+        return posBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    public Builder setPos(game.proto.data.FormationPos value) {
+      if (posBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        pos_ = value;
+        onChanged();
+      } else {
+        posBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    public Builder setPos(
+        game.proto.data.FormationPos.Builder builderForValue) {
+      if (posBuilder_ == null) {
+        pos_ = builderForValue.build();
+        onChanged();
+      } else {
+        posBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    public Builder mergePos(game.proto.data.FormationPos value) {
+      if (posBuilder_ == null) {
+        if (pos_ != null) {
+          pos_ =
+            game.proto.data.FormationPos.newBuilder(pos_).mergeFrom(value).buildPartial();
+        } else {
+          pos_ = value;
+        }
+        onChanged();
+      } else {
+        posBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    public Builder clearPos() {
+      if (posBuilder_ == null) {
+        pos_ = null;
+        onChanged();
+      } else {
+        pos_ = null;
+        posBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    public game.proto.data.FormationPos.Builder getPosBuilder() {
+      
+      onChanged();
+      return getPosFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    public game.proto.data.FormationPosOrBuilder getPosOrBuilder() {
+      if (posBuilder_ != null) {
+        return posBuilder_.getMessageOrBuilder();
+      } else {
+        return pos_ == null ?
+            game.proto.data.FormationPos.getDefaultInstance() : pos_;
+      }
+    }
+    /**
+     * <code>.Message.FormationPos pos = 2;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.FormationPos, game.proto.data.FormationPos.Builder, game.proto.data.FormationPosOrBuilder> 
+        getPosFieldBuilder() {
+      if (posBuilder_ == null) {
+        posBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.FormationPos, game.proto.data.FormationPos.Builder, game.proto.data.FormationPosOrBuilder>(
+                getPos(),
+                getParentForChildren(),
+                isClean());
+        pos_ = null;
+      }
+      return posBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

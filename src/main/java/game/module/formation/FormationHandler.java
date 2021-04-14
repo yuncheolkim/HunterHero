@@ -2,10 +2,9 @@ package game.module.formation;
 
 import com.google.protobuf.MessageLite;
 import game.exception.ModuleAssert;
+import game.module.hero.HeroService;
 import game.player.Player;
-import game.proto.FormationCreateReq;
-import game.proto.FormationCreateRes;
-import game.proto.FormationDeleteReq;
+import game.proto.*;
 import game.proto.data.Formation;
 import game.proto.data.FormationPos;
 
@@ -40,7 +39,7 @@ public class FormationHandler {
         List<FormationPos> pos = new ArrayList<>(6);
         for (int i = 0; i < 6; i++) {
             pos.add(FormationPos.newBuilder()
-                    .setIndex(i + 1)
+                    .setIndex(i)
                     .build());
         }
 
@@ -55,12 +54,44 @@ public class FormationHandler {
      */
     public static void delete(Player player, FormationDeleteReq req) {
 
-
         ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
 
+        player.pd.removeFormation(req.getIndex());
+    }
 
-        player.pd.addFormation(Formation.newBuilder()
-                .addAllPos(newFormation())
-                .build());
+    /**
+     * 更新阵型
+     *
+     * @param player
+     * @param req
+     */
+    public static void update(Player player, FormationUpdateReq req) {
+
+        ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
+        FormationPos pos = req.getPos();
+
+        // check hero
+        ModuleAssert.isTrue(HeroService.hasHero(player, pos.getHeroId()));
+        // todo check enhance
+
+        Formation.Builder formation = player.pd.getFormationBuilder(req.getIndex());
+        formation.addPos(req.getIndex(), pos);
+    }
+
+    /**
+     * 设置阵型信息
+     *
+     * @param player
+     * @param req
+     */
+    public static void setting(Player player, FormationSettingReq req) {
+        ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
+
+        // todo check name
+
+        Formation.Builder formation = player.pd.getFormationBuilder(req.getIndex());
+        formation.setName(req.getName());
+        formation.setType(req.getType());
+
     }
 }

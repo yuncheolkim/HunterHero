@@ -41,4 +41,8 @@ public class HeroService {
                 .setCriticalDamage(data.criticalDamage)
                 .build();
     }
+
+    public static boolean hasHero(Player player, int heroId) {
+       return player.pd.containsHero(heroId);
+    }
 }

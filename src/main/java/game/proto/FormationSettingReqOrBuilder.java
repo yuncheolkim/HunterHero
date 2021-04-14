@@ -8,25 +8,31 @@ public interface FormationSettingReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string name = 1;</code>
+   * <code>int32 index = 1;</code>
+   * @return The index.
+   */
+  int getIndex();
+
+  /**
+   * <code>string name = 2;</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
-   * <code>string name = 1;</code>
+   * <code>string name = 2;</code>
    * @return The bytes for name.
    */
   com.google.protobuf.ByteString
       getNameBytes();
 
   /**
-   * <code>.Message.FormationType type = 2;</code>
+   * <code>.Message.FormationType type = 3;</code>
    * @return The enum numeric value on the wire for type.
    */
   int getTypeValue();
   /**
-   * <code>.Message.FormationType type = 2;</code>
+   * <code>.Message.FormationType type = 3;</code>
    * @return The type.
    */
-  game.proto.FormationType getType();
+  game.proto.data.FormationType getType();
 }

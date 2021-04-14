@@ -51,7 +51,7 @@ enum MsgNo {
     FormationListReqNo = 4102;
     FormationUpdateReqNo = 4103;
     FormationDeleteReqNo = 4104;
-    FormationAssignReqNo = 4105;
+    FormationSettingReqNo = 4105;
 
     // 资源变化
     resource_change_push = 5001;
