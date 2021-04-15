@@ -46,6 +46,14 @@ public enum MsgNo
   heartbeat(101),
   /**
    * <pre>
+   * 玩家移动
+   * </pre>
+   *
+   * <code>PlayerMoveReqNo = 201;</code>
+   */
+  PlayerMoveReqNo(201),
+  /**
+   * <pre>
    * 任务
    * </pre>
    *
@@ -281,6 +289,14 @@ public enum MsgNo
   public static final int heartbeat_VALUE = 101;
   /**
    * <pre>
+   * 玩家移动
+   * </pre>
+   *
+   * <code>PlayerMoveReqNo = 201;</code>
+   */
+  public static final int PlayerMoveReqNo_VALUE = 201;
+  /**
+   * <pre>
    * 任务
    * </pre>
    *
@@ -506,6 +522,7 @@ public enum MsgNo
       case 2: return kick_push;
       case 3: return player_create_name;
       case 101: return heartbeat;
+      case 201: return PlayerMoveReqNo;
       case 1001: return task_accept;
       case 1002: return task_complete;
       case 1003: return TaskNewPushNo;

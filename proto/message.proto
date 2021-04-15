@@ -233,6 +233,11 @@ message HeroEquipmentReq {
 }
 
 
+// 玩家移动
+message PlayerMoveReq{
+    float x = 1;
+    float y = 2;
+}
 
 
 

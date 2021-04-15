@@ -76,7 +76,7 @@ public class GameManager extends AbsLifecycle {
         // inner
         addHandler(new InvokerNoParam(10, PlayerHandler::tick));
         addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
-        addHandler(new Invoker<>(12, PlayerHandler::updateHero, PlayerHero::parser));
+        addHandler(new Invoker<>(12, HeroHandler::updateHero, PlayerHero::parser));
 
         // heart
         addHandler(new InvokerReturn<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
@@ -112,6 +112,8 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.FormationDeleteReqNo_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
         addHandler(new Invoker<>(MsgNo.FormationUpdateReqNo_VALUE, FormationHandler::update, FormationUpdateReq::parser));
         addHandler(new Invoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
+        // 玩家操作 移动
+        addHandler(new Invoker<>(MsgNo.PlayerMoveReqNo_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
 
     }
 

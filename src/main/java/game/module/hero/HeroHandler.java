@@ -1,5 +1,6 @@
 package game.module.hero;
 
+import game.anno.InsideMsgHandler;
 import game.base.G;
 import game.base.GameConstants;
 import game.config.DataConfigData;
@@ -8,8 +9,10 @@ import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.module.event.handler.HeroPowerUpEvent;
 import game.player.Player;
+import game.proto.HeroChangePush;
 import game.proto.HeroEquipmentReq;
 import game.proto.HeroUpReq;
+import game.proto.back.MsgNo;
 import game.proto.data.*;
 
 /**
@@ -114,6 +117,19 @@ public class HeroHandler {
 
         }
 
+    }
+
+    /**
+     * 更新英雄属性
+     *
+     * @param player
+     * @param hero
+     */
+    @InsideMsgHandler
+    public static void updateHero(Player player, PlayerHero hero) {
+        player.getPd().putHero(hero.getId(), hero);
+        // Push
+        player.getTransport().send(MsgNo.hero_change_VALUE, HeroChangePush.newBuilder().setHero(hero).build());
     }
 
 

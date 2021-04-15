@@ -38,6 +38,11 @@ enum FormationType {
     FORMATION_DEFAULT = 1; //默认阵型
     FORMATION_ARENA = 2; // 竞技场防守
 }
+
+// 法阵
+message FormationEnhance{
+
+}
 // 阵型
 message Formation {
     string name = 1;

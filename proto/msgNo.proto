@@ -17,6 +17,9 @@ enum MsgNo {
     // 心跳
     heartbeat = 101;
 
+    // 玩家移动
+    PlayerMoveReqNo = 201;
+
     // 任务
     task_accept = 1001;
     task_complete = 1002;

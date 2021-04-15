@@ -4,9 +4,8 @@ import game.game.ResourceSourceEnum;
 import game.module.fight.FightService;
 import game.player.Player;
 import game.proto.*;
-import game.proto.back.MsgNo;
-import game.proto.data.PlayerHero;
 import game.proto.data.Resource;
+import game.proto.data.ScenePos;
 
 import java.util.concurrent.TimeUnit;
 
@@ -30,19 +29,18 @@ public class PlayerHandler {
 
         player.getPd().setName(o.getName());
         player.getTransport().send(3, Empty.getDefaultInstance());
-
     }
 
+
     /**
-     * 更新英雄属性
+     * 移动
      *
      * @param player
-     * @param hero
+     * @param req
      */
-    public static void updateHero(Player player, PlayerHero hero) {
-        player.getPd().putHero(hero.getId(), hero);
-        // Push
-        player.getTransport().send(MsgNo.hero_change_VALUE, HeroChangePush.newBuilder().setHero(hero).build());
+    public static void move(Player player, PlayerMoveReq req) {
+        ScenePos.Builder posBuilder = player.pd.getSceneDataBuilder().getPosBuilder();
+        posBuilder.setX(req.getX()).setY(req.getY());
     }
 
 
