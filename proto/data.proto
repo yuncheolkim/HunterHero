@@ -5,7 +5,7 @@ option optimize_for = SPEED;
 option java_multiple_files = true;
 
 //////////////////////////////
-
+// 给前端的数据
 message PlayerData {
     int64 pid = 1;
     string name = 2;

@@ -55,7 +55,6 @@ public class PlayerHandler {
      * @return
      */
     public static void tick(Player player) {
-//        Logs.C.info("定时器:{}", player.getPid());
 
         // 体力恢复
         recoverPower(player);
