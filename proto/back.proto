@@ -13,6 +13,7 @@ message PlayerBackData {
     int64 powerRecoverTime = 3;
     int64 loginTime = 5;
     int64 updateTime = 6;
+    int32 localId = 10;
     map<int32, bool> completeTask = 100;
 
 }

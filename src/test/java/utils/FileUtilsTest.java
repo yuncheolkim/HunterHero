@@ -40,7 +40,6 @@ public class FileUtilsTest {
 
         b.getResourceBuilder().setPower(1);
         System.out.println(b.build());
-        b.getTaskBuilder().putAcceptableTask(1, true);
         System.out.println(b.build());
 
 

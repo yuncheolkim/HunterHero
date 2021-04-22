@@ -4,6 +4,11 @@
 package game.proto.data;
 
 /**
+ * <pre>
+ *&#47;///////////////////////////
+ * 给前端的数据
+ * </pre>
+ *
  * Protobuf type {@code Message.PlayerData}
  */
 public final class PlayerData extends
@@ -1238,6 +1243,11 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *&#47;///////////////////////////
+   * 给前端的数据
+   * </pre>
+   *
    * Protobuf type {@code Message.PlayerData}
    */
   public static final class Builder extends

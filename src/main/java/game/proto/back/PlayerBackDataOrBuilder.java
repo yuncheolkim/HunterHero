@@ -57,6 +57,12 @@ public interface PlayerBackDataOrBuilder extends
   long getUpdateTime();
 
   /**
+   * <code>int32 localId = 10;</code>
+   * @return The localId.
+   */
+  int getLocalId();
+
+  /**
    * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
    */
   int getCompleteTaskCount();

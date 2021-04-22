@@ -49,6 +49,7 @@ import static game.module.bag.BagUpdateService.updatePlayerBank;
 public class Player {
     private final long pid;
 
+
     private Transport transport = new Transport();
 
     /**
@@ -599,6 +600,12 @@ public class Player {
         BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(type);
         builder.addSlot(bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain).build()).build());
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, builder.build());
+    }
+
+    public int nextId() {
+        int i = D.getLocalId() + 1;
+        D.setLocalId(i);
+        return i;
     }
 
     /**

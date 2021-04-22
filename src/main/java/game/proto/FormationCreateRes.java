@@ -48,6 +48,11 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+
+            index_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -80,6 +85,17 @@ private static final long serialVersionUID = 0L;
             game.proto.FormationCreateRes.class, game.proto.FormationCreateRes.Builder.class);
   }
 
+  public static final int INDEX_FIELD_NUMBER = 1;
+  private int index_;
+  /**
+   * <code>int32 index = 1;</code>
+   * @return The index.
+   */
+  @java.lang.Override
+  public int getIndex() {
+    return index_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -94,6 +110,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (index_ != 0) {
+      output.writeInt32(1, index_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -103,6 +122,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (index_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, index_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -118,6 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.FormationCreateRes other = (game.proto.FormationCreateRes) obj;
 
+    if (getIndex()
+        != other.getIndex()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -129,6 +154,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -262,6 +289,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      index_ = 0;
+
       return this;
     }
 
@@ -288,6 +317,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.FormationCreateRes buildPartial() {
       game.proto.FormationCreateRes result = new game.proto.FormationCreateRes(this);
+      result.index_ = index_;
       onBuilt();
       return result;
     }
@@ -336,6 +366,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.FormationCreateRes other) {
       if (other == game.proto.FormationCreateRes.getDefaultInstance()) return this;
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -362,6 +395,37 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private int index_ ;
+    /**
+     * <code>int32 index = 1;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <code>int32 index = 1;</code>
+     * @param value The index to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIndex(int value) {
+      
+      index_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 index = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIndex() {
+      
+      index_ = 0;
+      onChanged();
       return this;
     }
     @java.lang.Override

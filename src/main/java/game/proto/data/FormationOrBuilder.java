@@ -53,4 +53,10 @@ public interface FormationOrBuilder extends
    */
   game.proto.data.FormationPosOrBuilder getPosOrBuilder(
       int index);
+
+  /**
+   * <code>int32 index = 4;</code>
+   * @return The index.
+   */
+  int getIndex();
 }

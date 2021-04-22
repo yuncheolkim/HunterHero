@@ -77,6 +77,11 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.FormationPos.parser(), extensionRegistry));
             break;
           }
+          case 32: {
+
+            index_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -209,6 +214,17 @@ private static final long serialVersionUID = 0L;
     return pos_.get(index);
   }
 
+  public static final int INDEX_FIELD_NUMBER = 4;
+  private int index_;
+  /**
+   * <code>int32 index = 4;</code>
+   * @return The index.
+   */
+  @java.lang.Override
+  public int getIndex() {
+    return index_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -232,6 +248,9 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < pos_.size(); i++) {
       output.writeMessage(3, pos_.get(i));
     }
+    if (index_ != 0) {
+      output.writeInt32(4, index_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -251,6 +270,10 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < pos_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, pos_.get(i));
+    }
+    if (index_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, index_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -272,6 +295,8 @@ private static final long serialVersionUID = 0L;
     if (type_ != other.type_) return false;
     if (!getPosList()
         .equals(other.getPosList())) return false;
+    if (getIndex()
+        != other.getIndex()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -291,6 +316,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + POS_FIELD_NUMBER;
       hash = (53 * hash) + getPosList().hashCode();
     }
+    hash = (37 * hash) + INDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getIndex();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -439,6 +466,8 @@ private static final long serialVersionUID = 0L;
       } else {
         posBuilder_.clear();
       }
+      index_ = 0;
+
       return this;
     }
 
@@ -477,6 +506,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.pos_ = posBuilder_.build();
       }
+      result.index_ = index_;
       onBuilt();
       return result;
     }
@@ -557,6 +587,9 @@ private static final long serialVersionUID = 0L;
             posBuilder_.addAllMessages(other.pos_);
           }
         }
+      }
+      if (other.getIndex() != 0) {
+        setIndex(other.getIndex());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -956,6 +989,37 @@ private static final long serialVersionUID = 0L;
         pos_ = null;
       }
       return posBuilder_;
+    }
+
+    private int index_ ;
+    /**
+     * <code>int32 index = 4;</code>
+     * @return The index.
+     */
+    @java.lang.Override
+    public int getIndex() {
+      return index_;
+    }
+    /**
+     * <code>int32 index = 4;</code>
+     * @param value The index to set.
+     * @return This builder for chaining.
+     */
+    public Builder setIndex(int value) {
+      
+      index_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 index = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearIndex() {
+      
+      index_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

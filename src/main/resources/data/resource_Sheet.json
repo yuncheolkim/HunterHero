@@ -1,0 +1,54 @@
+{
+    "1": {
+        "id": 1,
+        "path": "Assets/Textures/Ui/Icon/Base/None.png"
+    },
+    "101001": {
+        "id": 101001,
+        "path": "Assets/Textures/Hero/HeroCard1.png"
+    },
+    "101002": {
+        "id": 101002,
+        "path": "Assets/Textures/Hero/HeroCard1.png"
+    },
+    "101003": {
+        "id": 101003,
+        "path": "Assets/Textures/Hero/role1.png"
+    },
+    "101004": {
+        "id": 101004,
+        "path": "Assets/Textures/Hero/role1.png"
+    },
+    "102001": {
+        "id": 102001,
+        "path": "Assets/Textures/Ui/Icon/Equipment/weapon/jian/jian.PNG"
+    },
+    "102002": {
+        "id": 102002,
+        "path": "Assets/Textures/Ui/Icon/Equipment/weapon/dao/dao.png"
+    },
+    "102003": {
+        "id": 102003,
+        "path": "Assets/Textures/Ui/Icon/Equipment/armor/armor.png"
+    },
+    "102004": {
+        "id": 102004,
+        "path": "Assets/Textures/Ui/Icon/Equipment/armor/armor-01.png"
+    },
+    "102005": {
+        "id": 102005,
+        "path": "Assets/Textures/Ui/Icon/Equipment/head/head.PNG"
+    },
+    "102006": {
+        "id": 102006,
+        "path": "Assets/Textures/Ui/Icon/Equipment/head/head-01.PNG"
+    },
+    "102007": {
+        "id": 102007,
+        "path": "Assets/Textures/Ui/Icon/Equipment/ring/jie-01.PNG"
+    },
+    "102008": {
+        "id": 102008,
+        "path": "Assets/Textures/Ui/Icon/Equipment/ring/jie.PNG"
+    }
+}

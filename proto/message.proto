@@ -137,6 +137,7 @@ message HeroChangePush {
 message FormationCreateReq {
 }
 message FormationCreateRes {
+    int32 index = 1;
 }
 //// 查询阵型
 //message FormationListReq {
@@ -148,13 +149,13 @@ message FormationCreateRes {
 //}
 // 更新阵型
 message FormationUpdateReq {
-    int32 index = 1;// 下标
+    int32 index = 1;
     FormationPos pos = 2;
 
 }
 // 删除阵型
 message FormationDeleteReq {
-    int32 index = 1;// 下标
+    int32 index = 1;
 }
 
 // 指定阵型用到哪里

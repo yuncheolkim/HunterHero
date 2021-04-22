@@ -8,10 +8,6 @@ public interface FormationUpdateReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   * 下标
-   * </pre>
-   *
    * <code>int32 index = 1;</code>
    * @return The index.
    */

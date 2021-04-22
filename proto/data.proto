@@ -48,6 +48,7 @@ message Formation {
     string name = 1;
     FormationType type = 2;
     repeated FormationPos pos = 3;
+    int32 index = 4;
 }
 // 阵型位置
 message FormationPos {

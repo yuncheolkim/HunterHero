@@ -31,7 +31,7 @@ public class FormationHandler {
         player.pd.addFormation(Formation.newBuilder()
                 .addAllPos(newFormation())
                 .build());
-        return FormationCreateRes.getDefaultInstance();
+        return FormationCreateRes.newBuilder().setIndex(player.nextId()).buildPartial();
     }
 
     private static List<FormationPos> newFormation() {
@@ -79,7 +79,7 @@ public class FormationHandler {
     }
 
     /**
-     * 设置阵型信息
+     * 设置阵型用处
      *
      * @param player
      * @param req
@@ -92,6 +92,5 @@ public class FormationHandler {
         Formation.Builder formation = player.pd.getFormationBuilder(req.getIndex());
         formation.setName(req.getName());
         formation.setType(req.getType());
-
     }
 }

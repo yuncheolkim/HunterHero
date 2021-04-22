@@ -95,6 +95,11 @@ private static final long serialVersionUID = 0L;
             updateTime_ = input.readInt64();
             break;
           }
+          case 80: {
+
+            localId_ = input.readInt32();
+            break;
+          }
           case 802: {
             if (!((mutable_bitField0_ & 0x00000002) != 0)) {
               completeTask_ = com.google.protobuf.MapField.newMapField(
@@ -235,6 +240,17 @@ private static final long serialVersionUID = 0L;
     return updateTime_;
   }
 
+  public static final int LOCALID_FIELD_NUMBER = 10;
+  private int localId_;
+  /**
+   * <code>int32 localId = 10;</code>
+   * @return The localId.
+   */
+  @java.lang.Override
+  public int getLocalId() {
+    return localId_;
+  }
+
   public static final int COMPLETETASK_FIELD_NUMBER = 100;
   private static final class CompleteTaskDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -350,6 +366,9 @@ private static final long serialVersionUID = 0L;
     if (updateTime_ != 0L) {
       output.writeInt64(6, updateTime_);
     }
+    if (localId_ != 0) {
+      output.writeInt32(10, localId_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -395,6 +414,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(6, updateTime_);
     }
+    if (localId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(10, localId_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, java.lang.Boolean> entry
          : internalGetCompleteTask().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
@@ -430,6 +453,8 @@ private static final long serialVersionUID = 0L;
         != other.getLoginTime()) return false;
     if (getUpdateTime()
         != other.getUpdateTime()) return false;
+    if (getLocalId()
+        != other.getLocalId()) return false;
     if (!internalGetCompleteTask().equals(
         other.internalGetCompleteTask())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -459,6 +484,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + UPDATETIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getUpdateTime());
+    hash = (37 * hash) + LOCALID_FIELD_NUMBER;
+    hash = (53 * hash) + getLocalId();
     if (!internalGetCompleteTask().getMap().isEmpty()) {
       hash = (37 * hash) + COMPLETETASK_FIELD_NUMBER;
       hash = (53 * hash) + internalGetCompleteTask().hashCode();
@@ -632,6 +659,8 @@ private static final long serialVersionUID = 0L;
 
       updateTime_ = 0L;
 
+      localId_ = 0;
+
       internalGetMutableCompleteTask().clear();
       return this;
     }
@@ -669,6 +698,7 @@ private static final long serialVersionUID = 0L;
       result.powerRecoverTime_ = powerRecoverTime_;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
+      result.localId_ = localId_;
       result.completeTask_ = internalGetCompleteTask();
       result.completeTask_.makeImmutable();
       onBuilt();
@@ -740,6 +770,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getUpdateTime() != 0L) {
         setUpdateTime(other.getUpdateTime());
+      }
+      if (other.getLocalId() != 0) {
+        setLocalId(other.getLocalId());
       }
       internalGetMutableCompleteTask().mergeFrom(
           other.internalGetCompleteTask());
@@ -996,6 +1029,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearUpdateTime() {
       
       updateTime_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int localId_ ;
+    /**
+     * <code>int32 localId = 10;</code>
+     * @return The localId.
+     */
+    @java.lang.Override
+    public int getLocalId() {
+      return localId_;
+    }
+    /**
+     * <code>int32 localId = 10;</code>
+     * @param value The localId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLocalId(int value) {
+      
+      localId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 localId = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLocalId() {
+      
+      localId_ = 0;
       onChanged();
       return this;
     }

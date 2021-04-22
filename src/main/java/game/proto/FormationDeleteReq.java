@@ -92,10 +92,6 @@ private static final long serialVersionUID = 0L;
   public static final int INDEX_FIELD_NUMBER = 1;
   private int index_;
   /**
-   * <pre>
-   * 下标
-   * </pre>
-   *
    * <code>int32 index = 1;</code>
    * @return The index.
    */
@@ -412,10 +408,6 @@ private static final long serialVersionUID = 0L;
 
     private int index_ ;
     /**
-     * <pre>
-     * 下标
-     * </pre>
-     *
      * <code>int32 index = 1;</code>
      * @return The index.
      */
@@ -424,10 +416,6 @@ private static final long serialVersionUID = 0L;
       return index_;
     }
     /**
-     * <pre>
-     * 下标
-     * </pre>
-     *
      * <code>int32 index = 1;</code>
      * @param value The index to set.
      * @return This builder for chaining.
@@ -439,10 +427,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * 下标
-     * </pre>
-     *
      * <code>int32 index = 1;</code>
      * @return This builder for chaining.
      */
