@@ -8,8 +8,8 @@ public interface FormationCreateResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 index = 1;</code>
-   * @return The index.
+   * <code>int32 formationId = 1;</code>
+   * @return The formationId.
    */
-  int getIndex();
+  int getFormationId();
 }

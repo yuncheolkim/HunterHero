@@ -3,8 +3,8 @@
 
 package game.proto;
 
-public interface FormationSettingReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Message.FormationSettingReq)
+public interface FormationSettingResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Message.FormationSettingRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**

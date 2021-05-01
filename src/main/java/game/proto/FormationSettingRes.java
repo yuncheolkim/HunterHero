@@ -4,23 +4,18 @@
 package game.proto;
 
 /**
- * <pre>
- * 指定阵型用到哪里
- * 如竞技场，pvp等
- * </pre>
- *
- * Protobuf type {@code Message.FormationSettingReq}
+ * Protobuf type {@code Message.FormationSettingRes}
  */
-public final class FormationSettingReq extends
+public final class FormationSettingRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.FormationSettingReq)
-    FormationSettingReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.FormationSettingRes)
+    FormationSettingResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use FormationSettingReq.newBuilder() to construct.
-  private FormationSettingReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FormationSettingRes.newBuilder() to construct.
+  private FormationSettingRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private FormationSettingReq() {
+  private FormationSettingRes() {
     name_ = "";
   }
 
@@ -28,7 +23,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new FormationSettingReq();
+    return new FormationSettingRes();
   }
 
   @java.lang.Override
@@ -36,7 +31,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private FormationSettingReq(
+  private FormationSettingRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -96,15 +91,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_FormationSettingRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_FormationSettingRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.FormationSettingReq.class, game.proto.FormationSettingReq.Builder.class);
+            game.proto.FormationSettingRes.class, game.proto.FormationSettingRes.Builder.class);
   }
 
   public static final int INDEX_FIELD_NUMBER = 1;
@@ -238,10 +233,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.FormationSettingReq)) {
+    if (!(obj instanceof game.proto.FormationSettingRes)) {
       return super.equals(obj);
     }
-    game.proto.FormationSettingReq other = (game.proto.FormationSettingReq) obj;
+    game.proto.FormationSettingRes other = (game.proto.FormationSettingRes) obj;
 
     if (getIndex()
         != other.getIndex()) return false;
@@ -275,69 +270,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FormationSettingReq parseFrom(byte[] data)
+  public static game.proto.FormationSettingRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FormationSettingReq parseFrom(java.io.InputStream input)
+  public static game.proto.FormationSettingRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.FormationSettingReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.FormationSettingRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.FormationSettingReq parseDelimitedFrom(
+  public static game.proto.FormationSettingRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.FormationSettingReq parseFrom(
+  public static game.proto.FormationSettingRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -350,7 +345,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.FormationSettingReq prototype) {
+  public static Builder newBuilder(game.proto.FormationSettingRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -366,31 +361,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * 指定阵型用到哪里
-   * 如竞技场，pvp等
-   * </pre>
-   *
-   * Protobuf type {@code Message.FormationSettingReq}
+   * Protobuf type {@code Message.FormationSettingRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.FormationSettingReq)
-      game.proto.FormationSettingReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.FormationSettingRes)
+      game.proto.FormationSettingResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_FormationSettingRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_FormationSettingRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.FormationSettingReq.class, game.proto.FormationSettingReq.Builder.class);
+              game.proto.FormationSettingRes.class, game.proto.FormationSettingRes.Builder.class);
     }
 
-    // Construct using game.proto.FormationSettingReq.newBuilder()
+    // Construct using game.proto.FormationSettingRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -422,17 +412,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_FormationSettingRes_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.FormationSettingReq getDefaultInstanceForType() {
-      return game.proto.FormationSettingReq.getDefaultInstance();
+    public game.proto.FormationSettingRes getDefaultInstanceForType() {
+      return game.proto.FormationSettingRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.FormationSettingReq build() {
-      game.proto.FormationSettingReq result = buildPartial();
+    public game.proto.FormationSettingRes build() {
+      game.proto.FormationSettingRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -440,8 +430,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.FormationSettingReq buildPartial() {
-      game.proto.FormationSettingReq result = new game.proto.FormationSettingReq(this);
+    public game.proto.FormationSettingRes buildPartial() {
+      game.proto.FormationSettingRes result = new game.proto.FormationSettingRes(this);
       result.index_ = index_;
       result.name_ = name_;
       result.defaultFormationIndex_ = defaultFormationIndex_;
@@ -484,16 +474,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.FormationSettingReq) {
-        return mergeFrom((game.proto.FormationSettingReq)other);
+      if (other instanceof game.proto.FormationSettingRes) {
+        return mergeFrom((game.proto.FormationSettingRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.FormationSettingReq other) {
-      if (other == game.proto.FormationSettingReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.FormationSettingRes other) {
+      if (other == game.proto.FormationSettingRes.getDefaultInstance()) return this;
       if (other.getIndex() != 0) {
         setIndex(other.getIndex());
       }
@@ -522,11 +512,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.FormationSettingReq parsedMessage = null;
+      game.proto.FormationSettingRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.FormationSettingReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.FormationSettingRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -717,41 +707,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.FormationSettingReq)
+    // @@protoc_insertion_point(builder_scope:Message.FormationSettingRes)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.FormationSettingReq)
-  private static final game.proto.FormationSettingReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.FormationSettingRes)
+  private static final game.proto.FormationSettingRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.FormationSettingReq();
+    DEFAULT_INSTANCE = new game.proto.FormationSettingRes();
   }
 
-  public static game.proto.FormationSettingReq getDefaultInstance() {
+  public static game.proto.FormationSettingRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FormationSettingReq>
-      PARSER = new com.google.protobuf.AbstractParser<FormationSettingReq>() {
+  private static final com.google.protobuf.Parser<FormationSettingRes>
+      PARSER = new com.google.protobuf.AbstractParser<FormationSettingRes>() {
     @java.lang.Override
-    public FormationSettingReq parsePartialFrom(
+    public FormationSettingRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new FormationSettingReq(input, extensionRegistry);
+      return new FormationSettingRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<FormationSettingReq> parser() {
+  public static com.google.protobuf.Parser<FormationSettingRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<FormationSettingReq> getParserForType() {
+  public com.google.protobuf.Parser<FormationSettingRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.FormationSettingReq getDefaultInstanceForType() {
+  public game.proto.FormationSettingRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

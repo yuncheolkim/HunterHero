@@ -393,4 +393,24 @@ public interface PlayerDataOrBuilder extends
    */
   game.proto.data.FormationOrBuilder getFormationOrBuilder(
       int index);
+
+  /**
+   * <pre>
+   * 默认阵型id
+   * </pre>
+   *
+   * <code>int32 defaultFormationIndex = 702;</code>
+   * @return The defaultFormationIndex.
+   */
+  int getDefaultFormationIndex();
+
+  /**
+   * <pre>
+   * 竞技场防守阵型id
+   * </pre>
+   *
+   * <code>int32 arenaFormationIndex = 703;</code>
+   * @return The arenaFormationIndex.
+   */
+  int getArenaFormationIndex();
 }

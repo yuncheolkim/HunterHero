@@ -110,8 +110,8 @@ public class GameManager extends AbsLifecycle {
         // 阵型
         addHandler(new RetInvoker<>(MsgNo.FormationCreateReqNo_VALUE, FormationHandler::create, FormationCreateReq::parser));
         addHandler(new Invoker<>(MsgNo.FormationDeleteReqNo_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
-        addHandler(new Invoker<>(MsgNo.FormationUpdateReqNo_VALUE, FormationHandler::update, FormationUpdateReq::parser));
-        addHandler(new Invoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
+        addHandler(new RetInvoker<>(MsgNo.FormationUpdateReqNo_VALUE, FormationHandler::update, FormationUpdateReq::parser));
+        addHandler(new RetInvoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
         // 玩家操作 移动
         addHandler(new Invoker<>(MsgNo.PlayerMoveReqNo_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
 

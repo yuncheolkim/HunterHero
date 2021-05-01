@@ -50,7 +50,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            index_ = input.readInt32();
+            formationId_ = input.readInt32();
             break;
           }
           default: {
@@ -85,15 +85,15 @@ private static final long serialVersionUID = 0L;
             game.proto.FormationCreateRes.class, game.proto.FormationCreateRes.Builder.class);
   }
 
-  public static final int INDEX_FIELD_NUMBER = 1;
-  private int index_;
+  public static final int FORMATIONID_FIELD_NUMBER = 1;
+  private int formationId_;
   /**
-   * <code>int32 index = 1;</code>
-   * @return The index.
+   * <code>int32 formationId = 1;</code>
+   * @return The formationId.
    */
   @java.lang.Override
-  public int getIndex() {
-    return index_;
+  public int getFormationId() {
+    return formationId_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -110,8 +110,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (index_ != 0) {
-      output.writeInt32(1, index_);
+    if (formationId_ != 0) {
+      output.writeInt32(1, formationId_);
     }
     unknownFields.writeTo(output);
   }
@@ -122,9 +122,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (index_ != 0) {
+    if (formationId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, index_);
+        .computeInt32Size(1, formationId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -141,8 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.FormationCreateRes other = (game.proto.FormationCreateRes) obj;
 
-    if (getIndex()
-        != other.getIndex()) return false;
+    if (getFormationId()
+        != other.getFormationId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -154,8 +154,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + INDEX_FIELD_NUMBER;
-    hash = (53 * hash) + getIndex();
+    hash = (37 * hash) + FORMATIONID_FIELD_NUMBER;
+    hash = (53 * hash) + getFormationId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -289,7 +289,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      index_ = 0;
+      formationId_ = 0;
 
       return this;
     }
@@ -317,7 +317,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.FormationCreateRes buildPartial() {
       game.proto.FormationCreateRes result = new game.proto.FormationCreateRes(this);
-      result.index_ = index_;
+      result.formationId_ = formationId_;
       onBuilt();
       return result;
     }
@@ -366,8 +366,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.FormationCreateRes other) {
       if (other == game.proto.FormationCreateRes.getDefaultInstance()) return this;
-      if (other.getIndex() != 0) {
-        setIndex(other.getIndex());
+      if (other.getFormationId() != 0) {
+        setFormationId(other.getFormationId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -398,33 +398,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int index_ ;
+    private int formationId_ ;
     /**
-     * <code>int32 index = 1;</code>
-     * @return The index.
+     * <code>int32 formationId = 1;</code>
+     * @return The formationId.
      */
     @java.lang.Override
-    public int getIndex() {
-      return index_;
+    public int getFormationId() {
+      return formationId_;
     }
     /**
-     * <code>int32 index = 1;</code>
-     * @param value The index to set.
+     * <code>int32 formationId = 1;</code>
+     * @param value The formationId to set.
      * @return This builder for chaining.
      */
-    public Builder setIndex(int value) {
+    public Builder setFormationId(int value) {
       
-      index_ = value;
+      formationId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 index = 1;</code>
+     * <code>int32 formationId = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearIndex() {
+    public Builder clearFormationId() {
       
-      index_ = 0;
+      formationId_ = 0;
       onChanged();
       return this;
     }

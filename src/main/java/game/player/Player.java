@@ -556,8 +556,12 @@ public class Player {
                         }
                         zipItemList.set(lastIndex, beforeBagSlotBild.build());
                     }
+
+
                 }
             }
+
+
             if (bagSlot != null) {
                 zipItemList.add(bagSlot);
             }

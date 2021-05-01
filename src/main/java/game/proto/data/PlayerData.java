@@ -186,6 +186,16 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.Formation.parser(), extensionRegistry));
             break;
           }
+          case 5616: {
+
+            defaultFormationIndex_ = input.readInt32();
+            break;
+          }
+          case 5624: {
+
+            arenaFormationIndex_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -893,6 +903,36 @@ private static final long serialVersionUID = 0L;
     return formation_.get(index);
   }
 
+  public static final int DEFAULTFORMATIONINDEX_FIELD_NUMBER = 702;
+  private int defaultFormationIndex_;
+  /**
+   * <pre>
+   * 默认阵型id
+   * </pre>
+   *
+   * <code>int32 defaultFormationIndex = 702;</code>
+   * @return The defaultFormationIndex.
+   */
+  @java.lang.Override
+  public int getDefaultFormationIndex() {
+    return defaultFormationIndex_;
+  }
+
+  public static final int ARENAFORMATIONINDEX_FIELD_NUMBER = 703;
+  private int arenaFormationIndex_;
+  /**
+   * <pre>
+   * 竞技场防守阵型id
+   * </pre>
+   *
+   * <code>int32 arenaFormationIndex = 703;</code>
+   * @return The arenaFormationIndex.
+   */
+  @java.lang.Override
+  public int getArenaFormationIndex() {
+    return arenaFormationIndex_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -957,6 +997,12 @@ private static final long serialVersionUID = 0L;
         604);
     for (int i = 0; i < formation_.size(); i++) {
       output.writeMessage(701, formation_.get(i));
+    }
+    if (defaultFormationIndex_ != 0) {
+      output.writeInt32(702, defaultFormationIndex_);
+    }
+    if (arenaFormationIndex_ != 0) {
+      output.writeInt32(703, arenaFormationIndex_);
     }
     unknownFields.writeTo(output);
   }
@@ -1039,6 +1085,14 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(701, formation_.get(i));
     }
+    if (defaultFormationIndex_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(702, defaultFormationIndex_);
+    }
+    if (arenaFormationIndex_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(703, arenaFormationIndex_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -1091,6 +1145,10 @@ private static final long serialVersionUID = 0L;
         other.internalGetBank())) return false;
     if (!getFormationList()
         .equals(other.getFormationList())) return false;
+    if (getDefaultFormationIndex()
+        != other.getDefaultFormationIndex()) return false;
+    if (getArenaFormationIndex()
+        != other.getArenaFormationIndex()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -1147,6 +1205,10 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FORMATION_FIELD_NUMBER;
       hash = (53 * hash) + getFormationList().hashCode();
     }
+    hash = (37 * hash) + DEFAULTFORMATIONINDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getDefaultFormationIndex();
+    hash = (37 * hash) + ARENAFORMATIONINDEX_FIELD_NUMBER;
+    hash = (53 * hash) + getArenaFormationIndex();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -1362,6 +1424,10 @@ private static final long serialVersionUID = 0L;
       } else {
         formationBuilder_.clear();
       }
+      defaultFormationIndex_ = 0;
+
+      arenaFormationIndex_ = 0;
+
       return this;
     }
 
@@ -1434,6 +1500,8 @@ private static final long serialVersionUID = 0L;
       } else {
         result.formation_ = formationBuilder_.build();
       }
+      result.defaultFormationIndex_ = defaultFormationIndex_;
+      result.arenaFormationIndex_ = arenaFormationIndex_;
       onBuilt();
       return result;
     }
@@ -1568,6 +1636,12 @@ private static final long serialVersionUID = 0L;
             formationBuilder_.addAllMessages(other.formation_);
           }
         }
+      }
+      if (other.getDefaultFormationIndex() != 0) {
+        setDefaultFormationIndex(other.getDefaultFormationIndex());
+      }
+      if (other.getArenaFormationIndex() != 0) {
+        setArenaFormationIndex(other.getArenaFormationIndex());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -3454,6 +3528,92 @@ private static final long serialVersionUID = 0L;
         formation_ = null;
       }
       return formationBuilder_;
+    }
+
+    private int defaultFormationIndex_ ;
+    /**
+     * <pre>
+     * 默认阵型id
+     * </pre>
+     *
+     * <code>int32 defaultFormationIndex = 702;</code>
+     * @return The defaultFormationIndex.
+     */
+    @java.lang.Override
+    public int getDefaultFormationIndex() {
+      return defaultFormationIndex_;
+    }
+    /**
+     * <pre>
+     * 默认阵型id
+     * </pre>
+     *
+     * <code>int32 defaultFormationIndex = 702;</code>
+     * @param value The defaultFormationIndex to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDefaultFormationIndex(int value) {
+      
+      defaultFormationIndex_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 默认阵型id
+     * </pre>
+     *
+     * <code>int32 defaultFormationIndex = 702;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDefaultFormationIndex() {
+      
+      defaultFormationIndex_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int arenaFormationIndex_ ;
+    /**
+     * <pre>
+     * 竞技场防守阵型id
+     * </pre>
+     *
+     * <code>int32 arenaFormationIndex = 703;</code>
+     * @return The arenaFormationIndex.
+     */
+    @java.lang.Override
+    public int getArenaFormationIndex() {
+      return arenaFormationIndex_;
+    }
+    /**
+     * <pre>
+     * 竞技场防守阵型id
+     * </pre>
+     *
+     * <code>int32 arenaFormationIndex = 703;</code>
+     * @param value The arenaFormationIndex to set.
+     * @return This builder for chaining.
+     */
+    public Builder setArenaFormationIndex(int value) {
+      
+      arenaFormationIndex_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 竞技场防守阵型id
+     * </pre>
+     *
+     * <code>int32 arenaFormationIndex = 703;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearArenaFormationIndex() {
+      
+      arenaFormationIndex_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

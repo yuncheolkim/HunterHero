@@ -31,6 +31,10 @@ message PlayerData {
     map<int32, BagSlot> bank = 604;
     // 阵型
     repeated Formation formation = 701;
+    // 默认阵型id
+    int32 defaultFormationIndex = 702;
+    // 竞技场防守阵型id
+    int32 arenaFormationIndex = 703;
 
 }
 enum FormationType {
@@ -46,7 +50,6 @@ message FormationEnhance{
 // 阵型
 message Formation {
     string name = 1;
-    FormationType type = 2;
     repeated FormationPos pos = 3;
     int32 index = 4;
 }
@@ -58,6 +61,10 @@ message FormationPos {
     int32 enhance = 4; // 法阵
 }
 
+
+message FormationPosUpdate{
+    FormationPos pos = 2;
+}
 // 资源
 message Resource {
     int32 exp = 10;

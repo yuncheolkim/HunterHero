@@ -20,17 +20,6 @@ public interface FormationOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>.Message.FormationType type = 2;</code>
-   * @return The enum numeric value on the wire for type.
-   */
-  int getTypeValue();
-  /**
-   * <code>.Message.FormationType type = 2;</code>
-   * @return The type.
-   */
-  game.proto.data.FormationType getType();
-
-  /**
    * <code>repeated .Message.FormationPos pos = 3;</code>
    */
   java.util.List<game.proto.data.FormationPos> 

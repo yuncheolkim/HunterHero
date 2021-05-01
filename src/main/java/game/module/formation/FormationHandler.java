@@ -7,6 +7,7 @@ import game.player.Player;
 import game.proto.*;
 import game.proto.data.Formation;
 import game.proto.data.FormationPos;
+import game.proto.data.FormationPosUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +29,13 @@ public class FormationHandler {
     public static MessageLite create(Player player, FormationCreateReq req) {
         ModuleAssert.isTrue(player.pd.getFormationCount() <= 10);
 
+        int id = player.nextId();
         player.pd.addFormation(Formation.newBuilder()
+                .setName("未命名")
+                .setIndex(id)
                 .addAllPos(newFormation())
                 .build());
-        return FormationCreateRes.newBuilder().setIndex(player.nextId()).buildPartial();
+        return FormationCreateRes.newBuilder().setFormationId(id).buildPartial();
     }
 
     private static List<FormationPos> newFormation() {
@@ -40,6 +44,7 @@ public class FormationHandler {
         for (int i = 0; i < 6; i++) {
             pos.add(FormationPos.newBuilder()
                     .setIndex(i)
+                    .setOrder(i + 1)
                     .build());
         }
 
@@ -54,9 +59,12 @@ public class FormationHandler {
      */
     public static void delete(Player player, FormationDeleteReq req) {
 
-        ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
-
-        player.pd.removeFormation(req.getIndex());
+        for (int i = 0; i < player.pd.getFormationBuilderList().size(); i++) {
+            if (player.pd.getFormation(i).getIndex() == req.getIndex()) {
+                player.pd.removeFormation(i);
+                break;
+            }
+        }
     }
 
     /**
@@ -65,17 +73,44 @@ public class FormationHandler {
      * @param player
      * @param req
      */
-    public static void update(Player player, FormationUpdateReq req) {
+    public static FormationUpdateRes update(Player player, FormationUpdateReq req) {
 
-        ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
         FormationPos pos = req.getPos();
 
         // check hero
-        ModuleAssert.isTrue(HeroService.hasHero(player, pos.getHeroId()));
+        if (pos.getHeroId() > 0) {
+            ModuleAssert.isTrue(HeroService.hasHero(player, pos.getHeroId()));
+        }
         // todo check enhance
 
-        Formation.Builder formation = player.pd.getFormationBuilder(req.getIndex());
-        formation.addPos(req.getIndex(), pos);
+        Formation.Builder formation = player.pd.getFormationBuilderList()
+                .stream().filter(builder -> builder.getIndex() == req.getFormationId()).findFirst().get();
+
+        // order 切换
+        FormationPos.Builder posBuilder = formation.getPosBuilder(req.getPos().getIndex());
+        FormationUpdateRes.Builder retBuilder = FormationUpdateRes.newBuilder();
+        retBuilder.setFormationId(req.getFormationId());
+        if (posBuilder.getOrder() != pos.getOrder()) {
+            int oldOrder = posBuilder.getOrder();
+            int newOrder = pos.getOrder();
+
+            FormationPos.Builder changeOtherOrder = formation.getPosBuilderList().stream().filter(builder -> builder.getOrder() == newOrder).findFirst().get();
+
+            changeOtherOrder.setOrder(oldOrder);
+
+            retBuilder.addData(FormationPosUpdate.newBuilder()
+
+                    .setPos(FormationPos.newBuilder(changeOtherOrder.buildPartial())
+                    )
+                    .build());
+
+        }
+
+        formation.setPos(req.getPos().getIndex(), pos);
+
+        retBuilder.addData(FormationPosUpdate.newBuilder().setPos(FormationPos.newBuilder(pos)));
+
+        return retBuilder.buildPartial();
     }
 
     /**
@@ -84,13 +119,27 @@ public class FormationHandler {
      * @param player
      * @param req
      */
-    public static void setting(Player player, FormationSettingReq req) {
-        ModuleAssert.isTrue(req.getIndex() < player.pd.getFormationCount());
+    public static FormationSettingRes setting(Player player, FormationSettingReq req) {
 
         // todo check name
 
-        Formation.Builder formation = player.pd.getFormationBuilder(req.getIndex());
+        Formation.Builder formation = player.pd.getFormationBuilderList().stream().filter(builder -> builder.getIndex() == req.getIndex()).findFirst().get();
         formation.setName(req.getName());
-        formation.setType(req.getType());
+
+
+        if (req.getDefaultFormationIndex() != 0 || req.getIndex() == player.pd.getDefaultFormationIndex()) {
+            player.pd.setDefaultFormationIndex(req.getDefaultFormationIndex());
+
+        }
+        if (req.getArenaFormationIndex() != 0 || req.getIndex() == player.pd.getArenaFormationIndex()) {
+            player.pd.setArenaFormationIndex(req.getArenaFormationIndex());
+        }
+
+        return FormationSettingRes.newBuilder()
+                .setIndex(req.getIndex())
+                .setName(req.getName())
+                .setDefaultFormationIndex(req.getDefaultFormationIndex())
+                .setArenaFormationIndex(req.getArenaFormationIndex())
+                .build();
     }
 }

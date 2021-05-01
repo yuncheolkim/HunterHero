@@ -137,7 +137,7 @@ message HeroChangePush {
 message FormationCreateReq {
 }
 message FormationCreateRes {
-    int32 index = 1;
+    int32 formationId = 1;
 }
 //// 查询阵型
 //message FormationListReq {
@@ -149,10 +149,16 @@ message FormationCreateRes {
 //}
 // 更新阵型
 message FormationUpdateReq {
-    int32 index = 1;
+    int32 formationId = 1;
     FormationPos pos = 2;
-
 }
+
+message FormationUpdateRes {
+    int32 formationId = 1;
+    repeated FormationPosUpdate data = 2;
+}
+
+
 // 删除阵型
 message FormationDeleteReq {
     int32 index = 1;
@@ -163,7 +169,15 @@ message FormationDeleteReq {
 message FormationSettingReq {
     int32 index = 1;
     string name = 2;
-    FormationType type = 3;
+    int32 defaultFormationIndex = 3;
+    int32 arenaFormationIndex = 4;
+}
+
+message FormationSettingRes {
+    int32 index = 1;
+    string name = 2;
+    int32 defaultFormationIndex = 3;
+    int32 arenaFormationIndex = 4;
 }
 
 // 5001 资源变化
