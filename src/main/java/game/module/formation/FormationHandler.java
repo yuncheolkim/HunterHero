@@ -11,6 +11,7 @@ import game.proto.data.FormationPosUpdate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * 阵型
@@ -75,7 +76,7 @@ public class FormationHandler {
      */
     public static FormationUpdateRes update(Player player, FormationUpdateReq req) {
 
-        FormationPos pos = req.getPos();
+        final FormationPos pos = req.getPos();
 
         // check hero
         if (pos.getHeroId() > 0) {
@@ -90,21 +91,37 @@ public class FormationHandler {
         FormationPos.Builder posBuilder = formation.getPosBuilder(req.getPos().getIndex());
         FormationUpdateRes.Builder retBuilder = FormationUpdateRes.newBuilder();
         retBuilder.setFormationId(req.getFormationId());
+        boolean heroCalc = false;
         if (posBuilder.getOrder() != pos.getOrder()) {
             int oldOrder = posBuilder.getOrder();
             int newOrder = pos.getOrder();
 
             FormationPos.Builder changeOtherOrder = formation.getPosBuilderList().stream().filter(builder -> builder.getOrder() == newOrder).findFirst().get();
 
+            if (changeOtherOrder.getHeroId() == pos.getHeroId()) {
+                heroCalc = true;
+                changeOtherOrder.setHeroId(0);
+            }
+
             changeOtherOrder.setOrder(oldOrder);
 
             retBuilder.addData(FormationPosUpdate.newBuilder()
-
                     .setPos(FormationPos.newBuilder(changeOtherOrder.buildPartial())
-                    )
-                    .build());
-
+                    ));
         }
+        // 英雄检查
+        if (!heroCalc) {
+            Optional<FormationPos.Builder> changeOtherOrder = formation.getPosBuilderList().stream().filter(builder -> builder.getHeroId() == pos.getHeroId()).findFirst();
+            if (changeOtherOrder.isPresent()) {
+                FormationPos.Builder heroPos = changeOtherOrder.get();
+                heroPos.setHeroId(0);
+
+                retBuilder.addData(FormationPosUpdate.newBuilder()
+                        .setPos(FormationPos.newBuilder(heroPos.buildPartial())
+                        ));
+            }
+        }
+
 
         formation.setPos(req.getPos().getIndex(), pos);
 
