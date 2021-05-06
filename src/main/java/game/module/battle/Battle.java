@@ -26,7 +26,7 @@ public class Battle {
 
     private long seed;
 
-    private Formation formation = Formation.A_4_4_B_3_3;
+    private Formation formation = Formation.A_3_3_B_4_4;
 
     private Random random;
 
@@ -37,6 +37,10 @@ public class Battle {
     private List<Hero> sideAhero = new ArrayList<>();
 
     private List<Hero> sideBhero = new ArrayList<>();
+    /**
+     * 出手顺序
+     */
+    private List<Hero> actionOrderList = new ArrayList<>();
 
     /**
      * 计算攻击伤害逻辑
@@ -78,7 +82,11 @@ public class Battle {
      */
     public BattleRecord start() {
 
+        // 计算出售顺序
+        actionOrderList = decideOrder();
+
         BattleRecord battleRecord = new BattleRecord(this);
+
         currentRound = new Round();
         Logs.trace("开场");
         // 开场
@@ -93,8 +101,7 @@ public class Battle {
             processHero(ActionPoint.回合开始前);
 
             // 出手
-            List<Hero> heroes = decideOrder();
-            for (Hero hero : heroes) {
+            for (Hero hero : actionOrderList) {
                 if (hero.isAlive()) {
                     hero.action();
                 }
@@ -102,7 +109,7 @@ public class Battle {
 
             processHero(ActionPoint.回合结束后);
             // debug
-            for (Hero hero : heroes) {
+            for (Hero hero : actionOrderList) {
                 Logs.trace("回合结束后状态", hero);
             }
             Logs.trace("回合结束：", currentRound.getRoundCount());

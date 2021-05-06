@@ -3,6 +3,7 @@ package game.module.battle;
 import com.google.common.base.MoreObjects;
 import game.base.Logs;
 import game.module.battle.action.ActionPoint;
+import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.proto.data.RecordType;
 
@@ -46,7 +47,9 @@ public class Skill {
 
     public Record process(ActionPoint actionPoint, Hero hero) {
         Record record = new Record(RecordType.SKILL_USE);
-        record.hero = hero.getSimple();
+        HeroRecordSimple simple = hero.getSimple();
+        record.heroId = simple.id;
+        record.pos = simple.pos.getIndex();
         record.id = id;
         record.actionPoint = actionPoint;
 
@@ -55,6 +58,7 @@ public class Skill {
 
     /**
      * 能不能使用技能
+     *
      * @param hero
      * @return
      */
@@ -71,6 +75,7 @@ public class Skill {
 
     /**
      * 减少cd
+     *
      * @param round
      */
     public void reduceCoolDown(int round) {

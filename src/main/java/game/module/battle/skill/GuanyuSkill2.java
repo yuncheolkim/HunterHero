@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 /**
  * 关羽技能2
  * 溅射伤害
+ *
  * @author Yunzhe.Jin
  * 2021/1/11 10:30
  */
@@ -26,7 +27,7 @@ public class GuanyuSkill2 extends Skill {
     private float v = 0.2f;
 
     public GuanyuSkill2() {
-        actionPoint.put(ActionPoint.出手后,1);
+        actionPoint.put(ActionPoint.出手后, 1);
         id = 200003;
         name = "GuanyuSkill2";
         cd = Constant.INFINITE;
@@ -53,9 +54,9 @@ public class GuanyuSkill2 extends Skill {
 
     @Override
     public Record process(ActionPoint point, Hero hero) {
-        Record process = super.process(point,hero);
+        Record process = super.process(point, hero);
         List<Hero> collect = attackHero(hero);
-        process.target = collect.stream().map(Hero::getSimple).collect(Collectors.toList());
+        process.targetList = collect.stream().map(h -> h.getPos().getIndex()).collect(Collectors.toList());
 
         for (Hero target : collect) {
             DamageInfo damageInfo = new DamageInfo();

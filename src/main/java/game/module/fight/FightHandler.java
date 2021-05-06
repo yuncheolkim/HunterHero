@@ -11,7 +11,6 @@ import game.module.battle.*;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.HeroRecordData;
-import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.module.event.handler.KillEvent;
 import game.module.item.ItemDropService;
@@ -199,20 +198,16 @@ public class FightHandler {
                 re.setType(r.type);
                 re.setId(r.id);
                 re.setValue(r.value);
-                re.setPos(r.hero.pos.getIndex());
+                re.setPos(r.pos);
                 if (r.damageType != null) {
                     re.setDamageType(r.damageType);
                 }
                 if (r.actionPoint != null) {
                     re.setActionPoint(r.actionPoint.name());
                 }
-                if (r.hero != null) {
-                    re.setHeroId(r.hero.id);
-                }
-                if (r.target != null) {
-                    for (HeroRecordSimple heroRecordSimple : r.target) {
-                        re.addTarget(heroRecordSimple.pos.getIndex());
-                    }
+                re.setHeroId(r.heroId);
+                if (r.targetList != null) {
+                    re.addAllTarget(r.targetList);
                 }
                 if (r.buffData != null) {
                     re.getBuffRecordBuilder().setBuffId(r.buffData.buffId);

@@ -7,84 +7,67 @@ package game.module.battle;
 public enum Formation {
 
     /**
-     * -8 -7 -6 -5
-     * -4 -3 -2 -1
+     * 23 22 21 20
+     * 19 18 17 16
      * -------------
-     * 1 2 3
-     * 4 5 6
+     * 0 1 2
+     * 3 4 5
      */
-    A_4_4_B_3_3 {
+    A_3_3_B_4_4 {
         @Override
         public int left(Pos pos) {
             int index = pos.getIndex();
-            if (index > 0) {
-                if (index == 4) {
-                    return 0;
-                }
-                return index - 1;
-
-            } else {
-                if (index == -5) {
-                    return 0;
-                }
-                return index + 1;
-
+            if (index == 0 || index == 3 || index == 20 || index == 16) {
+                return -1;
             }
-
+            return index - 1;
         }
 
         @Override
         public int right(Pos pos) {
             int index = pos.getIndex();
-            if (index > 0) {
-                if (index == 3 || index == 6) {
-                    return 0;
-                }
-                return index + 1;
-
-            } else {
-                if (index == -4 || index == -8) {
-                    return 0;
-                }
-                return index - 1;
-
+            if (index == 2 || index == 5 || index == 19 || index == 23) {
+                return -1;
             }
+            return index + 1;
         }
 
         @Override
         public int up(Pos pos) {
             int index = pos.getIndex();
 
-            if (index > 0) {
-                if (index > 3) {
+            switch (index) {
+                case 3:
+                case 4:
+                case 5:
                     return index - 3;
-                }
-                return 0;
-            } else {
-                if (index > -5) {
-                    return 0;
-                }
-
-                return index + 4;
-
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                    return index - 4;
             }
+
+            return -1;
         }
 
         @Override
         public int down(Pos pos) {
             int index = pos.getIndex();
 
-            if (index > 0) {
-                if (index > 3) {
-                    return 0;
-                }
-                return index + 3;
-            } else {
-                if (index > -5) {
-                    return index - 4;
-                }
-                return 0;
+
+            switch (index) {
+                case 3:
+                case 4:
+                case 5:
+                case 20:
+                case 21:
+                case 22:
+                case 23:
+                    return -1;
             }
+
+            return index + 1;
         }
     };
 

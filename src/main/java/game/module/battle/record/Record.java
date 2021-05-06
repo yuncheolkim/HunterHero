@@ -17,10 +17,13 @@ public class Record {
     public RecordType type;
 
     public ActionPoint actionPoint;
+    public int heroId;
+    public int pos;
 
-    public HeroRecordSimple hero;
-
-    public List<HeroRecordSimple> target;
+    /**
+     * 目标位置
+     */
+    public List<Integer> targetList;
 
     public int id;
 

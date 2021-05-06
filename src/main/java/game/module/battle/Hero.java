@@ -161,7 +161,8 @@ public class Hero {
 
     public void action() {
         Record record = new Record(ACTION);
-        record.hero = this.getSimple();
+        record.heroId = id;
+        record.pos = pos.getIndex();
         battle.addRecord(record);
         attack();
     }
@@ -237,8 +238,11 @@ public class Hero {
 
     private void attackRecord() {
         Record attackRecord = new Record(ATTACK);
-        attackRecord.hero = damageInfo.source.getSimple();
-        attackRecord.target = Lists.newArrayList(damageInfo.target.getSimple());
+        HeroRecordSimple simple = damageInfo.source.getSimple();
+        attackRecord.heroId = simple.id;
+        attackRecord.pos = simple.pos.getIndex();
+
+        attackRecord.targetList = Lists.newArrayList(damageInfo.target.getSimple().pos.getIndex());
         battle.addRecord(attackRecord);
     }
 
@@ -280,7 +284,8 @@ public class Hero {
         contextData = buff;
         Record record = new Record(RecordType.BUFF_REMOVE);
         record.actionPoint = actionPoint;
-        record.hero = getSimple();
+        record.heroId = id;
+        record.pos = pos.getIndex();
         record.id = buff.getId();
         battle.addRecord(record);
 
@@ -344,9 +349,10 @@ public class Hero {
             processAll(ActionPoint.闪避之前);
         }
         if (info.avoid) {
-            Record r = new Record(RecordType.AVOID);
-            r.hero = this.getSimple();
-            battle.addRecord(r);
+            Record record = new Record(RecordType.AVOID);
+            record.heroId = id;
+            record.pos = pos.getIndex();
+            battle.addRecord(record);
             processAll(ActionPoint.闪避之后);
         } else {
             // 计算buff
@@ -457,7 +463,8 @@ public class Hero {
         BuffData data = buff.buffData();
         Record addBuffRecord = new Record(RecordType.BUFF_ADD);
         addBuffRecord.buffData = data;
-        addBuffRecord.hero = getSimple();
+        addBuffRecord.heroId = id;
+        addBuffRecord.pos = pos.getIndex();
 
         battle.addRecord(addBuffRecord);
     }
@@ -498,7 +505,8 @@ public class Hero {
 
     private void addHpRecord(int add) {
         Record record = new Record(RecordType.HEALTH_CHANGE);
-        record.hero = this.getSimple();
+        record.heroId = id;
+        record.pos = pos.getIndex();
         record.value = add;
         record.damageType = DamageType.DAMAGE_NONE;
         battle.addRecord(record);
@@ -511,7 +519,9 @@ public class Hero {
      */
     private void addDamageRecord(DamageInfo info) {
         Record record = new Record(RecordType.HEALTH_CHANGE);
-        record.hero = info.target.getSimple();
+        HeroRecordSimple simple = info.target.getSimple();
+        record.heroId = simple.id;
+        record.pos = simple.pos.getIndex();
         record.value = info.sourceDamage * -1;
         record.damageType = DamageType.DAMAGE_NORMAL;
         battle.addRecord(record);
@@ -519,7 +529,8 @@ public class Hero {
         // 暴击
         if (info.sourceCriticalDamage > 0) {
             record = new Record(RecordType.HEALTH_CHANGE);
-            record.hero = info.target.getSimple();
+            record.heroId = simple.id;
+            record.pos = simple.pos.getIndex();
             record.value = info.sourceCriticalDamage * -1;
             record.damageType = DamageType.DAMAGE_CRITICAL;
             battle.addRecord(record);

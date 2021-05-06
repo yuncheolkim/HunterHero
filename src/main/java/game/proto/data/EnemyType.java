@@ -20,6 +20,10 @@ public enum EnemyType
    * <code>NPC = 2;</code>
    */
   NPC(2),
+  /**
+   * <code>EXERCISE = 3;</code>
+   */
+  EXERCISE(3),
   UNRECOGNIZED(-1),
   ;
 
@@ -35,6 +39,10 @@ public enum EnemyType
    * <code>NPC = 2;</code>
    */
   public static final int NPC_VALUE = 2;
+  /**
+   * <code>EXERCISE = 3;</code>
+   */
+  public static final int EXERCISE_VALUE = 3;
 
 
   public final int getNumber() {
@@ -64,6 +72,7 @@ public enum EnemyType
       case 0: return CREATURE;
       case 1: return PLAYER;
       case 2: return NPC;
+      case 3: return EXERCISE;
       default: return null;
     }
   }
