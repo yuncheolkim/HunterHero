@@ -102,6 +102,14 @@ public enum MsgNo
   fight_end(2004),
   /**
    * <pre>
+   * 测试战斗
+   * </pre>
+   *
+   * <code>FightTestReqNo = 2005;</code>
+   */
+  FightTestReqNo(2005),
+  /**
+   * <pre>
    * 进入场景
    * </pre>
    *
@@ -345,6 +353,14 @@ public enum MsgNo
   public static final int fight_end_VALUE = 2004;
   /**
    * <pre>
+   * 测试战斗
+   * </pre>
+   *
+   * <code>FightTestReqNo = 2005;</code>
+   */
+  public static final int FightTestReqNo_VALUE = 2005;
+  /**
+   * <pre>
    * 进入场景
    * </pre>
    *
@@ -531,6 +547,7 @@ public enum MsgNo
       case 2001: return fight_start;
       case 2002: return fight_start_push;
       case 2004: return fight_end;
+      case 2005: return FightTestReqNo;
       case 3001: return scene_enter;
       case 3002: return scene_enter_fight_area;
       case 3003: return scene_leave_fight_area;

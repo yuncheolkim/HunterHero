@@ -17,9 +17,7 @@ import game.module.event.handler.KillEvent;
 import game.module.item.ItemDropService;
 import game.module.task.TaskService;
 import game.player.Player;
-import game.proto.Empty;
-import game.proto.FightRecord;
-import game.proto.FightStartReq;
+import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.*;
 import game.utils.CalcUtil;
@@ -253,5 +251,44 @@ public class FightHandler {
         if (player.D.getFightAreaCount() > 0) {
             player.D.setFightTime(DateUtils.now() + CalcUtil.random(5000, 20000));
         }
+    }
+
+    /**
+     * 练习场
+     *
+     * @param player
+     * @param req
+     */
+    public static FightTestRes fightExercise(Player player, FightTestReq req) {
+
+        Battle battle = new Battle();
+        // enemy
+        for (FightEnemyInfo enemy : req.getBList()) {
+            CreatureTarget fightEnemy = HeroFactory.createFightEnemy(enemy);
+            fightEnemy.setSide(Side.B);
+            fightEnemy.setPos(Pos.from(enemy.getPos()));
+            fightEnemy.init();
+            fightEnemy.setBattle(battle);
+            battle.getSideBhero().add(fightEnemy);
+        }
+
+        // player
+        for (FightHeroPos fightHeroPos : req.getAList()) {
+            PlayerHero playerHero = player.getPd().getHeroMap().get(fightHeroPos.getHeroId());
+            Hero hero = HeroFactory.createPlayerHero(player, playerHero);
+            hero.setSide(Side.A);
+            hero.setPos(Pos.from(fightHeroPos.getPos()));
+            hero.init();
+            hero.setBattle(battle);
+
+            battle.getSideAhero().add(hero);
+        }
+
+        BattleRecord record = battle.start();
+        FightRecord.Builder result = buildFightRecord(record);
+
+        return FightTestRes.newBuilder().setWin(record.getWinSide() == Side.A)
+                .setRecord(result).buildPartial();
+
     }
 }

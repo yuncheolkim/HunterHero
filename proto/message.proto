@@ -109,6 +109,14 @@ message FightRecord {
     bool win = 4; // 是否胜利
     repeated Reward reward = 5; // 奖励
 }
+message FightTestReq{
+    repeated FightHeroPos a = 1;
+    repeated FightEnemyInfo b = 2;
+}
+message FightTestRes{
+    bool win = 1;
+    FightRecord record = 4;
+}
 
 // 3001 进入场景
 message EnterSceneReq {

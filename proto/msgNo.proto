@@ -32,6 +32,8 @@ enum MsgNo {
     fight_start_push = 2002;
     // 结束战斗
     fight_end = 2004;
+    // 测试战斗
+    FightTestReqNo = 2005;
 
     // 进入场景
     scene_enter = 3001;

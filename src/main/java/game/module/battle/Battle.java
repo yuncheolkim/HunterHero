@@ -17,6 +17,7 @@ import static game.module.battle.Constant.ID_GEN;
 
 /**
  * 一场战斗
+ *
  * @author Yunzhe.Jin
  * 2021/1/8 14:24
  */
@@ -72,6 +73,7 @@ public class Battle {
 
     /**
      * 开始一场战斗
+     *
      * @return
      */
     public BattleRecord start() {
@@ -83,7 +85,9 @@ public class Battle {
         processHero(ActionPoint.开场);
         nextRound();
         Logs.trace("==============================================");
+        int roundCount = 0;
         while (!checkWin()) {
+            roundCount += 1;
             Logs.trace("回合开始：", currentRound.getRoundCount());
 
             processHero(ActionPoint.回合开始前);
@@ -103,6 +107,11 @@ public class Battle {
             }
             Logs.trace("回合结束：", currentRound.getRoundCount());
             Logs.trace("==============================================");
+
+            if (roundCount == 30) {
+                // 最多30回合
+                break;
+            }
             //下一回合
             nextRound();
         }
@@ -117,6 +126,7 @@ public class Battle {
 
     /**
      * 获取水平附近的英雄
+     *
      * @param from
      * @return
      */
@@ -129,6 +139,7 @@ public class Battle {
 
     /**
      * 英雄执行动作
+     *
      * @param actionPoint
      */
     private void processHero(ActionPoint actionPoint) {

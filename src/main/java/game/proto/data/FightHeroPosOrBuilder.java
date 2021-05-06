@@ -18,4 +18,16 @@ public interface FightHeroPosOrBuilder extends
    * @return The pos.
    */
   int getPos();
+
+  /**
+   * <code>int32 enhance = 3;</code>
+   * @return The enhance.
+   */
+  int getEnhance();
+
+  /**
+   * <code>int32 order = 4;</code>
+   * @return The order.
+   */
+  int getOrder();
 }

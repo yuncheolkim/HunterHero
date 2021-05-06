@@ -156,6 +156,8 @@ message Talent {
 message FightHeroPos {
     int32 heroId = 1;
     int32 pos = 2;
+    int32 enhance = 3;
+    int32 order = 4;
 }
 
 enum EnemyType {
