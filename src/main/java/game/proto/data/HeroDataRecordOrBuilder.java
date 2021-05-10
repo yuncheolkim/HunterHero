@@ -14,7 +14,7 @@ public interface HeroDataRecordOrBuilder extends
   int getId();
 
   /**
-   * <code>int32 Pos = 2;</code>
+   * <code>int32 pos = 2;</code>
    * @return The pos.
    */
   int getPos();
@@ -26,12 +26,18 @@ public interface HeroDataRecordOrBuilder extends
   int getHp();
 
   /**
-   * <code>string name = 4;</code>
+   * <code>int32 level = 4;</code>
+   * @return The level.
+   */
+  int getLevel();
+
+  /**
+   * <code>string name = 10;</code>
    * @return The name.
    */
   java.lang.String getName();
   /**
-   * <code>string name = 4;</code>
+   * <code>string name = 10;</code>
    * @return The bytes for name.
    */
   com.google.protobuf.ByteString

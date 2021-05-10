@@ -16,6 +16,7 @@ import game.module.battle.record.Record;
 import game.module.battle.status.HealthChangeInfo;
 import game.module.battle.status.HeroStatusChangeListener;
 import game.proto.data.DamageType;
+import game.proto.data.DisplayPoint;
 import game.proto.data.RecordType;
 
 import java.util.*;
@@ -178,9 +179,9 @@ public class Hero {
             resetFightingData();
             damageInfo = new DamageInfo();
             damageInfo.type = (DamageSourceType.ATTACK);
-            damageInfo.origin = (this);
-            damageInfo.source = (this);
-            damageInfo.target = (target);
+            damageInfo.origin = this;
+            damageInfo.source = this;
+            damageInfo.target = target;
             damageInfo.sourceDamage = property.getDamage();
             target.damageInfo = damageInfo;
 
@@ -241,7 +242,6 @@ public class Hero {
         HeroRecordSimple simple = damageInfo.source.getSimple();
         attackRecord.heroId = simple.id;
         attackRecord.pos = simple.pos.getIndex();
-
         attackRecord.targetList = Lists.newArrayList(damageInfo.target.getSimple().pos.getIndex());
         battle.addRecord(attackRecord);
     }
@@ -314,7 +314,7 @@ public class Hero {
 
                 // 使用技能
                 Record record = skill.process(actionPoint, this);
-                if (record != null) {
+                if (skill.getSkillType() == SkillType.Z && record != null) {
                     battle.addRecord(record);
                 }
                 // 冷却
@@ -522,6 +522,7 @@ public class Hero {
         HeroRecordSimple simple = info.target.getSimple();
         record.heroId = simple.id;
         record.pos = simple.pos.getIndex();
+        record.dp = DisplayPoint.DP_DEF_1;
         record.value = info.sourceDamage * -1;
         record.damageType = DamageType.DAMAGE_NORMAL;
         battle.addRecord(record);
@@ -530,6 +531,7 @@ public class Hero {
         if (info.sourceCriticalDamage > 0) {
             record = new Record(RecordType.HEALTH_CHANGE);
             record.heroId = simple.id;
+            record.dp = DisplayPoint.DP_DEF_1;
             record.pos = simple.pos.getIndex();
             record.value = info.sourceCriticalDamage * -1;
             record.damageType = DamageType.DAMAGE_CRITICAL;
@@ -559,6 +561,11 @@ public class Hero {
 
     public List<Hero> friends() {
         return battle.mySideHeroes(side);
+    }
+
+    public void addTargetStrategy(FindTargetStrategy s) {
+        targetStrategies.add(s);
+
     }
 
     public Pos getPos() {

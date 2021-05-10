@@ -204,12 +204,29 @@ public class Battle {
         return sideAhero;
     }
 
+    public List<Hero> oppositeAliveHeroes(Side side) {
+
+        if (side == Side.A) {
+            return sideBhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
+        }
+        return sideAhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
+    }
+
+
     public List<Hero> mySideHeroes(Side side) {
 
         if (side == Side.A) {
             return sideAhero;
         }
         return sideBhero;
+    }
+
+    public List<Hero> mySideAliveHeroes(Side side) {
+
+        if (side == Side.A) {
+            return sideAhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
+        }
+        return sideBhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
     }
 
     public void addRecord(Record r) {

@@ -3,6 +3,7 @@ package game.module.battle.record;
 import game.module.battle.CoolDown;
 import game.module.battle.action.ActionPoint;
 import game.proto.data.DamageType;
+import game.proto.data.DisplayPoint;
 import game.proto.data.RecordType;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public class Record {
     public ActionPoint actionPoint;
     public int heroId;
     public int pos;
+
+    public DisplayPoint dp = DisplayPoint.DP_DEF_1;
 
     /**
      * 目标位置

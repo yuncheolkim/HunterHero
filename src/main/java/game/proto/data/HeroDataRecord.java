@@ -64,7 +64,12 @@ private static final long serialVersionUID = 0L;
             hp_ = input.readInt32();
             break;
           }
-          case 34: {
+          case 32: {
+
+            level_ = input.readInt32();
+            break;
+          }
+          case 82: {
             java.lang.String s = input.readStringRequireUtf8();
 
             name_ = s;
@@ -116,7 +121,7 @@ private static final long serialVersionUID = 0L;
   public static final int POS_FIELD_NUMBER = 2;
   private int pos_;
   /**
-   * <code>int32 Pos = 2;</code>
+   * <code>int32 pos = 2;</code>
    * @return The pos.
    */
   @java.lang.Override
@@ -135,10 +140,21 @@ private static final long serialVersionUID = 0L;
     return hp_;
   }
 
-  public static final int NAME_FIELD_NUMBER = 4;
+  public static final int LEVEL_FIELD_NUMBER = 4;
+  private int level_;
+  /**
+   * <code>int32 level = 4;</code>
+   * @return The level.
+   */
+  @java.lang.Override
+  public int getLevel() {
+    return level_;
+  }
+
+  public static final int NAME_FIELD_NUMBER = 10;
   private volatile java.lang.Object name_;
   /**
-   * <code>string name = 4;</code>
+   * <code>string name = 10;</code>
    * @return The name.
    */
   @java.lang.Override
@@ -155,7 +171,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string name = 4;</code>
+   * <code>string name = 10;</code>
    * @return The bytes for name.
    */
   @java.lang.Override
@@ -196,8 +212,11 @@ private static final long serialVersionUID = 0L;
     if (hp_ != 0) {
       output.writeInt32(3, hp_);
     }
+    if (level_ != 0) {
+      output.writeInt32(4, level_);
+    }
     if (!getNameBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, name_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, name_);
     }
     unknownFields.writeTo(output);
   }
@@ -220,8 +239,12 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, hp_);
     }
+    if (level_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, level_);
+    }
     if (!getNameBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, name_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, name_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -244,6 +267,8 @@ private static final long serialVersionUID = 0L;
         != other.getPos()) return false;
     if (getHp()
         != other.getHp()) return false;
+    if (getLevel()
+        != other.getLevel()) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -263,6 +288,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPos();
     hash = (37 * hash) + HP_FIELD_NUMBER;
     hash = (53 * hash) + getHp();
+    hash = (37 * hash) + LEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getLevel();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -404,6 +431,8 @@ private static final long serialVersionUID = 0L;
 
       hp_ = 0;
 
+      level_ = 0;
+
       name_ = "";
 
       return this;
@@ -435,6 +464,7 @@ private static final long serialVersionUID = 0L;
       result.id_ = id_;
       result.pos_ = pos_;
       result.hp_ = hp_;
+      result.level_ = level_;
       result.name_ = name_;
       onBuilt();
       return result;
@@ -492,6 +522,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getHp() != 0) {
         setHp(other.getHp());
+      }
+      if (other.getLevel() != 0) {
+        setLevel(other.getLevel());
       }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
@@ -559,7 +592,7 @@ private static final long serialVersionUID = 0L;
 
     private int pos_ ;
     /**
-     * <code>int32 Pos = 2;</code>
+     * <code>int32 pos = 2;</code>
      * @return The pos.
      */
     @java.lang.Override
@@ -567,7 +600,7 @@ private static final long serialVersionUID = 0L;
       return pos_;
     }
     /**
-     * <code>int32 Pos = 2;</code>
+     * <code>int32 pos = 2;</code>
      * @param value The pos to set.
      * @return This builder for chaining.
      */
@@ -578,7 +611,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 Pos = 2;</code>
+     * <code>int32 pos = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearPos() {
@@ -619,9 +652,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int level_ ;
+    /**
+     * <code>int32 level = 4;</code>
+     * @return The level.
+     */
+    @java.lang.Override
+    public int getLevel() {
+      return level_;
+    }
+    /**
+     * <code>int32 level = 4;</code>
+     * @param value The level to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLevel(int value) {
+      
+      level_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 level = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLevel() {
+      
+      level_ = 0;
+      onChanged();
+      return this;
+    }
+
     private java.lang.Object name_ = "";
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 10;</code>
      * @return The name.
      */
     public java.lang.String getName() {
@@ -637,7 +701,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 10;</code>
      * @return The bytes for name.
      */
     public com.google.protobuf.ByteString
@@ -654,7 +718,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 10;</code>
      * @param value The name to set.
      * @return This builder for chaining.
      */
@@ -669,7 +733,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 10;</code>
      * @return This builder for chaining.
      */
     public Builder clearName() {
@@ -679,7 +743,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string name = 4;</code>
+     * <code>string name = 10;</code>
      * @param value The bytes for name to set.
      * @return This builder for chaining.
      */

@@ -179,9 +179,10 @@ message FightEnemyInfo {
 
 message HeroDataRecord {
     int32 id = 1;
-    int32 Pos = 2;
+    int32 pos = 2;
     int32 hp = 3;
-    string name = 4;
+    int32 level = 4;
+    string name = 10;
 }
 
 message RoundRecord {
@@ -206,11 +207,19 @@ enum DamageType {
     DAMAGE_NONE = 2;
 }
 
+enum DisplayPoint{
+    DP_ATT_1 = 0;// 出发
+    DP_ATT_2 = 1;// 到达
+    DP_ATT_3 = 2;// 返回
+    DP_DEF_1 = 3;
+}
+
 message Record {
     RecordType type = 1;
     int32 heroId = 2;
     int32 id = 3;
     int32 pos = 4;
+    DisplayPoint dp = 5;//血量位置
     // pos
     repeated int32 target = 11;
     DamageType damageType = 21;

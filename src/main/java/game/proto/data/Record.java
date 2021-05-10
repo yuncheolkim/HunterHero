@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
   }
   private Record() {
     type_ = 0;
+    dp_ = 0;
     target_ = emptyIntList();
     damageType_ = 0;
     actionPoint_ = "";
@@ -72,6 +73,12 @@ private static final long serialVersionUID = 0L;
           case 32: {
 
             pos_ = input.readInt32();
+            break;
+          }
+          case 40: {
+            int rawValue = input.readEnum();
+
+            dp_ = rawValue;
             break;
           }
           case 88: {
@@ -210,6 +217,33 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getPos() {
     return pos_;
+  }
+
+  public static final int DP_FIELD_NUMBER = 5;
+  private int dp_;
+  /**
+   * <pre>
+   *血量位置
+   * </pre>
+   *
+   * <code>.Message.DisplayPoint dp = 5;</code>
+   * @return The enum numeric value on the wire for dp.
+   */
+  @java.lang.Override public int getDpValue() {
+    return dp_;
+  }
+  /**
+   * <pre>
+   *血量位置
+   * </pre>
+   *
+   * <code>.Message.DisplayPoint dp = 5;</code>
+   * @return The dp.
+   */
+  @java.lang.Override public game.proto.data.DisplayPoint getDp() {
+    @SuppressWarnings("deprecation")
+    game.proto.data.DisplayPoint result = game.proto.data.DisplayPoint.valueOf(dp_);
+    return result == null ? game.proto.data.DisplayPoint.UNRECOGNIZED : result;
   }
 
   public static final int TARGET_FIELD_NUMBER = 11;
@@ -373,6 +407,9 @@ private static final long serialVersionUID = 0L;
     if (pos_ != 0) {
       output.writeInt32(4, pos_);
     }
+    if (dp_ != game.proto.data.DisplayPoint.DP_ATT_1.getNumber()) {
+      output.writeEnum(5, dp_);
+    }
     if (getTargetList().size() > 0) {
       output.writeUInt32NoTag(90);
       output.writeUInt32NoTag(targetMemoizedSerializedSize);
@@ -416,6 +453,10 @@ private static final long serialVersionUID = 0L;
     if (pos_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, pos_);
+    }
+    if (dp_ != game.proto.data.DisplayPoint.DP_ATT_1.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(5, dp_);
     }
     {
       int dataSize = 0;
@@ -468,6 +509,7 @@ private static final long serialVersionUID = 0L;
         != other.getId()) return false;
     if (getPos()
         != other.getPos()) return false;
+    if (dp_ != other.dp_) return false;
     if (!getTargetList()
         .equals(other.getTargetList())) return false;
     if (damageType_ != other.damageType_) return false;
@@ -499,6 +541,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getId();
     hash = (37 * hash) + POS_FIELD_NUMBER;
     hash = (53 * hash) + getPos();
+    hash = (37 * hash) + DP_FIELD_NUMBER;
+    hash = (53 * hash) + dp_;
     if (getTargetCount() > 0) {
       hash = (37 * hash) + TARGET_FIELD_NUMBER;
       hash = (53 * hash) + getTargetList().hashCode();
@@ -654,6 +698,8 @@ private static final long serialVersionUID = 0L;
 
       pos_ = 0;
 
+      dp_ = 0;
+
       target_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
       damageType_ = 0;
@@ -699,6 +745,7 @@ private static final long serialVersionUID = 0L;
       result.heroId_ = heroId_;
       result.id_ = id_;
       result.pos_ = pos_;
+      result.dp_ = dp_;
       if (((bitField0_ & 0x00000001) != 0)) {
         target_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -771,6 +818,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getPos() != 0) {
         setPos(other.getPos());
+      }
+      if (other.dp_ != 0) {
+        setDpValue(other.getDpValue());
       }
       if (!other.target_.isEmpty()) {
         if (target_.isEmpty()) {
@@ -968,6 +1018,80 @@ private static final long serialVersionUID = 0L;
     public Builder clearPos() {
       
       pos_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int dp_ = 0;
+    /**
+     * <pre>
+     *血量位置
+     * </pre>
+     *
+     * <code>.Message.DisplayPoint dp = 5;</code>
+     * @return The enum numeric value on the wire for dp.
+     */
+    @java.lang.Override public int getDpValue() {
+      return dp_;
+    }
+    /**
+     * <pre>
+     *血量位置
+     * </pre>
+     *
+     * <code>.Message.DisplayPoint dp = 5;</code>
+     * @param value The enum numeric value on the wire for dp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDpValue(int value) {
+      
+      dp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *血量位置
+     * </pre>
+     *
+     * <code>.Message.DisplayPoint dp = 5;</code>
+     * @return The dp.
+     */
+    @java.lang.Override
+    public game.proto.data.DisplayPoint getDp() {
+      @SuppressWarnings("deprecation")
+      game.proto.data.DisplayPoint result = game.proto.data.DisplayPoint.valueOf(dp_);
+      return result == null ? game.proto.data.DisplayPoint.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     *血量位置
+     * </pre>
+     *
+     * <code>.Message.DisplayPoint dp = 5;</code>
+     * @param value The dp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setDp(game.proto.data.DisplayPoint value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      dp_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     *血量位置
+     * </pre>
+     *
+     * <code>.Message.DisplayPoint dp = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearDp() {
+      
+      dp_ = 0;
       onChanged();
       return this;
     }

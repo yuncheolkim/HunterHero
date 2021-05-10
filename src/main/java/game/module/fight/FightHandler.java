@@ -185,6 +185,7 @@ public class FightHandler {
             builder.addSideB(HeroDataRecord.newBuilder()
                     .setId(hero.simple.id)
                     .setHp(hero.simple.hp)
+                    .setLevel(hero.simple.level)
                     .setName(hero.simple.name)
                     .setPos(hero.simple.pos.getIndex())
                     .build());
@@ -198,6 +199,9 @@ public class FightHandler {
                 re.setType(r.type);
                 re.setId(r.id);
                 re.setValue(r.value);
+                if (r.dp != null) {
+                    re.setDp(r.dp);
+                }
                 re.setPos(r.pos);
                 if (r.damageType != null) {
                     re.setDamageType(r.damageType);
@@ -206,6 +210,7 @@ public class FightHandler {
                     re.setActionPoint(r.actionPoint.name());
                 }
                 re.setHeroId(r.heroId);
+                re.setDp(r.dp);
                 if (r.targetList != null) {
                     re.addAllTarget(r.targetList);
                 }

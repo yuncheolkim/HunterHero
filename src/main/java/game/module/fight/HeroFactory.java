@@ -4,7 +4,7 @@ import game.base.G;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
 import game.module.battle.hero.Guanyu;
-import game.module.battle.hero.Zhangfei;
+import game.module.battle.hero.Huangzhong;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.player.Player;
 import game.proto.data.FightEnemyInfo;
@@ -26,7 +26,7 @@ public class HeroFactory {
                 break;
             }
             case 1002: {
-                hero = new Zhangfei();
+                hero = new Huangzhong();
                 break;
             }
         }

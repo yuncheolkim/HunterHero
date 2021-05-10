@@ -4,53 +4,69 @@
 package game.proto.data;
 
 /**
- * Protobuf enum {@code Message.RewardType}
+ * Protobuf enum {@code Message.DisplayPoint}
  */
-public enum RewardType
+public enum DisplayPoint
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>REWARD_NORMAL = 0;</code>
-   */
-  REWARD_NORMAL(0),
-  /**
    * <pre>
-   * 资源
+   * 出发
    * </pre>
    *
-   * <code>REWARD_RESOURCE = 1;</code>
+   * <code>DP_ATT_1 = 0;</code>
    */
-  REWARD_RESOURCE(1),
+  DP_ATT_1(0),
   /**
    * <pre>
-   * 物品
+   * 到达
    * </pre>
    *
-   * <code>REWARD_ITEM = 2;</code>
+   * <code>DP_ATT_2 = 1;</code>
    */
-  REWARD_ITEM(2),
+  DP_ATT_2(1),
+  /**
+   * <pre>
+   * 返回
+   * </pre>
+   *
+   * <code>DP_ATT_3 = 2;</code>
+   */
+  DP_ATT_3(2),
+  /**
+   * <code>DP_DEF_1 = 3;</code>
+   */
+  DP_DEF_1(3),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>REWARD_NORMAL = 0;</code>
-   */
-  public static final int REWARD_NORMAL_VALUE = 0;
-  /**
    * <pre>
-   * 资源
+   * 出发
    * </pre>
    *
-   * <code>REWARD_RESOURCE = 1;</code>
+   * <code>DP_ATT_1 = 0;</code>
    */
-  public static final int REWARD_RESOURCE_VALUE = 1;
+  public static final int DP_ATT_1_VALUE = 0;
   /**
    * <pre>
-   * 物品
+   * 到达
    * </pre>
    *
-   * <code>REWARD_ITEM = 2;</code>
+   * <code>DP_ATT_2 = 1;</code>
    */
-  public static final int REWARD_ITEM_VALUE = 2;
+  public static final int DP_ATT_2_VALUE = 1;
+  /**
+   * <pre>
+   * 返回
+   * </pre>
+   *
+   * <code>DP_ATT_3 = 2;</code>
+   */
+  public static final int DP_ATT_3_VALUE = 2;
+  /**
+   * <code>DP_DEF_1 = 3;</code>
+   */
+  public static final int DP_DEF_1_VALUE = 3;
 
 
   public final int getNumber() {
@@ -67,7 +83,7 @@ public enum RewardType
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static RewardType valueOf(int value) {
+  public static DisplayPoint valueOf(int value) {
     return forNumber(value);
   }
 
@@ -75,24 +91,25 @@ public enum RewardType
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static RewardType forNumber(int value) {
+  public static DisplayPoint forNumber(int value) {
     switch (value) {
-      case 0: return REWARD_NORMAL;
-      case 1: return REWARD_RESOURCE;
-      case 2: return REWARD_ITEM;
+      case 0: return DP_ATT_1;
+      case 1: return DP_ATT_2;
+      case 2: return DP_ATT_3;
+      case 3: return DP_DEF_1;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<RewardType>
+  public static com.google.protobuf.Internal.EnumLiteMap<DisplayPoint>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      RewardType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<RewardType>() {
-          public RewardType findValueByNumber(int number) {
-            return RewardType.forNumber(number);
+      DisplayPoint> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<DisplayPoint>() {
+          public DisplayPoint findValueByNumber(int number) {
+            return DisplayPoint.forNumber(number);
           }
         };
 
@@ -110,12 +127,12 @@ public enum RewardType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(5);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(4);
   }
 
-  private static final RewardType[] VALUES = values();
+  private static final DisplayPoint[] VALUES = values();
 
-  public static RewardType valueOf(
+  public static DisplayPoint valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -129,10 +146,10 @@ public enum RewardType
 
   private final int value;
 
-  private RewardType(int value) {
+  private DisplayPoint(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:Message.RewardType)
+  // @@protoc_insertion_point(enum_scope:Message.DisplayPoint)
 }
 

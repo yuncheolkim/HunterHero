@@ -4,53 +4,45 @@
 package game.proto.data;
 
 /**
- * Protobuf enum {@code Message.RewardType}
+ * Protobuf enum {@code Message.HpPoint}
  */
-public enum RewardType
+public enum HpPoint
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>REWARD_NORMAL = 0;</code>
+   * <code>HP_ATT_FROM = 0;</code>
    */
-  REWARD_NORMAL(0),
+  HP_ATT_FROM(0),
   /**
-   * <pre>
-   * 资源
-   * </pre>
-   *
-   * <code>REWARD_RESOURCE = 1;</code>
+   * <code>HP_ATT_END = 1;</code>
    */
-  REWARD_RESOURCE(1),
+  HP_ATT_END(1),
   /**
-   * <pre>
-   * 物品
-   * </pre>
-   *
-   * <code>REWARD_ITEM = 2;</code>
+   * <code>HP_ATT_BACK = 2;</code>
    */
-  REWARD_ITEM(2),
+  HP_ATT_BACK(2),
+  /**
+   * <code>HP_DEF = 3;</code>
+   */
+  HP_DEF(3),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>REWARD_NORMAL = 0;</code>
+   * <code>HP_ATT_FROM = 0;</code>
    */
-  public static final int REWARD_NORMAL_VALUE = 0;
+  public static final int HP_ATT_FROM_VALUE = 0;
   /**
-   * <pre>
-   * 资源
-   * </pre>
-   *
-   * <code>REWARD_RESOURCE = 1;</code>
+   * <code>HP_ATT_END = 1;</code>
    */
-  public static final int REWARD_RESOURCE_VALUE = 1;
+  public static final int HP_ATT_END_VALUE = 1;
   /**
-   * <pre>
-   * 物品
-   * </pre>
-   *
-   * <code>REWARD_ITEM = 2;</code>
+   * <code>HP_ATT_BACK = 2;</code>
    */
-  public static final int REWARD_ITEM_VALUE = 2;
+  public static final int HP_ATT_BACK_VALUE = 2;
+  /**
+   * <code>HP_DEF = 3;</code>
+   */
+  public static final int HP_DEF_VALUE = 3;
 
 
   public final int getNumber() {
@@ -67,7 +59,7 @@ public enum RewardType
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static RewardType valueOf(int value) {
+  public static HpPoint valueOf(int value) {
     return forNumber(value);
   }
 
@@ -75,24 +67,25 @@ public enum RewardType
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static RewardType forNumber(int value) {
+  public static HpPoint forNumber(int value) {
     switch (value) {
-      case 0: return REWARD_NORMAL;
-      case 1: return REWARD_RESOURCE;
-      case 2: return REWARD_ITEM;
+      case 0: return HP_ATT_FROM;
+      case 1: return HP_ATT_END;
+      case 2: return HP_ATT_BACK;
+      case 3: return HP_DEF;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<RewardType>
+  public static com.google.protobuf.Internal.EnumLiteMap<HpPoint>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      RewardType> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<RewardType>() {
-          public RewardType findValueByNumber(int number) {
-            return RewardType.forNumber(number);
+      HpPoint> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<HpPoint>() {
+          public HpPoint findValueByNumber(int number) {
+            return HpPoint.forNumber(number);
           }
         };
 
@@ -110,12 +103,12 @@ public enum RewardType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(5);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(4);
   }
 
-  private static final RewardType[] VALUES = values();
+  private static final HpPoint[] VALUES = values();
 
-  public static RewardType valueOf(
+  public static HpPoint valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -129,10 +122,10 @@ public enum RewardType
 
   private final int value;
 
-  private RewardType(int value) {
+  private HpPoint(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:Message.RewardType)
+  // @@protoc_insertion_point(enum_scope:Message.HpPoint)
 }
 

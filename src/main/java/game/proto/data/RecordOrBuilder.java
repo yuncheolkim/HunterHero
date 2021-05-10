@@ -38,6 +38,25 @@ public interface RecordOrBuilder extends
 
   /**
    * <pre>
+   *血量位置
+   * </pre>
+   *
+   * <code>.Message.DisplayPoint dp = 5;</code>
+   * @return The enum numeric value on the wire for dp.
+   */
+  int getDpValue();
+  /**
+   * <pre>
+   *血量位置
+   * </pre>
+   *
+   * <code>.Message.DisplayPoint dp = 5;</code>
+   * @return The dp.
+   */
+  game.proto.data.DisplayPoint getDp();
+
+  /**
+   * <pre>
    * pos
    * </pre>
    *
