@@ -10,7 +10,6 @@ import game.utils.CalcUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Yunzhe.Jin
@@ -63,22 +62,7 @@ public class TaskService {
      */
     public static boolean canAcceptTask(Player player, int taskId) {
 
-        Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
-        if (completeTaskMap.containsKey(taskId)) {
-            return false;
-        }
-
-        DataConfigData data = G.C.getTask(taskId);
-        boolean acceptable = true;
-        if (data.list1 != null) {
-            for (Integer beforeId : data.list1) {
-                if (!completeTaskMap.containsKey(beforeId)) {
-                    acceptable = false;
-                    break;
-                }
-            }
-        }
-        return acceptable;
+        return G.T.IsAcceptable(player, taskId);
 
     }
 

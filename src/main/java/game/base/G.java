@@ -12,14 +12,21 @@ public class G {
 
     ///////////// Lifecycle
     public static WorkManager W = new WorkManager();
+
     public static GameManager G = new GameManager();
+
     public static ScheduleManager S = new ScheduleManager();
+
     public static ConfigManager C = new ConfigManager();
 
     ///////////// No Lifecycle
     public static RepoManager R = new RepoManager();
+
     public static PlayerManager P = new PlayerManager();
+
     public static EventManager E = new EventManager();
+
+    public static TaskManager T = new TaskManager();
 
 
     public static void findException(Exception e) {
