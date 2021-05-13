@@ -21,6 +21,7 @@ import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.back.MsgNoBackInner;
 import game.proto.data.PlayerHero;
+import game.proto.no.No;
 
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -120,7 +121,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.PlayerMoveReqNo_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
 
         // 钓鱼
-        addHandler(new Invoker<>(MsgNo.FishReqReq_VALUE, FishHandler::fish, FishReq::parser));
+        addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));
 
     }
 

@@ -3,34 +3,111 @@
 
 package game.proto.no;
 
-public final class No {
-  private No() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistryLite registry) {
+/**
+ * Protobuf enum {@code No.No}
+ */
+public enum No
+    implements com.google.protobuf.ProtocolMessageEnum {
+  /**
+   * <code>NONE = 0;</code>
+   */
+  NONE(0),
+  /**
+   * <code>FishReq = 8001;</code>
+   */
+  FishReq(8001),
+  UNRECOGNIZED(-1),
+  ;
+
+  /**
+   * <code>NONE = 0;</code>
+   */
+  public static final int NONE_VALUE = 0;
+  /**
+   * <code>FishReq = 8001;</code>
+   */
+  public static final int FishReq_VALUE = 8001;
+
+
+  public final int getNumber() {
+    if (this == UNRECOGNIZED) {
+      throw new java.lang.IllegalArgumentException(
+          "Can't get the number of an unknown enum value.");
+    }
+    return value;
   }
 
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-    registerAllExtensions(
-        (com.google.protobuf.ExtensionRegistryLite) registry);
+  /**
+   * @param value The numeric wire value of the corresponding enum entry.
+   * @return The enum associated with the given numeric wire value.
+   * @deprecated Use {@link #forNumber(int)} instead.
+   */
+  @java.lang.Deprecated
+  public static No valueOf(int value) {
+    return forNumber(value);
   }
 
-  public static com.google.protobuf.Descriptors.FileDescriptor
+  /**
+   * @param value The numeric wire value of the corresponding enum entry.
+   * @return The enum associated with the given numeric wire value.
+   */
+  public static No forNumber(int value) {
+    switch (value) {
+      case 0: return NONE;
+      case 8001: return FishReq;
+      default: return null;
+    }
+  }
+
+  public static com.google.protobuf.Internal.EnumLiteMap<No>
+      internalGetValueMap() {
+    return internalValueMap;
+  }
+  private static final com.google.protobuf.Internal.EnumLiteMap<
+      No> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<No>() {
+          public No findValueByNumber(int number) {
+            return No.forNumber(number);
+          }
+        };
+
+  public final com.google.protobuf.Descriptors.EnumValueDescriptor
+      getValueDescriptor() {
+    if (this == UNRECOGNIZED) {
+      throw new java.lang.IllegalStateException(
+          "Can't get the descriptor of an unrecognized enum value.");
+    }
+    return getDescriptor().getValues().get(ordinal());
+  }
+  public final com.google.protobuf.Descriptors.EnumDescriptor
+      getDescriptorForType() {
+    return getDescriptor();
+  }
+  public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return descriptor;
-  }
-  private static  com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\010no.proto\022\002NoB\023\n\rgame.proto.noH\001P\001b\006pro" +
-      "to3"
-    };
-    descriptor = com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        });
+    return game.proto.no.NoOuterClass.getDescriptor().getEnumTypes().get(0);
   }
 
-  // @@protoc_insertion_point(outer_class_scope)
+  private static final No[] VALUES = values();
+
+  public static No valueOf(
+      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+    if (desc.getType() != getDescriptor()) {
+      throw new java.lang.IllegalArgumentException(
+        "EnumValueDescriptor is not for this type.");
+    }
+    if (desc.getIndex() == -1) {
+      return UNRECOGNIZED;
+    }
+    return VALUES[desc.getIndex()];
+  }
+
+  private final int value;
+
+  private No(int value) {
+    this.value = value;
+  }
+
+  // @@protoc_insertion_point(enum_scope:No.No)
 }
+

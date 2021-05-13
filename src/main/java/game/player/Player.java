@@ -408,6 +408,16 @@ public class Player {
     }
 
     /**
+     * 消耗体力
+     *
+     * @param count
+     * @param typeEnum
+     */
+    public void consumePower(int count, ConsumeTypeEnum typeEnum) {
+
+    }
+
+    /**
      * 放置物品到背包指定位置
      * todo 没有检查slotId是否已经有物品
      *

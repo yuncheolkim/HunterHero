@@ -1,7 +1,6 @@
 {
     "1": {
         "desc1": "降低被暴击的概率{0}%,减少暴击伤害{1}%",
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 1,
         "name": "泰坦之力",
@@ -9,10 +8,7 @@
         "v2": 50
     },
     "10": {
-        "desc1": "额外攻击2个目标",
-        "i1": 2,
-        "id": 10,
-        "name": "多重箭"
+        "id": 10
     },
     "11": {
         "id": 11
@@ -43,7 +39,6 @@
     },
     "2": {
         "desc1": "每次攻击同一个目标增加10%攻击力,最多50%",
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 2,
         "name": "蓄力一击"
@@ -80,7 +75,6 @@
     },
     "3": {
         "desc1": "溅射20%伤害附近一个敌人",
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 3,
         "name": "威震八方"
@@ -95,37 +89,31 @@
         "id": 32
     },
     "4": {
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 4,
         "name": "激励"
     },
     "5": {
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 5,
         "name": "以德服人"
     },
     "6": {
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 6,
         "name": "奸雄"
     },
     "7": {
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 7,
         "name": "护驾"
     },
     "8": {
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 8,
         "name": "克己"
     },
     "9": {
-        "i1": 2,
         "icon": "SpellBookPreface_19",
         "id": 9,
         "name": "威慑"

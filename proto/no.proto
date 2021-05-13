@@ -3,3 +3,9 @@ package No;
 option java_package = "game.proto.no";
 option optimize_for = SPEED;
 option java_multiple_files = true;
+
+enum No {
+    NONE = 0;
+    FishReq = 8001;
+
+}

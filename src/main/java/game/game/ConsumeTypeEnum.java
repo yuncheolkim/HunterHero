@@ -8,4 +8,5 @@ public enum ConsumeTypeEnum {
     历练,
     修炼,
     商店,
+    钓鱼,
 }

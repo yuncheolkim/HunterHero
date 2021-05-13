@@ -25,7 +25,7 @@ public final class MsgNoOuterClass {
     java.lang.String[] descriptorData = {
       "\n\013msgNo.proto\022\007Message*Z\n\016MsgNoBackInner" +
       "\022\n\n\006B_NONE\020\000\022\n\n\006B_TICK\020\n\022\017\n\013B_DATA_PUSH\020" +
-      "\013\022\017\n\013B_HERO_DATA\020\014\022\016\n\nB_FISH_END\020\r*\270\006\n\005M" +
+      "\013\022\017\n\013B_HERO_DATA\020\014\022\016\n\nB_FISH_END\020\r*\267\006\n\005M" +
       "sgNo\022\010\n\004NONE\020\000\022\r\n\tlogin_req\020\001\022\r\n\tkick_pu" +
       "sh\020\002\022\026\n\022player_create_name\020\003\022\r\n\theartbea" +
       "t\020e\022\024\n\017PlayerMoveReqNo\020\311\001\022\020\n\013task_accept" +
@@ -46,8 +46,8 @@ public final class MsgNoOuterClass {
       "nfoChangePushNo\020\361.\022\022\n\rBagCleanReqNo\020\362.\022\025" +
       "\n\020ItemDiscardReqNo\020\3316\022\021\n\014ItemBuyReqNo\020\3326" +
       "\022\026\n\021ItemExchangeReqNo\020\3336\022\022\n\rItemSellReqN" +
-      "o\020\3346\022\017\n\nFishReqReq\020\301>B\025\n\017game.proto.back" +
-      "H\001P\001b\006proto3"
+      "o\020\3346\022\016\n\tFishReqNo\020\301>B\025\n\017game.proto.backH" +
+      "\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

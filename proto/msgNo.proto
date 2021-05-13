@@ -88,7 +88,7 @@ enum MsgNo {
     // 出售物品
     ItemSellReqNo = 7004;
     //钓鱼
-    FishReqReq = 8001;
+    FishReqNo = 8001;
 
 
 }

@@ -1,7 +1,9 @@
 package game.module.fish;
 
 import game.player.Player;
+import game.proto.FishPush;
 import game.proto.FishReq;
+import game.proto.no.No;
 
 /**
  * 钓鱼系统
@@ -11,14 +13,24 @@ import game.proto.FishReq;
  */
 public class FishHandler {
 
+    /**
+     * 钓鱼
+     *
+     * @param player
+     * @param req
+     */
     public static void fish(Player player, FishReq req) {
 
-        // 检查是否在钓鱼区域
+        // todo 检查是否在钓鱼区域
 
-        // 检查是否
         if (player.fishing) {
-
+            //失败
+            player.getTransport().send(
+                    No.FishReq_VALUE,
+                    FishPush.newBuilder().setSuccess(false).buildPartial()
+            );
         } else {
+            // todo 消耗体力
 
         }
 

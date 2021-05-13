@@ -261,9 +261,9 @@ public enum MsgNo
    *钓鱼
    * </pre>
    *
-   * <code>FishReqReq = 8001;</code>
+   * <code>FishReqNo = 8001;</code>
    */
-  FishReqReq(8001),
+  FishReqNo(8001),
   UNRECOGNIZED(-1),
   ;
 
@@ -520,9 +520,9 @@ public enum MsgNo
    *钓鱼
    * </pre>
    *
-   * <code>FishReqReq = 8001;</code>
+   * <code>FishReqNo = 8001;</code>
    */
-  public static final int FishReqReq_VALUE = 8001;
+  public static final int FishReqNo_VALUE = 8001;
 
 
   public final int getNumber() {
@@ -585,7 +585,7 @@ public enum MsgNo
       case 7002: return ItemBuyReqNo;
       case 7003: return ItemExchangeReqNo;
       case 7004: return ItemSellReqNo;
-      case 8001: return FishReqReq;
+      case 8001: return FishReqNo;
       default: return null;
     }
   }

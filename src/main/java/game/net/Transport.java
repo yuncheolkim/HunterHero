@@ -8,6 +8,7 @@ import io.netty.channel.Channel;
 
 /**
  * 数据传输
+ *
  * @author Yunzhe.Jin
  * 2021/2/23 14:26
  */
@@ -19,6 +20,7 @@ public class Transport {
             channel.writeAndFlush(Message.newBuilder().setMsgNo(msgNo).setBody(msg.toByteString()));
         }
     }
+
 
     public void send(Message message) {
         if (channel.isActive()) {
