@@ -34,7 +34,9 @@ public class InvokerReturn<T extends MessageLite> implements IInvoke {
             T req = supplier.get().parseFrom(msg.getBody());
             MessageLite retMsg = this.handler.handler(player, req);
 
-            player.getTransport().send(msg.toBuilder().setBody(retMsg.toByteString()).build());
+            if (retMsg != null) {
+                player.getTransport().send(msg.toBuilder().setBody(retMsg.toByteString()).build());
+            }
         } catch (ModuleException e) {
             Logs.M.error("", e);
             player.getTransport().sendError(msg, e.getErrorNo());

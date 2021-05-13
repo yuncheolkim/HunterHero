@@ -74,7 +74,6 @@ message Resource {
     int32 power = 6;
     int32 maxPower = 7;
     int32 powerRecoverSecond = 8;
-
 }
 
 message ScenePos {
@@ -271,6 +270,9 @@ message Reward {
     int32 count = 2;
     // 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
     int32 heroId = 3;
+
+    // 装备
+    Property property = 10;
 }
 
 // item

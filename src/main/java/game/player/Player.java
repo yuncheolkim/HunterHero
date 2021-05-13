@@ -87,6 +87,11 @@ public class Player {
     @ProcessPersistenceData
     public ItemBoxData bank = new ItemBoxData();
 
+    /**
+     * 是否在钓鱼
+     */
+    public boolean fishing;
+
     public Player(long pid) {
         this.pid = pid;
         createTime = LocalDateTime.now();
@@ -629,6 +634,10 @@ public class Player {
         transport.getChannel().attr(GameConstants.pid).set(pid);
     }
 
+    public void scheduleAfter(final long millisecond, final int msgNo) {
+        G.S.doSchedule(() -> G.sendToPlayer(pid, msgNo), millisecond);
+    }
+
     public long getPid() {
         return pid;
     }
@@ -664,5 +673,6 @@ public class Player {
     public void setUpdateTime(LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
+
 
 }

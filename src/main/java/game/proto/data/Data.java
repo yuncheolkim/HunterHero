@@ -268,26 +268,27 @@ public final class Data {
       "(\005\022\n\n\002i1\030\004 \001(\005\022\n\n\002i2\030\005 \001(\005\022\n\n\002i3\030\006 \001(\005\022\n" +
       "\n\002i4\030\007 \001(\005\022\n\n\002i5\030\010 \001(\005\022\n\n\002f1\030\025 \001(\002\022\n\n\002f2" +
       "\030\026 \001(\002\022\n\n\002f3\030\027 \001(\002\022\n\n\002f4\030\030 \001(\002\022\n\n\002f5\030\031 \001" +
-      "(\002\"\\\n\006Reward\022!\n\004type\030d \001(\0162\023.Message.Rew" +
-      "ardType\022\020\n\010rewardId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005" +
-      "\022\016\n\006heroId\030\003 \001(\005\"N\n\010ItemData\022\016\n\006itemId\030\001" +
-      " \001(\005\022\r\n\005count\030\002 \001(\005\022#\n\010property\030\003 \001(\0132\021." +
-      "Message.Property\":\n\007BagSlot\022\016\n\006slotId\030\001 " +
-      "\001(\005\022\037\n\004data\030\002 \001(\0132\021.Message.ItemData*O\n\r" +
-      "FormationType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FOR" +
-      "MATION_DEFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002*<\n" +
-      "\tEnemyType\022\014\n\010CREATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n\003" +
-      "NPC\020\002\022\014\n\010EXERCISE\020\003*\222\001\n\nRecordType\022\n\n\006AC" +
-      "TION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n" +
-      "\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022" +
-      "\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKI" +
-      "LL_USE\020\010*E\n\nDamageType\022\021\n\rDAMAGE_NORMAL\020" +
-      "\000\022\023\n\017DAMAGE_CRITICAL\020\001\022\017\n\013DAMAGE_NONE\020\002*" +
-      "F\n\014DisplayPoint\022\014\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_" +
-      "2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*E\n\nRewar" +
-      "dType\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017REWARD_RESOU" +
-      "RCE\020\001\022\017\n\013REWARD_ITEM\020\002B\025\n\017game.proto.dat" +
-      "aH\001P\001b\006proto3"
+      "(\002\"\201\001\n\006Reward\022!\n\004type\030d \001(\0162\023.Message.Re" +
+      "wardType\022\020\n\010rewardId\030\001 \001(\005\022\r\n\005count\030\002 \001(" +
+      "\005\022\016\n\006heroId\030\003 \001(\005\022#\n\010property\030\n \001(\0132\021.Me" +
+      "ssage.Property\"N\n\010ItemData\022\016\n\006itemId\030\001 \001" +
+      "(\005\022\r\n\005count\030\002 \001(\005\022#\n\010property\030\003 \001(\0132\021.Me" +
+      "ssage.Property\":\n\007BagSlot\022\016\n\006slotId\030\001 \001(" +
+      "\005\022\037\n\004data\030\002 \001(\0132\021.Message.ItemData*O\n\rFo" +
+      "rmationType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FORMA" +
+      "TION_DEFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002*<\n\tE" +
+      "nemyType\022\014\n\010CREATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n\003NP" +
+      "C\020\002\022\014\n\010EXERCISE\020\003*\222\001\n\nRecordType\022\n\n\006ACTI" +
+      "ON\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n\005A" +
+      "VOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022\017\n" +
+      "\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKILL" +
+      "_USE\020\010*E\n\nDamageType\022\021\n\rDAMAGE_NORMAL\020\000\022" +
+      "\023\n\017DAMAGE_CRITICAL\020\001\022\017\n\013DAMAGE_NONE\020\002*F\n" +
+      "\014DisplayPoint\022\014\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_2\020" +
+      "\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*E\n\nRewardT" +
+      "ype\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017REWARD_RESOURC" +
+      "E\020\001\022\017\n\013REWARD_ITEM\020\002B\025\n\017game.proto.dataH" +
+      "\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -478,7 +479,7 @@ public final class Data {
     internal_static_Message_Reward_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_Reward_descriptor,
-        new java.lang.String[] { "Type", "RewardId", "Count", "HeroId", });
+        new java.lang.String[] { "Type", "RewardId", "Count", "HeroId", "Property", });
     internal_static_Message_ItemData_descriptor =
       getDescriptor().getMessageTypes().get(24);
     internal_static_Message_ItemData_fieldAccessorTable = new

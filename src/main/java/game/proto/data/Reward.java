@@ -68,6 +68,19 @@ private static final long serialVersionUID = 0L;
             heroId_ = input.readInt32();
             break;
           }
+          case 82: {
+            game.proto.data.Property.Builder subBuilder = null;
+            if (property_ != null) {
+              subBuilder = property_.toBuilder();
+            }
+            property_ = input.readMessage(game.proto.data.Property.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(property_);
+              property_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           case 800: {
             int rawValue = input.readEnum();
 
@@ -162,6 +175,44 @@ private static final long serialVersionUID = 0L;
     return heroId_;
   }
 
+  public static final int PROPERTY_FIELD_NUMBER = 10;
+  private game.proto.data.Property property_;
+  /**
+   * <pre>
+   * 装备
+   * </pre>
+   *
+   * <code>.Message.Property property = 10;</code>
+   * @return Whether the property field is set.
+   */
+  @java.lang.Override
+  public boolean hasProperty() {
+    return property_ != null;
+  }
+  /**
+   * <pre>
+   * 装备
+   * </pre>
+   *
+   * <code>.Message.Property property = 10;</code>
+   * @return The property.
+   */
+  @java.lang.Override
+  public game.proto.data.Property getProperty() {
+    return property_ == null ? game.proto.data.Property.getDefaultInstance() : property_;
+  }
+  /**
+   * <pre>
+   * 装备
+   * </pre>
+   *
+   * <code>.Message.Property property = 10;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.PropertyOrBuilder getPropertyOrBuilder() {
+    return getProperty();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -184,6 +235,9 @@ private static final long serialVersionUID = 0L;
     }
     if (heroId_ != 0) {
       output.writeInt32(3, heroId_);
+    }
+    if (property_ != null) {
+      output.writeMessage(10, getProperty());
     }
     if (type_ != game.proto.data.RewardType.REWARD_NORMAL.getNumber()) {
       output.writeEnum(100, type_);
@@ -208,6 +262,10 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, heroId_);
+    }
+    if (property_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(10, getProperty());
     }
     if (type_ != game.proto.data.RewardType.REWARD_NORMAL.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
@@ -235,6 +293,11 @@ private static final long serialVersionUID = 0L;
         != other.getCount()) return false;
     if (getHeroId()
         != other.getHeroId()) return false;
+    if (hasProperty() != other.hasProperty()) return false;
+    if (hasProperty()) {
+      if (!getProperty()
+          .equals(other.getProperty())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -254,6 +317,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getCount();
     hash = (37 * hash) + HEROID_FIELD_NUMBER;
     hash = (53 * hash) + getHeroId();
+    if (hasProperty()) {
+      hash = (37 * hash) + PROPERTY_FIELD_NUMBER;
+      hash = (53 * hash) + getProperty().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -399,6 +466,12 @@ private static final long serialVersionUID = 0L;
 
       heroId_ = 0;
 
+      if (propertyBuilder_ == null) {
+        property_ = null;
+      } else {
+        property_ = null;
+        propertyBuilder_ = null;
+      }
       return this;
     }
 
@@ -429,6 +502,11 @@ private static final long serialVersionUID = 0L;
       result.rewardId_ = rewardId_;
       result.count_ = count_;
       result.heroId_ = heroId_;
+      if (propertyBuilder_ == null) {
+        result.property_ = property_;
+      } else {
+        result.property_ = propertyBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -488,6 +566,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getHeroId() != 0) {
         setHeroId(other.getHeroId());
+      }
+      if (other.hasProperty()) {
+        mergeProperty(other.getProperty());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -675,6 +756,161 @@ private static final long serialVersionUID = 0L;
       heroId_ = 0;
       onChanged();
       return this;
+    }
+
+    private game.proto.data.Property property_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.Property, game.proto.data.Property.Builder, game.proto.data.PropertyOrBuilder> propertyBuilder_;
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     * @return Whether the property field is set.
+     */
+    public boolean hasProperty() {
+      return propertyBuilder_ != null || property_ != null;
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     * @return The property.
+     */
+    public game.proto.data.Property getProperty() {
+      if (propertyBuilder_ == null) {
+        return property_ == null ? game.proto.data.Property.getDefaultInstance() : property_;
+      } else {
+        return propertyBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    public Builder setProperty(game.proto.data.Property value) {
+      if (propertyBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        property_ = value;
+        onChanged();
+      } else {
+        propertyBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    public Builder setProperty(
+        game.proto.data.Property.Builder builderForValue) {
+      if (propertyBuilder_ == null) {
+        property_ = builderForValue.build();
+        onChanged();
+      } else {
+        propertyBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    public Builder mergeProperty(game.proto.data.Property value) {
+      if (propertyBuilder_ == null) {
+        if (property_ != null) {
+          property_ =
+            game.proto.data.Property.newBuilder(property_).mergeFrom(value).buildPartial();
+        } else {
+          property_ = value;
+        }
+        onChanged();
+      } else {
+        propertyBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    public Builder clearProperty() {
+      if (propertyBuilder_ == null) {
+        property_ = null;
+        onChanged();
+      } else {
+        property_ = null;
+        propertyBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    public game.proto.data.Property.Builder getPropertyBuilder() {
+      
+      onChanged();
+      return getPropertyFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    public game.proto.data.PropertyOrBuilder getPropertyOrBuilder() {
+      if (propertyBuilder_ != null) {
+        return propertyBuilder_.getMessageOrBuilder();
+      } else {
+        return property_ == null ?
+            game.proto.data.Property.getDefaultInstance() : property_;
+      }
+    }
+    /**
+     * <pre>
+     * 装备
+     * </pre>
+     *
+     * <code>.Message.Property property = 10;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.Property, game.proto.data.Property.Builder, game.proto.data.PropertyOrBuilder> 
+        getPropertyFieldBuilder() {
+      if (propertyBuilder_ == null) {
+        propertyBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.Property, game.proto.data.Property.Builder, game.proto.data.PropertyOrBuilder>(
+                getProperty(),
+                getParentForChildren(),
+                isClean());
+        property_ = null;
+      }
+      return propertyBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -20,7 +20,9 @@ import java.util.concurrent.TimeUnit;
  * 2021/2/23 16:21
  */
 public class ScheduleManager extends AbsLifecycle {
-    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor(new DefaultThreadFactory("玩家定时器"));
+    ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor(new DefaultThreadFactory("全局玩家定时器"));
+
+    private ScheduledExecutorService playerExecutorService = Executors.newSingleThreadScheduledExecutor(new DefaultThreadFactory("玩家定时器"));
 
     /**
      * 玩家定时器
@@ -52,5 +54,9 @@ public class ScheduleManager extends AbsLifecycle {
         super.start();
         executorService.schedule(this::doPlayerTick, 0, TimeUnit.SECONDS);
         executorService.schedule(this::dataFlushSchedule, 0, TimeUnit.SECONDS);
+    }
+
+    public void doSchedule(Runnable runnable, long millisecond) {
+        playerExecutorService.schedule(runnable, millisecond, TimeUnit.MILLISECONDS);
     }
 }

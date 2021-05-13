@@ -262,6 +262,14 @@ message PlayerMoveReq{
     float y = 2;
 }
 
+// 钓鱼
+message FishReq{
+
+}
+message FishPush{
+    bool success = 1;
+    repeated Reward reward = 2;
+}
 
 
 

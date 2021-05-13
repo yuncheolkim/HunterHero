@@ -14,8 +14,8 @@ message PlayerBackData {
     int64 loginTime = 5;
     int64 updateTime = 6;
     int32 localId = 10;
-    map<int32, bool> completeTask = 100;
 
+    map<int32, bool> completeTask = 100;
 }
 
 
@@ -24,3 +24,4 @@ message SaveData{
     PlayerBackData backData = 1;
     PlayerData pd = 2;
 }
+

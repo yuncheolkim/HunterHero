@@ -234,6 +234,16 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerMoveReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishPush_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishPush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -308,7 +318,9 @@ public final class MessageOuterClass {
       "SellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2" +
       "\n\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006he" +
       "roId\030\002 \001(\005\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 \001(\002\022\t" +
-      "\n\001y\030\002 \001(\002B\020\n\ngame.protoH\001P\001b\006proto3"
+      "\n\001y\030\002 \001(\002\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007succ" +
+      "ess\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Rewa" +
+      "rdB\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -579,6 +591,18 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerMoveReq_descriptor,
         new java.lang.String[] { "X", "Y", });
+    internal_static_Message_FishReq_descriptor =
+      getDescriptor().getMessageTypes().get(43);
+    internal_static_Message_FishReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishReq_descriptor,
+        new java.lang.String[] { });
+    internal_static_Message_FishPush_descriptor =
+      getDescriptor().getMessageTypes().get(44);
+    internal_static_Message_FishPush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishPush_descriptor,
+        new java.lang.String[] { "Success", "Reward", });
     game.proto.data.Data.getDescriptor();
   }
 

@@ -4,6 +4,14 @@ option java_package = "game.proto.back";
 option optimize_for = SPEED;
 option java_multiple_files = true;
 
+enum MsgNoBackInner{
+    B_NONE = 0;
+    B_TICK = 10;
+    B_DATA_PUSH = 11;
+    B_HERO_DATA = 12;
+    B_FISH_END = 13;
+}
+
 enum MsgNo {
     NONE = 0;
     // 登录
@@ -13,6 +21,8 @@ enum MsgNo {
     kick_push = 2;
     // 创建名称
     player_create_name = 3;
+    // 10 ~100 后端使用
+
 
     // 心跳
     heartbeat = 101;
@@ -77,6 +87,8 @@ enum MsgNo {
     ItemExchangeReqNo = 7003;
     // 出售物品
     ItemSellReqNo = 7004;
+    //钓鱼
+    FishReqReq = 8001;
 
 
 }

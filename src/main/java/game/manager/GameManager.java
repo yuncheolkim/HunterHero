@@ -6,6 +6,7 @@ import game.game.scene.GameScene;
 import game.module.bag.BagHandler;
 import game.module.cmd.CmdHandler;
 import game.module.fight.FightHandler;
+import game.module.fish.FishHandler;
 import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
@@ -18,6 +19,7 @@ import game.module.task.TaskHandler;
 import game.msg.*;
 import game.proto.*;
 import game.proto.back.MsgNo;
+import game.proto.back.MsgNoBackInner;
 import game.proto.data.PlayerHero;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -74,9 +76,10 @@ public class GameManager extends AbsLifecycle {
         // relogin
         addHandler(new InvokerNoParam(-2, loginHandler::relogin));
         // inner
-        addHandler(new InvokerNoParam(10, PlayerHandler::tick));
-        addHandler(new Invoker<>(11, PlayerHandler::dataFlush, Empty::parser));
-        addHandler(new Invoker<>(12, HeroHandler::updateHero, PlayerHero::parser));
+        addHandler(new InvokerNoParam(MsgNoBackInner.B_TICK_VALUE, PlayerHandler::tick));
+        addHandler(new Invoker<>(MsgNoBackInner.B_DATA_PUSH_VALUE, PlayerHandler::dataFlush, Empty::parser));
+        addHandler(new Invoker<>(MsgNoBackInner.B_HERO_DATA_VALUE, HeroHandler::updateHero, PlayerHero::parser));
+        addHandler(new InvokerNoParam(MsgNoBackInner.B_FISH_END_VALUE, FishHandler::fishEnd));
 
         // heart
         addHandler(new InvokerReturn<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
@@ -115,6 +118,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new RetInvoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
         // 玩家操作 移动
         addHandler(new Invoker<>(MsgNo.PlayerMoveReqNo_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
+
+        // 钓鱼
+        addHandler(new Invoker<>(MsgNo.FishReqReq_VALUE, FishHandler::fish, FishReq::parser));
 
     }
 

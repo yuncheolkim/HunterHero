@@ -39,4 +39,31 @@ public interface RewardOrBuilder extends
    * @return The heroId.
    */
   int getHeroId();
+
+  /**
+   * <pre>
+   * 装备
+   * </pre>
+   *
+   * <code>.Message.Property property = 10;</code>
+   * @return Whether the property field is set.
+   */
+  boolean hasProperty();
+  /**
+   * <pre>
+   * 装备
+   * </pre>
+   *
+   * <code>.Message.Property property = 10;</code>
+   * @return The property.
+   */
+  game.proto.data.Property getProperty();
+  /**
+   * <pre>
+   * 装备
+   * </pre>
+   *
+   * <code>.Message.Property property = 10;</code>
+   */
+  game.proto.data.PropertyOrBuilder getPropertyOrBuilder();
 }
