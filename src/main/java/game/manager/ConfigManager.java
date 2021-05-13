@@ -10,6 +10,7 @@ import game.config.drop.DropItemConfigData;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
+import game.config.param.ParamConfigData;
 
 import java.util.*;
 
@@ -51,7 +52,9 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, DataConfigData> dataMap15;
 
     public Map<Integer, DataConfigData> dataMap16;
+
     public Map<Integer, DataConfigData> dataMap17;
+
     public Map<Integer, DataConfigData> dataMap18;
 
     public Map<Integer, DataConfigData> taskMap1;
@@ -75,12 +78,18 @@ public class ConfigManager extends AbsLifecycle {
 
     // 区域掉落
     public Map<Integer, List<DropItemConfigData>> areaDropMap;
+
     // 敌人掉落
     public Map<Integer, List<DropItemConfigData>> enemyDropMap;
+
     // item
     private Map<Integer, DataConfigData> itemMap;
+
     // Npc任务
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
+
+    // 参数
+    private ParamConfigData paramConfigData = new ParamConfigData();
 
 
     @Override
@@ -192,6 +201,12 @@ public class ConfigManager extends AbsLifecycle {
         for (DataConfigData value : taskMap4.values()) {
             npcTaskMap.put(value.npcId, value);
         }
+
+        // param
+
+        paramConfigData.fishPower = dataMap8.get(5).count;
+        paramConfigData.fishSuccessTime = dataMap8.get(6).count;
+
     }
 
     /**
@@ -264,6 +279,19 @@ public class ConfigManager extends AbsLifecycle {
     public Collection<DataConfigData> getNpcTask(int npcId) {
 
         return npcTaskMap.get(npcId);
+    }
+
+    /**
+     * 钓鱼消耗的体力
+     *
+     * @return
+     */
+    public int powerFish() {
+        return paramConfigData.fishPower;
+    }
+
+    public ParamConfigData getParamConfigData() {
+        return paramConfigData;
     }
 }
 

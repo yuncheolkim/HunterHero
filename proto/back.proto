@@ -25,3 +25,6 @@ message SaveData{
     PlayerData pd = 2;
 }
 
+message FishData{
+    int32 id = 1;
+}

@@ -35,7 +35,7 @@ public class G {
     }
 
 
-    public static void sendToPlayer(long pid, int msgNo, com.google.protobuf.Message message) {
+    public static void sendToPlayer(long pid, int msgNo, com.google.protobuf.MessageLite message) {
         W.getPlayerWork(pid).addTask(new MsgProcess(Message.newBuilder()
                 .setMsgNo(msgNo)
                 .setBody(message.toByteString()).build(), pid));

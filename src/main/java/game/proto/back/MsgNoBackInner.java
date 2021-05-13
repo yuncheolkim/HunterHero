@@ -25,9 +25,13 @@ public enum MsgNoBackInner
    */
   B_HERO_DATA(12),
   /**
-   * <code>B_FISH_END = 13;</code>
+   * <code>B_FISH_HOOK = 13;</code>
    */
-  B_FISH_END(13),
+  B_FISH_HOOK(13),
+  /**
+   * <code>B_FISH_HOOK_EXPIRE = 14;</code>
+   */
+  B_FISH_HOOK_EXPIRE(14),
   UNRECOGNIZED(-1),
   ;
 
@@ -48,9 +52,13 @@ public enum MsgNoBackInner
    */
   public static final int B_HERO_DATA_VALUE = 12;
   /**
-   * <code>B_FISH_END = 13;</code>
+   * <code>B_FISH_HOOK = 13;</code>
    */
-  public static final int B_FISH_END_VALUE = 13;
+  public static final int B_FISH_HOOK_VALUE = 13;
+  /**
+   * <code>B_FISH_HOOK_EXPIRE = 14;</code>
+   */
+  public static final int B_FISH_HOOK_EXPIRE_VALUE = 14;
 
 
   public final int getNumber() {
@@ -81,7 +89,8 @@ public enum MsgNoBackInner
       case 10: return B_TICK;
       case 11: return B_DATA_PUSH;
       case 12: return B_HERO_DATA;
-      case 13: return B_FISH_END;
+      case 13: return B_FISH_HOOK;
+      case 14: return B_FISH_HOOK_EXPIRE;
       default: return null;
     }
   }

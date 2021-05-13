@@ -29,6 +29,11 @@ public final class Back {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_SaveData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishData_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishData_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -47,8 +52,8 @@ public final class Back {
       "\021CompleteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value" +
       "\030\002 \001(\010:\0028\001\"V\n\010SaveData\022)\n\010backData\030\001 \001(\013" +
       "2\027.Message.PlayerBackData\022\037\n\002pd\030\002 \001(\0132\023." +
-      "Message.PlayerDataB\025\n\017game.proto.backH\001P" +
-      "\001b\006proto3"
+      "Message.PlayerData\"\026\n\010FishData\022\n\n\002id\030\001 \001" +
+      "(\005B\025\n\017game.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -73,6 +78,12 @@ public final class Back {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_SaveData_descriptor,
         new java.lang.String[] { "BackData", "Pd", });
+    internal_static_Message_FishData_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_Message_FishData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishData_descriptor,
+        new java.lang.String[] { "Id", });
     game.proto.data.Data.getDescriptor();
   }
 

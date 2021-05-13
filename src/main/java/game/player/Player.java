@@ -1,5 +1,6 @@
 package game.player;
 
+import com.google.protobuf.MessageLite;
 import game.anno.ProcessPersistenceData;
 import game.anno.SaveData;
 import game.base.G;
@@ -38,6 +39,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static game.base.GameConstants.MAX_PLAYER_LEVEL;
+import static game.exception.ErrorEnum.ERR_106;
 import static game.module.bag.BagUpdateService.updatePlayerBank;
 
 /**
@@ -87,10 +89,7 @@ public class Player {
     @ProcessPersistenceData
     public ItemBoxData bank = new ItemBoxData();
 
-    /**
-     * 是否在钓鱼
-     */
-    public boolean fishing;
+    public FishAction fishAction = new FishAction();
 
     public Player(long pid) {
         this.pid = pid;
@@ -415,6 +414,7 @@ public class Player {
      */
     public void consumePower(int count, ConsumeTypeEnum typeEnum) {
 
+        ModuleAssert.isTrue(pd.getResourceBuilder().getPower() >= count, ERR_106);
     }
 
     /**
@@ -644,8 +644,16 @@ public class Player {
         transport.getChannel().attr(GameConstants.pid).set(pid);
     }
 
+    /**
+     * @param millisecond
+     * @param msgNo       发送的消息号
+     */
     public void scheduleAfter(final long millisecond, final int msgNo) {
         G.S.doSchedule(() -> G.sendToPlayer(pid, msgNo), millisecond);
+    }
+
+    public void scheduleAfter(final long millisecond, final int msgNo, final MessageLite messageLite) {
+        G.S.doSchedule(() -> G.sendToPlayer(pid, msgNo, messageLite), millisecond);
     }
 
     public long getPid() {

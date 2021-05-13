@@ -9,7 +9,8 @@ enum MsgNoBackInner{
     B_TICK = 10;
     B_DATA_PUSH = 11;
     B_HERO_DATA = 12;
-    B_FISH_END = 13;
+    B_FISH_HOOK = 13;
+    B_FISH_HOOK_EXPIRE = 14;
 }
 
 enum MsgNo {

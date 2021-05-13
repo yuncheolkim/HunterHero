@@ -24,6 +24,7 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     ERR_103(103, "数字不能小于等于0"),
     ERR_104(104, "背包空间不足"),
     ERR_105(105, "资源不足"),
+    ERR_106(106, "体力不足"),
 
     ;
 

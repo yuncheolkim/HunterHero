@@ -18,6 +18,7 @@ import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
 import game.msg.*;
 import game.proto.*;
+import game.proto.back.FishData;
 import game.proto.back.MsgNo;
 import game.proto.back.MsgNoBackInner;
 import game.proto.data.PlayerHero;
@@ -80,7 +81,8 @@ public class GameManager extends AbsLifecycle {
         addHandler(new InvokerNoParam(MsgNoBackInner.B_TICK_VALUE, PlayerHandler::tick));
         addHandler(new Invoker<>(MsgNoBackInner.B_DATA_PUSH_VALUE, PlayerHandler::dataFlush, Empty::parser));
         addHandler(new Invoker<>(MsgNoBackInner.B_HERO_DATA_VALUE, HeroHandler::updateHero, PlayerHero::parser));
-        addHandler(new InvokerNoParam(MsgNoBackInner.B_FISH_END_VALUE, FishHandler::fishEnd));
+        addHandler(new Invoker<>(MsgNoBackInner.B_FISH_HOOK_VALUE, FishHandler::fishHook, FishData::parser));
+        addHandler(new Invoker<>(MsgNoBackInner.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
 
         // heart
         addHandler(new InvokerReturn<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));

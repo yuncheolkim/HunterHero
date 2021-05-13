@@ -1,9 +1,15 @@
 package game.module.fish;
 
+import game.base.G;
+import game.game.ConsumeTypeEnum;
+import game.player.FishAction;
 import game.player.Player;
 import game.proto.FishPush;
 import game.proto.FishReq;
+import game.proto.back.FishData;
+import game.proto.back.MsgNoBackInner;
 import game.proto.no.No;
+import game.utils.CalcUtil;
 
 /**
  * 钓鱼系统
@@ -22,16 +28,35 @@ public class FishHandler {
     public static void fish(Player player, FishReq req) {
 
         // todo 检查是否在钓鱼区域
+        FishAction fishAction = player.fishAction;
+        if (fishAction.inFish()) {
 
-        if (player.fishing) {
-            //失败
-            player.getTransport().send(
-                    No.FishReq_VALUE,
-                    FishPush.newBuilder().setSuccess(false).buildPartial()
-            );
+            // 提竿
+            if (fishAction.hook()) {
+                // 成功
+                player.getTransport().send(
+                        No.FishReq_VALUE,
+                        FishPush.newBuilder().setSuccess(true).buildPartial()
+                );
+            } else {
+                //失败
+                player.getTransport().send(
+                        No.FishReq_VALUE,
+                        FishPush.newBuilder().setSuccess(false).buildPartial()
+                );
+
+            }
+            fishAction.endFish();
         } else {
-            // todo 消耗体力
+            player.consumePower(G.C.powerFish(), ConsumeTypeEnum.钓鱼);
+            fishAction.startFish();
 
+            // todo 提竿时间
+            player.scheduleAfter(
+                    // 2.5s ~ 5s
+                    CalcUtil.random(2500, 5000)
+                    , MsgNoBackInner.B_FISH_HOOK_VALUE
+                    , FishData.newBuilder().setId(fishAction.getId()).buildPartial());
         }
 
     }
@@ -39,13 +64,39 @@ public class FishHandler {
 
     /**
      * inner
+     * <p>
+     * 提竿阶段
      *
      * @param player
      * @param req
      * @return
      */
-    public static void fishEnd(Player player) {
+    public static void fishHook(Player player, FishData fishData) {
+        FishAction fishAction = player.fishAction;
+        if (fishAction.inFish() && fishAction.getId() == fishData.getId()) {
+            player.fishAction.waitHook();
+            // 提竿
+            player.scheduleAfter(
+                    G.C.getParamConfigData().fishSuccessTime,
+                    MsgNoBackInner.B_FISH_HOOK_EXPIRE_VALUE,
+                    fishData
+            );
+        }
+    }
 
+
+    /**
+     * 提竿超时
+     *
+     * @param player
+     */
+    public static void waitHook(Player player, FishData fishData) {
+        FishAction fishAction = player.fishAction;
+        if (fishAction.inFish() && fishAction.getId() == fishData.getId()) {
+            //失败
+            player.getTransport().send(No.FishReq_VALUE, FishPush.newBuilder().setSuccess(false).buildPartial());
+            fishAction.endFish();
+        }
     }
 
 }
