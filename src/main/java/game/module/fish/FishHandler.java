@@ -28,6 +28,7 @@ public class FishHandler {
     public static void fish(Player player, FishReq req) {
 
         // todo 检查是否在钓鱼区域
+
         FishAction fishAction = player.fishAction;
         if (fishAction.inFish()) {
 
@@ -48,13 +49,14 @@ public class FishHandler {
             }
             fishAction.endFish();
         } else {
+            // 开始钓鱼
             player.consumePower(G.C.powerFish(), ConsumeTypeEnum.钓鱼);
+
             fishAction.startFish();
 
             // todo 提竿时间
             player.scheduleAfter(
-                    // 2.5s ~ 5s
-                    CalcUtil.random(2500, 5000)
+                    CalcUtil.random(3000, 8000)
                     , MsgNoBackInner.B_FISH_HOOK_VALUE
                     , FishData.newBuilder().setId(fishAction.getId()).buildPartial());
         }
