@@ -42,7 +42,6 @@ public class FishHandler {
         // 开始钓鱼
         fishAction.startFish();
 
-        // todo 提竿时间
         player.scheduleAfter(
                 CalcUtil.random(3000, 8000)
                 , MsgNoBackInner.B_FISH_HOOK_VALUE
@@ -67,13 +66,13 @@ public class FishHandler {
         if (fishAction.hook()) {
             // 成功
             player.getTransport().send(
-                    No.FishReq_VALUE,
+                    No.FishHookReq_VALUE,
                     FishPush.newBuilder().setSuccess(true).buildPartial()
             );
         } else {
             //失败
             player.getTransport().send(
-                    No.FishReq_VALUE,
+                    No.FishHookReq_VALUE,
                     FishPush.newBuilder().setSuccess(false).buildPartial()
             );
 
