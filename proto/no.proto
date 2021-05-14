@@ -7,5 +7,6 @@ option java_multiple_files = true;
 enum No {
     NONE = 0;
     FishReq = 8001;
+    FishHookReq = 8002;
 
 }

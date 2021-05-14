@@ -124,6 +124,7 @@ public class GameManager extends AbsLifecycle {
 
         // 钓鱼
         addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));
+        addHandler(new Invoker<>(No.FishHookReq_VALUE, FishHandler::fishHook, FishHookReq::parser));
 
     }
 

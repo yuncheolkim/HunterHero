@@ -36,7 +36,7 @@ public class HeroHandler {
             level = realm.getLevel() + 1;
         }
         DataConfigData dataConfigData = G.C.dataMap12.get(level);
-        ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_102);
+        ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_5);
         // Gold
         player.consumeGold(dataConfigData.gold, ConsumeTypeEnum.历练);
 
@@ -67,7 +67,7 @@ public class HeroHandler {
             level = realm.getLevel() + 1;
         }
         DataConfigData dataConfigData = G.C.dataMap12.get(level);
-        ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_102);
+        ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_5);
         // Gold
         player.consumeGold(dataConfigData.gold, ConsumeTypeEnum.修炼);
 

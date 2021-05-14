@@ -303,7 +303,7 @@ public class Player {
      */
     public void consumeGold(int gold, ConsumeTypeEnum consume) {
         ModuleAssert.isTrue(gold > 0, ErrorEnum.ERR_103);
-        ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_101);
+        ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_4);
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() - gold);
         G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, gold * -1, consume));

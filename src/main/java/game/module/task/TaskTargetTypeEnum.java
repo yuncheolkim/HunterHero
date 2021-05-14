@@ -1,5 +1,9 @@
 package game.module.task;
 
+import game.base.G;
+import game.config.DataConfigData;
+import game.proto.data.TaskTarget;
+
 /**
  * 任务目标类型
  *
@@ -19,10 +23,6 @@ public enum TaskTargetTypeEnum {
      * 搜集物品
      */
     SEARCH(3),
-    /**
-     * 打怪拿物品
-     */
-    KILL_SEARCH(4),
     ;
 
 
@@ -31,5 +31,21 @@ public enum TaskTargetTypeEnum {
     TaskTargetTypeEnum(int i) {
         this.id = i;
     }
+
+    public boolean happened(int sourceId, TaskTarget target) {
+        DataConfigData data = G.C.taskMap5.get(target.getId());
+        return data.v1 == sourceId && data.v2 > target.getValue();
+    }
+
+    public TaskTarget addValue(int addCount, TaskTarget target) {
+        DataConfigData data = G.C.taskMap5.get(target.getId());
+        int count = Math.min(target.getValue() + addCount, data.v2);
+
+        return target.toBuilder()
+                .setValue(count)
+                .setComplete(count == data.v2)
+                .build();
+    }
+
 
 }

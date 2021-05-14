@@ -244,6 +244,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FishPush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishHookReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishHookReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -320,7 +325,8 @@ public final class MessageOuterClass {
       "roId\030\002 \001(\005\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 \001(\002\022\t" +
       "\n\001y\030\002 \001(\002\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007succ" +
       "ess\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Rewa" +
-      "rdB\020\n\ngame.protoH\001P\001b\006proto3"
+      "rd\"\r\n\013FishHookReqB\020\n\ngame.protoH\001P\001b\006pro" +
+      "to3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -603,6 +609,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishPush_descriptor,
         new java.lang.String[] { "Success", "Reward", });
+    internal_static_Message_FishHookReq_descriptor =
+      getDescriptor().getMessageTypes().get(45);
+    internal_static_Message_FishHookReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishHookReq_descriptor,
+        new java.lang.String[] { });
     game.proto.data.Data.getDescriptor();
   }
 

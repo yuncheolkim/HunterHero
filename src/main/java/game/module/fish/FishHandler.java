@@ -1,15 +1,20 @@
 package game.module.fish;
 
 import game.base.G;
+import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.player.FishAction;
 import game.player.Player;
+import game.proto.FishHookReq;
 import game.proto.FishPush;
 import game.proto.FishReq;
 import game.proto.back.FishData;
 import game.proto.back.MsgNoBackInner;
 import game.proto.no.No;
 import game.utils.CalcUtil;
+
+import static game.exception.ErrorEnum.ERR_110;
+import static game.exception.ErrorEnum.ERR_111;
 
 /**
  * 钓鱼系统
@@ -30,36 +35,50 @@ public class FishHandler {
         // todo 检查是否在钓鱼区域
 
         FishAction fishAction = player.fishAction;
-        if (fishAction.inFish()) {
+        ModuleAssert.isFalse(fishAction.inFish(), ERR_110);
+        // 消耗体力
+        player.consumePower(G.C.powerFish(), ConsumeTypeEnum.钓鱼);
 
-            // 提竿
-            if (fishAction.hook()) {
-                // 成功
-                player.getTransport().send(
-                        No.FishReq_VALUE,
-                        FishPush.newBuilder().setSuccess(true).buildPartial()
-                );
-            } else {
-                //失败
-                player.getTransport().send(
-                        No.FishReq_VALUE,
-                        FishPush.newBuilder().setSuccess(false).buildPartial()
-                );
+        // 开始钓鱼
+        fishAction.startFish();
 
-            }
-            fishAction.endFish();
+        // todo 提竿时间
+        player.scheduleAfter(
+                CalcUtil.random(3000, 8000)
+                , MsgNoBackInner.B_FISH_HOOK_VALUE
+                , FishData.newBuilder().setId(fishAction.getId()).buildPartial());
+
+    }
+
+    /**
+     * 提竿
+     *
+     * @param player
+     * @param req
+     */
+    public static void fishHook(Player player, FishHookReq req) {
+
+        // todo 检查是否在钓鱼区域
+
+        FishAction fishAction = player.fishAction;
+        ModuleAssert.isTrue(fishAction.inFish(), ERR_111);
+
+        // 提竿
+        if (fishAction.hook()) {
+            // 成功
+            player.getTransport().send(
+                    No.FishReq_VALUE,
+                    FishPush.newBuilder().setSuccess(true).buildPartial()
+            );
         } else {
-            // 开始钓鱼
-            player.consumePower(G.C.powerFish(), ConsumeTypeEnum.钓鱼);
+            //失败
+            player.getTransport().send(
+                    No.FishReq_VALUE,
+                    FishPush.newBuilder().setSuccess(false).buildPartial()
+            );
 
-            fishAction.startFish();
-
-            // todo 提竿时间
-            player.scheduleAfter(
-                    CalcUtil.random(3000, 8000)
-                    , MsgNoBackInner.B_FISH_HOOK_VALUE
-                    , FishData.newBuilder().setId(fishAction.getId()).buildPartial());
         }
+        fishAction.endFish();
 
     }
 

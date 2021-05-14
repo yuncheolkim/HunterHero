@@ -16,6 +16,10 @@ public enum No
    * <code>FishReq = 8001;</code>
    */
   FishReq(8001),
+  /**
+   * <code>FishHookReq = 8002;</code>
+   */
+  FishHookReq(8002),
   UNRECOGNIZED(-1),
   ;
 
@@ -27,6 +31,10 @@ public enum No
    * <code>FishReq = 8001;</code>
    */
   public static final int FishReq_VALUE = 8001;
+  /**
+   * <code>FishHookReq = 8002;</code>
+   */
+  public static final int FishHookReq_VALUE = 8002;
 
 
   public final int getNumber() {
@@ -55,6 +63,7 @@ public enum No
     switch (value) {
       case 0: return NONE;
       case 8001: return FishReq;
+      case 8002: return FishHookReq;
       default: return null;
     }
   }
