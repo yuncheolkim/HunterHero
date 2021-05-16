@@ -88,6 +88,7 @@ message SceneData {
 message PlayerTask {
     map<int32, RunTask> runTask = 3;
 }
+////////////// task
 
 message RunTask {
     int32 taskId = 1;

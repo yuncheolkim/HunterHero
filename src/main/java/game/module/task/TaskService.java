@@ -107,11 +107,17 @@ public class TaskService {
                     taskBuilder.putRunTask(build.getTaskId(), build);
 
                     // push
-                    player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                    TaskStatusChangePush.Builder msgBuilder = TaskStatusChangePush.newBuilder()
                             .setTaskId(build.getTaskId())
-                            .setComplete(complete)
                             .setCount(taskTarget.getValue())
-                            .setTargetId(taskTarget.getId())
+                            .setTargetId(taskTarget.getId());
+
+                    if (complete) {
+                        msgBuilder.setStatus(TaskStatusEnum.完成未提交.id);
+                    } else {
+                        msgBuilder.setStatus(TaskStatusEnum.进度更新.id);
+                    }
+                    player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, msgBuilder
                             .build()
                     );
                     taskResult = null;

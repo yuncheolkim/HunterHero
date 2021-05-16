@@ -62,11 +62,6 @@ private static final long serialVersionUID = 0L;
             taskId_ = input.readInt32();
             break;
           }
-          case 240: {
-
-            complete_ = input.readBool();
-            break;
-          }
           case 280: {
 
             status_ = input.readInt32();
@@ -154,22 +149,11 @@ private static final long serialVersionUID = 0L;
     return taskId_;
   }
 
-  public static final int COMPLETE_FIELD_NUMBER = 30;
-  private boolean complete_;
-  /**
-   * <code>bool complete = 30;</code>
-   * @return The complete.
-   */
-  @java.lang.Override
-  public boolean getComplete() {
-    return complete_;
-  }
-
   public static final int STATUS_FIELD_NUMBER = 35;
   private int status_;
   /**
    * <pre>
-   * 1:完成未提交,2:完成已提交
+   * 1:完成未提交,2:完成已提交,3:接受任务,4:进度更新
    * </pre>
    *
    * <code>int32 status = 35;</code>
@@ -178,6 +162,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getStatus() {
     return status_;
+  }
+
+  public static final int TARGETID_FIELD_NUMBER = 50;
+  private int targetId_;
+  /**
+   * <pre>
+   * 任务目标id
+   * </pre>
+   *
+   * <code>int32 targetId = 50;</code>
+   * @return The targetId.
+   */
+  @java.lang.Override
+  public int getTargetId() {
+    return targetId_;
   }
 
   public static final int COUNT_FIELD_NUMBER = 40;
@@ -193,17 +192,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getCount() {
     return count_;
-  }
-
-  public static final int TARGETID_FIELD_NUMBER = 50;
-  private int targetId_;
-  /**
-   * <code>int32 targetId = 50;</code>
-   * @return The targetId.
-   */
-  @java.lang.Override
-  public int getTargetId() {
-    return targetId_;
   }
 
   public static final int ACCEPT_FIELD_NUMBER = 60;
@@ -267,9 +255,6 @@ private static final long serialVersionUID = 0L;
     if (taskId_ != 0) {
       output.writeInt32(20, taskId_);
     }
-    if (complete_ != false) {
-      output.writeBool(30, complete_);
-    }
     if (status_ != 0) {
       output.writeInt32(35, status_);
     }
@@ -301,10 +286,6 @@ private static final long serialVersionUID = 0L;
     if (taskId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(20, taskId_);
-    }
-    if (complete_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(30, complete_);
     }
     if (status_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -345,14 +326,12 @@ private static final long serialVersionUID = 0L;
         != other.getNpcId()) return false;
     if (getTaskId()
         != other.getTaskId()) return false;
-    if (getComplete()
-        != other.getComplete()) return false;
     if (getStatus()
         != other.getStatus()) return false;
-    if (getCount()
-        != other.getCount()) return false;
     if (getTargetId()
         != other.getTargetId()) return false;
+    if (getCount()
+        != other.getCount()) return false;
     if (getAccept()
         != other.getAccept()) return false;
     if (hasRunTask() != other.hasRunTask()) return false;
@@ -375,15 +354,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getNpcId();
     hash = (37 * hash) + TASKID_FIELD_NUMBER;
     hash = (53 * hash) + getTaskId();
-    hash = (37 * hash) + COMPLETE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getComplete());
     hash = (37 * hash) + STATUS_FIELD_NUMBER;
     hash = (53 * hash) + getStatus();
-    hash = (37 * hash) + COUNT_FIELD_NUMBER;
-    hash = (53 * hash) + getCount();
     hash = (37 * hash) + TARGETID_FIELD_NUMBER;
     hash = (53 * hash) + getTargetId();
+    hash = (37 * hash) + COUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getCount();
     hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getAccept());
@@ -532,13 +508,11 @@ private static final long serialVersionUID = 0L;
 
       taskId_ = 0;
 
-      complete_ = false;
-
       status_ = 0;
 
-      count_ = 0;
-
       targetId_ = 0;
+
+      count_ = 0;
 
       accept_ = false;
 
@@ -576,10 +550,9 @@ private static final long serialVersionUID = 0L;
       game.proto.TaskStatusChangePush result = new game.proto.TaskStatusChangePush(this);
       result.npcId_ = npcId_;
       result.taskId_ = taskId_;
-      result.complete_ = complete_;
       result.status_ = status_;
-      result.count_ = count_;
       result.targetId_ = targetId_;
+      result.count_ = count_;
       result.accept_ = accept_;
       if (runTaskBuilder_ == null) {
         result.runTask_ = runTask_;
@@ -640,17 +613,14 @@ private static final long serialVersionUID = 0L;
       if (other.getTaskId() != 0) {
         setTaskId(other.getTaskId());
       }
-      if (other.getComplete() != false) {
-        setComplete(other.getComplete());
-      }
       if (other.getStatus() != 0) {
         setStatus(other.getStatus());
       }
-      if (other.getCount() != 0) {
-        setCount(other.getCount());
-      }
       if (other.getTargetId() != 0) {
         setTargetId(other.getTargetId());
+      }
+      if (other.getCount() != 0) {
+        setCount(other.getCount());
       }
       if (other.getAccept() != false) {
         setAccept(other.getAccept());
@@ -749,41 +719,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private boolean complete_ ;
-    /**
-     * <code>bool complete = 30;</code>
-     * @return The complete.
-     */
-    @java.lang.Override
-    public boolean getComplete() {
-      return complete_;
-    }
-    /**
-     * <code>bool complete = 30;</code>
-     * @param value The complete to set.
-     * @return This builder for chaining.
-     */
-    public Builder setComplete(boolean value) {
-      
-      complete_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool complete = 30;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearComplete() {
-      
-      complete_ = false;
-      onChanged();
-      return this;
-    }
-
     private int status_ ;
     /**
      * <pre>
-     * 1:完成未提交,2:完成已提交
+     * 1:完成未提交,2:完成已提交,3:接受任务,4:进度更新
      * </pre>
      *
      * <code>int32 status = 35;</code>
@@ -795,7 +734,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 1:完成未提交,2:完成已提交
+     * 1:完成未提交,2:完成已提交,3:接受任务,4:进度更新
      * </pre>
      *
      * <code>int32 status = 35;</code>
@@ -810,7 +749,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 1:完成未提交,2:完成已提交
+     * 1:完成未提交,2:完成已提交,3:接受任务,4:进度更新
      * </pre>
      *
      * <code>int32 status = 35;</code>
@@ -819,6 +758,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearStatus() {
       
       status_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int targetId_ ;
+    /**
+     * <pre>
+     * 任务目标id
+     * </pre>
+     *
+     * <code>int32 targetId = 50;</code>
+     * @return The targetId.
+     */
+    @java.lang.Override
+    public int getTargetId() {
+      return targetId_;
+    }
+    /**
+     * <pre>
+     * 任务目标id
+     * </pre>
+     *
+     * <code>int32 targetId = 50;</code>
+     * @param value The targetId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTargetId(int value) {
+      
+      targetId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 任务目标id
+     * </pre>
+     *
+     * <code>int32 targetId = 50;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTargetId() {
+      
+      targetId_ = 0;
       onChanged();
       return this;
     }
@@ -862,37 +844,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearCount() {
       
       count_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int targetId_ ;
-    /**
-     * <code>int32 targetId = 50;</code>
-     * @return The targetId.
-     */
-    @java.lang.Override
-    public int getTargetId() {
-      return targetId_;
-    }
-    /**
-     * <code>int32 targetId = 50;</code>
-     * @param value The targetId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTargetId(int value) {
-      
-      targetId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 targetId = 50;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearTargetId() {
-      
-      targetId_ = 0;
       onChanged();
       return this;
     }

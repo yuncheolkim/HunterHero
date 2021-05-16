@@ -269,64 +269,63 @@ public final class MessageOuterClass {
       "(\t\"\034\n\014HeartbeatReq\022\014\n\004time\030\001 \001(\003\"\034\n\014Hear" +
       "tbeatRes\022\014\n\004time\030\001 \001(\003\"\031\n\007TaskReq\022\016\n\006tas" +
       "kId\030\001 \001(\005\"\035\n\013TaskNewPush\022\016\n\006taskId\030\001 \003(\005" +
-      "\"\253\001\n\024TaskStatusChangePush\022\r\n\005npcId\030\n \001(\005" +
-      "\022\016\n\006taskId\030\024 \001(\005\022\020\n\010complete\030\036 \001(\010\022\016\n\006st" +
-      "atus\030# \001(\005\022\r\n\005count\030( \001(\005\022\020\n\010targetId\0302 " +
-      "\001(\005\022\016\n\006accept\030< \001(\010\022!\n\007runTask\030F \001(\0132\020.M" +
-      "essage.RunTask\"\033\n\nTaskNpcReq\022\r\n\005npcId\030\001 " +
-      "\001(\005\"\250\001\n\nTaskNpcRes\022\r\n\005npcId\030\001 \001(\005\022\026\n\016acc" +
-      "eptableTask\030\002 \003(\005\0221\n\007runTask\030\003 \003(\0132 .Mes" +
-      "sage.TaskNpcRes.RunTaskEntry\032@\n\014RunTaskE" +
-      "ntry\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020.Messa" +
-      "ge.RunTask:\0028\001\"3\n\rFightStartReq\022\"\n\003pos\030\001" +
-      " \003(\0132\025.Message.FightHeroPos\"7\n\016FightStar" +
-      "tPush\022%\n\004info\030\001 \003(\0132\027.Message.FightEnemy" +
-      "Info\"\260\001\n\013FightRecord\022#\n\005round\030\001 \003(\0132\024.Me" +
-      "ssage.RoundRecord\022&\n\005sideA\030\002 \003(\0132\027.Messa" +
-      "ge.HeroDataRecord\022&\n\005sideB\030\003 \003(\0132\027.Messa" +
-      "ge.HeroDataRecord\022\013\n\003win\030\004 \001(\010\022\037\n\006reward" +
-      "\030\005 \003(\0132\017.Message.Reward\"T\n\014FightTestReq\022" +
-      " \n\001a\030\001 \003(\0132\025.Message.FightHeroPos\022\"\n\001b\030\002" +
-      " \003(\0132\027.Message.FightEnemyInfo\"A\n\014FightTe" +
-      "stRes\022\013\n\003win\030\001 \001(\010\022$\n\006record\030\004 \001(\0132\024.Mes" +
-      "sage.FightRecord\"1\n\rEnterSceneReq\022 \n\004dat" +
-      "a\030\001 \001(\0132\022.Message.SceneData\"\037\n\021EnterFigh" +
-      "tAreaReq\022\n\n\002id\030\001 \001(\005\"\036\n\020ExitFightAreaReq" +
-      "\022\n\n\002id\030\001 \001(\005\"+\n\tHeroUpReq\022\016\n\006heroId\030\001 \001(" +
-      "\005\022\016\n\006stepId\030\002 \001(\005\"3\n\016HeroChangePush\022!\n\004h" +
-      "ero\030\001 \001(\0132\023.Message.PlayerHero\"\024\n\022Format" +
-      "ionCreateReq\")\n\022FormationCreateRes\022\023\n\013fo" +
-      "rmationId\030\001 \001(\005\"M\n\022FormationUpdateReq\022\023\n" +
-      "\013formationId\030\001 \001(\005\022\"\n\003pos\030\002 \001(\0132\025.Messag" +
-      "e.FormationPos\"T\n\022FormationUpdateRes\022\023\n\013" +
-      "formationId\030\001 \001(\005\022)\n\004data\030\002 \003(\0132\033.Messag" +
-      "e.FormationPosUpdate\"#\n\022FormationDeleteR" +
-      "eq\022\r\n\005index\030\001 \001(\005\"n\n\023FormationSettingReq" +
-      "\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025default" +
-      "FormationIndex\030\003 \001(\005\022\033\n\023arenaFormationIn" +
-      "dex\030\004 \001(\005\"n\n\023FormationSettingRes\022\r\n\005inde" +
-      "x\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025defaultFormatio" +
-      "nIndex\030\003 \001(\005\022\033\n\023arenaFormationIndex\030\004 \001(" +
-      "\005\"G\n\022ResourceChangePush\022\022\n\nresourceId\030\001 " +
-      "\001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\"&\n\025Pl" +
-      "ayerLevelChangePush\022\r\n\005value\030\001 \001(\005\"?\n\rEx" +
-      "pChangePush\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp\030\002 " +
-      "\001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagInfoChangePush" +
-      "\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capacit" +
-      "y\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSlot\"" +
-      "\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemDisc" +
-      "ardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n" +
-      "\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBuyRe" +
-      "q\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006shop" +
-      "Id\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type\030\001 \001(" +
-      "\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013Item" +
-      "SellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2" +
-      "\n\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006he" +
-      "roId\030\002 \001(\005\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 \001(\002\022\t" +
-      "\n\001y\030\002 \001(\002\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007succ" +
-      "ess\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Rewa" +
-      "rd\"\r\n\013FishHookReqB\020\n\ngame.protoH\001P\001b\006pro" +
-      "to3"
+      "\"\231\001\n\024TaskStatusChangePush\022\r\n\005npcId\030\n \001(\005" +
+      "\022\016\n\006taskId\030\024 \001(\005\022\016\n\006status\030# \001(\005\022\020\n\010targ" +
+      "etId\0302 \001(\005\022\r\n\005count\030( \001(\005\022\016\n\006accept\030< \001(" +
+      "\010\022!\n\007runTask\030F \001(\0132\020.Message.RunTask\"\033\n\n" +
+      "TaskNpcReq\022\r\n\005npcId\030\001 \001(\005\"\250\001\n\nTaskNpcRes" +
+      "\022\r\n\005npcId\030\001 \001(\005\022\026\n\016acceptableTask\030\002 \003(\005\022" +
+      "1\n\007runTask\030\003 \003(\0132 .Message.TaskNpcRes.Ru" +
+      "nTaskEntry\032@\n\014RunTaskEntry\022\013\n\003key\030\001 \001(\005\022" +
+      "\037\n\005value\030\002 \001(\0132\020.Message.RunTask:\0028\001\"3\n\r" +
+      "FightStartReq\022\"\n\003pos\030\001 \003(\0132\025.Message.Fig" +
+      "htHeroPos\"7\n\016FightStartPush\022%\n\004info\030\001 \003(" +
+      "\0132\027.Message.FightEnemyInfo\"\260\001\n\013FightReco" +
+      "rd\022#\n\005round\030\001 \003(\0132\024.Message.RoundRecord\022" +
+      "&\n\005sideA\030\002 \003(\0132\027.Message.HeroDataRecord\022" +
+      "&\n\005sideB\030\003 \003(\0132\027.Message.HeroDataRecord\022" +
+      "\013\n\003win\030\004 \001(\010\022\037\n\006reward\030\005 \003(\0132\017.Message.R" +
+      "eward\"T\n\014FightTestReq\022 \n\001a\030\001 \003(\0132\025.Messa" +
+      "ge.FightHeroPos\022\"\n\001b\030\002 \003(\0132\027.Message.Fig" +
+      "htEnemyInfo\"A\n\014FightTestRes\022\013\n\003win\030\001 \001(\010" +
+      "\022$\n\006record\030\004 \001(\0132\024.Message.FightRecord\"1" +
+      "\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022.Message." +
+      "SceneData\"\037\n\021EnterFightAreaReq\022\n\n\002id\030\001 \001" +
+      "(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005\"+\n\tHe" +
+      "roUpReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030\002 \001(\005\"" +
+      "3\n\016HeroChangePush\022!\n\004hero\030\001 \001(\0132\023.Messag" +
+      "e.PlayerHero\"\024\n\022FormationCreateReq\")\n\022Fo" +
+      "rmationCreateRes\022\023\n\013formationId\030\001 \001(\005\"M\n" +
+      "\022FormationUpdateReq\022\023\n\013formationId\030\001 \001(\005" +
+      "\022\"\n\003pos\030\002 \001(\0132\025.Message.FormationPos\"T\n\022" +
+      "FormationUpdateRes\022\023\n\013formationId\030\001 \001(\005\022" +
+      ")\n\004data\030\002 \003(\0132\033.Message.FormationPosUpda" +
+      "te\"#\n\022FormationDeleteReq\022\r\n\005index\030\001 \001(\005\"" +
+      "n\n\023FormationSettingReq\022\r\n\005index\030\001 \001(\005\022\014\n" +
+      "\004name\030\002 \001(\t\022\035\n\025defaultFormationIndex\030\003 \001" +
+      "(\005\022\033\n\023arenaFormationIndex\030\004 \001(\005\"n\n\023Forma" +
+      "tionSettingRes\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 " +
+      "\001(\t\022\035\n\025defaultFormationIndex\030\003 \001(\005\022\033\n\023ar" +
+      "enaFormationIndex\030\004 \001(\005\"G\n\022ResourceChang" +
+      "ePush\022\022\n\nresourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(" +
+      "\005\022\r\n\005count\030\003 \001(\005\"&\n\025PlayerLevelChangePus" +
+      "h\022\r\n\005value\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006her" +
+      "oId\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(" +
+      "\005\"b\n\021BagInfoChangePush\022\r\n\005clean\030\t \001(\010\022\014\n" +
+      "\004type\030\n \001(\005\022\020\n\010capacity\030\024 \001(\005\022\036\n\004slot\030\036 " +
+      "\003(\0132\020.Message.BagSlot\"\033\n\013BagCleanReq\022\014\n\004" +
+      "type\030\001 \001(\005\"M\n\016ItemDiscardReq\022\016\n\006itemId\030\001" +
+      " \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004t" +
+      "ype\030\004 \001(\005\";\n\nItemBuyReq\022\016\n\006itemId\030\001 \001(\005\022" +
+      "\r\n\005count\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\">\n\017ItemEx" +
+      "changeReq\022\014\n\004type\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022" +
+      "\r\n\005count\030\003 \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030" +
+      "\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2\n\020HeroEquipmentReq" +
+      "\022\016\n\006slotId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlay" +
+      "erMoveReq\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"\t\n\007FishR" +
+      "eq\"<\n\010FishPush\022\017\n\007success\030\001 \001(\010\022\037\n\006rewar" +
+      "d\030\002 \003(\0132\017.Message.Reward\"\r\n\013FishHookReqB" +
+      "\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -410,7 +409,7 @@ public final class MessageOuterClass {
     internal_static_Message_TaskStatusChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TaskStatusChangePush_descriptor,
-        new java.lang.String[] { "NpcId", "TaskId", "Complete", "Status", "Count", "TargetId", "Accept", "RunTask", });
+        new java.lang.String[] { "NpcId", "TaskId", "Status", "TargetId", "Count", "Accept", "RunTask", });
     internal_static_Message_TaskNpcReq_descriptor =
       getDescriptor().getMessageTypes().get(13);
     internal_static_Message_TaskNpcReq_fieldAccessorTable = new

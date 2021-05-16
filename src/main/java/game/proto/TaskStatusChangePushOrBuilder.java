@@ -20,20 +20,24 @@ public interface TaskStatusChangePushOrBuilder extends
   int getTaskId();
 
   /**
-   * <code>bool complete = 30;</code>
-   * @return The complete.
-   */
-  boolean getComplete();
-
-  /**
    * <pre>
-   * 1:完成未提交,2:完成已提交
+   * 1:完成未提交,2:完成已提交,3:接受任务,4:进度更新
    * </pre>
    *
    * <code>int32 status = 35;</code>
    * @return The status.
    */
   int getStatus();
+
+  /**
+   * <pre>
+   * 任务目标id
+   * </pre>
+   *
+   * <code>int32 targetId = 50;</code>
+   * @return The targetId.
+   */
+  int getTargetId();
 
   /**
    * <pre>
@@ -44,12 +48,6 @@ public interface TaskStatusChangePushOrBuilder extends
    * @return The count.
    */
   int getCount();
-
-  /**
-   * <code>int32 targetId = 50;</code>
-   * @return The targetId.
-   */
-  int getTargetId();
 
   /**
    * <pre>

@@ -41,15 +41,31 @@ public class TaskHandler {
 
         DataConfigData taskConfigData = G.C.getTask(o.getTaskId());
         PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
+        RunTask runTask = taskBuilder.getRunTaskMap().get(o.getTaskId());
+        if (runTask != null) {
+            return;
+        }
+
         RunTask.Builder data = RunTask.newBuilder();
         data.setTaskId(o.getTaskId());
         if (taskConfigData.completeType == 2) {// 立即完成
             data.setComplete(true);
             // push
+            final int completeNpcId = taskConfigData.completeNpcId;
+
+            if (completeNpcId != taskConfigData.npcId) {
+                // 交任务的npc跟 接任务的npc不同
+                // 前一个npc完成任务
+                player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                        .setNpcId(taskConfigData.npcId)
+                        .setStatus(TaskStatusEnum.提交任务.id)
+                        .setTaskId(o.getTaskId())
+                        .setRunTask(data.buildPartial())
+                        .build());
+            }
             player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
-                    .setNpcId(taskConfigData.completeNpcId)
-                    .setComplete(true)
-                    .setStatus(1)
+                    .setNpcId(completeNpcId)
+                    .setStatus(TaskStatusEnum.完成未提交.id)
                     .setTaskId(o.getTaskId())
                     .setRunTask(data.buildPartial())
                     .build()
@@ -65,11 +81,11 @@ public class TaskHandler {
                     .setTaskId(o.getTaskId())
                     .setNpcId(taskConfigData.npcId)
                     .setAccept(true)
+                    .setStatus(TaskStatusEnum.接受任务.id)// 接受任务
                     .setRunTask(data.buildPartial())
                     .build());
-
-
         }
+
         taskBuilder.putRunTask(o.getTaskId(), data.build());
 
     }
@@ -124,8 +140,7 @@ public class TaskHandler {
             player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
                     .setTaskId(runtask.getTaskId())
                     .setNpcId(task.completeNpcId)
-                    .setComplete(true)
-                    .setStatus(2)
+                    .setStatus(TaskStatusEnum.提交任务.id)
                     .buildPartial());
 
             // 检查后续任务

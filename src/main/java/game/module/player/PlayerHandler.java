@@ -1,7 +1,6 @@
 package game.module.player;
 
 import game.game.ResourceSourceEnum;
-import game.module.fight.FightService;
 import game.player.Player;
 import game.proto.*;
 import game.proto.data.Resource;
@@ -60,7 +59,7 @@ public class PlayerHandler {
         recoverPower(player);
 
         // 检查战斗
-        FightService.checkFight(player);
+//        FightService.checkFight(player);
 
     }
 
