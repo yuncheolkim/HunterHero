@@ -20,6 +20,14 @@ public enum No
    * <code>FishHookReq = 8002;</code>
    */
   FishHookReq(8002),
+  /**
+   * <code>FightStartReq = 2001;</code>
+   */
+  FightStartReq(2001),
+  /**
+   * <code>FightEndReq = 2004;</code>
+   */
+  FightEndReq(2004),
   UNRECOGNIZED(-1),
   ;
 
@@ -35,6 +43,14 @@ public enum No
    * <code>FishHookReq = 8002;</code>
    */
   public static final int FishHookReq_VALUE = 8002;
+  /**
+   * <code>FightStartReq = 2001;</code>
+   */
+  public static final int FightStartReq_VALUE = 2001;
+  /**
+   * <code>FightEndReq = 2004;</code>
+   */
+  public static final int FightEndReq_VALUE = 2004;
 
 
   public final int getNumber() {
@@ -64,6 +80,8 @@ public enum No
       case 0: return NONE;
       case 8001: return FishReq;
       case 8002: return FishHookReq;
+      case 2001: return FightStartReq;
+      case 2004: return FightEndReq;
       default: return null;
     }
   }

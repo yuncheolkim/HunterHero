@@ -12,11 +12,11 @@ public enum PosGen {
     RANDOM_8 {
         @Override
         public List<Integer> posList(int count) {
-            int first = -1;
+            int first = 16;
             List<Integer> r = new ArrayList<>(count);
             for (int i = 0; i < count; i++) {
 
-                r.add(first--);
+                r.add(first++);
             }
             return r;
         }

@@ -1,0 +1,10 @@
+{
+    "1": {
+        "content": "\u003csize=60\u003e\u003ccolor=yellow\u003e战斗胜利\u003c/color\u003e\u003c/size\u003e",
+        "id": 1
+    },
+    "2": {
+        "content": "\u003csize=60\u003e\u003ccolor=red\u003e战斗失败\u003c/color\u003e\u003c/size\u003e",
+        "id": 2
+    }
+}

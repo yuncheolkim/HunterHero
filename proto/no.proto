@@ -8,5 +8,6 @@ enum No {
     NONE = 0;
     FishReq = 8001;
     FishHookReq = 8002;
-
+    FightStartReq = 2001;
+    FightEndReq = 2004;
 }
