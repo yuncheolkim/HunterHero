@@ -149,14 +149,17 @@ public class TaskHandler {
 
             List<Integer> newTaskList = new ArrayList<>(2);
 
-            for (Integer afterTaskId : afterTaskList) {
-                DataConfigData afterTask = G.C.getTask(afterTaskId);
-                for (Integer needCompleteTaskId : afterTask.list1) {
-                    if (!completeTaskMap.containsKey(needCompleteTaskId)) {
-                        break;
+            if (afterTaskList != null) {
+
+                for (Integer afterTaskId : afterTaskList) {
+                    DataConfigData afterTask = G.C.getTask(afterTaskId);
+                    for (Integer needCompleteTaskId : afterTask.list1) {
+                        if (!completeTaskMap.containsKey(needCompleteTaskId)) {
+                            break;
+                        }
                     }
+                    newTaskList.add(afterTask.id);
                 }
-                newTaskList.add(afterTask.id);
             }
 
             if (!newTaskList.isEmpty()) {

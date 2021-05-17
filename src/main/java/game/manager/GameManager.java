@@ -88,6 +88,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new InvokerReturn<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
         addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
+        addHandler(new Invoker<>(No.PlayerMoveReq_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
         // task
         addHandler(new Invoker<>(MsgNo.task_accept_VALUE, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(MsgNo.task_complete_VALUE, TaskHandler::completeTask, TaskReq::parser));
@@ -119,8 +120,6 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNo.FormationDeleteReqNo_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
         addHandler(new RetInvoker<>(MsgNo.FormationUpdateReqNo_VALUE, FormationHandler::update, FormationUpdateReq::parser));
         addHandler(new RetInvoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
-        // 玩家操作 移动
-        addHandler(new Invoker<>(MsgNo.PlayerMoveReqNo_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
 
         // 钓鱼
         addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));

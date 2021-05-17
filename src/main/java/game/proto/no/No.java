@@ -13,6 +13,18 @@ public enum No
    */
   NONE(0),
   /**
+   * <pre>
+   * player
+   * </pre>
+   *
+   * <code>PlayerMoveReq = 201;</code>
+   */
+  PlayerMoveReq(201),
+  /**
+   * <pre>
+   * fish
+   * </pre>
+   *
    * <code>FishReq = 8001;</code>
    */
   FishReq(8001),
@@ -21,6 +33,10 @@ public enum No
    */
   FishHookReq(8002),
   /**
+   * <pre>
+   * fight
+   * </pre>
+   *
    * <code>FightStartReq = 2001;</code>
    */
   FightStartReq(2001),
@@ -36,6 +52,18 @@ public enum No
    */
   public static final int NONE_VALUE = 0;
   /**
+   * <pre>
+   * player
+   * </pre>
+   *
+   * <code>PlayerMoveReq = 201;</code>
+   */
+  public static final int PlayerMoveReq_VALUE = 201;
+  /**
+   * <pre>
+   * fish
+   * </pre>
+   *
    * <code>FishReq = 8001;</code>
    */
   public static final int FishReq_VALUE = 8001;
@@ -44,6 +72,10 @@ public enum No
    */
   public static final int FishHookReq_VALUE = 8002;
   /**
+   * <pre>
+   * fight
+   * </pre>
+   *
    * <code>FightStartReq = 2001;</code>
    */
   public static final int FightStartReq_VALUE = 2001;
@@ -78,6 +110,7 @@ public enum No
   public static No forNumber(int value) {
     switch (value) {
       case 0: return NONE;
+      case 201: return PlayerMoveReq;
       case 8001: return FishReq;
       case 8002: return FishHookReq;
       case 2001: return FightStartReq;

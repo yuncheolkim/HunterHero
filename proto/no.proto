@@ -6,8 +6,13 @@ option java_multiple_files = true;
 
 enum No {
     NONE = 0;
+    // player
+    PlayerMoveReq = 201;
+    // fish
     FishReq = 8001;
     FishHookReq = 8002;
+    // fight
     FightStartReq = 2001;
     FightEndReq = 2004;
+
 }

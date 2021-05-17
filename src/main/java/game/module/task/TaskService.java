@@ -94,6 +94,7 @@ public class TaskService {
                 //
                 if (taskResult != null) {
                     RunTask.Builder builder = taskResult.toBuilder();
+                    builder.setTarget(index, taskTarget);
                     boolean complete = true;
                     for (TaskTarget.Builder target : builder.getTargetBuilderList()) {
                         if (!target.getComplete()) {
@@ -103,20 +104,23 @@ public class TaskService {
                     }
                     builder.setComplete(complete);
 
-                    RunTask build = builder.setTarget(index, taskTarget).build();
-                    taskBuilder.putRunTask(build.getTaskId(), build);
+                    RunTask runTask = builder.build();
+                    taskBuilder.putRunTask(runTask.getTaskId(), runTask);
 
                     // push
                     TaskStatusChangePush.Builder msgBuilder = TaskStatusChangePush.newBuilder()
-                            .setTaskId(build.getTaskId())
+                            .setTaskId(runTask.getTaskId())
                             .setCount(taskTarget.getValue())
-                            .setTargetId(taskTarget.getId());
+                            .setTargetId(taskTarget.getId())
+                            .setRunTask(runTask);
 
+                    DataConfigData taskData = G.C.getTask(taskResult.getTaskId());
                     if (complete) {
                         msgBuilder.setStatus(TaskStatusEnum.完成未提交.id);
                     } else {
                         msgBuilder.setStatus(TaskStatusEnum.进度更新.id);
                     }
+                    msgBuilder.setNpcId(taskData.npcId);
                     player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, msgBuilder
                             .build()
                     );
