@@ -16,7 +16,7 @@
         "type": 1,
         "type1": 4,
         "type2": 2,
-        "value": 0
+        "value": 1
     },
     "402002": {
         "avoid": 10,
@@ -35,6 +35,6 @@
         "type": 1,
         "type1": 4,
         "type2": 2,
-        "value": 0
+        "value": 1
     }
 }

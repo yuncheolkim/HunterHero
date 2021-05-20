@@ -17,7 +17,7 @@
         "type": 1,
         "type1": 4,
         "type2": 1,
-        "value": 0
+        "value": 1
     },
     "401002": {
         "content": "123123213",
@@ -37,7 +37,7 @@
         "type": 1,
         "type1": 4,
         "type2": 1,
-        "value": 0
+        "value": 1
     },
     "401003": {
         "critical": 10,
@@ -56,7 +56,7 @@
         "type": 1,
         "type1": 4,
         "type2": 1,
-        "value": 0
+        "value": 1
     },
     "401004": {
         "critical": 6,
@@ -75,6 +75,6 @@
         "type": 1,
         "type1": 4,
         "type2": 1,
-        "value": 0
+        "value": 1
     }
 }

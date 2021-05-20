@@ -45,6 +45,8 @@ public interface BagUpdateService {
         @Override
         public void clean(Player p) {
             box(p).bagSlotMap.clear();
+            box(p).capacity = p.pd.getBagCapacity();
+            box(p).count = 0;
             p.pd.clearBank();
 
         }
@@ -85,6 +87,8 @@ public interface BagUpdateService {
 
         @Override
         public void clean(Player p) {
+            box(p).capacity = p.pd.getBagCapacity();
+            box(p).count = 0;
             box(p).bagSlotMap.clear();
             p.pd.clearBag();
         }
