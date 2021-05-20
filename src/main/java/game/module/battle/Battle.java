@@ -7,10 +7,7 @@ import game.module.battle.record.BattleRecord;
 import game.module.battle.record.Record;
 import game.utils.JacksonUtil;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static game.module.battle.Constant.ID_GEN;
@@ -37,6 +34,7 @@ public class Battle {
     private List<Hero> sideAhero = new ArrayList<>();
 
     private List<Hero> sideBhero = new ArrayList<>();
+
     /**
      * 出手顺序
      */
@@ -163,7 +161,7 @@ public class Battle {
         List<Hero> order = new ArrayList<>();
         order.addAll(sideAhero.stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
         order.addAll(sideBhero.stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
-        order.sort((o1, o2) -> o2.property.getSpeed() - o1.property.getSpeed());
+        order.sort(Comparator.comparingInt(o -> o.property.getSpeed()));
         return order;
     }
 

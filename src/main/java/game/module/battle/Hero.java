@@ -120,6 +120,11 @@ public class Hero {
 
     public void init() {
         property = new HeroData().merge(origin);
+
+    }
+
+    public void setSpeed(int speed) {
+        origin.setSpeed(speed);
     }
 
     public void processAll(ActionPoint actionPoint) {

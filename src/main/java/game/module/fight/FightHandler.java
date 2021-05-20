@@ -69,6 +69,7 @@ public class FightHandler {
             Hero hero = HeroFactory.createPlayerHero(player, playerHero);
             hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
+            hero.setSpeed(fightHeroPos.getOrder());
             hero.init();
             hero.setBattle(battle);
 

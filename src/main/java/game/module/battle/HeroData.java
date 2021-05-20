@@ -17,6 +17,7 @@ public class HeroData {
      * 护甲
      */
     private int def;
+
     private int defBase;
 
     /**
@@ -28,6 +29,7 @@ public class HeroData {
      * 闪避
      */
     private int avoid;
+
     private int avoidBase;
 
     /**
@@ -49,10 +51,9 @@ public class HeroData {
 
 
     /**
-     * 速度
+     * 出手顺序
      */
     private int speed;
-
 
 
     public HeroData merge(HeroData o) {
@@ -113,6 +114,7 @@ public class HeroData {
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
     public int getCriticalDamageRate() {
         return criticalDamageRate;
     }
