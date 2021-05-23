@@ -130,16 +130,27 @@ message ExitFightAreaReq {
     int32 id = 1;
 }
 
-// 4001,4002 修炼，历练
+///////////////////////////////////////////////  hero
+// 4001 提高英雄属性
 message HeroUpReq {
     int32 heroId = 1;
-    int32 stepId = 2;
+    int32 stepId = 3;
 }
 
 // 4003 英雄变化
 message HeroChangePush {
     PlayerHero hero = 1;
 }
+
+message HeroTalentChangeReq{
+    int32 heroId = 1;
+    int32 talent = 2;
+}
+message HeroTalentChangeRes{
+    int32 heroId = 1;
+    int32 talent = 2;
+}
+///////////////////////////////////////////////  formation
 // 创建阵型
 message FormationCreateReq {
 }

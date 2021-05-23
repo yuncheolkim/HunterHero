@@ -28,12 +28,12 @@ public class DefHeroCalc implements IHeroCalc {
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(3);
+        HeroRealm realm = old.getPowerUpMap().get(3);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             def += dataConfigData.def;
         }
-        realm = old.getXiuLianMap().get(3);
+        realm = old.getPowerUpMap().get(13);
 
         // 修炼
         if (realm != null) {

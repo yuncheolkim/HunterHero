@@ -28,13 +28,13 @@ public class AvoidHeroCalc implements IHeroCalc {
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(4);
+        HeroRealm realm = old.getPowerUpMap().get(4);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             avoid += dataConfigData.avoid;
         }
-        realm = old.getXiuLianMap().get(4);
 
+        realm = old.getPowerUpMap().get(14);
         // 修炼
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());

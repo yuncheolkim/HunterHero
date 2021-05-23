@@ -128,4 +128,25 @@ public class CalcUtil {
         }
         return weightRandom(weightList, sum);
     }
+
+
+    public static int getPosInt(int i, int index) {
+
+        char[] chars = String.valueOf(i).toCharArray();
+        return chars[index] - '0';
+    }
+
+    /**
+     * @param number
+     * @param index
+     * @param v
+     * @return
+     */
+    public static int putPosInt(int number, int index, int v) {
+
+        char[] chars = String.valueOf(number).toCharArray();
+        chars[index] = (char) ('0' + v);
+        return Integer.parseInt(String.valueOf(chars));
+    }
+
 }

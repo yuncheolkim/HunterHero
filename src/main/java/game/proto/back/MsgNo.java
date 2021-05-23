@@ -135,21 +135,9 @@ public enum MsgNo
   /**
    * <pre>
    * 历练
-   * </pre>
-   *
-   * <code>hero_update_lilian = 4001;</code>
-   */
-  hero_update_lilian(4001),
-  /**
-   * <pre>
+   *    hero_update_lilian = 4001;
    * 修炼
-   * </pre>
-   *
-   * <code>hero_update_xiulian = 4002;</code>
-   */
-  hero_update_xiulian(4002),
-  /**
-   * <pre>
+   *    hero_update_xiulian = 4002;
    * 英雄变化
    * </pre>
    *
@@ -394,21 +382,9 @@ public enum MsgNo
   /**
    * <pre>
    * 历练
-   * </pre>
-   *
-   * <code>hero_update_lilian = 4001;</code>
-   */
-  public static final int hero_update_lilian_VALUE = 4001;
-  /**
-   * <pre>
+   *    hero_update_lilian = 4001;
    * 修炼
-   * </pre>
-   *
-   * <code>hero_update_xiulian = 4002;</code>
-   */
-  public static final int hero_update_xiulian_VALUE = 4002;
-  /**
-   * <pre>
+   *    hero_update_xiulian = 4002;
    * 英雄变化
    * </pre>
    *
@@ -567,8 +543,6 @@ public enum MsgNo
       case 3001: return scene_enter;
       case 3002: return scene_enter_fight_area;
       case 3003: return scene_leave_fight_area;
-      case 4001: return hero_update_lilian;
-      case 4002: return hero_update_xiulian;
       case 4003: return hero_change;
       case 4004: return HeroEquipmentReqNo;
       case 4101: return FormationCreateReqNo;

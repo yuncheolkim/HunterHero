@@ -4,30 +4,25 @@
 package game.proto;
 
 /**
- * <pre>
- *&#47;////////////////////////////////////////////  hero
- * 4001 提高英雄属性
- * </pre>
- *
- * Protobuf type {@code Message.HeroUpReq}
+ * Protobuf type {@code Message.HeroTalentChangeRes}
  */
-public final class HeroUpReq extends
+public final class HeroTalentChangeRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.HeroUpReq)
-    HeroUpReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.HeroTalentChangeRes)
+    HeroTalentChangeResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use HeroUpReq.newBuilder() to construct.
-  private HeroUpReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use HeroTalentChangeRes.newBuilder() to construct.
+  private HeroTalentChangeRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private HeroUpReq() {
+  private HeroTalentChangeRes() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new HeroUpReq();
+    return new HeroTalentChangeRes();
   }
 
   @java.lang.Override
@@ -35,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private HeroUpReq(
+  private HeroTalentChangeRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -58,9 +53,9 @@ private static final long serialVersionUID = 0L;
             heroId_ = input.readInt32();
             break;
           }
-          case 24: {
+          case 16: {
 
-            stepId_ = input.readInt32();
+            talent_ = input.readInt32();
             break;
           }
           default: {
@@ -84,15 +79,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_HeroUpReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_HeroTalentChangeRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_HeroUpReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_HeroTalentChangeRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.HeroUpReq.class, game.proto.HeroUpReq.Builder.class);
+            game.proto.HeroTalentChangeRes.class, game.proto.HeroTalentChangeRes.Builder.class);
   }
 
   public static final int HEROID_FIELD_NUMBER = 1;
@@ -106,15 +101,15 @@ private static final long serialVersionUID = 0L;
     return heroId_;
   }
 
-  public static final int STEPID_FIELD_NUMBER = 3;
-  private int stepId_;
+  public static final int TALENT_FIELD_NUMBER = 2;
+  private int talent_;
   /**
-   * <code>int32 stepId = 3;</code>
-   * @return The stepId.
+   * <code>int32 talent = 2;</code>
+   * @return The talent.
    */
   @java.lang.Override
-  public int getStepId() {
-    return stepId_;
+  public int getTalent() {
+    return talent_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -134,8 +129,8 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       output.writeInt32(1, heroId_);
     }
-    if (stepId_ != 0) {
-      output.writeInt32(3, stepId_);
+    if (talent_ != 0) {
+      output.writeInt32(2, talent_);
     }
     unknownFields.writeTo(output);
   }
@@ -150,9 +145,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, heroId_);
     }
-    if (stepId_ != 0) {
+    if (talent_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, stepId_);
+        .computeInt32Size(2, talent_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -164,15 +159,15 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.HeroUpReq)) {
+    if (!(obj instanceof game.proto.HeroTalentChangeRes)) {
       return super.equals(obj);
     }
-    game.proto.HeroUpReq other = (game.proto.HeroUpReq) obj;
+    game.proto.HeroTalentChangeRes other = (game.proto.HeroTalentChangeRes) obj;
 
     if (getHeroId()
         != other.getHeroId()) return false;
-    if (getStepId()
-        != other.getStepId()) return false;
+    if (getTalent()
+        != other.getTalent()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -186,76 +181,76 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + HEROID_FIELD_NUMBER;
     hash = (53 * hash) + getHeroId();
-    hash = (37 * hash) + STEPID_FIELD_NUMBER;
-    hash = (53 * hash) + getStepId();
+    hash = (37 * hash) + TALENT_FIELD_NUMBER;
+    hash = (53 * hash) + getTalent();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HeroUpReq parseFrom(byte[] data)
+  public static game.proto.HeroTalentChangeRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HeroUpReq parseFrom(java.io.InputStream input)
+  public static game.proto.HeroTalentChangeRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.HeroUpReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.HeroTalentChangeRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.HeroUpReq parseDelimitedFrom(
+  public static game.proto.HeroTalentChangeRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.HeroUpReq parseFrom(
+  public static game.proto.HeroTalentChangeRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -268,7 +263,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.HeroUpReq prototype) {
+  public static Builder newBuilder(game.proto.HeroTalentChangeRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -284,31 +279,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *&#47;////////////////////////////////////////////  hero
-   * 4001 提高英雄属性
-   * </pre>
-   *
-   * Protobuf type {@code Message.HeroUpReq}
+   * Protobuf type {@code Message.HeroTalentChangeRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.HeroUpReq)
-      game.proto.HeroUpReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.HeroTalentChangeRes)
+      game.proto.HeroTalentChangeResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_HeroUpReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_HeroTalentChangeRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_HeroUpReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_HeroTalentChangeRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.HeroUpReq.class, game.proto.HeroUpReq.Builder.class);
+              game.proto.HeroTalentChangeRes.class, game.proto.HeroTalentChangeRes.Builder.class);
     }
 
-    // Construct using game.proto.HeroUpReq.newBuilder()
+    // Construct using game.proto.HeroTalentChangeRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -328,7 +318,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       heroId_ = 0;
 
-      stepId_ = 0;
+      talent_ = 0;
 
       return this;
     }
@@ -336,17 +326,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_HeroUpReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_HeroTalentChangeRes_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.HeroUpReq getDefaultInstanceForType() {
-      return game.proto.HeroUpReq.getDefaultInstance();
+    public game.proto.HeroTalentChangeRes getDefaultInstanceForType() {
+      return game.proto.HeroTalentChangeRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.HeroUpReq build() {
-      game.proto.HeroUpReq result = buildPartial();
+    public game.proto.HeroTalentChangeRes build() {
+      game.proto.HeroTalentChangeRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -354,10 +344,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.HeroUpReq buildPartial() {
-      game.proto.HeroUpReq result = new game.proto.HeroUpReq(this);
+    public game.proto.HeroTalentChangeRes buildPartial() {
+      game.proto.HeroTalentChangeRes result = new game.proto.HeroTalentChangeRes(this);
       result.heroId_ = heroId_;
-      result.stepId_ = stepId_;
+      result.talent_ = talent_;
       onBuilt();
       return result;
     }
@@ -396,21 +386,21 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.HeroUpReq) {
-        return mergeFrom((game.proto.HeroUpReq)other);
+      if (other instanceof game.proto.HeroTalentChangeRes) {
+        return mergeFrom((game.proto.HeroTalentChangeRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.HeroUpReq other) {
-      if (other == game.proto.HeroUpReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.HeroTalentChangeRes other) {
+      if (other == game.proto.HeroTalentChangeRes.getDefaultInstance()) return this;
       if (other.getHeroId() != 0) {
         setHeroId(other.getHeroId());
       }
-      if (other.getStepId() != 0) {
-        setStepId(other.getStepId());
+      if (other.getTalent() != 0) {
+        setTalent(other.getTalent());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -427,11 +417,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.HeroUpReq parsedMessage = null;
+      game.proto.HeroTalentChangeRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.HeroUpReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.HeroTalentChangeRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -472,33 +462,33 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int stepId_ ;
+    private int talent_ ;
     /**
-     * <code>int32 stepId = 3;</code>
-     * @return The stepId.
+     * <code>int32 talent = 2;</code>
+     * @return The talent.
      */
     @java.lang.Override
-    public int getStepId() {
-      return stepId_;
+    public int getTalent() {
+      return talent_;
     }
     /**
-     * <code>int32 stepId = 3;</code>
-     * @param value The stepId to set.
+     * <code>int32 talent = 2;</code>
+     * @param value The talent to set.
      * @return This builder for chaining.
      */
-    public Builder setStepId(int value) {
+    public Builder setTalent(int value) {
       
-      stepId_ = value;
+      talent_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 stepId = 3;</code>
+     * <code>int32 talent = 2;</code>
      * @return This builder for chaining.
      */
-    public Builder clearStepId() {
+    public Builder clearTalent() {
       
-      stepId_ = 0;
+      talent_ = 0;
       onChanged();
       return this;
     }
@@ -515,41 +505,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.HeroUpReq)
+    // @@protoc_insertion_point(builder_scope:Message.HeroTalentChangeRes)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.HeroUpReq)
-  private static final game.proto.HeroUpReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.HeroTalentChangeRes)
+  private static final game.proto.HeroTalentChangeRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.HeroUpReq();
+    DEFAULT_INSTANCE = new game.proto.HeroTalentChangeRes();
   }
 
-  public static game.proto.HeroUpReq getDefaultInstance() {
+  public static game.proto.HeroTalentChangeRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<HeroUpReq>
-      PARSER = new com.google.protobuf.AbstractParser<HeroUpReq>() {
+  private static final com.google.protobuf.Parser<HeroTalentChangeRes>
+      PARSER = new com.google.protobuf.AbstractParser<HeroTalentChangeRes>() {
     @java.lang.Override
-    public HeroUpReq parsePartialFrom(
+    public HeroTalentChangeRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new HeroUpReq(input, extensionRegistry);
+      return new HeroTalentChangeRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<HeroUpReq> parser() {
+  public static com.google.protobuf.Parser<HeroTalentChangeRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<HeroUpReq> getParserForType() {
+  public com.google.protobuf.Parser<HeroTalentChangeRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.HeroUpReq getDefaultInstanceForType() {
+  public game.proto.HeroTalentChangeRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

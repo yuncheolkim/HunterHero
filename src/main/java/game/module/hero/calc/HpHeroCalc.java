@@ -28,12 +28,12 @@ public class HpHeroCalc implements IHeroCalc {
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(1);
+        HeroRealm realm = old.getPowerUpMap().get(1);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             hp += dataConfigData.hp;
         }
-        realm = old.getXiuLianMap().get(1);
+        realm = old.getPowerUpMap().get(11);
 
         // 修炼
         if (realm != null) {

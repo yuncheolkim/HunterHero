@@ -28,12 +28,12 @@ public class CriticalDamageHeroCalc implements IHeroCalc {
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(7);
+        HeroRealm realm = old.getPowerUpMap().get(6);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             criticalDamage += dataConfigData.criticalDamage;
         }
-        realm = old.getXiuLianMap().get(7);
+        realm = old.getPowerUpMap().get(16);
 
         // 修炼
         if (realm != null) {

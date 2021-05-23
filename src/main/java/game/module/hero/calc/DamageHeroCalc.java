@@ -28,12 +28,12 @@ public class DamageHeroCalc implements IHeroCalc {
             }
         }
         // 历练
-        HeroRealm realm = old.getLiLianMap().get(2);
+        HeroRealm realm = old.getPowerUpMap().get(2);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             damage += dataConfigData.damage;
         }
-        realm = old.getXiuLianMap().get(2);
+        realm = old.getPowerUpMap().get(12);
 
         // 修炼
         if (realm != null) {

@@ -4,6 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
+import game.base.G;
 import game.config.DataConfigData;
 import game.config.JsonConfig;
 import game.config.drop.DropItemConfigData;
@@ -293,5 +294,17 @@ public class ConfigManager extends AbsLifecycle {
     public ParamConfigData getParamConfigData() {
         return paramConfigData;
     }
+
+
+    public DataConfigData GetPowerUpData(int id, int level) {
+
+        if (id < 10) {
+            return G.C.dataMap12.get(level);
+        } else if (id < 20) {
+            return G.C.dataMap13.get(level);
+        }
+        return null;
+    }
+
 }
 

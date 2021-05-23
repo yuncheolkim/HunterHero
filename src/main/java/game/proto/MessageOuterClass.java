@@ -145,6 +145,16 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_HeroChangePush_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HeroTalentChangeReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HeroTalentChangeReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HeroTalentChangeRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HeroTalentChangeRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_FormationCreateReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -292,40 +302,43 @@ public final class MessageOuterClass {
       "\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022.Message." +
       "SceneData\"\037\n\021EnterFightAreaReq\022\n\n\002id\030\001 \001" +
       "(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005\"+\n\tHe" +
-      "roUpReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030\002 \001(\005\"" +
+      "roUpReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030\003 \001(\005\"" +
       "3\n\016HeroChangePush\022!\n\004hero\030\001 \001(\0132\023.Messag" +
-      "e.PlayerHero\"\024\n\022FormationCreateReq\")\n\022Fo" +
-      "rmationCreateRes\022\023\n\013formationId\030\001 \001(\005\"M\n" +
-      "\022FormationUpdateReq\022\023\n\013formationId\030\001 \001(\005" +
-      "\022\"\n\003pos\030\002 \001(\0132\025.Message.FormationPos\"T\n\022" +
-      "FormationUpdateRes\022\023\n\013formationId\030\001 \001(\005\022" +
-      ")\n\004data\030\002 \003(\0132\033.Message.FormationPosUpda" +
-      "te\"#\n\022FormationDeleteReq\022\r\n\005index\030\001 \001(\005\"" +
-      "n\n\023FormationSettingReq\022\r\n\005index\030\001 \001(\005\022\014\n" +
-      "\004name\030\002 \001(\t\022\035\n\025defaultFormationIndex\030\003 \001" +
-      "(\005\022\033\n\023arenaFormationIndex\030\004 \001(\005\"n\n\023Forma" +
-      "tionSettingRes\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 " +
-      "\001(\t\022\035\n\025defaultFormationIndex\030\003 \001(\005\022\033\n\023ar" +
-      "enaFormationIndex\030\004 \001(\005\"G\n\022ResourceChang" +
-      "ePush\022\022\n\nresourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(" +
-      "\005\022\r\n\005count\030\003 \001(\005\"&\n\025PlayerLevelChangePus" +
-      "h\022\r\n\005value\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006her" +
-      "oId\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(" +
-      "\005\"b\n\021BagInfoChangePush\022\r\n\005clean\030\t \001(\010\022\014\n" +
-      "\004type\030\n \001(\005\022\020\n\010capacity\030\024 \001(\005\022\036\n\004slot\030\036 " +
-      "\003(\0132\020.Message.BagSlot\"\033\n\013BagCleanReq\022\014\n\004" +
-      "type\030\001 \001(\005\"M\n\016ItemDiscardReq\022\016\n\006itemId\030\001" +
-      " \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004t" +
-      "ype\030\004 \001(\005\";\n\nItemBuyReq\022\016\n\006itemId\030\001 \001(\005\022" +
-      "\r\n\005count\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\">\n\017ItemEx" +
-      "changeReq\022\014\n\004type\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022" +
-      "\r\n\005count\030\003 \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030" +
-      "\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2\n\020HeroEquipmentReq" +
-      "\022\016\n\006slotId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlay" +
-      "erMoveReq\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"\t\n\007FishR" +
-      "eq\"<\n\010FishPush\022\017\n\007success\030\001 \001(\010\022\037\n\006rewar" +
-      "d\030\002 \003(\0132\017.Message.Reward\"\r\n\013FishHookReqB" +
-      "\020\n\ngame.protoH\001P\001b\006proto3"
+      "e.PlayerHero\"5\n\023HeroTalentChangeReq\022\016\n\006h" +
+      "eroId\030\001 \001(\005\022\016\n\006talent\030\002 \001(\005\"5\n\023HeroTalen" +
+      "tChangeRes\022\016\n\006heroId\030\001 \001(\005\022\016\n\006talent\030\002 \001" +
+      "(\005\"\024\n\022FormationCreateReq\")\n\022FormationCre" +
+      "ateRes\022\023\n\013formationId\030\001 \001(\005\"M\n\022Formation" +
+      "UpdateReq\022\023\n\013formationId\030\001 \001(\005\022\"\n\003pos\030\002 " +
+      "\001(\0132\025.Message.FormationPos\"T\n\022FormationU" +
+      "pdateRes\022\023\n\013formationId\030\001 \001(\005\022)\n\004data\030\002 " +
+      "\003(\0132\033.Message.FormationPosUpdate\"#\n\022Form" +
+      "ationDeleteReq\022\r\n\005index\030\001 \001(\005\"n\n\023Formati" +
+      "onSettingReq\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
+      "\t\022\035\n\025defaultFormationIndex\030\003 \001(\005\022\033\n\023aren" +
+      "aFormationIndex\030\004 \001(\005\"n\n\023FormationSettin" +
+      "gRes\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025def" +
+      "aultFormationIndex\030\003 \001(\005\022\033\n\023arenaFormati" +
+      "onIndex\030\004 \001(\005\"G\n\022ResourceChangePush\022\022\n\nr" +
+      "esourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count" +
+      "\030\003 \001(\005\"&\n\025PlayerLevelChangePush\022\r\n\005value" +
+      "\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006heroId\030\001 \001(\005\022" +
+      "\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagIn" +
+      "foChangePush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(" +
+      "\005\022\020\n\010capacity\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Mess" +
+      "age.BagSlot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005" +
+      "\"M\n\016ItemDiscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005co" +
+      "unt\030\002 \001(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\"" +
+      ";\n\nItemBuyReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002" +
+      " \001(\005\022\016\n\006shopId\030\003 \001(\005\">\n\017ItemExchangeReq\022" +
+      "\014\n\004type\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003" +
+      " \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005c" +
+      "ount\030\002 \001(\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId" +
+      "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlayerMoveReq\022" +
+      "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"\t\n\007FishReq\"<\n\010Fish" +
+      "Push\022\017\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017." +
+      "Message.Reward\"\r\n\013FishHookReqB\020\n\ngame.pr" +
+      "otoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -488,128 +501,140 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HeroChangePush_descriptor,
         new java.lang.String[] { "Hero", });
-    internal_static_Message_FormationCreateReq_descriptor =
+    internal_static_Message_HeroTalentChangeReq_descriptor =
       getDescriptor().getMessageTypes().get(25);
+    internal_static_Message_HeroTalentChangeReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HeroTalentChangeReq_descriptor,
+        new java.lang.String[] { "HeroId", "Talent", });
+    internal_static_Message_HeroTalentChangeRes_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_Message_HeroTalentChangeRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HeroTalentChangeRes_descriptor,
+        new java.lang.String[] { "HeroId", "Talent", });
+    internal_static_Message_FormationCreateReq_descriptor =
+      getDescriptor().getMessageTypes().get(27);
     internal_static_Message_FormationCreateReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationCreateReq_descriptor,
         new java.lang.String[] { });
     internal_static_Message_FormationCreateRes_descriptor =
-      getDescriptor().getMessageTypes().get(26);
+      getDescriptor().getMessageTypes().get(28);
     internal_static_Message_FormationCreateRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationCreateRes_descriptor,
         new java.lang.String[] { "FormationId", });
     internal_static_Message_FormationUpdateReq_descriptor =
-      getDescriptor().getMessageTypes().get(27);
+      getDescriptor().getMessageTypes().get(29);
     internal_static_Message_FormationUpdateReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationUpdateReq_descriptor,
         new java.lang.String[] { "FormationId", "Pos", });
     internal_static_Message_FormationUpdateRes_descriptor =
-      getDescriptor().getMessageTypes().get(28);
+      getDescriptor().getMessageTypes().get(30);
     internal_static_Message_FormationUpdateRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationUpdateRes_descriptor,
         new java.lang.String[] { "FormationId", "Data", });
     internal_static_Message_FormationDeleteReq_descriptor =
-      getDescriptor().getMessageTypes().get(29);
+      getDescriptor().getMessageTypes().get(31);
     internal_static_Message_FormationDeleteReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationDeleteReq_descriptor,
         new java.lang.String[] { "Index", });
     internal_static_Message_FormationSettingReq_descriptor =
-      getDescriptor().getMessageTypes().get(30);
+      getDescriptor().getMessageTypes().get(32);
     internal_static_Message_FormationSettingReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationSettingReq_descriptor,
         new java.lang.String[] { "Index", "Name", "DefaultFormationIndex", "ArenaFormationIndex", });
     internal_static_Message_FormationSettingRes_descriptor =
-      getDescriptor().getMessageTypes().get(31);
+      getDescriptor().getMessageTypes().get(33);
     internal_static_Message_FormationSettingRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationSettingRes_descriptor,
         new java.lang.String[] { "Index", "Name", "DefaultFormationIndex", "ArenaFormationIndex", });
     internal_static_Message_ResourceChangePush_descriptor =
-      getDescriptor().getMessageTypes().get(32);
+      getDescriptor().getMessageTypes().get(34);
     internal_static_Message_ResourceChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ResourceChangePush_descriptor,
         new java.lang.String[] { "ResourceId", "HeroId", "Count", });
     internal_static_Message_PlayerLevelChangePush_descriptor =
-      getDescriptor().getMessageTypes().get(33);
+      getDescriptor().getMessageTypes().get(35);
     internal_static_Message_PlayerLevelChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerLevelChangePush_descriptor,
         new java.lang.String[] { "Value", });
     internal_static_Message_ExpChangePush_descriptor =
-      getDescriptor().getMessageTypes().get(34);
+      getDescriptor().getMessageTypes().get(36);
     internal_static_Message_ExpChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ExpChangePush_descriptor,
         new java.lang.String[] { "HeroId", "AddExp", "CurExp", });
     internal_static_Message_BagInfoChangePush_descriptor =
-      getDescriptor().getMessageTypes().get(35);
+      getDescriptor().getMessageTypes().get(37);
     internal_static_Message_BagInfoChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_BagInfoChangePush_descriptor,
         new java.lang.String[] { "Clean", "Type", "Capacity", "Slot", });
     internal_static_Message_BagCleanReq_descriptor =
-      getDescriptor().getMessageTypes().get(36);
+      getDescriptor().getMessageTypes().get(38);
     internal_static_Message_BagCleanReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_BagCleanReq_descriptor,
         new java.lang.String[] { "Type", });
     internal_static_Message_ItemDiscardReq_descriptor =
-      getDescriptor().getMessageTypes().get(37);
+      getDescriptor().getMessageTypes().get(39);
     internal_static_Message_ItemDiscardReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemDiscardReq_descriptor,
         new java.lang.String[] { "ItemId", "Count", "SlotId", "Type", });
     internal_static_Message_ItemBuyReq_descriptor =
-      getDescriptor().getMessageTypes().get(38);
+      getDescriptor().getMessageTypes().get(40);
     internal_static_Message_ItemBuyReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemBuyReq_descriptor,
         new java.lang.String[] { "ItemId", "Count", "ShopId", });
     internal_static_Message_ItemExchangeReq_descriptor =
-      getDescriptor().getMessageTypes().get(39);
+      getDescriptor().getMessageTypes().get(41);
     internal_static_Message_ItemExchangeReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemExchangeReq_descriptor,
         new java.lang.String[] { "Type", "SlotId", "Count", });
     internal_static_Message_ItemSellReq_descriptor =
-      getDescriptor().getMessageTypes().get(40);
+      getDescriptor().getMessageTypes().get(42);
     internal_static_Message_ItemSellReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ItemSellReq_descriptor,
         new java.lang.String[] { "SlotId", "Count", });
     internal_static_Message_HeroEquipmentReq_descriptor =
-      getDescriptor().getMessageTypes().get(41);
+      getDescriptor().getMessageTypes().get(43);
     internal_static_Message_HeroEquipmentReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HeroEquipmentReq_descriptor,
         new java.lang.String[] { "SlotId", "HeroId", });
     internal_static_Message_PlayerMoveReq_descriptor =
-      getDescriptor().getMessageTypes().get(42);
+      getDescriptor().getMessageTypes().get(44);
     internal_static_Message_PlayerMoveReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerMoveReq_descriptor,
         new java.lang.String[] { "X", "Y", });
     internal_static_Message_FishReq_descriptor =
-      getDescriptor().getMessageTypes().get(43);
+      getDescriptor().getMessageTypes().get(45);
     internal_static_Message_FishReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishReq_descriptor,
         new java.lang.String[] { });
     internal_static_Message_FishPush_descriptor =
-      getDescriptor().getMessageTypes().get(44);
+      getDescriptor().getMessageTypes().get(46);
     internal_static_Message_FishPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishPush_descriptor,
         new java.lang.String[] { "Success", "Reward", });
     internal_static_Message_FishHookReq_descriptor =
-      getDescriptor().getMessageTypes().get(45);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_Message_FishHookReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishHookReq_descriptor,

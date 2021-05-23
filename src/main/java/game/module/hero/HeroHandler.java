@@ -9,9 +9,7 @@ import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.module.event.handler.HeroPowerUpEvent;
 import game.player.Player;
-import game.proto.HeroChangePush;
-import game.proto.HeroEquipmentReq;
-import game.proto.HeroUpReq;
+import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.*;
 
@@ -20,22 +18,21 @@ import game.proto.data.*;
  * 2021/2/27 18:31
  */
 public class HeroHandler {
-
     /**
      * 升级历练
      *
      * @param player
      * @param req
      */
-    public static void lilian(Player player, HeroUpReq req) {
+    public static void powerUp(Player player, HeroUpReq req) {
         PlayerData.Builder pd = player.getPd();
         PlayerHero hero = pd.getHeroOrThrow(req.getHeroId());
         int level = 1;
-        if (hero.containsLiLian(req.getStepId())) {
-            HeroRealm realm = hero.getLiLianMap().get(req.getStepId());
+        if (hero.containsPowerUp(req.getStepId())) {
+            HeroRealm realm = hero.getPowerUpMap().get(req.getStepId());
             level = realm.getLevel() + 1;
         }
-        DataConfigData dataConfigData = G.C.dataMap12.get(level);
+        DataConfigData dataConfigData = G.C.GetPowerUpData(req.getStepId(), level);
         ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_5);
         // Gold
         player.consumeGold(dataConfigData.gold, ConsumeTypeEnum.历练);
@@ -45,41 +42,11 @@ public class HeroHandler {
                 .setLevel(level)
                 .build();
 
-        PlayerHero.Builder builder = hero.toBuilder().putLiLian(req.getStepId(), realm);
+        PlayerHero.Builder builder = hero.toBuilder().putPowerUp(req.getStepId(), realm);
         pd.putHero(req.getHeroId(), builder.build());
 
         G.E.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
 
-    }
-
-    /**
-     * 升级修炼
-     *
-     * @param player
-     * @param req
-     */
-    public static void xiulian(Player player, HeroUpReq req) {
-        PlayerData.Builder pd = player.getPd();
-        PlayerHero hero = pd.getHeroOrThrow(req.getHeroId());
-        int level = 1;
-        if (hero.containsXiuLian(req.getStepId())) {
-            HeroRealm realm = hero.getLiLianMap().get(req.getStepId());
-            level = realm.getLevel() + 1;
-        }
-        DataConfigData dataConfigData = G.C.dataMap12.get(level);
-        ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_5);
-        // Gold
-        player.consumeGold(dataConfigData.gold, ConsumeTypeEnum.修炼);
-
-        HeroRealm realm = HeroRealm.newBuilder()
-                .setId(req.getStepId())
-                .setLevel(level)
-                .build();
-
-        PlayerHero.Builder builder = hero.toBuilder().putXiuLian(req.getStepId(), realm);
-        pd.putHero(req.getHeroId(), builder.build());
-
-        G.E.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
     }
 
 
@@ -130,6 +97,23 @@ public class HeroHandler {
         player.getPd().putHero(hero.getId(), hero);
         // Push
         player.getTransport().send(MsgNo.hero_change_VALUE, HeroChangePush.newBuilder().setHero(hero).build());
+    }
+
+    /**
+     * 修改天赋
+     * todo
+     *
+     * @param player
+     * @param req
+     */
+    public static HeroTalentChangeRes HeroTalentChangeReq(Player player, HeroTalentChangeReq req) {
+
+        PlayerHero heroOrThrow = player.pd.getHeroOrThrow(req.getHeroId());
+        PlayerHero.Builder builder = heroOrThrow.toBuilder().setTalent(req.getTalent());
+        player.pd.putHero(req.getHeroId(), builder.buildPartial());
+
+        return HeroTalentChangeRes.newBuilder()
+                .setHeroId(req.getHeroId()).setTalent(req.getTalent()).buildPartial();
     }
 
 
