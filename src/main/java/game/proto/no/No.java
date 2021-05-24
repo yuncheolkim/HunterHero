@@ -4,7 +4,7 @@
 package game.proto.no;
 
 /**
- * Protobuf enum {@code No.No}
+ * Protobuf enum {@code MessageNo.No}
  */
 public enum No
     implements com.google.protobuf.ProtocolMessageEnum {
@@ -571,6 +571,6 @@ public enum No
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:No.No)
+  // @@protoc_insertion_point(enum_scope:MessageNo.No)
 }
 

@@ -59,10 +59,10 @@ public class PlayerHandler {
 
         ParamConfigData paramConfigData = G.C.getParamConfigData();
 
-        player.pd.setHotelCd(now + paramConfigData.hotelCdTime);
+        long cd = now + paramConfigData.hotelCdTime;
+        player.pd.setHotelCd(cd);
 
-        player.getTransport().send(No.PlayerGoHotelReq_VALUE, Empty.getDefaultInstance());
-
+        player.getTransport().send(No.PlayerGoHotelReq_VALUE, PlayerGoHotelRes.newBuilder().setTime(cd).buildPartial());
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////

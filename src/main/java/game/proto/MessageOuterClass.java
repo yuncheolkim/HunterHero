@@ -245,6 +245,11 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerMoveReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerGoHotelRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerGoHotelRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_FishReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -335,10 +340,11 @@ public final class MessageOuterClass {
       " \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005c" +
       "ount\030\002 \001(\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId" +
       "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlayerMoveReq\022" +
-      "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"\t\n\007FishReq\"<\n\010Fish" +
-      "Push\022\017\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017." +
-      "Message.Reward\"\r\n\013FishHookReqB\020\n\ngame.pr" +
-      "otoH\001P\001b\006proto3"
+      "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\" \n\020PlayerGoHotelRe" +
+      "s\022\014\n\004time\030\001 \001(\003\"\t\n\007FishReq\"<\n\010FishPush\022\017" +
+      "\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Messag" +
+      "e.Reward\"\r\n\013FishHookReqB\020\n\ngame.protoH\001P" +
+      "\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -621,20 +627,26 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerMoveReq_descriptor,
         new java.lang.String[] { "X", "Y", });
-    internal_static_Message_FishReq_descriptor =
+    internal_static_Message_PlayerGoHotelRes_descriptor =
       getDescriptor().getMessageTypes().get(45);
+    internal_static_Message_PlayerGoHotelRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerGoHotelRes_descriptor,
+        new java.lang.String[] { "Time", });
+    internal_static_Message_FishReq_descriptor =
+      getDescriptor().getMessageTypes().get(46);
     internal_static_Message_FishReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishReq_descriptor,
         new java.lang.String[] { });
     internal_static_Message_FishPush_descriptor =
-      getDescriptor().getMessageTypes().get(46);
+      getDescriptor().getMessageTypes().get(47);
     internal_static_Message_FishPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishPush_descriptor,
         new java.lang.String[] { "Success", "Reward", });
     internal_static_Message_FishHookReq_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(48);
     internal_static_Message_FishHookReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishHookReq_descriptor,

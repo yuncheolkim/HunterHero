@@ -272,6 +272,11 @@ message PlayerMoveReq{
     float y = 2;
 }
 
+// 回城
+message PlayerGoHotelRes{
+    int64 time = 1;
+}
+
 // 钓鱼
 message FishReq{
 }
