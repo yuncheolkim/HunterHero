@@ -45,6 +45,16 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * CD 恢复时间点,毫秒数
+   * </pre>
+   *
+   * <code>int64 hotelCd = 10;</code>
+   * @return The hotelCd.
+   */
+  long getHotelCd();
+
+  /**
+   * <pre>
    * 任务信息
    * </pre>
    *

@@ -1,11 +1,15 @@
 package game.module.player;
 
+import game.base.G;
+import game.config.param.ParamConfigData;
+import game.exception.ModuleAssert;
 import game.game.ResourceSourceEnum;
 import game.module.fight.FightService;
 import game.player.Player;
 import game.proto.*;
 import game.proto.data.Resource;
 import game.proto.data.ScenePos;
+import game.proto.no.No;
 
 import java.util.concurrent.TimeUnit;
 
@@ -43,6 +47,23 @@ public class PlayerHandler {
         posBuilder.setX(req.getX()).setY(req.getY());
     }
 
+    /**
+     * 回城
+     *
+     * @param player
+     */
+    public static void hotel(Player player) {
+        long now = System.currentTimeMillis();
+
+        ModuleAssert.isTrue(now >= player.pd.getHotelCd());
+
+        ParamConfigData paramConfigData = G.C.getParamConfigData();
+
+        player.pd.setHotelCd(now + paramConfigData.hotelCdTime);
+
+        player.getTransport().send(No.PlayerGoHotelReq_VALUE, Empty.getDefaultInstance());
+
+    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 

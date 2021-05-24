@@ -8,6 +8,7 @@ enum No {
     NONE = 0;
     // player
     PlayerMoveReq = 201;
+    PlayerGoHotelReq = 202;
     // fish
     FishReq = 8001;
     FishHookReq = 8002;

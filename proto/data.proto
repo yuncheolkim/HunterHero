@@ -11,6 +11,10 @@ message PlayerData {
     string name = 2;
     string account = 3;
     int32 level = 9;
+
+    // CD 恢复时间点,毫秒数
+    int64 hotelCd = 10;
+
     // 任务信息
     PlayerTask task = 101;
     // 所在场景

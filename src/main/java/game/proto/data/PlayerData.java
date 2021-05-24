@@ -80,6 +80,11 @@ private static final long serialVersionUID = 0L;
             level_ = input.readInt32();
             break;
           }
+          case 80: {
+
+            hotelCd_ = input.readInt64();
+            break;
+          }
           case 810: {
             game.proto.data.PlayerTask.Builder subBuilder = null;
             if (task_ != null) {
@@ -346,6 +351,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getLevel() {
     return level_;
+  }
+
+  public static final int HOTELCD_FIELD_NUMBER = 10;
+  private long hotelCd_;
+  /**
+   * <pre>
+   * CD 恢复时间点,毫秒数
+   * </pre>
+   *
+   * <code>int64 hotelCd = 10;</code>
+   * @return The hotelCd.
+   */
+  @java.lang.Override
+  public long getHotelCd() {
+    return hotelCd_;
   }
 
   public static final int TASK_FIELD_NUMBER = 101;
@@ -959,6 +979,9 @@ private static final long serialVersionUID = 0L;
     if (level_ != 0) {
       output.writeInt32(9, level_);
     }
+    if (hotelCd_ != 0L) {
+      output.writeInt64(10, hotelCd_);
+    }
     if (task_ != null) {
       output.writeMessage(101, getTask());
     }
@@ -1026,6 +1049,10 @@ private static final long serialVersionUID = 0L;
     if (level_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(9, level_);
+    }
+    if (hotelCd_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(10, hotelCd_);
     }
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -1116,6 +1143,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getAccount())) return false;
     if (getLevel()
         != other.getLevel()) return false;
+    if (getHotelCd()
+        != other.getHotelCd()) return false;
     if (hasTask() != other.hasTask()) return false;
     if (hasTask()) {
       if (!getTask()
@@ -1169,6 +1198,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getAccount().hashCode();
     hash = (37 * hash) + LEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getLevel();
+    hash = (37 * hash) + HOTELCD_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getHotelCd());
     if (hasTask()) {
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
@@ -1387,6 +1419,8 @@ private static final long serialVersionUID = 0L;
 
       level_ = 0;
 
+      hotelCd_ = 0L;
+
       if (taskBuilder_ == null) {
         task_ = null;
       } else {
@@ -1459,6 +1493,7 @@ private static final long serialVersionUID = 0L;
       result.name_ = name_;
       result.account_ = account_;
       result.level_ = level_;
+      result.hotelCd_ = hotelCd_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
       } else {
@@ -1563,6 +1598,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getLevel() != 0) {
         setLevel(other.getLevel());
+      }
+      if (other.getHotelCd() != 0L) {
+        setHotelCd(other.getHotelCd());
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
@@ -1883,6 +1921,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearLevel() {
       
       level_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long hotelCd_ ;
+    /**
+     * <pre>
+     * CD 恢复时间点,毫秒数
+     * </pre>
+     *
+     * <code>int64 hotelCd = 10;</code>
+     * @return The hotelCd.
+     */
+    @java.lang.Override
+    public long getHotelCd() {
+      return hotelCd_;
+    }
+    /**
+     * <pre>
+     * CD 恢复时间点,毫秒数
+     * </pre>
+     *
+     * <code>int64 hotelCd = 10;</code>
+     * @param value The hotelCd to set.
+     * @return This builder for chaining.
+     */
+    public Builder setHotelCd(long value) {
+      
+      hotelCd_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * CD 恢复时间点,毫秒数
+     * </pre>
+     *
+     * <code>int64 hotelCd = 10;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearHotelCd() {
+      
+      hotelCd_ = 0L;
       onChanged();
       return this;
     }

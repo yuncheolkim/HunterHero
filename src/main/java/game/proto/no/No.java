@@ -21,6 +21,10 @@ public enum No
    */
   PlayerMoveReq(201),
   /**
+   * <code>PlayerGoHotelReq = 202;</code>
+   */
+  PlayerGoHotelReq(202),
+  /**
    * <pre>
    * fish
    * </pre>
@@ -59,6 +63,10 @@ public enum No
    * <code>PlayerMoveReq = 201;</code>
    */
   public static final int PlayerMoveReq_VALUE = 201;
+  /**
+   * <code>PlayerGoHotelReq = 202;</code>
+   */
+  public static final int PlayerGoHotelReq_VALUE = 202;
   /**
    * <pre>
    * fish
@@ -111,6 +119,7 @@ public enum No
     switch (value) {
       case 0: return NONE;
       case 201: return PlayerMoveReq;
+      case 202: return PlayerGoHotelReq;
       case 8001: return FishReq;
       case 8002: return FishHookReq;
       case 2001: return FightStartReq;

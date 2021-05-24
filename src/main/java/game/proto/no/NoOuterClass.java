@@ -23,10 +23,11 @@ public final class NoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\010no.proto\022\002No*h\n\002No\022\010\n\004NONE\020\000\022\022\n\rPlayer" +
-      "MoveReq\020\311\001\022\014\n\007FishReq\020\301>\022\020\n\013FishHookReq\020" +
-      "\302>\022\022\n\rFightStartReq\020\321\017\022\020\n\013FightEndReq\020\324\017" +
-      "B\023\n\rgame.proto.noH\001P\001b\006proto3"
+      "\n\010no.proto\022\002No*\177\n\002No\022\010\n\004NONE\020\000\022\022\n\rPlayer" +
+      "MoveReq\020\311\001\022\025\n\020PlayerGoHotelReq\020\312\001\022\014\n\007Fis" +
+      "hReq\020\301>\022\020\n\013FishHookReq\020\302>\022\022\n\rFightStartR" +
+      "eq\020\321\017\022\020\n\013FightEndReq\020\324\017B\023\n\rgame.proto.no" +
+      "H\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
