@@ -14,6 +14,34 @@ public enum No
   NONE(0),
   /**
    * <pre>
+   * Login
+   * </pre>
+   *
+   * <code>LoginReq = 1;</code>
+   */
+  LoginReq(1),
+  /**
+   * <pre>
+   * Kick
+   * </pre>
+   *
+   * <code>KickPush = 2;</code>
+   */
+  KickPush(2),
+  /**
+   * <code>PlayerCreateNameReq = 3;</code>
+   */
+  PlayerCreateNameReq(3),
+  /**
+   * <pre>
+   * Heartbeat
+   * </pre>
+   *
+   * <code>HeartbeatReq = 101;</code>
+   */
+  HeartbeatReq(101),
+  /**
+   * <pre>
    * player
    * </pre>
    *
@@ -26,28 +54,64 @@ public enum No
   PlayerGoHotelReq(202),
   /**
    * <pre>
-   * fish
+   * Task
    * </pre>
    *
-   * <code>FishReq = 8001;</code>
+   * <code>TaskAcceptReq = 1001;</code>
    */
-  FishReq(8001),
+  TaskAcceptReq(1001),
   /**
-   * <code>FishHookReq = 8002;</code>
+   * <code>TaskCompleteReq = 1002;</code>
    */
-  FishHookReq(8002),
+  TaskCompleteReq(1002),
+  /**
+   * <code>TaskNewPush = 1003;</code>
+   */
+  TaskNewPush(1003),
+  /**
+   * <code>TaskStatusChangePush = 1004;</code>
+   */
+  TaskStatusChangePush(1004),
+  /**
+   * <code>TaskNpcReq = 1005;</code>
+   */
+  TaskNpcReq(1005),
   /**
    * <pre>
-   * fight
+   * Fight
    * </pre>
    *
    * <code>FightStartReq = 2001;</code>
    */
   FightStartReq(2001),
   /**
+   * <code>FightStartPush = 2002;</code>
+   */
+  FightStartPush(2002),
+  /**
    * <code>FightEndReq = 2004;</code>
    */
   FightEndReq(2004),
+  /**
+   * <code>FightTestReq = 2005;</code>
+   */
+  FightTestReq(2005),
+  /**
+   * <pre>
+   * Scene
+   * </pre>
+   *
+   * <code>EnterSceneReq = 3001;</code>
+   */
+  EnterSceneReq(3001),
+  /**
+   * <code>EnterFightAreaReq = 3002;</code>
+   */
+  EnterFightAreaReq(3002),
+  /**
+   * <code>ExitFightAreaReq = 3003;</code>
+   */
+  ExitFightAreaReq(3003),
   /**
    * <pre>
    * Hero
@@ -60,6 +124,111 @@ public enum No
    * <code>HeroTalentChangeReq = 4002;</code>
    */
   HeroTalentChangeReq(4002),
+  /**
+   * <code>HeroChangePush = 4003;</code>
+   */
+  HeroChangePush(4003),
+  /**
+   * <code>HeroEquipmentReq = 4004;</code>
+   */
+  HeroEquipmentReq(4004),
+  /**
+   * <pre>
+   * Formation
+   * </pre>
+   *
+   * <code>FormationCreateReq = 4101;</code>
+   */
+  FormationCreateReq(4101),
+  /**
+   * <code>FormationListReq = 4102;</code>
+   */
+  FormationListReq(4102),
+  /**
+   * <code>FormationUpdateReq = 4103;</code>
+   */
+  FormationUpdateReq(4103),
+  /**
+   * <code>FormationDeleteReq = 4104;</code>
+   */
+  FormationDeleteReq(4104),
+  /**
+   * <code>FormationSettingReq = 4105;</code>
+   */
+  FormationSettingReq(4105),
+  /**
+   * <pre>
+   * Resource
+   * </pre>
+   *
+   * <code>ResourceChangePush = 5001;</code>
+   */
+  ResourceChangePush(5001),
+  /**
+   * <code>PlayerLevelChangePush = 5002;</code>
+   */
+  PlayerLevelChangePush(5002),
+  /**
+   * <code>ExpChangePush = 5003;</code>
+   */
+  ExpChangePush(5003),
+  /**
+   * <pre>
+   * Bag
+   * </pre>
+   *
+   * <code>BagInfoChangePush = 6001;</code>
+   */
+  BagInfoChangePush(6001),
+  /**
+   * <code>BagCleanReq = 6002;</code>
+   */
+  BagCleanReq(6002),
+  /**
+   * <pre>
+   * Item
+   * 丢弃物品
+   * </pre>
+   *
+   * <code>ItemDiscardReq = 7001;</code>
+   */
+  ItemDiscardReq(7001),
+  /**
+   * <pre>
+   * 购买物品
+   * </pre>
+   *
+   * <code>ItemBuyReq = 7002;</code>
+   */
+  ItemBuyReq(7002),
+  /**
+   * <pre>
+   * 银行背包,转移物品
+   * </pre>
+   *
+   * <code>ItemExchangeReq = 7003;</code>
+   */
+  ItemExchangeReq(7003),
+  /**
+   * <pre>
+   * 出售物品
+   * </pre>
+   *
+   * <code>ItemSellReq = 7004;</code>
+   */
+  ItemSellReq(7004),
+  /**
+   * <pre>
+   * fish
+   * </pre>
+   *
+   * <code>FishReq = 8001;</code>
+   */
+  FishReq(8001),
+  /**
+   * <code>FishHookReq = 8002;</code>
+   */
+  FishHookReq(8002),
   UNRECOGNIZED(-1),
   ;
 
@@ -67,6 +236,34 @@ public enum No
    * <code>NONE = 0;</code>
    */
   public static final int NONE_VALUE = 0;
+  /**
+   * <pre>
+   * Login
+   * </pre>
+   *
+   * <code>LoginReq = 1;</code>
+   */
+  public static final int LoginReq_VALUE = 1;
+  /**
+   * <pre>
+   * Kick
+   * </pre>
+   *
+   * <code>KickPush = 2;</code>
+   */
+  public static final int KickPush_VALUE = 2;
+  /**
+   * <code>PlayerCreateNameReq = 3;</code>
+   */
+  public static final int PlayerCreateNameReq_VALUE = 3;
+  /**
+   * <pre>
+   * Heartbeat
+   * </pre>
+   *
+   * <code>HeartbeatReq = 101;</code>
+   */
+  public static final int HeartbeatReq_VALUE = 101;
   /**
    * <pre>
    * player
@@ -81,28 +278,64 @@ public enum No
   public static final int PlayerGoHotelReq_VALUE = 202;
   /**
    * <pre>
-   * fish
+   * Task
    * </pre>
    *
-   * <code>FishReq = 8001;</code>
+   * <code>TaskAcceptReq = 1001;</code>
    */
-  public static final int FishReq_VALUE = 8001;
+  public static final int TaskAcceptReq_VALUE = 1001;
   /**
-   * <code>FishHookReq = 8002;</code>
+   * <code>TaskCompleteReq = 1002;</code>
    */
-  public static final int FishHookReq_VALUE = 8002;
+  public static final int TaskCompleteReq_VALUE = 1002;
+  /**
+   * <code>TaskNewPush = 1003;</code>
+   */
+  public static final int TaskNewPush_VALUE = 1003;
+  /**
+   * <code>TaskStatusChangePush = 1004;</code>
+   */
+  public static final int TaskStatusChangePush_VALUE = 1004;
+  /**
+   * <code>TaskNpcReq = 1005;</code>
+   */
+  public static final int TaskNpcReq_VALUE = 1005;
   /**
    * <pre>
-   * fight
+   * Fight
    * </pre>
    *
    * <code>FightStartReq = 2001;</code>
    */
   public static final int FightStartReq_VALUE = 2001;
   /**
+   * <code>FightStartPush = 2002;</code>
+   */
+  public static final int FightStartPush_VALUE = 2002;
+  /**
    * <code>FightEndReq = 2004;</code>
    */
   public static final int FightEndReq_VALUE = 2004;
+  /**
+   * <code>FightTestReq = 2005;</code>
+   */
+  public static final int FightTestReq_VALUE = 2005;
+  /**
+   * <pre>
+   * Scene
+   * </pre>
+   *
+   * <code>EnterSceneReq = 3001;</code>
+   */
+  public static final int EnterSceneReq_VALUE = 3001;
+  /**
+   * <code>EnterFightAreaReq = 3002;</code>
+   */
+  public static final int EnterFightAreaReq_VALUE = 3002;
+  /**
+   * <code>ExitFightAreaReq = 3003;</code>
+   */
+  public static final int ExitFightAreaReq_VALUE = 3003;
   /**
    * <pre>
    * Hero
@@ -115,6 +348,111 @@ public enum No
    * <code>HeroTalentChangeReq = 4002;</code>
    */
   public static final int HeroTalentChangeReq_VALUE = 4002;
+  /**
+   * <code>HeroChangePush = 4003;</code>
+   */
+  public static final int HeroChangePush_VALUE = 4003;
+  /**
+   * <code>HeroEquipmentReq = 4004;</code>
+   */
+  public static final int HeroEquipmentReq_VALUE = 4004;
+  /**
+   * <pre>
+   * Formation
+   * </pre>
+   *
+   * <code>FormationCreateReq = 4101;</code>
+   */
+  public static final int FormationCreateReq_VALUE = 4101;
+  /**
+   * <code>FormationListReq = 4102;</code>
+   */
+  public static final int FormationListReq_VALUE = 4102;
+  /**
+   * <code>FormationUpdateReq = 4103;</code>
+   */
+  public static final int FormationUpdateReq_VALUE = 4103;
+  /**
+   * <code>FormationDeleteReq = 4104;</code>
+   */
+  public static final int FormationDeleteReq_VALUE = 4104;
+  /**
+   * <code>FormationSettingReq = 4105;</code>
+   */
+  public static final int FormationSettingReq_VALUE = 4105;
+  /**
+   * <pre>
+   * Resource
+   * </pre>
+   *
+   * <code>ResourceChangePush = 5001;</code>
+   */
+  public static final int ResourceChangePush_VALUE = 5001;
+  /**
+   * <code>PlayerLevelChangePush = 5002;</code>
+   */
+  public static final int PlayerLevelChangePush_VALUE = 5002;
+  /**
+   * <code>ExpChangePush = 5003;</code>
+   */
+  public static final int ExpChangePush_VALUE = 5003;
+  /**
+   * <pre>
+   * Bag
+   * </pre>
+   *
+   * <code>BagInfoChangePush = 6001;</code>
+   */
+  public static final int BagInfoChangePush_VALUE = 6001;
+  /**
+   * <code>BagCleanReq = 6002;</code>
+   */
+  public static final int BagCleanReq_VALUE = 6002;
+  /**
+   * <pre>
+   * Item
+   * 丢弃物品
+   * </pre>
+   *
+   * <code>ItemDiscardReq = 7001;</code>
+   */
+  public static final int ItemDiscardReq_VALUE = 7001;
+  /**
+   * <pre>
+   * 购买物品
+   * </pre>
+   *
+   * <code>ItemBuyReq = 7002;</code>
+   */
+  public static final int ItemBuyReq_VALUE = 7002;
+  /**
+   * <pre>
+   * 银行背包,转移物品
+   * </pre>
+   *
+   * <code>ItemExchangeReq = 7003;</code>
+   */
+  public static final int ItemExchangeReq_VALUE = 7003;
+  /**
+   * <pre>
+   * 出售物品
+   * </pre>
+   *
+   * <code>ItemSellReq = 7004;</code>
+   */
+  public static final int ItemSellReq_VALUE = 7004;
+  /**
+   * <pre>
+   * fish
+   * </pre>
+   *
+   * <code>FishReq = 8001;</code>
+   */
+  public static final int FishReq_VALUE = 8001;
+  /**
+   * <code>FishHookReq = 8002;</code>
+   */
+  public static final int FishHookReq_VALUE = 8002;
 
 
   public final int getNumber() {
@@ -142,14 +480,44 @@ public enum No
   public static No forNumber(int value) {
     switch (value) {
       case 0: return NONE;
+      case 1: return LoginReq;
+      case 2: return KickPush;
+      case 3: return PlayerCreateNameReq;
+      case 101: return HeartbeatReq;
       case 201: return PlayerMoveReq;
       case 202: return PlayerGoHotelReq;
-      case 8001: return FishReq;
-      case 8002: return FishHookReq;
+      case 1001: return TaskAcceptReq;
+      case 1002: return TaskCompleteReq;
+      case 1003: return TaskNewPush;
+      case 1004: return TaskStatusChangePush;
+      case 1005: return TaskNpcReq;
       case 2001: return FightStartReq;
+      case 2002: return FightStartPush;
       case 2004: return FightEndReq;
+      case 2005: return FightTestReq;
+      case 3001: return EnterSceneReq;
+      case 3002: return EnterFightAreaReq;
+      case 3003: return ExitFightAreaReq;
       case 4001: return HeroUpReq;
       case 4002: return HeroTalentChangeReq;
+      case 4003: return HeroChangePush;
+      case 4004: return HeroEquipmentReq;
+      case 4101: return FormationCreateReq;
+      case 4102: return FormationListReq;
+      case 4103: return FormationUpdateReq;
+      case 4104: return FormationDeleteReq;
+      case 4105: return FormationSettingReq;
+      case 5001: return ResourceChangePush;
+      case 5002: return PlayerLevelChangePush;
+      case 5003: return ExpChangePush;
+      case 6001: return BagInfoChangePush;
+      case 6002: return BagCleanReq;
+      case 7001: return ItemDiscardReq;
+      case 7002: return ItemBuyReq;
+      case 7003: return ItemExchangeReq;
+      case 7004: return ItemSellReq;
+      case 8001: return FishReq;
+      case 8002: return FishHookReq;
       default: return null;
     }
   }

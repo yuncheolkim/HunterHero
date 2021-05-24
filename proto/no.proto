@@ -6,18 +6,72 @@ option java_multiple_files = true;
 
 enum No {
     NONE = 0;
+    // Login
+    LoginReq = 1;
+    // Kick
+    KickPush = 2;
+
+    PlayerCreateNameReq = 3;
+
+    // Heartbeat
+    HeartbeatReq = 101;
     // player
     PlayerMoveReq = 201;
     PlayerGoHotelReq = 202;
-    // fish
-    FishReq = 8001;
-    FishHookReq = 8002;
-    // fight
+
+    // Task
+    TaskAcceptReq = 1001;
+    TaskCompleteReq = 1002;
+    TaskNewPush = 1003;
+    TaskStatusChangePush = 1004;
+    TaskNpcReq = 1005;
+
+    // Fight
     FightStartReq = 2001;
+    FightStartPush = 2002;
     FightEndReq = 2004;
+    FightTestReq = 2005;
+
+    // Scene
+    EnterSceneReq = 3001;
+    EnterFightAreaReq = 3002;
+    ExitFightAreaReq = 3003;
 
     // Hero
     HeroUpReq = 4001;
     HeroTalentChangeReq = 4002;
+    HeroChangePush = 4003;
+    HeroEquipmentReq = 4004;
+
+    // Formation
+    FormationCreateReq = 4101;
+    FormationListReq = 4102;
+    FormationUpdateReq = 4103;
+    FormationDeleteReq = 4104;
+    FormationSettingReq = 4105;
+
+    // Resource
+    ResourceChangePush = 5001;
+    PlayerLevelChangePush = 5002;
+    ExpChangePush = 5003;
+
+    // Bag
+    BagInfoChangePush = 6001;
+    BagCleanReq = 6002;
+
+    // Item
+    // 丢弃物品
+    ItemDiscardReq = 7001;
+    // 购买物品
+    ItemBuyReq = 7002;
+    // 银行背包,转移物品
+    ItemExchangeReq = 7003;
+    // 出售物品
+    ItemSellReq = 7004;
+
+    // fish
+    FishReq = 8001;
+    FishHookReq = 8002;
+
 
 }

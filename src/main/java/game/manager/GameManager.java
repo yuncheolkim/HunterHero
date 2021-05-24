@@ -19,7 +19,6 @@ import game.module.task.TaskHandler;
 import game.msg.*;
 import game.proto.*;
 import game.proto.back.FishData;
-import game.proto.back.MsgNo;
 import game.proto.back.MsgNoBackInner;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
@@ -85,42 +84,42 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNoBackInner.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
 
         // heart
-        addHandler(new InvokerReturn<>(MsgNo.heartbeat_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
+        addHandler(new InvokerReturn<>(No.HeartbeatReq_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
-        addHandler(new Invoker<>(MsgNo.player_create_name_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
+        addHandler(new Invoker<>(No.PlayerCreateNameReq_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
         addHandler(new Invoker<>(No.PlayerMoveReq_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
         addHandler(new InvokerNoParam(No.PlayerGoHotelReq_VALUE, PlayerHandler::hotel));
         // task
-        addHandler(new Invoker<>(MsgNo.task_accept_VALUE, TaskHandler::acceptTask, TaskReq::parser));
-        addHandler(new Invoker<>(MsgNo.task_complete_VALUE, TaskHandler::completeTask, TaskReq::parser));
-        addHandler(new RetInvoker<>(MsgNo.TaskNpcReqNo_VALUE, TaskHandler::findNpcTask, TaskNpcReq::parser));
+        addHandler(new Invoker<>(No.TaskAcceptReq_VALUE, TaskHandler::acceptTask, TaskReq::parser));
+        addHandler(new Invoker<>(No.TaskCompleteReq_VALUE, TaskHandler::completeTask, TaskReq::parser));
+        addHandler(new RetInvoker<>(No.TaskNpcReq_VALUE, TaskHandler::findNpcTask, TaskNpcReq::parser));
 
         // scene
-        addHandler(new Invoker<>(MsgNo.scene_enter_VALUE, SceneHandler::enterScene, EnterSceneReq::parser));
-        addHandler(new Invoker<>(MsgNo.scene_enter_fight_area_VALUE, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
-        addHandler(new Invoker<>(MsgNo.scene_leave_fight_area_VALUE, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
+        addHandler(new Invoker<>(No.EnterSceneReq_VALUE, SceneHandler::enterScene, EnterSceneReq::parser));
+        addHandler(new Invoker<>(No.EnterFightAreaReq_VALUE, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
+        addHandler(new Invoker<>(No.ExitFightAreaReq_VALUE, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
         // fight
         addHandler(new Invoker<>(No.FightStartReq_VALUE, FightHandler::fight, FightStartReq::parser));
         addHandler(new Invoker<>(No.FightEndReq_VALUE, FightHandler::endFight, Empty::parser));
-        addHandler(new RetInvoker<>(MsgNo.FightTestReqNo_VALUE, FightHandler::fightExercise, FightTestReq::parser));
+        addHandler(new RetInvoker<>(No.FightTestReq_VALUE, FightHandler::fightExercise, FightTestReq::parser));
         // hero
         addHandler(new Invoker<>(No.HeroUpReq_VALUE, HeroHandler::powerUp, HeroUpReq::parser));
         addHandler(new RetInvoker<>(No.HeroTalentChangeReq_VALUE, HeroHandler::HeroTalentChangeReq, HeroTalentChangeReq::parser));
         // bag
-        addHandler(new Invoker<>(MsgNo.BagCleanReqNo_VALUE, BagHandler::clean, BagCleanReq::parser));
-        addHandler(new Invoker<>(MsgNo.ItemDiscardReqNo_VALUE, BagHandler::discardItem, ItemDiscardReq::parser));
-        addHandler(new Invoker<>(MsgNo.ItemExchangeReqNo_VALUE, BagHandler::exchangeItem, ItemExchangeReq::parser));
+        addHandler(new Invoker<>(No.BagCleanReq_VALUE, BagHandler::clean, BagCleanReq::parser));
+        addHandler(new Invoker<>(No.ItemDiscardReq_VALUE, BagHandler::discardItem, ItemDiscardReq::parser));
+        addHandler(new Invoker<>(No.ItemExchangeReq_VALUE, BagHandler::exchangeItem, ItemExchangeReq::parser));
         // 购买物品
-        addHandler(new Invoker<>(MsgNo.ItemBuyReqNo_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
+        addHandler(new Invoker<>(No.ItemBuyReq_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
         // 出售物品
-        addHandler(new Invoker<>(MsgNo.ItemSellReqNo_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
+        addHandler(new Invoker<>(No.ItemSellReq_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
         // 装备物品
-        addHandler(new Invoker<>(MsgNo.HeroEquipmentReqNo_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
+        addHandler(new Invoker<>(No.HeroEquipmentReq_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
         // 阵型
-        addHandler(new RetInvoker<>(MsgNo.FormationCreateReqNo_VALUE, FormationHandler::create, FormationCreateReq::parser));
-        addHandler(new Invoker<>(MsgNo.FormationDeleteReqNo_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
-        addHandler(new RetInvoker<>(MsgNo.FormationUpdateReqNo_VALUE, FormationHandler::update, FormationUpdateReq::parser));
-        addHandler(new RetInvoker<>(MsgNo.FormationSettingReqNo_VALUE, FormationHandler::setting, FormationSettingReq::parser));
+        addHandler(new RetInvoker<>(No.FormationCreateReq_VALUE, FormationHandler::create, FormationCreateReq::parser));
+        addHandler(new Invoker<>(No.FormationDeleteReq_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
+        addHandler(new RetInvoker<>(No.FormationUpdateReq_VALUE, FormationHandler::update, FormationUpdateReq::parser));
+        addHandler(new RetInvoker<>(No.FormationSettingReq_VALUE, FormationHandler::setting, FormationSettingReq::parser));
 
         // 钓鱼
         addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));
