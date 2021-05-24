@@ -55,6 +55,16 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 旅店位置id
+   * </pre>
+   *
+   * <code>int32 hotelId = 11;</code>
+   * @return The hotelId.
+   */
+  int getHotelId();
+
+  /**
+   * <pre>
    * 任务信息
    * </pre>
    *

@@ -215,6 +215,8 @@ public class Player {
         pd.setBankCapacity(G.C.bankCapacity());
         // Task
         pd.setTask(PlayerTask.newBuilder());
+        // Hotel
+        pd.setHotelId(1);
 
         // 英雄 test
         addHero(1001);

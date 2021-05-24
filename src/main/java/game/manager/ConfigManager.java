@@ -14,6 +14,7 @@ import game.config.enmey.EnemyCountConfigData;
 import game.config.param.ParamConfigData;
 
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 所有游戏配置表
@@ -207,6 +208,7 @@ public class ConfigManager extends AbsLifecycle {
 
         paramConfigData.fishPower = dataMap8.get(5).count;
         paramConfigData.fishSuccessTime = dataMap8.get(6).count;
+        paramConfigData.hotelCdTime = (int) TimeUnit.SECONDS.toMillis(dataMap8.get(7).count);
 
     }
 

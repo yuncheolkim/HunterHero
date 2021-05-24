@@ -85,6 +85,11 @@ private static final long serialVersionUID = 0L;
             hotelCd_ = input.readInt64();
             break;
           }
+          case 88: {
+
+            hotelId_ = input.readInt32();
+            break;
+          }
           case 810: {
             game.proto.data.PlayerTask.Builder subBuilder = null;
             if (task_ != null) {
@@ -366,6 +371,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public long getHotelCd() {
     return hotelCd_;
+  }
+
+  public static final int HOTELID_FIELD_NUMBER = 11;
+  private int hotelId_;
+  /**
+   * <pre>
+   * 旅店位置id
+   * </pre>
+   *
+   * <code>int32 hotelId = 11;</code>
+   * @return The hotelId.
+   */
+  @java.lang.Override
+  public int getHotelId() {
+    return hotelId_;
   }
 
   public static final int TASK_FIELD_NUMBER = 101;
@@ -982,6 +1002,9 @@ private static final long serialVersionUID = 0L;
     if (hotelCd_ != 0L) {
       output.writeInt64(10, hotelCd_);
     }
+    if (hotelId_ != 0) {
+      output.writeInt32(11, hotelId_);
+    }
     if (task_ != null) {
       output.writeMessage(101, getTask());
     }
@@ -1053,6 +1076,10 @@ private static final long serialVersionUID = 0L;
     if (hotelCd_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(10, hotelCd_);
+    }
+    if (hotelId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(11, hotelId_);
     }
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -1145,6 +1172,8 @@ private static final long serialVersionUID = 0L;
         != other.getLevel()) return false;
     if (getHotelCd()
         != other.getHotelCd()) return false;
+    if (getHotelId()
+        != other.getHotelId()) return false;
     if (hasTask() != other.hasTask()) return false;
     if (hasTask()) {
       if (!getTask()
@@ -1201,6 +1230,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + HOTELCD_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getHotelCd());
+    hash = (37 * hash) + HOTELID_FIELD_NUMBER;
+    hash = (53 * hash) + getHotelId();
     if (hasTask()) {
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
@@ -1421,6 +1452,8 @@ private static final long serialVersionUID = 0L;
 
       hotelCd_ = 0L;
 
+      hotelId_ = 0;
+
       if (taskBuilder_ == null) {
         task_ = null;
       } else {
@@ -1494,6 +1527,7 @@ private static final long serialVersionUID = 0L;
       result.account_ = account_;
       result.level_ = level_;
       result.hotelCd_ = hotelCd_;
+      result.hotelId_ = hotelId_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
       } else {
@@ -1601,6 +1635,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getHotelCd() != 0L) {
         setHotelCd(other.getHotelCd());
+      }
+      if (other.getHotelId() != 0) {
+        setHotelId(other.getHotelId());
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
@@ -1964,6 +2001,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearHotelCd() {
       
       hotelCd_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int hotelId_ ;
+    /**
+     * <pre>
+     * 旅店位置id
+     * </pre>
+     *
+     * <code>int32 hotelId = 11;</code>
+     * @return The hotelId.
+     */
+    @java.lang.Override
+    public int getHotelId() {
+      return hotelId_;
+    }
+    /**
+     * <pre>
+     * 旅店位置id
+     * </pre>
+     *
+     * <code>int32 hotelId = 11;</code>
+     * @param value The hotelId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setHotelId(int value) {
+      
+      hotelId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 旅店位置id
+     * </pre>
+     *
+     * <code>int32 hotelId = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearHotelId() {
+      
+      hotelId_ = 0;
       onChanged();
       return this;
     }

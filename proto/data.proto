@@ -15,6 +15,9 @@ message PlayerData {
     // CD 恢复时间点,毫秒数
     int64 hotelCd = 10;
 
+    // 旅店位置id
+    int32 hotelId = 11;
+
     // 任务信息
     PlayerTask task = 101;
     // 所在场景
