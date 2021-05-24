@@ -16,4 +16,8 @@ enum No {
     FightStartReq = 2001;
     FightEndReq = 2004;
 
+    // Hero
+    HeroUpReq = 4001;
+    HeroTalentChangeReq = 4002;
+
 }

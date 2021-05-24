@@ -1,38 +1,74 @@
 {
     "1": {
         "effect": "增加血量",
+        "icon": "icon2",
         "id": 1,
-        "lilian": "活血之气",
-        "xiulian": "日月同寿"
+        "name": "活血之气"
+    },
+    "11": {
+        "effect": "增加血量",
+        "icon": "icon12",
+        "id": 11,
+        "name": "日月同寿"
+    },
+    "12": {
+        "effect": "增加伤害",
+        "icon": "icon11",
+        "id": 12,
+        "name": "毁天灭地"
+    },
+    "13": {
+        "effect": "增加护甲",
+        "icon": "icon9",
+        "id": 13,
+        "name": "大地之护"
+    },
+    "14": {
+        "effect": "增加闪避",
+        "icon": "icon8",
+        "id": 14,
+        "name": "虚无缥缈"
+    },
+    "15": {
+        "effect": "暴击",
+        "icon": "icon20",
+        "id": 15,
+        "name": "雷神之怒"
+    },
+    "16": {
+        "effect": "暴击伤害",
+        "icon": "icon7",
+        "id": 16,
+        "name": "神龙之血"
     },
     "2": {
         "effect": "增加伤害",
+        "icon": "icon1",
         "id": 2,
-        "lilian": "锋芒毕露",
-        "xiulian": "毁天灭地"
+        "name": "锋芒毕露"
     },
     "3": {
         "effect": "增加护甲",
+        "icon": "icon5",
         "id": 3,
-        "lilian": "皮糙肉厚",
-        "xiulian": "大地之护"
+        "name": "皮糙肉厚"
     },
     "4": {
         "effect": "增加闪避",
+        "icon": "icon19",
         "id": 4,
-        "lilian": "捕风追影",
-        "xiulian": "虚无缥缈"
+        "name": "捕风追影"
     },
     "5": {
         "effect": "暴击",
+        "icon": "icon3",
         "id": 5,
-        "lilian": "雷霆一击",
-        "xiulian": "雷神之怒"
+        "name": "雷霆一击"
     },
     "6": {
         "effect": "暴击伤害",
+        "icon": "icon4",
         "id": 6,
-        "lilian": "怒火中烧",
-        "xiulian": "神龙之血"
+        "name": "怒火中烧"
     }
 }

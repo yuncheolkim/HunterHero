@@ -7,8 +7,10 @@ import game.config.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
+import game.game.ItemTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
+import game.module.hero.EquipmentService;
 import game.player.Player;
 import game.proto.ItemBuyReq;
 import game.proto.ItemSellReq;
@@ -34,7 +36,16 @@ public class ShopHandler {
         // 暂时金币
         if (display == ResourceEnum.GOLD) {
             ModuleAssert.isTrue(player.hasGold(item.value), ErrorEnum.ERR_103);
-            player.addItem(ItemData.newBuilder().setItemId(req.getItemId()).setCount(req.getCount()).build(), GameConstants.ITEM_BAG);
+            ItemData.Builder builder = ItemData.newBuilder()
+                    .setItemId(req.getItemId())
+                    .setCount(req.getCount());
+
+            if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
+                // 填充属性
+                builder.setProperty(EquipmentService.makeProperty(item));
+            }
+
+            player.addItem(builder.buildPartial(), GameConstants.ITEM_BAG);
             player.consumeGold(item.value, ConsumeTypeEnum.商店);
         }
     }

@@ -5,6 +5,7 @@ package game.proto;
 
 /**
  * <pre>
+ *&#47;////////////////////////////////////////////  formation
  * 创建阵型
  * </pre>
  *
@@ -230,6 +231,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
+   *&#47;////////////////////////////////////////////  formation
    * 创建阵型
    * </pre>
    *

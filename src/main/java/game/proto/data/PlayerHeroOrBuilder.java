@@ -56,19 +56,10 @@ public interface PlayerHeroOrBuilder extends
   game.proto.data.PropertyEffectOrBuilder getPropertyEffectOrBuilder();
 
   /**
-   * <code>.Message.Talent talent = 7;</code>
-   * @return Whether the talent field is set.
-   */
-  boolean hasTalent();
-  /**
-   * <code>.Message.Talent talent = 7;</code>
+   * <code>int32 talent = 7;</code>
    * @return The talent.
    */
-  game.proto.data.Talent getTalent();
-  /**
-   * <code>.Message.Talent talent = 7;</code>
-   */
-  game.proto.data.TalentOrBuilder getTalentOrBuilder();
+  int getTalent();
 
   /**
    * <code>map&lt;int32, .Message.Equipment&gt; equipment = 8;</code>
@@ -105,70 +96,36 @@ public interface PlayerHeroOrBuilder extends
       int key);
 
   /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   * <code>map&lt;int32, .Message.HeroRealm&gt; powerUp = 9;</code>
    */
-  int getLiLianCount();
+  int getPowerUpCount();
   /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   * <code>map&lt;int32, .Message.HeroRealm&gt; powerUp = 9;</code>
    */
-  boolean containsLiLian(
+  boolean containsPowerUp(
       int key);
   /**
-   * Use {@link #getLiLianMap()} instead.
+   * Use {@link #getPowerUpMap()} instead.
    */
   @java.lang.Deprecated
   java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
-  getLiLian();
+  getPowerUp();
   /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   * <code>map&lt;int32, .Message.HeroRealm&gt; powerUp = 9;</code>
    */
   java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
-  getLiLianMap();
+  getPowerUpMap();
   /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   * <code>map&lt;int32, .Message.HeroRealm&gt; powerUp = 9;</code>
    */
 
-  game.proto.data.HeroRealm getLiLianOrDefault(
+  game.proto.data.HeroRealm getPowerUpOrDefault(
       int key,
       game.proto.data.HeroRealm defaultValue);
   /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; liLian = 9;</code>
+   * <code>map&lt;int32, .Message.HeroRealm&gt; powerUp = 9;</code>
    */
 
-  game.proto.data.HeroRealm getLiLianOrThrow(
-      int key);
-
-  /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
-   */
-  int getXiuLianCount();
-  /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
-   */
-  boolean containsXiuLian(
-      int key);
-  /**
-   * Use {@link #getXiuLianMap()} instead.
-   */
-  @java.lang.Deprecated
-  java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
-  getXiuLian();
-  /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
-   */
-  java.util.Map<java.lang.Integer, game.proto.data.HeroRealm>
-  getXiuLianMap();
-  /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
-   */
-
-  game.proto.data.HeroRealm getXiuLianOrDefault(
-      int key,
-      game.proto.data.HeroRealm defaultValue);
-  /**
-   * <code>map&lt;int32, .Message.HeroRealm&gt; xiuLian = 10;</code>
-   */
-
-  game.proto.data.HeroRealm getXiuLianOrThrow(
+  game.proto.data.HeroRealm getPowerUpOrThrow(
       int key);
 }

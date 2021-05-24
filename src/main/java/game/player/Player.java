@@ -258,6 +258,7 @@ public class Player {
         DataConfigData d = G.C.heroMap1001.get(1);
         builder.setId(heroId);
         builder.setLevel(1);
+        builder.setTalent(99999);
 
         builder.getPropertyBuilder()
                 .setHp(d.hp)

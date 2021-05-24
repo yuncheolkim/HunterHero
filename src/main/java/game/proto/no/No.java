@@ -48,6 +48,18 @@ public enum No
    * <code>FightEndReq = 2004;</code>
    */
   FightEndReq(2004),
+  /**
+   * <pre>
+   * Hero
+   * </pre>
+   *
+   * <code>HeroUpReq = 4001;</code>
+   */
+  HeroUpReq(4001),
+  /**
+   * <code>HeroTalentChangeReq = 4002;</code>
+   */
+  HeroTalentChangeReq(4002),
   UNRECOGNIZED(-1),
   ;
 
@@ -91,6 +103,18 @@ public enum No
    * <code>FightEndReq = 2004;</code>
    */
   public static final int FightEndReq_VALUE = 2004;
+  /**
+   * <pre>
+   * Hero
+   * </pre>
+   *
+   * <code>HeroUpReq = 4001;</code>
+   */
+  public static final int HeroUpReq_VALUE = 4001;
+  /**
+   * <code>HeroTalentChangeReq = 4002;</code>
+   */
+  public static final int HeroTalentChangeReq_VALUE = 4002;
 
 
   public final int getNumber() {
@@ -124,6 +148,8 @@ public enum No
       case 8002: return FishHookReq;
       case 2001: return FightStartReq;
       case 2004: return FightEndReq;
+      case 4001: return HeroUpReq;
+      case 4002: return HeroTalentChangeReq;
       default: return null;
     }
   }

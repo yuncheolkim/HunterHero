@@ -6,7 +6,8 @@ import game.config.DataConfigData;
 import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.data.ItemData;
-import game.proto.data.Property;
+
+import static game.module.hero.EquipmentService.makeProperty;
 
 /**
  * @author Yunzhe.Jin
@@ -31,18 +32,8 @@ public class HeroService {
 
     }
 
-    private static Property makeProperty(DataConfigData data) {
-        return Property.newBuilder()
-                .setHp(data.hp)
-                .setDamage(data.damage)
-                .setDef(data.def)
-                .setAvoid(data.avoid)
-                .setCritical(data.critical)
-                .setCriticalDamage(data.criticalDamage)
-                .build();
-    }
 
     public static boolean hasHero(Player player, int heroId) {
-       return player.pd.containsHero(heroId);
+        return player.pd.containsHero(heroId);
     }
 }

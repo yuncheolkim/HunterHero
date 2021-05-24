@@ -3,8 +3,8 @@
 
 package game.proto;
 
-public interface HeroUpReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Message.HeroUpReq)
+public interface HeroTalentChangeResOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Message.HeroTalentChangeRes)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -14,8 +14,8 @@ public interface HeroUpReqOrBuilder extends
   int getHeroId();
 
   /**
-   * <code>int32 stepId = 3;</code>
-   * @return The stepId.
+   * <code>int32 talent = 2;</code>
+   * @return The talent.
    */
-  int getStepId();
+  int getTalent();
 }

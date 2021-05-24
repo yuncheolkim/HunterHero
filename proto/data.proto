@@ -114,10 +114,9 @@ message PlayerHero {
     int32 exp = 3;
     Property property = 5;
     PropertyEffect propertyEffect = 6;
-    Talent talent = 7;
+    int32 talent = 7;
     map<int32, Equipment> equipment = 8;
-    map<int32, HeroRealm> liLian = 9;
-    map<int32, HeroRealm> xiuLian = 10;
+    map<int32, HeroRealm> powerUp = 9;
 }
 // 修炼等级
 message HeroRealm {
@@ -150,10 +149,6 @@ message PropertyEffect {
     int32 defRate = 1; //减伤(百分比)
     int32 avoidRate = 2; //暴击概率
     int32 criticalRate = 3; //闪避概率
-}
-// 天赋
-message Talent {
-    repeated int32 use = 2; // 天赋选择
 }
 
 ////////////////// 战斗
@@ -273,7 +268,7 @@ message Reward {
     RewardType type = 100;
     int32 rewardId = 1;
     int32 count = 2;
-    // 奖励英雄经验 -1:所用英雄获得经验包括玩家，0：玩家获得经验
+    // 奖励英雄经验 0：玩家获得经验,大于0：英雄获得经验
     int32 heroId = 3;
 
     // 装备

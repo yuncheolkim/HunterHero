@@ -29,28 +29,36 @@
         "id": 16
     },
     "17": {
-        "id": 17
+        "id": 17,
+        "name": "激励"
     },
     "18": {
-        "id": 18
+        "id": 18,
+        "name": "以德服人"
     },
     "19": {
-        "id": 19
+        "id": 19,
+        "name": "奸雄"
     },
     "2": {
-        "desc1": "每次攻击同一个目标增加10%攻击力,最多50%",
+        "desc1": "每次攻击同一个目标增加{0}%攻击力,最多{1}%",
         "icon": "SpellBookPreface_19",
         "id": 2,
-        "name": "蓄力一击"
+        "name": "蓄力一击",
+        "v1": 10,
+        "v2": 50
     },
     "20": {
-        "id": 20
+        "id": 20,
+        "name": "护驾"
     },
     "21": {
-        "id": 21
+        "id": 21,
+        "name": "克己"
     },
     "22": {
-        "id": 22
+        "id": 22,
+        "name": "威慑"
     },
     "23": {
         "id": 23
@@ -89,33 +97,34 @@
         "id": 32
     },
     "4": {
+        "desc1": "同时攻击{0}个目标，伤害为基本伤害{1}%",
         "icon": "SpellBookPreface_19",
         "id": 4,
-        "name": "激励"
+        "name": "多重箭",
+        "v1": 2,
+        "v2": 60
     },
     "5": {
+        "desc1": "无视护甲{0}%",
         "icon": "SpellBookPreface_19",
         "id": 5,
-        "name": "以德服人"
+        "name": "护甲穿透",
+        "v1": 20
     },
     "6": {
         "icon": "SpellBookPreface_19",
-        "id": 6,
-        "name": "奸雄"
+        "id": 6
     },
     "7": {
         "icon": "SpellBookPreface_19",
-        "id": 7,
-        "name": "护驾"
+        "id": 7
     },
     "8": {
         "icon": "SpellBookPreface_19",
-        "id": 8,
-        "name": "克己"
+        "id": 8
     },
     "9": {
         "icon": "SpellBookPreface_19",
-        "id": 9,
-        "name": "威慑"
+        "id": 9
     }
 }
