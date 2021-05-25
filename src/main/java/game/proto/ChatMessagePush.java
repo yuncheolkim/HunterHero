@@ -66,6 +66,11 @@ private static final long serialVersionUID = 0L;
             time_ = input.readInt64();
             break;
           }
+          case 32: {
+
+            id_ = input.readInt64();
+            break;
+          }
           case 82: {
             java.lang.String s = input.readStringRequireUtf8();
 
@@ -145,6 +150,17 @@ private static final long serialVersionUID = 0L;
     return time_;
   }
 
+  public static final int ID_FIELD_NUMBER = 4;
+  private long id_;
+  /**
+   * <code>int64 id = 4;</code>
+   * @return The id.
+   */
+  @java.lang.Override
+  public long getId() {
+    return id_;
+  }
+
   public static final int CONTENT_FIELD_NUMBER = 10;
   private volatile java.lang.Object content_;
   /**
@@ -206,6 +222,9 @@ private static final long serialVersionUID = 0L;
     if (time_ != 0L) {
       output.writeInt64(3, time_);
     }
+    if (id_ != 0L) {
+      output.writeInt64(4, id_);
+    }
     if (!getContentBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, content_);
     }
@@ -230,6 +249,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(3, time_);
     }
+    if (id_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, id_);
+    }
     if (!getContentBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, content_);
     }
@@ -253,6 +276,8 @@ private static final long serialVersionUID = 0L;
         != other.getFromUser()) return false;
     if (getTime()
         != other.getTime()) return false;
+    if (getId()
+        != other.getId()) return false;
     if (!getContent()
         .equals(other.getContent())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -274,6 +299,9 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + TIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTime());
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getId());
     hash = (37 * hash) + CONTENT_FIELD_NUMBER;
     hash = (53 * hash) + getContent().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -415,6 +443,8 @@ private static final long serialVersionUID = 0L;
 
       time_ = 0L;
 
+      id_ = 0L;
+
       content_ = "";
 
       return this;
@@ -446,6 +476,7 @@ private static final long serialVersionUID = 0L;
       result.channel_ = channel_;
       result.fromUser_ = fromUser_;
       result.time_ = time_;
+      result.id_ = id_;
       result.content_ = content_;
       onBuilt();
       return result;
@@ -503,6 +534,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getTime() != 0L) {
         setTime(other.getTime());
+      }
+      if (other.getId() != 0L) {
+        setId(other.getId());
       }
       if (!other.getContent().isEmpty()) {
         content_ = other.content_;
@@ -649,6 +683,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearTime() {
       
       time_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private long id_ ;
+    /**
+     * <code>int64 id = 4;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public long getId() {
+      return id_;
+    }
+    /**
+     * <code>int64 id = 4;</code>
+     * @param value The id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setId(long value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 id = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearId() {
+      
+      id_ = 0L;
       onChanged();
       return this;
     }

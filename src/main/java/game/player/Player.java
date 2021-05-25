@@ -200,6 +200,7 @@ public class Player {
      */
     private void initFirstPlayer() {
         // 等级
+        pd.setPid(pid);
         pd.setLevel(1);
 
         pd.getResourceBuilder().setPower(G.C.dataMap8.get(1).count);
