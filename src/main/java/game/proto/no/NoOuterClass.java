@@ -23,7 +23,7 @@ public final class NoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\010no.proto\022\tMessageNo*\307\006\n\002No\022\010\n\004NONE\020\000\022\014" +
+      "\n\010no.proto\022\tMessageNo*\362\006\n\002No\022\010\n\004NONE\020\000\022\014" +
       "\n\010LoginReq\020\001\022\014\n\010KickPush\020\002\022\027\n\023PlayerCrea" +
       "teNameReq\020\003\022\020\n\014HeartbeatReq\020e\022\022\n\rPlayerM" +
       "oveReq\020\311\001\022\025\n\020PlayerGoHotelReq\020\312\001\022\031\n\024Play" +
@@ -44,8 +44,9 @@ public final class NoOuterClass {
       "foChangePush\020\361.\022\020\n\013BagCleanReq\020\362.\022\023\n\016Ite" +
       "mDiscardReq\020\3316\022\017\n\nItemBuyReq\020\3326\022\024\n\017ItemE" +
       "xchangeReq\020\3336\022\020\n\013ItemSellReq\020\3346\022\014\n\007FishR" +
-      "eq\020\301>\022\020\n\013FishHookReq\020\302>B\023\n\rgame.proto.no" +
-      "H\001P\001b\006proto3"
+      "eq\020\301>\022\020\n\013FishHookReq\020\302>\022\023\n\016ChatMessageRe" +
+      "q\020\251F\022\024\n\017ChatMessagePush\020\252FB\023\n\rgame.proto" +
+      ".noH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

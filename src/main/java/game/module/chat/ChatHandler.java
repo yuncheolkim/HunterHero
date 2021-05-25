@@ -1,6 +1,9 @@
 package game.module.chat;
 
+import game.base.G;
+import game.base.Logs;
 import game.player.Player;
+import game.proto.ChatMessageReq;
 
 /**
  * 聊天相关
@@ -10,12 +13,28 @@ import game.player.Player;
  */
 public class ChatHandler {
 
+
+    /**
+     * 聊天
+     *
+     * @param player
+     * @param req
+     */
+    public static void chat(Player player, ChatMessageReq req) {
+        Logs.chat.info("[{}] --> {}", player.getPid(), req.getContent());
+
+        // todo 检查聊天内容
+        ChatScene chatScene = G.G.getChatScene();
+        chatScene.tell(new ChatMessage(player.getPid(), req));
+    }
+
+
     /**
      * 世界聊天
      *
      * @param player
      */
-    public static void chatWorld(Player player) {
+    public static void worldChat(Player player) {
 
     }
 
@@ -24,7 +43,7 @@ public class ChatHandler {
      *
      * @param player
      */
-    public static void chatGroup(Player player) {
+    public static void groupChat(Player player) {
 
     }
 
@@ -33,7 +52,7 @@ public class ChatHandler {
      *
      * @param player
      */
-    public static void caht(Player player) {
+    public static void privacyChat(Player player) {
 
     }
 

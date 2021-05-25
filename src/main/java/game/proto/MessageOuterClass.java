@@ -274,6 +274,16 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FishHookReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ChatMessageReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ChatMessageReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ChatMessagePush_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ChatMessagePush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -355,8 +365,14 @@ public final class MessageOuterClass {
       "\n\n\002id\030\001 \001(\005\"\"\n\024PlayerChooseHotelRes\022\n\n\002i" +
       "d\030\001 \001(\005\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007succes" +
       "s\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Reward" +
-      "\"\r\n\013FishHookReqB\020\n\ngame.protoH\001P\001b\006proto" +
-      "3"
+      "\"\r\n\013FishHookReq\"X\n\016ChatMessageReq\022%\n\007cha" +
+      "nnel\030\001 \001(\0162\024.Message.ChatChannel\022\016\n\006toUs" +
+      "er\030\002 \001(\003\022\017\n\007content\030\n \001(\t\"i\n\017ChatMessage" +
+      "Push\022%\n\007channel\030\001 \001(\0162\024.Message.ChatChan" +
+      "nel\022\020\n\010fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\017\n\007c" +
+      "ontent\030\n \001(\t*H\n\013ChatChannel\022\n\n\006C_NONE\020\000\022" +
+      "\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SY" +
+      "STEM\020\004B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -675,6 +691,18 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishHookReq_descriptor,
         new java.lang.String[] { });
+    internal_static_Message_ChatMessageReq_descriptor =
+      getDescriptor().getMessageTypes().get(51);
+    internal_static_Message_ChatMessageReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ChatMessageReq_descriptor,
+        new java.lang.String[] { "Channel", "ToUser", "Content", });
+    internal_static_Message_ChatMessagePush_descriptor =
+      getDescriptor().getMessageTypes().get(52);
+    internal_static_Message_ChatMessagePush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ChatMessagePush_descriptor,
+        new java.lang.String[] { "Channel", "FromUser", "Time", "Content", });
     game.proto.data.Data.getDescriptor();
   }
 

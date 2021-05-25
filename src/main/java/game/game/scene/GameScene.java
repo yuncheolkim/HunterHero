@@ -4,10 +4,14 @@ import game.base.GameConstants;
 import game.base.Work;
 
 /**
+ * 游戏场景基本类
+ *
  * @author Yunzhe.Jin
  * 2021/4/2 15:36
  */
 public class GameScene {
+    private int sceneId;
+
     protected long id;
 
     private Work work;
@@ -32,4 +36,11 @@ public class GameScene {
     }
 
 
+    public int getSceneId() {
+        return sceneId;
+    }
+
+    public void setSceneId(int sceneId) {
+        this.sceneId = sceneId;
+    }
 }

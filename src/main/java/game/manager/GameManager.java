@@ -2,8 +2,9 @@ package game.manager;
 
 import game.base.AbsLifecycle;
 import game.base.G;
-import game.game.scene.GameScene;
 import game.module.bag.BagHandler;
+import game.module.chat.ChatHandler;
+import game.module.chat.ChatScene;
 import game.module.cmd.CmdHandler;
 import game.module.fight.FightHandler;
 import game.module.fish.FishHandler;
@@ -12,7 +13,6 @@ import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
-import game.module.scene.ChatScene;
 import game.module.scene.SceneHandler;
 import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
@@ -59,7 +59,7 @@ public class GameManager extends AbsLifecycle {
     }
 
     // scene
-    private GameScene chatScene = new ChatScene();
+    private final ChatScene chatScene = new ChatScene();
 
     @Override
     public void start() {
@@ -125,6 +125,8 @@ public class GameManager extends AbsLifecycle {
         // 钓鱼
         addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));
         addHandler(new Invoker<>(No.FishHookReq_VALUE, FishHandler::fishHook, FishHookReq::parser));
+        // Chat
+        addHandler(new Invoker<>(No.ChatMessageReq_VALUE, ChatHandler::chat, ChatMessageReq::parser));
 
     }
 
@@ -146,7 +148,7 @@ public class GameManager extends AbsLifecycle {
         return heroCalcProcess;
     }
 
-    public GameScene getChatScene() {
+    public ChatScene getChatScene() {
         return chatScene;
     }
 }

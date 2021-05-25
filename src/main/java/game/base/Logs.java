@@ -12,7 +12,10 @@ import org.slf4j.LoggerFactory;
 public class Logs {
 
     public static final Log C = new DefaultLog("common", "[common]");
+
     public static final Logger M = LoggerFactory.getLogger("module");
+
+    public static final Logger chat = LoggerFactory.getLogger("chat");
 
     public static void trace(Object... args) {
 

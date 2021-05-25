@@ -297,6 +297,28 @@ message FishHookReq{
 
 }
 
+//聊天
+enum ChatChannel {
+    C_NONE = 0;
+    WORLD = 1;
+    GROUP = 2;
+    PRIVACY = 3;
+    SYSTEM = 4;
+}
+
+message ChatMessageReq{
+    ChatChannel channel = 1;
+    int64 toUser = 2;
+    string content = 10;
+}
+
+message ChatMessagePush{
+    ChatChannel channel = 1;
+    int64 fromUser = 2;
+    int64 time = 3;
+    string content = 10;
+
+}
 
 
 

@@ -68,6 +68,15 @@ appender("klog", RollingFileAppender) {
     }
 }
 
+appender("chat", RollingFileAppender) {
+    file = "$klogDir/chat.log"
+    encoder(PatternLayoutEncoder) {
+        pattern = PATTERN_KLOG
+    }
+    rollingPolicy(TimeBasedRollingPolicy) {
+        fileNamePattern = "logs/chat_%d{yyyy-MM-dd}.log"
+    }
+}
 
 logger("klog", INFO, ["klog"])
 root(DEBUG, appenderList)

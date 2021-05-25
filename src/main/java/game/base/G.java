@@ -2,7 +2,10 @@ package game.base;
 
 import game.manager.*;
 import game.msg.MsgProcess;
+import game.player.Player;
 import game.proto.Message;
+
+import java.util.Map;
 
 /**
  * @author Yunzhe.Jin
@@ -19,6 +22,8 @@ public class G {
 
     public static ConfigManager C = new ConfigManager();
 
+    public static SceneManager SCENE = new SceneManager();
+
     ///////////// No Lifecycle
     public static RepoManager R = new RepoManager();
 
@@ -34,15 +39,54 @@ public class G {
         System.exit(-1);
     }
 
-
+    /**
+     * 消息发送给后端用户
+     *
+     * @param pid
+     * @param msgNo
+     * @param message
+     */
     public static void sendToPlayer(long pid, int msgNo, com.google.protobuf.MessageLite message) {
+
         W.getPlayerWork(pid).addTask(new MsgProcess(Message.newBuilder()
                 .setMsgNo(msgNo)
                 .setBody(message.toByteString()).build(), pid));
     }
 
+    /**
+     * 消息发送给后端用户
+     *
+     * @param pid
+     * @param msgNo
+     */
     public static void sendToPlayer(long pid, int msgNo) {
         W.getPlayerWork(pid).addTask(new MsgProcess(Message.newBuilder()
                 .setMsgNo(msgNo).build(), pid));
+    }
+
+    /**
+     * 消息发送给前端
+     *
+     * @param pid
+     * @param msgNo
+     * @param message
+     */
+    public static void pushToPlayer(long pid, int msgNo, com.google.protobuf.MessageLite message) {
+        P.findPlayer(pid).ifPresent(player -> {
+            player.getTransport().send(msgNo, message);
+        });
+    }
+
+    /**
+     * 消息发送给前端
+     *
+     * @param msgNo
+     * @param message
+     */
+    public static void pushToAllPlayer(int msgNo, com.google.protobuf.MessageLite message) {
+        for (Map.Entry<Long, Player> longPlayerEntry : P.allPlayer()) {
+
+            longPlayerEntry.getValue().getTransport().send(msgNo, message);
+        }
     }
 }

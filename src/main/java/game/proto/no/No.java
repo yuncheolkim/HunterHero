@@ -233,6 +233,18 @@ public enum No
    * <code>FishHookReq = 8002;</code>
    */
   FishHookReq(8002),
+  /**
+   * <pre>
+   * Chat
+   * </pre>
+   *
+   * <code>ChatMessageReq = 9001;</code>
+   */
+  ChatMessageReq(9001),
+  /**
+   * <code>ChatMessagePush = 9002;</code>
+   */
+  ChatMessagePush(9002),
   UNRECOGNIZED(-1),
   ;
 
@@ -461,6 +473,18 @@ public enum No
    * <code>FishHookReq = 8002;</code>
    */
   public static final int FishHookReq_VALUE = 8002;
+  /**
+   * <pre>
+   * Chat
+   * </pre>
+   *
+   * <code>ChatMessageReq = 9001;</code>
+   */
+  public static final int ChatMessageReq_VALUE = 9001;
+  /**
+   * <code>ChatMessagePush = 9002;</code>
+   */
+  public static final int ChatMessagePush_VALUE = 9002;
 
 
   public final int getNumber() {
@@ -527,6 +551,8 @@ public enum No
       case 7004: return ItemSellReq;
       case 8001: return FishReq;
       case 8002: return FishHookReq;
+      case 9001: return ChatMessageReq;
+      case 9002: return ChatMessagePush;
       default: return null;
     }
   }
