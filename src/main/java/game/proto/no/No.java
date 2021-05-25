@@ -53,6 +53,10 @@ public enum No
    */
   PlayerGoHotelReq(202),
   /**
+   * <code>PlayerChooseHotelReq = 203;</code>
+   */
+  PlayerChooseHotelReq(203),
+  /**
    * <pre>
    * Task
    * </pre>
@@ -277,6 +281,10 @@ public enum No
    */
   public static final int PlayerGoHotelReq_VALUE = 202;
   /**
+   * <code>PlayerChooseHotelReq = 203;</code>
+   */
+  public static final int PlayerChooseHotelReq_VALUE = 203;
+  /**
    * <pre>
    * Task
    * </pre>
@@ -486,6 +494,7 @@ public enum No
       case 101: return HeartbeatReq;
       case 201: return PlayerMoveReq;
       case 202: return PlayerGoHotelReq;
+      case 203: return PlayerChooseHotelReq;
       case 1001: return TaskAcceptReq;
       case 1002: return TaskCompleteReq;
       case 1003: return TaskNewPush;

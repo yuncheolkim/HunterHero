@@ -18,6 +18,7 @@ enum No {
     // player
     PlayerMoveReq = 201;
     PlayerGoHotelReq = 202;
+    PlayerChooseHotelReq = 203;
 
     // Task
     TaskAcceptReq = 1001;

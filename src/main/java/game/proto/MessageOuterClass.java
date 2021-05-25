@@ -250,6 +250,16 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerGoHotelRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerChooseHotelReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerChooseHotelReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_PlayerChooseHotelRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_PlayerChooseHotelRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_FishReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -341,10 +351,12 @@ public final class MessageOuterClass {
       "ount\030\002 \001(\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId" +
       "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlayerMoveReq\022" +
       "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\" \n\020PlayerGoHotelRe" +
-      "s\022\014\n\004time\030\001 \001(\003\"\t\n\007FishReq\"<\n\010FishPush\022\017" +
-      "\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Messag" +
-      "e.Reward\"\r\n\013FishHookReqB\020\n\ngame.protoH\001P" +
-      "\001b\006proto3"
+      "s\022\014\n\004time\030\001 \001(\003\"\"\n\024PlayerChooseHotelReq\022" +
+      "\n\n\002id\030\001 \001(\005\"\"\n\024PlayerChooseHotelRes\022\n\n\002i" +
+      "d\030\001 \001(\005\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007succes" +
+      "s\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Reward" +
+      "\"\r\n\013FishHookReqB\020\n\ngame.protoH\001P\001b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -633,20 +645,32 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerGoHotelRes_descriptor,
         new java.lang.String[] { "Time", });
-    internal_static_Message_FishReq_descriptor =
+    internal_static_Message_PlayerChooseHotelReq_descriptor =
       getDescriptor().getMessageTypes().get(46);
+    internal_static_Message_PlayerChooseHotelReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerChooseHotelReq_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_PlayerChooseHotelRes_descriptor =
+      getDescriptor().getMessageTypes().get(47);
+    internal_static_Message_PlayerChooseHotelRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_PlayerChooseHotelRes_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_FishReq_descriptor =
+      getDescriptor().getMessageTypes().get(48);
     internal_static_Message_FishReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishReq_descriptor,
         new java.lang.String[] { });
     internal_static_Message_FishPush_descriptor =
-      getDescriptor().getMessageTypes().get(47);
+      getDescriptor().getMessageTypes().get(49);
     internal_static_Message_FishPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishPush_descriptor,
         new java.lang.String[] { "Success", "Reward", });
     internal_static_Message_FishHookReq_descriptor =
-      getDescriptor().getMessageTypes().get(48);
+      getDescriptor().getMessageTypes().get(50);
     internal_static_Message_FishHookReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishHookReq_descriptor,

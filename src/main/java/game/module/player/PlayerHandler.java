@@ -1,6 +1,7 @@
 package game.module.player;
 
 import game.base.G;
+import game.config.TransformConfigData;
 import game.config.param.ParamConfigData;
 import game.exception.ModuleAssert;
 import game.game.ResourceSourceEnum;
@@ -64,6 +65,21 @@ public class PlayerHandler {
 
         player.getTransport().send(No.PlayerGoHotelReq_VALUE, PlayerGoHotelRes.newBuilder().setTime(cd).buildPartial());
     }
+
+    /**
+     * 选择回城点
+     *
+     * @param player
+     */
+    public static PlayerChooseHotelRes chooseHotel(Player player, PlayerChooseHotelReq req) {
+        final int id = req.getId();
+        TransformConfigData transformConfigData = G.C.transformConfigData(id);
+        ModuleAssert.notNull(transformConfigData);
+        player.pd.setHotelId(id);
+
+        return PlayerChooseHotelRes.newBuilder().setId(id).buildPartial();
+    }
+
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -5,8 +5,10 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
 import game.base.G;
+import game.config.BaseConfigData;
 import game.config.DataConfigData;
 import game.config.JsonConfig;
+import game.config.TransformConfigData;
 import game.config.drop.DropItemConfigData;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
@@ -15,6 +17,7 @@ import game.config.param.ParamConfigData;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 /**
  * 所有游戏配置表
@@ -93,8 +96,11 @@ public class ConfigManager extends AbsLifecycle {
     // 参数
     private ParamConfigData paramConfigData = new ParamConfigData();
 
+    private Map<Integer, TransformConfigData> transformMap;
+
 
     @Override
+
     public void start() {
         super.start();
         dataMap1 = new JsonConfig("data/data_1-hero.json", 32).load();
@@ -210,6 +216,23 @@ public class ConfigManager extends AbsLifecycle {
         paramConfigData.fishSuccessTime = dataMap8.get(6).count;
         paramConfigData.hotelCdTime = (int) TimeUnit.SECONDS.toMillis(dataMap8.get(7).count);
 
+        //20-传送点
+        transformMap = makeMapData("data/data_20-传送点.json", TransformConfigData::new);
+
+    }
+
+    /**
+     * 配置数据
+     *
+     * @param path
+     * @param supplier
+     * @param <T>
+     * @return
+     */
+    private <T extends BaseConfigData<T>> Map<Integer, T> makeMapData(String path, Supplier<T> supplier) {
+        ImmutableMap.Builder<Integer, T> temp = ImmutableMap.builder();
+        new JsonConfig(path).load().forEach((integer, dataConfigData) -> temp.put(integer, supplier.get().convert(dataConfigData)));
+        return temp.build();
     }
 
     /**
@@ -306,6 +329,10 @@ public class ConfigManager extends AbsLifecycle {
             return G.C.dataMap13.get(level);
         }
         return null;
+    }
+
+    public TransformConfigData transformConfigData(int id) {
+        return transformMap.get(id);
     }
 
 }

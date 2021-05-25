@@ -277,6 +277,14 @@ message PlayerGoHotelRes{
     int64 time = 1;
 }
 
+// 选择回城点
+message PlayerChooseHotelReq{
+    int32 id = 1;
+}
+message PlayerChooseHotelRes{
+    int32 id = 1;
+}
+
 // 钓鱼
 message FishReq{
 }

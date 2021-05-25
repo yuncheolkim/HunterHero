@@ -49,6 +49,7 @@ public class DataConfigData {
 
     @JsonProperty
     public int stack;
+
     @JsonProperty
     public int round;
 
@@ -185,23 +186,92 @@ public class DataConfigData {
 
     @JsonProperty
     public String content1;
+
     @JsonProperty
     public int resourceId;
+
     @JsonProperty
     public int value;
+
     @JsonProperty
     public int itemId;
+
     @JsonProperty
     public int sell;
+
     //////////// list
     @JsonProperty
     public List<Integer> enemyIdList;
+
     @JsonProperty
     public List<Integer> enemyAreaList;
+
     @JsonProperty
     public List<Integer> targetList;
+
     @JsonProperty
     public List<Integer> list1;
+
     @JsonProperty
     public List<Integer> list2;
+
+    public int i1;
+
+    public int i2;
+
+    public int i3;
+
+    public int i4;
+
+    public int i5;
+
+    public int i6;
+
+    public int i7;
+
+    public int i8;
+
+    public int i9;
+
+    public int i10;
+
+    public int i11;
+
+    public int i12;
+
+    public int i13;
+
+    public int i14;
+
+    public int i15;
+
+    public int i16;
+
+    public int i17;
+
+    public int i18;
+
+    public int i19;
+
+    public int i20;
+
+    public String s1;
+
+    public String s2;
+
+    public String s3;
+
+    public String s4;
+
+    public String s5;
+
+    public float f1;
+
+    public float f2;
+
+    public float f3;
+
+    public float f4;
+
+    public float f5;
 }
