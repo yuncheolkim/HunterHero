@@ -21,7 +21,7 @@ public class ChatHandler {
      * @param req
      */
     public static void chat(Player player, ChatMessageReq req) {
-        Logs.chat.info("[{}] --> {}", player.getPid(), req.getContent());
+        Logs.chat.info("[{}] --> [{}] {}:{}", player.getPid(), req.getToUser(), req.getChannel(), req.getContent());
 
         // todo 检查聊天内容
         ChatScene chatScene = G.G.getChatScene();

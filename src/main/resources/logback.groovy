@@ -79,6 +79,7 @@ appender("chat", RollingFileAppender) {
 }
 
 logger("klog", INFO, ["klog"])
+logger("chat", INFO, ["chat"])
 root(DEBUG, appenderList)
 
 scan("30 seconds")
