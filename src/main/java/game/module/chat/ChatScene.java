@@ -56,6 +56,7 @@ public class ChatScene extends GameScene {
         } else if (msg.req.getChannel() == ChatChannel.PRIVACY || msg.req.getChannel() == ChatChannel.SYSTEM) {
             // 私聊
             G.pushToPlayer(req.getToUser(), No.ChatMessagePush_VALUE, message);
+            G.pushToPlayer(msg.pid, No.ChatMessagePush_VALUE, message);
         }
 
     }

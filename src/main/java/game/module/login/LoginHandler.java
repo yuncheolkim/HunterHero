@@ -1,7 +1,6 @@
 package game.module.login;
 
 import game.base.G;
-import game.base.GameConstants;
 import game.base.Logs;
 import game.player.Player;
 import game.proto.LoginReq;
@@ -22,9 +21,6 @@ public class LoginHandler {
     public void login(Channel ch, LoginReq request) {
         long playerId = request.getPlayerId();
         PlayerRepo playerRepo = G.R.getPlayerRepo();
-        if (!playerRepo.has(request.getCode())) {
-            playerId = GameConstants.ID_GENERATOR.next();
-        }
 
         Logs.C.info("start login:{} ---->{}", ch, playerId);
         G.P.compute(playerId, (pid, player) -> {
