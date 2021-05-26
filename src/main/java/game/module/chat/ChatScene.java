@@ -15,7 +15,8 @@ import game.proto.no.No;
  */
 public class ChatScene extends GameScene {
 
-//    private Map<Long, ChatData> playerMap = new HashMap<>();
+    //    private Map<Long, ChatData> playerMap = new HashMap<>();
+    private long id;
 
     @Override
     protected void process(Object msg) {
@@ -42,22 +43,19 @@ public class ChatScene extends GameScene {
 //        chatData.lastTime = lastTime;
 
         ChatMessageReq req = msg.req;
+        ChatMessagePush message = ChatMessagePush.newBuilder()
+                .setChannel(req.getChannel())
+                .setFromUser(msg.pid)
+                .setTime(now)
+                .setId(++id)
+                .setContent(req.getContent())
+                .buildPartial();
         if (msg.req.getChannel() == ChatChannel.WORLD) {
             // 世界聊天，广播所有人,包括自己
-            G.pushToAllPlayer(No.ChatMessagePush_VALUE, ChatMessagePush.newBuilder()
-                    .setChannel(req.getChannel())
-                    .setFromUser(msg.pid)
-                    .setTime(now)
-                    .setContent(req.getContent())
-                    .buildPartial());
+            G.pushToAllPlayer(No.ChatMessagePush_VALUE, message);
         } else if (msg.req.getChannel() == ChatChannel.PRIVACY || msg.req.getChannel() == ChatChannel.SYSTEM) {
             // 私聊
-            G.pushToPlayer(req.getToUser(), No.ChatMessagePush_VALUE, ChatMessagePush.newBuilder()
-                    .setChannel(req.getChannel())
-                    .setFromUser(msg.pid)
-                    .setTime(now)
-                    .setContent(req.getContent())
-                    .buildPartial());
+            G.pushToPlayer(req.getToUser(), No.ChatMessagePush_VALUE, message);
         }
 
     }

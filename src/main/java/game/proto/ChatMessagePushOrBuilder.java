@@ -31,6 +31,12 @@ public interface ChatMessagePushOrBuilder extends
   long getTime();
 
   /**
+   * <code>int64 id = 4;</code>
+   * @return The id.
+   */
+  long getId();
+
+  /**
    * <code>string content = 10;</code>
    * @return The content.
    */
