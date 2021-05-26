@@ -12,12 +12,14 @@ message PlayerData {
     string account = 3;
     int32 level = 9;
 
-    // CD 恢复时间点,毫秒数
+    // 回城 CD 恢复时间点,毫秒数
     int64 hotelCd = 10;
 
-    // 旅店位置id
+    // 回城旅店位置id
     int32 hotelId = 11;
 
+    // vip等级
+    int32 vipLevel = 12;
     // 任务信息
     PlayerTask task = 101;
     // 所在场景
