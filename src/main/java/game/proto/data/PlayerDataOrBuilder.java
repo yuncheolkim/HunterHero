@@ -45,7 +45,7 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
-   * CD 恢复时间点,毫秒数
+   * 回城 CD 恢复时间点,毫秒数
    * </pre>
    *
    * <code>int64 hotelCd = 10;</code>
@@ -55,13 +55,23 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
-   * 旅店位置id
+   * 回城旅店位置id
    * </pre>
    *
    * <code>int32 hotelId = 11;</code>
    * @return The hotelId.
    */
   int getHotelId();
+
+  /**
+   * <pre>
+   * vip等级
+   * </pre>
+   *
+   * <code>int32 vipLevel = 12;</code>
+   * @return The vipLevel.
+   */
+  int getVipLevel();
 
   /**
    * <pre>

@@ -90,6 +90,11 @@ private static final long serialVersionUID = 0L;
             hotelId_ = input.readInt32();
             break;
           }
+          case 96: {
+
+            vipLevel_ = input.readInt32();
+            break;
+          }
           case 810: {
             game.proto.data.PlayerTask.Builder subBuilder = null;
             if (task_ != null) {
@@ -362,7 +367,7 @@ private static final long serialVersionUID = 0L;
   private long hotelCd_;
   /**
    * <pre>
-   * CD 恢复时间点,毫秒数
+   * 回城 CD 恢复时间点,毫秒数
    * </pre>
    *
    * <code>int64 hotelCd = 10;</code>
@@ -377,7 +382,7 @@ private static final long serialVersionUID = 0L;
   private int hotelId_;
   /**
    * <pre>
-   * 旅店位置id
+   * 回城旅店位置id
    * </pre>
    *
    * <code>int32 hotelId = 11;</code>
@@ -386,6 +391,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getHotelId() {
     return hotelId_;
+  }
+
+  public static final int VIPLEVEL_FIELD_NUMBER = 12;
+  private int vipLevel_;
+  /**
+   * <pre>
+   * vip等级
+   * </pre>
+   *
+   * <code>int32 vipLevel = 12;</code>
+   * @return The vipLevel.
+   */
+  @java.lang.Override
+  public int getVipLevel() {
+    return vipLevel_;
   }
 
   public static final int TASK_FIELD_NUMBER = 101;
@@ -1005,6 +1025,9 @@ private static final long serialVersionUID = 0L;
     if (hotelId_ != 0) {
       output.writeInt32(11, hotelId_);
     }
+    if (vipLevel_ != 0) {
+      output.writeInt32(12, vipLevel_);
+    }
     if (task_ != null) {
       output.writeMessage(101, getTask());
     }
@@ -1080,6 +1103,10 @@ private static final long serialVersionUID = 0L;
     if (hotelId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(11, hotelId_);
+    }
+    if (vipLevel_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(12, vipLevel_);
     }
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -1174,6 +1201,8 @@ private static final long serialVersionUID = 0L;
         != other.getHotelCd()) return false;
     if (getHotelId()
         != other.getHotelId()) return false;
+    if (getVipLevel()
+        != other.getVipLevel()) return false;
     if (hasTask() != other.hasTask()) return false;
     if (hasTask()) {
       if (!getTask()
@@ -1232,6 +1261,8 @@ private static final long serialVersionUID = 0L;
         getHotelCd());
     hash = (37 * hash) + HOTELID_FIELD_NUMBER;
     hash = (53 * hash) + getHotelId();
+    hash = (37 * hash) + VIPLEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getVipLevel();
     if (hasTask()) {
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
@@ -1454,6 +1485,8 @@ private static final long serialVersionUID = 0L;
 
       hotelId_ = 0;
 
+      vipLevel_ = 0;
+
       if (taskBuilder_ == null) {
         task_ = null;
       } else {
@@ -1528,6 +1561,7 @@ private static final long serialVersionUID = 0L;
       result.level_ = level_;
       result.hotelCd_ = hotelCd_;
       result.hotelId_ = hotelId_;
+      result.vipLevel_ = vipLevel_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
       } else {
@@ -1638,6 +1672,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getHotelId() != 0) {
         setHotelId(other.getHotelId());
+      }
+      if (other.getVipLevel() != 0) {
+        setVipLevel(other.getVipLevel());
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
@@ -1965,7 +2002,7 @@ private static final long serialVersionUID = 0L;
     private long hotelCd_ ;
     /**
      * <pre>
-     * CD 恢复时间点,毫秒数
+     * 回城 CD 恢复时间点,毫秒数
      * </pre>
      *
      * <code>int64 hotelCd = 10;</code>
@@ -1977,7 +2014,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * CD 恢复时间点,毫秒数
+     * 回城 CD 恢复时间点,毫秒数
      * </pre>
      *
      * <code>int64 hotelCd = 10;</code>
@@ -1992,7 +2029,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * CD 恢复时间点,毫秒数
+     * 回城 CD 恢复时间点,毫秒数
      * </pre>
      *
      * <code>int64 hotelCd = 10;</code>
@@ -2008,7 +2045,7 @@ private static final long serialVersionUID = 0L;
     private int hotelId_ ;
     /**
      * <pre>
-     * 旅店位置id
+     * 回城旅店位置id
      * </pre>
      *
      * <code>int32 hotelId = 11;</code>
@@ -2020,7 +2057,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 旅店位置id
+     * 回城旅店位置id
      * </pre>
      *
      * <code>int32 hotelId = 11;</code>
@@ -2035,7 +2072,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 旅店位置id
+     * 回城旅店位置id
      * </pre>
      *
      * <code>int32 hotelId = 11;</code>
@@ -2044,6 +2081,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearHotelId() {
       
       hotelId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int vipLevel_ ;
+    /**
+     * <pre>
+     * vip等级
+     * </pre>
+     *
+     * <code>int32 vipLevel = 12;</code>
+     * @return The vipLevel.
+     */
+    @java.lang.Override
+    public int getVipLevel() {
+      return vipLevel_;
+    }
+    /**
+     * <pre>
+     * vip等级
+     * </pre>
+     *
+     * <code>int32 vipLevel = 12;</code>
+     * @param value The vipLevel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVipLevel(int value) {
+      
+      vipLevel_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * vip等级
+     * </pre>
+     *
+     * <code>int32 vipLevel = 12;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearVipLevel() {
+      
+      vipLevel_ = 0;
       onChanged();
       return this;
     }

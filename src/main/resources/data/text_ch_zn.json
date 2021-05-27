@@ -8,7 +8,11 @@
         "id": 2
     },
     "3": {
-        "content": "欢迎来到\u003ccolor=red\u003e咏歌大陆\u003c/color\u003e!",
+        "content": "欢迎来到\u003ccolor=red\u003e咏歌大陆  \u003c/color\u003e （*^@^*）",
         "id": 3
+    },
+    "4": {
+        "content": "欢迎光临",
+        "id": 4
     }
 }
