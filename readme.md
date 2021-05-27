@@ -20,7 +20,11 @@ F:\tools\protoc.exe --csharp_out=E:\unity_project\HerosHunter\Assets\Scripts\net
 
 ---- mac
 
-./excelTool -inDir /Users/jinyunzhe/develop/gitee/hunter-hero-config -outDir /Users/jinyunzhe/develop/gitee/HunterHero/src/main/resources/data ---- windows
+./excelTool -inDir /Users/jinyunzhe/develop/gitee/hunter-hero-config -outDir /Users/jinyunzhe/develop/gitee/HunterHero/src/main/resources/data
+
+./excelTool -inDir /Users/jinyunzhe/develop/gitee/hunter-hero-config -outDir /Users/jinyunzhe/develop/unity/WindLand/Assets/Resources/Data
+
+---- windows
 
 ### java
 
@@ -49,17 +53,3 @@ Data + Service
 ## port
 
 9001
-
-## 功能
-
-### 代办
-
-- 邮件
-- 聊天
-- 帮派
-- 钓鱼
-- 家园
-- 竞技场
-- 排位
-- 排行
-

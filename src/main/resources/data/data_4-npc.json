@@ -1,11 +1,13 @@
 {
     "1": {
         "area": "建业",
+        "i1": 3,
         "id": 1,
         "inHouse": 1,
         "name": "左右",
         "pos": "5,-12",
-        "speakId": 1001
+        "speakId": 1001,
+        "title": "指引"
     },
     "10": {
         "area": "建业",
@@ -89,7 +91,8 @@
         "id": 3,
         "inHouse": 2,
         "name": "如花",
-        "speakId": 1001
+        "speakId": 1001,
+        "title": "花店老板"
     },
     "4": {
         "area": "建业",
@@ -97,7 +100,8 @@
         "id": 4,
         "inHouse": 2,
         "name": "旧守财",
-        "speakId": 1001
+        "speakId": 1001,
+        "title": "仓库老板"
     },
     "5": {
         "area": "建业",
@@ -105,14 +109,15 @@
         "id": 5,
         "inHouse": 2,
         "name": "乔小",
-        "speakId": 1001
+        "speakId": 1001,
+        "title": "杂货店老板"
     },
     "6": {
         "area": "建业",
-        "houseName": "王大拿",
+        "houseName": "王大户",
         "id": 6,
         "inHouse": 2,
-        "name": "王小拿",
+        "name": "王小户",
         "speakId": 1001
     },
     "7": {
@@ -121,7 +126,8 @@
         "id": 7,
         "inHouse": 2,
         "name": "王小二",
-        "speakId": 1003
+        "speakId": 1003,
+        "title": "酒店伙计"
     },
     "8": {
         "area": "建业",
