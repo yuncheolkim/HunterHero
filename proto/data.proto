@@ -120,7 +120,7 @@ message PlayerHero {
     Property property = 5;
     PropertyEffect propertyEffect = 6;
     int32 talent = 7;
-    map<int32, Equipment> equipment = 8;
+    map<int32, Equipment> equipmnt = 8;
     map<int32, HeroRealm> powerUp = 9;
 }
 // 修炼等级

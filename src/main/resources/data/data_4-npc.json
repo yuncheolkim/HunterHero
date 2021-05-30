@@ -11,7 +11,7 @@
     },
     "10": {
         "area": "建业",
-        "houseName": "李无名",
+        "houseName": "李家",
         "id": 10,
         "inHouse": 2,
         "name": "李无花",
@@ -19,16 +19,29 @@
     },
     "11": {
         "area": "建业",
+        "houseName": "鱼屋",
         "id": 11,
         "inHouse": 1,
         "name": "渔夫",
         "speakId": 1001
     },
     "12": {
-        "id": 12
+        "area": "建业",
+        "houseName": "装备店",
+        "i1": 4,
+        "id": 12,
+        "name": "陆少",
+        "speakId": 1001,
+        "title": "装备商"
     },
     "13": {
-        "id": 13
+        "area": "建业",
+        "houseName": "材料店",
+        "i1": 4,
+        "id": 13,
+        "name": "纯棉",
+        "speakId": 1001,
+        "title": "材料商"
     },
     "14": {
         "id": 14
@@ -124,6 +137,7 @@
     "7": {
         "area": "建业",
         "houseName": "酒馆",
+        "i1": 4,
         "id": 7,
         "inHouse": 2,
         "name": "王小二",
@@ -136,14 +150,17 @@
         "id": 8,
         "inHouse": 2,
         "name": "正光明",
-        "speakId": 1001
+        "speakId": 1001,
+        "title": "秉公执法"
     },
     "9": {
         "area": "建业",
         "houseName": "武器店",
+        "i1": 4,
         "id": 9,
         "inHouse": 2,
         "name": "钢强",
-        "speakId": 1001
+        "speakId": 1001,
+        "title": "武器商"
     }
 }
