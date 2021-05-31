@@ -82,7 +82,7 @@ public class FightService {
         // hero info
         List<EnemyConfigData> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
-            result.add((EnemyConfigData) CalcUtil.weightRandom(enemyList, allWeight));
+            result.add(CalcUtil.weightRandom(enemyList, allWeight));
         }
 
         // heor pos
@@ -98,23 +98,13 @@ public class FightService {
             builder.setLevel(d.level);
             builder.setType(EnemyType.CREATURE);
             builder.setName(G.C.dataMap5.get(d.id).name);
-            builder.getPropertyBuilder()
-                    .setHp(d.hp)
-                    .setDamage(d.damage)
-                    .setDef(d.def)
-                    .setDefBase(d.defBase)
-                    .setAvoid(d.avoid)
-                    .setAvoidBase(d.avoidBase)
-                    .setCritical(d.critical)
-                    .setCriticalBase(d.criticalBase)
-                    .setCriticalDamage(d.criticalDamage)
-                    .setSpeed(d.speed);
+            builder.setProperty(d.property);
 
             push.addInfo(builder);
         }
 
         return push.build();
     }
-    
+
 
 }

@@ -1,6 +1,7 @@
 package game.config.enmey;
 
 import game.base.IWeight;
+import game.proto.data.Property;
 
 /**
  * @author Yunzhe.Jin
@@ -8,19 +9,12 @@ import game.base.IWeight;
  */
 public class EnemyConfigData implements IWeight {
     public int id;
-    public int level;
-    public int weight;
-    public int hp;
-    public int damage;
-    public int def;
-    public int defBase;
-    public int avoid;
-    public int avoidBase;
-    public int critical;
-    public int criticalBase;
-    public int criticalDamage;
-    public int speed;
 
+    public int level;
+
+    public int weight;
+
+    public Property property;
 
     @Override
     public int weight() {

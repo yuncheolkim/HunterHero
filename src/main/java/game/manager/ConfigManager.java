@@ -5,19 +5,19 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
 import game.base.G;
-import game.config.BaseConfigData;
-import game.config.DataConfigData;
-import game.config.JsonConfig;
-import game.config.TransformConfigData;
+import game.config.*;
 import game.config.drop.DropItemConfigData;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
 import game.config.param.ParamConfigData;
+import game.proto.data.Property;
+import game.utils.CalcUtil;
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 /**
  * 所有游戏配置表
@@ -98,6 +98,8 @@ public class ConfigManager extends AbsLifecycle {
 
     private Map<Integer, TransformConfigData> transformMap;
 
+    private static List<EnemyTemplatePropertyConfigData> enemyTemplate = new ArrayList<>(64);
+
 
     @Override
 
@@ -139,6 +141,9 @@ public class ConfigManager extends AbsLifecycle {
 
 
         ///// 进一步加工
+        // 21-怪模版
+        enemyTemplate = makeListData("data/data_21-怪模版.json", EnemyTemplatePropertyConfigData::new);
+
         Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
 
         for (DataConfigData value : dataMap15.values()) {
@@ -155,16 +160,8 @@ public class ConfigManager extends AbsLifecycle {
             enemyConfigData.id = value.enemyId;
             enemyConfigData.weight = value.weight;
             enemyConfigData.level = value.level;
-            enemyConfigData.hp = value.hp;
-            enemyConfigData.damage = value.damage;
-            enemyConfigData.def = value.def;
-            enemyConfigData.defBase = value.defBase;
-            enemyConfigData.avoid = value.avoid;
-            enemyConfigData.avoidBase = value.avoidBase;
-            enemyConfigData.critical = value.critical;
-            enemyConfigData.criticalBase = value.criticalBase;
-            enemyConfigData.criticalDamage = value.criticalDamage;
-            enemyConfigData.speed = value.speed;
+            enemyConfigData.property = makeProperty(GetEnemyTemplate(value.level), value);
+
             enemyAreaConfigData.weightAll += enemyConfigData.weight;
 
             enemyAreaConfigData.enemyList.add(enemyConfigData);
@@ -222,6 +219,39 @@ public class ConfigManager extends AbsLifecycle {
     }
 
     /**
+     * @param v
+     * @param factory
+     * @return
+     */
+    public static Property makeProperty(Property v, DataConfigData f) {
+        return Property.newBuilder()
+                .setHp(CalcUtil.calcRateAdd(v.getHp(), f.hp))
+                .setDamage(CalcUtil.calcRateAdd(v.getDamage(), f.damage))
+                .setDef(CalcUtil.calcRateAdd(v.getDef(), f.def))
+                .setDefBase(CalcUtil.calcRateAdd(v.getDefBase(), f.defBase))
+                .setAvoid(CalcUtil.calcRateAdd(v.getAvoid(), f.avoid))
+                .setAvoidBase(CalcUtil.calcRateAdd(v.getAvoidBase(), f.avoidBase))
+                .setCritical(CalcUtil.calcRateAdd(v.getCritical(), f.critical))
+                .setCriticalBase(CalcUtil.calcRateAdd(v.getCriticalBase(), f.criticalBase))
+                .setCriticalDamage(CalcUtil.calcRateAdd(v.getCriticalDamage(), f.criticalDamage))
+                .build();
+    }
+
+    public static Property makeProperty(DataConfigData v) {
+        return Property.newBuilder()
+                .setHp(v.hp)
+                .setDamage(v.damage)
+                .setDef(v.def)
+                .setDefBase(v.defBase)
+                .setAvoid(v.avoid)
+                .setAvoidBase(v.avoidBase)
+                .setCritical(v.critical)
+                .setCriticalBase(v.criticalBase)
+                .setCriticalDamage(v.criticalDamage)
+                .build();
+    }
+
+    /**
      * 配置数据
      *
      * @param path
@@ -233,6 +263,16 @@ public class ConfigManager extends AbsLifecycle {
         ImmutableMap.Builder<Integer, T> temp = ImmutableMap.builder();
         new JsonConfig(path).load().forEach((integer, dataConfigData) -> temp.put(integer, supplier.get().convert(dataConfigData)));
         return temp.build();
+    }
+
+    private <T extends BaseConfigData<T>> List<T> makeListData(String path, Supplier<T> supplier) {
+        Map<Integer, DataConfigData> load = new JsonConfig(path).load();
+        Object[] l = new Object[load.size() + 16];
+        load.forEach((integer, dataConfigData) -> l[dataConfigData.id] = supplier.get().convert(dataConfigData)
+        );
+
+
+        return Arrays.stream(l).map(o -> (T) o).collect(Collectors.toList());
     }
 
     /**
@@ -335,5 +375,9 @@ public class ConfigManager extends AbsLifecycle {
         return transformMap.get(id);
     }
 
+
+    public static Property GetEnemyTemplate(int level) {
+        return enemyTemplate.get(level).property;
+    }
 }
 
