@@ -179,11 +179,11 @@ public class TaskHandler {
      * @param req
      */
     public static TaskNpcRes findNpcTask(Player player, TaskNpcReq req) {
-        TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
-        builder.setNpcId(req.getNpcId());
         Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
 
-        if (npcTask != null) {
+        if (npcTask != null && !npcTask.isEmpty()) {
+            TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
+            builder.setNpcId(req.getNpcId());
             Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
             for (DataConfigData data : npcTask) {
                 if (data.level > player.pd.getLevel()) {
@@ -221,8 +221,9 @@ public class TaskHandler {
                     }
                 }
             }
+            return builder.build();
         }
 
-        return builder.build();
+        return null;
     }
 }

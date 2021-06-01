@@ -30,6 +30,7 @@ public class ItemDropService {
 
     /**
      * 掉落经验
+     * 根据怪等等级进行衰减
      *
      * @param enemyLevel
      * @return
