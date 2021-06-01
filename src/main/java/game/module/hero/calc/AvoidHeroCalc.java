@@ -39,7 +39,7 @@ public class AvoidHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            avoid = CalcUtil.calcRate(avoid, dataConfigData.avoid);
+            avoid = CalcUtil.calcRateFinal(avoid, dataConfigData.avoid);
         }
         builder.getPropertyBuilder().setAvoid(avoid);
 

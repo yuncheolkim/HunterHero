@@ -39,7 +39,7 @@ public class CriticalHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            critical = CalcUtil.calcRate(critical, dataConfigData.critical);
+            critical = CalcUtil.calcRateFinal(critical, dataConfigData.critical);
         }
         builder.getPropertyBuilder().setCritical(critical);
 

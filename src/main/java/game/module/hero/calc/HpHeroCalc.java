@@ -39,7 +39,7 @@ public class HpHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            hp = CalcUtil.calcRate(hp, dataConfigData.hp);
+            hp = CalcUtil.calcRateFinal(hp, dataConfigData.hp);
         }
 
         builder.getPropertyBuilder().setHp(hp);

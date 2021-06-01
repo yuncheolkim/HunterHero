@@ -39,7 +39,7 @@ public class DefHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            def = CalcUtil.calcRate(def, dataConfigData.def);
+            def = CalcUtil.calcRateFinal(def, dataConfigData.def);
         }
         builder.getPropertyBuilder().setDef(def);
     }

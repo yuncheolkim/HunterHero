@@ -34,7 +34,7 @@ public class CalcUtil {
      * @param rate 比例
      * @return 最终算好的值
      */
-    public static int calcRate(int val, int rate) {
+    public static int calcRateFinal(int val, int rate) {
         float f = rate / 100.0f + 1;
         return (int) (val * f);
     }
@@ -46,6 +46,15 @@ public class CalcUtil {
      */
     public static int calcRateAdd(int val, int rate) {
         return (int) (val * rate / 100.0f);
+    }
+
+    /**
+     * @param val
+     * @param rate
+     * @return 比例增值
+     */
+    public static int calcRateAdd10000(int val, int rate) {
+        return (int) (val * rate / 10000.0f);
     }
 
     /**

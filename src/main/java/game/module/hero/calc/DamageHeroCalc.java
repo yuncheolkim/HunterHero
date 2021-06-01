@@ -39,7 +39,7 @@ public class DamageHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            damage = CalcUtil.calcRate(damage, dataConfigData.damage);
+            damage = CalcUtil.calcRateFinal(damage, dataConfigData.damage);
         }
         builder.getPropertyBuilder().setDamage(damage);
 
