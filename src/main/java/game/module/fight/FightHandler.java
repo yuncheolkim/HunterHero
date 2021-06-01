@@ -3,6 +3,7 @@ package game.module.fight;
 import game.base.G;
 import game.base.GameConstants;
 import game.base.Logs;
+import game.base.util.Tuple2;
 import game.exception.ErrorEnum;
 import game.exception.ModuleException;
 import game.game.ResourceEnum;
@@ -24,7 +25,7 @@ import game.utils.DateUtils;
 import game.utils.ResourceCalcUtil;
 import io.netty.util.collection.IntObjectHashMap;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -87,12 +88,13 @@ public class FightHandler {
 
             IntObjectHashMap<Integer> enemyCountMap = new IntObjectHashMap<>(record.getSideBhero().size());
 
-            Map<Integer, Integer> levelExp = new HashMap<>(8);
+
+            List<Tuple2<Integer, Integer>> expList = new ArrayList<>(8);
             // 杀敌
             for (HeroRecordData sideBhero : record.getSideBhero()) {
                 int enemyId = sideBhero.simple.id;
                 int earnExp = ItemDropService.dropExp(sideBhero.simple.level);
-                levelExp.put(sideBhero.simple.level, earnExp);
+                expList.add(new Tuple2<>(sideBhero.simple.level, earnExp));
                 gold += ItemDropService.dropGold(sideBhero.simple.level);
                 Integer enemyCount = enemyCountMap.get(enemyId);
                 if (enemyCount == null) {
@@ -138,7 +140,7 @@ public class FightHandler {
 
             // Add player exp
             // 计算衰减
-            int playerExt = ResourceCalcUtil.calcExp(player.pd.getLevel(), levelExp);
+            int playerExt = ResourceCalcUtil.calcExp(player.pd.getLevel(), expList);
             player.addPlayerExp(playerExt, ResourceSourceEnum.打怪);
             result.addReward(Reward.newBuilder()
                     .setType(RewardType.REWARD_RESOURCE)
@@ -148,7 +150,7 @@ public class FightHandler {
                     .build());
             // Add hero exp
             for (HeroRecordData sideAhero : record.getSideAhero()) {
-                int exp = ResourceCalcUtil.calcExp(sideAhero.simple.level, levelExp);
+                int exp = ResourceCalcUtil.calcExp(sideAhero.simple.level, expList);
                 player.addHeroExp(sideAhero.simple.id, exp, ResourceSourceEnum.打怪);
                 result.addReward(Reward.newBuilder()
                         .setType(RewardType.REWARD_RESOURCE)

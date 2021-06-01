@@ -10,7 +10,7 @@ import game.game.ConsumeTypeEnum;
 import game.game.ItemTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
-import game.module.hero.EquipmentService;
+import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.ItemBuyReq;
 import game.proto.ItemSellReq;
@@ -42,7 +42,7 @@ public class ShopHandler {
 
             if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
                 // 填充属性
-                builder.setProperty(EquipmentService.makeProperty(item));
+                builder.setProperty(ConfigManager.makeProperty(item));
             }
 
             player.addItem(builder.buildPartial(), GameConstants.ITEM_BAG);

@@ -13,6 +13,7 @@ import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
+import game.manager.ConfigManager;
 import game.module.bag.BagUpdateService;
 import game.module.bag.ItemBoxData;
 import game.module.event.handler.ExpAddEvent;
@@ -52,7 +53,7 @@ public class Player {
     private final long pid;
 
 
-    private Transport transport = new Transport();
+    private final Transport transport = new Transport();
 
     /**
      * 前后端都需要的数据
@@ -457,7 +458,7 @@ public class Player {
         ItemBoxData box = bagUpdateService.box(this);
         ModuleAssert.isPositive(data.getCount());
 
-        DataConfigData dataConfigData = G.C.getItem(data.getItemId());
+        DataConfigData dataConfigData = ConfigManager.getItem(data.getItemId());
 
         BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
 
@@ -558,7 +559,7 @@ public class Player {
                 BagSlot beforeSlot = zipItemList.get(lastIndex);
                 if (beforeSlot.getData().getItemId() == bagSlot.getData().getItemId()) {
 
-                    DataConfigData dataConfigData = G.C.getItem(beforeSlot.getData().getItemId());
+                    DataConfigData dataConfigData = ConfigManager.getItem(beforeSlot.getData().getItemId());
                     final int stack = dataConfigData.stack;
                     int beforeCount = beforeSlot.getData().getCount();
                     if (stack > 1 && beforeCount < stack) {

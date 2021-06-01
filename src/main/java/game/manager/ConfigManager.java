@@ -88,7 +88,7 @@ public class ConfigManager extends AbsLifecycle {
     public Map<Integer, List<DropItemConfigData>> enemyDropMap;
 
     // item
-    private Map<Integer, DataConfigData> itemMap;
+    private static Map<Integer, DataConfigData> itemMap;
 
     // Npc任务
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
@@ -323,7 +323,7 @@ public class ConfigManager extends AbsLifecycle {
         return enemyInfoMap.get(areaId);
     }
 
-    public DataConfigData getItem(int itemId) {
+    public static DataConfigData getItem(int itemId) {
         return itemMap.get(itemId);
     }
 
@@ -379,5 +379,7 @@ public class ConfigManager extends AbsLifecycle {
     public static Property GetEnemyTemplate(int level) {
         return enemyTemplate.get(level).property;
     }
+    
+
 }
 

@@ -1,13 +1,11 @@
 package game.module.hero;
 
-import game.base.G;
 import game.base.GameConstants;
 import game.config.DataConfigData;
 import game.exception.ModuleAssert;
+import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.data.ItemData;
-
-import static game.module.hero.EquipmentService.makeProperty;
 
 /**
  * @author Yunzhe.Jin
@@ -23,12 +21,12 @@ public class HeroService {
      * @param itemId
      */
     public static void addEquipment(Player player, int itemId) {
-        DataConfigData item = G.C.getItem(itemId);
+        DataConfigData item = ConfigManager.getItem(itemId);
         ModuleAssert.isTrue(item.type1 == 4);
 
         player.addItem(ItemData.newBuilder().setItemId(itemId)
                 .setCount(1)
-                .setProperty(makeProperty(item)).build(), GameConstants.ITEM_BAG);
+                .setProperty(ConfigManager.makeProperty(item)).build(), GameConstants.ITEM_BAG);
 
     }
 

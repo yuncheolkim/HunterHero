@@ -113,6 +113,7 @@ public class TaskHandler {
                     .map(reward -> ItemData.newBuilder()
                             .setItemId(reward.getRewardId())
                             .setCount(reward.getCount())
+                            .setProperty(reward.getProperty())
                             .build()).collect(Collectors.toList());
 
             ModuleAssert.isTrue(BagService.canPutReward(player, collect), ErrorEnum.ERR_104);

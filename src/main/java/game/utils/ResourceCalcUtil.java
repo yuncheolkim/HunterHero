@@ -1,6 +1,8 @@
 package game.utils;
 
-import java.util.Map;
+import game.base.util.Tuple2;
+
+import java.util.List;
 
 /**
  * 计算用户最终得到的资源
@@ -10,13 +12,13 @@ import java.util.Map;
  */
 public class ResourceCalcUtil {
 
-    public static int calcExp(int level, Map<Integer, Integer> expMp) {
+    public static int calcExp(int level, List<Tuple2<Integer, Integer>> list) {
 
         int exp = 0;
 
-        for (Map.Entry<Integer, Integer> entry : expMp.entrySet()) {
-            Integer enemyLevel = entry.getKey();
-            Integer earnExt = entry.getValue();
+        for (Tuple2<Integer, Integer> v : list) {
+            Integer enemyLevel = v.first;
+            Integer earnExt = v.second;
 
             int diff = level - enemyLevel;
 
