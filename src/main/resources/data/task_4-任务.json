@@ -12,7 +12,7 @@
         ],
         "notCompleteContentId": 1006,
         "npcId": 1,
-        "reward": "3=133#1=20#402001=1#402002=1",
+        "reward": "3=40#1=100#402001=1#402002=1",
         "speakType": 1,
         "targetList": [
             2
@@ -33,7 +33,7 @@
         ],
         "notCompleteContentId": 2000202,
         "npcId": 11,
-        "reward": "3=133#1=20",
+        "reward": "3=133#1=100",
         "speakType": 2,
         "targetList": [
             1

@@ -128,7 +128,7 @@ public class ConfigManager extends AbsLifecycle {
         taskMap3 = new JsonConfig("data/task_3-选项内容.json").load();
         taskMap4 = new JsonConfig("data/task_4-任务.json").load();
         taskMap5 = new JsonConfig("data/task_5-任务目标.json").load();
-        heroMap1001 = new JsonConfig("data/hero_1001.json").load();
+        heroMap1001 = new JsonConfig("data/hero_base.json").load();
 
         // item
         ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
