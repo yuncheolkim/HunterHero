@@ -22,7 +22,7 @@ import java.util.Optional;
  * 2021/2/25 10:56
  */
 public class EventManager {
-    private Map<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = new HashMap<>();
+    private static final Map<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = new HashMap<>();
 
     public EventManager() {
         // 杀敌事件
@@ -65,7 +65,7 @@ public class EventManager {
      * @param player
      * @param event
      */
-    public <T extends IEvent> void firePlayerEvent(Player player, T event) {
+    public static <T extends IEvent> void firePlayerEvent(Player player, T event) {
         IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
         try {
             iPlayerEventHandler.handler(player, event);
@@ -74,7 +74,7 @@ public class EventManager {
         }
     }
 
-    public <T extends IEvent> void firePlayerEvent(long pid, T event) {
+    public static <T extends IEvent> void firePlayerEvent(long pid, T event) {
         IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
         Optional<Player> f = G.P.findPlayer(pid);
         if (f.isPresent()) {

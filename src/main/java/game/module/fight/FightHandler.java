@@ -6,6 +6,7 @@ import game.base.Logs;
 import game.base.util.Tuple2;
 import game.exception.ErrorEnum;
 import game.exception.ModuleException;
+import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.module.battle.*;
@@ -83,7 +84,7 @@ public class FightHandler {
 
         FightRecord.Builder result = buildFightRecord(record);
         result.setWin(record.getWinSide() == Side.A);
-        if (result.getWin()) {
+        if (result.getWin() && player.consumePower(ConsumeTypeEnum.野外战斗, 1)) {
             int gold = 0;
 
             IntObjectHashMap<Integer> enemyCountMap = new IntObjectHashMap<>(record.getSideBhero().size());
@@ -138,7 +139,7 @@ public class FightHandler {
             }
 
 
-            // Add player exp
+            // 经验
             // 计算衰减
             int playerExt = ResourceCalcUtil.calcExp(player.pd.getLevel(), expList);
             player.addPlayerExp(playerExt, ResourceSourceEnum.打怪);

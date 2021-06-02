@@ -14,6 +14,7 @@ import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.manager.ConfigManager;
+import game.manager.EventManager;
 import game.module.bag.BagUpdateService;
 import game.module.bag.ItemBoxData;
 import game.module.event.handler.ExpAddEvent;
@@ -40,7 +41,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static game.base.GameConstants.MAX_PLAYER_LEVEL;
-import static game.exception.ErrorEnum.ERR_106;
 import static game.module.bag.BagUpdateService.updatePlayerBank;
 
 /**
@@ -293,7 +293,7 @@ public class Player {
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + count);
 
-        G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, count, from));
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, count, from));
     }
 
     public boolean hasGold(int count) {
@@ -311,7 +311,7 @@ public class Player {
         ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_4);
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() - gold);
-        G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, gold * -1, consume));
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, gold * -1, consume));
 
     }
 
@@ -344,7 +344,7 @@ public class Player {
             // 升级
             setPlayerLevel(level);
         }
-        G.E.firePlayerEvent(this, new ExpAddEvent(0, count, exp, from));
+        EventManager.firePlayerEvent(this, new ExpAddEvent(0, count, exp, from));
     }
 
     /**
@@ -357,7 +357,7 @@ public class Player {
             return;
         }
         pd.setLevel(level);
-        G.E.firePlayerEvent(this, new LevelUpEvent(level));
+        EventManager.firePlayerEvent(this, new LevelUpEvent(level));
     }
 
     /**
@@ -388,10 +388,10 @@ public class Player {
         pd.putHero(heroId, builder.build());
 
         if (oldLevel != level) {
-            G.E.firePlayerEvent(this, new LevelUpEvent(heroId, level));
+            EventManager.firePlayerEvent(this, new LevelUpEvent(heroId, level));
         }
 
-        G.E.firePlayerEvent(this, new ExpAddEvent(heroId, count, exp, from));
+        EventManager.firePlayerEvent(this, new ExpAddEvent(heroId, count, exp, from));
     }
 
     /**
@@ -407,7 +407,7 @@ public class Player {
         resourceBuilder.setPower((int) Math.min(old + count, resourceBuilder.getMaxPower()));
         int add = resourceBuilder.getPower() - old;
         if (add > 0) {
-            G.E.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, add, from));
+            EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, add, from));
         }
     }
 
@@ -417,11 +417,19 @@ public class Player {
      * @param count
      * @param typeEnum
      */
-    public void consumePower(int count, ConsumeTypeEnum typeEnum) {
+    public boolean consumePower(ConsumeTypeEnum typeEnum, int count) {
 
-        ModuleAssert.isTrue(pd.getResourceBuilder().getPower() >= count, ERR_106);
+        if (pd.getResourceBuilder().getPower() < count) {
+            return false;
+        }
+
+        pd.getResourceBuilder().setPower(pd.getResourceBuilder().getPower() - count);
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, count, typeEnum));
+
+        return true;
     }
 
+    
     /**
      * 放置物品到背包指定位置
      * todo 没有检查slotId是否已经有物品
@@ -441,7 +449,7 @@ public class Player {
         }
 
         // event
-        G.E.firePlayerEvent(this, new ItemAddEvent(data));
+        EventManager.firePlayerEvent(this, new ItemAddEvent(data));
 
         // push
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
@@ -523,7 +531,7 @@ public class Player {
         }
 
         // event
-        G.E.firePlayerEvent(this, new ItemAddEvent(data));
+        EventManager.firePlayerEvent(this, new ItemAddEvent(data));
 
         // push
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());

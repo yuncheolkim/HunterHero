@@ -37,7 +37,7 @@ public class FishHandler {
         FishAction fishAction = player.fishAction;
         ModuleAssert.isFalse(fishAction.inFish(), ERR_110);
         // 消耗体力
-        player.consumePower(G.C.powerFish(), ConsumeTypeEnum.钓鱼);
+        player.consumePower(ConsumeTypeEnum.钓鱼, G.C.powerFish());
 
         // 开始钓鱼
         fishAction.startFish();

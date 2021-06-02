@@ -9,4 +9,5 @@ public enum ConsumeTypeEnum {
     修炼,
     商店,
     钓鱼,
+    野外战斗,
 }
