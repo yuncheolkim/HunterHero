@@ -18,25 +18,34 @@ public class ResourceChangeEvent implements IEvent {
 
     public int count;
 
+    public int curCount;
+
     public ResourceSourceEnum source;
+
     public ConsumeTypeEnum consume;
 
     public ResourceChangeEvent() {
     }
 
-    public ResourceChangeEvent(ResourceEnum resource, int heroId, int count, ResourceSourceEnum source) {
+    public ResourceChangeEvent(final ResourceEnum resource, final int heroId, final int count, final ResourceSourceEnum source) {
         this.heroId = heroId;
         this.count = count;
         this.source = source;
         this.resource = resource;
     }
 
-    public ResourceChangeEvent(ResourceEnum resource, int heroId, int count, ConsumeTypeEnum consume) {
+    public ResourceChangeEvent(final ResourceEnum resource, final int heroId, final int count, final ConsumeTypeEnum consume) {
         this.heroId = heroId;
         this.count = count;
         this.consume = consume;
         this.resource = resource;
 
+    }
+
+    public ResourceChangeEvent setCurCount(final int c) {
+        this.curCount = c;
+
+        return this;
     }
 
     @Override

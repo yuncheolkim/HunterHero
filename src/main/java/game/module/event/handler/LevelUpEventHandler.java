@@ -1,6 +1,7 @@
 package game.module.event.handler;
 
-import game.base.G;
+import game.game.ResourceSourceEnum;
+import game.manager.EventManager;
 import game.module.event.IPlayerEventHandler;
 import game.player.Player;
 import game.proto.PlayerLevelChangePush;
@@ -12,14 +13,19 @@ import game.proto.back.MsgNo;
  */
 public class LevelUpEventHandler implements IPlayerEventHandler<LevelUpEvent> {
     @Override
-    public void handler(Player player, LevelUpEvent data) {
+    public void handler(final Player player, final LevelUpEvent data) {
 
         if (data.heroId > 0) {
             // 英雄战力计算
-            G.E.firePlayerEvent(player, new HeroPowerUpEvent(data.heroId));
+            EventManager.firePlayerEvent(player, new HeroPowerUpEvent(data.heroId));
         } else {
             // push
             player.getTransport().send(MsgNo.PlayerLevelChangePushNo_VALUE, PlayerLevelChangePush.newBuilder().setValue(data.level).build());
+
+            // 计算体力
+            player.setMaxPower(player.pd.getResourceBuilder().getMaxPower() + data.level - data.oldLevel);
+            player.resetPower(ResourceSourceEnum.升级);
+
         }
     }
 }

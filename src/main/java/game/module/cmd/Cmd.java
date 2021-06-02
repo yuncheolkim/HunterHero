@@ -17,32 +17,32 @@ import java.util.List;
 public enum Cmd {
     AddGoldCmd(1, "增加金币") {
         @Override
-        public void run(Player player, List<String> line) {
+        public void run(final Player player, final List<String> line) {
             player.addGold(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
         }
     },
     AddExpCmd(2, "增加经验") {
         @Override
-        public void run(Player player, List<String> line) {
+        public void run(final Player player, final List<String> line) {
             player.addPlayerExp(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
         }
     },
     SetLevelCmd(3, "设置等级") {
         @Override
-        public void run(Player player, List<String> line) {
-            player.setPlayerLevel(Integer.parseInt(line.get(0)));
+        public void run(final Player player, final List<String> line) {
+            player.setPlayerLevel(Integer.parseInt(line.get(0)), player.pd.getLevel());
         }
     },
     AddItem(4, "增加物品") {
         @Override
-        public void run(Player player, List<String> line) {
+        public void run(final Player player, final List<String> line) {
 
             player.addItem(ItemData.newBuilder().setItemId(Integer.parseInt(line.get(0))).setCount(Integer.parseInt(line.get(1))).build(), GameConstants.ITEM_BAG);
         }
     },
     AddEquipment(5, "增加装备") {
         @Override
-        public void run(Player player, List<String> line) {
+        public void run(final Player player, final List<String> line) {
             HeroService.addEquipment(player, Integer.parseInt(line.get(0)));
         }
     },
@@ -52,7 +52,7 @@ public enum Cmd {
 
     public final String display;
 
-    Cmd(int id, String module) {
+    Cmd(final int id, final String module) {
 
         this.id = id;
         this.display = module;
@@ -61,10 +61,10 @@ public enum Cmd {
     private static final ImmutableMap<Integer, Cmd> map;
 
     static {
-        ImmutableMap.Builder<Integer, Cmd> builder = ImmutableMap.builder();
-        HashSet<Integer> ids = new HashSet<>();
+        final ImmutableMap.Builder<Integer, Cmd> builder = ImmutableMap.builder();
+        final HashSet<Integer> ids = new HashSet<>();
 
-        for (Cmd value : Cmd.values()) {
+        for (final Cmd value : Cmd.values()) {
             if (!ids.add(value.id)) {
                 throw new IllegalStateException("id重复:" + value.id);
             }
@@ -74,7 +74,7 @@ public enum Cmd {
         map = builder.build();
     }
 
-    public static Cmd findById(int id) {
+    public static Cmd findById(final int id) {
         return map.get(id);
     }
 

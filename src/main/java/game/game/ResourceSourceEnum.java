@@ -13,6 +13,7 @@ public enum ResourceSourceEnum {
     自动恢复,
     出售物品,
     任务,
+    升级,
     ;
 
 }

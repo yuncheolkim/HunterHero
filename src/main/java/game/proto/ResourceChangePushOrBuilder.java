@@ -24,4 +24,10 @@ public interface ResourceChangePushOrBuilder extends
    * @return The count.
    */
   int getCount();
+
+  /**
+   * <code>int32 curCount = 4;</code>
+   * @return The curCount.
+   */
+  int getCurCount();
 }

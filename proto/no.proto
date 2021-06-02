@@ -55,6 +55,7 @@ enum No {
     ResourceChangePush = 5001;
     PlayerLevelChangePush = 5002;
     ExpChangePush = 5003;
+    MaxPowerChangePush = 5004;
 
     // Bag
     BagInfoChangePush = 6001;

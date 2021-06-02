@@ -15,10 +15,11 @@ import game.proto.back.MsgNo;
 public class ResourceChangeEventHandler implements IPlayerEventHandler<ResourceChangeEvent> {
 
     @Override
-    public void handler(Player player, ResourceChangeEvent data) {
+    public void handler(final Player player, final ResourceChangeEvent data) {
 
-        ResourceChangePush push = ResourceChangePush.newBuilder()
+        final ResourceChangePush push = ResourceChangePush.newBuilder()
                 .setCount(data.count)
+                .setCurCount(data.curCount)
                 .setHeroId(data.heroId)
                 .setResourceId(data.resource.id).build();
 

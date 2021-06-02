@@ -13,17 +13,26 @@ public class LevelUpEvent implements IEvent {
 
     public int level;
 
+    public int oldLevel;
+
     public LevelUpEvent() {
     }
 
-    public LevelUpEvent(int heroId, int level) {
+    public LevelUpEvent(final int heroId, final int level, final int oldLevel) {
         this.heroId = heroId;
         this.level = level;
+        this.oldLevel = oldLevel;
     }
 
-    public LevelUpEvent(int level) {
+    public LevelUpEvent(final int level, final int oldLevel) {
         this.level = level;
+        this.oldLevel = oldLevel;
         heroId = 0;
+    }
+
+    public LevelUpEvent setOldLevel(final int oldLevel) {
+        this.oldLevel = oldLevel;
+        return this;
     }
 
     @Override

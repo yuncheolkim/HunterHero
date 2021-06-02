@@ -344,36 +344,36 @@ public final class MessageOuterClass {
       "aFormationIndex\030\004 \001(\005\"n\n\023FormationSettin" +
       "gRes\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025def" +
       "aultFormationIndex\030\003 \001(\005\022\033\n\023arenaFormati" +
-      "onIndex\030\004 \001(\005\"G\n\022ResourceChangePush\022\022\n\nr" +
+      "onIndex\030\004 \001(\005\"Y\n\022ResourceChangePush\022\022\n\nr" +
       "esourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count" +
-      "\030\003 \001(\005\"&\n\025PlayerLevelChangePush\022\r\n\005value" +
-      "\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006heroId\030\001 \001(\005\022" +
-      "\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\"b\n\021BagIn" +
-      "foChangePush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(" +
-      "\005\022\020\n\010capacity\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Mess" +
-      "age.BagSlot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005" +
-      "\"M\n\016ItemDiscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005co" +
-      "unt\030\002 \001(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\"" +
-      ";\n\nItemBuyReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002" +
-      " \001(\005\022\016\n\006shopId\030\003 \001(\005\">\n\017ItemExchangeReq\022" +
-      "\014\n\004type\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003" +
-      " \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005c" +
-      "ount\030\002 \001(\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId" +
-      "\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlayerMoveReq\022" +
-      "\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\" \n\020PlayerGoHotelRe" +
-      "s\022\014\n\004time\030\001 \001(\003\"\"\n\024PlayerChooseHotelReq\022" +
-      "\n\n\002id\030\001 \001(\005\"\"\n\024PlayerChooseHotelRes\022\n\n\002i" +
-      "d\030\001 \001(\005\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007succes" +
-      "s\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Reward" +
-      "\"\r\n\013FishHookReq\"X\n\016ChatMessageReq\022%\n\007cha" +
-      "nnel\030\001 \001(\0162\024.Message.ChatChannel\022\016\n\006toUs" +
-      "er\030\002 \001(\003\022\017\n\007content\030\n \001(\t\"u\n\017ChatMessage" +
-      "Push\022%\n\007channel\030\001 \001(\0162\024.Message.ChatChan" +
-      "nel\022\020\n\010fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\n\n\002i" +
-      "d\030\004 \001(\003\022\017\n\007content\030\n \001(\t*H\n\013ChatChannel\022" +
-      "\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRI" +
-      "VACY\020\003\022\n\n\006SYSTEM\020\004B\020\n\ngame.protoH\001P\001b\006pr" +
-      "oto3"
+      "\030\003 \001(\005\022\020\n\010curCount\030\004 \001(\005\"&\n\025PlayerLevelC" +
+      "hangePush\022\r\n\005value\030\001 \001(\005\"?\n\rExpChangePus" +
+      "h\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006cur" +
+      "Exp\030\003 \001(\005\"b\n\021BagInfoChangePush\022\r\n\005clean\030" +
+      "\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capacity\030\024 \001(\005\022\036\n" +
+      "\004slot\030\036 \003(\0132\020.Message.BagSlot\"\033\n\013BagClea" +
+      "nReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemDiscardReq\022\016\n\006" +
+      "itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006slotId\030\003 " +
+      "\001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBuyReq\022\016\n\006itemI" +
+      "d\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\">" +
+      "\n\017ItemExchangeReq\022\014\n\004type\030\001 \001(\005\022\016\n\006slotI" +
+      "d\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013ItemSellReq\022\016\n" +
+      "\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2\n\020HeroEqui" +
+      "pmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005" +
+      "\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"" +
+      " \n\020PlayerGoHotelRes\022\014\n\004time\030\001 \001(\003\"\"\n\024Pla" +
+      "yerChooseHotelReq\022\n\n\002id\030\001 \001(\005\"\"\n\024PlayerC" +
+      "hooseHotelRes\022\n\n\002id\030\001 \001(\005\"\t\n\007FishReq\"<\n\010" +
+      "FishPush\022\017\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(" +
+      "\0132\017.Message.Reward\"\r\n\013FishHookReq\"X\n\016Cha" +
+      "tMessageReq\022%\n\007channel\030\001 \001(\0162\024.Message.C" +
+      "hatChannel\022\016\n\006toUser\030\002 \001(\003\022\017\n\007content\030\n " +
+      "\001(\t\"u\n\017ChatMessagePush\022%\n\007channel\030\001 \001(\0162" +
+      "\024.Message.ChatChannel\022\020\n\010fromUser\030\002 \001(\003\022" +
+      "\014\n\004time\030\003 \001(\003\022\n\n\002id\030\004 \001(\003\022\017\n\007content\030\n \001" +
+      "(\t*H\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001" +
+      "\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004B\020\n\n" +
+      "game.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -595,7 +595,7 @@ public final class MessageOuterClass {
     internal_static_Message_ResourceChangePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ResourceChangePush_descriptor,
-        new java.lang.String[] { "ResourceId", "HeroId", "Count", });
+        new java.lang.String[] { "ResourceId", "HeroId", "Count", "CurCount", });
     internal_static_Message_PlayerLevelChangePush_descriptor =
       getDescriptor().getMessageTypes().get(35);
     internal_static_Message_PlayerLevelChangePush_fieldAccessorTable = new

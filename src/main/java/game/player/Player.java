@@ -25,9 +25,11 @@ import game.net.Transport;
 import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
 import game.proto.Message;
+import game.proto.ResourceChangePush;
 import game.proto.back.MsgNo;
 import game.proto.back.PlayerBackData;
 import game.proto.data.*;
+import game.proto.no.No;
 import game.repo.PlayerRepo;
 import game.utils.CalcUtil;
 import io.netty.channel.Channel;
@@ -92,7 +94,7 @@ public class Player {
 
     public FishAction fishAction = new FishAction();
 
-    public Player(long pid) {
+    public Player(final long pid) {
         this.pid = pid;
         createTime = LocalDateTime.now();
         loginTime = createTime;
@@ -110,7 +112,7 @@ public class Player {
     public void login() {
         loginTime = LocalDateTime.now();
 
-        LoginRes.Builder builder = LoginRes.newBuilder();
+        final LoginRes.Builder builder = LoginRes.newBuilder();
         builder.setData(pd);
         if (StringUtils.isEmpty(pd.getName())) {
             builder.setFirst(true);
@@ -120,7 +122,7 @@ public class Player {
     }
 
     public void relogin() {
-        LoginRes.Builder builder = LoginRes.newBuilder();
+        final LoginRes.Builder builder = LoginRes.newBuilder();
         builder.setData(pd);
         if (StringUtils.isEmpty(pd.getName())) {
             builder.setFirst(true);
@@ -137,14 +139,14 @@ public class Player {
      *
      * @param code
      */
-    public void load(String code) {
+    public void load(final String code) {
         // todo 根据code获取用户的账号, code从用户服务器生成
 
-        PlayerRepo playerRepo = G.R.getPlayerRepo();
-        String account = code;// todo for test
+        final PlayerRepo playerRepo = G.R.getPlayerRepo();
+        final String account = code;// todo for test
 
         if (playerRepo.has(account)) {
-            game.proto.back.SaveData.Builder load = playerRepo.load(account);
+            final game.proto.back.SaveData.Builder load = playerRepo.load(account);
             pd = load.getPdBuilder();
             D = load.getBackDataBuilder();
         } else {// 创建用户
@@ -164,11 +166,11 @@ public class Player {
         pd.getResourceBuilder().setNeedExp(G.C.dataMap9.get(pd.getLevel()).exp);
 
         // 检查战斗区域
-        int id = pd.getSceneDataBuilder().getId();
-        DataConfigData dataConfigData = G.C.dataMap7.get(id);
-        List<Integer> l = new ArrayList<>(D.getFightAreaList());
+        final int id = pd.getSceneDataBuilder().getId();
+        final DataConfigData dataConfigData = G.C.dataMap7.get(id);
+        final List<Integer> l = new ArrayList<>(D.getFightAreaList());
         D.clearFightArea();
-        for (Integer areaId : l) {
+        for (final Integer areaId : l) {
             if (dataConfigData.enemyAreaList != null) {
                 if (dataConfigData.enemyAreaList.contains(areaId)) {
                     D.addFightArea(areaId);
@@ -181,14 +183,14 @@ public class Player {
 
         // 背包
         bag = new ItemBoxData();
-        for (BagSlot bagSlot : pd.getBagMap().values()) {
+        for (final BagSlot bagSlot : pd.getBagMap().values()) {
             bag.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
         }
         bag.capacity = pd.getBagCapacity();
         bag.count = pd.getBagCount();
         bank = new ItemBoxData();
         // 银行
-        for (BagSlot bagSlot : pd.getBankMap().values()) {
+        for (final BagSlot bagSlot : pd.getBankMap().values()) {
             bank.bagSlotMap.put(bagSlot.getData().getItemId(), bagSlot);
         }
         bank.capacity = pd.getBankCapacity();
@@ -233,15 +235,15 @@ public class Player {
         D.setLoginTime(loginTime.toDate().getTime());
         D.setUpdateTime(updateTime.toDate().getTime());
 
-        Work dataPersistenceWork = G.W.getDataPersistenceWork(pid);
+        final Work dataPersistenceWork = G.W.getDataPersistenceWork(pid);
 
-        game.proto.back.SaveData data = game.proto.back.SaveData.newBuilder()
+        final game.proto.back.SaveData data = game.proto.back.SaveData.newBuilder()
                 .setBackData(D.build())
                 .setPd(pd.build())
                 .build();
 
         dataPersistenceWork.addTask(() -> {
-            PlayerRepo playerRepo = G.R.getPlayerRepo();
+            final PlayerRepo playerRepo = G.R.getPlayerRepo();
             playerRepo.save(data);
         });
     }
@@ -252,14 +254,14 @@ public class Player {
      *
      * @param heroId
      */
-    public void addHero(int heroId) {
+    public void addHero(final int heroId) {
 
         if (getPd().getHeroMap().containsKey(heroId)) {
             return;
         }
 
-        PlayerHero.Builder builder = PlayerHero.newBuilder();
-        DataConfigData d = G.C.heroMap1001.get(1);
+        final PlayerHero.Builder builder = PlayerHero.newBuilder();
+        final DataConfigData d = G.C.heroMap1001.get(1);
         builder.setId(heroId);
         builder.setLevel(1);
         builder.setTalent(99999);
@@ -288,7 +290,7 @@ public class Player {
      * @param count
      * @param from
      */
-    public void addGold(int count, ResourceSourceEnum from) {
+    public void addGold(final int count, final ResourceSourceEnum from) {
         ModuleAssert.isTrue(count > 0, ErrorEnum.ERR_103);
 
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() + count);
@@ -296,7 +298,7 @@ public class Player {
         EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, count, from));
     }
 
-    public boolean hasGold(int count) {
+    public boolean hasGold(final int count) {
         return pd.getResourceBuilder().getGold() >= count;
     }
 
@@ -306,7 +308,7 @@ public class Player {
      * @param gold
      * @param consume
      */
-    public void consumeGold(int gold, ConsumeTypeEnum consume) {
+    public void consumeGold(final int gold, final ConsumeTypeEnum consume) {
         ModuleAssert.isTrue(gold > 0, ErrorEnum.ERR_103);
         ModuleAssert.isTrue(hasGold(gold), ErrorEnum.ERR_4);
 
@@ -321,9 +323,9 @@ public class Player {
      * @param count
      * @param from
      */
-    public void addPlayerExp(int count, ResourceSourceEnum from) {
+    public void addPlayerExp(final int count, final ResourceSourceEnum from) {
         int exp = pd.getResourceBuilder().getExp() + count;
-        int oldLevel = pd.getLevel();
+        final int oldLevel = pd.getLevel();
         int level = pd.getLevel();
 
         if (level >= MAX_PLAYER_LEVEL) {
@@ -342,7 +344,7 @@ public class Player {
 
         if (oldLevel != level) {
             // 升级
-            setPlayerLevel(level);
+            setPlayerLevel(level, oldLevel);
         }
         EventManager.firePlayerEvent(this, new ExpAddEvent(0, count, exp, from));
     }
@@ -351,13 +353,14 @@ public class Player {
      * 设置等级
      *
      * @param level
+     * @param oldLevel
      */
-    public void setPlayerLevel(int level) {
+    public void setPlayerLevel(final int level, final int oldLevel) {
         if (level >= MAX_PLAYER_LEVEL) {
             return;
         }
         pd.setLevel(level);
-        EventManager.firePlayerEvent(this, new LevelUpEvent(level));
+        EventManager.firePlayerEvent(this, new LevelUpEvent(level, oldLevel));
     }
 
     /**
@@ -367,12 +370,12 @@ public class Player {
      * @param count
      * @param from
      */
-    public void addHeroExp(int heroId, int count, ResourceSourceEnum from) {
-        PlayerHero playerHero = pd.getHeroMap().get(heroId);
+    public void addHeroExp(final int heroId, final int count, final ResourceSourceEnum from) {
+        final PlayerHero playerHero = pd.getHeroMap().get(heroId);
 
-        PlayerHero.Builder builder = playerHero.toBuilder();
+        final PlayerHero.Builder builder = playerHero.toBuilder();
         int exp = builder.getExp() + count;
-        int oldLevel = playerHero.getLevel();
+        final int oldLevel = playerHero.getLevel();
         int level = playerHero.getLevel();
         int maxExp = G.C.needExp(level);
 
@@ -388,7 +391,7 @@ public class Player {
         pd.putHero(heroId, builder.build());
 
         if (oldLevel != level) {
-            EventManager.firePlayerEvent(this, new LevelUpEvent(heroId, level));
+            EventManager.firePlayerEvent(this, new LevelUpEvent(heroId, level, oldLevel));
         }
 
         EventManager.firePlayerEvent(this, new ExpAddEvent(heroId, count, exp, from));
@@ -399,13 +402,13 @@ public class Player {
      *
      * @param count
      */
-    public void addPower(long count, ResourceSourceEnum from) {
+    public void addPower(final long count, final ResourceSourceEnum from) {
 
-        Resource.Builder resourceBuilder = pd.getResourceBuilder();
-        int old = resourceBuilder.getPower();
+        final Resource.Builder resourceBuilder = pd.getResourceBuilder();
+        final int old = resourceBuilder.getPower();
 
         resourceBuilder.setPower((int) Math.min(old + count, resourceBuilder.getMaxPower()));
-        int add = resourceBuilder.getPower() - old;
+        final int add = resourceBuilder.getPower() - old;
         if (add > 0) {
             EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, add, from));
         }
@@ -417,19 +420,42 @@ public class Player {
      * @param count
      * @param typeEnum
      */
-    public boolean consumePower(ConsumeTypeEnum typeEnum, int count) {
+    public boolean consumePower(final ConsumeTypeEnum typeEnum, final int count) {
 
         if (pd.getResourceBuilder().getPower() < count) {
             return false;
         }
 
         pd.getResourceBuilder().setPower(pd.getResourceBuilder().getPower() - count);
-        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, count, typeEnum));
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, -count, typeEnum));
 
         return true;
     }
 
-    
+    /**
+     * 设置体力上限
+     *
+     * @param power
+     */
+    public void setMaxPower(final int power) {
+        pd.getResourceBuilder().setMaxPower(power);
+        getTransport().send(No.MaxPowerChangePush, ResourceChangePush.newBuilder().setCurCount(power).build());
+
+    }
+
+    /**
+     * 重置体力为最大值
+     *
+     * @param resourceEnum
+     */
+    public void resetPower(final ResourceSourceEnum resourceEnum) {
+        pd.getResourceBuilder().setPower(pd.getResourceBuilder().getMaxPower());
+        final int count = pd.getResourceBuilder().getMaxPower() - pd.getResourceBuilder().getPower();
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, count, resourceEnum)
+                .setCurCount(pd.getResourceBuilder().getPower()));
+    }
+
+
     /**
      * 放置物品到背包指定位置
      * todo 没有检查slotId是否已经有物品
@@ -437,14 +463,14 @@ public class Player {
      * @param data
      * @param type
      */
-    public void setItem(int slotId, ItemData data, int type) {
-        BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
-        BagUpdateService bagUpdateService = findBagUpdateService(type);
-        BagSlot slot = BagSlot.newBuilder().setSlotId(slotId).setData(data).build();
+    public void setItem(final int slotId, final ItemData data, final int type) {
+        final BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
+        final BagUpdateService bagUpdateService = findBagUpdateService(type);
+        final BagSlot slot = BagSlot.newBuilder().setSlotId(slotId).setData(data).build();
         bagPushBuilder.addSlot(slot);
 
         // Player data update
-        for (BagSlot bagSlot : bagPushBuilder.getSlotList()) {
+        for (final BagSlot bagSlot : bagPushBuilder.getSlotList()) {
             bagUpdateService.update(this, bagSlot);
         }
 
@@ -461,23 +487,23 @@ public class Player {
      *
      * @param data
      */
-    public void addItem(ItemData data, int type) {
-        BagUpdateService bagUpdateService = findBagUpdateService(type);
-        ItemBoxData box = bagUpdateService.box(this);
+    public void addItem(final ItemData data, final int type) {
+        final BagUpdateService bagUpdateService = findBagUpdateService(type);
+        final ItemBoxData box = bagUpdateService.box(this);
         ModuleAssert.isPositive(data.getCount());
 
-        DataConfigData dataConfigData = ConfigManager.getItem(data.getItemId());
+        final DataConfigData dataConfigData = ConfigManager.getItem(data.getItemId());
 
-        BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
+        final BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
 
         final int stack = dataConfigData.stack;
-        List<BagSlot> change = new ArrayList<>(10);
+        final List<BagSlot> change = new ArrayList<>(10);
         int remainCount = stack * box.remain();
         if (stack > 1) {// 可堆叠
             if (box.bagSlotMap.containsKey(data.getItemId())) {
                 // 已经有物品
-                Collection<BagSlot> bagSlots = box.bagSlotMap.get(data.getItemId());
-                for (BagSlot bagSlot : bagSlots) {
+                final Collection<BagSlot> bagSlots = box.bagSlotMap.get(data.getItemId());
+                for (final BagSlot bagSlot : bagSlots) {
                     if (bagSlot.getData().getCount() < stack) {
                         remainCount += stack - bagSlot.getData().getCount();
                         change.add(bagSlot);
@@ -489,16 +515,16 @@ public class Player {
         int count = data.getCount();
         ModuleAssert.isTrue(remainCount >= count, ErrorEnum.ERR_104);
 
-        for (BagSlot changedSlot : change) {
+        for (final BagSlot changedSlot : change) {
             box.bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);
 
             final int oldCount = changedSlot.getData().getCount();
             final int added = Math.min(stack - oldCount, count);
             count -= added;
 
-            BagSlot.Builder builder = changedSlot.toBuilder();
+            final BagSlot.Builder builder = changedSlot.toBuilder();
             builder.getDataBuilder().setCount(oldCount + added);
-            BagSlot slot = builder.build();
+            final BagSlot slot = builder.build();
 
             // change info
             bagPushBuilder.addSlot(slot);
@@ -515,7 +541,7 @@ public class Player {
                     final int added = Math.min(stack, count);
                     count -= added;
 
-                    BagSlot slot = BagSlot.newBuilder().setSlotId(i).setData(data.toBuilder().setCount(added)).build();
+                    final BagSlot slot = BagSlot.newBuilder().setSlotId(i).setData(data.toBuilder().setCount(added)).build();
                     // change info
                     bagPushBuilder.addSlot(slot);
                     if (count == 0) {
@@ -526,7 +552,7 @@ public class Player {
         }
 
         // Player data update
-        for (BagSlot bagSlot : bagPushBuilder.getSlotList()) {
+        for (final BagSlot bagSlot : bagPushBuilder.getSlotList()) {
             bagUpdateService.update(this, bagSlot);
         }
 
@@ -538,7 +564,7 @@ public class Player {
 
     }
 
-    private BagUpdateService findBagUpdateService(int type) {
+    private BagUpdateService findBagUpdateService(final int type) {
         if (type == 1) {
             return BagUpdateService.updatePlayerBag;
         }
@@ -550,31 +576,31 @@ public class Player {
      * 1:bag
      * 2:bank
      */
-    public void cleanBag(int type) {
-        BagUpdateService bagUpdateService = findBagUpdateService(type);
-        List<BagSlot> collect = bagUpdateService.findAll(this).values().stream().sorted((o1, o2) -> {
+    public void cleanBag(final int type) {
+        final BagUpdateService bagUpdateService = findBagUpdateService(type);
+        final List<BagSlot> collect = bagUpdateService.findAll(this).values().stream().sorted((o1, o2) -> {
             if (o1.getData().getItemId() == o2.getData().getItemId()) {
                 return o2.getData().getCount() - o1.getData().getCount();
             }
             return o1.getData().getItemId() - o2.getData().getItemId();
         }).collect(Collectors.toList());
         bagUpdateService.clean(this);
-        List<BagSlot> zipItemList = new ArrayList<>(collect.size());
+        final List<BagSlot> zipItemList = new ArrayList<>(collect.size());
         int lastIndex = 0;
         for (int i = 0; i < collect.size(); i++) {
             BagSlot bagSlot = collect.get(i);
             if (i > 0) {
-                BagSlot beforeSlot = zipItemList.get(lastIndex);
+                final BagSlot beforeSlot = zipItemList.get(lastIndex);
                 if (beforeSlot.getData().getItemId() == bagSlot.getData().getItemId()) {
 
-                    DataConfigData dataConfigData = ConfigManager.getItem(beforeSlot.getData().getItemId());
+                    final DataConfigData dataConfigData = ConfigManager.getItem(beforeSlot.getData().getItemId());
                     final int stack = dataConfigData.stack;
-                    int beforeCount = beforeSlot.getData().getCount();
+                    final int beforeCount = beforeSlot.getData().getCount();
                     if (stack > 1 && beforeCount < stack) {
-                        int canAdd = stack - beforeCount;
+                        final int canAdd = stack - beforeCount;
 
-                        int count = bagSlot.getData().getCount();
-                        BagSlot.Builder beforeBagSlotBild = beforeSlot.toBuilder();
+                        final int count = bagSlot.getData().getCount();
+                        final BagSlot.Builder beforeBagSlotBild = beforeSlot.toBuilder();
                         if (canAdd < count) {
                             beforeBagSlotBild.getDataBuilder().setCount(stack);
                             bagSlot = bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(count - canAdd)).build();
@@ -616,26 +642,26 @@ public class Player {
      * @param count
      * @param slotId
      */
-    public void removeBagItem(int type, int count, int slotId) {
+    public void removeBagItem(final int type, final int count, final int slotId) {
         if (count <= 0) {
             return;
         }
-        BagUpdateService bagUpdateService = findBagUpdateService(type);
+        final BagUpdateService bagUpdateService = findBagUpdateService(type);
 
         BagSlot bagSlot = bagUpdateService.find(this, slotId);
         bagUpdateService.box(this).bagSlotMap.remove(bagSlot.getData().getItemId(), bagSlot);
-        int remain = Math.max(bagSlot.getData().getCount() - count, 0);
+        final int remain = Math.max(bagSlot.getData().getCount() - count, 0);
 
         bagSlot = bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain)).build();
         bagUpdateService.update(this, bagSlot);
 
-        BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(type);
+        final BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(type);
         builder.addSlot(bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain).build()).build());
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, builder.build());
     }
 
     public int nextId() {
-        int i = D.getLocalId() + 1;
+        final int i = D.getLocalId() + 1;
         D.setLocalId(i);
         return i;
     }
@@ -652,7 +678,7 @@ public class Player {
         updateTime = LocalDateTime.now();
     }
 
-    public void setChannel(Channel channel) {
+    public void setChannel(final Channel channel) {
         transport.setChannel(channel);
         transport.getChannel().attr(GameConstants.pid).set(pid);
     }
@@ -693,15 +719,15 @@ public class Player {
         return updateTime;
     }
 
-    public void setCreateTime(LocalDateTime createTime) {
+    public void setCreateTime(final LocalDateTime createTime) {
         this.createTime = createTime;
     }
 
-    public void setLoginTime(LocalDateTime loginTime) {
+    public void setLoginTime(final LocalDateTime loginTime) {
         this.loginTime = loginTime;
     }
 
-    public void setUpdateTime(LocalDateTime updateTime) {
+    public void setUpdateTime(final LocalDateTime updateTime) {
         this.updateTime = updateTime;
     }
 

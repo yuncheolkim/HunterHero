@@ -203,7 +203,10 @@ message ResourceChangePush {
     int32 resourceId = 1;
     int32 heroId = 2;
     int32 count = 3;
+    int32 curCount = 4;
 }
+
+
 // 玩家等级变化
 message PlayerLevelChangePush {
     int32 value = 1;

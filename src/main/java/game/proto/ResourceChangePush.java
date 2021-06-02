@@ -67,6 +67,11 @@ private static final long serialVersionUID = 0L;
             count_ = input.readInt32();
             break;
           }
+          case 32: {
+
+            curCount_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -132,6 +137,17 @@ private static final long serialVersionUID = 0L;
     return count_;
   }
 
+  public static final int CURCOUNT_FIELD_NUMBER = 4;
+  private int curCount_;
+  /**
+   * <code>int32 curCount = 4;</code>
+   * @return The curCount.
+   */
+  @java.lang.Override
+  public int getCurCount() {
+    return curCount_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -155,6 +171,9 @@ private static final long serialVersionUID = 0L;
     if (count_ != 0) {
       output.writeInt32(3, count_);
     }
+    if (curCount_ != 0) {
+      output.writeInt32(4, curCount_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -175,6 +194,10 @@ private static final long serialVersionUID = 0L;
     if (count_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, count_);
+    }
+    if (curCount_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(4, curCount_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -197,6 +220,8 @@ private static final long serialVersionUID = 0L;
         != other.getHeroId()) return false;
     if (getCount()
         != other.getCount()) return false;
+    if (getCurCount()
+        != other.getCurCount()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -214,6 +239,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getHeroId();
     hash = (37 * hash) + COUNT_FIELD_NUMBER;
     hash = (53 * hash) + getCount();
+    hash = (37 * hash) + CURCOUNT_FIELD_NUMBER;
+    hash = (53 * hash) + getCurCount();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -357,6 +384,8 @@ private static final long serialVersionUID = 0L;
 
       count_ = 0;
 
+      curCount_ = 0;
+
       return this;
     }
 
@@ -386,6 +415,7 @@ private static final long serialVersionUID = 0L;
       result.resourceId_ = resourceId_;
       result.heroId_ = heroId_;
       result.count_ = count_;
+      result.curCount_ = curCount_;
       onBuilt();
       return result;
     }
@@ -442,6 +472,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getCount() != 0) {
         setCount(other.getCount());
+      }
+      if (other.getCurCount() != 0) {
+        setCurCount(other.getCurCount());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -561,6 +594,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearCount() {
       
       count_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int curCount_ ;
+    /**
+     * <code>int32 curCount = 4;</code>
+     * @return The curCount.
+     */
+    @java.lang.Override
+    public int getCurCount() {
+      return curCount_;
+    }
+    /**
+     * <code>int32 curCount = 4;</code>
+     * @param value The curCount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCurCount(int value) {
+      
+      curCount_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 curCount = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCurCount() {
+      
+      curCount_ = 0;
       onChanged();
       return this;
     }
