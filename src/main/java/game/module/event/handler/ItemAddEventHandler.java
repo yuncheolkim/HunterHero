@@ -1,8 +1,8 @@
 package game.module.event.handler;
 
-import game.base.G;
 import game.config.DataConfigData;
 import game.game.ItemTypeEnum;
+import game.manager.ConfigManager;
 import game.module.event.IPlayerEventHandler;
 import game.module.task.TaskService;
 import game.module.task.TaskTargetTypeEnum;
@@ -17,10 +17,10 @@ import game.player.Player;
  */
 public class ItemAddEventHandler implements IPlayerEventHandler<ItemAddEvent> {
     @Override
-    public void handler(Player player, ItemAddEvent data) {
+    public void handler(final Player player, final ItemAddEvent data) {
         final int itemId = data.itemData.getItemId();
         final int addCount = data.itemData.getCount();
-        DataConfigData item = G.C.getItem(itemId);
+        final DataConfigData item = ConfigManager.getItem(itemId);
 
         // 检查任务
         if (item.type1 == ItemTypeEnum.TASK.id) {

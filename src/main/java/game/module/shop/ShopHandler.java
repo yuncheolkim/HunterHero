@@ -1,6 +1,5 @@
 package game.module.shop;
 
-import game.base.G;
 import game.base.GameConstants;
 import game.base.IIdDisplay;
 import game.config.DataConfigData;
@@ -29,14 +28,14 @@ public class ShopHandler {
      * @param player
      * @param req
      */
-    public static void buyItem(Player player, ItemBuyReq req) {
-        DataConfigData item = G.C.getItem(req.getItemId());
+    public static void buyItem(final Player player, final ItemBuyReq req) {
+        final DataConfigData item = ConfigManager.getItem(req.getItemId());
 
-        IIdDisplay display = ResourceEnum.display(item.resourceId);
+        final IIdDisplay display = ResourceEnum.display(item.resourceId);
         // 暂时金币
         if (display == ResourceEnum.GOLD) {
             ModuleAssert.isTrue(player.hasGold(item.value), ErrorEnum.ERR_103);
-            ItemData.Builder builder = ItemData.newBuilder()
+            final ItemData.Builder builder = ItemData.newBuilder()
                     .setItemId(req.getItemId())
                     .setCount(req.getCount());
 
@@ -57,15 +56,15 @@ public class ShopHandler {
      * @param player
      * @param req
      */
-    public static void sellItem(Player player, ItemSellReq req) {
-        BagSlot bagSlot = player.getPd().getBagMap().get(req.getSlotId());
+    public static void sellItem(final Player player, final ItemSellReq req) {
+        final BagSlot bagSlot = player.getPd().getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);
 
-        DataConfigData item = G.C.getItem(bagSlot.getData().getItemId());
+        final DataConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
 
-        IIdDisplay display = ResourceEnum.display(item.resourceId);
+        final IIdDisplay display = ResourceEnum.display(item.resourceId);
 
-        int count = Math.min(bagSlot.getData().getCount(), req.getCount());
+        final int count = Math.min(bagSlot.getData().getCount(), req.getCount());
 
         if (display == ResourceEnum.GOLD) {
             // 移除物品

@@ -18,10 +18,10 @@ public class Round {
     private int roundCount;
 
     @JsonProperty("records")
-    private List<Record> recordList = new ArrayList<>();
+    private final List<Record> recordList = new ArrayList<>();
 
 
-    public void addRecord(Record action) {
+    public void addRecord(final Record action) {
         recordList.add(action);
     }
 
@@ -29,7 +29,7 @@ public class Round {
         return roundCount;
     }
 
-    public void setRoundCount(int roundCount) {
+    public void setRoundCount(final int roundCount) {
         this.roundCount = roundCount;
     }
 

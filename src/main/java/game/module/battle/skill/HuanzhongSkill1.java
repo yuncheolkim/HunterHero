@@ -18,7 +18,7 @@ public class HuanzhongSkill1 extends Skill {
     /**
      * 额外攻击目标数量
      */
-    private int count = 2;
+    private final int count = 2;
 
     public HuanzhongSkill1() {
         actionPoint.put(ActionPoint.开场, 1);
@@ -28,7 +28,7 @@ public class HuanzhongSkill1 extends Skill {
     }
 
     @Override
-    public Record process(ActionPoint point, Hero hero) {
+    public Record process(final ActionPoint point, final Hero hero) {
         hero.addTargetStrategy(new MultipleTargetStrategy(count));
         return null;
     }

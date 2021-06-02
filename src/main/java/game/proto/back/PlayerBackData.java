@@ -21,6 +21,7 @@ private static final long serialVersionUID = 0L;
   }
   private PlayerBackData() {
     fightArea_ = emptyIntList();
+    fightType_ = 0;
   }
 
   @java.lang.Override
@@ -98,6 +99,12 @@ private static final long serialVersionUID = 0L;
           case 80: {
 
             localId_ = input.readInt32();
+            break;
+          }
+          case 168: {
+            int rawValue = input.readEnum();
+
+            fightType_ = rawValue;
             break;
           }
           case 802: {
@@ -251,6 +258,33 @@ private static final long serialVersionUID = 0L;
     return localId_;
   }
 
+  public static final int FIGHTTYPE_FIELD_NUMBER = 21;
+  private int fightType_;
+  /**
+   * <pre>
+   * 战斗类型
+   * </pre>
+   *
+   * <code>.Message.FightType fightType = 21;</code>
+   * @return The enum numeric value on the wire for fightType.
+   */
+  @java.lang.Override public int getFightTypeValue() {
+    return fightType_;
+  }
+  /**
+   * <pre>
+   * 战斗类型
+   * </pre>
+   *
+   * <code>.Message.FightType fightType = 21;</code>
+   * @return The fightType.
+   */
+  @java.lang.Override public game.proto.back.FightType getFightType() {
+    @SuppressWarnings("deprecation")
+    game.proto.back.FightType result = game.proto.back.FightType.valueOf(fightType_);
+    return result == null ? game.proto.back.FightType.UNRECOGNIZED : result;
+  }
+
   public static final int COMPLETETASK_FIELD_NUMBER = 100;
   private static final class CompleteTaskDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -369,6 +403,9 @@ private static final long serialVersionUID = 0L;
     if (localId_ != 0) {
       output.writeInt32(10, localId_);
     }
+    if (fightType_ != game.proto.back.FightType.F_NONE.getNumber()) {
+      output.writeEnum(21, fightType_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -418,6 +455,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(10, localId_);
     }
+    if (fightType_ != game.proto.back.FightType.F_NONE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(21, fightType_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, java.lang.Boolean> entry
          : internalGetCompleteTask().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Boolean>
@@ -455,6 +496,7 @@ private static final long serialVersionUID = 0L;
         != other.getUpdateTime()) return false;
     if (getLocalId()
         != other.getLocalId()) return false;
+    if (fightType_ != other.fightType_) return false;
     if (!internalGetCompleteTask().equals(
         other.internalGetCompleteTask())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -486,6 +528,8 @@ private static final long serialVersionUID = 0L;
         getUpdateTime());
     hash = (37 * hash) + LOCALID_FIELD_NUMBER;
     hash = (53 * hash) + getLocalId();
+    hash = (37 * hash) + FIGHTTYPE_FIELD_NUMBER;
+    hash = (53 * hash) + fightType_;
     if (!internalGetCompleteTask().getMap().isEmpty()) {
       hash = (37 * hash) + COMPLETETASK_FIELD_NUMBER;
       hash = (53 * hash) + internalGetCompleteTask().hashCode();
@@ -661,6 +705,8 @@ private static final long serialVersionUID = 0L;
 
       localId_ = 0;
 
+      fightType_ = 0;
+
       internalGetMutableCompleteTask().clear();
       return this;
     }
@@ -699,6 +745,7 @@ private static final long serialVersionUID = 0L;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
       result.localId_ = localId_;
+      result.fightType_ = fightType_;
       result.completeTask_ = internalGetCompleteTask();
       result.completeTask_.makeImmutable();
       onBuilt();
@@ -773,6 +820,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getLocalId() != 0) {
         setLocalId(other.getLocalId());
+      }
+      if (other.fightType_ != 0) {
+        setFightTypeValue(other.getFightTypeValue());
       }
       internalGetMutableCompleteTask().mergeFrom(
           other.internalGetCompleteTask());
@@ -1060,6 +1110,80 @@ private static final long serialVersionUID = 0L;
     public Builder clearLocalId() {
       
       localId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int fightType_ = 0;
+    /**
+     * <pre>
+     * 战斗类型
+     * </pre>
+     *
+     * <code>.Message.FightType fightType = 21;</code>
+     * @return The enum numeric value on the wire for fightType.
+     */
+    @java.lang.Override public int getFightTypeValue() {
+      return fightType_;
+    }
+    /**
+     * <pre>
+     * 战斗类型
+     * </pre>
+     *
+     * <code>.Message.FightType fightType = 21;</code>
+     * @param value The enum numeric value on the wire for fightType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFightTypeValue(int value) {
+      
+      fightType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗类型
+     * </pre>
+     *
+     * <code>.Message.FightType fightType = 21;</code>
+     * @return The fightType.
+     */
+    @java.lang.Override
+    public game.proto.back.FightType getFightType() {
+      @SuppressWarnings("deprecation")
+      game.proto.back.FightType result = game.proto.back.FightType.valueOf(fightType_);
+      return result == null ? game.proto.back.FightType.UNRECOGNIZED : result;
+    }
+    /**
+     * <pre>
+     * 战斗类型
+     * </pre>
+     *
+     * <code>.Message.FightType fightType = 21;</code>
+     * @param value The fightType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFightType(game.proto.back.FightType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      fightType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗类型
+     * </pre>
+     *
+     * <code>.Message.FightType fightType = 21;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFightType() {
+      
+      fightType_ = 0;
       onChanged();
       return this;
     }

@@ -9,12 +9,13 @@ import game.utils.CalcUtil;
 
 /**
  * 每1回合恢复失去血量的20%血量
+ *
  * @author Yunzhe.Jin
  * 2021/2/9 10:18
  */
 public class SunquanSkill1 extends Skill {
 
-    private int rate = 20;
+    private final int rate = 20;
 
     public SunquanSkill1() {
         actionPoint.put(ActionPoint.回合结束后, 1);
@@ -24,13 +25,13 @@ public class SunquanSkill1 extends Skill {
     }
 
     @Override
-    public Record process(ActionPoint actionPoint, Hero hero) {
-        Record process = super.process(actionPoint, hero);
+    public Record process(final ActionPoint actionPoint, final Hero hero) {
+        final Record process = super.process(actionPoint, hero);
 
-        int maxHp = hero.property.getMaxHp();
-        int hp = hero.getHp();
+        final int maxHp = hero.property.getMaxHp();
+        final int hp = hero.getHp();
 
-        int add = CalcUtil.calcRateAdd(maxHp - hp, rate);
+        final int add = CalcUtil.calcRateAdd(maxHp - hp, rate);
         if (add <= 0) {
             return null;
         }

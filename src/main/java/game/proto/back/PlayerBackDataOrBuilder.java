@@ -63,6 +63,25 @@ public interface PlayerBackDataOrBuilder extends
   int getLocalId();
 
   /**
+   * <pre>
+   * 战斗类型
+   * </pre>
+   *
+   * <code>.Message.FightType fightType = 21;</code>
+   * @return The enum numeric value on the wire for fightType.
+   */
+  int getFightTypeValue();
+  /**
+   * <pre>
+   * 战斗类型
+   * </pre>
+   *
+   * <code>.Message.FightType fightType = 21;</code>
+   * @return The fightType.
+   */
+  game.proto.back.FightType getFightType();
+
+  /**
    * <code>map&lt;int32, bool&gt; completeTask = 100;</code>
    */
   int getCompleteTaskCount();

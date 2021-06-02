@@ -13,14 +13,14 @@ import game.module.battle.record.BuffData;
  * 2021/1/8 15:53
  */
 public class OneAttackBuff extends Buff {
-    private OneAttackBuffData buffData = new OneAttackBuffData();
+    private final OneAttackBuffData buffData = new OneAttackBuffData();
 
     public Hero target;
 
-    public OneAttackBuff(Hero t) {
+    public OneAttackBuff(final Hero t) {
         effects.add(new BuffEffect() {
             @Override
-            public boolean doEffect(Hero hero, Buff buff) {
+            public boolean doEffect(final Hero hero, final Buff buff) {
                 return target != null && target.isAlive();
             }
         });
@@ -44,7 +44,7 @@ public class OneAttackBuff extends Buff {
     }
 
     @Override
-    public BuffMergeType calcBuffMergeType(Buff addBuf) {
+    public BuffMergeType calcBuffMergeType(final Buff addBuf) {
         if (((OneAttackBuff) addBuf).target != target) {
             return BuffMergeType.REPLACE;
         }
@@ -58,7 +58,7 @@ public class OneAttackBuff extends Buff {
 
     @Override
     public BuffData buffData() {
-        BuffData data = super.buffData();
+        final BuffData data = super.buffData();
         data.i1 = buffData.i1();
         data.i2 = buffData.i2();
         return data;

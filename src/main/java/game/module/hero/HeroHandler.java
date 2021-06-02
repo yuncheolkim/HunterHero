@@ -7,6 +7,8 @@ import game.config.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
+import game.manager.ConfigManager;
+import game.manager.EventManager;
 import game.module.event.handler.HeroPowerUpEvent;
 import game.player.Player;
 import game.proto.*;
@@ -24,28 +26,28 @@ public class HeroHandler {
      * @param player
      * @param req
      */
-    public static void powerUp(Player player, HeroUpReq req) {
-        PlayerData.Builder pd = player.getPd();
-        PlayerHero hero = pd.getHeroOrThrow(req.getHeroId());
+    public static void powerUp(final Player player, final HeroUpReq req) {
+        final PlayerData.Builder pd = player.getPd();
+        final PlayerHero hero = pd.getHeroOrThrow(req.getHeroId());
         int level = 1;
         if (hero.containsPowerUp(req.getStepId())) {
-            HeroRealm realm = hero.getPowerUpMap().get(req.getStepId());
+            final HeroRealm realm = hero.getPowerUpMap().get(req.getStepId());
             level = realm.getLevel() + 1;
         }
-        DataConfigData dataConfigData = G.C.GetPowerUpData(req.getStepId(), level);
+        final DataConfigData dataConfigData = G.C.GetPowerUpData(req.getStepId(), level);
         ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_5);
         // Gold
         player.consumeGold(dataConfigData.gold, ConsumeTypeEnum.历练);
 
-        HeroRealm realm = HeroRealm.newBuilder()
+        final HeroRealm realm = HeroRealm.newBuilder()
                 .setId(req.getStepId())
                 .setLevel(level)
                 .build();
 
-        PlayerHero.Builder builder = hero.toBuilder().putPowerUp(req.getStepId(), realm);
+        final PlayerHero.Builder builder = hero.toBuilder().putPowerUp(req.getStepId(), realm);
         pd.putHero(req.getHeroId(), builder.build());
 
-        G.E.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
+        EventManager.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
 
     }
 
@@ -53,19 +55,19 @@ public class HeroHandler {
     /**
      * 装备物品
      */
-    public static void equip(Player player, HeroEquipmentReq req) {
-        BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
+    public static void equip(final Player player, final HeroEquipmentReq req) {
+        final BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);
-        DataConfigData item = G.C.getItem(bagSlot.getData().getItemId());
-        int type2 = item.type2;
+        final DataConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
+        final int type2 = item.type2;
 
-        PlayerHero hero = player.pd.getHeroOrThrow(req.getHeroId());
-        Equipment equipment = hero.getEquipmentMap().get(type2);
+        final PlayerHero hero = player.pd.getHeroOrThrow(req.getHeroId());
+        final Equipment equipment = hero.getEquipmentMap().get(type2);
         // 从背包删除
         player.removeBagItem(GameConstants.ITEM_BAG, 1, bagSlot.getSlotId());
 
         // 放到装备栏
-        PlayerHero.Builder builder = hero.toBuilder();
+        final PlayerHero.Builder builder = hero.toBuilder();
         builder.putEquipment(type2, Equipment.newBuilder()
                 .setId(item.id)
                 .setLevel(item.level)
@@ -74,7 +76,7 @@ public class HeroHandler {
 
         player.pd.putHero(hero.getId(), builder.build());
 
-        G.E.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
+        EventManager.firePlayerEvent(player, new HeroPowerUpEvent(hero.getId()));
 
         // 旧物品返回到背包
         if (equipment != null) {
@@ -93,7 +95,7 @@ public class HeroHandler {
      * @param hero
      */
     @InsideMsgHandler
-    public static void updateHero(Player player, PlayerHero hero) {
+    public static void updateHero(final Player player, final PlayerHero hero) {
         player.getPd().putHero(hero.getId(), hero);
         // Push
         player.getTransport().send(MsgNo.hero_change_VALUE, HeroChangePush.newBuilder().setHero(hero).build());
@@ -106,10 +108,10 @@ public class HeroHandler {
      * @param player
      * @param req
      */
-    public static HeroTalentChangeRes HeroTalentChangeReq(Player player, HeroTalentChangeReq req) {
+    public static HeroTalentChangeRes HeroTalentChangeReq(final Player player, final HeroTalentChangeReq req) {
 
-        PlayerHero heroOrThrow = player.pd.getHeroOrThrow(req.getHeroId());
-        PlayerHero.Builder builder = heroOrThrow.toBuilder().setTalent(req.getTalent());
+        final PlayerHero heroOrThrow = player.pd.getHeroOrThrow(req.getHeroId());
+        final PlayerHero.Builder builder = heroOrThrow.toBuilder().setTalent(req.getTalent());
         player.pd.putHero(req.getHeroId(), builder.buildPartial());
 
         return HeroTalentChangeRes.newBuilder()

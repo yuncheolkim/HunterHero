@@ -24,7 +24,7 @@ public class GuanyuSkill2 extends Skill {
     /**
      * 溅射比例
      */
-    private float v = 0.2f;
+    private final float v = 0.2f;
 
     public GuanyuSkill2() {
         actionPoint.put(ActionPoint.出手后, 1);
@@ -34,14 +34,14 @@ public class GuanyuSkill2 extends Skill {
     }
 
     @Override
-    public boolean canProcess(Hero hero) {
-        List<Hero> collect = attackHero(hero);
+    public boolean canProcess(final Hero hero) {
+        final List<Hero> collect = attackHero(hero);
         return !collect.isEmpty();
     }
 
-    private List<Hero> attackHero(Hero hero) {
-        List<Hero> list = hero.getBattle().oppositeHeroes(hero.getSide());
-        Hero currentTarget = hero.damageInfo.target;
+    private List<Hero> attackHero(final Hero hero) {
+        final List<Hero> list = hero.getBattle().oppositeHeroes(hero.getSide());
+        final Hero currentTarget = hero.damageInfo.target;
         if (currentTarget == null) {
             return new ArrayList<>();
         }
@@ -53,13 +53,13 @@ public class GuanyuSkill2 extends Skill {
     }
 
     @Override
-    public Record process(ActionPoint point, Hero hero) {
-        Record process = super.process(point, hero);
-        List<Hero> collect = attackHero(hero);
+    public Record process(final ActionPoint point, final Hero hero) {
+        final Record process = super.process(point, hero);
+        final List<Hero> collect = attackHero(hero);
         process.targetList = collect.stream().map(h -> h.getPos().getIndex()).collect(Collectors.toList());
 
-        for (Hero target : collect) {
-            DamageInfo damageInfo = new DamageInfo();
+        for (final Hero target : collect) {
+            final DamageInfo damageInfo = new DamageInfo();
             damageInfo.sourceId = id;
             damageInfo.type = (DamageSourceType.SKILL);
             damageInfo.source = (hero);

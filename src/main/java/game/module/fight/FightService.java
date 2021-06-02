@@ -8,6 +8,7 @@ import game.config.enmey.EnemyCountConfigData;
 import game.player.Player;
 import game.proto.FightStartPush;
 import game.proto.Message;
+import game.proto.back.FightType;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
 import game.utils.CalcUtil;
@@ -30,17 +31,19 @@ public class FightService {
      *
      * @param player
      */
-    public static void checkFight(Player player) {
+    public static void checkFight(final Player player) {
         if (player.pd.getFightInfoCount() > 0) {
             // 已经在战斗中
             return;
         }
 
         if (player.D.getFightAreaCount() > 0) {
-            long now = DateUtils.now();
+            // 野外战斗
+            player.D.setFightType(FightType.F_BATTLE);
+            final long now = DateUtils.now();
             if (player.D.getFightTime() < now) {
                 // fight
-                FightStartPush fightStartPush = genEnemy(player);
+                final FightStartPush fightStartPush = genEnemy(player);
                 player.getPd().addAllFightInfo(fightStartPush.getInfoList());
 
                 player.getTransport().send(Message.newBuilder()
@@ -61,38 +64,38 @@ public class FightService {
      * @param player
      * @return
      */
-    private static FightStartPush genEnemy(Player player) {
+    private static FightStartPush genEnemy(final Player player) {
 
         Logs.C.debug("生成敌人");
         int allWeight = 0;
-        List<EnemyConfigData> enemyList = new ArrayList<>();
-        for (Integer enemyAreaId : player.D.getFightAreaList()) {
-            EnemyAreaConfigData enemy = G.C.enemyInfoMap.get(enemyAreaId);
+        final List<EnemyConfigData> enemyList = new ArrayList<>();
+        for (final Integer enemyAreaId : player.D.getFightAreaList()) {
+            final EnemyAreaConfigData enemy = G.C.enemyInfoMap.get(enemyAreaId);
             enemyList.addAll(enemy.enemyList);
             allWeight += enemy.weightAll;
         }
 
         // count
-        List<EnemyCountConfigData> enemyCountList = new ArrayList<>();
-        for (Integer enemyAreaId : player.D.getFightAreaList()) {
-            List<EnemyCountConfigData> list = G.C.enemyCountMap.get(enemyAreaId);
+        final List<EnemyCountConfigData> enemyCountList = new ArrayList<>();
+        for (final Integer enemyAreaId : player.D.getFightAreaList()) {
+            final List<EnemyCountConfigData> list = G.C.enemyCountMap.get(enemyAreaId);
             enemyCountList.addAll(list);
         }
-        int count = CalcUtil.weightRandom(enemyCountList).count;
+        final int count = CalcUtil.weightRandom(enemyCountList).count;
         // hero info
-        List<EnemyConfigData> result = new ArrayList<>(count);
+        final List<EnemyConfigData> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
             result.add(CalcUtil.weightRandom(enemyList, allWeight));
         }
 
         // heor pos
-        List<Integer> pos = RANDOM_8.posList(count);
+        final List<Integer> pos = RANDOM_8.posList(count);
 
-        FightStartPush.Builder push = FightStartPush.newBuilder();
+        final FightStartPush.Builder push = FightStartPush.newBuilder();
 
         for (int i = 0; i < count; i++) {
-            FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
-            EnemyConfigData d = result.get(i);
+            final FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
+            final EnemyConfigData d = result.get(i);
             builder.setId(d.id);
             builder.setPos(pos.get(i));
             builder.setLevel(d.level);

@@ -10,7 +10,7 @@ import java.util.LinkedList;
  * 2021/3/8 15:16
  */
 public class DefaultHeroCalcProcess {
-    private LinkedList<IHeroCalc> list = new LinkedList<>();
+    private final LinkedList<IHeroCalc> list = new LinkedList<>();
 
     public DefaultHeroCalcProcess() {
         list.add(new HpHeroCalc());
@@ -25,8 +25,8 @@ public class DefaultHeroCalcProcess {
         list.add(new SpeedHeroCalc());
     }
 
-    public void doProcess(PlayerHero old, PlayerHero.Builder builder) {
-        for (IHeroCalc iHeroCalc : list) {
+    public void doProcess(final PlayerHero old, final PlayerHero.Builder builder) {
+        for (final IHeroCalc iHeroCalc : list) {
             iHeroCalc.calc(old, builder);
         }
     }

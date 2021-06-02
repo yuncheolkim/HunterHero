@@ -21,7 +21,7 @@ public class CaocaoSkill2 extends Skill {
     /**
      * 35%概率触发护驾
      */
-    private int rate = 100;
+    private final int rate = 100;
 
     public CaocaoSkill2() {
         actionPoint.put(ActionPoint.被攻击之前, 1);
@@ -30,16 +30,16 @@ public class CaocaoSkill2 extends Skill {
     }
 
     @Override
-    public Record process(ActionPoint point, Hero hero) {
-        Record record = super.process(point, hero);
+    public Record process(final ActionPoint point, final Hero hero) {
+        final Record record = super.process(point, hero);
 
-        Battle battle = hero.getBattle();
-        boolean happened = CalcUtil.happened(battle.getRandom(), rate, 100);
+        final Battle battle = hero.getBattle();
+        final boolean happened = CalcUtil.happened(battle.getRandom(), rate, 100);
 
         if (!happened) {
             return null;
         }
-        List<Hero> collect = hero.friends().stream()
+        final List<Hero> collect = hero.friends().stream()
                 .filter(Hero::isAlive)
                 .filter(h -> h.getId() != Caocao.ID)
                 .collect(Collectors.toList());
@@ -48,7 +48,7 @@ public class CaocaoSkill2 extends Skill {
         }
 
         Logs.trace("护驾");
-        int i = battle.getRandom().nextInt(collect.size());
+        final int i = battle.getRandom().nextInt(collect.size());
 
         hero.damageInfo.target = collect.get(i);
 

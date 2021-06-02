@@ -46,6 +46,7 @@ message PlayerData {
     int32 arenaFormationIndex = 703;
 
 }
+
 enum FormationType {
     FORMATION_NONE = 0;
     FORMATION_DEFAULT = 1; //默认阵型
