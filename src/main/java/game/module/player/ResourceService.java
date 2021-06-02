@@ -12,7 +12,7 @@ public class ResourceService {
         switch (fightType) {
 
             case F_BATTLE:
-                return 0;
+                return 1;
         }
 
         return 0;

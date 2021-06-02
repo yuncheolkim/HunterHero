@@ -449,8 +449,8 @@ public class Player {
      * @param resourceEnum
      */
     public void resetPower(final ResourceSourceEnum resourceEnum) {
-        pd.getResourceBuilder().setPower(pd.getResourceBuilder().getMaxPower());
         final int count = pd.getResourceBuilder().getMaxPower() - pd.getResourceBuilder().getPower();
+        pd.getResourceBuilder().setPower(pd.getResourceBuilder().getMaxPower());
         EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, count, resourceEnum)
                 .setCurCount(pd.getResourceBuilder().getPower()));
     }

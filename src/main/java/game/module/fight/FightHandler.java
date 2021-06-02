@@ -85,7 +85,7 @@ public class FightHandler {
 
         final FightRecord.Builder result = buildFightRecord(record);
         result.setWin(record.getWinSide() == Side.A);
-        if (result.getWin() && player.consumePower(ConsumeTypeEnum.野外战斗, ResourceService.calcPower(player.D.getFightType()))) {
+        if (player.consumePower(ConsumeTypeEnum.野外战斗, ResourceService.calcPower(player.D.getFightType())) && result.getWin()) {
             int gold = 0;
 
             final IntObjectHashMap<Integer> enemyCountMap = new IntObjectHashMap<>(record.getSideBhero().size());

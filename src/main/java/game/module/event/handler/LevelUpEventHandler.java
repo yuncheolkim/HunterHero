@@ -1,6 +1,7 @@
 package game.module.event.handler;
 
 import game.game.ResourceSourceEnum;
+import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.event.IPlayerEventHandler;
 import game.player.Player;
@@ -23,7 +24,7 @@ public class LevelUpEventHandler implements IPlayerEventHandler<LevelUpEvent> {
             player.getTransport().send(MsgNo.PlayerLevelChangePushNo_VALUE, PlayerLevelChangePush.newBuilder().setValue(data.level).build());
 
             // 计算体力
-            player.setMaxPower(player.pd.getResourceBuilder().getMaxPower() + data.level - data.oldLevel);
+            player.setMaxPower(ConfigManager.GetInitPower() + data.level);
             player.resetPower(ResourceSourceEnum.升级);
 
         }

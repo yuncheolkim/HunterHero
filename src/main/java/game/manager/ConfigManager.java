@@ -40,7 +40,7 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> dataMap7;
 
-    public Map<Integer, DataConfigData> dataMap8;
+    public static Map<Integer, DataConfigData> dataMap8;
 
     public Map<Integer, DataConfigData> dataMap9;
 
@@ -379,7 +379,11 @@ public class ConfigManager extends AbsLifecycle {
     public static Property GetEnemyTemplate(int level) {
         return enemyTemplate.get(level).property;
     }
-    
+
+
+    public static int GetInitPower() {
+        return dataMap8.get(1).count;
+    }
 
 }
 
