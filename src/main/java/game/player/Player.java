@@ -458,6 +458,10 @@ public class Player {
         return true;
     }
 
+    public void consumeGemAssert(final ConsumeTypeEnum typeEnum, final int count) {
+        ModuleAssert.isTrue(consumeGem(typeEnum, count));
+    }
+
 
     /**
      * 设置体力上限

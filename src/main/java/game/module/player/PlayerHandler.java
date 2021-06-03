@@ -100,9 +100,11 @@ public class PlayerHandler {
             ModuleAssert.isFalse(player.isFullPower(), ErrorEnum.ERR_6);
 
             if (req.getGem() > 0) {
-                player.consumeGem(ConsumeTypeEnum.购买体力, req.getGem() * ConfigManager.paramConfigData.powerRecoverGem);
+                player.consumeGemAssert(ConsumeTypeEnum.购买体力, req.getGem() * ConfigManager.paramConfigData.powerRecoverGem);
+                player.addPower(1, ResourceSourceEnum.购买体力);
             } else if (req.getGold() > 0) {
                 player.consumeGold(req.getGold() * ConfigManager.paramConfigData.powerRecoverGold, ConsumeTypeEnum.购买体力);
+                player.addPower(1, ResourceSourceEnum.购买体力);
             }
 
         }
