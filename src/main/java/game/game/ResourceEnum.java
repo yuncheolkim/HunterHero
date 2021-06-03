@@ -15,7 +15,7 @@ public enum ResourceEnum implements IIdDisplay {
      * 系统异常
      */
     GOLD(1, "金币"),
-    LEI(2, "雷石"),
+    GEM(2, "雷石"),
     EXP(3, "经验"),
     POWER(4, "能量"),
     ;

@@ -18,7 +18,7 @@
     "11": {
         "exp": 9898,
         "id": 11,
-        "max": 2,
+        "max": 4,
         "min": 1,
         "monsterExp": 98,
         "taskExp": 1649
@@ -26,7 +26,7 @@
     "12": {
         "exp": 12840,
         "id": 12,
-        "max": 4,
+        "max": 2,
         "min": 1,
         "monsterExp": 107,
         "taskExp": 1834
@@ -34,7 +34,7 @@
     "13": {
         "exp": 16380,
         "id": 13,
-        "max": 2,
+        "max": 3,
         "min": 1,
         "monsterExp": 117,
         "taskExp": 2340
@@ -42,7 +42,7 @@
     "14": {
         "exp": 20608,
         "id": 14,
-        "max": 3,
+        "max": 2,
         "min": 1,
         "monsterExp": 128,
         "taskExp": 2576
@@ -58,7 +58,7 @@
     "16": {
         "exp": 31768,
         "id": 16,
-        "max": 2,
+        "max": 4,
         "min": 1,
         "monsterExp": 152,
         "taskExp": 3529
@@ -66,7 +66,7 @@
     "17": {
         "exp": 38940,
         "id": 17,
-        "max": 2,
+        "max": 3,
         "min": 1,
         "monsterExp": 165,
         "taskExp": 4326
@@ -74,7 +74,7 @@
     "18": {
         "exp": 47256,
         "id": 18,
-        "max": 3,
+        "max": 2,
         "min": 1,
         "monsterExp": 179,
         "taskExp": 5250
@@ -82,7 +82,7 @@
     "19": {
         "exp": 56842,
         "id": 19,
-        "max": 4,
+        "max": 3,
         "min": 1,
         "monsterExp": 194,
         "taskExp": 6315
@@ -90,7 +90,7 @@
     "2": {
         "exp": 408,
         "id": 2,
-        "max": 3,
+        "max": 2,
         "min": 0,
         "monsterExp": 51,
         "taskExp": 136
@@ -114,7 +114,7 @@
     "22": {
         "exp": 95256,
         "id": 22,
-        "max": 5,
+        "max": 4,
         "min": 2,
         "monsterExp": 243,
         "taskExp": 7938
@@ -122,7 +122,7 @@
     "23": {
         "exp": 111708,
         "id": 23,
-        "max": 4,
+        "max": 3,
         "min": 2,
         "monsterExp": 261,
         "taskExp": 8592
@@ -130,7 +130,7 @@
     "24": {
         "exp": 130200,
         "id": 24,
-        "max": 5,
+        "max": 3,
         "min": 2,
         "monsterExp": 280,
         "taskExp": 9300
@@ -138,7 +138,7 @@
     "25": {
         "exp": 151500,
         "id": 25,
-        "max": 4,
+        "max": 3,
         "min": 2,
         "monsterExp": 300,
         "taskExp": 10100
@@ -162,7 +162,7 @@
     "28": {
         "exp": 229416,
         "id": 28,
-        "max": 4,
+        "max": 3,
         "min": 2,
         "monsterExp": 363,
         "taskExp": 12745
@@ -186,7 +186,7 @@
     "30": {
         "exp": 297250,
         "id": 30,
-        "max": 5,
+        "max": 4,
         "min": 3,
         "monsterExp": 410,
         "taskExp": 14862
@@ -194,7 +194,7 @@
     "31": {
         "exp": 335482,
         "id": 31,
-        "max": 6,
+        "max": 4,
         "min": 3,
         "monsterExp": 434,
         "taskExp": 15975
@@ -202,7 +202,7 @@
     "32": {
         "exp": 378216,
         "id": 32,
-        "max": 5,
+        "max": 4,
         "min": 3,
         "monsterExp": 459,
         "taskExp": 17191
@@ -210,7 +210,7 @@
     "33": {
         "exp": 424860,
         "id": 33,
-        "max": 6,
+        "max": 4,
         "min": 3,
         "monsterExp": 485,
         "taskExp": 18472
@@ -218,7 +218,7 @@
     "34": {
         "exp": 475648,
         "id": 34,
-        "max": 5,
+        "max": 4,
         "min": 3,
         "monsterExp": 512,
         "taskExp": 19818
@@ -226,7 +226,7 @@
     "35": {
         "exp": 531900,
         "id": 35,
-        "max": 5,
+        "max": 4,
         "min": 3,
         "monsterExp": 540,
         "taskExp": 21276
@@ -242,7 +242,7 @@
     "37": {
         "exp": 656700,
         "id": 37,
-        "max": 6,
+        "max": 5,
         "min": 3,
         "monsterExp": 597,
         "taskExp": 24322
@@ -266,7 +266,7 @@
     "4": {
         "exp": 952,
         "id": 4,
-        "max": 1,
+        "max": 3,
         "min": 0,
         "monsterExp": 56,
         "taskExp": 238
@@ -282,7 +282,7 @@
     "41": {
         "exp": 973978,
         "id": 41,
-        "max": 6,
+        "max": 5,
         "min": 4,
         "monsterExp": 722,
         "taskExp": 31418
@@ -290,7 +290,7 @@
     "42": {
         "exp": 1069080,
         "id": 42,
-        "max": 7,
+        "max": 6,
         "min": 4,
         "monsterExp": 755,
         "taskExp": 33408
@@ -298,7 +298,7 @@
     "43": {
         "exp": 1170876,
         "id": 43,
-        "max": 5,
+        "max": 7,
         "min": 4,
         "monsterExp": 789,
         "taskExp": 35481
@@ -314,7 +314,7 @@
     "45": {
         "exp": 1397500,
         "id": 45,
-        "max": 6,
+        "max": 7,
         "min": 4,
         "monsterExp": 860,
         "taskExp": 39928
@@ -322,7 +322,7 @@
     "46": {
         "exp": 1520512,
         "id": 46,
-        "max": 5,
+        "max": 7,
         "min": 4,
         "monsterExp": 896,
         "taskExp": 42236
@@ -338,7 +338,7 @@
     "48": {
         "exp": 1794408,
         "id": 48,
-        "max": 6,
+        "max": 5,
         "min": 4,
         "monsterExp": 971,
         "taskExp": 47221
@@ -346,7 +346,7 @@
     "49": {
         "exp": 1944250,
         "id": 49,
-        "max": 7,
+        "max": 5,
         "min": 4,
         "monsterExp": 1010,
         "taskExp": 49852
@@ -370,7 +370,7 @@
     "51": {
         "exp": 2272650,
         "id": 51,
-        "max": 6,
+        "max": 7,
         "min": 5,
         "monsterExp": 1090,
         "taskExp": 55430
@@ -378,7 +378,7 @@
     "52": {
         "exp": 2452008,
         "id": 52,
-        "max": 7,
+        "max": 6,
         "min": 5,
         "monsterExp": 1131,
         "taskExp": 58381
@@ -394,7 +394,7 @@
     "54": {
         "exp": 2841792,
         "id": 54,
-        "max": 8,
+        "max": 7,
         "min": 5,
         "monsterExp": 1216,
         "taskExp": 64586
@@ -410,7 +410,7 @@
     "56": {
         "exp": 3276952,
         "id": 56,
-        "max": 7,
+        "max": 6,
         "min": 5,
         "monsterExp": 1304,
         "taskExp": 71238
@@ -426,7 +426,7 @@
     "58": {
         "exp": 3760920,
         "id": 58,
-        "max": 8,
+        "max": 6,
         "min": 5,
         "monsterExp": 1395,
         "taskExp": 78352
@@ -434,7 +434,7 @@
     "59": {
         "exp": 4021738,
         "id": 59,
-        "max": 8,
+        "max": 6,
         "min": 5,
         "monsterExp": 1442,
         "taskExp": 82076
@@ -442,7 +442,7 @@
     "6": {
         "exp": 2112,
         "id": 6,
-        "max": 2,
+        "max": 1,
         "min": 0,
         "monsterExp": 64,
         "taskExp": 528
@@ -450,7 +450,7 @@
     "60": {
         "exp": 4298650,
         "id": 60,
-        "max": 7,
+        "max": 9,
         "min": 6,
         "monsterExp": 1490,
         "taskExp": 85973
@@ -458,7 +458,7 @@
     "7": {
         "exp": 3036,
         "id": 7,
-        "max": 1,
+        "max": 3,
         "min": 0,
         "monsterExp": 69,
         "taskExp": 607
@@ -466,7 +466,7 @@
     "8": {
         "exp": 4200,
         "id": 8,
-        "max": 1,
+        "max": 3,
         "min": 0,
         "monsterExp": 75,
         "taskExp": 840
@@ -474,7 +474,7 @@
     "9": {
         "exp": 5658,
         "id": 9,
-        "max": 2,
+        "max": 1,
         "min": 0,
         "monsterExp": 82,
         "taskExp": 1131

@@ -206,9 +206,12 @@ public class Player {
         pd.setPid(pid);
         pd.setLevel(1);
 
-        pd.getResourceBuilder().setPower(ConfigManager.GetInitPower());
+        //todo
+        // Power
+//        pd.getResourceBuilder().setPower(ConfigManager.GetInitPower());
         pd.getResourceBuilder().setMaxPower(ConfigManager.GetInitPower());
         pd.getResourceBuilder().setPowerRecoverSecond(ConfigManager.paramConfigData.recoverPowerPeriod);
+        D.setPowerRecoverTime(System.currentTimeMillis());
 
         // 场景: 新手村
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
@@ -315,6 +318,14 @@ public class Player {
         pd.getResourceBuilder().setGold(pd.getResourceBuilder().getGold() - gold);
         EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GOLD, 0, gold * -1, consume));
 
+    }
+
+    public void addGem(final int count, final ResourceSourceEnum from) {
+        ModuleAssert.isTrue(count > 0, ErrorEnum.ERR_103);
+
+        pd.getResourceBuilder().setLei(pd.getResourceBuilder().getLei() + count);
+
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GEM, 0, count, from));
     }
 
     /**
@@ -452,8 +463,8 @@ public class Player {
         if (pd.getResourceBuilder().getLei() < count || count <= 0) {
             return false;
         }
-        pd.getResourceBuilder().setPower(pd.getResourceBuilder().getLei() - count);
-        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, -count, typeEnum));
+        pd.getResourceBuilder().setLei(pd.getResourceBuilder().getLei() - count);
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.GEM, 0, -count, typeEnum));
 
         return true;
     }

@@ -89,6 +89,7 @@ public class PlayerHandler {
      * @param player
      */
     public static void addPower(final Player player, final RecoverPowerReq req) {
+        ModuleAssert.isFalse(player.isFullPower(), ErrorEnum.ERR_6);
         if (req.getType() == 1) {//全部
             ModuleAssert.isTrue(player.consumeGem(ConsumeTypeEnum.购买体力, ConfigManager.paramConfigData.powerRecoverFullGem),
                     ErrorEnum.ERR_7);
@@ -97,7 +98,6 @@ public class PlayerHandler {
 
         } else {
             // 恢复一点
-            ModuleAssert.isFalse(player.isFullPower(), ErrorEnum.ERR_6);
 
             if (req.getGem() > 0) {
                 player.consumeGemAssert(ConsumeTypeEnum.购买体力, req.getGem() * ConfigManager.paramConfigData.powerRecoverGem);

@@ -46,6 +46,12 @@ public enum Cmd {
             HeroService.addEquipment(player, Integer.parseInt(line.get(0)));
         }
     },
+    AddGem(6, "增加宝石") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            player.addGem(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
+        }
+    },
     ;
 
     public final int id;
