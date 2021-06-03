@@ -21,6 +21,8 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     ERR_3(3, "数字应大于0"),
     ERR_4(4, "金币不足"),
     ERR_5(5, "已最高级"),
+    ERR_6(6, "体力已满"),
+    ERR_7(7, "雷石不足"),
     ERR_103(103, "数字不能小于等于0"),
     ERR_104(104, "背包空间不足"),
     ERR_105(105, "资源不足"),
@@ -35,7 +37,7 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
 
     private final String module;
 
-    ErrorEnum(int id, String module) {
+    ErrorEnum(final int id, final String module) {
 
         this.id = id;
         this.module = module;
@@ -44,10 +46,10 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     private static final ImmutableMap<Integer, ModuleErrorNoResolve> map;
 
     static {
-        ImmutableMap.Builder<Integer, ModuleErrorNoResolve> builder = ImmutableMap.builder();
-        HashSet<Integer> ids = new HashSet<>();
+        final ImmutableMap.Builder<Integer, ModuleErrorNoResolve> builder = ImmutableMap.builder();
+        final HashSet<Integer> ids = new HashSet<>();
 
-        for (ErrorEnum value : ErrorEnum.values()) {
+        for (final ErrorEnum value : ErrorEnum.values()) {
             if (!ids.add(value.id)) {
                 throw new IllegalStateException("id重复:" + value.id);
             }
@@ -65,7 +67,7 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
         return module;
     }
 
-    public static ModuleErrorNoResolve errStr(int errNo) {
+    public static ModuleErrorNoResolve errStr(final int errNo) {
         return map.get(errNo);
     }
 

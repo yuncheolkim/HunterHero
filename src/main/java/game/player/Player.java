@@ -206,9 +206,9 @@ public class Player {
         pd.setPid(pid);
         pd.setLevel(1);
 
-        pd.getResourceBuilder().setPower(G.C.dataMap8.get(1).count);
-        pd.getResourceBuilder().setMaxPower(G.C.dataMap8.get(1).count);
-        pd.getResourceBuilder().setPowerRecoverSecond(G.C.dataMap8.get(2).count);
+        pd.getResourceBuilder().setPower(ConfigManager.GetInitPower());
+        pd.getResourceBuilder().setMaxPower(ConfigManager.GetInitPower());
+        pd.getResourceBuilder().setPowerRecoverSecond(ConfigManager.paramConfigData.recoverPowerPeriod);
 
         // 场景: 新手村
         pd.getSceneDataBuilder().setId(1).setPos(game.proto.data.ScenePos.newBuilder().setX(4).setY(-20));
@@ -428,9 +428,36 @@ public class Player {
 
         pd.getResourceBuilder().setPower(pd.getResourceBuilder().getPower() - count);
         EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, -count, typeEnum));
+        return true;
+    }
+
+    /**
+     * 体力是否已满
+     *
+     * @return
+     */
+    public boolean isFullPower() {
+        final Resource.Builder resourceBuilder = pd.getResourceBuilder();
+        return resourceBuilder.getPower() >= resourceBuilder.getMaxPower();
+    }
+
+    /**
+     * 消耗雷石
+     *
+     * @param typeEnum
+     * @param count
+     * @return
+     */
+    public boolean consumeGem(final ConsumeTypeEnum typeEnum, final int count) {
+        if (pd.getResourceBuilder().getLei() < count || count <= 0) {
+            return false;
+        }
+        pd.getResourceBuilder().setPower(pd.getResourceBuilder().getLei() - count);
+        EventManager.firePlayerEvent(this, new ResourceChangeEvent(ResourceEnum.POWER, 0, -count, typeEnum));
 
         return true;
     }
+
 
     /**
      * 设置体力上限

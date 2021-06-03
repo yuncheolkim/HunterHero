@@ -181,6 +181,10 @@ public enum No
    */
   MaxPowerChangePush(5004),
   /**
+   * <code>RecoverPowerReq = 5005;</code>
+   */
+  RecoverPowerReq(5005),
+  /**
    * <pre>
    * Bag
    * </pre>
@@ -425,6 +429,10 @@ public enum No
    */
   public static final int MaxPowerChangePush_VALUE = 5004;
   /**
+   * <code>RecoverPowerReq = 5005;</code>
+   */
+  public static final int RecoverPowerReq_VALUE = 5005;
+  /**
    * <pre>
    * Bag
    * </pre>
@@ -552,6 +560,7 @@ public enum No
       case 5002: return PlayerLevelChangePush;
       case 5003: return ExpChangePush;
       case 5004: return MaxPowerChangePush;
+      case 5005: return RecoverPowerReq;
       case 6001: return BagInfoChangePush;
       case 6002: return BagCleanReq;
       case 7001: return ItemDiscardReq;

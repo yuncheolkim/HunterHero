@@ -14,6 +14,7 @@ public enum ResourceSourceEnum {
     出售物品,
     任务,
     升级,
+    购买体力,
     ;
 
 }

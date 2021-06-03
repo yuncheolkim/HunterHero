@@ -3,8 +3,11 @@ package game.module.player;
 import game.base.G;
 import game.config.TransformConfigData;
 import game.config.param.ParamConfigData;
+import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
+import game.game.ConsumeTypeEnum;
 import game.game.ResourceSourceEnum;
+import game.manager.ConfigManager;
 import game.module.fight.FightService;
 import game.player.Player;
 import game.proto.*;
@@ -19,7 +22,7 @@ import java.util.concurrent.TimeUnit;
  * 2021/2/22 16:00
  */
 public class PlayerHandler {
-    public static HeartbeatRes heartbeat(Player player, HeartbeatReq o) {
+    public static HeartbeatRes heartbeat(final Player player, final HeartbeatReq o) {
         return HeartbeatRes.newBuilder().setTime(o.getTime()).buildPartial();
     }
 
@@ -30,7 +33,7 @@ public class PlayerHandler {
      * @param o
      * @return
      */
-    public static void createName(Player player, PlayerCreateNameReq o) {
+    public static void createName(final Player player, final PlayerCreateNameReq o) {
 
         player.getPd().setName(o.getName());
         player.getTransport().send(3, Empty.getDefaultInstance());
@@ -43,8 +46,8 @@ public class PlayerHandler {
      * @param player
      * @param req
      */
-    public static void move(Player player, PlayerMoveReq req) {
-        ScenePos.Builder posBuilder = player.pd.getSceneDataBuilder().getPosBuilder();
+    public static void move(final Player player, final PlayerMoveReq req) {
+        final ScenePos.Builder posBuilder = player.pd.getSceneDataBuilder().getPosBuilder();
         posBuilder.setX(req.getX()).setY(req.getY());
     }
 
@@ -53,14 +56,14 @@ public class PlayerHandler {
      *
      * @param player
      */
-    public static void hotel(Player player) {
-        long now = System.currentTimeMillis();
+    public static void hotel(final Player player) {
+        final long now = System.currentTimeMillis();
 
         ModuleAssert.isTrue(now >= player.pd.getHotelCd());
 
-        ParamConfigData paramConfigData = G.C.getParamConfigData();
+        final ParamConfigData paramConfigData = G.C.getParamConfigData();
 
-        long cd = now + paramConfigData.hotelCdTime;
+        final long cd = now + paramConfigData.hotelCdTime;
         player.pd.setHotelCd(cd);
 
         player.getTransport().send(No.PlayerGoHotelReq_VALUE, PlayerGoHotelRes.newBuilder().setTime(cd).buildPartial());
@@ -71,13 +74,39 @@ public class PlayerHandler {
      *
      * @param player
      */
-    public static PlayerChooseHotelRes chooseHotel(Player player, PlayerChooseHotelReq req) {
+    public static PlayerChooseHotelRes chooseHotel(final Player player, final PlayerChooseHotelReq req) {
         final int id = req.getId();
-        TransformConfigData transformConfigData = G.C.transformConfigData(id);
+        final TransformConfigData transformConfigData = G.C.transformConfigData(id);
         ModuleAssert.notNull(transformConfigData);
         player.pd.setHotelId(id);
 
         return PlayerChooseHotelRes.newBuilder().setId(id).buildPartial();
+    }
+
+    /**
+     * 增加体力
+     *
+     * @param player
+     */
+    public static void addPower(final Player player, final RecoverPowerReq req) {
+        if (req.getType() == 1) {//全部
+            ModuleAssert.isTrue(player.consumeGem(ConsumeTypeEnum.购买体力, ConfigManager.paramConfigData.powerRecoverFullGem),
+                    ErrorEnum.ERR_7);
+
+            player.resetPower(ResourceSourceEnum.购买体力);
+
+        } else {
+            // 恢复一点
+            ModuleAssert.isFalse(player.isFullPower(), ErrorEnum.ERR_6);
+
+            if (req.getGem() > 0) {
+                player.consumeGem(ConsumeTypeEnum.购买体力, req.getGem() * ConfigManager.paramConfigData.powerRecoverGem);
+            } else if (req.getGold() > 0) {
+                player.consumeGold(req.getGold() * ConfigManager.paramConfigData.powerRecoverGold, ConsumeTypeEnum.购买体力);
+            }
+
+        }
+
     }
 
 
@@ -91,7 +120,7 @@ public class PlayerHandler {
      * @param o
      * @return
      */
-    public static void tick(Player player) {
+    public static void tick(final Player player) {
 
         // 体力恢复
         recoverPower(player);
@@ -105,15 +134,15 @@ public class PlayerHandler {
     /**
      * 恢复体力
      */
-    public static void recoverPower(Player player) {
+    public static void recoverPower(final Player player) {
 
-        long now = System.currentTimeMillis();
+        final long now = System.currentTimeMillis();
 
-        long second = TimeUnit.MILLISECONDS.toSeconds(now - player.D.getPowerRecoverTime());
-        Resource.Builder resourceBuilder = player.getPd().getResourceBuilder();
-        int powerRecoverSecond = resourceBuilder.getPowerRecoverSecond();
+        final long second = TimeUnit.MILLISECONDS.toSeconds(now - player.D.getPowerRecoverTime());
+        final Resource.Builder resourceBuilder = player.getPd().getResourceBuilder();
+        final int powerRecoverSecond = resourceBuilder.getPowerRecoverSecond();
         if (second >= powerRecoverSecond) {
-            long recover = second / powerRecoverSecond;
+            final long recover = second / powerRecoverSecond;
             player.addPower(recover, ResourceSourceEnum.自动恢复);
             player.D.setPowerRecoverTime(player.D.getPowerRecoverTime() + 1000L * recover * powerRecoverSecond);
         }
@@ -127,7 +156,7 @@ public class PlayerHandler {
      * @param o
      * @return
      */
-    public static void dataFlush(Player player, Empty o) {
+    public static void dataFlush(final Player player, final Empty o) {
 //        Logs.C.info("保存玩家数据:{}", player.getPid());
         player.saveData();
     }

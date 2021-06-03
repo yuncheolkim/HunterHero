@@ -45,11 +45,11 @@ public class GameManager extends AbsLifecycle {
     public GameManager() {
     }
 
-    private void addHandler(IInvoke taskReqInvoker) {
+    private void addHandler(final IInvoke taskReqInvoker) {
         handlerMap.put(taskReqInvoker.getMsgNo(), taskReqInvoker);
     }
 
-    public IInvoke getHandler(Integer msgNo) {
+    public IInvoke getHandler(final Integer msgNo) {
         return handlerMap.get(msgNo);
     }
 
@@ -90,6 +90,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.PlayerMoveReq_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
         addHandler(new InvokerNoParam(No.PlayerGoHotelReq_VALUE, PlayerHandler::hotel));
         addHandler(new RetInvoker<>(No.PlayerChooseHotelReq_VALUE, PlayerHandler::chooseHotel, PlayerChooseHotelReq::parser));
+        // Resource
+        addHandler(new Invoker<>(No.RecoverPowerReq_VALUE, PlayerHandler::addPower, RecoverPowerReq::parser));
+
         // task
         addHandler(new Invoker<>(No.TaskAcceptReq_VALUE, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(No.TaskCompleteReq_VALUE, TaskHandler::completeTask, TaskReq::parser));
@@ -140,7 +143,7 @@ public class GameManager extends AbsLifecycle {
         return version;
     }
 
-    public void setVersion(int version) {
+    public void setVersion(final int version) {
         this.version = version;
     }
 

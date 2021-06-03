@@ -4,30 +4,25 @@
 package game.proto;
 
 /**
- * <pre>
- *&#47;////////////////////////////////////////  资源变化
- * 玩家等级变化
- * </pre>
- *
- * Protobuf type {@code Message.PlayerLevelChangePush}
+ * Protobuf type {@code Message.RecoverPowerReq}
  */
-public final class PlayerLevelChangePush extends
+public final class RecoverPowerReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.PlayerLevelChangePush)
-    PlayerLevelChangePushOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.RecoverPowerReq)
+    RecoverPowerReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use PlayerLevelChangePush.newBuilder() to construct.
-  private PlayerLevelChangePush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use RecoverPowerReq.newBuilder() to construct.
+  private RecoverPowerReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private PlayerLevelChangePush() {
+  private RecoverPowerReq() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new PlayerLevelChangePush();
+    return new RecoverPowerReq();
   }
 
   @java.lang.Override
@@ -35,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private PlayerLevelChangePush(
+  private RecoverPowerReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -55,7 +50,17 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            value_ = input.readInt32();
+            type_ = input.readInt32();
+            break;
+          }
+          case 16: {
+
+            gem_ = input.readInt32();
+            break;
+          }
+          case 24: {
+
+            gold_ = input.readInt32();
             break;
           }
           default: {
@@ -79,26 +84,52 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_RecoverPowerReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_RecoverPowerReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.PlayerLevelChangePush.class, game.proto.PlayerLevelChangePush.Builder.class);
+            game.proto.RecoverPowerReq.class, game.proto.RecoverPowerReq.Builder.class);
   }
 
-  public static final int VALUE_FIELD_NUMBER = 1;
-  private int value_;
+  public static final int TYPE_FIELD_NUMBER = 1;
+  private int type_;
   /**
-   * <code>int32 value = 1;</code>
-   * @return The value.
+   * <pre>
+   * 1:全部，2:单个
+   * </pre>
+   *
+   * <code>int32 type = 1;</code>
+   * @return The type.
    */
   @java.lang.Override
-  public int getValue() {
-    return value_;
+  public int getType() {
+    return type_;
+  }
+
+  public static final int GEM_FIELD_NUMBER = 2;
+  private int gem_;
+  /**
+   * <code>int32 gem = 2;</code>
+   * @return The gem.
+   */
+  @java.lang.Override
+  public int getGem() {
+    return gem_;
+  }
+
+  public static final int GOLD_FIELD_NUMBER = 3;
+  private int gold_;
+  /**
+   * <code>int32 gold = 3;</code>
+   * @return The gold.
+   */
+  @java.lang.Override
+  public int getGold() {
+    return gold_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -115,8 +146,14 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (value_ != 0) {
-      output.writeInt32(1, value_);
+    if (type_ != 0) {
+      output.writeInt32(1, type_);
+    }
+    if (gem_ != 0) {
+      output.writeInt32(2, gem_);
+    }
+    if (gold_ != 0) {
+      output.writeInt32(3, gold_);
     }
     unknownFields.writeTo(output);
   }
@@ -127,9 +164,17 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (value_ != 0) {
+    if (type_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, value_);
+        .computeInt32Size(1, type_);
+    }
+    if (gem_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, gem_);
+    }
+    if (gold_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(3, gold_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -141,13 +186,17 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.PlayerLevelChangePush)) {
+    if (!(obj instanceof game.proto.RecoverPowerReq)) {
       return super.equals(obj);
     }
-    game.proto.PlayerLevelChangePush other = (game.proto.PlayerLevelChangePush) obj;
+    game.proto.RecoverPowerReq other = (game.proto.RecoverPowerReq) obj;
 
-    if (getValue()
-        != other.getValue()) return false;
+    if (getType()
+        != other.getType()) return false;
+    if (getGem()
+        != other.getGem()) return false;
+    if (getGold()
+        != other.getGold()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -159,76 +208,80 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VALUE_FIELD_NUMBER;
-    hash = (53 * hash) + getValue();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getType();
+    hash = (37 * hash) + GEM_FIELD_NUMBER;
+    hash = (53 * hash) + getGem();
+    hash = (37 * hash) + GOLD_FIELD_NUMBER;
+    hash = (53 * hash) + getGold();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(byte[] data)
+  public static game.proto.RecoverPowerReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(java.io.InputStream input)
+  public static game.proto.RecoverPowerReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.RecoverPowerReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.PlayerLevelChangePush parseDelimitedFrom(
+  public static game.proto.RecoverPowerReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.PlayerLevelChangePush parseFrom(
+  public static game.proto.RecoverPowerReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -241,7 +294,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.PlayerLevelChangePush prototype) {
+  public static Builder newBuilder(game.proto.RecoverPowerReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -257,31 +310,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *&#47;////////////////////////////////////////  资源变化
-   * 玩家等级变化
-   * </pre>
-   *
-   * Protobuf type {@code Message.PlayerLevelChangePush}
+   * Protobuf type {@code Message.RecoverPowerReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.PlayerLevelChangePush)
-      game.proto.PlayerLevelChangePushOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.RecoverPowerReq)
+      game.proto.RecoverPowerReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_RecoverPowerReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_RecoverPowerReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.PlayerLevelChangePush.class, game.proto.PlayerLevelChangePush.Builder.class);
+              game.proto.RecoverPowerReq.class, game.proto.RecoverPowerReq.Builder.class);
     }
 
-    // Construct using game.proto.PlayerLevelChangePush.newBuilder()
+    // Construct using game.proto.RecoverPowerReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -299,7 +347,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      value_ = 0;
+      type_ = 0;
+
+      gem_ = 0;
+
+      gold_ = 0;
 
       return this;
     }
@@ -307,17 +359,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_PlayerLevelChangePush_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_RecoverPowerReq_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.PlayerLevelChangePush getDefaultInstanceForType() {
-      return game.proto.PlayerLevelChangePush.getDefaultInstance();
+    public game.proto.RecoverPowerReq getDefaultInstanceForType() {
+      return game.proto.RecoverPowerReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.PlayerLevelChangePush build() {
-      game.proto.PlayerLevelChangePush result = buildPartial();
+    public game.proto.RecoverPowerReq build() {
+      game.proto.RecoverPowerReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -325,9 +377,11 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.PlayerLevelChangePush buildPartial() {
-      game.proto.PlayerLevelChangePush result = new game.proto.PlayerLevelChangePush(this);
-      result.value_ = value_;
+    public game.proto.RecoverPowerReq buildPartial() {
+      game.proto.RecoverPowerReq result = new game.proto.RecoverPowerReq(this);
+      result.type_ = type_;
+      result.gem_ = gem_;
+      result.gold_ = gold_;
       onBuilt();
       return result;
     }
@@ -366,18 +420,24 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.PlayerLevelChangePush) {
-        return mergeFrom((game.proto.PlayerLevelChangePush)other);
+      if (other instanceof game.proto.RecoverPowerReq) {
+        return mergeFrom((game.proto.RecoverPowerReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.PlayerLevelChangePush other) {
-      if (other == game.proto.PlayerLevelChangePush.getDefaultInstance()) return this;
-      if (other.getValue() != 0) {
-        setValue(other.getValue());
+    public Builder mergeFrom(game.proto.RecoverPowerReq other) {
+      if (other == game.proto.RecoverPowerReq.getDefaultInstance()) return this;
+      if (other.getType() != 0) {
+        setType(other.getType());
+      }
+      if (other.getGem() != 0) {
+        setGem(other.getGem());
+      }
+      if (other.getGold() != 0) {
+        setGold(other.getGold());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -394,11 +454,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.PlayerLevelChangePush parsedMessage = null;
+      game.proto.RecoverPowerReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.PlayerLevelChangePush) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.RecoverPowerReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -408,33 +468,107 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int value_ ;
+    private int type_ ;
     /**
-     * <code>int32 value = 1;</code>
-     * @return The value.
+     * <pre>
+     * 1:全部，2:单个
+     * </pre>
+     *
+     * <code>int32 type = 1;</code>
+     * @return The type.
      */
     @java.lang.Override
-    public int getValue() {
-      return value_;
+    public int getType() {
+      return type_;
     }
     /**
-     * <code>int32 value = 1;</code>
-     * @param value The value to set.
+     * <pre>
+     * 1:全部，2:单个
+     * </pre>
+     *
+     * <code>int32 type = 1;</code>
+     * @param value The type to set.
      * @return This builder for chaining.
      */
-    public Builder setValue(int value) {
+    public Builder setType(int value) {
       
-      value_ = value;
+      type_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 value = 1;</code>
+     * <pre>
+     * 1:全部，2:单个
+     * </pre>
+     *
+     * <code>int32 type = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearValue() {
+    public Builder clearType() {
       
-      value_ = 0;
+      type_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int gem_ ;
+    /**
+     * <code>int32 gem = 2;</code>
+     * @return The gem.
+     */
+    @java.lang.Override
+    public int getGem() {
+      return gem_;
+    }
+    /**
+     * <code>int32 gem = 2;</code>
+     * @param value The gem to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGem(int value) {
+      
+      gem_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 gem = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearGem() {
+      
+      gem_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int gold_ ;
+    /**
+     * <code>int32 gold = 3;</code>
+     * @return The gold.
+     */
+    @java.lang.Override
+    public int getGold() {
+      return gold_;
+    }
+    /**
+     * <code>int32 gold = 3;</code>
+     * @param value The gold to set.
+     * @return This builder for chaining.
+     */
+    public Builder setGold(int value) {
+      
+      gold_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 gold = 3;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearGold() {
+      
+      gold_ = 0;
       onChanged();
       return this;
     }
@@ -451,41 +585,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.PlayerLevelChangePush)
+    // @@protoc_insertion_point(builder_scope:Message.RecoverPowerReq)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.PlayerLevelChangePush)
-  private static final game.proto.PlayerLevelChangePush DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.RecoverPowerReq)
+  private static final game.proto.RecoverPowerReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.PlayerLevelChangePush();
+    DEFAULT_INSTANCE = new game.proto.RecoverPowerReq();
   }
 
-  public static game.proto.PlayerLevelChangePush getDefaultInstance() {
+  public static game.proto.RecoverPowerReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<PlayerLevelChangePush>
-      PARSER = new com.google.protobuf.AbstractParser<PlayerLevelChangePush>() {
+  private static final com.google.protobuf.Parser<RecoverPowerReq>
+      PARSER = new com.google.protobuf.AbstractParser<RecoverPowerReq>() {
     @java.lang.Override
-    public PlayerLevelChangePush parsePartialFrom(
+    public RecoverPowerReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new PlayerLevelChangePush(input, extensionRegistry);
+      return new RecoverPowerReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<PlayerLevelChangePush> parser() {
+  public static com.google.protobuf.Parser<RecoverPowerReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<PlayerLevelChangePush> getParserForType() {
+  public com.google.protobuf.Parser<RecoverPowerReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.PlayerLevelChangePush getDefaultInstanceForType() {
+  public game.proto.RecoverPowerReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

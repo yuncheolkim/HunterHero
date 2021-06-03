@@ -15,7 +15,6 @@ import game.proto.data.Property;
 import game.utils.CalcUtil;
 
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
@@ -39,8 +38,6 @@ public class ConfigManager extends AbsLifecycle {
 
 
     public Map<Integer, DataConfigData> dataMap7;
-
-    public static Map<Integer, DataConfigData> dataMap8;
 
     public Map<Integer, DataConfigData> dataMap9;
 
@@ -94,7 +91,7 @@ public class ConfigManager extends AbsLifecycle {
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
 
     // 参数
-    private ParamConfigData paramConfigData = new ParamConfigData();
+    public static final ParamConfigData paramConfigData = new ParamConfigData();
 
     private Map<Integer, TransformConfigData> transformMap;
 
@@ -111,7 +108,6 @@ public class ConfigManager extends AbsLifecycle {
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
-        dataMap8 = new JsonConfig("data/data_8-参数.json", 32).load();
         dataMap9 = new JsonConfig("data/data_9-经验.json", 64).load();
         dataMap10 = new JsonConfig("data/data_10-资源.json", 16).load();
         dataMap11 = new JsonConfig("data/data_11-称谓.json", 32).load();
@@ -131,7 +127,7 @@ public class ConfigManager extends AbsLifecycle {
         heroMap1001 = new JsonConfig("data/hero_base.json").load();
 
         // item
-        ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
+        final ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
         itemConfigDataBuilder.putAll(new JsonConfig("data/item_base.json").load());
         itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-1.json").load());
         itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-2.json").load());
@@ -144,18 +140,18 @@ public class ConfigManager extends AbsLifecycle {
         // 21-怪模版
         enemyTemplate = makeListData("data/data_21-怪模版.json", EnemyTemplatePropertyConfigData::new);
 
-        Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
+        final Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
 
-        for (DataConfigData value : dataMap15.values()) {
+        for (final DataConfigData value : dataMap15.values()) {
 
-            EnemyAreaConfigData enemyAreaConfigData = map.computeIfAbsent(value.enemyAreaId, id -> {
-                EnemyAreaConfigData d = new EnemyAreaConfigData();
+            final EnemyAreaConfigData enemyAreaConfigData = map.computeIfAbsent(value.enemyAreaId, id -> {
+                final EnemyAreaConfigData d = new EnemyAreaConfigData();
                 d.id = id;
                 d.enemyList = new ArrayList<>();
                 return d;
             });
 
-            EnemyConfigData enemyConfigData = new EnemyConfigData();
+            final EnemyConfigData enemyConfigData = new EnemyConfigData();
 
             enemyConfigData.id = value.enemyId;
             enemyConfigData.weight = value.weight;
@@ -168,12 +164,12 @@ public class ConfigManager extends AbsLifecycle {
         }
         enemyInfoMap = map;
 
-        Map<Integer, List<EnemyCountConfigData>> map1 = new HashMap<>();
-        for (DataConfigData value : dataMap16.values()) {
+        final Map<Integer, List<EnemyCountConfigData>> map1 = new HashMap<>();
+        for (final DataConfigData value : dataMap16.values()) {
 
-            List<EnemyCountConfigData> m2 = map1.computeIfAbsent(value.enemyAreaId, id -> new ArrayList<>());
+            final List<EnemyCountConfigData> m2 = map1.computeIfAbsent(value.enemyAreaId, id -> new ArrayList<>());
 
-            EnemyCountConfigData e = new EnemyCountConfigData();
+            final EnemyCountConfigData e = new EnemyCountConfigData();
             e.weight = value.weight;
             e.count = value.count;
             m2.add(e);
@@ -181,18 +177,18 @@ public class ConfigManager extends AbsLifecycle {
 
         enemyCountMap = map1;
         // drop
-        Map<Integer, List<DropItemConfigData>> map2 = new HashMap<>();
-        Map<Integer, List<DropItemConfigData>> map3 = new HashMap<>();
-        for (DataConfigData value : dataMap17.values()) {
-            DropItemConfigData d = new DropItemConfigData();
+        final Map<Integer, List<DropItemConfigData>> map2 = new HashMap<>();
+        final Map<Integer, List<DropItemConfigData>> map3 = new HashMap<>();
+        for (final DataConfigData value : dataMap17.values()) {
+            final DropItemConfigData d = new DropItemConfigData();
             d.count = value.count;
             d.rate = value.weight;
             d.itemId = value.itemId;
             if (value.type == 1) {
-                List<DropItemConfigData> list = map3.computeIfAbsent(value.enemyId, integer -> new ArrayList<>());
+                final List<DropItemConfigData> list = map3.computeIfAbsent(value.enemyId, integer -> new ArrayList<>());
                 list.add(d);
             } else if (value.type == 2) {
-                List<DropItemConfigData> list = map2.computeIfAbsent(value.areaId, integer -> new ArrayList<>());
+                final List<DropItemConfigData> list = map2.computeIfAbsent(value.areaId, integer -> new ArrayList<>());
                 list.add(d);
             }
         }
@@ -200,18 +196,15 @@ public class ConfigManager extends AbsLifecycle {
         areaDropMap = map2;
         enemyDropMap = map3;
 
-        Map<Integer, List<DropItemConfigData>> map4 = new HashMap<>();
+        final Map<Integer, List<DropItemConfigData>> map4 = new HashMap<>();
 
         // npc
-        for (DataConfigData value : taskMap4.values()) {
+        for (final DataConfigData value : taskMap4.values()) {
             npcTaskMap.put(value.npcId, value);
         }
 
         // param
-
-        paramConfigData.fishPower = dataMap8.get(5).count;
-        paramConfigData.fishSuccessTime = dataMap8.get(6).count;
-        paramConfigData.hotelCdTime = (int) TimeUnit.SECONDS.toMillis(dataMap8.get(7).count);
+        new JsonConfig("data/data_8-参数.json", 32).load().values().forEach(paramConfigData::Init);
 
         //20-传送点
         transformMap = makeMapData("data/data_20-传送点.json", TransformConfigData::new);
@@ -223,7 +216,7 @@ public class ConfigManager extends AbsLifecycle {
      * @param factory
      * @return
      */
-    public static Property makeProperty(Property v, DataConfigData f) {
+    public static Property makeProperty(final Property v, final DataConfigData f) {
         return Property.newBuilder()
                 .setHp(CalcUtil.calcRateAdd(v.getHp(), f.hp))
                 .setDamage(CalcUtil.calcRateAdd(v.getDamage(), f.damage))
@@ -237,7 +230,7 @@ public class ConfigManager extends AbsLifecycle {
                 .build();
     }
 
-    public static Property makeProperty(DataConfigData v) {
+    public static Property makeProperty(final DataConfigData v) {
         return Property.newBuilder()
                 .setHp(v.hp)
                 .setDamage(v.damage)
@@ -259,15 +252,15 @@ public class ConfigManager extends AbsLifecycle {
      * @param <T>
      * @return
      */
-    private <T extends BaseConfigData<T>> Map<Integer, T> makeMapData(String path, Supplier<T> supplier) {
-        ImmutableMap.Builder<Integer, T> temp = ImmutableMap.builder();
+    private <T extends BaseConfigData<T>> Map<Integer, T> makeMapData(final String path, final Supplier<T> supplier) {
+        final ImmutableMap.Builder<Integer, T> temp = ImmutableMap.builder();
         new JsonConfig(path).load().forEach((integer, dataConfigData) -> temp.put(integer, supplier.get().convert(dataConfigData)));
         return temp.build();
     }
 
-    private <T extends BaseConfigData<T>> List<T> makeListData(String path, Supplier<T> supplier) {
-        Map<Integer, DataConfigData> load = new JsonConfig(path).load();
-        Object[] l = new Object[load.size() + 16];
+    private <T extends BaseConfigData<T>> List<T> makeListData(final String path, final Supplier<T> supplier) {
+        final Map<Integer, DataConfigData> load = new JsonConfig(path).load();
+        final Object[] l = new Object[load.size() + 16];
         load.forEach((integer, dataConfigData) -> l[dataConfigData.id] = supplier.get().convert(dataConfigData)
         );
 
@@ -281,8 +274,8 @@ public class ConfigManager extends AbsLifecycle {
      * @param level
      * @return
      */
-    public int needExp(int level) {
-        DataConfigData dataConfigData = dataMap9.get(level);
+    public int needExp(final int level) {
+        final DataConfigData dataConfigData = dataMap9.get(level);
         if (dataConfigData == null) {
             return Integer.MAX_VALUE;
         }
@@ -296,7 +289,7 @@ public class ConfigManager extends AbsLifecycle {
      * @param level
      * @return
      */
-    public DataConfigData heroBaseProperty(int heroId, int level) {
+    public DataConfigData heroBaseProperty(final int heroId, final int level) {
         // tood
         return heroMap1001.get(level);
     }
@@ -307,7 +300,7 @@ public class ConfigManager extends AbsLifecycle {
      * @return
      */
     public int bagCapacity() {
-        return dataMap8.get(3).count;
+        return paramConfigData.bagCapacity;
     }
 
     /**
@@ -316,14 +309,14 @@ public class ConfigManager extends AbsLifecycle {
      * @return
      */
     public int bankCapacity() {
-        return dataMap8.get(4).count;
+        return paramConfigData.bankCapacity;
     }
 
-    public EnemyAreaConfigData getFightArea(int areaId) {
+    public EnemyAreaConfigData getFightArea(final int areaId) {
         return enemyInfoMap.get(areaId);
     }
 
-    public static DataConfigData getItem(int itemId) {
+    public static DataConfigData getItem(final int itemId) {
         return itemMap.get(itemId);
     }
 
@@ -333,7 +326,7 @@ public class ConfigManager extends AbsLifecycle {
      * @param taskId
      * @return
      */
-    public DataConfigData getTask(int taskId) {
+    public DataConfigData getTask(final int taskId) {
         return taskMap4.get(taskId);
     }
 
@@ -342,8 +335,7 @@ public class ConfigManager extends AbsLifecycle {
      *
      * @return
      */
-    public Collection<DataConfigData> getNpcTask(int npcId) {
-
+    public Collection<DataConfigData> getNpcTask(final int npcId) {
         return npcTaskMap.get(npcId);
     }
 
@@ -360,8 +352,7 @@ public class ConfigManager extends AbsLifecycle {
         return paramConfigData;
     }
 
-
-    public DataConfigData GetPowerUpData(int id, int level) {
+    public DataConfigData GetPowerUpData(final int id, final int level) {
 
         if (id < 10) {
             return G.C.dataMap12.get(level);
@@ -371,18 +362,16 @@ public class ConfigManager extends AbsLifecycle {
         return null;
     }
 
-    public TransformConfigData transformConfigData(int id) {
+    public TransformConfigData transformConfigData(final int id) {
         return transformMap.get(id);
     }
 
-
-    public static Property GetEnemyTemplate(int level) {
+    public static Property GetEnemyTemplate(final int level) {
         return enemyTemplate.get(level).property;
     }
 
-
     public static int GetInitPower() {
-        return dataMap8.get(1).count;
+        return paramConfigData.initPower;
     }
 
 }
