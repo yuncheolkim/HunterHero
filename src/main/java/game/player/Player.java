@@ -206,9 +206,8 @@ public class Player {
         pd.setPid(pid);
         pd.setLevel(1);
 
-        //todo
         // Power
-//        pd.getResourceBuilder().setPower(ConfigManager.GetInitPower());
+        pd.getResourceBuilder().setPower(ConfigManager.GetInitPower());
         pd.getResourceBuilder().setMaxPower(ConfigManager.GetInitPower());
         pd.getResourceBuilder().setPowerRecoverSecond(ConfigManager.paramConfigData.recoverPowerPeriod);
         D.setPowerRecoverTime(System.currentTimeMillis());
