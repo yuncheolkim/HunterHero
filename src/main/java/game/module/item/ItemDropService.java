@@ -3,6 +3,8 @@ package game.module.item;
 import game.base.G;
 import game.config.DataConfigData;
 import game.config.drop.DropItemConfigData;
+import game.game.ItemTypeEnum;
+import game.manager.ConfigManager;
 import game.proto.data.Reward;
 import game.proto.data.RewardType;
 import game.utils.CalcUtil;
@@ -58,9 +60,15 @@ public class ItemDropService {
         // enemy
         for (DropItemConfigData d : dropItemConfigData) {
             if (CalcUtil.happened10000(d.rate)) {
-                list.add(Reward.newBuilder().setType(RewardType.REWARD_ITEM)
+                Reward.Builder builder = Reward.newBuilder().setType(RewardType.REWARD_ITEM)
                         .setCount(d.count)
-                        .setRewardId(d.itemId).build());
+                        .setRewardId(d.itemId);
+                DataConfigData item = ConfigManager.getItem(d.itemId);
+                if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
+                    builder.setProperty(ConfigManager.makeProperty(item));
+                }
+                list.add(builder.build());
+
             }
         }
 
@@ -85,9 +93,14 @@ public class ItemDropService {
 
         for (DropItemConfigData d : dropItemConfigData) {
             if (CalcUtil.happened10000(d.rate)) {
-                list.add(Reward.newBuilder().setType(RewardType.REWARD_ITEM)
+                Reward.Builder builder = Reward.newBuilder().setType(RewardType.REWARD_ITEM)
                         .setCount(d.count)
-                        .setRewardId(d.itemId).build());
+                        .setRewardId(d.itemId);
+                DataConfigData item = ConfigManager.getItem(d.itemId);
+                if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
+                    builder.setProperty(ConfigManager.makeProperty(item));
+                }
+                list.add(builder.build());
             }
         }
 

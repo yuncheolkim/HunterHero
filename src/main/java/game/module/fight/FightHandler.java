@@ -165,7 +165,10 @@ public class FightHandler {
             for (final Reward reward : result.getRewardList()) {
                 if (reward.getType() == RewardType.REWARD_ITEM) {
                     try {
-                        player.addItem(ItemData.newBuilder().setItemId(reward.getRewardId()).setCount(reward.getCount()).build(), GameConstants.ITEM_BAG);
+                        player.addItem(ItemData.newBuilder().setItemId(reward.getRewardId())
+                                .setCount(reward.getCount())
+                                .setProperty(reward.getProperty())
+                                .build(), GameConstants.ITEM_BAG);
                     } catch (final Exception e) {
                         if (e instanceof ModuleException) {
                             player.getTransport().sendError((ErrorEnum) ((ModuleException) e).getErrorNo());

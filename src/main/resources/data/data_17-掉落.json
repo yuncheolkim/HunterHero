@@ -76,7 +76,12 @@
         "id": 29
     },
     "3": {
-        "id": 3
+        "areaId": 2,
+        "count": 1,
+        "id": 3,
+        "itemId": 401001,
+        "type": 2,
+        "weight": 2000
     },
     "30": {
         "id": 30
@@ -91,10 +96,20 @@
         "id": 33
     },
     "4": {
-        "id": 4
+        "areaId": 2,
+        "count": 1,
+        "id": 4,
+        "itemId": 401002,
+        "type": 2,
+        "weight": 2000
     },
     "5": {
-        "id": 5
+        "areaId": 2,
+        "count": 1,
+        "id": 5,
+        "itemId": 403001,
+        "type": 2,
+        "weight": 2000
     },
     "6": {
         "id": 6
