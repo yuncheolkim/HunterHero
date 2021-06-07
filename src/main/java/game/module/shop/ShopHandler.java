@@ -3,6 +3,7 @@ package game.module.shop;
 import game.base.GameConstants;
 import game.base.IIdDisplay;
 import game.config.DataConfigData;
+import game.config.ShopConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
@@ -32,6 +33,11 @@ public class ShopHandler {
         final DataConfigData item = ConfigManager.getItem(req.getItemId());
 
         final IIdDisplay display = ResourceEnum.display(item.resourceId);
+
+        // 判断 商店是否有这个物品
+        final ShopConfigData shop = ConfigManager.getShop(req.getShopId());
+        ModuleAssert.isTrue(shop.items.contains(req.getItemId()));
+
         // 暂时金币
         if (display == ResourceEnum.GOLD) {
             ModuleAssert.isTrue(player.hasGold(item.value), ErrorEnum.ERR_103);

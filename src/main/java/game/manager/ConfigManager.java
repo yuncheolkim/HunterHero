@@ -95,6 +95,9 @@ public class ConfigManager extends AbsLifecycle {
 
     private Map<Integer, TransformConfigData> transformMap;
 
+    // 18-shop
+    private static Map<Integer, ShopConfigData> shopMap;
+
     private static List<EnemyTemplatePropertyConfigData> enemyTemplate = new ArrayList<>(64);
 
 
@@ -206,8 +209,11 @@ public class ConfigManager extends AbsLifecycle {
         // param
         new JsonConfig("data/data_8-参数.json", 32).load().values().forEach(paramConfigData::Init);
 
-        //20-传送点
+        // 20-传送点
         transformMap = makeMapData("data/data_20-传送点.json", TransformConfigData::new);
+
+        // 18-商店
+        shopMap = makeMapData("data/data_18-商店.json", ShopConfigData::new);
 
     }
 
@@ -290,7 +296,7 @@ public class ConfigManager extends AbsLifecycle {
      * @return
      */
     public DataConfigData heroBaseProperty(final int heroId, final int level) {
-        // tood
+        // todo
         return heroMap1001.get(level);
     }
 
@@ -374,5 +380,8 @@ public class ConfigManager extends AbsLifecycle {
         return paramConfigData.initPower;
     }
 
+    public static ShopConfigData getShop(final int id) {
+        return shopMap.get(id);
+    }
 }
 
