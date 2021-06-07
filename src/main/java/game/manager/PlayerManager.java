@@ -16,7 +16,7 @@ import java.util.function.BiFunction;
  */
 public class PlayerManager {
 
-    private ConcurrentHashMap<Long, Player> playerMap = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<Long, Player> playerMap = new ConcurrentHashMap<>();
 
     public Optional<Player> findPlayer(Long pid) {
         return Optional.ofNullable(playerMap.get(pid));
@@ -36,4 +36,8 @@ public class PlayerManager {
         return playerMap.compute(pid, remapping);
     }
 
+    public String getPlayerName(long pid) {
+        Optional<Player> player = findPlayer(pid);
+        return player.map(value -> value.pd.getName()).orElse(null);
+    }
 }

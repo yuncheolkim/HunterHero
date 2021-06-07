@@ -32,6 +32,10 @@ public enum ChatChannel
    * <code>SYSTEM = 4;</code>
    */
   SYSTEM(4),
+  /**
+   * <code>NEAR = 5;</code>
+   */
+  NEAR(5),
   UNRECOGNIZED(-1),
   ;
 
@@ -55,6 +59,10 @@ public enum ChatChannel
    * <code>SYSTEM = 4;</code>
    */
   public static final int SYSTEM_VALUE = 4;
+  /**
+   * <code>NEAR = 5;</code>
+   */
+  public static final int NEAR_VALUE = 5;
 
 
   public final int getNumber() {
@@ -86,6 +94,7 @@ public enum ChatChannel
       case 2: return GROUP;
       case 3: return PRIVACY;
       case 4: return SYSTEM;
+      case 5: return NEAR;
       default: return null;
     }
   }

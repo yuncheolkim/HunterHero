@@ -38,6 +38,26 @@ public interface PlayerDataOrBuilder extends
       getAccountBytes();
 
   /**
+   * <pre>
+   * 称谓
+   * </pre>
+   *
+   * <code>string title = 4;</code>
+   * @return The title.
+   */
+  java.lang.String getTitle();
+  /**
+   * <pre>
+   * 称谓
+   * </pre>
+   *
+   * <code>string title = 4;</code>
+   * @return The bytes for title.
+   */
+  com.google.protobuf.ByteString
+      getTitleBytes();
+
+  /**
    * <code>int32 level = 9;</code>
    * @return The level.
    */

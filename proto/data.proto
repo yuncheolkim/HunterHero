@@ -10,6 +10,8 @@ message PlayerData {
     int64 pid = 1;
     string name = 2;
     string account = 3;
+    // 称谓
+    string title = 4;
     int32 level = 9;
 
     // 回城 CD 恢复时间点,毫秒数

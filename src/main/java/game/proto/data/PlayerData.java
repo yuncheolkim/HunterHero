@@ -23,6 +23,7 @@ private static final long serialVersionUID = 0L;
   private PlayerData() {
     name_ = "";
     account_ = "";
+    title_ = "";
     fightInfo_ = java.util.Collections.emptyList();
     formation_ = java.util.Collections.emptyList();
   }
@@ -73,6 +74,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             account_ = s;
+            break;
+          }
+          case 34: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            title_ = s;
             break;
           }
           case 72: {
@@ -346,6 +353,52 @@ private static final long serialVersionUID = 0L;
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
       account_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int TITLE_FIELD_NUMBER = 4;
+  private volatile java.lang.Object title_;
+  /**
+   * <pre>
+   * 称谓
+   * </pre>
+   *
+   * <code>string title = 4;</code>
+   * @return The title.
+   */
+  @java.lang.Override
+  public java.lang.String getTitle() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      title_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * 称谓
+   * </pre>
+   *
+   * <code>string title = 4;</code>
+   * @return The bytes for title.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getTitleBytes() {
+    java.lang.Object ref = title_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      title_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -1016,6 +1069,9 @@ private static final long serialVersionUID = 0L;
     if (!getAccountBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, account_);
     }
+    if (!getTitleBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, title_);
+    }
     if (level_ != 0) {
       output.writeInt32(9, level_);
     }
@@ -1091,6 +1147,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getAccountBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, account_);
+    }
+    if (!getTitleBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, title_);
     }
     if (level_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -1195,6 +1254,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName())) return false;
     if (!getAccount()
         .equals(other.getAccount())) return false;
+    if (!getTitle()
+        .equals(other.getTitle())) return false;
     if (getLevel()
         != other.getLevel()) return false;
     if (getHotelCd()
@@ -1254,6 +1315,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + ACCOUNT_FIELD_NUMBER;
     hash = (53 * hash) + getAccount().hashCode();
+    hash = (37 * hash) + TITLE_FIELD_NUMBER;
+    hash = (53 * hash) + getTitle().hashCode();
     hash = (37 * hash) + LEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getLevel();
     hash = (37 * hash) + HOTELCD_FIELD_NUMBER;
@@ -1479,6 +1542,8 @@ private static final long serialVersionUID = 0L;
 
       account_ = "";
 
+      title_ = "";
+
       level_ = 0;
 
       hotelCd_ = 0L;
@@ -1558,6 +1623,7 @@ private static final long serialVersionUID = 0L;
       result.pid_ = pid_;
       result.name_ = name_;
       result.account_ = account_;
+      result.title_ = title_;
       result.level_ = level_;
       result.hotelCd_ = hotelCd_;
       result.hotelId_ = hotelId_;
@@ -1662,6 +1728,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getAccount().isEmpty()) {
         account_ = other.account_;
+        onChanged();
+      }
+      if (!other.getTitle().isEmpty()) {
+        title_ = other.title_;
         onChanged();
       }
       if (other.getLevel() != 0) {
@@ -1964,6 +2034,102 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       account_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object title_ = "";
+    /**
+     * <pre>
+     * 称谓
+     * </pre>
+     *
+     * <code>string title = 4;</code>
+     * @return The title.
+     */
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * 称谓
+     * </pre>
+     *
+     * <code>string title = 4;</code>
+     * @return The bytes for title.
+     */
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * 称谓
+     * </pre>
+     *
+     * <code>string title = 4;</code>
+     * @param value The title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitle(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      title_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 称谓
+     * </pre>
+     *
+     * <code>string title = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTitle() {
+      
+      title_ = getDefaultInstance().getTitle();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 称谓
+     * </pre>
+     *
+     * <code>string title = 4;</code>
+     * @param value The bytes for title to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTitleBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      title_ = value;
       onChanged();
       return this;
     }

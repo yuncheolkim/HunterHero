@@ -2,7 +2,6 @@ package game.module.chat;
 
 import game.base.G;
 import game.game.scene.GameScene;
-import game.proto.ChatChannel;
 import game.proto.ChatMessagePush;
 import game.proto.ChatMessageReq;
 import game.proto.no.No;
@@ -47,18 +46,25 @@ public class ChatScene extends GameScene {
                 .setChannel(req.getChannel())
                 .setFromUser(msg.pid)
                 .setTime(now)
+                .setName(G.P.getPlayerName(msg.pid))
                 .setId(++id)
                 .setContent(req.getContent())
                 .buildPartial();
-        if (msg.req.getChannel() == ChatChannel.WORLD) {
-            // 世界聊天，广播所有人,包括自己
-            G.pushToAllPlayer(No.ChatMessagePush_VALUE, message);
-        } else if (msg.req.getChannel() == ChatChannel.PRIVACY || msg.req.getChannel() == ChatChannel.SYSTEM) {
-            // 私聊
-            G.pushToPlayer(req.getToUser(), No.ChatMessagePush_VALUE, message);
-            G.pushToPlayer(msg.pid, No.ChatMessagePush_VALUE, message);
-        }
 
+
+        switch (msg.req.getChannel()) {
+            case NEAR:
+            case WORLD:
+                // 世界聊天，广播所有人,包括自己
+                G.pushToAllPlayer(No.ChatMessagePush_VALUE, message);
+                break;
+            case PRIVACY:
+            case SYSTEM:
+                // 私聊
+                G.pushToPlayer(req.getToUser(), No.ChatMessagePush_VALUE, message);
+                G.pushToPlayer(msg.pid, No.ChatMessagePush_VALUE, message);
+                break;
+        }
     }
 
 }

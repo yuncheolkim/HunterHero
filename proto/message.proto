@@ -313,6 +313,7 @@ enum ChatChannel {
     GROUP = 2;
     PRIVACY = 3;
     SYSTEM = 4;
+    NEAR = 5;
 }
 
 message ChatMessageReq{
@@ -327,6 +328,7 @@ message ChatMessagePush{
     int64 time = 3;
     int64 id = 4;
     string content = 10;
+    string name = 11;
 
 }
 
