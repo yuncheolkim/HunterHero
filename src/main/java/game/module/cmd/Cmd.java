@@ -5,7 +5,9 @@ import game.base.constants.GameConstants;
 import game.game.ResourceSourceEnum;
 import game.module.hero.HeroService;
 import game.player.Player;
+import game.proto.TitleNewPush;
 import game.proto.data.ItemData;
+import game.proto.no.No;
 
 import java.util.HashSet;
 import java.util.List;
@@ -50,6 +52,14 @@ public enum Cmd {
         @Override
         public void run(final Player player, final List<String> line) {
             player.addGem(Integer.parseInt(line.get(0)), ResourceSourceEnum.TEST);
+        }
+    },
+    AddTitle(7, "添加称谓") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int i = Integer.parseInt(line.get(0));
+            player.pd.addCollectTitle(i);
+            player.getTransport().send(No.TitleNewPush, TitleNewPush.newBuilder().setId(i).build());
         }
     },
     ;

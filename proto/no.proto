@@ -21,6 +21,7 @@ enum No {
     PlayerChooseHotelReq = 203;
     // 称谓
     TitleChooseReq = 301;
+    TitleNewPush = 302;
 
 
     // Task

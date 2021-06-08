@@ -341,3 +341,7 @@ message TitleChooseReq{
 message TitleChooseRes{
     int32 id = 1;
 }
+// 获得新称谓
+message TitleNewPush{
+    int32 id = 1;
+}

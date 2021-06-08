@@ -65,6 +65,10 @@ public enum No
    */
   TitleChooseReq(301),
   /**
+   * <code>TitleNewPush = 302;</code>
+   */
+  TitleNewPush(302),
+  /**
    * <pre>
    * Task
    * </pre>
@@ -321,6 +325,10 @@ public enum No
    */
   public static final int TitleChooseReq_VALUE = 301;
   /**
+   * <code>TitleNewPush = 302;</code>
+   */
+  public static final int TitleNewPush_VALUE = 302;
+  /**
    * <pre>
    * Task
    * </pre>
@@ -552,6 +560,7 @@ public enum No
       case 202: return PlayerGoHotelReq;
       case 203: return PlayerChooseHotelReq;
       case 301: return TitleChooseReq;
+      case 302: return TitleNewPush;
       case 1001: return TaskAcceptReq;
       case 1002: return TaskCompleteReq;
       case 1003: return TaskNewPush;
