@@ -28,7 +28,7 @@ public class MsgUtil {
         return kickMsg;
     }
 
-    public static Message make(int msgNo, MessageLite msg) {
+    public static Message make(final int msgNo, final MessageLite msg) {
         return Message.newBuilder()
                 .setVersion(version)
                 .setMsgNo(msgNo)

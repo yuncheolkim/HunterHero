@@ -22,6 +22,9 @@ message PlayerData {
 
     // vip等级
     int32 vipLevel = 12;
+
+    // 收集的称谓
+    repeated int32 collectTitle = 13;
     // 任务信息
     PlayerTask task = 101;
     // 所在场景
@@ -296,7 +299,6 @@ message BagSlot {
     int32 slotId = 1;
     ItemData data = 2;
 }
-
 
 
 

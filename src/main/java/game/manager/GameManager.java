@@ -16,6 +16,7 @@ import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
 import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
+import game.module.title.TitleHandler;
 import game.msg.*;
 import game.proto.*;
 import game.proto.back.FishData;
@@ -90,9 +91,10 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.PlayerMoveReq_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
         addHandler(new InvokerNoParam(No.PlayerGoHotelReq_VALUE, PlayerHandler::hotel));
         addHandler(new RetInvoker<>(No.PlayerChooseHotelReq_VALUE, PlayerHandler::chooseHotel, PlayerChooseHotelReq::parser));
+        // title
+        addHandler(new RetInvoker<>(No.TitleChooseReq_VALUE, TitleHandler::TitleChooseReq, TitleChooseReq::parser));
         // Resource
         addHandler(new Invoker<>(No.RecoverPowerReq_VALUE, PlayerHandler::addPower, RecoverPowerReq::parser));
-
         // task
         addHandler(new Invoker<>(No.TaskAcceptReq_VALUE, TaskHandler::acceptTask, TaskReq::parser));
         addHandler(new Invoker<>(No.TaskCompleteReq_VALUE, TaskHandler::completeTask, TaskReq::parser));

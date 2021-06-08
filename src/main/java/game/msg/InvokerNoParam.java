@@ -2,6 +2,7 @@ package game.msg;
 
 import game.base.Logs;
 import game.exception.ErrorEnum;
+import game.exception.EvilException;
 import game.exception.ModuleException;
 import game.player.Player;
 import game.proto.Message;
@@ -17,23 +18,27 @@ public class InvokerNoParam implements IInvoke {
     private final int msgNo;
 
 
-    public InvokerNoParam(int msgNo, IPlayerHandler handler) {
+    public InvokerNoParam(final int msgNo, final IPlayerHandler handler) {
         this.handler = handler;
         this.msgNo = msgNo;
     }
 
-    public void invoke(Player player, Message msg) {
+    @Override
+    public void invoke(final Player player, final Message msg) {
         try {
             handler.handler(player);
-        } catch (ModuleException e) {
+        } catch (final ModuleException e) {
             Logs.M.error("", e);
             player.getTransport().sendError(msg, e.getErrorNo());
-        } catch (Throwable e) {
+        } catch (final EvilException e) {
+            Logs.evil.info(e.getMessage());
+        } catch (final Throwable e) {
             Logs.C.error(e);
             player.getTransport().sendError(msg, ErrorEnum.ERR_1);
         }
     }
 
+    @Override
     public int getMsgNo() {
         return msgNo;
     }

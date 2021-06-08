@@ -289,6 +289,16 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ChatMessagePush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_TitleChooseReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_TitleChooseReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_TitleChooseRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_TitleChooseRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -377,10 +387,12 @@ public final class MessageOuterClass {
       "\030\002 \001(\003\022\017\n\007content\030\n \001(\t\"\203\001\n\017ChatMessageP" +
       "ush\022%\n\007channel\030\001 \001(\0162\024.Message.ChatChann" +
       "el\022\020\n\010fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\n\n\002id" +
-      "\030\004 \001(\003\022\017\n\007content\030\n \001(\t\022\014\n\004name\030\013 \001(\t*R\n" +
-      "\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005G" +
-      "ROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020" +
-      "\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "\030\004 \001(\003\022\017\n\007content\030\n \001(\t\022\014\n\004name\030\013 \001(\t\"\034\n" +
+      "\016TitleChooseReq\022\n\n\002id\030\001 \001(\005\"\034\n\016TitleChoo" +
+      "seRes\022\n\n\002id\030\001 \001(\005*R\n\013ChatChannel\022\n\n\006C_NO" +
+      "NE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022" +
+      "\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -717,6 +729,18 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ChatMessagePush_descriptor,
         new java.lang.String[] { "Channel", "FromUser", "Time", "Id", "Content", "Name", });
+    internal_static_Message_TitleChooseReq_descriptor =
+      getDescriptor().getMessageTypes().get(54);
+    internal_static_Message_TitleChooseReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_TitleChooseReq_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_TitleChooseRes_descriptor =
+      getDescriptor().getMessageTypes().get(55);
+    internal_static_Message_TitleChooseRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_TitleChooseRes_descriptor,
+        new java.lang.String[] { "Id", });
     game.proto.data.Data.getDescriptor();
   }
 

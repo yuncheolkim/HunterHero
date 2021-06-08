@@ -2,6 +2,7 @@ def PATTERN = "%d{yyyy-MM-dd HH:mm:ss.SSS}-[%35.35F:%4.4line] [%25.25thread] %-5
 def PATTERN_GAME = "[game]%d{yyyy-MM-dd HH:mm:ss.SSS}-[%35.35F:%4.4line] [%25.25thread] %-5level - %msg %n%rEx"
 def PATTERN_TRACE = "%d{yyyy-MM-dd HH:mm:ss.SSS}-[%20.20thread] - %msg %n%rEx"
 def PATTERN_KLOG = "%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg %n%rEx"
+def PATTERN_EVIL_LOG = "%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg %n%rEx"
 
 def appenderList = ["server", "error"]
 def console = true
@@ -78,8 +79,19 @@ appender("chat", RollingFileAppender) {
     }
 }
 
+appender("evil", RollingFileAppender) {
+    file = "$klogDir/evil.log"
+    encoder(PatternLayoutEncoder) {
+        pattern = PATTERN_EVIL_LOG
+    }
+    rollingPolicy(TimeBasedRollingPolicy) {
+        fileNamePattern = "logs/evil_%d{yyyy-MM-dd}.log"
+    }
+}
+
 logger("klog", INFO, ["klog"])
 logger("chat", INFO, ["chat"])
+logger("evil", INFO, ["evil"])
 root(DEBUG, appenderList)
 
 scan("30 seconds")

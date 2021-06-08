@@ -95,6 +95,35 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 收集的称谓
+   * </pre>
+   *
+   * <code>repeated int32 collectTitle = 13;</code>
+   * @return A list containing the collectTitle.
+   */
+  java.util.List<java.lang.Integer> getCollectTitleList();
+  /**
+   * <pre>
+   * 收集的称谓
+   * </pre>
+   *
+   * <code>repeated int32 collectTitle = 13;</code>
+   * @return The count of collectTitle.
+   */
+  int getCollectTitleCount();
+  /**
+   * <pre>
+   * 收集的称谓
+   * </pre>
+   *
+   * <code>repeated int32 collectTitle = 13;</code>
+   * @param index The index of the element to return.
+   * @return The collectTitle at the given index.
+   */
+  int getCollectTitle(int index);
+
+  /**
+   * <pre>
    * 任务信息
    * </pre>
    *

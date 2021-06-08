@@ -17,9 +17,11 @@ public class Logs {
 
     public static final Logger chat = LoggerFactory.getLogger("chat");
 
-    public static void trace(Object... args) {
+    public static final Logger evil = LoggerFactory.getLogger("evil");
 
-        for (Object arg : args) {
+    public static void trace(final Object... args) {
+
+        for (final Object arg : args) {
             System.out.print(arg + " ");
         }
         System.out.println();

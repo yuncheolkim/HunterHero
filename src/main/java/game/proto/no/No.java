@@ -58,6 +58,14 @@ public enum No
   PlayerChooseHotelReq(203),
   /**
    * <pre>
+   * 称谓
+   * </pre>
+   *
+   * <code>TitleChooseReq = 301;</code>
+   */
+  TitleChooseReq(301),
+  /**
+   * <pre>
    * Task
    * </pre>
    *
@@ -306,6 +314,14 @@ public enum No
   public static final int PlayerChooseHotelReq_VALUE = 203;
   /**
    * <pre>
+   * 称谓
+   * </pre>
+   *
+   * <code>TitleChooseReq = 301;</code>
+   */
+  public static final int TitleChooseReq_VALUE = 301;
+  /**
+   * <pre>
    * Task
    * </pre>
    *
@@ -535,6 +551,7 @@ public enum No
       case 201: return PlayerMoveReq;
       case 202: return PlayerGoHotelReq;
       case 203: return PlayerChooseHotelReq;
+      case 301: return TitleChooseReq;
       case 1001: return TaskAcceptReq;
       case 1002: return TaskCompleteReq;
       case 1003: return TaskNewPush;

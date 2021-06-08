@@ -329,8 +329,15 @@ message ChatMessagePush{
     int64 id = 4;
     string content = 10;
     string name = 11;
-
 }
 
+///////////////////////////////////////////  称谓
 
+// 选择称谓
+message TitleChooseReq{
+    int32 id = 1;
+}
 
+message TitleChooseRes{
+    int32 id = 1;
+}
