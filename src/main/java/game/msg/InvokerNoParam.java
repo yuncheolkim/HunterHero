@@ -31,8 +31,9 @@ public class InvokerNoParam implements IInvoke {
             Logs.M.error("", e);
             player.getTransport().sendError(msg, e.getErrorNo());
         } catch (final EvilException e) {
-            Logs.evil.info(e.getMessage());
+            Logs.evil.info("PID:{},No:{},[{}],msg:{}", player.getPid(), msg.getMsgNo(), e.getMessage(), "");
         } catch (final Throwable e) {
+
             Logs.C.error(e);
             player.getTransport().sendError(msg, ErrorEnum.ERR_1);
         }

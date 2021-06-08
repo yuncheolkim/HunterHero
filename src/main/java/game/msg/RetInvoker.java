@@ -32,8 +32,9 @@ public class RetInvoker<T extends MessageLite> implements IInvoke {
 
     @Override
     public void invoke(final Player player, final Message msg) {
+        T req = null;
         try {
-            final T req = supplier.get().parseFrom(msg.getBody());
+            req = supplier.get().parseFrom(msg.getBody());
             final MessageLite ret = this.handler.handler(player, req);
             if (ret != null) {
                 player.getTransport().send(Message.newBuilder(msg).setBody(ret.toByteString()).build());
@@ -42,7 +43,7 @@ public class RetInvoker<T extends MessageLite> implements IInvoke {
             Logs.M.error("", e);
             player.getTransport().sendError(msg, e.getErrorNo());
         } catch (final EvilException e) {
-            Logs.evil.info(e.getMessage());
+            Logs.evil.info("PID:{},No:{},[{}],msg:{}", player.getPid(), msg.getMsgNo(), e.getMessage(), req);
         } catch (final Throwable e) {
             Logs.C.error(e);
             player.getTransport().sendError(msg, ErrorEnum.ERR_1);
