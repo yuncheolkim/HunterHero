@@ -6,7 +6,6 @@ import org.apache.commons.lang3.StringUtils;
 import javax.annotation.Nullable;
 import java.util.Collection;
 import java.util.Objects;
-import java.util.function.Supplier;
 
 /**
  * 外挂行为
@@ -17,15 +16,15 @@ import java.util.function.Supplier;
 public class EvilAssert {
 
     // is true
-    public static void isTrue(final boolean condition, final Supplier<String> supplier) {
+    public static void isTrue(final boolean condition, final String msg) {
         if (!condition) {
-            throw new EvilException(supplier.get());
+            throw new EvilException(msg);
         }
     }
 
     // is false
-    public static void isFalse(final boolean condition, final Supplier<String> supplier) {
-        isTrue(!condition, supplier);
+    public static void isFalse(final boolean condition, final String msg) {
+        isTrue(!condition, msg);
     }
 
     // not null

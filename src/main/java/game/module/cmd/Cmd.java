@@ -1,7 +1,7 @@
 package game.module.cmd;
 
 import com.google.common.collect.ImmutableMap;
-import game.base.GameConstants;
+import game.base.constants.GameConstants;
 import game.game.ResourceSourceEnum;
 import game.module.hero.HeroService;
 import game.player.Player;

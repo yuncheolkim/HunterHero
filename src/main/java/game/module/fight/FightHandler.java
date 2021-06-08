@@ -1,7 +1,7 @@
 package game.module.fight;
 
-import game.base.GameConstants;
 import game.base.Logs;
+import game.base.constants.GameConstants;
 import game.base.util.Tuple2;
 import game.exception.ErrorEnum;
 import game.exception.ModuleException;

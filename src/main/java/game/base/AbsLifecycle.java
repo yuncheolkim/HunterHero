@@ -2,8 +2,8 @@ package game.base;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static game.base.GameConstants.TOKEN_END;
-import static game.base.GameConstants.TOKEN_START;
+import static game.base.constants.GameConstants.TOKEN_END;
+import static game.base.constants.GameConstants.TOKEN_START;
 
 /**
  * @author Yunzhe.Jin

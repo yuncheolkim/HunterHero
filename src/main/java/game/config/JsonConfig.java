@@ -2,8 +2,8 @@ package game.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableMap;
-import game.base.GameConstants;
 import game.base.Logs;
+import game.base.constants.GameConstants;
 import game.utils.FileUtils;
 import game.utils.JsonUtil;
 
@@ -21,11 +21,11 @@ public class JsonConfig {
 
     private int initSize = 128;
 
-    public JsonConfig(String fileName) {
+    public JsonConfig(final String fileName) {
         this.fileName = fileName;
     }
 
-    public JsonConfig(String fileName, int size) {
+    public JsonConfig(final String fileName, final int size) {
         this.fileName = fileName;
         initSize = size;
     }
@@ -34,11 +34,11 @@ public class JsonConfig {
         try {
             Logs.C.info(GameConstants.TOKEN_START + "加载配置文件:{}", fileName);
 //            String s = FileUtils.readFile(Objects.requireNonNull(getClass().getClassLoader().getResource(fileName)).toURI());
-            String s = FileUtils.readFile(fileName);
-            ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builderWithExpectedSize(initSize);
+            final String s = FileUtils.readFile(fileName);
+            final ImmutableMap.Builder<Integer, DataConfigData> b = ImmutableMap.builderWithExpectedSize(initSize);
             return b.putAll(JsonUtil.fromJsonString(s, new TypeReference<Map<Integer, DataConfigData>>() {
             })).build();
-        } catch (Exception e) {
+        } catch (final Exception e) {
             Logs.C.error(fileName, e);
             throw new RuntimeException(e);
         } finally {

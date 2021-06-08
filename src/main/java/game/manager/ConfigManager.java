@@ -100,6 +100,8 @@ public class ConfigManager extends AbsLifecycle {
 
     private static List<EnemyTemplatePropertyConfigData> enemyTemplate = new ArrayList<>(64);
 
+    // 11-称谓
+    private static Map<Integer, TitleConfigData> titleMap;
 
     @Override
 
@@ -214,6 +216,9 @@ public class ConfigManager extends AbsLifecycle {
 
         // 18-商店
         shopMap = makeMapData("data/data_18-商店.json", ShopConfigData::new);
+
+        // 11-称谓
+        titleMap = makeMapData("data/data_11-称谓.json", TitleConfigData::new);
 
     }
 
@@ -383,5 +388,10 @@ public class ConfigManager extends AbsLifecycle {
     public static ShopConfigData getShop(final int id) {
         return shopMap.get(id);
     }
+
+    public static TitleConfigData getTitle(final int id) {
+        return titleMap.get(id);
+    }
+
 }
 

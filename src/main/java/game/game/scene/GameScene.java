@@ -1,7 +1,7 @@
 package game.game.scene;
 
-import game.base.GameConstants;
 import game.base.Work;
+import game.base.constants.GameConstants;
 
 /**
  * 游戏场景基本类
@@ -20,18 +20,18 @@ public class GameScene {
         id = GameConstants.ID_GENERATOR.next();
     }
 
-    public void tell(Object msg) {
-        GameScene that = this;
+    public void tell(final Object msg) {
+        final GameScene that = this;
         work.addTask(() -> {
             that.process(msg);
         });
     }
 
-    protected void process(Object msg) {
+    protected void process(final Object msg) {
 
     }
 
-    public void setWork(Work work) {
+    public void setWork(final Work work) {
         this.work = work;
     }
 
@@ -40,7 +40,7 @@ public class GameScene {
         return sceneId;
     }
 
-    public void setSceneId(int sceneId) {
+    public void setSceneId(final int sceneId) {
         this.sceneId = sceneId;
     }
 }

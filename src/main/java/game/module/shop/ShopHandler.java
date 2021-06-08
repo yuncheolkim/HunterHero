@@ -1,7 +1,7 @@
 package game.module.shop;
 
-import game.base.GameConstants;
 import game.base.IIdDisplay;
+import game.base.constants.GameConstants;
 import game.config.DataConfigData;
 import game.config.ShopConfigData;
 import game.exception.ErrorEnum;

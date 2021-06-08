@@ -1,7 +1,7 @@
 package game.module.task;
 
 import game.base.G;
-import game.base.GameConstants;
+import game.base.constants.GameConstants;
 import game.config.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
@@ -35,18 +35,18 @@ public class TaskHandler {
      * @param o
      * @return
      */
-    public static void acceptTask(Player player, TaskReq o) {
+    public static void acceptTask(final Player player, final TaskReq o) {
 
         ModuleAssert.isTrue(TaskService.canAcceptTask(player, o.getTaskId()));
 
-        DataConfigData taskConfigData = G.C.getTask(o.getTaskId());
-        PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
-        RunTask runTask = taskBuilder.getRunTaskMap().get(o.getTaskId());
+        final DataConfigData taskConfigData = G.C.getTask(o.getTaskId());
+        final PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
+        final RunTask runTask = taskBuilder.getRunTaskMap().get(o.getTaskId());
         if (runTask != null) {
             return;
         }
 
-        RunTask.Builder data = RunTask.newBuilder();
+        final RunTask.Builder data = RunTask.newBuilder();
         data.setTaskId(o.getTaskId());
         if (taskConfigData.completeType == 2) {// 立即完成
             data.setComplete(true);
@@ -72,8 +72,8 @@ public class TaskHandler {
                     .build()
             );
         } else {
-            List<Integer> targetList = taskConfigData.targetList;
-            for (Integer target : targetList) {
+            final List<Integer> targetList = taskConfigData.targetList;
+            for (final Integer target : targetList) {
                 data.addTarget(TaskTarget.newBuilder().setId(target).build());
             }
 
@@ -98,17 +98,17 @@ public class TaskHandler {
      * @param o
      * @return
      */
-    public static void completeTask(Player player, TaskReq req) {
-        PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
-        RunTask runtask = taskBuilder.getRunTaskOrThrow(req.getTaskId());
+    public static void completeTask(final Player player, final TaskReq req) {
+        final PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
+        final RunTask runtask = taskBuilder.getRunTaskOrThrow(req.getTaskId());
 
         if (runtask.getComplete()) {
             // 给奖励
-            DataConfigData task = G.C.getTask(req.getTaskId());
+            final DataConfigData task = G.C.getTask(req.getTaskId());
 
-            List<Reward> make = RewardUtil.make(task.reward);
+            final List<Reward> make = RewardUtil.make(task.reward);
             // 检查物品
-            List<ItemData> collect = make.stream()
+            final List<ItemData> collect = make.stream()
                     .filter(reward -> reward.getType() == RewardType.REWARD_ITEM)
                     .map(reward -> ItemData.newBuilder()
                             .setItemId(reward.getRewardId())
@@ -118,7 +118,7 @@ public class TaskHandler {
 
             ModuleAssert.isTrue(BagService.canPutReward(player, collect), ErrorEnum.ERR_104);
 
-            for (Reward reward : make) {
+            for (final Reward reward : make) {
                 if (reward.getType() == RewardType.REWARD_RESOURCE) {
 
                     if (reward.getRewardId() == ResourceEnum.GOLD.id) {
@@ -131,7 +131,7 @@ public class TaskHandler {
                 }
             }
 
-            for (ItemData itemData : collect) {
+            for (final ItemData itemData : collect) {
                 player.addItem(itemData, GameConstants.ITEM_BAG);
             }
             // 移除任务
@@ -146,16 +146,16 @@ public class TaskHandler {
                     .buildPartial());
 
             // 检查后续任务
-            Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
-            List<Integer> afterTaskList = task.list2;
+            final Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
+            final List<Integer> afterTaskList = task.list2;
 
-            List<Integer> newTaskList = new ArrayList<>(2);
+            final List<Integer> newTaskList = new ArrayList<>(2);
 
             if (afterTaskList != null) {
 
-                for (Integer afterTaskId : afterTaskList) {
-                    DataConfigData afterTask = G.C.getTask(afterTaskId);
-                    for (Integer needCompleteTaskId : afterTask.list1) {
+                for (final Integer afterTaskId : afterTaskList) {
+                    final DataConfigData afterTask = G.C.getTask(afterTaskId);
+                    for (final Integer needCompleteTaskId : afterTask.list1) {
                         if (!completeTaskMap.containsKey(needCompleteTaskId)) {
                             break;
                         }
@@ -179,20 +179,20 @@ public class TaskHandler {
      * @param player
      * @param req
      */
-    public static TaskNpcRes findNpcTask(Player player, TaskNpcReq req) {
-        Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
+    public static TaskNpcRes findNpcTask(final Player player, final TaskNpcReq req) {
+        final Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
 
         if (npcTask != null && !npcTask.isEmpty()) {
-            TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
+            final TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
             builder.setNpcId(req.getNpcId());
-            Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
-            for (DataConfigData data : npcTask) {
+            final Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
+            for (final DataConfigData data : npcTask) {
                 if (data.level > player.pd.getLevel()) {
                     continue;
                 }
 
                 if (player.pd.getTaskBuilder().containsRunTask(data.id)) {
-                    RunTask runtask = player.pd.getTaskBuilder().getRunTaskOrThrow(data.id);
+                    final RunTask runtask = player.pd.getTaskBuilder().getRunTaskOrThrow(data.id);
                     if (!runtask.getComplete()) {
                         builder.putRunTask(data.id, runtask);
                     }
@@ -200,7 +200,7 @@ public class TaskHandler {
                     if (!completeTaskMap.containsKey(data.id)) {
                         boolean add = true;
                         if (data.list1 != null) {
-                            for (Integer beforeId : data.list1) {
+                            for (final Integer beforeId : data.list1) {
                                 if (!completeTaskMap.containsKey(beforeId)) {
                                     add = false;
                                     break;
@@ -214,9 +214,9 @@ public class TaskHandler {
                 }
             }
 
-            for (RunTask value : player.pd.getTaskBuilder().getRunTaskMap().values()) {
+            for (final RunTask value : player.pd.getTaskBuilder().getRunTaskMap().values()) {
                 if (value.getComplete()) {
-                    DataConfigData task = G.C.getTask(value.getTaskId());
+                    final DataConfigData task = G.C.getTask(value.getTaskId());
                     if (task.completeNpcId == req.getNpcId()) {
                         builder.putRunTask(value.getTaskId(), value);
                     }

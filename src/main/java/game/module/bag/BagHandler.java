@@ -1,7 +1,7 @@
 package game.module.bag;
 
-import game.base.GameConstants;
 import game.base.Logs;
+import game.base.constants.GameConstants;
 import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.BagCleanReq;
@@ -21,7 +21,7 @@ public class BagHandler {
      * @param player
      * @param req
      */
-    public static void clean(Player player, BagCleanReq req) {
+    public static void clean(final Player player, final BagCleanReq req) {
         player.cleanBag(req.getType());
     }
 
@@ -31,7 +31,7 @@ public class BagHandler {
      * @param player
      * @param req
      */
-    public static void discardItem(Player player, ItemDiscardReq req) {
+    public static void discardItem(final Player player, final ItemDiscardReq req) {
         Logs.C.info("{}", req);
         player.removeBagItem(req.getType(), req.getCount(), req.getSlotId());
     }
@@ -42,22 +42,22 @@ public class BagHandler {
      * @param player
      * @param req
      */
-    public static void exchangeItem(Player player, ItemExchangeReq req) {
+    public static void exchangeItem(final Player player, final ItemExchangeReq req) {
         ModuleAssert.isPositive(req.getCount());
         if (req.getType() == 1) { // bank -> bag
 
-            BagSlot bagSlot = player.pd.getBankMap().get(req.getSlotId());
+            final BagSlot bagSlot = player.pd.getBankMap().get(req.getSlotId());
             ModuleAssert.notNull(bagSlot);
-            int count = Math.min(req.getCount(), bagSlot.getData().getCount());
+            final int count = Math.min(req.getCount(), bagSlot.getData().getCount());
 
             player.addItem(bagSlot.getData().toBuilder().setCount(count).build(), GameConstants.ITEM_BAG);
 
             player.removeBagItem(GameConstants.ITEM_BANK, count, req.getSlotId());
 
         } else {// bag -> bank
-            BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
+            final BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
             ModuleAssert.notNull(bagSlot);
-            int count = Math.min(req.getCount(), bagSlot.getData().getCount());
+            final int count = Math.min(req.getCount(), bagSlot.getData().getCount());
 
             player.addItem(bagSlot.getData().toBuilder().setCount(count).build(), GameConstants.ITEM_BANK);
 

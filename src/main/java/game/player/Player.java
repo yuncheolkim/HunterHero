@@ -4,9 +4,9 @@ import com.google.protobuf.MessageLite;
 import game.anno.ProcessPersistenceData;
 import game.anno.SaveData;
 import game.base.G;
-import game.base.GameConstants;
 import game.base.Logs;
 import game.base.Work;
+import game.base.constants.GameConstants;
 import game.config.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
@@ -42,7 +42,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static game.base.GameConstants.MAX_PLAYER_LEVEL;
+import static game.base.constants.GameConstants.MAX_PLAYER_LEVEL;
 import static game.module.bag.BagUpdateService.updatePlayerBank;
 
 /**

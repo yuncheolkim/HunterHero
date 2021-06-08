@@ -1,6 +1,6 @@
 package game.module.hero;
 
-import game.base.GameConstants;
+import game.base.constants.GameConstants;
 import game.config.DataConfigData;
 import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
@@ -20,8 +20,8 @@ public class HeroService {
      * @param player
      * @param itemId
      */
-    public static void addEquipment(Player player, int itemId) {
-        DataConfigData item = ConfigManager.getItem(itemId);
+    public static void addEquipment(final Player player, final int itemId) {
+        final DataConfigData item = ConfigManager.getItem(itemId);
         ModuleAssert.isTrue(item.type1 == 4);
 
         player.addItem(ItemData.newBuilder().setItemId(itemId)
@@ -31,7 +31,7 @@ public class HeroService {
     }
 
 
-    public static boolean hasHero(Player player, int heroId) {
+    public static boolean hasHero(final Player player, final int heroId) {
         return player.pd.containsHero(heroId);
     }
 }
