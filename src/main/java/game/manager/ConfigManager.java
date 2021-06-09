@@ -65,7 +65,7 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> taskMap3;
 
-    public Map<Integer, DataConfigData> taskMap4;
+    public static Map<Integer, DataConfigData> taskMap4;
 
     public Map<Integer, DataConfigData> taskMap5;
 
@@ -89,6 +89,7 @@ public class ConfigManager extends AbsLifecycle {
 
     // Npc任务
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
+    public static Multimap<Integer, DataConfigData> levelTaskMap = ArrayListMultimap.create(60, 4);
 
     // 参数
     public static final ParamConfigData paramConfigData = new ParamConfigData();
@@ -203,9 +204,13 @@ public class ConfigManager extends AbsLifecycle {
 
         final Map<Integer, List<DropItemConfigData>> map4 = new HashMap<>();
 
-        // npc
+        // npc task
         for (final DataConfigData value : taskMap4.values()) {
             npcTaskMap.put(value.npcId, value);
+        }
+        // level task
+        for (final DataConfigData task : taskMap4.values()) {
+            levelTaskMap.put(task.level, task);
         }
 
         // param

@@ -1,12 +1,20 @@
 package game.module.event.handler;
 
+import game.config.DataConfigData;
 import game.game.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.event.IPlayerEventHandler;
+import game.module.task.TaskService;
 import game.player.Player;
 import game.proto.PlayerLevelChangePush;
+import game.proto.TaskNewPush;
 import game.proto.back.MsgNo;
+import org.apache.commons.collections4.CollectionUtils;
+
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author Yunzhe.Jin
@@ -27,6 +35,29 @@ public class LevelUpEventHandler implements IPlayerEventHandler<LevelUpEvent> {
             player.setMaxPower(ConfigManager.GetInitPower() + data.level);
             player.resetPower(ResourceSourceEnum.升级);
 
+            // 查找新任务
+            List<Integer> levelTask = TaskService.findLevelTask(player);
+            if (!levelTask.isEmpty()) {
+                final Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
+
+                levelTask = levelTask.stream().filter(taskId -> {
+                    DataConfigData dataConfigData = ConfigManager.taskMap4.get(taskId);
+
+                    if (!CollectionUtils.isEmpty(dataConfigData.list1)) {
+
+                        return dataConfigData.list1.stream().allMatch(completeTaskMap::containsKey);
+                    }
+                    return true;
+
+                }).collect(Collectors.toList());
+
+                if (!levelTask.isEmpty()) {
+                    // 新任务
+                    player.getTransport()
+                            .send(MsgNo.TaskNewPushNo_VALUE,
+                                    TaskNewPush.newBuilder().addAllTaskId(levelTask).buildPartial());
+                }
+            }
         }
     }
 }

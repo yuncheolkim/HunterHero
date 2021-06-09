@@ -2,6 +2,7 @@ package game.module.task;
 
 import game.base.G;
 import game.config.DataConfigData;
+import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.TaskStatusChangePush;
 import game.proto.back.MsgNo;
@@ -9,7 +10,10 @@ import game.proto.data.*;
 import game.utils.CalcUtil;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Yunzhe.Jin
@@ -129,6 +133,23 @@ public class TaskService {
                 }
             }
         }
+    }
+
+    /**
+     * 升级查找新任务
+     *
+     * @param player
+     * @return
+     */
+    public static List<Integer> findLevelTask(Player player) {
+
+        Collection<DataConfigData> dataConfigData = ConfigManager.levelTaskMap.get(player.pd.getLevel());
+
+        if (dataConfigData.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return dataConfigData.stream().map(data -> data.id).collect(Collectors.toList());
     }
 
 }

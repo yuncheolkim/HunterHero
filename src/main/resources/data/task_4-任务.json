@@ -5,6 +5,7 @@
         "completeType": 2,
         "contentId": 2000101,
         "conversationId": 0,
+        "i1": 1,
         "id": 1,
         "level": 1,
         "list2": [
@@ -24,8 +25,9 @@
         "completeContentId": 2000203,
         "completeNpcId": 11,
         "completeType": 1,
-        "contentId": 2000101,
+        "contentId": 2000201,
         "conversationId": 2000201,
+        "i1": 1,
         "id": 2,
         "level": 1,
         "list1": [
@@ -33,12 +35,31 @@
         ],
         "notCompleteContentId": 2000202,
         "npcId": 11,
-        "reward": "3=133#1=100",
+        "reward": "3=83#1=100",
         "speakType": 2,
         "targetList": [
             1
         ],
         "taskType": 1,
         "title": "攻击性海龟"
+    },
+    "3": {
+        "completeContentId": 1009,
+        "completeNpcId": 2,
+        "completeType": 1,
+        "contentId": 2000205,
+        "conversationId": 0,
+        "i1": 2,
+        "id": 3,
+        "level": 2,
+        "notCompleteContentId": 2000204,
+        "npcId": 2,
+        "reward": "3=136#1=100",
+        "speakType": 2,
+        "targetList": [
+            3
+        ],
+        "taskType": 1,
+        "title": "美味蟹肉"
     }
 }
