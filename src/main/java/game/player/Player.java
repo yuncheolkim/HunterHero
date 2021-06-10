@@ -11,6 +11,7 @@ import game.config.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
+import game.game.ItemTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.manager.ConfigManager;
@@ -535,73 +536,77 @@ public class Player {
 
         final DataConfigData dataConfigData = ConfigManager.getItem(data.getItemId());
 
-        final BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
+        // 任务物品不进背包
+        if (dataConfigData.type1 != ItemTypeEnum.TASK.id) {
 
-        final int stack = dataConfigData.stack;
-        final List<BagSlot> change = new ArrayList<>(10);
-        int remainCount = stack * box.remain();
-        if (stack > 1) {// 可堆叠
-            if (box.bagSlotMap.containsKey(data.getItemId())) {
-                // 已经有物品
-                final Collection<BagSlot> bagSlots = box.bagSlotMap.get(data.getItemId());
-                for (final BagSlot bagSlot : bagSlots) {
-                    if (bagSlot.getData().getCount() < stack) {
-                        remainCount += stack - bagSlot.getData().getCount();
-                        change.add(bagSlot);
+            final BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
+
+            final int stack = dataConfigData.stack;
+            final List<BagSlot> change = new ArrayList<>(10);
+            int remainCount = stack * box.remain();
+            if (stack > 1) {// 可堆叠
+                if (box.bagSlotMap.containsKey(data.getItemId())) {
+                    // 已经有物品
+                    final Collection<BagSlot> bagSlots = box.bagSlotMap.get(data.getItemId());
+                    for (final BagSlot bagSlot : bagSlots) {
+                        if (bagSlot.getData().getCount() < stack) {
+                            remainCount += stack - bagSlot.getData().getCount();
+                            change.add(bagSlot);
+                        }
                     }
                 }
             }
-        }
 
-        int count = data.getCount();
-        ModuleAssert.isTrue(remainCount >= count, ErrorEnum.ERR_104);
+            int count = data.getCount();
+            ModuleAssert.isTrue(remainCount >= count, ErrorEnum.ERR_104);
 
-        for (final BagSlot changedSlot : change) {
-            box.bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);
+            for (final BagSlot changedSlot : change) {
+                box.bagSlotMap.remove(changedSlot.getData().getItemId(), changedSlot);
 
-            final int oldCount = changedSlot.getData().getCount();
-            final int added = Math.min(stack - oldCount, count);
-            count -= added;
+                final int oldCount = changedSlot.getData().getCount();
+                final int added = Math.min(stack - oldCount, count);
+                count -= added;
 
-            final BagSlot.Builder builder = changedSlot.toBuilder();
-            builder.getDataBuilder().setCount(oldCount + added);
-            final BagSlot slot = builder.build();
+                final BagSlot.Builder builder = changedSlot.toBuilder();
+                builder.getDataBuilder().setCount(oldCount + added);
+                final BagSlot slot = builder.build();
 
-            // change info
-            bagPushBuilder.addSlot(slot);
-            if (count == 0) {
-                break;
+                // change info
+                bagPushBuilder.addSlot(slot);
+                if (count == 0) {
+                    break;
+                }
             }
-        }
-        // 如果还有剩余，则在寻找空闲的格子
-        if (count > 0) {
+            // 如果还有剩余，则在寻找空闲的格子
+            if (count > 0) {
 
-            for (int i = 0; i < box.capacity; i++) {
-                if (bagUpdateService.find(this, i) == null) {
-                    // 添加物品
-                    final int added = Math.min(stack, count);
-                    count -= added;
+                for (int i = 0; i < box.capacity; i++) {
+                    if (bagUpdateService.find(this, i) == null) {
+                        // 添加物品
+                        final int added = Math.min(stack, count);
+                        count -= added;
 
-                    final BagSlot slot = BagSlot.newBuilder().setSlotId(i).setData(data.toBuilder().setCount(added)).build();
-                    // change info
-                    bagPushBuilder.addSlot(slot);
-                    if (count == 0) {
-                        break;
+                        final BagSlot slot = BagSlot.newBuilder().setSlotId(i).setData(data.toBuilder().setCount(added)).build();
+                        // change info
+                        bagPushBuilder.addSlot(slot);
+                        if (count == 0) {
+                            break;
+                        }
                     }
                 }
             }
-        }
 
-        // Player data update
-        for (final BagSlot bagSlot : bagPushBuilder.getSlotList()) {
-            bagUpdateService.update(this, bagSlot);
+            // Player data update
+            for (final BagSlot bagSlot : bagPushBuilder.getSlotList()) {
+                bagUpdateService.update(this, bagSlot);
+            }
+
+            // push
+            transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
         }
 
         // event
         EventManager.firePlayerEvent(this, new ItemAddEvent(data));
-
-        // push
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
 
     }
 
