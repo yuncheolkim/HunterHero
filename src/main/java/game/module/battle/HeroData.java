@@ -64,6 +64,9 @@ public class HeroData {
         critical += o.critical;
         criticalDamageRate += o.criticalDamageRate;
         speed += o.speed;
+        criticalBase += o.criticalBase;
+        avoidBase += o.avoidBase;
+        defBase += o.defBase;
         return this;
     }
 
