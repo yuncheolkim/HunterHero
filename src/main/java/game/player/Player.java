@@ -276,6 +276,9 @@ public class Player {
                 .setAvoid(d.avoid)
                 .setCritical(d.critical)
                 .setCriticalDamage(d.criticalDamage)
+                .setDefBase(d.defBase)
+                .setCriticalBase(d.criticalBase)
+                .setAvoidBase(d.avoidBase)
                 .setSpeed(d.speed);
 
         builder.getPropertyEffectBuilder()
