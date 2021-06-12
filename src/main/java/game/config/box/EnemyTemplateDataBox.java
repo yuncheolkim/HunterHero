@@ -1,7 +1,7 @@
-package game.config.enmey;
+package game.config.box;
 
-import game.config.EnemyTemplatePropertyConfigData;
 import game.config.base.ListConfigDataBox;
+import game.config.data.EnemyTemplatePropertyConfigData;
 
 /**
  * @author Yunzhe.Jin

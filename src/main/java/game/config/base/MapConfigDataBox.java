@@ -1,7 +1,6 @@
 package game.config.base;
 
 import com.google.common.collect.ImmutableMap;
-import game.config.DataConfigData;
 
 import java.util.Map;
 

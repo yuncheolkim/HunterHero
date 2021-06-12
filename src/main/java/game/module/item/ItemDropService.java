@@ -1,8 +1,8 @@
 package game.module.item;
 
 import game.base.G;
-import game.config.DataConfigData;
-import game.config.drop.DropItemConfigData;
+import game.config.base.DataConfigData;
+import game.config.data.DropItemConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.proto.data.Reward;

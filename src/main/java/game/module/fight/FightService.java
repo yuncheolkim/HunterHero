@@ -2,9 +2,9 @@ package game.module.fight;
 
 import game.base.G;
 import game.base.Logs;
-import game.config.enmey.EnemyAreaConfigData;
-import game.config.enmey.EnemyConfigData;
-import game.config.enmey.EnemyCountConfigData;
+import game.config.data.EnemyAreaConfigData;
+import game.config.data.EnemyConfigData;
+import game.config.data.EnemyCountConfigData;
 import game.player.Player;
 import game.proto.FightStartPush;
 import game.proto.Message;

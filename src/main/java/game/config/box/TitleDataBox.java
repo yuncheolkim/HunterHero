@@ -1,6 +1,7 @@
-package game.config;
+package game.config.box;
 
 import game.config.base.MapConfigDataBox;
+import game.config.data.TitleConfigData;
 
 /**
  * @author Yunzhe.Jin

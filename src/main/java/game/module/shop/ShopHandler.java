@@ -2,8 +2,8 @@ package game.module.shop;
 
 import game.base.IIdDisplay;
 import game.base.constants.GameConstants;
-import game.config.DataConfigData;
-import game.config.ShopConfigData;
+import game.config.base.DataConfigData;
+import game.config.data.ShopConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;

@@ -1,8 +1,8 @@
 package game.module.player;
 
 import game.base.G;
-import game.config.TransformConfigData;
-import game.config.param.ParamConfigData;
+import game.config.data.ParamConfigData;
+import game.config.data.TransformConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;

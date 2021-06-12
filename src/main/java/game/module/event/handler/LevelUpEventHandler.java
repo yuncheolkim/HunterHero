@@ -1,6 +1,6 @@
 package game.module.event.handler;
 
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.game.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;

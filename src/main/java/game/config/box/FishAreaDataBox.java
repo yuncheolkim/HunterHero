@@ -1,6 +1,7 @@
-package game.config.fish;
+package game.config.box;
 
 import game.config.base.MapConfigDataBox;
+import game.config.data.FishAreaConfigData;
 
 /**
  * @author Yunzhe.Jin

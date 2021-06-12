@@ -1,7 +1,7 @@
 package game.module.hero.calc;
 
 import game.base.G;
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.proto.data.Equipment;
 import game.proto.data.PlayerHero;
 

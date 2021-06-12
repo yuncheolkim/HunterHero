@@ -1,7 +1,5 @@
 package game.config.base;
 
-import game.config.DataConfigData;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

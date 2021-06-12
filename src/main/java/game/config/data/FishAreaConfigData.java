@@ -1,7 +1,7 @@
-package game.config.fish;
+package game.config.data;
 
-import game.config.DataConfigData;
 import game.config.base.BaseConfigData;
+import game.config.base.DataConfigData;
 
 /**
  * @author Yunzhe.Jin

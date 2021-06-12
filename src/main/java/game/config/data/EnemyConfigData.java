@@ -1,4 +1,4 @@
-package game.config.enmey;
+package game.config.data;
 
 import game.base.IWeight;
 import game.proto.data.Property;

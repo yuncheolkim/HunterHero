@@ -1,7 +1,7 @@
 package game.module.task;
 
 import game.base.G;
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.proto.data.TaskTarget;
 
 /**

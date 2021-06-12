@@ -1,6 +1,6 @@
-package game.config.param;
+package game.config.data;
 
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 
 import java.util.concurrent.TimeUnit;
 

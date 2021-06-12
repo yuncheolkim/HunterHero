@@ -1,6 +1,6 @@
 package game.module.event.handler;
 
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.module.event.IPlayerEventHandler;

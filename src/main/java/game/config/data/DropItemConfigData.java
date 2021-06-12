@@ -1,4 +1,4 @@
-package game.config.drop;
+package game.config.data;
 
 /**
  * @author Yunzhe.Jin

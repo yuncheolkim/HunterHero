@@ -1,6 +1,6 @@
 package game.utils;
 
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.proto.data.Reward;

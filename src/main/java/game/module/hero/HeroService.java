@@ -1,7 +1,7 @@
 package game.module.hero;
 
 import game.base.constants.GameConstants;
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
 import game.player.Player;

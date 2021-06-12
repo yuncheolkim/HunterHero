@@ -1,7 +1,6 @@
 package game.config.base;
 
 import game.base.Logs;
-import game.config.DataConfigData;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;

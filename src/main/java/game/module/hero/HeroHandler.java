@@ -3,7 +3,7 @@ package game.module.hero;
 import game.anno.InsideMsgHandler;
 import game.base.G;
 import game.base.constants.GameConstants;
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;

@@ -1,7 +1,7 @@
 package game.module.task;
 
 import game.base.G;
-import game.config.DataConfigData;
+import game.config.base.DataConfigData;
 import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.TaskStatusChangePush;

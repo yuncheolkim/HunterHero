@@ -1,4 +1,4 @@
-package game.config;
+package game.config.base;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

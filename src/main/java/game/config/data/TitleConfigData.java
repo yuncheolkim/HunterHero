@@ -1,6 +1,7 @@
-package game.config;
+package game.config.data;
 
 import game.config.base.BaseConfigData;
+import game.config.base.DataConfigData;
 
 /**
  * @author Yunzhe.Jin
