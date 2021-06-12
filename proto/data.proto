@@ -25,6 +25,10 @@ message PlayerData {
 
     // 收集的称谓
     repeated int32 collectTitle = 13;
+
+    // Fish
+    int32 fishAreaId = 14;
+
     // 任务信息
     PlayerTask task = 101;
     // 所在场景

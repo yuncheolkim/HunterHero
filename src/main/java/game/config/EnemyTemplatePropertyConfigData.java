@@ -1,5 +1,6 @@
 package game.config;
 
+import game.config.base.BaseConfigData;
 import game.manager.ConfigManager;
 import game.proto.data.Property;
 

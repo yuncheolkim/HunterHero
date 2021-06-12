@@ -1,5 +1,7 @@
 package game.config;
 
+import game.config.base.BaseConfigData;
+
 /**
  * @author Yunzhe.Jin
  * 2021/6/8 14:22

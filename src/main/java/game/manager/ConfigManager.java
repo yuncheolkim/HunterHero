@@ -6,10 +6,14 @@ import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
 import game.base.G;
 import game.config.*;
+import game.config.base.BaseConfigData;
+import game.config.base.JsonConfig;
 import game.config.drop.DropItemConfigData;
 import game.config.enmey.EnemyAreaConfigData;
 import game.config.enmey.EnemyConfigData;
 import game.config.enmey.EnemyCountConfigData;
+import game.config.enmey.EnemyTemplateDataBox;
+import game.config.fish.FishAreaDataBox;
 import game.config.param.ParamConfigData;
 import game.proto.data.Property;
 import game.utils.CalcUtil;
@@ -99,10 +103,12 @@ public class ConfigManager extends AbsLifecycle {
     // 18-shop
     private static Map<Integer, ShopConfigData> shopMap;
 
-    private static List<EnemyTemplatePropertyConfigData> enemyTemplate = new ArrayList<>(64);
+    private static final EnemyTemplateDataBox enemyTemplateBox = new EnemyTemplateDataBox();
 
     // 11-称谓
-    private static Map<Integer, TitleConfigData> titleMap;
+    private static final TitleDataBox titleDataBox = new TitleDataBox();
+    // fish
+    public static final FishAreaDataBox fishAreaDataBox = new FishAreaDataBox();
 
     @Override
 
@@ -144,7 +150,7 @@ public class ConfigManager extends AbsLifecycle {
 
         ///// 进一步加工
         // 21-怪模版
-        enemyTemplate = makeListData("data/data_21-怪模版.json", EnemyTemplatePropertyConfigData::new);
+        enemyTemplateBox.parse();
 
         final Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
 
@@ -223,7 +229,9 @@ public class ConfigManager extends AbsLifecycle {
         shopMap = makeMapData("data/data_18-商店.json", ShopConfigData::new);
 
         // 11-称谓
-        titleMap = makeMapData("data/data_11-称谓.json", TitleConfigData::new);
+        titleDataBox.parse();
+        // fish
+        fishAreaDataBox.parse();
 
     }
 
@@ -383,7 +391,7 @@ public class ConfigManager extends AbsLifecycle {
     }
 
     public static Property GetEnemyTemplate(final int level) {
-        return enemyTemplate.get(level).property;
+        return enemyTemplateBox.findById(level).property;
     }
 
     public static int GetInitPower() {
@@ -395,7 +403,7 @@ public class ConfigManager extends AbsLifecycle {
     }
 
     public static TitleConfigData getTitle(final int id) {
-        return titleMap.get(id);
+        return titleDataBox.findById(id);
     }
 
 }

@@ -1,9 +1,10 @@
-package game.config;
+package game.config.base;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.google.common.collect.ImmutableMap;
 import game.base.Logs;
 import game.base.constants.GameConstants;
+import game.config.DataConfigData;
 import game.utils.FileUtils;
 import game.utils.JsonUtil;
 
