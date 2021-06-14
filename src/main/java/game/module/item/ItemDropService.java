@@ -3,6 +3,7 @@ package game.module.item;
 import game.base.G;
 import game.config.base.DataConfigData;
 import game.config.data.DropItemConfigData;
+import game.config.data.ExpConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.proto.data.Reward;
@@ -25,9 +26,9 @@ public class ItemDropService {
      * @param enemyLevel
      * @return
      */
-    public static int dropGold(int enemyLevel) {
-        DataConfigData dataConfigData = G.C.dataMap9.get(enemyLevel);
-        return CalcUtil.random(dataConfigData.min, dataConfigData.max);
+    public static int enemyDropGold(int enemyLevel) {
+        ExpConfigData dataConfigData = ConfigManager.getExp(enemyLevel);
+        return CalcUtil.random(dataConfigData.minGold, dataConfigData.maxGold);
     }
 
     /**
@@ -38,7 +39,7 @@ public class ItemDropService {
      * @return
      */
     public static int dropExp(int enemyLevel) {
-        DataConfigData dataConfigData = G.C.dataMap9.get(enemyLevel);
+        ExpConfigData dataConfigData = ConfigManager.getExp(enemyLevel);
         return dataConfigData.monsterExp;
     }
 

@@ -3,11 +3,15 @@ package game.module.task;
 import game.base.G;
 import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
+import game.config.data.ExpConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
+import game.manager.ConfigManager;
+import game.manager.EventManager;
 import game.module.bag.BagService;
+import game.module.event.handler.TaskCompleteEvent;
 import game.player.Player;
 import game.proto.*;
 import game.proto.back.MsgNo;
@@ -124,12 +128,14 @@ public class TaskHandler {
                     if (reward.getRewardId() == ResourceEnum.GOLD.id) {
                         // 金币
                         player.addGold(reward.getCount(), ResourceSourceEnum.任务);
-                    } else if (reward.getRewardId() == ResourceEnum.EXP.id) {
-                        // 经验
-                        player.addPlayerExp(reward.getCount(), ResourceSourceEnum.任务);
                     }
                 }
             }
+
+            // 经验
+            ExpConfigData exp = ConfigManager.getExp(req.getTaskId());
+            player.addPlayerExp(exp.taskExp, ResourceSourceEnum.任务);
+
 
             for (final ItemData itemData : collect) {
                 player.addItem(itemData, GameConstants.ITEM_BAG);
@@ -170,6 +176,10 @@ public class TaskHandler {
                         .send(MsgNo.TaskNewPushNo_VALUE,
                                 TaskNewPush.newBuilder().addAllTaskId(newTaskList).buildPartial());
             }
+
+            // event
+            EventManager.firePlayerEvent(player, new TaskCompleteEvent(req.getTaskId()));
+
         }
     }
 

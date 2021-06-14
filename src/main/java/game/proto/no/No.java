@@ -254,6 +254,18 @@ public enum No
    */
   FishHookReq(8002),
   /**
+   * <code>FishEnterAreaReq = 8003;</code>
+   */
+  FishEnterAreaReq(8003),
+  /**
+   * <code>FishExitAreaReq = 8004;</code>
+   */
+  FishExitAreaReq(8004),
+  /**
+   * <code>FishHookPush = 8005;</code>
+   */
+  FishHookPush(8005),
+  /**
    * <pre>
    * Chat
    * </pre>
@@ -514,6 +526,18 @@ public enum No
    */
   public static final int FishHookReq_VALUE = 8002;
   /**
+   * <code>FishEnterAreaReq = 8003;</code>
+   */
+  public static final int FishEnterAreaReq_VALUE = 8003;
+  /**
+   * <code>FishExitAreaReq = 8004;</code>
+   */
+  public static final int FishExitAreaReq_VALUE = 8004;
+  /**
+   * <code>FishHookPush = 8005;</code>
+   */
+  public static final int FishHookPush_VALUE = 8005;
+  /**
    * <pre>
    * Chat
    * </pre>
@@ -595,6 +619,9 @@ public enum No
       case 7004: return ItemSellReq;
       case 8001: return FishReq;
       case 8002: return FishHookReq;
+      case 8003: return FishEnterAreaReq;
+      case 8004: return FishExitAreaReq;
+      case 8005: return FishHookPush;
       case 9001: return ChatMessageReq;
       case 9002: return ChatMessagePush;
       default: return null;

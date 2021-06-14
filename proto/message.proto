@@ -294,9 +294,17 @@ message PlayerChooseHotelRes{
     int32 id = 1;
 }
 
+///////////////////////////////////////////////  Fish
 // 钓鱼
 message FishReq{
 }
+
+// 钓鱼-上钩提示
+message FishHookPush{
+
+}
+
+// 钓鱼-成功发送奖励
 message FishPush{
     bool success = 1;
     repeated Reward reward = 2;
@@ -304,6 +312,16 @@ message FishPush{
 // 钓鱼提竿
 message FishHookReq{
 
+}
+
+// 钓鱼-进入区域
+message FishEnterAreaReq{
+    int32 id = 1;
+}
+
+// 钓鱼-离开区域
+message FishExitAreaReq{
+    int32 id = 1;
 }
 
 //聊天

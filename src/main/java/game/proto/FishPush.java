@@ -4,6 +4,10 @@
 package game.proto;
 
 /**
+ * <pre>
+ * 钓鱼-成功发送奖励
+ * </pre>
+ *
  * Protobuf type {@code Message.FishPush}
  */
 public final class FishPush extends
@@ -320,6 +324,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * 钓鱼-成功发送奖励
+   * </pre>
+   *
    * Protobuf type {@code Message.FishPush}
    */
   public static final class Builder extends

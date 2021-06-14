@@ -164,7 +164,7 @@ public class Player {
     public void prepareData() {
         loginTime = LocalDateTime.fromDateFields(new Date(D.getLoginTime()));
         updateTime = LocalDateTime.fromDateFields(new Date(D.getUpdateTime()));
-        pd.getResourceBuilder().setNeedExp(G.C.dataMap9.get(pd.getLevel()).exp);
+        pd.getResourceBuilder().setNeedExp(ConfigManager.needExp(pd.getLevel()));
 
         // 检查战斗区域
         final int id = pd.getSceneDataBuilder().getId();
@@ -345,13 +345,13 @@ public class Player {
         if (level >= MAX_PLAYER_LEVEL) {
             return;
         }
-        int maxExp = G.C.needExp(level);
+        int maxExp = ConfigManager.needExp(level);
 
         while (exp >= maxExp && level < MAX_PLAYER_LEVEL) {
             level++;
 
             exp -= maxExp;
-            maxExp = G.C.needExp(level);
+            maxExp = ConfigManager.needExp(level);
         }
 
         pd.getResourceBuilder().setExp(exp);
@@ -391,14 +391,14 @@ public class Player {
         int exp = builder.getExp() + count;
         final int oldLevel = playerHero.getLevel();
         int level = playerHero.getLevel();
-        int maxExp = G.C.needExp(level);
+        int maxExp = ConfigManager.needExp(level);
 
         while (exp >= maxExp) {
             level++;
             // 升级
 
             exp -= maxExp;
-            maxExp = G.C.needExp(level);
+            maxExp = ConfigManager.needExp(level);
         }
         builder.setExp(exp);
         builder.setLevel(level);
@@ -525,6 +525,10 @@ public class Player {
         // push
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
 
+    }
+
+    public void addItemToBag(ItemData data) {
+        addItem(data, GameConstants.ITEM_BAG);
     }
 
     /**
@@ -754,6 +758,10 @@ public class Player {
 
     public PlayerData.Builder getPd() {
         return pd;
+    }
+
+    public void send(final No msgNo, final MessageLite msg) {
+        transport.send(msgNo.getNumber(), msg);
     }
 
     public Transport getTransport() {

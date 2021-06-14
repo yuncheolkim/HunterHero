@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public abstract class MapConfigDataBox<T extends BaseConfigData<T>> extends ConfigDataBox<T> {
 
-    private Map<Integer, T> map;
+    protected Map<Integer, T> map;
 
     public MapConfigDataBox(String path) {
         super(path);

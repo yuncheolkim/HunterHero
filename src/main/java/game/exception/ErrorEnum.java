@@ -29,6 +29,7 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     ERR_106(106, "体力不足"),
     ERR_110(110, "钓鱼中"),
     ERR_111(111, "不在钓鱼中"),
+    ERR_112(112, "不在钓鱼区域中"),
     ERR_201(201, "回城CD中"),
 
     ;

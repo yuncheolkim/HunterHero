@@ -79,6 +79,9 @@ enum No {
     // fish
     FishReq = 8001;
     FishHookReq = 8002;
+    FishEnterAreaReq = 8003;
+    FishExitAreaReq = 8004;
+    FishHookPush = 8005;
 
     // Chat
     ChatMessageReq = 9001;

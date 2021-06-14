@@ -13,7 +13,7 @@
         ],
         "notCompleteContentId": 1006,
         "npcId": 1,
-        "reward": "3=40#1=100#401003=1",
+        "reward": "1=100#401003=1",
         "speakType": 1,
         "targetList": [
             2
@@ -26,17 +26,20 @@
         "completeNpcId": 11,
         "completeType": 1,
         "contentId": 2000201,
-        "conversationId": 2000201,
+        "conversationId": 0,
         "i1": 1,
         "id": 2,
         "level": 1,
         "list1": [
             1
         ],
+        "list2": [
+            4
+        ],
         "notCompleteContentId": 2000202,
         "npcId": 11,
-        "reward": "3=83#1=100",
-        "speakType": 2,
+        "reward": "1=100",
+        "speakType": 1,
         "targetList": [
             1
         ],
@@ -54,12 +57,34 @@
         "level": 2,
         "notCompleteContentId": 2000204,
         "npcId": 2,
-        "reward": "3=136#1=100",
-        "speakType": 2,
+        "reward": "1=100",
+        "speakType": 1,
         "targetList": [
             3
         ],
         "taskType": 1,
         "title": "美味蟹肉"
+    },
+    "4": {
+        "completeContentId": 2002,
+        "completeNpcId": 11,
+        "completeType": 1,
+        "contentId": 2001,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 4,
+        "level": 2,
+        "list1": [
+            2
+        ],
+        "notCompleteContentId": 2003,
+        "npcId": 11,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            4
+        ],
+        "taskType": 1,
+        "title": "钓鱼技术"
     }
 }

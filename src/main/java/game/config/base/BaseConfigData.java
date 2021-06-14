@@ -13,6 +13,11 @@ public class BaseConfigData<T extends BaseConfigData<T>> {
     public T convert(DataConfigData data) {
         this.id = data.id;
         this.name = data.name;
+        fill(data);
         return (T) this;
+    }
+
+    protected void fill(DataConfigData d) {
+
     }
 }

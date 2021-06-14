@@ -1,7 +1,6 @@
 package game.module.event.handler;
 
 import game.config.base.DataConfigData;
-import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.module.event.IPlayerEventHandler;
 import game.module.task.TaskService;
@@ -23,9 +22,7 @@ public class ItemAddEventHandler implements IPlayerEventHandler<ItemAddEvent> {
         final DataConfigData item = ConfigManager.getItem(itemId);
 
         // 检查任务
-        if (item.type1 == ItemTypeEnum.TASK.id) {
-            TaskService.calcTaskProcess(player, itemId, addCount, TaskTargetTypeEnum.SEARCH);
-        }
+        TaskService.calcTaskProcess(player, itemId, addCount, TaskTargetTypeEnum.SEARCH);
 
 
     }

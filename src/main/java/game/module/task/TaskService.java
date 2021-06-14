@@ -37,7 +37,7 @@ public class TaskService {
                             continue;
                         }
                         DataConfigData dataConfigData = G.C.taskMap5.get(taskTarget.getId());
-                        if (dataConfigData.v3 == enemyId && CalcUtil.happened10000(dataConfigData.v4)) {
+                        if (dataConfigData.v4 > 0 && dataConfigData.v3 == enemyId && CalcUtil.happened10000(dataConfigData.v4)) {
                             // 需要收集物品
                             list.add(Reward.newBuilder()
                                     .setRewardId(dataConfigData.v1)

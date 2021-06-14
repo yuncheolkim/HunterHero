@@ -29,6 +29,9 @@ message PlayerData {
     // Fish
     int32 fishAreaId = 14;
 
+    // 钓鱼技能等级
+    int32 skillFishLevel = 15;
+
     // 任务信息
     PlayerTask task = 101;
     // 所在场景
@@ -283,9 +286,9 @@ message Reward {
     RewardType type = 100;
     int32 rewardId = 1;
     int32 count = 2;
+    
     // 奖励英雄经验 0：玩家获得经验,大于0：英雄获得经验
     int32 heroId = 3;
-
     // 装备
     Property property = 10;
 }

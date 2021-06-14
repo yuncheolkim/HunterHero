@@ -124,6 +124,16 @@ private static final long serialVersionUID = 0L;
             input.popLimit(limit);
             break;
           }
+          case 112: {
+
+            fishAreaId_ = input.readInt32();
+            break;
+          }
+          case 120: {
+
+            skillFishLevel_ = input.readInt32();
+            break;
+          }
           case 810: {
             game.proto.data.PlayerTask.Builder subBuilder = null;
             if (task_ != null) {
@@ -525,6 +535,36 @@ private static final long serialVersionUID = 0L;
     return collectTitle_.getInt(index);
   }
   private int collectTitleMemoizedSerializedSize = -1;
+
+  public static final int FISHAREAID_FIELD_NUMBER = 14;
+  private int fishAreaId_;
+  /**
+   * <pre>
+   * Fish
+   * </pre>
+   *
+   * <code>int32 fishAreaId = 14;</code>
+   * @return The fishAreaId.
+   */
+  @java.lang.Override
+  public int getFishAreaId() {
+    return fishAreaId_;
+  }
+
+  public static final int SKILLFISHLEVEL_FIELD_NUMBER = 15;
+  private int skillFishLevel_;
+  /**
+   * <pre>
+   * 钓鱼技能等级
+   * </pre>
+   *
+   * <code>int32 skillFishLevel = 15;</code>
+   * @return The skillFishLevel.
+   */
+  @java.lang.Override
+  public int getSkillFishLevel() {
+    return skillFishLevel_;
+  }
 
   public static final int TASK_FIELD_NUMBER = 101;
   private game.proto.data.PlayerTask task_;
@@ -1157,6 +1197,12 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < collectTitle_.size(); i++) {
       output.writeInt32NoTag(collectTitle_.getInt(i));
     }
+    if (fishAreaId_ != 0) {
+      output.writeInt32(14, fishAreaId_);
+    }
+    if (skillFishLevel_ != 0) {
+      output.writeInt32(15, skillFishLevel_);
+    }
     if (task_ != null) {
       output.writeMessage(101, getTask());
     }
@@ -1253,6 +1299,14 @@ private static final long serialVersionUID = 0L;
             .computeInt32SizeNoTag(dataSize);
       }
       collectTitleMemoizedSerializedSize = dataSize;
+    }
+    if (fishAreaId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(14, fishAreaId_);
+    }
+    if (skillFishLevel_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(15, skillFishLevel_);
     }
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -1353,6 +1407,10 @@ private static final long serialVersionUID = 0L;
         != other.getVipLevel()) return false;
     if (!getCollectTitleList()
         .equals(other.getCollectTitleList())) return false;
+    if (getFishAreaId()
+        != other.getFishAreaId()) return false;
+    if (getSkillFishLevel()
+        != other.getSkillFishLevel()) return false;
     if (hasTask() != other.hasTask()) return false;
     if (hasTask()) {
       if (!getTask()
@@ -1419,6 +1477,10 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + COLLECTTITLE_FIELD_NUMBER;
       hash = (53 * hash) + getCollectTitleList().hashCode();
     }
+    hash = (37 * hash) + FISHAREAID_FIELD_NUMBER;
+    hash = (53 * hash) + getFishAreaId();
+    hash = (37 * hash) + SKILLFISHLEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getSkillFishLevel();
     if (hasTask()) {
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
@@ -1647,6 +1709,10 @@ private static final long serialVersionUID = 0L;
 
       collectTitle_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      fishAreaId_ = 0;
+
+      skillFishLevel_ = 0;
+
       if (taskBuilder_ == null) {
         task_ = null;
       } else {
@@ -1728,6 +1794,8 @@ private static final long serialVersionUID = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.collectTitle_ = collectTitle_;
+      result.fishAreaId_ = fishAreaId_;
+      result.skillFishLevel_ = skillFishLevel_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
       } else {
@@ -1855,6 +1923,12 @@ private static final long serialVersionUID = 0L;
           collectTitle_.addAll(other.collectTitle_);
         }
         onChanged();
+      }
+      if (other.getFishAreaId() != 0) {
+        setFishAreaId(other.getFishAreaId());
+      }
+      if (other.getSkillFishLevel() != 0) {
+        setSkillFishLevel(other.getSkillFishLevel());
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
@@ -2507,6 +2581,92 @@ private static final long serialVersionUID = 0L;
     public Builder clearCollectTitle() {
       collectTitle_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+
+    private int fishAreaId_ ;
+    /**
+     * <pre>
+     * Fish
+     * </pre>
+     *
+     * <code>int32 fishAreaId = 14;</code>
+     * @return The fishAreaId.
+     */
+    @java.lang.Override
+    public int getFishAreaId() {
+      return fishAreaId_;
+    }
+    /**
+     * <pre>
+     * Fish
+     * </pre>
+     *
+     * <code>int32 fishAreaId = 14;</code>
+     * @param value The fishAreaId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFishAreaId(int value) {
+      
+      fishAreaId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * Fish
+     * </pre>
+     *
+     * <code>int32 fishAreaId = 14;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFishAreaId() {
+      
+      fishAreaId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int skillFishLevel_ ;
+    /**
+     * <pre>
+     * 钓鱼技能等级
+     * </pre>
+     *
+     * <code>int32 skillFishLevel = 15;</code>
+     * @return The skillFishLevel.
+     */
+    @java.lang.Override
+    public int getSkillFishLevel() {
+      return skillFishLevel_;
+    }
+    /**
+     * <pre>
+     * 钓鱼技能等级
+     * </pre>
+     *
+     * <code>int32 skillFishLevel = 15;</code>
+     * @param value The skillFishLevel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setSkillFishLevel(int value) {
+      
+      skillFishLevel_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 钓鱼技能等级
+     * </pre>
+     *
+     * <code>int32 skillFishLevel = 15;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearSkillFishLevel() {
+      
+      skillFishLevel_ = 0;
       onChanged();
       return this;
     }

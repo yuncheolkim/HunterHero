@@ -130,6 +130,8 @@ public class GameManager extends AbsLifecycle {
         // 钓鱼
         addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));
         addHandler(new Invoker<>(No.FishHookReq_VALUE, FishHandler::fishHook, FishHookReq::parser));
+        addHandler(new Invoker<>(No.FishEnterAreaReq_VALUE, FishHandler::enterArea, FishEnterAreaReq::parser));
+        addHandler(new Invoker<>(No.FishExitAreaReq_VALUE, FishHandler::exitArea, FishExitAreaReq::parser));
         // Chat
         addHandler(new Invoker<>(No.ChatMessageReq_VALUE, ChatHandler::chat, ChatMessageReq::parser));
 

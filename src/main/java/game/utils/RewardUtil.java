@@ -3,6 +3,7 @@ package game.utils;
 import game.config.base.DataConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
+import game.proto.data.ItemData;
 import game.proto.data.Reward;
 import game.proto.data.RewardType;
 import org.apache.commons.lang3.StringUtils;
@@ -56,4 +57,14 @@ public class RewardUtil {
         }
         return list;
     }
+
+    public static ItemData rewardToItemData(Reward reward) {
+        return ItemData.newBuilder()
+                .setItemId(reward.getRewardId())
+                .setCount(reward.getCount())
+                .setProperty(reward.getProperty())
+                .build();
+    }
+
+
 }

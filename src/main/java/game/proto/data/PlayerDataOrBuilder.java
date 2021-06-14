@@ -124,6 +124,26 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * Fish
+   * </pre>
+   *
+   * <code>int32 fishAreaId = 14;</code>
+   * @return The fishAreaId.
+   */
+  int getFishAreaId();
+
+  /**
+   * <pre>
+   * 钓鱼技能等级
+   * </pre>
+   *
+   * <code>int32 skillFishLevel = 15;</code>
+   * @return The skillFishLevel.
+   */
+  int getSkillFishLevel();
+
+  /**
+   * <pre>
    * 任务信息
    * </pre>
    *

@@ -4,6 +4,8 @@ import game.base.Logs;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -13,6 +15,7 @@ import java.util.Map;
 public abstract class ConfigDataBox<T extends BaseConfigData<T>> {
     private final String path;
     protected final Type type;
+    protected List<String> pathList;
 
     public ConfigDataBox(String path) {
         this.path = path;
@@ -27,8 +30,25 @@ public abstract class ConfigDataBox<T extends BaseConfigData<T>> {
 
 
     public void parse() {
+        if (pathList != null) {
+            Map<Integer, DataConfigData> dataMap = new HashMap<>();
 
-        parse(new JsonConfig(path).load());
+            for (String path : pathList) {
+                Map<Integer, DataConfigData> load = new JsonConfig(path).load();
+                for (DataConfigData value : load.values()) {
+                    if (dataMap.containsKey(value.id)) {
+                        throw new IllegalArgumentException("键值重复:" + value.id);
+                    }
+                    dataMap.put(value.id, value);
+                }
+            }
+
+            parse(dataMap);
+
+        } else {
+            parse(new JsonConfig(path).load());
+        }
+
     }
 
     protected abstract void parse(Map<Integer, DataConfigData> dataMap);
@@ -47,4 +67,9 @@ public abstract class ConfigDataBox<T extends BaseConfigData<T>> {
 
 
     public abstract T findById(int id);
+
+    public ConfigDataBox<T> setPathList(List<String> pathList) {
+        this.pathList = pathList;
+        return this;
+    }
 }

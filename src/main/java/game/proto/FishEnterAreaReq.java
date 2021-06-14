@@ -5,29 +5,28 @@ package game.proto;
 
 /**
  * <pre>
- *&#47;////////////////////////////////////////////  Fish
- * 钓鱼
+ * 钓鱼-进入区域
  * </pre>
  *
- * Protobuf type {@code Message.FishReq}
+ * Protobuf type {@code Message.FishEnterAreaReq}
  */
-public final class FishReq extends
+public final class FishEnterAreaReq extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.FishReq)
-    FishReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.FishEnterAreaReq)
+    FishEnterAreaReqOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use FishReq.newBuilder() to construct.
-  private FishReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FishEnterAreaReq.newBuilder() to construct.
+  private FishEnterAreaReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private FishReq() {
+  private FishEnterAreaReq() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new FishReq();
+    return new FishEnterAreaReq();
   }
 
   @java.lang.Override
@@ -35,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private FishReq(
+  private FishEnterAreaReq(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -53,6 +52,11 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+
+            id_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -74,15 +78,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_FishReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_FishEnterAreaReq_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_FishReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_FishEnterAreaReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.FishReq.class, game.proto.FishReq.Builder.class);
+            game.proto.FishEnterAreaReq.class, game.proto.FishEnterAreaReq.Builder.class);
+  }
+
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_;
+  /**
+   * <code>int32 id = 1;</code>
+   * @return The id.
+   */
+  @java.lang.Override
+  public int getId() {
+    return id_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -99,6 +114,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (id_ != 0) {
+      output.writeInt32(1, id_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -108,6 +126,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (id_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, id_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -118,11 +140,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.FishReq)) {
+    if (!(obj instanceof game.proto.FishEnterAreaReq)) {
       return super.equals(obj);
     }
-    game.proto.FishReq other = (game.proto.FishReq) obj;
+    game.proto.FishEnterAreaReq other = (game.proto.FishEnterAreaReq) obj;
 
+    if (getId()
+        != other.getId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -134,74 +158,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FishReq parseFrom(byte[] data)
+  public static game.proto.FishEnterAreaReq parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FishReq parseFrom(java.io.InputStream input)
+  public static game.proto.FishEnterAreaReq parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.FishReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.FishEnterAreaReq parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.FishReq parseDelimitedFrom(
+  public static game.proto.FishEnterAreaReq parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.FishReq parseFrom(
+  public static game.proto.FishEnterAreaReq parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -214,7 +240,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.FishReq prototype) {
+  public static Builder newBuilder(game.proto.FishEnterAreaReq prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -231,30 +257,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *&#47;////////////////////////////////////////////  Fish
-   * 钓鱼
+   * 钓鱼-进入区域
    * </pre>
    *
-   * Protobuf type {@code Message.FishReq}
+   * Protobuf type {@code Message.FishEnterAreaReq}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.FishReq)
-      game.proto.FishReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.FishEnterAreaReq)
+      game.proto.FishEnterAreaReqOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_FishReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_FishEnterAreaReq_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_FishReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_FishEnterAreaReq_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.FishReq.class, game.proto.FishReq.Builder.class);
+              game.proto.FishEnterAreaReq.class, game.proto.FishEnterAreaReq.Builder.class);
     }
 
-    // Construct using game.proto.FishReq.newBuilder()
+    // Construct using game.proto.FishEnterAreaReq.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -272,23 +297,25 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      id_ = 0;
+
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_FishReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_FishEnterAreaReq_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.FishReq getDefaultInstanceForType() {
-      return game.proto.FishReq.getDefaultInstance();
+    public game.proto.FishEnterAreaReq getDefaultInstanceForType() {
+      return game.proto.FishEnterAreaReq.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.FishReq build() {
-      game.proto.FishReq result = buildPartial();
+    public game.proto.FishEnterAreaReq build() {
+      game.proto.FishEnterAreaReq result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -296,8 +323,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.FishReq buildPartial() {
-      game.proto.FishReq result = new game.proto.FishReq(this);
+    public game.proto.FishEnterAreaReq buildPartial() {
+      game.proto.FishEnterAreaReq result = new game.proto.FishEnterAreaReq(this);
+      result.id_ = id_;
       onBuilt();
       return result;
     }
@@ -336,16 +364,19 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.FishReq) {
-        return mergeFrom((game.proto.FishReq)other);
+      if (other instanceof game.proto.FishEnterAreaReq) {
+        return mergeFrom((game.proto.FishEnterAreaReq)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.FishReq other) {
-      if (other == game.proto.FishReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.FishEnterAreaReq other) {
+      if (other == game.proto.FishEnterAreaReq.getDefaultInstance()) return this;
+      if (other.getId() != 0) {
+        setId(other.getId());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -361,17 +392,48 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.FishReq parsedMessage = null;
+      game.proto.FishEnterAreaReq parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.FishReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.FishEnterAreaReq) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private int id_ ;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+    /**
+     * <code>int32 id = 1;</code>
+     * @param value The id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setId(int value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 id = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearId() {
+      
+      id_ = 0;
+      onChanged();
       return this;
     }
     @java.lang.Override
@@ -387,41 +449,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.FishReq)
+    // @@protoc_insertion_point(builder_scope:Message.FishEnterAreaReq)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.FishReq)
-  private static final game.proto.FishReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.FishEnterAreaReq)
+  private static final game.proto.FishEnterAreaReq DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.FishReq();
+    DEFAULT_INSTANCE = new game.proto.FishEnterAreaReq();
   }
 
-  public static game.proto.FishReq getDefaultInstance() {
+  public static game.proto.FishEnterAreaReq getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FishReq>
-      PARSER = new com.google.protobuf.AbstractParser<FishReq>() {
+  private static final com.google.protobuf.Parser<FishEnterAreaReq>
+      PARSER = new com.google.protobuf.AbstractParser<FishEnterAreaReq>() {
     @java.lang.Override
-    public FishReq parsePartialFrom(
+    public FishEnterAreaReq parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new FishReq(input, extensionRegistry);
+      return new FishEnterAreaReq(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<FishReq> parser() {
+  public static com.google.protobuf.Parser<FishEnterAreaReq> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<FishReq> getParserForType() {
+  public com.google.protobuf.Parser<FishEnterAreaReq> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.FishReq getDefaultInstanceForType() {
+  public game.proto.FishEnterAreaReq getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

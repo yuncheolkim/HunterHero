@@ -7,6 +7,8 @@ package game.player;
 public class FishAction {
     private int id;
 
+    private int areaId;
+
     /**
      * 是否在钓鱼
      */
@@ -59,10 +61,8 @@ public class FishAction {
      * @return 提竿是否成功
      */
     public boolean hook() {
-        if (hook) {
-            fail = false;
-        }
-        return fail;
+        fail = !hook;
+        return hook;
     }
 
     /**
@@ -75,6 +75,7 @@ public class FishAction {
         fail = false;
         hook = false;
 
+
     }
 
     public void setFail(boolean fail) {
@@ -84,5 +85,17 @@ public class FishAction {
 
     public int getId() {
         return id;
+    }
+
+    public int getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(int areaId) {
+        this.areaId = areaId;
+    }
+
+    public void exitArea() {
+        areaId = 0;
     }
 }

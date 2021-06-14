@@ -2,15 +2,14 @@ package game.manager;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
 import game.base.G;
 import game.config.base.BaseConfigData;
 import game.config.base.DataConfigData;
 import game.config.base.JsonConfig;
-import game.config.box.EnemyTemplateDataBox;
-import game.config.box.FishAreaDataBox;
-import game.config.box.TitleDataBox;
+import game.config.box.*;
 import game.config.data.*;
 import game.proto.data.Property;
 import game.utils.CalcUtil;
@@ -39,8 +38,6 @@ public class ConfigManager extends AbsLifecycle {
 
 
     public Map<Integer, DataConfigData> dataMap7;
-
-    public Map<Integer, DataConfigData> dataMap9;
 
     public Map<Integer, DataConfigData> dataMap10;
 
@@ -106,6 +103,11 @@ public class ConfigManager extends AbsLifecycle {
     private static final TitleDataBox titleDataBox = new TitleDataBox();
     // fish
     public static final FishAreaDataBox fishAreaDataBox = new FishAreaDataBox();
+    public static final FishWeightDataBox fishWeightAreaDataBox = new FishWeightDataBox();
+
+    // 9-Exp
+    public static final ExpDataBox expDataBox = new ExpDataBox();
+
 
     @Override
 
@@ -117,7 +119,7 @@ public class ConfigManager extends AbsLifecycle {
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
-        dataMap9 = new JsonConfig("data/data_9-经验.json", 64).load();
+//        dataMap9 = new JsonConfig("data/data_9-经验.json", 64).load();
         dataMap10 = new JsonConfig("data/data_10-资源.json", 16).load();
         dataMap11 = new JsonConfig("data/data_11-称谓.json", 32).load();
         dataMap12 = new JsonConfig("data/data_12-历练.json", 64).load();
@@ -137,11 +139,17 @@ public class ConfigManager extends AbsLifecycle {
 
         // item
         final ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
-        itemConfigDataBuilder.putAll(new JsonConfig("data/item_base.json").load());
-        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-1.json").load());
-        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-2.json").load());
-        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-3.json").load());
-        itemConfigDataBuilder.putAll(new JsonConfig("data/item_装备4-4.json").load());
+
+        Lists.newArrayList(
+                "data/item_base.json",
+                "data/item_材料3.json",
+                "data/item_装备4-1.json",
+                "data/item_装备4-2.json",
+                "data/item_装备4-3.json",
+                "data/item_装备4-4.json"
+        ).forEach(s -> {
+            itemConfigDataBuilder.putAll(new JsonConfig(s).load());
+        });
         itemMap = itemConfigDataBuilder.build();
 
 
@@ -229,6 +237,9 @@ public class ConfigManager extends AbsLifecycle {
         titleDataBox.parse();
         // fish
         fishAreaDataBox.parse();
+        fishWeightAreaDataBox.parse();
+        // exp
+        expDataBox.parse();
 
     }
 
@@ -295,12 +306,16 @@ public class ConfigManager extends AbsLifecycle {
      * @param level
      * @return
      */
-    public int needExp(final int level) {
-        final DataConfigData dataConfigData = dataMap9.get(level);
+    public static int needExp(final int level) {
+        final ExpConfigData dataConfigData = expDataBox.findById(level);
         if (dataConfigData == null) {
             return Integer.MAX_VALUE;
         }
-        return dataConfigData.exp;
+        return dataConfigData.needExp;
+    }
+
+    public static ExpConfigData getExp(final int level) {
+        return expDataBox.findById(level);
     }
 
     /**

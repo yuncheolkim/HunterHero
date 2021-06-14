@@ -39,6 +39,8 @@ public class EventManager {
         addEvent(new ItemAddEventHandler());
         // 增加英雄
         addEvent(new HeroAddEventHandler());
+        // 完成任务
+        addEvent(new TaskCompleteEventHandler());
     }
 
     /**

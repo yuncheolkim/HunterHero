@@ -1,0 +1,40 @@
+{
+    "301001": {
+        "content": "钉子",
+        "desc": "一个钉子",
+        "id": 301001,
+        "name": "钉子",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 200,
+        "type1": 3,
+        "type2": 1,
+        "value": 5
+    },
+    "302001": {
+        "content": "辣椒",
+        "desc": "辣椒",
+        "id": 302001,
+        "name": "辣椒",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 200,
+        "type1": 3,
+        "type2": 2,
+        "value": 5
+    },
+    "303001": {
+        "desc": "鱼",
+        "id": 303001,
+        "name": "鲤鱼",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 200,
+        "type1": 3,
+        "type2": 3,
+        "value": 5
+    }
+}

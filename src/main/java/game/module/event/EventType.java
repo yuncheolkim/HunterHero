@@ -19,5 +19,7 @@ public enum EventType {
     ITEM_ADD,
     // 增加英雄
     HERO_ADD,
+    // 完成任务
+    TASK_COMPLETE,
 
 }

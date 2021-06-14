@@ -270,6 +270,11 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FishReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishHookPush_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishHookPush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_FishPush_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -279,6 +284,16 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FishHookReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishEnterAreaReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishEnterAreaReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FishExitAreaReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FishExitAreaReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_ChatMessageReq_descriptor;
   static final 
@@ -385,19 +400,21 @@ public final class MessageOuterClass {
       "\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\" \n\020PlayerGoHotelRes\022" +
       "\014\n\004time\030\001 \001(\003\"\"\n\024PlayerChooseHotelReq\022\n\n" +
       "\002id\030\001 \001(\005\"\"\n\024PlayerChooseHotelRes\022\n\n\002id\030" +
-      "\001 \001(\005\"\t\n\007FishReq\"<\n\010FishPush\022\017\n\007success\030" +
-      "\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Reward\"\r" +
-      "\n\013FishHookReq\"X\n\016ChatMessageReq\022%\n\007chann" +
-      "el\030\001 \001(\0162\024.Message.ChatChannel\022\016\n\006toUser" +
-      "\030\002 \001(\003\022\017\n\007content\030\n \001(\t\"\203\001\n\017ChatMessageP" +
-      "ush\022%\n\007channel\030\001 \001(\0162\024.Message.ChatChann" +
-      "el\022\020\n\010fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\n\n\002id" +
-      "\030\004 \001(\003\022\017\n\007content\030\n \001(\t\022\014\n\004name\030\013 \001(\t\"\034\n" +
-      "\016TitleChooseReq\022\n\n\002id\030\001 \001(\005\"\034\n\016TitleChoo" +
-      "seRes\022\n\n\002id\030\001 \001(\005\"\032\n\014TitleNewPush\022\n\n\002id\030" +
-      "\001 \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORL" +
-      "D\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022" +
-      "\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "\001 \001(\005\"\t\n\007FishReq\"\016\n\014FishHookPush\"<\n\010Fish" +
+      "Push\022\017\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017." +
+      "Message.Reward\"\r\n\013FishHookReq\"\036\n\020FishEnt" +
+      "erAreaReq\022\n\n\002id\030\001 \001(\005\"\035\n\017FishExitAreaReq" +
+      "\022\n\n\002id\030\001 \001(\005\"X\n\016ChatMessageReq\022%\n\007channe" +
+      "l\030\001 \001(\0162\024.Message.ChatChannel\022\016\n\006toUser\030" +
+      "\002 \001(\003\022\017\n\007content\030\n \001(\t\"\203\001\n\017ChatMessagePu" +
+      "sh\022%\n\007channel\030\001 \001(\0162\024.Message.ChatChanne" +
+      "l\022\020\n\010fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\n\n\002id\030" +
+      "\004 \001(\003\022\017\n\007content\030\n \001(\t\022\014\n\004name\030\013 \001(\t\"\034\n\016" +
+      "TitleChooseReq\022\n\n\002id\030\001 \001(\005\"\034\n\016TitleChoos" +
+      "eRes\022\n\n\002id\030\001 \001(\005\"\032\n\014TitleNewPush\022\n\n\002id\030\001" +
+      " \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD" +
+      "\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010" +
+      "\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -710,44 +727,62 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishReq_descriptor,
         new java.lang.String[] { });
-    internal_static_Message_FishPush_descriptor =
+    internal_static_Message_FishHookPush_descriptor =
       getDescriptor().getMessageTypes().get(50);
+    internal_static_Message_FishHookPush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishHookPush_descriptor,
+        new java.lang.String[] { });
+    internal_static_Message_FishPush_descriptor =
+      getDescriptor().getMessageTypes().get(51);
     internal_static_Message_FishPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishPush_descriptor,
         new java.lang.String[] { "Success", "Reward", });
     internal_static_Message_FishHookReq_descriptor =
-      getDescriptor().getMessageTypes().get(51);
+      getDescriptor().getMessageTypes().get(52);
     internal_static_Message_FishHookReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishHookReq_descriptor,
         new java.lang.String[] { });
+    internal_static_Message_FishEnterAreaReq_descriptor =
+      getDescriptor().getMessageTypes().get(53);
+    internal_static_Message_FishEnterAreaReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishEnterAreaReq_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_FishExitAreaReq_descriptor =
+      getDescriptor().getMessageTypes().get(54);
+    internal_static_Message_FishExitAreaReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FishExitAreaReq_descriptor,
+        new java.lang.String[] { "Id", });
     internal_static_Message_ChatMessageReq_descriptor =
-      getDescriptor().getMessageTypes().get(52);
+      getDescriptor().getMessageTypes().get(55);
     internal_static_Message_ChatMessageReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ChatMessageReq_descriptor,
         new java.lang.String[] { "Channel", "ToUser", "Content", });
     internal_static_Message_ChatMessagePush_descriptor =
-      getDescriptor().getMessageTypes().get(53);
+      getDescriptor().getMessageTypes().get(56);
     internal_static_Message_ChatMessagePush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ChatMessagePush_descriptor,
         new java.lang.String[] { "Channel", "FromUser", "Time", "Id", "Content", "Name", });
     internal_static_Message_TitleChooseReq_descriptor =
-      getDescriptor().getMessageTypes().get(54);
+      getDescriptor().getMessageTypes().get(57);
     internal_static_Message_TitleChooseReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TitleChooseReq_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_Message_TitleChooseRes_descriptor =
-      getDescriptor().getMessageTypes().get(55);
+      getDescriptor().getMessageTypes().get(58);
     internal_static_Message_TitleChooseRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TitleChooseRes_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_Message_TitleNewPush_descriptor =
-      getDescriptor().getMessageTypes().get(56);
+      getDescriptor().getMessageTypes().get(59);
     internal_static_Message_TitleNewPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_TitleNewPush_descriptor,

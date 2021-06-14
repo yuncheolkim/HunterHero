@@ -97,7 +97,7 @@ public class FightHandler {
                 final int enemyId = sideBhero.simple.id;
                 final int earnExp = ItemDropService.dropExp(sideBhero.simple.level);
                 expList.add(new Tuple2<>(sideBhero.simple.level, earnExp));
-                gold += ItemDropService.dropGold(sideBhero.simple.level);
+                gold += ItemDropService.enemyDropGold(sideBhero.simple.level);
                 Integer enemyCount = enemyCountMap.get(enemyId);
                 if (enemyCount == null) {
                     enemyCount = 0;
