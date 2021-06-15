@@ -41,7 +41,6 @@ public class EvilAssert {
         }
     }
 
-
     // Not empty
     public static void notEmpty(final Collection<?> collection, final String msg) {
         if (CollectionUtils.isEmpty(collection)) {

@@ -3,11 +3,15 @@ package game.module.fight;
 import game.base.Logs;
 import game.base.constants.GameConstants;
 import game.base.util.Tuple2;
+import game.config.box.BattleFormationDataBox;
 import game.exception.ErrorEnum;
+import game.exception.EvilAssert;
+import game.exception.ModuleAssert;
 import game.exception.ModuleException;
 import game.game.ConsumeTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
+import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.battle.*;
 import game.module.battle.hero.creature.CreatureTarget;
@@ -22,6 +26,7 @@ import game.player.Player;
 import game.proto.*;
 import game.proto.back.MsgNo;
 import game.proto.data.*;
+import game.proto.no.No;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
 import game.utils.ResourceCalcUtil;
@@ -55,6 +60,7 @@ public class FightHandler {
         player.D.setFightTime(DateUtils.now() + TimeUnit.MINUTES.toMillis(10));
 
         final Battle battle = new Battle();
+
         // enemy
         for (final FightEnemyInfo enemy : player.getPd().getFightInfoList()) {
             final CreatureTarget fightEnemy = HeroFactory.createFightEnemy(enemy);
@@ -260,12 +266,35 @@ public class FightHandler {
      * @param player
      * @param req
      */
-    public static void endFight(final Player player, final Empty req) {
+    public static void endFight(final Player player) {
         player.pd.clearFightInfo();
+        player.pd.setBattleId(0);
+
         // 是否还在战斗区域
         if (player.D.getFightAreaCount() > 0) {
             player.D.setFightTime(DateUtils.now() + CalcUtil.random(5000, 20000));
         }
+    }
+
+
+    /**
+     * 进入战役
+     *
+     * @param player
+     */
+    public static void battleEnter(final Player player, BattleEnterReq req) {
+        BattleFormationDataBox formationDataBox = ConfigManager.battleFormationDataBox;
+        EvilAssert.notNull(formationDataBox.findByCollectId(req.getId()), "战役不存在");
+        ModuleAssert.isFalse(player.getPd().getFightInfoCount() > 0, ErrorEnum.ERR_113);
+
+        FightStartPush fightStartPush = FightService.genBattleEnemy(req.getId());
+
+        player.pd.addAllFightInfo(fightStartPush.getInfoList());
+        player.pd.setBattleId(req.getId());
+        player.getTransport().send(Message.newBuilder()
+                .setMsgNo(No.FightStartPush_VALUE)
+                .setBody(fightStartPush.toByteString())
+                .build());
     }
 
     /**

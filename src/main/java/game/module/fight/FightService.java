@@ -2,15 +2,18 @@ package game.module.fight;
 
 import game.base.G;
 import game.base.Logs;
+import game.config.data.BattleFormationConfigData;
 import game.config.data.EnemyAreaConfigData;
 import game.config.data.EnemyConfigData;
 import game.config.data.EnemyCountConfigData;
+import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.FightStartPush;
 import game.proto.Message;
 import game.proto.back.FightType;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
+import game.proto.no.No;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
 
@@ -47,7 +50,7 @@ public class FightService {
                 player.getPd().addAllFightInfo(fightStartPush.getInfoList());
 
                 player.getTransport().send(Message.newBuilder()
-                        .setMsgNo(2002)
+                        .setMsgNo(No.FightStartPush_VALUE)
                         .setBody(fightStartPush.toByteString())
                         .build());
                 // 选择英雄时间
@@ -88,7 +91,7 @@ public class FightService {
             result.add(CalcUtil.weightRandom(enemyList, allWeight));
         }
 
-        // heor pos
+        // hero pos
         final List<Integer> pos = RANDOM_8.posList(count);
 
         final FightStartPush.Builder push = FightStartPush.newBuilder();
@@ -109,5 +112,22 @@ public class FightService {
         return push.build();
     }
 
+    public static FightStartPush genBattleEnemy(int battleId) {
+
+        List<BattleFormationConfigData> enemyList = ConfigManager.battleFormationDataBox.findByCollectId(battleId);
+        final FightStartPush.Builder push = FightStartPush.newBuilder();
+        for (BattleFormationConfigData d : enemyList) {
+
+            final FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
+            builder.setId(d.enemyId);
+            builder.setPos(d.pos);
+            builder.setLevel(d.level);
+            builder.setType(EnemyType.CREATURE);
+            builder.setName(d.name);
+            builder.setProperty(d.property);
+            push.addInfo(builder);
+        }
+        return push.build();
+    }
 
 }

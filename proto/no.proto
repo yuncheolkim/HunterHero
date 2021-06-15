@@ -37,6 +37,9 @@ enum No {
     FightEndReq = 2004;
     FightTestReq = 2005;
 
+    // Battle
+    BattleEnterReq = 2010;
+
     // Scene
     EnterSceneReq = 3001;
     EnterFightAreaReq = 3002;

@@ -12,7 +12,7 @@ import java.util.Map;
  * @author Yunzhe.Jin
  * 2021/6/12 19:14
  */
-public abstract class ConfigDataBox<T extends BaseConfigData<T>> {
+public abstract class ConfigDataBox<T extends BaseConfigData<T>> implements IConfigParse {
     private final String path;
     protected final Type type;
     protected List<String> pathList;

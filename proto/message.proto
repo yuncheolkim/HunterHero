@@ -363,3 +363,10 @@ message TitleChooseRes{
 message TitleNewPush{
     int32 id = 1;
 }
+
+///////////////////////////////////////////////  Battle
+
+message BattleEnterReq{
+    int32 id = 1;
+}
+

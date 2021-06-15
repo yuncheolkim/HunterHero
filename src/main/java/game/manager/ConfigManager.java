@@ -8,6 +8,7 @@ import game.base.AbsLifecycle;
 import game.base.G;
 import game.config.base.BaseConfigData;
 import game.config.base.DataConfigData;
+import game.config.base.IConfigParse;
 import game.config.base.JsonConfig;
 import game.config.box.*;
 import game.config.data.*;
@@ -103,14 +104,25 @@ public class ConfigManager extends AbsLifecycle {
     private static final TitleDataBox titleDataBox = new TitleDataBox();
     // fish
     public static final FishAreaDataBox fishAreaDataBox = new FishAreaDataBox();
-    public static final FishWeightDataBox fishWeightAreaDataBox = new FishWeightDataBox();
+    public static final FishDataBox fishWeightAreaDataBox = new FishDataBox();
 
     // 9-Exp
     public static final ExpDataBox expDataBox = new ExpDataBox();
 
+    // Battle-formation
+    public static final BattleFormationDataBox battleFormationDataBox = new BattleFormationDataBox();
+    private static final List<IConfigParse> list = new ArrayList<>(32);
+
+    static {
+        // 注意顺序
+        list.add(battleFormationDataBox);
+        list.add(titleDataBox);
+        list.add(fishAreaDataBox);
+        list.add(fishWeightAreaDataBox);
+        list.add(expDataBox);
+    }
 
     @Override
-
     public void start() {
         super.start();
         dataMap1 = new JsonConfig("data/data_1-hero.json", 32).load();
@@ -137,6 +149,8 @@ public class ConfigManager extends AbsLifecycle {
         taskMap5 = new JsonConfig("data/task_5-任务目标.json").load();
         heroMap1001 = new JsonConfig("data/hero_base.json").load();
 
+        enemyTemplateBox.parse();
+
         // item
         final ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
 
@@ -152,10 +166,6 @@ public class ConfigManager extends AbsLifecycle {
         });
         itemMap = itemConfigDataBuilder.build();
 
-
-        ///// 进一步加工
-        // 21-怪模版
-        enemyTemplateBox.parse();
 
         final Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
 
@@ -233,14 +243,15 @@ public class ConfigManager extends AbsLifecycle {
         // 18-商店
         shopMap = makeMapData("data/data_18-商店.json", ShopConfigData::new);
 
-        // 11-称谓
-        titleDataBox.parse();
-        // fish
-        fishAreaDataBox.parse();
-        fishWeightAreaDataBox.parse();
-        // exp
-        expDataBox.parse();
+        // 解析配置表
+        for (IConfigParse iConfigParse : list) {
+            iConfigParse.parse();
+        }
 
+    }
+
+    public static Property makePropertyByTemplate(final DataConfigData f) {
+        return makeProperty(GetEnemyTemplate(f.level), f);
     }
 
     /**

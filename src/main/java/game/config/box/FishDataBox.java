@@ -1,14 +1,14 @@
 package game.config.box;
 
-import game.config.base.WeightMapConfigDataBox;
+import game.config.base.MapListConfigDataBox;
 import game.config.data.FishWeightConfigData;
 
 /**
  * @author Yunzhe.Jin
  * 2021/6/13 22:29
  */
-public class FishWeightDataBox extends WeightMapConfigDataBox<FishWeightConfigData> {
-    public FishWeightDataBox() {
+public class FishDataBox extends MapListConfigDataBox<FishWeightConfigData> {
+    public FishDataBox() {
         super("data/fish_捕鱼概率.json");
     }
 

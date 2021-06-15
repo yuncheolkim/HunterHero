@@ -106,8 +106,10 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.ExitFightAreaReq_VALUE, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
         // fight
         addHandler(new Invoker<>(No.FightStartReq_VALUE, FightHandler::fight, FightStartReq::parser));
-        addHandler(new Invoker<>(No.FightEndReq_VALUE, FightHandler::endFight, Empty::parser));
+        addHandler(new InvokerNoParam(No.FightEndReq_VALUE, FightHandler::endFight));
         addHandler(new RetInvoker<>(No.FightTestReq_VALUE, FightHandler::fightExercise, FightTestReq::parser));
+        // battle
+        addHandler(new Invoker<>(No.BattleEnterReq_VALUE, FightHandler::battleEnter, BattleEnterReq::parser));
         // hero
         addHandler(new Invoker<>(No.HeroUpReq_VALUE, HeroHandler::powerUp, HeroUpReq::parser));
         addHandler(new RetInvoker<>(No.HeroTalentChangeReq_VALUE, HeroHandler::HeroTalentChangeReq, HeroTalentChangeReq::parser));

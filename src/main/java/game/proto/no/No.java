@@ -114,6 +114,14 @@ public enum No
   FightTestReq(2005),
   /**
    * <pre>
+   * Battle
+   * </pre>
+   *
+   * <code>BattleEnterReq = 2010;</code>
+   */
+  BattleEnterReq(2010),
+  /**
+   * <pre>
    * Scene
    * </pre>
    *
@@ -386,6 +394,14 @@ public enum No
   public static final int FightTestReq_VALUE = 2005;
   /**
    * <pre>
+   * Battle
+   * </pre>
+   *
+   * <code>BattleEnterReq = 2010;</code>
+   */
+  public static final int BattleEnterReq_VALUE = 2010;
+  /**
+   * <pre>
    * Scene
    * </pre>
    *
@@ -594,6 +610,7 @@ public enum No
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;
       case 2005: return FightTestReq;
+      case 2010: return BattleEnterReq;
       case 3001: return EnterSceneReq;
       case 3002: return EnterFightAreaReq;
       case 3003: return ExitFightAreaReq;

@@ -134,6 +134,11 @@ private static final long serialVersionUID = 0L;
             skillFishLevel_ = input.readInt32();
             break;
           }
+          case 128: {
+
+            battleId_ = input.readInt32();
+            break;
+          }
           case 810: {
             game.proto.data.PlayerTask.Builder subBuilder = null;
             if (task_ != null) {
@@ -564,6 +569,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getSkillFishLevel() {
     return skillFishLevel_;
+  }
+
+  public static final int BATTLEID_FIELD_NUMBER = 16;
+  private int battleId_;
+  /**
+   * <pre>
+   * 正在进行的战役
+   * </pre>
+   *
+   * <code>int32 battleId = 16;</code>
+   * @return The battleId.
+   */
+  @java.lang.Override
+  public int getBattleId() {
+    return battleId_;
   }
 
   public static final int TASK_FIELD_NUMBER = 101;
@@ -1203,6 +1223,9 @@ private static final long serialVersionUID = 0L;
     if (skillFishLevel_ != 0) {
       output.writeInt32(15, skillFishLevel_);
     }
+    if (battleId_ != 0) {
+      output.writeInt32(16, battleId_);
+    }
     if (task_ != null) {
       output.writeMessage(101, getTask());
     }
@@ -1308,6 +1331,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(15, skillFishLevel_);
     }
+    if (battleId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(16, battleId_);
+    }
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(101, getTask());
@@ -1411,6 +1438,8 @@ private static final long serialVersionUID = 0L;
         != other.getFishAreaId()) return false;
     if (getSkillFishLevel()
         != other.getSkillFishLevel()) return false;
+    if (getBattleId()
+        != other.getBattleId()) return false;
     if (hasTask() != other.hasTask()) return false;
     if (hasTask()) {
       if (!getTask()
@@ -1481,6 +1510,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getFishAreaId();
     hash = (37 * hash) + SKILLFISHLEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getSkillFishLevel();
+    hash = (37 * hash) + BATTLEID_FIELD_NUMBER;
+    hash = (53 * hash) + getBattleId();
     if (hasTask()) {
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
@@ -1713,6 +1744,8 @@ private static final long serialVersionUID = 0L;
 
       skillFishLevel_ = 0;
 
+      battleId_ = 0;
+
       if (taskBuilder_ == null) {
         task_ = null;
       } else {
@@ -1796,6 +1829,7 @@ private static final long serialVersionUID = 0L;
       result.collectTitle_ = collectTitle_;
       result.fishAreaId_ = fishAreaId_;
       result.skillFishLevel_ = skillFishLevel_;
+      result.battleId_ = battleId_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
       } else {
@@ -1929,6 +1963,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getSkillFishLevel() != 0) {
         setSkillFishLevel(other.getSkillFishLevel());
+      }
+      if (other.getBattleId() != 0) {
+        setBattleId(other.getBattleId());
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
@@ -2667,6 +2704,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearSkillFishLevel() {
       
       skillFishLevel_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int battleId_ ;
+    /**
+     * <pre>
+     * 正在进行的战役
+     * </pre>
+     *
+     * <code>int32 battleId = 16;</code>
+     * @return The battleId.
+     */
+    @java.lang.Override
+    public int getBattleId() {
+      return battleId_;
+    }
+    /**
+     * <pre>
+     * 正在进行的战役
+     * </pre>
+     *
+     * <code>int32 battleId = 16;</code>
+     * @param value The battleId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBattleId(int value) {
+      
+      battleId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 正在进行的战役
+     * </pre>
+     *
+     * <code>int32 battleId = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBattleId() {
+      
+      battleId_ = 0;
       onChanged();
       return this;
     }

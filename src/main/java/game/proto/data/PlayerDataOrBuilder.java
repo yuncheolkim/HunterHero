@@ -144,6 +144,16 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 正在进行的战役
+   * </pre>
+   *
+   * <code>int32 battleId = 16;</code>
+   * @return The battleId.
+   */
+  int getBattleId();
+
+  /**
+   * <pre>
    * 任务信息
    * </pre>
    *

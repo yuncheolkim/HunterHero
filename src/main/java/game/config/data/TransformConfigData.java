@@ -11,9 +11,7 @@ public class TransformConfigData extends BaseConfigData<TransformConfigData> {
     public int sceneId;
 
     @Override
-    public TransformConfigData convert(DataConfigData data) {
-        TransformConfigData convert = super.convert(data);
-        convert.sceneId = data.i1;
-        return convert;
+    protected void fill(DataConfigData d) {
+        sceneId = d.i1;
     }
 }

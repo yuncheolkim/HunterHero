@@ -24,7 +24,7 @@
     "10": {
         "completeContentId": 2008,
         "completeNpcId": 6,
-        "completeType": 1,
+        "completeType": 2,
         "contentId": 2006,
         "conversationId": 0,
         "i1": 1,
@@ -36,23 +36,24 @@
         "list2": [
             11
         ],
-        "notCompleteContentId": 2007,
-        "npcId": 6,
-        "reward": "1=200",
+        "notCompleteContentId": 0,
+        "npcId": 10,
+        "reward": "1=100",
         "speakType": 1,
         "targetList": [
             10
         ],
         "taskType": 1,
-        "title": "一决胜负"
+        "title": "纠缠不清"
     },
     "11": {
         "completeContentId": 2008,
-        "completeNpcId": 10,
-        "completeType": 2,
+        "completeNpcId": 6,
+        "completeType": 1,
         "contentId": 2006,
         "conversationId": 0,
         "i1": 1,
+        "i2": "2",
         "id": 11,
         "level": 4,
         "list1": [
@@ -61,33 +62,58 @@
         "list2": [
             12
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 2007,
         "npcId": 6,
-        "reward": "1=100",
+        "reward": "1=200",
         "speakType": 1,
         "targetList": [
             11
         ],
         "taskType": 1,
-        "title": "好吧，你赢了"
+        "title": "一决胜负"
     },
     "12": {
         "completeContentId": 2008,
-        "completeNpcId": 7,
+        "completeNpcId": 10,
         "completeType": 2,
         "contentId": 2006,
+        "conversationId": 0,
         "i1": 1,
         "id": 12,
         "level": 4,
         "list1": [
             11
         ],
+        "list2": [
+            13
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 6,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            12
+        ],
+        "taskType": 1,
+        "title": "好吧，你赢了"
+    },
+    "13": {
+        "completeContentId": 2008,
+        "completeNpcId": 7,
+        "completeType": 2,
+        "contentId": 2006,
+        "i1": 1,
+        "id": 13,
+        "level": 4,
+        "list1": [
+            12
+        ],
         "notCompleteContentId": 0,
         "npcId": 10,
         "reward": "1=100",
         "speakType": 1,
         "targetList": [
-            11
+            13
         ],
         "taskType": 1,
         "title": "好意心领了"
@@ -238,7 +264,7 @@
     },
     "8": {
         "completeContentId": 2008,
-        "completeNpcId": 10,
+        "completeNpcId": 12,
         "completeType": 2,
         "contentId": 2006,
         "conversationId": 0,
@@ -263,7 +289,7 @@
     },
     "9": {
         "completeContentId": 2008,
-        "completeNpcId": 6,
+        "completeNpcId": 10,
         "completeType": 2,
         "contentId": 2006,
         "conversationId": 0,
@@ -277,13 +303,13 @@
             10
         ],
         "notCompleteContentId": 0,
-        "npcId": 10,
+        "npcId": 12,
         "reward": "1=100",
         "speakType": 1,
         "targetList": [
             9
         ],
         "taskType": 1,
-        "title": "纠缠不清"
+        "title": "去找小丽"
     }
 }

@@ -96,43 +96,16 @@ public class DataConfigData {
     @JsonProperty
     public int enemyId;
 
-
-    @JsonProperty
-    public String area;
-
     @JsonProperty
     public String pos;
 
-    @JsonProperty
-    public int inHouse;
-
-    @JsonProperty
-    public String houseName;
-
-    @JsonProperty
-    public int speakId;
 
     @JsonProperty
     public int exp;
 
-    @JsonProperty
-    public int monsterExp;
-
-    @JsonProperty
-    public int taskExp;
 
     @JsonProperty
     public String content;
-
-    @JsonProperty
-    public int nextId;
-
-    @JsonProperty
-    public int optionId;
-
-
-    @JsonProperty("conversationId")
-    public int conversationId;
 
 
     @JsonProperty
@@ -140,9 +113,6 @@ public class DataConfigData {
 
     @JsonProperty
     public int taskType;
-
-    @JsonProperty
-    public int speakType;
 
     @JsonProperty
     public int beforeTaskId;
@@ -154,17 +124,7 @@ public class DataConfigData {
     public int completeNpcId;
 
     @JsonProperty
-    public int contentId;
-
-    @JsonProperty
     public String reward;
-
-    @JsonProperty
-    public int completeContentId;
-
-    @JsonProperty
-    public int notCompleteContentId;
-
 
     @JsonProperty
     public int processType;

@@ -9,12 +9,12 @@ import java.util.Map;
  * @author Yunzhe.Jin
  * 2021/6/12 20:30
  */
-public abstract class WeightMapConfigDataBox<T extends BaseConfigData<T>> extends MapConfigDataBox<T> {
+public abstract class MapListConfigDataBox<T extends BaseConfigData<T>> extends MapConfigDataBox<T> {
 
 
     private Map<Integer, List<T>> listMap;
 
-    public WeightMapConfigDataBox(String path) {
+    public MapListConfigDataBox(String path) {
         super(path);
     }
 

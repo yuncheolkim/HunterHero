@@ -69,6 +69,13 @@ public enum Cmd {
             player.D.removeCompleteTask(i);
         }
     },
+    CMD9(9, "放弃任务") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int i = Integer.parseInt(line.get(0));
+            player.pd.getTaskBuilder().removeRunTask(i);
+        }
+    },
     ;
 
     public final int id;
