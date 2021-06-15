@@ -161,6 +161,10 @@ public class TaskHandler {
 
                 for (final Integer afterTaskId : afterTaskList) {
                     final DataConfigData afterTask = G.C.getTask(afterTaskId);
+
+                    if (afterTask.level > player.pd.getLevel()) {
+                        continue;
+                    }
                     for (final Integer needCompleteTaskId : afterTask.list1) {
                         if (!completeTaskMap.containsKey(needCompleteTaskId)) {
                             break;

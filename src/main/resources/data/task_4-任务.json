@@ -21,6 +21,77 @@
         "taskType": 1,
         "title": "帮助渔夫"
     },
+    "10": {
+        "completeContentId": 2008,
+        "completeNpcId": 6,
+        "completeType": 1,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 10,
+        "level": 4,
+        "list1": [
+            9
+        ],
+        "list2": [
+            11
+        ],
+        "notCompleteContentId": 2007,
+        "npcId": 6,
+        "reward": "1=200",
+        "speakType": 1,
+        "targetList": [
+            10
+        ],
+        "taskType": 1,
+        "title": "一决胜负"
+    },
+    "11": {
+        "completeContentId": 2008,
+        "completeNpcId": 10,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 11,
+        "level": 4,
+        "list1": [
+            10
+        ],
+        "list2": [
+            12
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 6,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            11
+        ],
+        "taskType": 1,
+        "title": "好吧，你赢了"
+    },
+    "12": {
+        "completeContentId": 2008,
+        "completeNpcId": 7,
+        "completeType": 2,
+        "contentId": 2006,
+        "i1": 1,
+        "id": 12,
+        "level": 4,
+        "list1": [
+            11
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 10,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            11
+        ],
+        "taskType": 1,
+        "title": "好意心领了"
+    },
     "2": {
         "completeContentId": 2000203,
         "completeNpcId": 11,
@@ -55,6 +126,9 @@
         "i1": 2,
         "id": 3,
         "level": 2,
+        "list2": [
+            5
+        ],
         "notCompleteContentId": 2000204,
         "npcId": 2,
         "reward": "1=100",
@@ -86,5 +160,130 @@
         ],
         "taskType": 1,
         "title": "钓鱼技术"
+    },
+    "5": {
+        "completeContentId": 2005,
+        "completeNpcId": 7,
+        "completeType": 2,
+        "contentId": 2004,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 5,
+        "level": 4,
+        "list1": [
+            3
+        ],
+        "list2": [
+            6
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 2,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            5
+        ],
+        "taskType": 1,
+        "title": "旅店伙计的烦恼"
+    },
+    "6": {
+        "completeContentId": 2008,
+        "completeNpcId": 10,
+        "completeType": 1,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 6,
+        "level": 4,
+        "list1": [
+            5
+        ],
+        "list2": [
+            7
+        ],
+        "notCompleteContentId": 2007,
+        "npcId": 7,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            6
+        ],
+        "taskType": 1,
+        "title": "借花献佛"
+    },
+    "7": {
+        "completeContentId": 2008,
+        "completeNpcId": 9,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 7,
+        "level": 4,
+        "list1": [
+            6
+        ],
+        "list2": [
+            8
+        ],
+        "notCompleteContentId": 2007,
+        "npcId": 10,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            7
+        ],
+        "taskType": 1,
+        "title": "武装力量"
+    },
+    "8": {
+        "completeContentId": 2008,
+        "completeNpcId": 10,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 8,
+        "level": 4,
+        "list1": [
+            7
+        ],
+        "list2": [
+            9
+        ],
+        "notCompleteContentId": 2007,
+        "npcId": 9,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            8
+        ],
+        "taskType": 1,
+        "title": "更好的保护"
+    },
+    "9": {
+        "completeContentId": 2008,
+        "completeNpcId": 6,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 9,
+        "level": 4,
+        "list1": [
+            8
+        ],
+        "list2": [
+            10
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 10,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            9
+        ],
+        "taskType": 1,
+        "title": "纠缠不清"
     }
 }

@@ -14,7 +14,7 @@
         "houseName": "李家",
         "id": 10,
         "inHouse": 2,
-        "name": "李无花",
+        "name": "李小丽",
         "speakId": 1002
     },
     "11": {
@@ -142,7 +142,7 @@
         "inHouse": 2,
         "name": "王小二",
         "speakId": 1003,
-        "title": "酒店伙计"
+        "title": "旅店伙计"
     },
     "8": {
         "area": "建业",

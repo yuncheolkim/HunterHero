@@ -62,6 +62,13 @@ public enum Cmd {
             player.getTransport().send(No.TitleNewPush, TitleNewPush.newBuilder().setId(i).build());
         }
     },
+    CMD8(8, "移除完成的任务") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int i = Integer.parseInt(line.get(0));
+            player.D.removeCompleteTask(i);
+        }
+    },
     ;
 
     public final int id;

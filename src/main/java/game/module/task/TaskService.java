@@ -120,11 +120,23 @@ public class TaskService {
 
                     DataConfigData taskData = G.C.getTask(taskResult.getTaskId());
                     if (complete) {
+                        if (taskData.completeNpcId != taskData.npcId) {
+                            // 交任务的npc跟 接任务的npc不同
+                            // 前一个npc完成任务
+                            player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                                    .setNpcId(taskData.npcId)
+                                    .setStatus(TaskStatusEnum.提交任务.id)
+                                    .setTaskId(taskData.id)
+                                    .setRunTask(builder.buildPartial())
+                                    .build());
+                        }
+
+
                         msgBuilder.setStatus(TaskStatusEnum.完成未提交.id);
                     } else {
                         msgBuilder.setStatus(TaskStatusEnum.进度更新.id);
                     }
-                    msgBuilder.setNpcId(taskData.npcId);
+                    msgBuilder.setNpcId(taskData.completeNpcId);
                     player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, msgBuilder
                             .build()
                     );
