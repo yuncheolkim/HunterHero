@@ -35,6 +35,10 @@ message PlayerData {
     // 正在进行的战役
     int32 battleId = 16;
 
+    // 功能开启标记
+    // 1:银行
+    int32 openFeature = 100;
+
     // 任务信息
     PlayerTask task = 101;
     // 所在场景

@@ -14,6 +14,7 @@
         "notCompleteContentId": 1006,
         "npcId": 1,
         "reward": "1=100#401003=1",
+        "s1": "去找东边的渔夫",
         "speakType": 1,
         "targetList": [
             2
@@ -39,6 +40,7 @@
         "notCompleteContentId": 0,
         "npcId": 10,
         "reward": "1=100",
+        "s1": "去王大户家找王小户",
         "speakType": 1,
         "targetList": [
             10
@@ -90,6 +92,7 @@
         "notCompleteContentId": 0,
         "npcId": 6,
         "reward": "1=100",
+        "s1": "去李家找李小丽",
         "speakType": 1,
         "targetList": [
             12
@@ -108,15 +111,170 @@
         "list1": [
             12
         ],
+        "list2": [
+            14
+        ],
         "notCompleteContentId": 0,
         "npcId": 10,
         "reward": "1=100",
+        "s1": "去找旅店王小二",
         "speakType": 1,
         "targetList": [
             13
         ],
         "taskType": 1,
         "title": "好意心领了"
+    },
+    "14": {
+        "completeContentId": 2008,
+        "completeNpcId": 8,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 14,
+        "level": 4,
+        "list1": [
+            13
+        ],
+        "list2": [
+            15
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 7,
+        "reward": "1=100",
+        "s1": "去衙门找正光明",
+        "speakType": 1,
+        "targetList": [
+            14
+        ],
+        "taskType": 1,
+        "title": "衙门通知"
+    },
+    "15": {
+        "completeContentId": 2008,
+        "completeNpcId": 4,
+        "completeType": 1,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 15,
+        "level": 4,
+        "list1": [
+            14
+        ],
+        "list2": [
+            16
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 8,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            15
+        ],
+        "taskType": 1,
+        "title": "银行小案"
+    },
+    "16": {
+        "completeContentId": 2008,
+        "completeNpcId": 8,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 16,
+        "level": 4,
+        "list1": [
+            15
+        ],
+        "list2": [
+            17
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 4,
+        "reward": "1=100",
+        "s1": "去衙门找正光明",
+        "speakType": 1,
+        "targetList": [
+            16
+        ],
+        "taskType": 1,
+        "title": "解决案件"
+    },
+    "17": {
+        "completeContentId": 2008,
+        "completeNpcId": 7,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 17,
+        "level": 4,
+        "list1": [
+            16
+        ],
+        "list2": [
+            18
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 8,
+        "reward": "1=100",
+        "s1": "去找旅店王小二",
+        "speakType": 1,
+        "targetList": [
+            17
+        ],
+        "taskType": 1,
+        "title": "回到旅店"
+    },
+    "18": {
+        "completeContentId": 2008,
+        "completeNpcId": 51,
+        "completeType": 2,
+        "contentId": 2006,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 18,
+        "level": 4,
+        "list1": [
+            17
+        ],
+        "list2": [
+            19
+        ],
+        "notCompleteContentId": 0,
+        "npcId": 7,
+        "reward": "1=100",
+        "s1": "去钟离城旅店找苏酒",
+        "speakType": 1,
+        "targetList": [
+            18
+        ],
+        "taskType": 1,
+        "title": "前往钟离"
+    },
+    "19": {
+        "completeContentId": 1009,
+        "completeNpcId": 9,
+        "completeType": 1,
+        "contentId": 2000205,
+        "conversationId": 0,
+        "i1": 1,
+        "id": 19,
+        "level": 4,
+        "list2": [
+            8
+        ],
+        "notCompleteContentId": 2000204,
+        "npcId": 9,
+        "reward": "1=200",
+        "speakType": 1,
+        "targetList": [
+            19
+        ],
+        "taskType": 1,
+        "title": "消灭大虾"
     },
     "2": {
         "completeContentId": 2000203,
@@ -205,6 +363,7 @@
         "notCompleteContentId": 0,
         "npcId": 2,
         "reward": "1=100",
+        "s1": "去找旅店王小二",
         "speakType": 1,
         "targetList": [
             5
@@ -255,6 +414,7 @@
         "notCompleteContentId": 2007,
         "npcId": 10,
         "reward": "1=100",
+        "s1": "去武器店看看",
         "speakType": 1,
         "targetList": [
             7
@@ -272,7 +432,8 @@
         "id": 8,
         "level": 4,
         "list1": [
-            7
+            7,
+            19
         ],
         "list2": [
             9
@@ -280,6 +441,7 @@
         "notCompleteContentId": 2007,
         "npcId": 9,
         "reward": "1=100",
+        "s1": "去装备店看看",
         "speakType": 1,
         "targetList": [
             8
@@ -305,6 +467,7 @@
         "notCompleteContentId": 0,
         "npcId": 12,
         "reward": "1=100",
+        "s1": "去李家找李小丽",
         "speakType": 1,
         "targetList": [
             9

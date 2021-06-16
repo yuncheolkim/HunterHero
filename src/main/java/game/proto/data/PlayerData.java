@@ -139,6 +139,11 @@ private static final long serialVersionUID = 0L;
             battleId_ = input.readInt32();
             break;
           }
+          case 800: {
+
+            openFeature_ = input.readInt32();
+            break;
+          }
           case 810: {
             game.proto.data.PlayerTask.Builder subBuilder = null;
             if (task_ != null) {
@@ -584,6 +589,22 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getBattleId() {
     return battleId_;
+  }
+
+  public static final int OPENFEATURE_FIELD_NUMBER = 100;
+  private int openFeature_;
+  /**
+   * <pre>
+   * 功能开启标记
+   * 1:银行
+   * </pre>
+   *
+   * <code>int32 openFeature = 100;</code>
+   * @return The openFeature.
+   */
+  @java.lang.Override
+  public int getOpenFeature() {
+    return openFeature_;
   }
 
   public static final int TASK_FIELD_NUMBER = 101;
@@ -1226,6 +1247,9 @@ private static final long serialVersionUID = 0L;
     if (battleId_ != 0) {
       output.writeInt32(16, battleId_);
     }
+    if (openFeature_ != 0) {
+      output.writeInt32(100, openFeature_);
+    }
     if (task_ != null) {
       output.writeMessage(101, getTask());
     }
@@ -1335,6 +1359,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(16, battleId_);
     }
+    if (openFeature_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(100, openFeature_);
+    }
     if (task_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(101, getTask());
@@ -1440,6 +1468,8 @@ private static final long serialVersionUID = 0L;
         != other.getSkillFishLevel()) return false;
     if (getBattleId()
         != other.getBattleId()) return false;
+    if (getOpenFeature()
+        != other.getOpenFeature()) return false;
     if (hasTask() != other.hasTask()) return false;
     if (hasTask()) {
       if (!getTask()
@@ -1512,6 +1542,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSkillFishLevel();
     hash = (37 * hash) + BATTLEID_FIELD_NUMBER;
     hash = (53 * hash) + getBattleId();
+    hash = (37 * hash) + OPENFEATURE_FIELD_NUMBER;
+    hash = (53 * hash) + getOpenFeature();
     if (hasTask()) {
       hash = (37 * hash) + TASK_FIELD_NUMBER;
       hash = (53 * hash) + getTask().hashCode();
@@ -1746,6 +1778,8 @@ private static final long serialVersionUID = 0L;
 
       battleId_ = 0;
 
+      openFeature_ = 0;
+
       if (taskBuilder_ == null) {
         task_ = null;
       } else {
@@ -1830,6 +1864,7 @@ private static final long serialVersionUID = 0L;
       result.fishAreaId_ = fishAreaId_;
       result.skillFishLevel_ = skillFishLevel_;
       result.battleId_ = battleId_;
+      result.openFeature_ = openFeature_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
       } else {
@@ -1966,6 +2001,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getBattleId() != 0) {
         setBattleId(other.getBattleId());
+      }
+      if (other.getOpenFeature() != 0) {
+        setOpenFeature(other.getOpenFeature());
       }
       if (other.hasTask()) {
         mergeTask(other.getTask());
@@ -2747,6 +2785,52 @@ private static final long serialVersionUID = 0L;
     public Builder clearBattleId() {
       
       battleId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int openFeature_ ;
+    /**
+     * <pre>
+     * 功能开启标记
+     * 1:银行
+     * </pre>
+     *
+     * <code>int32 openFeature = 100;</code>
+     * @return The openFeature.
+     */
+    @java.lang.Override
+    public int getOpenFeature() {
+      return openFeature_;
+    }
+    /**
+     * <pre>
+     * 功能开启标记
+     * 1:银行
+     * </pre>
+     *
+     * <code>int32 openFeature = 100;</code>
+     * @param value The openFeature to set.
+     * @return This builder for chaining.
+     */
+    public Builder setOpenFeature(int value) {
+      
+      openFeature_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 功能开启标记
+     * 1:银行
+     * </pre>
+     *
+     * <code>int32 openFeature = 100;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearOpenFeature() {
+      
+      openFeature_ = 0;
       onChanged();
       return this;
     }

@@ -6,16 +6,40 @@
         "weight": 5
     },
     "10": {
-        "count": 4,
-        "enemyAreaId": 205,
+        "count": 6,
+        "enemyAreaId": 204,
         "id": 10,
-        "weight": 5
+        "weight": 1
     },
     "11": {
+        "count": 7,
+        "enemyAreaId": 204,
+        "id": 11,
+        "weight": 1
+    },
+    "13": {
+        "count": 5,
+        "enemyAreaId": 205,
+        "id": 13,
+        "weight": 2
+    },
+    "14": {
         "count": 6,
         "enemyAreaId": 205,
-        "id": 11,
+        "id": 14,
         "weight": 2
+    },
+    "15": {
+        "count": 7,
+        "enemyAreaId": 205,
+        "id": 15,
+        "weight": 1
+    },
+    "16": {
+        "count": 8,
+        "enemyAreaId": 205,
+        "id": 16,
+        "weight": 1
     },
     "2": {
         "count": 2,
@@ -39,25 +63,25 @@
         "count": 3,
         "enemyAreaId": 202,
         "id": 5,
-        "weight": 1
+        "weight": 3
     },
     "6": {
         "count": 2,
         "enemyAreaId": 203,
         "id": 6,
-        "weight": 3
+        "weight": 1
     },
     "7": {
         "count": 4,
         "enemyAreaId": 203,
         "id": 7,
-        "weight": 1
+        "weight": 2
     },
     "8": {
-        "count": 3,
+        "count": 4,
         "enemyAreaId": 204,
         "id": 8,
-        "weight": 6
+        "weight": 3
     },
     "9": {
         "count": 5,

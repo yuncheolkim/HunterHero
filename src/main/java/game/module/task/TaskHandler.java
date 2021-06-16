@@ -133,7 +133,7 @@ public class TaskHandler {
             }
 
             // 经验
-            ExpConfigData exp = ConfigManager.getExp(req.getTaskId());
+            ExpConfigData exp = ConfigManager.getExp(task.level);
             player.addPlayerExp(exp.taskExp, ResourceSourceEnum.任务);
 
 
@@ -161,6 +161,9 @@ public class TaskHandler {
 
                 for (final Integer afterTaskId : afterTaskList) {
                     final DataConfigData afterTask = G.C.getTask(afterTaskId);
+                    if (afterTask == null) {
+                        continue;
+                    }
 
                     if (afterTask.level > player.pd.getLevel()) {
                         continue;

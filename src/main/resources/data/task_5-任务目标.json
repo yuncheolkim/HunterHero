@@ -40,10 +40,12 @@
         "type": 1
     },
     "15": {
-        "content": "content",
-        "content1": "content",
+        "content": "找到一个蜡烛",
+        "content1": "找到一个蜡烛",
         "id": 15,
-        "type": 1
+        "type": 3,
+        "v1": 101001,
+        "v2": 1
     },
     "16": {
         "content": "content",
@@ -64,10 +66,12 @@
         "type": 1
     },
     "19": {
-        "content": "content",
-        "content1": "content",
+        "content": "消灭大虾:{0}/{1}",
+        "content1": "消灭{1}个大虾",
         "id": 19,
-        "type": 1
+        "type": 2,
+        "v1": 3,
+        "v2": 20
     },
     "2": {
         "content": "去找东边的渔夫",

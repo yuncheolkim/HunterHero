@@ -154,6 +154,17 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 功能开启标记
+   * 1:银行
+   * </pre>
+   *
+   * <code>int32 openFeature = 100;</code>
+   * @return The openFeature.
+   */
+  int getOpenFeature();
+
+  /**
+   * <pre>
    * 任务信息
    * </pre>
    *
