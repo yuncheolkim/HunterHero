@@ -59,7 +59,7 @@
         "num": 1,
         "resourceId": 1,
         "sell": 5,
-        "stack": 10,
+        "stack": 20,
         "type1": 2,
         "type2": 1,
         "value": 0
@@ -81,6 +81,18 @@
         "id": 601001,
         "name": "螃蟹肉",
         "num": 1,
+        "resourceId": 1,
+        "sell": 0,
+        "stack": 10,
+        "type1": 6,
+        "type2": 1,
+        "value": 0
+    },
+    "601002": {
+        "desc": "美味多汁的海螺肉",
+        "id": 601002,
+        "name": "海螺肉",
+        "num": 2,
         "resourceId": 1,
         "sell": 0,
         "stack": 10,

@@ -1,34 +1,29 @@
 {
     "1": {
-        "completeContentId": 2000102,
+        "completeContentId": 15,
         "completeNpcId": 11,
         "completeType": 2,
-        "contentId": 2000101,
+        "contentId": 14,
         "conversationId": 0,
-        "i1": 1,
         "id": 1,
         "level": 1,
         "list2": [
             2
         ],
-        "notCompleteContentId": 1006,
+        "notCompleteContentId": 0,
         "npcId": 1,
         "reward": "1=100#401003=1",
         "s1": "去找东边的渔夫",
         "speakType": 1,
-        "targetList": [
-            2
-        ],
         "taskType": 1,
         "title": "帮助渔夫"
     },
     "10": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 6,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 34,
         "conversationId": 0,
-        "i1": 1,
         "id": 10,
         "level": 7,
         "list1": [
@@ -37,7 +32,7 @@
         "list2": [
             11
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 10,
         "reward": "1=100",
         "s1": "去王大户家找王小户",
@@ -49,12 +44,11 @@
         "title": "纠缠不清"
     },
     "11": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 6,
         "completeType": 1,
-        "contentId": 2006,
+        "contentId": 35,
         "conversationId": 0,
-        "i1": 1,
         "i2": "2",
         "id": 11,
         "level": 7,
@@ -64,7 +58,7 @@
         "list2": [
             12
         ],
-        "notCompleteContentId": 2007,
+        "notCompleteContentId": 29,
         "npcId": 6,
         "reward": "1=200",
         "speakType": 1,
@@ -75,12 +69,11 @@
         "title": "一决胜负"
     },
     "12": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 10,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 36,
         "conversationId": 0,
-        "i1": 1,
         "id": 12,
         "level": 7,
         "list1": [
@@ -89,7 +82,7 @@
         "list2": [
             13
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 6,
         "reward": "1=100",
         "s1": "去李家找李小丽",
@@ -101,11 +94,10 @@
         "title": "好吧，你赢了"
     },
     "13": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 7,
         "completeType": 2,
-        "contentId": 2006,
-        "i1": 1,
+        "contentId": 37,
         "id": 13,
         "level": 7,
         "list1": [
@@ -114,7 +106,7 @@
         "list2": [
             14
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 10,
         "reward": "1=100",
         "s1": "去找旅店王小二",
@@ -126,12 +118,11 @@
         "title": "好意心领了"
     },
     "14": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 8,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 38,
         "conversationId": 0,
-        "i1": 1,
         "id": 14,
         "level": 7,
         "list1": [
@@ -140,7 +131,7 @@
         "list2": [
             15
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 7,
         "reward": "1=100",
         "s1": "去衙门找正光明",
@@ -152,12 +143,11 @@
         "title": "衙门通知"
     },
     "15": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 4,
         "completeType": 1,
-        "contentId": 2006,
+        "contentId": 39,
         "conversationId": 0,
-        "i1": 1,
         "id": 15,
         "level": 7,
         "list1": [
@@ -166,7 +156,7 @@
         "list2": [
             16
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 8,
         "reward": "1=100",
         "speakType": 1,
@@ -177,12 +167,11 @@
         "title": "银行小案"
     },
     "16": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 8,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 4,
         "conversationId": 0,
-        "i1": 1,
         "id": 16,
         "level": 7,
         "list1": [
@@ -191,7 +180,7 @@
         "list2": [
             17
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 4,
         "reward": "1=100",
         "s1": "去衙门找正光明",
@@ -203,21 +192,20 @@
         "title": "解决案件"
     },
     "17": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 7,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 4,
         "conversationId": 0,
-        "i1": 1,
         "id": 17,
         "level": 7,
         "list1": [
             16
         ],
         "list2": [
-            18
+            20
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 8,
         "reward": "1=100",
         "s1": "去找旅店王小二",
@@ -229,21 +217,20 @@
         "title": "回到旅店"
     },
     "18": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 51,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 4,
         "conversationId": 0,
-        "i1": 1,
         "id": 18,
         "level": 7,
         "list1": [
-            17
+            20
         ],
         "list2": [
             19
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 7,
         "reward": "1=100",
         "s1": "去钟离城旅店找苏酒",
@@ -255,18 +242,17 @@
         "title": "前往钟离"
     },
     "19": {
-        "completeContentId": 1009,
+        "completeContentId": 13,
         "completeNpcId": 9,
         "completeType": 1,
-        "contentId": 2000205,
+        "contentId": 31,
         "conversationId": 0,
-        "i1": 1,
         "id": 19,
         "level": 5,
         "list2": [
             8
         ],
-        "notCompleteContentId": 2000204,
+        "notCompleteContentId": 29,
         "npcId": 9,
         "reward": "1=200",
         "speakType": 1,
@@ -277,12 +263,11 @@
         "title": "消灭大虾"
     },
     "2": {
-        "completeContentId": 2000203,
+        "completeContentId": 18,
         "completeNpcId": 11,
         "completeType": 1,
-        "contentId": 2000201,
+        "contentId": 16,
         "conversationId": 0,
-        "i1": 1,
         "id": 2,
         "level": 1,
         "list1": [
@@ -291,7 +276,7 @@
         "list2": [
             4
         ],
-        "notCompleteContentId": 2000202,
+        "notCompleteContentId": 17,
         "npcId": 11,
         "reward": "1=100",
         "speakType": 1,
@@ -301,21 +286,44 @@
         "taskType": 1,
         "title": "海龟泛滥"
     },
+    "20": {
+        "completeContentId": 13,
+        "completeNpcId": 7,
+        "completeType": 1,
+        "contentId": 4,
+        "conversationId": 0,
+        "id": 20,
+        "level": 8,
+        "list1": [
+            17
+        ],
+        "list2": [
+            18
+        ],
+        "notCompleteContentId": 29,
+        "npcId": 7,
+        "reward": "1=500",
+        "speakType": 1,
+        "targetList": [
+            2
+        ],
+        "taskType": 1,
+        "title": "海螺肉的诱惑"
+    },
     "3": {
-        "completeContentId": 1009,
+        "completeContentId": 13,
         "completeNpcId": 2,
         "completeType": 1,
-        "contentId": 2000205,
+        "contentId": 20,
         "conversationId": 0,
-        "i1": 2,
         "id": 3,
         "level": 2,
         "list2": [
             5
         ],
-        "notCompleteContentId": 2000204,
+        "notCompleteContentId": 19,
         "npcId": 2,
-        "reward": "1=100",
+        "reward": "1=150",
         "speakType": 1,
         "targetList": [
             3
@@ -324,18 +332,17 @@
         "title": "美味蟹肉"
     },
     "4": {
-        "completeContentId": 2002,
+        "completeContentId": 13,
         "completeNpcId": 11,
         "completeType": 1,
-        "contentId": 2001,
+        "contentId": 21,
         "conversationId": 0,
-        "i1": 1,
         "id": 4,
         "level": 3,
         "list1": [
             2
         ],
-        "notCompleteContentId": 2003,
+        "notCompleteContentId": 23,
         "npcId": 11,
         "reward": "1=100",
         "speakType": 1,
@@ -346,12 +353,11 @@
         "title": "钓鱼技术"
     },
     "5": {
-        "completeContentId": 2005,
+        "completeContentId": 25,
         "completeNpcId": 7,
         "completeType": 2,
-        "contentId": 2004,
+        "contentId": 24,
         "conversationId": 0,
-        "i1": 1,
         "id": 5,
         "level": 4,
         "list1": [
@@ -360,7 +366,7 @@
         "list2": [
             6
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 2,
         "reward": "1=100",
         "s1": "去找旅店王小二",
@@ -372,12 +378,11 @@
         "title": "旅店伙计的烦恼"
     },
     "6": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 10,
         "completeType": 1,
-        "contentId": 2006,
+        "contentId": 26,
         "conversationId": 0,
-        "i1": 1,
         "id": 6,
         "level": 4,
         "list1": [
@@ -386,7 +391,7 @@
         "list2": [
             7
         ],
-        "notCompleteContentId": 2007,
+        "notCompleteContentId": 29,
         "npcId": 7,
         "reward": "1=100",
         "speakType": 1,
@@ -397,12 +402,11 @@
         "title": "借花献佛"
     },
     "7": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 9,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 30,
         "conversationId": 0,
-        "i1": 1,
         "id": 7,
         "level": 4,
         "list1": [
@@ -411,7 +415,7 @@
         "list2": [
             8
         ],
-        "notCompleteContentId": 2007,
+        "notCompleteContentId": 29,
         "npcId": 10,
         "reward": "1=100",
         "s1": "去武器店看看",
@@ -423,12 +427,11 @@
         "title": "武装力量"
     },
     "8": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 12,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 32,
         "conversationId": 0,
-        "i1": 1,
         "id": 8,
         "level": 6,
         "list1": [
@@ -438,7 +441,7 @@
         "list2": [
             9
         ],
-        "notCompleteContentId": 2007,
+        "notCompleteContentId": 29,
         "npcId": 9,
         "reward": "1=100",
         "s1": "去装备店看看",
@@ -450,12 +453,11 @@
         "title": "更好的保护"
     },
     "9": {
-        "completeContentId": 2008,
+        "completeContentId": 13,
         "completeNpcId": 10,
         "completeType": 2,
-        "contentId": 2006,
+        "contentId": 33,
         "conversationId": 0,
-        "i1": 1,
         "id": 9,
         "level": 7,
         "list1": [
@@ -464,7 +466,7 @@
         "list2": [
             10
         ],
-        "notCompleteContentId": 0,
+        "notCompleteContentId": 29,
         "npcId": 12,
         "reward": "1=100",
         "s1": "去李家找李小丽",

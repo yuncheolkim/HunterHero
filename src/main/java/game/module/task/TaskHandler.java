@@ -54,7 +54,6 @@ public class TaskHandler {
         data.setTaskId(o.getTaskId());
         if (taskConfigData.completeType == 2) {// 立即完成
             data.setComplete(true);
-            data.addTarget(TaskTarget.newBuilder().setId(taskConfigData.targetList.get(0)).build());
             // push
             final int completeNpcId = taskConfigData.completeNpcId;
 
