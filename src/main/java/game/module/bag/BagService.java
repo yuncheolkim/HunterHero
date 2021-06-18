@@ -1,8 +1,10 @@
 package game.module.bag;
 
 import game.player.Player;
+import game.proto.data.BagSlot;
 import game.proto.data.ItemData;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,5 +27,32 @@ public class BagService {
         }
 
         return player.bag.remain() >= items.size();
+    }
+
+
+    /**
+     * 获取item 总数量，包括背包银行
+     *
+     * @param itemId
+     * @return
+     */
+    public static int itemAllCount(Player player, int itemId) {
+        int count = 0;
+
+        Collection<BagSlot> bagSlots = player.bag.bagSlotMap.get(itemId);
+        if (!bagSlots.isEmpty()) {
+            for (BagSlot bagSlot : bagSlots) {
+                count += bagSlot.getData().getCount();
+            }
+        }
+        Collection<BagSlot> bankSlots = player.bank.bagSlotMap.get(itemId);
+        if (!bagSlots.isEmpty()) {
+            for (BagSlot bagSlot : bankSlots) {
+                count += bagSlot.getData().getCount();
+            }
+        }
+
+
+        return count;
     }
 }

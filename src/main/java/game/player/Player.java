@@ -713,6 +713,7 @@ public class Player {
         transport.send(MsgNo.BagInfoChangePushNo_VALUE, builder.build());
     }
 
+
     public int nextId() {
         final int i = D.getLocalId() + 1;
         D.setLocalId(i);

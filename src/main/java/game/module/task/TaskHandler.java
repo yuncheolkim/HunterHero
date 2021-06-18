@@ -78,15 +78,26 @@ public class TaskHandler {
         } else {
             final List<Integer> targetList = taskConfigData.targetList;
             for (final Integer target : targetList) {
-                data.addTarget(TaskTarget.newBuilder().setId(target).build());
+                data.addTarget(TaskService.makeTaskTarget(player, target));
+            }
+            boolean complete = true;
+
+            for (TaskTarget.Builder builder : data.getTargetBuilderList()) {
+                if (!builder.getComplete()) {
+                    complete = false;
+                    break;
+                }
             }
 
+            int status = complete ? TaskStatusEnum.完成未提交.id : TaskStatusEnum.接受任务.id;
+
+            data.setComplete(complete);
             // push
             player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
                     .setTaskId(o.getTaskId())
                     .setNpcId(taskConfigData.npcId)
                     .setAccept(true)
-                    .setStatus(TaskStatusEnum.接受任务.id)// 接受任务
+                    .setStatus(status)// 接受任务
                     .setRunTask(data.buildPartial())
                     .build());
         }
@@ -104,6 +115,9 @@ public class TaskHandler {
      */
     public static void completeTask(final Player player, final TaskReq req) {
         final PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
+        if (!taskBuilder.getRunTaskMap().containsKey(req.getTaskId())) {
+            return;
+        }
         final RunTask runtask = taskBuilder.getRunTaskOrThrow(req.getTaskId());
 
         if (runtask.getComplete()) {
@@ -159,6 +173,7 @@ public class TaskHandler {
 
             if (afterTaskList != null) {
 
+                c:
                 for (final Integer afterTaskId : afterTaskList) {
                     final DataConfigData afterTask = G.C.getTask(afterTaskId);
                     if (afterTask == null) {
@@ -170,7 +185,7 @@ public class TaskHandler {
                     }
                     for (final Integer needCompleteTaskId : afterTask.list1) {
                         if (!completeTaskMap.containsKey(needCompleteTaskId)) {
-                            break;
+                            break c;
                         }
                     }
                     newTaskList.add(afterTask.id);

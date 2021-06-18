@@ -23,4 +23,7 @@ public class ItemBoxData {
         return Math.max(0, capacity - count);
     }
 
+    public boolean hasItem(int itemId) {
+        return bagSlotMap.containsKey(itemId);
+    }
 }

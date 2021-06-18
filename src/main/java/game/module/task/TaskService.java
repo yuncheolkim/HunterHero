@@ -3,6 +3,7 @@ package game.module.task;
 import game.base.G;
 import game.config.base.DataConfigData;
 import game.manager.ConfigManager;
+import game.module.bag.BagService;
 import game.player.Player;
 import game.proto.TaskStatusChangePush;
 import game.proto.back.MsgNo;
@@ -164,4 +165,26 @@ public class TaskService {
         return dataConfigData.stream().map(data -> data.id).collect(Collectors.toList());
     }
 
+
+    /**
+     * 构建任务目标
+     *
+     * @param targetId
+     * @return
+     */
+    public static TaskTarget makeTaskTarget(Player player, Integer targetId) {
+        DataConfigData targetData = G.C.taskMap5.get(targetId);
+
+        TaskTarget.Builder builder = TaskTarget.newBuilder();
+        builder.setId(targetId);
+
+        if (targetData.type == 3) {
+            // 搜集物品检查背包是否有物品
+            int i = BagService.itemAllCount(player, targetData.v1);
+            builder.setValue(Math.min(i, targetData.v2));
+            builder.setComplete(targetData.v2 == builder.getValue());
+        }
+
+        return builder.build();
+    }
 }
