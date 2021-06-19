@@ -19,6 +19,8 @@ enum No {
     PlayerMoveReq = 201;
     PlayerGoHotelReq = 202;
     PlayerChooseHotelReq = 203;
+    FeatureOpenPush = 204;
+
     // 称谓
     TitleChooseReq = 301;
     TitleNewPush = 302;

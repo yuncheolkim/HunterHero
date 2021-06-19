@@ -7,6 +7,7 @@ import game.module.hero.HeroService;
 import game.player.Player;
 import game.proto.TitleNewPush;
 import game.proto.data.ItemData;
+import game.proto.data.RunTask;
 import game.proto.no.No;
 
 import java.util.HashSet;
@@ -74,6 +75,16 @@ public enum Cmd {
         public void run(final Player player, final List<String> line) {
             int i = Integer.parseInt(line.get(0));
             player.pd.getTaskBuilder().removeRunTask(i);
+        }
+    },
+    CMD10(10, "完成任务") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int i = Integer.parseInt(line.get(0));
+            RunTask runTask = player.pd.getTaskBuilder().getRunTaskMap().get(i);
+            if (runTask != null) {
+                player.pd.getTaskBuilder().putRunTask(i, runTask.toBuilder().setComplete(true).buildPartial());
+            }
         }
     },
     ;

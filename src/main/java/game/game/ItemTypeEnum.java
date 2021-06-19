@@ -39,4 +39,14 @@ public enum ItemTypeEnum {
     ItemTypeEnum(int i) {
         this.id = i;
     }
+
+
+    public static ItemTypeEnum find(int id) {
+        for (ItemTypeEnum value : ItemTypeEnum.values()) {
+            if (value.id == id) {
+                return value;
+            }
+        }
+        return null;
+    }
 }

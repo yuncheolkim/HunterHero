@@ -1,8 +1,7 @@
 package game.module.shop;
 
-import game.base.IIdDisplay;
 import game.base.constants.GameConstants;
-import game.config.base.DataConfigData;
+import game.config.data.ItemConfigData;
 import game.config.data.ShopConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
@@ -30,24 +29,23 @@ public class ShopHandler {
      * @param req
      */
     public static void buyItem(final Player player, final ItemBuyReq req) {
-        final DataConfigData item = ConfigManager.getItem(req.getItemId());
+        final ItemConfigData item = ConfigManager.getItem(req.getItemId());
 
-        final IIdDisplay display = ResourceEnum.display(item.resourceId);
 
         // 判断 商店是否有这个物品
         final ShopConfigData shop = ConfigManager.getShop(req.getShopId());
         ModuleAssert.isTrue(shop.items.contains(req.getItemId()));
 
         // 暂时金币
-        if (display == ResourceEnum.GOLD) {
+        if (item.resourceType == ResourceEnum.GOLD) {
             ModuleAssert.isTrue(player.hasGold(item.value), ErrorEnum.ERR_103);
             final ItemData.Builder builder = ItemData.newBuilder()
                     .setItemId(req.getItemId())
                     .setCount(req.getCount());
 
-            if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
+            if (item.type == ItemTypeEnum.EQUIPMENT) {
                 // 填充属性
-                builder.setProperty(ConfigManager.makeProperty(item));
+                builder.setProperty(item.property);
             }
 
             player.addItem(builder.buildPartial(), GameConstants.ITEM_BAG);
@@ -66,13 +64,11 @@ public class ShopHandler {
         final BagSlot bagSlot = player.getPd().getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);
 
-        final DataConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
-
-        final IIdDisplay display = ResourceEnum.display(item.resourceId);
+        final ItemConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
 
         final int count = Math.min(bagSlot.getData().getCount(), req.getCount());
 
-        if (display == ResourceEnum.GOLD) {
+        if (item.resourceType == ResourceEnum.GOLD) {
             // 移除物品
             player.removeBagItem(GameConstants.ITEM_BAG, count, req.getSlotId());
             player.addGold(count * item.sell, ResourceSourceEnum.出售物品);

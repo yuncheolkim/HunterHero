@@ -3,7 +3,6 @@ package game.module.fight;
 import game.base.G;
 import game.base.Logs;
 import game.config.data.BattleFormationConfigData;
-import game.config.data.EnemyAreaConfigData;
 import game.config.data.EnemyConfigData;
 import game.config.data.EnemyCountConfigData;
 import game.manager.ConfigManager;
@@ -73,22 +72,23 @@ public class FightService {
         int allWeight = 0;
         final List<EnemyConfigData> enemyList = new ArrayList<>();
         for (final Integer enemyAreaId : player.D.getFightAreaList()) {
-            final EnemyAreaConfigData enemy = G.C.enemyInfoMap.get(enemyAreaId);
-            enemyList.addAll(enemy.enemyList);
-            allWeight += enemy.weightAll;
+            final List<EnemyConfigData> enemy = ConfigManager.enemyDataBox.findByCollectId(enemyAreaId);
+            if (!enemy.isEmpty()) {
+                enemyList.addAll(enemy);
+            }
         }
 
         // count
         final List<EnemyCountConfigData> enemyCountList = new ArrayList<>();
         for (final Integer enemyAreaId : player.D.getFightAreaList()) {
-            final List<EnemyCountConfigData> list = G.C.enemyCountMap.get(enemyAreaId);
+            final List<EnemyCountConfigData> list = ConfigManager.enemyCountDataBox.findByCollectId(enemyAreaId);
             enemyCountList.addAll(list);
         }
         final int count = CalcUtil.weightRandom(enemyCountList).count;
         // hero info
         final List<EnemyConfigData> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
-            result.add(CalcUtil.weightRandom(enemyList, allWeight));
+            result.add(CalcUtil.weightRandom(enemyList));
         }
 
         // hero pos
@@ -99,11 +99,11 @@ public class FightService {
         for (int i = 0; i < count; i++) {
             final FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
             final EnemyConfigData d = result.get(i);
-            builder.setId(d.id);
+            builder.setId(d.enemyId);
             builder.setPos(pos.get(i));
             builder.setLevel(d.level);
             builder.setType(EnemyType.CREATURE);
-            builder.setName(G.C.dataMap5.get(d.id).name);
+            builder.setName(G.C.dataMap5.get(d.enemyId).name);
             builder.setProperty(d.property);
 
             push.addInfo(builder);

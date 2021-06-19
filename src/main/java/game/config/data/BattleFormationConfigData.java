@@ -15,7 +15,6 @@ public class BattleFormationConfigData extends BaseConfigData<BattleFormationCon
     public int battleId;
     public int pos;
     public int order;
-    public int level;
     public Property property;
 
     @Override
@@ -25,7 +24,11 @@ public class BattleFormationConfigData extends BaseConfigData<BattleFormationCon
         battleId = d.i1;
         pos = d.i2;
         order = d.i3;
-        level = d.level;
-        property = ConfigManager.makePropertyByTemplate(d);
+    }
+
+    @Override
+    protected void afterAllLoad0(DataConfigData data) {
+        property = ConfigManager.makePropertyFromHero(data);
+
     }
 }

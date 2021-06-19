@@ -14,10 +14,7 @@ public class EnemyTemplatePropertyConfigData extends BaseConfigData<EnemyTemplat
     public Property property;
 
     @Override
-    public EnemyTemplatePropertyConfigData convert(DataConfigData data) {
-        EnemyTemplatePropertyConfigData convert = super.convert(data);
-        convert.property = ConfigManager.makeProperty(data);
-        return convert;
+    protected void fill(DataConfigData data) {
+        property = ConfigManager.makeProperty(data);
     }
-
 }

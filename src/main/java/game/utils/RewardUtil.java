@@ -1,6 +1,6 @@
 package game.utils;
 
-import game.config.base.DataConfigData;
+import game.config.data.ItemConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.proto.data.ItemData;
@@ -44,9 +44,10 @@ public class RewardUtil {
 
             if (type == RewardType.REWARD_ITEM) {
                 // 装备生成property
-                DataConfigData itemData = ConfigManager.getItem(id);
-                if (itemData.type1 == ItemTypeEnum.EQUIPMENT.id) {
-                    reward.setProperty(ConfigManager.makeProperty(itemData));
+                ItemConfigData itemData = ConfigManager.getItem(id);
+                if (itemData.type == ItemTypeEnum.EQUIPMENT) {
+                    // 填充属性
+                    reward.setProperty(itemData.property);
                 }
             }
 

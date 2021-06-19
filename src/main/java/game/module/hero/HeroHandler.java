@@ -4,6 +4,7 @@ import game.anno.InsideMsgHandler;
 import game.base.G;
 import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
+import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
@@ -58,7 +59,7 @@ public class HeroHandler {
     public static void equip(final Player player, final HeroEquipmentReq req) {
         final BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);
-        final DataConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
+        final ItemConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
         final int type2 = item.type2;
 
         final PlayerHero hero = player.pd.getHeroOrThrow(req.getHeroId());

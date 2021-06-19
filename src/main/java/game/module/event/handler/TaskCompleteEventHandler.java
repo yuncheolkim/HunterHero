@@ -2,6 +2,7 @@ package game.module.event.handler;
 
 import game.game.FeatureEnum;
 import game.module.event.IPlayerEventHandler;
+import game.module.player.PlayerService;
 import game.player.Player;
 
 /**
@@ -17,11 +18,10 @@ public class TaskCompleteEventHandler implements IPlayerEventHandler<TaskComplet
         // 钓鱼任务完成，开启钓鱼技能
         if (data.taskId == 4) {
             player.pd.setSkillFishLevel(1);
-            player.pd.setOpenFeature(player.pd.getOpenFeature() | FeatureEnum.钓鱼.id);
+            PlayerService.openFeature(player, FeatureEnum.钓鱼);
         } else if (data.taskId == 1) {
-
             // 开启银行
-            player.pd.setOpenFeature(player.pd.getOpenFeature() | FeatureEnum.银行.id);
+            PlayerService.openFeature(player, FeatureEnum.银行);
         }
 
     }

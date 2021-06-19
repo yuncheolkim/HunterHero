@@ -57,47 +57,19 @@
         "id": 201001,
         "name": "贝壳",
         "num": 1,
-        "resourceId": 1,
         "sell": 5,
         "stack": 20,
         "type1": 2,
-        "type2": 1,
-        "value": 0
+        "type2": 1
     },
     "201002": {
         "content": "破碎的\u003ccolor=yellow\u003e船只\u003c/color\u003e木屑承载了多少风暴下亡灵?",
         "id": 201002,
         "name": "碎木",
         "num": 2,
-        "resourceId": 1,
         "sell": 1,
         "stack": 20,
         "type1": 2,
-        "type2": 1,
-        "value": 0
-    },
-    "601001": {
-        "desc": "一块螃蟹肉",
-        "id": 601001,
-        "name": "螃蟹肉",
-        "num": 1,
-        "resourceId": 1,
-        "sell": 0,
-        "stack": 10,
-        "type1": 6,
-        "type2": 1,
-        "value": 0
-    },
-    "601002": {
-        "desc": "美味多汁的海螺肉",
-        "id": 601002,
-        "name": "海螺肉",
-        "num": 2,
-        "resourceId": 1,
-        "sell": 0,
-        "stack": 10,
-        "type1": 6,
-        "type2": 1,
-        "value": 0
+        "type2": 1
     }
 }

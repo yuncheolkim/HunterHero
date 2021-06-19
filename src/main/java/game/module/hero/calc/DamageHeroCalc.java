@@ -2,6 +2,7 @@ package game.module.hero.calc;
 
 import game.base.G;
 import game.config.base.DataConfigData;
+import game.config.data.HeroBaseConfigData;
 import game.proto.data.Equipment;
 import game.proto.data.HeroRealm;
 import game.proto.data.PlayerHero;
@@ -16,10 +17,10 @@ import game.utils.CalcUtil;
 public class DamageHeroCalc implements IHeroCalc {
     @Override
     public void calc(PlayerHero old, PlayerHero.Builder builder) {
-        DataConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
+        HeroBaseConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
-        int damage = data.damage;
+        int damage = data.getDamage();
 
         // equipment
         if (old.getEquipmentCount() > 0) {

@@ -1,9 +1,9 @@
 package game.module.item;
 
-import game.base.G;
-import game.config.base.DataConfigData;
-import game.config.data.DropItemConfigData;
+import game.config.data.DropItemAreaConfigData;
+import game.config.data.DropItemEnemyConfigData;
 import game.config.data.ExpConfigData;
+import game.config.data.ItemConfigData;
 import game.game.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.proto.data.Reward;
@@ -51,7 +51,7 @@ public class ItemDropService {
      */
     public static List<Reward> dropEnemyItem(int enemyId) {
 
-        List<DropItemConfigData> dropItemConfigData = G.C.enemyDropMap.get(enemyId);
+        List<DropItemEnemyConfigData> dropItemConfigData = ConfigManager.dropItemEnemyDataBox.findByCollectId(enemyId);
 
         if (dropItemConfigData == null) {
             return Collections.emptyList();
@@ -59,14 +59,14 @@ public class ItemDropService {
 
         List<Reward> list = new ArrayList<>(2);
         // enemy
-        for (DropItemConfigData d : dropItemConfigData) {
+        for (DropItemEnemyConfigData d : dropItemConfigData) {
             if (CalcUtil.happened10000(d.rate)) {
                 Reward.Builder builder = Reward.newBuilder().setType(RewardType.REWARD_ITEM)
                         .setCount(d.count)
                         .setRewardId(d.itemId);
-                DataConfigData item = ConfigManager.getItem(d.itemId);
-                if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
-                    builder.setProperty(ConfigManager.makeProperty(item));
+                ItemConfigData item = ConfigManager.getItem(d.itemId);
+                if (item.type == ItemTypeEnum.EQUIPMENT) {
+                    builder.setProperty(item.property);
                 }
                 list.add(builder.build());
 
@@ -83,7 +83,7 @@ public class ItemDropService {
      * @return
      */
     public static List<Reward> dropAreaItem(int areaId) {
-        List<DropItemConfigData> dropItemConfigData = G.C.areaDropMap.get(areaId);
+        List<DropItemAreaConfigData> dropItemConfigData = ConfigManager.dropItemAreaDataBox.findByCollectId(areaId);
 
         if (dropItemConfigData == null) {
             return Collections.emptyList();
@@ -92,14 +92,14 @@ public class ItemDropService {
         List<Reward> list = new ArrayList<>(2);
         // area
 
-        for (DropItemConfigData d : dropItemConfigData) {
+        for (DropItemAreaConfigData d : dropItemConfigData) {
             if (CalcUtil.happened10000(d.rate)) {
                 Reward.Builder builder = Reward.newBuilder().setType(RewardType.REWARD_ITEM)
                         .setCount(d.count)
                         .setRewardId(d.itemId);
-                DataConfigData item = ConfigManager.getItem(d.itemId);
-                if (item.type1 == ItemTypeEnum.EQUIPMENT.id) {
-                    builder.setProperty(ConfigManager.makeProperty(item));
+                ItemConfigData item = ConfigManager.getItem(d.itemId);
+                if (item.type == ItemTypeEnum.EQUIPMENT) {
+                    builder.setProperty(item.property);
                 }
                 list.add(builder.build());
             }

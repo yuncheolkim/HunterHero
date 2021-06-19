@@ -6,4 +6,12 @@ package game.config.base;
  */
 public interface IConfigParse {
     void parse();
+
+    default void afterAllLoad() {
+
+    }
+
+    default void end() {
+        
+    }
 }

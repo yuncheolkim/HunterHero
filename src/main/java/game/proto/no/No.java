@@ -57,6 +57,10 @@ public enum No
    */
   PlayerChooseHotelReq(203),
   /**
+   * <code>FeatureOpenPush = 204;</code>
+   */
+  FeatureOpenPush(204),
+  /**
    * <pre>
    * 称谓
    * </pre>
@@ -337,6 +341,10 @@ public enum No
    */
   public static final int PlayerChooseHotelReq_VALUE = 203;
   /**
+   * <code>FeatureOpenPush = 204;</code>
+   */
+  public static final int FeatureOpenPush_VALUE = 204;
+  /**
    * <pre>
    * 称谓
    * </pre>
@@ -599,6 +607,7 @@ public enum No
       case 201: return PlayerMoveReq;
       case 202: return PlayerGoHotelReq;
       case 203: return PlayerChooseHotelReq;
+      case 204: return FeatureOpenPush;
       case 301: return TitleChooseReq;
       case 302: return TitleNewPush;
       case 1001: return TaskAcceptReq;

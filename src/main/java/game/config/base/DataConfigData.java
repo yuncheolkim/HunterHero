@@ -234,4 +234,8 @@ public class DataConfigData {
     public float f4;
 
     public float f5;
+
+    public int quality;
+
+    public int rate;
 }

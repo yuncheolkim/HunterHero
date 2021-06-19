@@ -32,4 +32,16 @@ public abstract class ListConfigDataBox<T extends BaseConfigData<T>> extends Con
     public T findById(int id) {
         return list.get(id);
     }
+
+    @Override
+    public void end() {
+        for (T t : list) {
+            t.end();
+        }
+    }
+
+    @Override
+    public void afterAllLoad() {
+        list.forEach(BaseConfigData::afterAllLoad);
+    }
 }

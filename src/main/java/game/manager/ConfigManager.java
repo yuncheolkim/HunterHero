@@ -2,7 +2,6 @@ package game.manager;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
 import game.base.G;
@@ -50,8 +49,6 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> dataMap14;
 
-    public Map<Integer, DataConfigData> dataMap15;
-
     public Map<Integer, DataConfigData> dataMap16;
 
     public Map<Integer, DataConfigData> dataMap17;
@@ -68,24 +65,6 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> taskMap5;
 
-    public Map<Integer, DataConfigData> heroMap1001;
-
-
-    /////////////
-
-    public Map<Integer, EnemyAreaConfigData> enemyInfoMap;
-
-    public Map<Integer, List<EnemyCountConfigData>> enemyCountMap;
-
-    // 区域掉落
-    public Map<Integer, List<DropItemConfigData>> areaDropMap;
-
-    // 敌人掉落
-    public Map<Integer, List<DropItemConfigData>> enemyDropMap;
-
-    // item
-    private static Map<Integer, DataConfigData> itemMap;
-
     // Npc任务
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
     public static Multimap<Integer, DataConfigData> levelTaskMap = ArrayListMultimap.create(60, 4);
@@ -98,28 +77,33 @@ public class ConfigManager extends AbsLifecycle {
     // 18-shop
     private static Map<Integer, ShopConfigData> shopMap;
 
-    private static final EnemyTemplateDataBox enemyTemplateBox = new EnemyTemplateDataBox();
-
-    // 11-称谓
-    private static final TitleDataBox titleDataBox = new TitleDataBox();
-    // fish
+    // Data box
+    public static final HeroBaseDataBox heroBaseDataBox = new HeroBaseDataBox();
+    public static final TitleDataBox titleDataBox = new TitleDataBox();
     public static final FishAreaDataBox fishAreaDataBox = new FishAreaDataBox();
     public static final FishDataBox fishWeightAreaDataBox = new FishDataBox();
-
-    // 9-Exp
     public static final ExpDataBox expDataBox = new ExpDataBox();
-
-    // Battle-formation
     public static final BattleFormationDataBox battleFormationDataBox = new BattleFormationDataBox();
+    public static final ItemDataBox itemDataBox = new ItemDataBox();
+    public static final EnemyDataBox enemyDataBox = new EnemyDataBox();
+    public static final EnemyCountDataBox enemyCountDataBox = new EnemyCountDataBox();
+    public static final DropItemAreaDataBox dropItemAreaDataBox = new DropItemAreaDataBox();
+    public static final DropItemEnemyDataBox dropItemEnemyDataBox = new DropItemEnemyDataBox();
+
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
     static {
-        // 注意顺序
+        list.add(heroBaseDataBox);
         list.add(battleFormationDataBox);
         list.add(titleDataBox);
         list.add(fishAreaDataBox);
         list.add(fishWeightAreaDataBox);
         list.add(expDataBox);
+        list.add(itemDataBox);
+        list.add(enemyDataBox);
+        list.add(enemyCountDataBox);
+        list.add(dropItemAreaDataBox);
+        list.add(dropItemEnemyDataBox);
     }
 
     @Override
@@ -131,13 +115,11 @@ public class ConfigManager extends AbsLifecycle {
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
-//        dataMap9 = new JsonConfig("data/data_9-经验.json", 64).load();
         dataMap10 = new JsonConfig("data/data_10-资源.json", 16).load();
         dataMap11 = new JsonConfig("data/data_11-称谓.json", 32).load();
         dataMap12 = new JsonConfig("data/data_12-历练.json", 64).load();
         dataMap13 = new JsonConfig("data/data_13-修炼.json", 32).load();
         dataMap14 = new JsonConfig("data/data_14-历练修炼选项.json").load();
-        dataMap15 = new JsonConfig("data/data_15-enemy.json").load();
         dataMap16 = new JsonConfig("data/data_16-区域敌人数量.json").load();
         dataMap17 = new JsonConfig("data/data_17-掉落.json").load();
         dataMap18 = new JsonConfig("data/data_18-商店.json").load();
@@ -147,84 +129,6 @@ public class ConfigManager extends AbsLifecycle {
         taskMap3 = new JsonConfig("data/task_3-选项内容.json").load();
         taskMap4 = new JsonConfig("data/task_4-任务.json").load();
         taskMap5 = new JsonConfig("data/task_5-任务目标.json").load();
-        heroMap1001 = new JsonConfig("data/hero_base.json").load();
-
-        enemyTemplateBox.parse();
-
-        // item
-        final ImmutableMap.Builder<Integer, DataConfigData> itemConfigDataBuilder = ImmutableMap.builderWithExpectedSize(64);
-
-        Lists.newArrayList(
-                "data/item_base.json",
-                "data/item_材料3.json",
-                "data/item_装备4-1.json",
-                "data/item_装备4-2.json",
-                "data/item_装备4-3.json",
-                "data/item_装备4-4.json"
-        ).forEach(s -> {
-            itemConfigDataBuilder.putAll(new JsonConfig(s).load());
-        });
-        itemMap = itemConfigDataBuilder.build();
-
-
-        final Map<Integer, EnemyAreaConfigData> map = new HashMap<>();
-
-        for (final DataConfigData value : dataMap15.values()) {
-
-            final EnemyAreaConfigData enemyAreaConfigData = map.computeIfAbsent(value.enemyAreaId, id -> {
-                final EnemyAreaConfigData d = new EnemyAreaConfigData();
-                d.id = id;
-                d.enemyList = new ArrayList<>();
-                return d;
-            });
-
-            final EnemyConfigData enemyConfigData = new EnemyConfigData();
-
-            enemyConfigData.id = value.enemyId;
-            enemyConfigData.weight = value.weight;
-            enemyConfigData.level = value.level;
-            enemyConfigData.property = makeProperty(GetEnemyTemplate(value.level), value);
-
-            enemyAreaConfigData.weightAll += enemyConfigData.weight;
-
-            enemyAreaConfigData.enemyList.add(enemyConfigData);
-        }
-        enemyInfoMap = map;
-
-        final Map<Integer, List<EnemyCountConfigData>> map1 = new HashMap<>();
-        for (final DataConfigData value : dataMap16.values()) {
-
-            final List<EnemyCountConfigData> m2 = map1.computeIfAbsent(value.enemyAreaId, id -> new ArrayList<>());
-
-            final EnemyCountConfigData e = new EnemyCountConfigData();
-            e.weight = value.weight;
-            e.count = value.count;
-            m2.add(e);
-        }
-
-        enemyCountMap = map1;
-        // drop
-        final Map<Integer, List<DropItemConfigData>> map2 = new HashMap<>();
-        final Map<Integer, List<DropItemConfigData>> map3 = new HashMap<>();
-        for (final DataConfigData value : dataMap17.values()) {
-            final DropItemConfigData d = new DropItemConfigData();
-            d.count = value.count;
-            d.rate = value.weight;
-            d.itemId = value.itemId;
-            if (value.type == 1) {
-                final List<DropItemConfigData> list = map3.computeIfAbsent(value.enemyId, integer -> new ArrayList<>());
-                list.add(d);
-            } else if (value.type == 2) {
-                final List<DropItemConfigData> list = map2.computeIfAbsent(value.areaId, integer -> new ArrayList<>());
-                list.add(d);
-            }
-        }
-
-        areaDropMap = map2;
-        enemyDropMap = map3;
-
-        final Map<Integer, List<DropItemConfigData>> map4 = new HashMap<>();
-
         // npc task
         for (final DataConfigData value : taskMap4.values()) {
             npcTaskMap.put(value.npcId, value);
@@ -247,11 +151,16 @@ public class ConfigManager extends AbsLifecycle {
         for (IConfigParse iConfigParse : list) {
             iConfigParse.parse();
         }
-
+        for (IConfigParse iConfigParse : list) {
+            iConfigParse.afterAllLoad();
+        }
+        for (IConfigParse iConfigParse : list) {
+            iConfigParse.end();
+        }
     }
 
-    public static Property makePropertyByTemplate(final DataConfigData f) {
-        return makeProperty(GetEnemyTemplate(f.level), f);
+    public static Property makePropertyFromHero(final DataConfigData f) {
+        return makeProperty(heroBaseDataBox.findById(f.level).property, f);
     }
 
     /**
@@ -336,9 +245,9 @@ public class ConfigManager extends AbsLifecycle {
      * @param level
      * @return
      */
-    public DataConfigData heroBaseProperty(final int heroId, final int level) {
+    public static HeroBaseConfigData heroBaseProperty(final int heroId, final int level) {
         // todo
-        return heroMap1001.get(level);
+        return heroBaseDataBox.findById(level);
     }
 
     /**
@@ -359,12 +268,13 @@ public class ConfigManager extends AbsLifecycle {
         return paramConfigData.bankCapacity;
     }
 
-    public EnemyAreaConfigData getFightArea(final int areaId) {
-        return enemyInfoMap.get(areaId);
+
+    public static List<EnemyConfigData> getFightArea(final int areaId) {
+        return enemyDataBox.findByCollectId(areaId);
     }
 
-    public static DataConfigData getItem(final int itemId) {
-        return itemMap.get(itemId);
+    public static ItemConfigData getItem(final int itemId) {
+        return itemDataBox.findById(itemId);
     }
 
     /**
@@ -411,10 +321,6 @@ public class ConfigManager extends AbsLifecycle {
 
     public TransformConfigData transformConfigData(final int id) {
         return transformMap.get(id);
-    }
-
-    public static Property GetEnemyTemplate(final int level) {
-        return enemyTemplateBox.findById(level).property;
     }
 
     public static int GetInitPower() {

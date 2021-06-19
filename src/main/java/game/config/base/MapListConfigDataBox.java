@@ -36,5 +36,4 @@ public abstract class MapListConfigDataBox<T extends BaseConfigData<T>> extends 
     public List<T> findByCollectId(int id) {
         return listMap.get(id);
     }
-
 }

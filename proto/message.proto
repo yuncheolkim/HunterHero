@@ -53,6 +53,12 @@ message HeartbeatRes {
 // 10 tick
 // 11 dataSave
 
+// 开启新功能
+message FeatureOpenPush{
+    int32 id = 1;
+}
+
+
 /////////////////////////////////////////////////  任务
 message TaskReq {
     int32 taskId = 1;

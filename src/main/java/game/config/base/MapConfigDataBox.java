@@ -27,4 +27,16 @@ public abstract class MapConfigDataBox<T extends BaseConfigData<T>> extends Conf
     public T findById(int id) {
         return map.get(id);
     }
+
+    @Override
+    public void end() {
+        for (T t : map.values()) {
+            t.end();
+        }
+    }
+
+    @Override
+    public void afterAllLoad() {
+        map.values().forEach(BaseConfigData::afterAllLoad);
+    }
 }

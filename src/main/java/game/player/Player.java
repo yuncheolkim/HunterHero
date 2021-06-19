@@ -8,6 +8,8 @@ import game.base.Logs;
 import game.base.Work;
 import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
+import game.config.data.HeroBaseConfigData;
+import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
@@ -264,27 +266,19 @@ public class Player {
         }
 
         final PlayerHero.Builder builder = PlayerHero.newBuilder();
-        final DataConfigData d = G.C.heroMap1001.get(1);
+        final HeroBaseConfigData d = ConfigManager.heroBaseProperty(0, 1);
         builder.setId(heroId);
         builder.setLevel(1);
         builder.setTalent(99999);
 
-        builder.getPropertyBuilder()
-                .setHp(d.hp)
-                .setDamage(d.damage)
-                .setDef(d.def)
-                .setAvoid(d.avoid)
-                .setCritical(d.critical)
-                .setCriticalDamage(d.criticalDamage)
-                .setDefBase(d.defBase)
-                .setCriticalBase(d.criticalBase)
-                .setAvoidBase(d.avoidBase)
-                .setSpeed(d.speed);
+        builder.setProperty(d.property);
 
+
+        Property property = builder.getProperty();
         builder.getPropertyEffectBuilder()
-                .setDefRate(CalcUtil.calcRateProperty(d.def, d.defBase))
-                .setAvoidRate(CalcUtil.calcRateProperty(d.avoid, d.avoidBase))
-                .setCriticalRate(CalcUtil.calcRateProperty(d.critical, d.criticalBase));
+                .setDefRate(CalcUtil.calcRateProperty(property.getDef(), property.getDefBase()))
+                .setAvoidRate(CalcUtil.calcRateProperty(property.getAvoid(), property.getAvoidBase()))
+                .setCriticalRate(CalcUtil.calcRateProperty(property.getCritical(), property.getCriticalBase()));
 
         getPd().putHero(heroId, builder.build());
 
@@ -541,10 +535,10 @@ public class Player {
         final ItemBoxData box = bagUpdateService.box(this);
         ModuleAssert.isPositive(data.getCount());
 
-        final DataConfigData dataConfigData = ConfigManager.getItem(data.getItemId());
+        final ItemConfigData dataConfigData = ConfigManager.getItem(data.getItemId());
 
         // 任务物品不进背包
-        if (dataConfigData.type1 != ItemTypeEnum.TASK.id) {
+        if (dataConfigData.type != ItemTypeEnum.TASK) {
 
             final BagInfoChangePush.Builder bagPushBuilder = BagInfoChangePush.newBuilder();
 
@@ -646,7 +640,7 @@ public class Player {
                 final BagSlot beforeSlot = zipItemList.get(lastIndex);
                 if (beforeSlot.getData().getItemId() == bagSlot.getData().getItemId()) {
 
-                    final DataConfigData dataConfigData = ConfigManager.getItem(beforeSlot.getData().getItemId());
+                    final ItemConfigData dataConfigData = ConfigManager.getItem(beforeSlot.getData().getItemId());
                     final int stack = dataConfigData.stack;
                     final int beforeCount = beforeSlot.getData().getCount();
                     if (stack > 1 && beforeCount < stack) {

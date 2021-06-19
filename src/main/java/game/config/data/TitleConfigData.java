@@ -12,9 +12,8 @@ public class TitleConfigData extends BaseConfigData<TitleConfigData> {
     public String content;
 
     @Override
-    public TitleConfigData convert(final DataConfigData data) {
-        final TitleConfigData convert = super.convert(data);
-        content = data.s1;
-        return convert;
+    protected void fill(DataConfigData d) {
+
+        content = d.s1;
     }
 }

@@ -1,7 +1,7 @@
 package game.module.hero.calc;
 
 import game.base.G;
-import game.config.base.DataConfigData;
+import game.config.data.HeroBaseConfigData;
 import game.proto.data.Equipment;
 import game.proto.data.PlayerHero;
 
@@ -14,10 +14,10 @@ import game.proto.data.PlayerHero;
 public class AvoidBaseHeroCalc implements IHeroCalc {
     @Override
     public void calc(PlayerHero old, PlayerHero.Builder builder) {
-        DataConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
+        HeroBaseConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
-        int avoidBase = data.avoidBase;
+        int avoidBase = data.property.getAvoidBase();
 
         // equipment
         if (old.getEquipmentCount() > 0) {
