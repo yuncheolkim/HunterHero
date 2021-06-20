@@ -1,6 +1,6 @@
 package game.module.fight;
 
-import game.base.G;
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
 import game.module.battle.hero.Guanyu;
@@ -34,7 +34,7 @@ public class HeroFactory {
         if (hero != null) {
             hero.setId(heroId);
             hero.setLevel(playerHero.getLevel());
-            hero.setName(G.C.dataMap1.get(heroId).name);
+            hero.setName(ConfigManager.getHeroName(heroId));
             // property data
             HeroData data = makeData(playerHero.getProperty());
 

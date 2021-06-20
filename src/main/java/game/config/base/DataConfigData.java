@@ -238,4 +238,5 @@ public class DataConfigData {
     public int quality;
 
     public int rate;
+    public int talentId;
 }

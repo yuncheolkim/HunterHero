@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
  */
 public class ConfigManager extends AbsLifecycle {
 
-    public Map<Integer, DataConfigData> dataMap1;
 
     public Map<Integer, DataConfigData> dataMap2;
 
@@ -89,6 +88,8 @@ public class ConfigManager extends AbsLifecycle {
     public static final EnemyCountDataBox enemyCountDataBox = new EnemyCountDataBox();
     public static final DropItemAreaDataBox dropItemAreaDataBox = new DropItemAreaDataBox();
     public static final DropItemEnemyDataBox dropItemEnemyDataBox = new DropItemEnemyDataBox();
+    public static final HeroDataBox heroDataBox = new HeroDataBox();
+    public static final TalentDataBox talentDataBox = new TalentDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -104,12 +105,13 @@ public class ConfigManager extends AbsLifecycle {
         list.add(enemyCountDataBox);
         list.add(dropItemAreaDataBox);
         list.add(dropItemEnemyDataBox);
+        list.add(heroDataBox);
+        list.add(talentDataBox);
     }
 
     @Override
     public void start() {
         super.start();
-        dataMap1 = new JsonConfig("data/data_1-hero.json", 32).load();
         dataMap2 = new JsonConfig("data/data_2-skill.json").load();
         dataMap3 = new JsonConfig("data/data_3-buff.json").load();
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
@@ -333,6 +335,10 @@ public class ConfigManager extends AbsLifecycle {
 
     public static TitleConfigData getTitle(final int id) {
         return titleDataBox.findById(id);
+    }
+
+    public static String getHeroName(int heroId) {
+        return heroDataBox.findById(heroId).name;
     }
 
 }

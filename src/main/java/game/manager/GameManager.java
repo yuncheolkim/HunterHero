@@ -11,6 +11,8 @@ import game.module.fish.FishHandler;
 import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
+import game.module.hero.calc.IHeroCalc;
+import game.module.hero.talent.common.AddHpTalent;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
@@ -24,6 +26,8 @@ import game.proto.back.MsgNoBackInner;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -62,15 +66,21 @@ public class GameManager extends AbsLifecycle {
     // scene
     private final ChatScene chatScene = new ChatScene();
 
+    private final Map<Integer, IHeroCalc> talentMap = new HashMap<>(64);
+
     @Override
+
     public void start() {
         // 初始化 业务逻辑处理
         initHandler();
+        // 初始化天赋
+        initTalent();
 
         // 初始化 场景
         initScene();
         super.start();
     }
+
 
     private void initHandler() {
         // 测试
@@ -142,6 +152,11 @@ public class GameManager extends AbsLifecycle {
     private void initScene() {
 
         chatScene.setWork(G.W.getSceneWork());
+    }
+
+    private void initTalent() {
+        talentMap.put(1, new AddHpTalent());
+
 
     }
 

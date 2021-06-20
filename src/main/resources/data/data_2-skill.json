@@ -113,11 +113,13 @@
     },
     "6": {
         "icon": "SpellBookPreface_19",
-        "id": 6
+        "id": 6,
+        "name": "敏捷如风"
     },
     "7": {
         "icon": "SpellBookPreface_19",
-        "id": 7
+        "id": 7,
+        "name": "致命连击"
     },
     "8": {
         "icon": "SpellBookPreface_19",

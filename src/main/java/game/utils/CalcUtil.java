@@ -2,6 +2,7 @@ package game.utils;
 
 import game.base.IWeight;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -150,6 +151,18 @@ public class CalcUtil {
 
         char[] chars = String.valueOf(i).toCharArray();
         return chars[index] - '0';
+    }
+
+    public static List<Integer> getIntList(int i) {
+
+        char[] chars = String.valueOf(i).toCharArray();
+        List<Integer> l = new ArrayList<>(chars.length);
+
+        for (char aChar : chars) {
+            l.add(aChar - '0');
+        }
+
+        return l;
     }
 
     /**

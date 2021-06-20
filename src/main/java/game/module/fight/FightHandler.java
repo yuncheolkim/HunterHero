@@ -87,6 +87,7 @@ public class FightHandler {
             battle.getSideAhero().add(hero);
         }
 
+        // 开始战斗
         final BattleRecord record = battle.start();
 
         final FightRecord.Builder result = buildFightRecord(record);
