@@ -35,6 +35,7 @@ public class HeroFactory {
             hero.setId(heroId);
             hero.setLevel(playerHero.getLevel());
             hero.setName(ConfigManager.getHeroName(heroId));
+            hero.setTalentInfo(playerHero.getTalent());
             // property data
             HeroData data = makeData(playerHero.getProperty());
 

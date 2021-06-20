@@ -104,7 +104,7 @@ public class HeroHandler {
 
     /**
      * 修改天赋
-     * todo
+     * todo 等级检查
      *
      * @param player
      * @param req
@@ -114,6 +114,9 @@ public class HeroHandler {
         final PlayerHero heroOrThrow = player.pd.getHeroOrThrow(req.getHeroId());
         final PlayerHero.Builder builder = heroOrThrow.toBuilder().setTalent(req.getTalent());
         player.pd.putHero(req.getHeroId(), builder.buildPartial());
+
+
+        EventManager.firePlayerEvent(player, new HeroPowerUpEvent(heroOrThrow.getId()));
 
         return HeroTalentChangeRes.newBuilder()
                 .setHeroId(req.getHeroId()).setTalent(req.getTalent()).buildPartial();

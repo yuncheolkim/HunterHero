@@ -5,6 +5,8 @@ import game.config.data.TalentConfigData;
 import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.buff.data.OneAttackBuffData;
+import game.module.battle.find.BackTargetStrategy;
+import game.module.battle.find.FrontTargetStrategy;
 import game.module.battle.find.OneAttackBuffFindTargetStrategy;
 import game.module.battle.skill.GuanyuSkill1;
 import game.module.battle.skill.GuanyuSkill2;
@@ -24,6 +26,8 @@ public class Guanyu extends Hero {
     public Guanyu() {
         id = 1001;
         targetStrategies.add(new OneAttackBuffFindTargetStrategy());
+        targetStrategies.add(new FrontTargetStrategy());
+        targetStrategies.add(new BackTargetStrategy());
     }
 
     @Override
@@ -39,6 +43,8 @@ public class Guanyu extends Hero {
         GuanyuSkill1 skill1 = new GuanyuSkill1();
         GuanyuSkill2 skill2 = new GuanyuSkill2();
         List<Integer> talentList = CalcUtil.getIntList(talentInfo);
+        OneAttackBuffData buffData = new OneAttackBuffData();
+
         for (int i = 0; i < talentList.size(); i++) {
             final int talentRowIndex = talentList.get(i);
             if (talentRowIndex == 9) {
@@ -51,7 +57,6 @@ public class Guanyu extends Hero {
                 continue;
             }
 
-            OneAttackBuffData buffData = new OneAttackBuffData();
             switch (tdata.talentId) {
                 case 21:
                     buffData.setStack(tdata.i1);
@@ -60,6 +65,7 @@ public class Guanyu extends Hero {
                     buffData.setCurrent(tdata.i1);
                     break;
                 case 23:
+                    skill2.setRow(true);
                     break;
                 case 24:
                     break;
@@ -68,8 +74,9 @@ public class Guanyu extends Hero {
                 case 26:
                     break;
             }
-
         }
+
+        skill1.setData(buffData);
 
         addSkill(skill1);
         addSkill(skill2);

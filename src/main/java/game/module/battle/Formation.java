@@ -122,6 +122,28 @@ public enum Formation {
 
             return array;
         }
+
+        /**
+         * 目标所在行的位置
+         * @param pos
+         * @return
+         */
+        public List<Integer> row(Pos pos) {
+            List<Integer> array = null;
+            int index = pos.getIndex();
+
+            if (index < 3) {
+                array = Lists.newArrayList(0, 1, 2);
+            } else if (index < 6) {
+                array = Lists.newArrayList(3, 4, 5);
+            } else if (index < 20) {
+                array = Lists.newArrayList(16, 17, 18, 19);
+            } else {
+                array = Lists.newArrayList(20, 21, 22, 23);
+            }
+
+            return array;
+        }
     };
 
 
@@ -152,5 +174,10 @@ public enum Formation {
         List<Integer> array = front(pos);
 
         return array;
+    }
+
+    public List<Integer> row(Pos pos) {
+
+        return null;
     }
 }

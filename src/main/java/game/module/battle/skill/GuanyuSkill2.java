@@ -12,6 +12,7 @@ import game.utils.CalcUtil;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -26,6 +27,7 @@ public class GuanyuSkill2 extends Skill {
      * 溅射比例
      */
     private int rate = 40;
+    private boolean row;
 
     public GuanyuSkill2() {
         actionPoint.put(ActionPoint.出手后, 1);
@@ -41,18 +43,37 @@ public class GuanyuSkill2 extends Skill {
     }
 
     private List<Hero> attackHero(final Hero hero) {
-        final Collection<Hero> list = hero.getBattle().oppositeHeroes(hero.getSide()).values();
+        Map<Integer, Hero> enemy = hero.getBattle().oppositeHeroes(hero.getSide());
+        final Collection<Hero> list = enemy.values();
         final Hero currentTarget = hero.damageInfo.target;
         if (currentTarget == null) {
             return new ArrayList<>();
         }
-        return list.stream()
-                .filter(h -> h.getPos().getIndex() == currentTarget.getBattle().getFormation().left(currentTarget.getPos()) ||
-                        h.getPos().getIndex() == currentTarget.getBattle().getFormation().right(currentTarget.getPos()) ||
-                        h.getPos().getIndex() == currentTarget.getBattle().getFormation().down(currentTarget.getPos())
-                )
-                .filter(Hero::isAlive)
-                .collect(Collectors.toList());
+        if (row) {
+            List<Integer> row = currentTarget.getBattle().getFormation().row(currentTarget.getPos());
+            List<Hero> result = new ArrayList<>(4);
+            for (Integer pos : row) {
+                if (pos == currentTarget.getPos().getIndex()) {
+                    continue;
+                }
+                Hero h = enemy.get(pos);
+                if (h != null && h.isAlive()) {
+                    result.add(h);
+                }
+            }
+
+            return result;
+
+        } else {
+
+            return list.stream()
+                    .filter(h -> h.getPos().getIndex() == currentTarget.getBattle().getFormation().left(currentTarget.getPos()) ||
+                            h.getPos().getIndex() == currentTarget.getBattle().getFormation().right(currentTarget.getPos()) ||
+                            h.getPos().getIndex() == currentTarget.getBattle().getFormation().down(currentTarget.getPos())
+                    )
+                    .filter(Hero::isAlive)
+                    .collect(Collectors.toList());
+        }
     }
 
     @Override
@@ -78,4 +99,7 @@ public class GuanyuSkill2 extends Skill {
         this.rate = rate;
     }
 
+    public void setRow(boolean row) {
+        this.row = row;
+    }
 }

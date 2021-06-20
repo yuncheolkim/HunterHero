@@ -95,16 +95,19 @@
         "talentId": 4
     },
     "13": {
+        "i1": 50,
         "id": 13,
-        "talentId": 0
+        "talentId": 24
     },
     "14": {
+        "i1": 20,
         "id": 14,
-        "talentId": 0
+        "talentId": 25
     },
     "15": {
+        "i1": 50,
         "id": 15,
-        "talentId": 0
+        "talentId": 26
     },
     "2": {
         "i1": 10,
@@ -192,16 +195,19 @@
         "talentId": 6
     },
     "4": {
+        "i1": 80,
         "id": 4,
-        "talentId": 0
+        "talentId": 21
     },
     "5": {
+        "i1": 20,
         "id": 5,
-        "talentId": 0
+        "talentId": 22
     },
     "6": {
+        "i1": 2,
         "id": 6,
-        "talentId": 0
+        "talentId": 23
     },
     "7": {
         "i1": 10,
