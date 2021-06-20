@@ -24,7 +24,7 @@ public class ResourceCalcUtil {
 
             if (diff > 3) {// 差距大于3级
 
-                exp += CalcUtil.calcRateAdd(earnExt, 100 - (diff - 3) * 20);
+                exp += CalcUtil.calcRateChangeValue(earnExt, 100 - (diff - 3) * 20);
 
             } else {
                 exp += earnExt;

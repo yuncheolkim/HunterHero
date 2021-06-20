@@ -49,7 +49,7 @@ public class CalcUtil {
      * @param rate
      * @return 比例增值
      */
-    public static int calcRateAdd(int val, int rate) {
+    public static int calcRateChangeValue(int val, int rate) {
         if (rate <= 0) {
             return 0;
         }
@@ -80,7 +80,7 @@ public class CalcUtil {
         return (int) (val * (1 - rate));
     }
 
-    public static int calcRateAdd(int val, float rate) {
+    public static int calcRateChangeValue(int val, float rate) {
         return (int) (val * rate);
     }
 
@@ -98,6 +98,10 @@ public class CalcUtil {
         return DEFAULT_RANDOM.nextInt(10000) < rate;
     }
 
+    public static boolean happened100(int rate) {
+        return DEFAULT_RANDOM.nextInt(100) < rate;
+    }
+
     /**
      * 计算属性
      * 返回百分比
@@ -108,6 +112,10 @@ public class CalcUtil {
      */
     public static int calcRateProperty(int v, int base) {
         return (int) (v * 10000.0 / (v + base));
+    }
+
+    public static float calcRateProperty1(int v, int base) {
+        return (v * 1.0f / (v + base));
     }
 
     /**

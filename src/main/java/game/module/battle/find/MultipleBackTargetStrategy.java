@@ -17,6 +17,7 @@ import java.util.Map;
 public class MultipleBackTargetStrategy implements FindTargetStrategy {
 
     private int count;
+    private int add;
 
     public MultipleBackTargetStrategy(int count) {
         this.count = count;
@@ -24,8 +25,9 @@ public class MultipleBackTargetStrategy implements FindTargetStrategy {
 
     @Override
     public boolean find(Hero search, List<Hero> found) {
-        if (found.size() < count) {
-            int find = count - found.size();
+        final int allCount = count + add;
+        if (found.size() < allCount) {
+            int find = allCount - found.size();
 
             Battle battle = search.getBattle();
             Formation formation = battle.getFormation();
@@ -56,4 +58,9 @@ public class MultipleBackTargetStrategy implements FindTargetStrategy {
     public void setCount(int count) {
         this.count = count;
     }
+
+    public void setAdd(int add) {
+        this.add = add;
+    }
 }
+

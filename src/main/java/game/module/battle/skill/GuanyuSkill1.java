@@ -56,7 +56,7 @@ public class GuanyuSkill1 extends Skill {
         final Hero currentTarget = hero.damageInfo.target;
 
         if (currentTarget.isDead()) {
-            hero.property.damage += CalcUtil.calcRateAdd(hero.origin.damage, addDamageRate);
+            hero.property.damage += CalcUtil.calcRateChangeValue(hero.origin.damage, addDamageRate);
         }
 
         return record;

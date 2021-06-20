@@ -55,6 +55,10 @@ public class HeroData {
      */
     private int speed;
 
+    /**
+     * 护甲穿透比例,万分比
+     */
+    private int defReduce;
 
     public HeroData merge(HeroData o) {
         maxHp += o.maxHp;
@@ -67,6 +71,7 @@ public class HeroData {
         criticalBase += o.criticalBase;
         avoidBase += o.avoidBase;
         defBase += o.defBase;
+        defReduce += o.defReduce;
         return this;
     }
 
@@ -149,6 +154,14 @@ public class HeroData {
 
     public void setCriticalBase(int criticalBase) {
         this.criticalBase = criticalBase;
+    }
+
+    public int getDefReduce() {
+        return defReduce;
+    }
+
+    public void setDefReduce(int defReduce) {
+        this.defReduce = defReduce;
     }
 
     @Override

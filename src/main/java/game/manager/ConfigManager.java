@@ -172,15 +172,15 @@ public class ConfigManager extends AbsLifecycle {
      */
     public static Property makeProperty(final Property v, final DataConfigData f) {
         return Property.newBuilder()
-                .setHp(CalcUtil.calcRateAdd(v.getHp(), f.hp))
-                .setDamage(CalcUtil.calcRateAdd(v.getDamage(), f.damage))
-                .setDef(CalcUtil.calcRateAdd(v.getDef(), f.def))
-                .setDefBase(CalcUtil.calcRateAdd(v.getDefBase(), f.defBase))
-                .setAvoid(CalcUtil.calcRateAdd(v.getAvoid(), f.avoid))
-                .setAvoidBase(CalcUtil.calcRateAdd(v.getAvoidBase(), f.avoidBase))
-                .setCritical(CalcUtil.calcRateAdd(v.getCritical(), f.critical))
-                .setCriticalBase(CalcUtil.calcRateAdd(v.getCriticalBase(), f.criticalBase))
-                .setCriticalDamage(CalcUtil.calcRateAdd(v.getCriticalDamage(), f.criticalDamage))
+                .setHp(CalcUtil.calcRateChangeValue(v.getHp(), f.hp))
+                .setDamage(CalcUtil.calcRateChangeValue(v.getDamage(), f.damage))
+                .setDef(CalcUtil.calcRateChangeValue(v.getDef(), f.def))
+                .setDefBase(CalcUtil.calcRateChangeValue(v.getDefBase(), f.defBase))
+                .setAvoid(CalcUtil.calcRateChangeValue(v.getAvoid(), f.avoid))
+                .setAvoidBase(CalcUtil.calcRateChangeValue(v.getAvoidBase(), f.avoidBase))
+                .setCritical(CalcUtil.calcRateChangeValue(v.getCritical(), f.critical))
+                .setCriticalBase(CalcUtil.calcRateChangeValue(v.getCriticalBase(), f.criticalBase))
+                .setCriticalDamage(CalcUtil.calcRateChangeValue(v.getCriticalDamage(), f.criticalDamage))
                 .build();
     }
 

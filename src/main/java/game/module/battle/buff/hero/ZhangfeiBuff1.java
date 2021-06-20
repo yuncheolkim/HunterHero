@@ -1,11 +1,11 @@
 package game.module.battle.buff.hero;
 
-import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.Buff;
 import game.module.battle.buff.IBuffVal;
 import game.module.battle.damage.DamageInfo;
+import game.utils.CalcUtil;
 
 /**
  * @author Yunzhe.Jin
@@ -31,11 +31,11 @@ public class ZhangfeiBuff1 extends Buff {
         if (actionPoint == ActionPoint.攻击方计算伤害前) {
             // 减少对手的暴击率
             int critical = damageInfo.source.fightingData.getCritical();
-            critical -= CalcUtil.calcRateAdd(critical, this.critical);
+            critical -= CalcUtil.calcRateChangeValue(critical, this.critical);
             damageInfo.source.fightingData.setCritical(critical);
         } else {
             if (hero.damageInfo.sourceCriticalDamage != 0) {
-                hero.damageInfo.sourceCriticalDamage -= CalcUtil.calcRateAdd(hero.damageInfo.sourceCriticalDamage, this.criticalDamage);
+                hero.damageInfo.sourceCriticalDamage -= CalcUtil.calcRateChangeValue(hero.damageInfo.sourceCriticalDamage, this.criticalDamage);
             }
         }
     }

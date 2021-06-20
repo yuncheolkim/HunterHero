@@ -66,6 +66,7 @@ public class FightHandler {
             final CreatureTarget fightEnemy = HeroFactory.createFightEnemy(enemy);
             fightEnemy.setSide(Side.B);
             fightEnemy.setPos(Pos.from(enemy.getPos()));
+            fightEnemy.setSpeed(fightEnemy.getPos().getIndex());
             fightEnemy.init();
             fightEnemy.setBattle(battle);
             battle.addHero(fightEnemy);

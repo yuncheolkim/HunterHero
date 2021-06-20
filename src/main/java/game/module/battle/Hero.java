@@ -130,9 +130,9 @@ public class Hero {
     }
 
     public void processAll(ActionPoint actionPoint) {
-        processAction(actionPoint);
         processSkill(actionPoint);
         processBuff(actionPoint);
+        processAction(actionPoint);
     }
 
     /**
@@ -271,6 +271,9 @@ public class Hero {
      */
     public void processBuff(ActionPoint actionPoint) {
         Collection<Buff> buffs = buffMap.get(actionPoint);
+        if (actionPoint == ActionPoint.重新计算属性) {
+            buffs = buffMap.values();
+        }
         if (buffs != null) {
             for (Buff buff : buffs) {
                 buff.process(actionPoint, this);
@@ -473,7 +476,7 @@ public class Hero {
      */
     public void calcBuffEffect(ActionPoint point) {
         property = new HeroData().merge(origin);
-        processAll(point);
+        processBuff(point);
     }
 
     private void addBuffRecord(Buff buff) {
@@ -656,6 +659,10 @@ public class Hero {
 
     public void setTalentInfo(int talentInfo) {
         this.talentInfo = talentInfo;
+    }
+
+    public List<FindTargetStrategy> getTargetStrategies() {
+        return targetStrategies;
     }
 
     @Override

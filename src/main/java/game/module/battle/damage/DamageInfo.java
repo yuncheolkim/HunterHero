@@ -1,10 +1,11 @@
 package game.module.battle.damage;
 
-import game.utils.CalcUtil;
 import game.module.battle.Hero;
+import game.utils.CalcUtil;
 
 /**
  * 造成伤害的信息
+ *
  * @author Yunzhe.Jin
  * 2021/1/11 14:56
  */
@@ -52,13 +53,14 @@ public class DamageInfo {
         return sourceDamage + sourceCriticalDamage;
     }
 
-    public void reduceDamage(int rate) {
+    public void reduceDamage(float rate) {
         sourceDamage = CalcUtil.calcRateSub(sourceDamage, rate);
         sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
     }
 
     /**
      * 调整伤害，不能超过max
+     *
      * @param maxDamageable
      */
     public void adjustDamageHp(int maxDamageable) {

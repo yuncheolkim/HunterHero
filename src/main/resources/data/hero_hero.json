@@ -1,5 +1,14 @@
 {
     "1001": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
         "id": 1001,
         "list1": [
             2,
@@ -26,6 +35,15 @@
         "title": "星界治安官"
     },
     "1002": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
         "id": 1002,
         "list1": [
             4,
@@ -52,6 +70,15 @@
         "title": "精灵王"
     },
     "1003": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
         "id": 1003,
         "list1": [
             6,

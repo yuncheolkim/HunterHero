@@ -2,6 +2,7 @@ package game.module.battle.damage;
 
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
+import game.utils.CalcUtil;
 
 /**
  * 受到伤害-计算护甲
@@ -11,14 +12,13 @@ import game.module.battle.HeroData;
  */
 public class DefDamagedProcess implements DamagedProcess {
 
-    private final int rateBase = 500;
-
     @Override
     public boolean process(final DamageInfo info) {
 
         final Hero target = info.target;
-        final HeroData fightingData = target.fightingData;
-        final int rate = fightingData.getDef() * 100 / (fightingData.getDef() + rateBase);
+        final HeroData fightingData = target.property;
+        int def = CalcUtil.calcRateSub(fightingData.getDef(), info.source.fightingData.getDefReduce() / 10000.0f);
+        final float rate = CalcUtil.calcRateProperty1(def, fightingData.getDefBase());
 
         if (rate > 0) {
             info.reduceDamage(rate);

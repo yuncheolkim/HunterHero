@@ -148,8 +148,7 @@ public class Battle {
      * @param actionPoint
      */
     private void processHero(final ActionPoint actionPoint) {
-        final List<Hero> heroes = decideOrder();
-        for (final Hero hero : heroes) {
+        for (final Hero hero : actionOrderList) {
             hero.processAll(actionPoint);
         }
     }

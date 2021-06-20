@@ -24,7 +24,7 @@ public class CriticalDamageProcess implements DamageProcess {
         if (happened) {
             int damage = processData.getDamage();
             int damageRate = processData.getCriticalDamageRate();
-            hero.damageInfo.sourceCriticalDamage = hero.damageInfo.sourceCriticalDamage + CalcUtil.calcRateAdd(damage, damageRate);
+            hero.damageInfo.sourceCriticalDamage = hero.damageInfo.sourceCriticalDamage + CalcUtil.calcRateChangeValue(damage, damageRate);
 
             Logs.trace("暴击伤害", rate, processData.getCriticalDamageRate());
         }

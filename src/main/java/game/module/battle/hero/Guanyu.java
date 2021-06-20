@@ -1,8 +1,5 @@
 package game.module.battle.hero;
 
-import game.config.data.HeroConfigData;
-import game.config.data.TalentConfigData;
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.buff.data.OneAttackBuffData;
 import game.module.battle.find.BackTargetStrategy;
@@ -10,9 +7,7 @@ import game.module.battle.find.FrontTargetStrategy;
 import game.module.battle.find.OneAttackBuffFindTargetStrategy;
 import game.module.battle.skill.GuanyuSkill1;
 import game.module.battle.skill.GuanyuSkill2;
-import game.utils.CalcUtil;
-
-import java.util.List;
+import game.module.fight.FightService;
 
 /**
  * 关羽
@@ -38,24 +33,12 @@ public class Guanyu extends Hero {
     }
 
     private void processTalent() {
-        HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(id);
 
         GuanyuSkill1 skill1 = new GuanyuSkill1();
         GuanyuSkill2 skill2 = new GuanyuSkill2();
-        List<Integer> talentList = CalcUtil.getIntList(talentInfo);
         OneAttackBuffData buffData = new OneAttackBuffData();
 
-        for (int i = 0; i < talentList.size(); i++) {
-            final int talentRowIndex = talentList.get(i);
-            if (talentRowIndex == 9) {
-                continue;
-            }
-            int index = i * 3 + talentRowIndex - 1;
-            int talentId = heroConfig.talent.get(index);
-            TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
-            if (tdata.talentId <= 20) {
-                continue;
-            }
+        FightService.talentProcess(id, talentInfo, tdata -> {
 
             switch (tdata.talentId) {
                 case 21:
@@ -77,7 +60,7 @@ public class Guanyu extends Hero {
                     skill2.setRate(tdata.i1);
                     break;
             }
-        }
+        });
 
         skill1.setData(buffData);
 

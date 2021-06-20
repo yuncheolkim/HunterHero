@@ -1,13 +1,14 @@
 package game.module.battle.buff.hero;
 
-import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.DefaultDataBuff;
+import game.utils.CalcUtil;
 
 /**
  * 激励
  * 增加攻击力
+ *
  * @author Yunzhe.Jin
  * 2021/2/3 18:09
  */
@@ -24,6 +25,6 @@ public class LiubeiBuff1 extends DefaultDataBuff {
 
     @Override
     public void process(ActionPoint actionPoint, Hero hero) {
-        hero.property.damage += CalcUtil.calcRateAdd(hero.origin.damage, data.getInt1());
+        hero.property.damage += CalcUtil.calcRateChangeValue(hero.origin.damage, data.getInt1());
     }
 }

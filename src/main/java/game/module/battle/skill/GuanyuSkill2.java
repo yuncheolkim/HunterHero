@@ -88,7 +88,7 @@ public class GuanyuSkill2 extends Skill {
             damageInfo.type = (DamageSourceType.SKILL);
             damageInfo.source = (hero);
             damageInfo.target = (target);
-            damageInfo.sourceDamage = CalcUtil.calcRateAdd(hero.damageInfo.allSourceDamage(), rate);
+            damageInfo.sourceDamage = CalcUtil.calcRateChangeValue(hero.damageInfo.allSourceDamage(), rate);
 
             hero.damage(damageInfo);
         }

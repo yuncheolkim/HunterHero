@@ -2,9 +2,7 @@ package game.module.fight;
 
 import game.base.G;
 import game.base.Logs;
-import game.config.data.BattleFormationConfigData;
-import game.config.data.EnemyConfigData;
-import game.config.data.EnemyCountConfigData;
+import game.config.data.*;
 import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.FightStartPush;
@@ -19,6 +17,7 @@ import game.utils.DateUtils;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Consumer;
 
 import static game.module.battle.PosGen.RANDOM_8;
 
@@ -130,4 +129,24 @@ public class FightService {
         return push.build();
     }
 
+
+    public static void talentProcess(int heroId, int talentInfo, Consumer<TalentConfigData> talent) {
+        HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(heroId);
+
+        List<Integer> talentList = CalcUtil.getIntList(talentInfo);
+        for (int i = 0; i < talentList.size(); i++) {
+            final int talentRowIndex = talentList.get(i);
+            if (talentRowIndex == 9) {
+                continue;
+            }
+            int index = i * 3 + talentRowIndex - 1;
+            int talentId = heroConfig.talent.get(index);
+            TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
+            if (tdata.talentId <= 20) {
+                continue;
+            }
+
+            talent.accept(tdata);
+        }
+    }
 }

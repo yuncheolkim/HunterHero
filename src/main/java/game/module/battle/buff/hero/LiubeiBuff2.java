@@ -1,9 +1,9 @@
 package game.module.battle.buff.hero;
 
-import game.utils.CalcUtil;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.DefaultDataBuff;
+import game.utils.CalcUtil;
 
 /**
  * @author Yunzhe.Jin
@@ -23,7 +23,7 @@ public class LiubeiBuff2 extends DefaultDataBuff {
     public void process(ActionPoint actionPoint, Hero hero) {
         int maxHp = hero.property.getMaxHp();
 
-        int maxDamageable = CalcUtil.calcRateAdd(maxHp, data.getInt1());
+        int maxDamageable = CalcUtil.calcRateChangeValue(maxHp, data.getInt1());
         hero.damageInfo.adjustDamageHp(maxDamageable);
 
     }
