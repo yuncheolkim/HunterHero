@@ -83,7 +83,7 @@ public class Hero {
     /**
      * 动作
      */
-    protected Map<ActionPoint, HeroActionPointHandler> actionMap = new HashMap<>();
+    protected Multimap<ActionPoint, HeroActionPointHandler> actionMap = ArrayListMultimap.create();
 
     /**
      * 当前所在战斗
@@ -141,11 +141,24 @@ public class Hero {
      * @param actionPoint 相应的动作
      */
     public void processAction(ActionPoint actionPoint) {
-        HeroActionPointHandler pointHandler = actionMap.get(actionPoint);
-        if (pointHandler != null) {
+        Collection<HeroActionPointHandler> pointHandler = actionMap.get(actionPoint);
+        if (!pointHandler.isEmpty()) {
             Logs.trace("action", this, actionPoint);
-            pointHandler.handle(this);
+            for (HeroActionPointHandler heroActionPointHandler : pointHandler) {
+                heroActionPointHandler.handle(this);
+            }
         }
+    }
+
+    public void addAction(ActionPoint actionPoint, HeroActionPointHandler h) {
+
+        actionMap.put(actionPoint, h);
+
+    }
+
+    public void removeAction(ActionPoint actionPoint, HeroActionPointHandler h) {
+
+        actionMap.remove(actionPoint, h);
     }
 
     /**
@@ -551,6 +564,10 @@ public class Hero {
         d.simple = getSimple();
         d.property = property;
         return d;
+    }
+
+    public Optional<Buff> findBuff(int id) {
+        return buffMap.values().stream().filter(buff -> buff.getId() == id).findFirst();
     }
 
     public boolean isDead() {

@@ -34,7 +34,7 @@ public class HeroData {
 
     /**
      * 暴击概率
-     * x/(x+200)
+     * x/(x+criticalBase)
      */
     private int critical;
 

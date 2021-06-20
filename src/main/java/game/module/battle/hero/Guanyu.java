@@ -68,10 +68,13 @@ public class Guanyu extends Hero {
                     skill2.setRow(true);
                     break;
                 case 24:
+                    skill1.setAddDamageRate(tdata.i1);
                     break;
                 case 25:
+                    skill1.setAddCritical(tdata.i1);
                     break;
                 case 26:
+                    skill2.setRate(tdata.i1);
                     break;
             }
         }

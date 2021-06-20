@@ -1,5 +1,6 @@
 package game.module.battle.buff;
 
+import game.module.battle.Constant;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.data.OneAttackBuffData;
@@ -29,9 +30,13 @@ public class OneAttackBuff extends Buff {
         buffType = BuffType.BUFF;
         buffMergeType = BuffMergeType.MERGE;
         target = t;
-        id = 300002;
+        id = Constant.buff_guanyu_skill1;
         buffData = data;
         initRound(2);
+    }
+
+    public boolean isMax() {
+        return buffData.getCurrent() == buffData.getStack();
     }
 
     @Override

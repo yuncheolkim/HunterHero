@@ -11,6 +11,6 @@ public class HeroDataBox extends MapConfigDataBox<HeroConfigData> {
 
 
     public HeroDataBox() {
-        super("data/data_1-hero.json");
+        super("data/hero_hero.json");
     }
 }

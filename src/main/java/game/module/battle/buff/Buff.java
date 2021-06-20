@@ -5,10 +5,7 @@ import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.BuffData;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static game.module.battle.Constant.BUFF_INFINITE;
 
@@ -75,6 +72,7 @@ public abstract class Buff {
 
     /**
      * 减少回合数时机
+     *
      * @return
      */
     public ActionPoint reducePoint() {
@@ -99,6 +97,7 @@ public abstract class Buff {
 
     /**
      * 计算buff
+     *
      * @param actionPoint
      * @param hero
      */
@@ -113,6 +112,7 @@ public abstract class Buff {
 
     /**
      * 返回buff相关数据
+     *
      * @return
      */
     public IBuffVal buffVal() {
@@ -121,6 +121,7 @@ public abstract class Buff {
 
     /**
      * 合并buff
+     *
      * @param from
      */
     public void mergeBuff(Buff from) {
@@ -141,6 +142,7 @@ public abstract class Buff {
 
     /**
      * 计算合并策略
+     *
      * @return
      */
     public BuffMergeType calcBuffMergeType(Buff addBuf) {
@@ -197,6 +199,19 @@ public abstract class Buff {
 
     public void setBuffMergeType(BuffMergeType buffMergeType) {
         this.buffMergeType = buffMergeType;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Buff buff = (Buff) o;
+        return id == buff.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 
     @Override
