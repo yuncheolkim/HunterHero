@@ -1,13 +1,20 @@
 package game.module.battle.hero;
 
+import game.config.data.HeroConfigData;
+import game.config.data.TalentConfigData;
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
-import game.module.battle.find.MaxHpFindTargetStrategy;
+import game.module.battle.buff.data.OneAttackBuffData;
 import game.module.battle.find.OneAttackBuffFindTargetStrategy;
 import game.module.battle.skill.GuanyuSkill1;
 import game.module.battle.skill.GuanyuSkill2;
+import game.utils.CalcUtil;
+
+import java.util.List;
 
 /**
  * 关羽
+ *
  * @author Yunzhe.Jin
  * 2021/1/11 10:33
  */
@@ -15,12 +22,57 @@ public class Guanyu extends Hero {
 
 
     public Guanyu() {
-
-        addSkill(new GuanyuSkill2());
-        addSkill(new GuanyuSkill1());
+        id = 1001;
         targetStrategies.add(new OneAttackBuffFindTargetStrategy());
-        targetStrategies.add(new MaxHpFindTargetStrategy());
+    }
 
+    @Override
+    public void init() {
+        super.init();
+
+        processTalent();
+    }
+
+    private void processTalent() {
+        HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(id);
+
+        GuanyuSkill1 skill1 = new GuanyuSkill1();
+        GuanyuSkill2 skill2 = new GuanyuSkill2();
+        List<Integer> talentList = CalcUtil.getIntList(talentInfo);
+        for (int i = 0; i < talentList.size(); i++) {
+            final int talentRowIndex = talentList.get(i);
+            if (talentRowIndex == 9) {
+                continue;
+            }
+            int index = i * 3 + talentRowIndex - 1;
+            int talentId = heroConfig.talent.get(index);
+            TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
+            if (tdata.talentId <= 20) {
+                continue;
+            }
+
+            OneAttackBuffData buffData = new OneAttackBuffData();
+            switch (tdata.talentId) {
+                case 21:
+                    buffData.setStack(tdata.i1);
+                    break;
+                case 22:
+                    buffData.setCurrent(tdata.i1);
+                    break;
+                case 23:
+                    break;
+                case 24:
+                    break;
+                case 25:
+                    break;
+                case 26:
+                    break;
+            }
+
+        }
+
+        addSkill(skill1);
+        addSkill(skill2);
     }
 
 }

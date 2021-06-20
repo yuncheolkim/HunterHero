@@ -14,7 +14,7 @@ import java.util.Optional;
 public class MaxHpFindTargetStrategy implements FindTargetStrategy {
     @Override
     public boolean find(Hero search, List<Hero> found) {
-        Optional<Hero> max = search.getBattle().oppositeHeroes(search.getSide()).stream()
+        Optional<Hero> max = search.getBattle().oppositeHeroes(search.getSide()).values().stream()
                 .filter(Hero::isAlive).max(Comparator.comparingInt(Hero::getHp));
         max.ifPresent(found::add);
 

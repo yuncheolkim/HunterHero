@@ -3,6 +3,7 @@ package game.module.hero.calc;
 import game.base.G;
 import game.config.base.DataConfigData;
 import game.config.data.HeroBaseConfigData;
+import game.manager.ConfigManager;
 import game.proto.data.Equipment;
 import game.proto.data.HeroRealm;
 import game.proto.data.PlayerHero;
@@ -14,25 +15,25 @@ import game.utils.CalcUtil;
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
-public class AvoidHeroCalc implements IHeroCalc {
+public class AvoidHeroCalc extends BaseHeroCalc {
     @Override
     public void calc(PlayerHero old, PlayerHero.Builder builder) {
-        HeroBaseConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
+        HeroBaseConfigData data = ConfigManager.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
-        int avoid = data.getAvoid();
+        int value = data.getAvoid();
 
         // equipment
         if (old.getEquipmentCount() > 0) {
             for (Equipment equipment : old.getEquipmentMap().values()) {
-                avoid += equipment.getProperty().getAvoid();
+                value += equipment.getProperty().getAvoid();
             }
         }
         // 历练
         HeroRealm realm = old.getPowerUpMap().get(4);
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
-            avoid += dataConfigData.avoid;
+            value += dataConfigData.avoid;
         }
 
         realm = old.getPowerUpMap().get(14);
@@ -40,9 +41,10 @@ public class AvoidHeroCalc implements IHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            avoid = CalcUtil.calcRateFinal(avoid, dataConfigData.avoid);
+            value = CalcUtil.calcRateFinal(value, dataConfigData.avoid);
         }
-        builder.getPropertyBuilder().setAvoid(avoid);
+        value = calcTalent(old, value, 4);
 
+        builder.getPropertyBuilder().setAvoid(value);
     }
 }

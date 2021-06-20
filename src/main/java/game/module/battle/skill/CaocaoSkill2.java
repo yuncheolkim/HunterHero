@@ -39,7 +39,7 @@ public class CaocaoSkill2 extends Skill {
         if (!happened) {
             return null;
         }
-        final List<Hero> collect = hero.friends().stream()
+        final List<Hero> collect = hero.friends().values().stream()
                 .filter(Hero::isAlive)
                 .filter(h -> h.getId() != Caocao.ID)
                 .collect(Collectors.toList());

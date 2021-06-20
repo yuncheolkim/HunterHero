@@ -31,9 +31,9 @@ public class Battle {
 
     private Round currentRound;
 
-    private List<Hero> sideAhero = new ArrayList<>();
+    private Map<Integer, Hero> sideAhero = new HashMap<>(8);
 
-    private List<Hero> sideBhero = new ArrayList<>();
+    private Map<Integer, Hero> sideBhero = new HashMap<>(8);
 
     /**
      * 出手顺序
@@ -159,8 +159,8 @@ public class Battle {
      */
     private List<Hero> decideOrder() {
         final List<Hero> order = new ArrayList<>();
-        order.addAll(sideAhero.stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
-        order.addAll(sideBhero.stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
+        order.addAll(sideAhero.values().stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
+        order.addAll(sideBhero.values().stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
         order.sort(Comparator.comparingInt(o -> o.property.getSpeed()));
         return order;
     }
@@ -177,13 +177,13 @@ public class Battle {
      * 检查是否有一方胜利
      */
     private boolean checkWin() {
-        Optional<Hero> first = sideAhero.stream().filter(Hero::isAlive).findFirst();
+        Optional<Hero> first = sideAhero.values().stream().filter(Hero::isAlive).findFirst();
         if (!first.isPresent()) {
             winSide = Side.B;
             return true;
         }
 
-        first = sideBhero.stream().filter(hero -> !hero.isDead()).findFirst();
+        first = sideBhero.values().stream().filter(hero -> !hero.isDead()).findFirst();
         if (!first.isPresent()) {
             winSide = Side.A;
             return true;
@@ -193,8 +193,10 @@ public class Battle {
 
     /**
      * 对方英雄
+     *
+     * @return
      */
-    public List<Hero> oppositeHeroes(final Side side) {
+    public Map<Integer, Hero> oppositeHeroes(final Side side) {
 
         if (side == Side.A) {
             return sideBhero;
@@ -205,13 +207,13 @@ public class Battle {
     public List<Hero> oppositeAliveHeroes(final Side side) {
 
         if (side == Side.A) {
-            return sideBhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
+            return sideBhero.values().stream().filter(Hero::isAlive).collect(Collectors.toList());
         }
-        return sideAhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
+        return sideAhero.values().stream().filter(Hero::isAlive).collect(Collectors.toList());
     }
 
 
-    public List<Hero> mySideHeroes(final Side side) {
+    public Map<Integer, Hero> mySideHeroes(final Side side) {
 
         if (side == Side.A) {
             return sideAhero;
@@ -219,26 +221,11 @@ public class Battle {
         return sideBhero;
     }
 
-    public List<Hero> mySideAliveHeroes(final Side side) {
-
-        if (side == Side.A) {
-            return sideAhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
-        }
-        return sideBhero.stream().filter(Hero::isAlive).collect(Collectors.toList());
-    }
 
     public void addRecord(final Record r) {
         currentRound.addRecord(r);
     }
 
-    /// 计算给攻击伤害
-    public void addAttack(final DamageProcess process) {
-        damageProcessList.add(process);
-    }
-
-    public void removeAttack(final Class<?> clazz) {
-        damageProcessList.removeIf(process -> process.getClass() == clazz);
-    }
 
     public void calcAttack(final Hero hero) {
         for (final DamageProcess damageProcess : damageProcessList) {
@@ -261,36 +248,12 @@ public class Battle {
         }
     }
 
-    public long getBattleId() {
-        return battleId;
+    public Collection<Hero> getSideAhero() {
+        return sideAhero.values();
     }
 
-    public List<Hero> getSideAhero() {
-        return sideAhero;
-    }
-
-    public void setSideAhero(final List<Hero> sideAhero) {
-        this.sideAhero = sideAhero;
-    }
-
-    public List<Hero> getSideBhero() {
-        return sideBhero;
-    }
-
-    public void setSideBhero(final List<Hero> sideBhero) {
-        this.sideBhero = sideBhero;
-    }
-
-    public Round getCurrentRound() {
-        return currentRound;
-    }
-
-    public void setCurrentRound(final Round currentRound) {
-        this.currentRound = currentRound;
-    }
-
-    public long getSeed() {
-        return seed;
+    public Collection<Hero> getSideBhero() {
+        return sideBhero.values();
     }
 
     public Random getRandom() {

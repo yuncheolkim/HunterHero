@@ -1,7 +1,7 @@
 package game.module.hero.calc;
 
-import game.base.G;
 import game.config.data.HeroBaseConfigData;
+import game.manager.ConfigManager;
 import game.proto.data.Equipment;
 import game.proto.data.PlayerHero;
 
@@ -11,10 +11,10 @@ import game.proto.data.PlayerHero;
  * @author Yunzhe.Jin
  * 2021/3/8 15:17
  */
-public class CriticalBaseHeroCalc implements IHeroCalc {
+public class CriticalBaseHeroCalc extends BaseHeroCalc {
     @Override
     public void calc(PlayerHero old, PlayerHero.Builder builder) {
-        HeroBaseConfigData data = G.C.heroBaseProperty(old.getId(), old.getLevel());
+        HeroBaseConfigData data = ConfigManager.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
         int criticalBase = data.getCriticalBase();

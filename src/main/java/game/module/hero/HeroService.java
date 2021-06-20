@@ -34,4 +34,6 @@ public class HeroService {
     public static boolean hasHero(final Player player, final int heroId) {
         return player.pd.containsHero(heroId);
     }
+    
+
 }

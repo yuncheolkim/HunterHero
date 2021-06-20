@@ -13,11 +13,11 @@ import game.module.battle.record.BuffData;
  * 2021/1/8 15:53
  */
 public class OneAttackBuff extends Buff {
-    private final OneAttackBuffData buffData = new OneAttackBuffData();
+    private final OneAttackBuffData buffData;
 
     public Hero target;
 
-    public OneAttackBuff(final Hero t) {
+    public OneAttackBuff(final Hero t, OneAttackBuffData data) {
         effects.add(new BuffEffect() {
             @Override
             public boolean doEffect(final Hero hero, final Buff buff) {
@@ -30,6 +30,7 @@ public class OneAttackBuff extends Buff {
         buffMergeType = BuffMergeType.MERGE;
         target = t;
         id = 300002;
+        buffData = data;
         initRound(2);
     }
 

@@ -12,9 +12,14 @@ import game.module.battle.skill.HuanzhongSkill1;
 public class Huangzhong extends Hero {
 
     public Huangzhong() {
-
         id = 1002;
-        addSkill(new HuanzhongSkill1());
     }
 
+    @Override
+    public void init() {
+        super.init();
+        addSkill(new HuanzhongSkill1());
+
+
+    }
 }

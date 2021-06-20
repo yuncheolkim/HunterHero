@@ -9,6 +9,7 @@ import game.module.battle.buff.IBuffVal;
 public class OneAttackBuffData extends BuffVal {
 
     private int current = 10;
+    private int stack = 50;
 
     @Override
     public int i1() {
@@ -22,7 +23,7 @@ public class OneAttackBuffData extends BuffVal {
      */
     @Override
     public int i2() {
-        return 50;
+        return stack;
     }
 
     @Override
@@ -40,4 +41,13 @@ public class OneAttackBuffData extends BuffVal {
     public void setCurrent(int current) {
         this.current = current;
     }
+
+    public int getStack() {
+        return stack;
+    }
+
+    public void setStack(int stack) {
+        this.stack = stack;
+    }
 }
+

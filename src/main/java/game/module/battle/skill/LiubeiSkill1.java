@@ -6,6 +6,7 @@ import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.hero.LiubeiBuff1;
 import game.module.battle.record.Record;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +26,7 @@ public class LiubeiSkill1 extends Skill {
     public Record process(ActionPoint point, Hero hero) {
         Record record = super.process(point, hero);
 
-        List<Hero> list = hero.getBattle().mySideHeroes(hero.getSide());
+        List<Hero> list = new ArrayList<>(hero.getBattle().mySideHeroes(hero.getSide()).values());
 
         Optional<Hero> any = list.stream().filter(Hero::isAlive)
                 .filter(hero1 -> !hero1.hasBuff(300003)).findAny();

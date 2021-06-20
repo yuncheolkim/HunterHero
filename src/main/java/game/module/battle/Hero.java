@@ -36,6 +36,8 @@ public class Hero {
      */
     protected int id;
 
+    protected int talentInfo;
+
     /**
      * 所在位置
      */
@@ -159,7 +161,7 @@ public class Hero {
             }
         }
         if (list.isEmpty()) {
-            return battle.oppositeHeroes(side).stream().filter(Hero::isAlive).limit(1).collect(Collectors.toList());
+            return battle.oppositeHeroes(side).values().stream().filter(Hero::isAlive).limit(1).collect(Collectors.toList());
         }
 
         return list;
@@ -564,7 +566,7 @@ public class Hero {
         return buffMap.values().stream().anyMatch(buff -> buff.getId() == id);
     }
 
-    public List<Hero> friends() {
+    public Map<Integer, Hero> friends() {
         return battle.mySideHeroes(side);
     }
 
@@ -633,6 +635,10 @@ public class Hero {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+    public void setTalentInfo(int talentInfo) {
+        this.talentInfo = talentInfo;
     }
 
     @Override
