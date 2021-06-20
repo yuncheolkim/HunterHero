@@ -25,8 +25,8 @@ public class BattleRecord {
     }
 
     public BattleRecord(Battle battle) {
-        sideAhero = battle.getSideAhero().stream().map(Hero::record).collect(Collectors.toList());
-        sideBhero = battle.getSideBhero().stream().map(Hero::record).collect(Collectors.toList());
+        sideAhero = battle.getSideAhero().values().stream().map(Hero::record).collect(Collectors.toList());
+        sideBhero = battle.getSideBhero().values().stream().map(Hero::record).collect(Collectors.toList());
     }
 
     public List<Round> getRoundList() {

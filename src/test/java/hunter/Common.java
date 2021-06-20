@@ -23,11 +23,7 @@ public class Common {
 
         hero.heroStats.hp = hero.origin.getMaxHp();
         hero.setBattle(battle);
-        if (side == Side.A) {
-            battle.getSideAhero().add(hero);
-        } else {
-            battle.getSideBhero().add(hero);
-        }
+        battle.addHero(hero);
 
         consumer.accept(hero);
         hero.init();

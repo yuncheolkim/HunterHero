@@ -74,6 +74,54 @@ public enum Formation {
 
             return index + 1;
         }
+
+        public List<Integer> front(Pos pos) {
+            List<Integer> array = new ArrayList<>(0);
+            switch (pos.getIndex()) {
+                case 0:
+                case 3:
+                    array = Lists.newArrayList(18, 19, 16, 17);
+                    break;
+                case 1:
+                case 4:
+                    array = Lists.newArrayList(17, 18, 19, 16);
+                    break;
+                case 2:
+                case 5:
+                    array = Lists.newArrayList(16, 18, 19, 17);
+                    break;
+                case 16:
+                case 20:
+                case 17:
+                case 21:
+                    array = Lists.newArrayList(2, 1, 0);
+                    break;
+                case 18:
+                case 22:
+                    array = Lists.newArrayList(1, 0, 2);
+                    break;
+                case 19:
+                case 23:
+                    array = Lists.newArrayList(0, 1, 2);
+                    break;
+            }
+
+            return array;
+        }
+
+        public List<Integer> back(Pos pos) {
+            List<Integer> array = front(pos);
+            int add = 3;
+            if (pos.getIndex() < 6) {
+                add = 4;
+            }
+
+            for (int i = 0; i < array.size(); i++) {
+                array.set(i, array.get(i) + add);
+            }
+
+            return array;
+        }
     };
 
 
@@ -95,48 +143,13 @@ public enum Formation {
 
     public List<Integer> front(Pos pos) {
         List<Integer> array = new ArrayList<>(0);
-        switch (pos.getIndex()) {
-            case 0:
-            case 3:
-                array = Lists.newArrayList(18, 19, 16, 17);
-                break;
-            case 1:
-            case 4:
-                array = Lists.newArrayList(17, 18, 19, 16);
-                break;
-            case 2:
-            case 5:
-                array = Lists.newArrayList(16, 18, 19, 17);
-                break;
-            case 16:
-            case 20:
-            case 17:
-            case 21:
-                array = Lists.newArrayList(2, 1, 0);
-                break;
-            case 18:
-            case 22:
-                array = Lists.newArrayList(1, 0, 2);
-                break;
-            case 19:
-            case 23:
-                array = Lists.newArrayList(0, 1, 2);
-                break;
-        }
+
 
         return array;
     }
 
     public List<Integer> back(Pos pos) {
         List<Integer> array = front(pos);
-        int add = 3;
-        if (pos.getIndex() < 6) {
-            add = 4;
-        }
-
-        for (int i = 0; i < array.size(); i++) {
-            array.set(i, array.get(i) + add);
-        }
 
         return array;
     }

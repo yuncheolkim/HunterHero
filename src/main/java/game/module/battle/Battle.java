@@ -227,6 +227,17 @@ public class Battle {
     }
 
 
+    public void addHero(Hero hero) {
+        Map<Integer, Hero> map;
+
+        if (hero.side == Side.A) {
+            map = sideAhero;
+        } else {
+            map = sideBhero;
+        }
+        map.put(hero.getPos().getIndex(), hero);
+    }
+
     public void calcAttack(final Hero hero) {
         for (final DamageProcess damageProcess : damageProcessList) {
             damageProcess.process(hero);
@@ -248,12 +259,12 @@ public class Battle {
         }
     }
 
-    public Collection<Hero> getSideAhero() {
-        return sideAhero.values();
+    public Map<Integer, Hero> getSideAhero() {
+        return sideAhero;
     }
 
-    public Collection<Hero> getSideBhero() {
-        return sideBhero.values();
+    public Map<Integer, Hero> getSideBhero() {
+        return sideBhero;
     }
 
     public Random getRandom() {

@@ -14,13 +14,13 @@ import java.util.Map;
  * @author Yunzhe.Jin
  * 2021/6/20 14:35
  */
-public class FrontTargetStrategy implements FindTargetStrategy {
+public class BackTargetStrategy implements FindTargetStrategy {
     @Override
     public boolean find(Hero search, List<Hero> found) {
 
         Battle battle = search.getBattle();
         Formation formation = battle.getFormation();
-        List<Integer> posList = formation.front(search.getPos());
+        List<Integer> posList = formation.back(search.getPos());
 
         Map<Integer, Hero> enemyMap = battle.oppositeHeroes(search.getSide());
         Hero h = null;

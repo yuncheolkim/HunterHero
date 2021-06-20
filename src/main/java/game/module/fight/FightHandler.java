@@ -68,7 +68,7 @@ public class FightHandler {
             fightEnemy.setPos(Pos.from(enemy.getPos()));
             fightEnemy.init();
             fightEnemy.setBattle(battle);
-            battle.getSideBhero().add(fightEnemy);
+            battle.addHero(fightEnemy);
         }
 
         // player
@@ -84,7 +84,7 @@ public class FightHandler {
             hero.init();
             hero.setBattle(battle);
 
-            battle.getSideAhero().add(hero);
+            battle.addHero(hero);
         }
 
         // 开始战斗
@@ -314,7 +314,7 @@ public class FightHandler {
             fightEnemy.setPos(Pos.from(enemy.getPos()));
             fightEnemy.init();
             fightEnemy.setBattle(battle);
-            battle.getSideBhero().add(fightEnemy);
+            battle.addHero(fightEnemy);
         }
 
         // player
@@ -326,7 +326,7 @@ public class FightHandler {
             hero.init();
             hero.setBattle(battle);
 
-            battle.getSideAhero().add(hero);
+            battle.addHero(hero);
         }
 
         final BattleRecord record = battle.start();

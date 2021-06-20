@@ -50,10 +50,10 @@ public class TestBattle {
         g3.setBattle(newBattle);
         g4.setBattle(newBattle);
 
-        newBattle.getSideAhero().add(g1);
-        newBattle.getSideBhero().add(g2);
-        newBattle.getSideBhero().add(g3);
-        newBattle.getSideBhero().add(g4);
+        newBattle.addHero(g1);
+        newBattle.addHero(g2);
+        newBattle.addHero(g3);
+        newBattle.addHero(g4);
         newBattle.start();
 
     }
