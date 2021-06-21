@@ -244,13 +244,8 @@ public class FightHandler {
                     re.getBuffRecordBuilder().setI1(r.buffData.i1);
                     re.getBuffRecordBuilder().setI2(r.buffData.i2);
                     re.getBuffRecordBuilder().setI3(r.buffData.i3);
-                    re.getBuffRecordBuilder().setI4(r.buffData.i4);
-                    re.getBuffRecordBuilder().setI5(r.buffData.i5);
                     re.getBuffRecordBuilder().setF1(r.buffData.f1);
                     re.getBuffRecordBuilder().setF2(r.buffData.f2);
-                    re.getBuffRecordBuilder().setF3(r.buffData.f3);
-                    re.getBuffRecordBuilder().setF4(r.buffData.f4);
-                    re.getBuffRecordBuilder().setF5(r.buffData.f5);
                 }
                 rb.addRecord(re.build());
             }

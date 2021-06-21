@@ -22,6 +22,8 @@ public class Constant {
     public static final int BUFF_INFINITE = -8;
 
 
-    public static final int buff_guanyu_skill1 = 300002;
+    public static final int buff_guanyu_skill1 = 2;
+
+    public static final int buff_zhaoyun_1 = 6;
 
 }

@@ -53,7 +53,12 @@ public class Skill {
         record.id = id;
         record.actionPoint = actionPoint;
 
+        process(record, actionPoint, hero);
+
         return record;
+    }
+
+    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
     }
 
     /**

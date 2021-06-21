@@ -13,7 +13,7 @@ public class AvoidDamagedProcess implements DamagedProcess {
     @Override
     public boolean process(DamageInfo info) {
 
-        int avoid = info.target.property.getAvoid();
+        int avoid = info.target.fightingData.getAvoid();
         boolean happened = CalcUtil.happened(info.source.getBattle().getRandom(), avoid, avoid + 200);
         if (happened) {
             info.avoid = (true);

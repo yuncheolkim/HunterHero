@@ -11,19 +11,11 @@ public class DefaultBuffData implements IBuffVal {
 
     private int int3;
 
-    private int int4;
-
-    private int int5;
 
     private float float1;
 
     private float float2;
 
-    private float float3;
-
-    private float float4;
-
-    private float float5;
 
     @Override
     public void merge(IBuffVal from) {
@@ -32,14 +24,9 @@ public class DefaultBuffData implements IBuffVal {
             int1 += data.int1;
             int2 += data.int2;
             int3 += data.int3;
-            int4 += data.int4;
-            int5 += data.int5;
 
             float1 += data.float1;
             float2 += data.float2;
-            float3 += data.float3;
-            float4 += data.float4;
-            float5 += data.float5;
         }
     }
 
@@ -67,22 +54,6 @@ public class DefaultBuffData implements IBuffVal {
         this.int3 = int3;
     }
 
-    public int getInt4() {
-        return int4;
-    }
-
-    public void setInt4(int int4) {
-        this.int4 = int4;
-    }
-
-    public int getInt5() {
-        return int5;
-    }
-
-    public void setInt5(int int5) {
-        this.int5 = int5;
-    }
-
     public float getFloat1() {
         return float1;
     }
@@ -97,80 +68,5 @@ public class DefaultBuffData implements IBuffVal {
 
     public void setFloat2(float float2) {
         this.float2 = float2;
-    }
-
-    public float getFloat3() {
-        return float3;
-    }
-
-    public void setFloat3(float float3) {
-        this.float3 = float3;
-    }
-
-    public float getFloat4() {
-        return float4;
-    }
-
-    public void setFloat4(float float4) {
-        this.float4 = float4;
-    }
-
-    public float getFloat5() {
-        return float5;
-    }
-
-    public void setFloat5(float float5) {
-        this.float5 = float5;
-    }
-
-    @Override
-    public int i1() {
-        return int1;
-    }
-
-    @Override
-    public int i2() {
-        return int2;
-    }
-
-    @Override
-    public int i3() {
-        return int3;
-    }
-
-    @Override
-    public int i4() {
-        return int4;
-
-    }
-
-    @Override
-    public int i5() {
-        return int5;
-    }
-
-    @Override
-    public float f1() {
-        return float1;
-    }
-
-    @Override
-    public float f2() {
-        return float2;
-    }
-
-    @Override
-    public float f3() {
-        return float3;
-    }
-
-    @Override
-    public float f4() {
-        return float4;
-    }
-
-    @Override
-    public float f5() {
-        return float5;
     }
 }

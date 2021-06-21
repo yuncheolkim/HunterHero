@@ -29,8 +29,6 @@ public class ConfigManager extends AbsLifecycle {
 
     public Map<Integer, DataConfigData> dataMap2;
 
-    public Map<Integer, DataConfigData> dataMap3;
-
     public Map<Integer, DataConfigData> dataMap4;
 
     public Map<Integer, DataConfigData> dataMap5;
@@ -90,6 +88,7 @@ public class ConfigManager extends AbsLifecycle {
     public static final DropItemEnemyDataBox dropItemEnemyDataBox = new DropItemEnemyDataBox();
     public static final HeroDataBox heroDataBox = new HeroDataBox();
     public static final TalentDataBox talentDataBox = new TalentDataBox();
+    public static final BuffDataBox buffDataBox = new BuffDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -107,13 +106,13 @@ public class ConfigManager extends AbsLifecycle {
         list.add(dropItemEnemyDataBox);
         list.add(heroDataBox);
         list.add(talentDataBox);
+        list.add(buffDataBox);
     }
 
     @Override
     public void start() {
         super.start();
         dataMap2 = new JsonConfig("data/data_2-skill.json").load();
-        dataMap3 = new JsonConfig("data/data_3-buff.json").load();
         dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();

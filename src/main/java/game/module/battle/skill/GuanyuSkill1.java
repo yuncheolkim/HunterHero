@@ -43,7 +43,7 @@ public class GuanyuSkill1 extends Skill {
         if (addCritical > 0) {
             if (buff.isMax() && action == null) {
                 action = h -> {
-                    h.fightingData.setCritical(CalcUtil.calcRateFinal(h.fightingData.getCritical(), addCritical));
+                    h.fightingData.setCritical(CalcUtil.calcRateFinal100(h.fightingData.getCritical(), addCritical));
                 };
                 hero.addAction(ActionPoint.出手前, action);
             } else if (!buff.isMax() && action != null) {

@@ -267,19 +267,10 @@ message BuffRecord {
 
     int32 i3 = 6;
 
-    int32 i4 = 7;
-
-    int32 i5 = 8;
-
     float f1 = 21;
 
     float f2 = 22;
 
-    float f3 = 23;
-
-    float f4 = 24;
-
-    float f5 = 25;
 }
 enum RewardType {
     REWARD_NORMAL = 0;

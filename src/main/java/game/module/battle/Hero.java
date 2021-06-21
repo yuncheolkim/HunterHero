@@ -120,9 +120,18 @@ public class Hero {
      */
     public DamageInfo damageInfo;
 
+    /**
+     * 初始化
+     */
     public void init() {
-        property = new HeroData().merge(origin);
+        property = origin.copy();
+        initTalent();
+    }
 
+    /**
+     * 初始化天赋
+     */
+    protected void initTalent() {
     }
 
     public void setSpeed(int speed) {
@@ -253,7 +262,7 @@ public class Hero {
     }
 
     private void resetFightingData() {
-        fightingData = new HeroData().merge(property);
+        fightingData = property.copy();
     }
 
 
@@ -380,7 +389,7 @@ public class Hero {
         } else {
             // 计算buff
             processAll(ActionPoint.受到伤害之前);
-            info.attackedDamage = (info.allSourceDamage());
+            info.attackedDamage = info.allSourceDamage();
             // 减血
             reduceHp(info);
 
@@ -475,7 +484,7 @@ public class Hero {
      * 重新计算buff效果
      */
     public void calcBuffEffect(ActionPoint point) {
-        property = new HeroData().merge(origin);
+        property = origin.copy();
         processBuff(point);
     }
 

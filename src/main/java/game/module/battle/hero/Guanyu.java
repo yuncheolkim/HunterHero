@@ -28,11 +28,10 @@ public class Guanyu extends Hero {
     @Override
     public void init() {
         super.init();
-
-        processTalent();
     }
 
-    private void processTalent() {
+    
+    protected void initTalent() {
 
         GuanyuSkill1 skill1 = new GuanyuSkill1();
         GuanyuSkill2 skill2 = new GuanyuSkill2();

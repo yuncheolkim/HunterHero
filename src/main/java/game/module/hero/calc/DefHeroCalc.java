@@ -41,7 +41,7 @@ public class DefHeroCalc extends BaseHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            value = CalcUtil.calcRateFinal(value, dataConfigData.def);
+            value = CalcUtil.calcRateFinal100(value, dataConfigData.def);
         }
         value = calcTalent(old, value, 3);
 

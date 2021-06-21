@@ -41,7 +41,7 @@ public class CriticalHeroCalc extends BaseHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            value = CalcUtil.calcRateFinal(value, dataConfigData.critical);
+            value = CalcUtil.calcRateFinal100(value, dataConfigData.critical);
         }
         // 天赋
         value = calcTalent(old, value, 5);

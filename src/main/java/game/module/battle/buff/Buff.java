@@ -63,6 +63,10 @@ public abstract class Buff {
      */
     protected String name;
 
+    /**
+     * 是否可以移除
+     */
+    protected boolean move;
 
     public void initRound(int round) {
         this.round = round;
@@ -199,6 +203,10 @@ public abstract class Buff {
 
     public void setBuffMergeType(BuffMergeType buffMergeType) {
         this.buffMergeType = buffMergeType;
+    }
+
+    public boolean isMove() {
+        return move;
     }
 
     @Override

@@ -36,7 +36,7 @@ public abstract class BaseHeroCalc implements IHeroCalc {
             TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
 
             if (tdata.talentId == type) {
-                value = CalcUtil.calcRateFinal(value, tdata.i1);
+                value = CalcUtil.calcRateFinal100(value, tdata.i1);
             }
         }
         return value;

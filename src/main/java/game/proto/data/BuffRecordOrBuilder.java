@@ -44,18 +44,6 @@ public interface BuffRecordOrBuilder extends
   int getI3();
 
   /**
-   * <code>int32 i4 = 7;</code>
-   * @return The i4.
-   */
-  int getI4();
-
-  /**
-   * <code>int32 i5 = 8;</code>
-   * @return The i5.
-   */
-  int getI5();
-
-  /**
    * <code>float f1 = 21;</code>
    * @return The f1.
    */
@@ -66,22 +54,4 @@ public interface BuffRecordOrBuilder extends
    * @return The f2.
    */
   float getF2();
-
-  /**
-   * <code>float f3 = 23;</code>
-   * @return The f3.
-   */
-  float getF3();
-
-  /**
-   * <code>float f4 = 24;</code>
-   * @return The f4.
-   */
-  float getF4();
-
-  /**
-   * <code>float f5 = 25;</code>
-   * @return The f5.
-   */
-  float getF5();
 }

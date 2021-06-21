@@ -16,7 +16,7 @@ public class DefDamagedProcess implements DamagedProcess {
     public boolean process(final DamageInfo info) {
 
         final Hero target = info.target;
-        final HeroData fightingData = target.property;
+        final HeroData fightingData = target.fightingData;
         int def = CalcUtil.calcRateSub(fightingData.getDef(), info.source.fightingData.getDefReduce() / 10000.0f);
         final float rate = CalcUtil.calcRateProperty1(def, fightingData.getDefBase());
 

@@ -253,32 +253,31 @@ public final class Data {
       "sage.DisplayPoint\022\016\n\006target\030\013 \003(\005\022\'\n\ndam" +
       "ageType\030\025 \001(\0162\023.Message.DamageType\022\r\n\005va" +
       "lue\030\026 \001(\005\022\023\n\013actionPoint\030  \001(\t\022\'\n\nbuffRe" +
-      "cord\030) \001(\0132\023.Message.BuffRecord\"\270\001\n\nBuff" +
-      "Record\022\016\n\006buffId\030\001 \001(\005\022\r\n\005round\030\002 \001(\005\022\023\n" +
-      "\013remainRound\030\003 \001(\005\022\n\n\002i1\030\004 \001(\005\022\n\n\002i2\030\005 \001" +
-      "(\005\022\n\n\002i3\030\006 \001(\005\022\n\n\002i4\030\007 \001(\005\022\n\n\002i5\030\010 \001(\005\022\n" +
-      "\n\002f1\030\025 \001(\002\022\n\n\002f2\030\026 \001(\002\022\n\n\002f3\030\027 \001(\002\022\n\n\002f4" +
-      "\030\030 \001(\002\022\n\n\002f5\030\031 \001(\002\"\201\001\n\006Reward\022!\n\004type\030d " +
-      "\001(\0162\023.Message.RewardType\022\020\n\010rewardId\030\001 \001" +
-      "(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006heroId\030\003 \001(\005\022#\n\010pro" +
-      "perty\030\n \001(\0132\021.Message.Property\"N\n\010ItemDa" +
-      "ta\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022#\n\010pro" +
-      "perty\030\003 \001(\0132\021.Message.Property\":\n\007BagSlo" +
-      "t\022\016\n\006slotId\030\001 \001(\005\022\037\n\004data\030\002 \001(\0132\021.Messag" +
-      "e.ItemData*O\n\rFormationType\022\022\n\016FORMATION" +
-      "_NONE\020\000\022\025\n\021FORMATION_DEFAULT\020\001\022\023\n\017FORMAT" +
-      "ION_ARENA\020\002*<\n\tEnemyType\022\014\n\010CREATURE\020\000\022\n" +
-      "\n\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCISE\020\003*\222\001\n\nRe" +
-      "cordType\022\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEAL" +
-      "TH_CHANGE\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013" +
-      "BUFF_REMOVE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_A" +
-      "CTION\020\007\022\r\n\tSKILL_USE\020\010*E\n\nDamageType\022\021\n\r" +
-      "DAMAGE_NORMAL\020\000\022\023\n\017DAMAGE_CRITICAL\020\001\022\017\n\013" +
-      "DAMAGE_NONE\020\002*F\n\014DisplayPoint\022\014\n\010DP_ATT_" +
-      "1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_DE" +
-      "F_1\020\003*E\n\nRewardType\022\021\n\rREWARD_NORMAL\020\000\022\023" +
-      "\n\017REWARD_RESOURCE\020\001\022\017\n\013REWARD_ITEM\020\002B\025\n\017" +
-      "game.proto.dataH\001P\001b\006proto3"
+      "cord\030) \001(\0132\023.Message.BuffRecord\"|\n\nBuffR" +
+      "ecord\022\016\n\006buffId\030\001 \001(\005\022\r\n\005round\030\002 \001(\005\022\023\n\013" +
+      "remainRound\030\003 \001(\005\022\n\n\002i1\030\004 \001(\005\022\n\n\002i2\030\005 \001(" +
+      "\005\022\n\n\002i3\030\006 \001(\005\022\n\n\002f1\030\025 \001(\002\022\n\n\002f2\030\026 \001(\002\"\201\001" +
+      "\n\006Reward\022!\n\004type\030d \001(\0162\023.Message.RewardT" +
+      "ype\022\020\n\010rewardId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006" +
+      "heroId\030\003 \001(\005\022#\n\010property\030\n \001(\0132\021.Message" +
+      ".Property\"N\n\010ItemData\022\016\n\006itemId\030\001 \001(\005\022\r\n" +
+      "\005count\030\002 \001(\005\022#\n\010property\030\003 \001(\0132\021.Message" +
+      ".Property\":\n\007BagSlot\022\016\n\006slotId\030\001 \001(\005\022\037\n\004" +
+      "data\030\002 \001(\0132\021.Message.ItemData*O\n\rFormati" +
+      "onType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FORMATION_" +
+      "DEFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002*<\n\tEnemyT" +
+      "ype\022\014\n\010CREATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014" +
+      "\n\010EXERCISE\020\003*\222\001\n\nRecordType\022\n\n\006ACTION\020\000\022" +
+      "\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n\005AVOID\020" +
+      "\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF" +
+      "_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKILL_USE\020" +
+      "\010*E\n\nDamageType\022\021\n\rDAMAGE_NORMAL\020\000\022\023\n\017DA" +
+      "MAGE_CRITICAL\020\001\022\017\n\013DAMAGE_NONE\020\002*F\n\014Disp" +
+      "layPoint\022\014\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010" +
+      "DP_ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*E\n\nRewardType\022\021" +
+      "\n\rREWARD_NORMAL\020\000\022\023\n\017REWARD_RESOURCE\020\001\022\017" +
+      "\n\013REWARD_ITEM\020\002B\025\n\017game.proto.dataH\001P\001b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -451,7 +450,7 @@ public final class Data {
     internal_static_Message_BuffRecord_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_BuffRecord_descriptor,
-        new java.lang.String[] { "BuffId", "Round", "RemainRound", "I1", "I2", "I3", "I4", "I5", "F1", "F2", "F3", "F4", "F5", });
+        new java.lang.String[] { "BuffId", "Round", "RemainRound", "I1", "I2", "I3", "F1", "F2", });
     internal_static_Message_Reward_descriptor =
       getDescriptor().getMessageTypes().get(22);
     internal_static_Message_Reward_fieldAccessorTable = new

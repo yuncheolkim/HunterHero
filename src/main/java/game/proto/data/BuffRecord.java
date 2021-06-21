@@ -78,16 +78,6 @@ private static final long serialVersionUID = 0L;
             i3_ = input.readInt32();
             break;
           }
-          case 56: {
-
-            i4_ = input.readInt32();
-            break;
-          }
-          case 64: {
-
-            i5_ = input.readInt32();
-            break;
-          }
           case 173: {
 
             f1_ = input.readFloat();
@@ -96,21 +86,6 @@ private static final long serialVersionUID = 0L;
           case 181: {
 
             f2_ = input.readFloat();
-            break;
-          }
-          case 189: {
-
-            f3_ = input.readFloat();
-            break;
-          }
-          case 197: {
-
-            f4_ = input.readFloat();
-            break;
-          }
-          case 205: {
-
-            f5_ = input.readFloat();
             break;
           }
           default: {
@@ -211,28 +186,6 @@ private static final long serialVersionUID = 0L;
     return i3_;
   }
 
-  public static final int I4_FIELD_NUMBER = 7;
-  private int i4_;
-  /**
-   * <code>int32 i4 = 7;</code>
-   * @return The i4.
-   */
-  @java.lang.Override
-  public int getI4() {
-    return i4_;
-  }
-
-  public static final int I5_FIELD_NUMBER = 8;
-  private int i5_;
-  /**
-   * <code>int32 i5 = 8;</code>
-   * @return The i5.
-   */
-  @java.lang.Override
-  public int getI5() {
-    return i5_;
-  }
-
   public static final int F1_FIELD_NUMBER = 21;
   private float f1_;
   /**
@@ -253,39 +206,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public float getF2() {
     return f2_;
-  }
-
-  public static final int F3_FIELD_NUMBER = 23;
-  private float f3_;
-  /**
-   * <code>float f3 = 23;</code>
-   * @return The f3.
-   */
-  @java.lang.Override
-  public float getF3() {
-    return f3_;
-  }
-
-  public static final int F4_FIELD_NUMBER = 24;
-  private float f4_;
-  /**
-   * <code>float f4 = 24;</code>
-   * @return The f4.
-   */
-  @java.lang.Override
-  public float getF4() {
-    return f4_;
-  }
-
-  public static final int F5_FIELD_NUMBER = 25;
-  private float f5_;
-  /**
-   * <code>float f5 = 25;</code>
-   * @return The f5.
-   */
-  @java.lang.Override
-  public float getF5() {
-    return f5_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -320,26 +240,11 @@ private static final long serialVersionUID = 0L;
     if (i3_ != 0) {
       output.writeInt32(6, i3_);
     }
-    if (i4_ != 0) {
-      output.writeInt32(7, i4_);
-    }
-    if (i5_ != 0) {
-      output.writeInt32(8, i5_);
-    }
     if (f1_ != 0F) {
       output.writeFloat(21, f1_);
     }
     if (f2_ != 0F) {
       output.writeFloat(22, f2_);
-    }
-    if (f3_ != 0F) {
-      output.writeFloat(23, f3_);
-    }
-    if (f4_ != 0F) {
-      output.writeFloat(24, f4_);
-    }
-    if (f5_ != 0F) {
-      output.writeFloat(25, f5_);
     }
     unknownFields.writeTo(output);
   }
@@ -374,14 +279,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(6, i3_);
     }
-    if (i4_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(7, i4_);
-    }
-    if (i5_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(8, i5_);
-    }
     if (f1_ != 0F) {
       size += com.google.protobuf.CodedOutputStream
         .computeFloatSize(21, f1_);
@@ -389,18 +286,6 @@ private static final long serialVersionUID = 0L;
     if (f2_ != 0F) {
       size += com.google.protobuf.CodedOutputStream
         .computeFloatSize(22, f2_);
-    }
-    if (f3_ != 0F) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(23, f3_);
-    }
-    if (f4_ != 0F) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(24, f4_);
-    }
-    if (f5_ != 0F) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeFloatSize(25, f5_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -429,25 +314,12 @@ private static final long serialVersionUID = 0L;
         != other.getI2()) return false;
     if (getI3()
         != other.getI3()) return false;
-    if (getI4()
-        != other.getI4()) return false;
-    if (getI5()
-        != other.getI5()) return false;
     if (java.lang.Float.floatToIntBits(getF1())
         != java.lang.Float.floatToIntBits(
             other.getF1())) return false;
     if (java.lang.Float.floatToIntBits(getF2())
         != java.lang.Float.floatToIntBits(
             other.getF2())) return false;
-    if (java.lang.Float.floatToIntBits(getF3())
-        != java.lang.Float.floatToIntBits(
-            other.getF3())) return false;
-    if (java.lang.Float.floatToIntBits(getF4())
-        != java.lang.Float.floatToIntBits(
-            other.getF4())) return false;
-    if (java.lang.Float.floatToIntBits(getF5())
-        != java.lang.Float.floatToIntBits(
-            other.getF5())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -471,25 +343,12 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getI2();
     hash = (37 * hash) + I3_FIELD_NUMBER;
     hash = (53 * hash) + getI3();
-    hash = (37 * hash) + I4_FIELD_NUMBER;
-    hash = (53 * hash) + getI4();
-    hash = (37 * hash) + I5_FIELD_NUMBER;
-    hash = (53 * hash) + getI5();
     hash = (37 * hash) + F1_FIELD_NUMBER;
     hash = (53 * hash) + java.lang.Float.floatToIntBits(
         getF1());
     hash = (37 * hash) + F2_FIELD_NUMBER;
     hash = (53 * hash) + java.lang.Float.floatToIntBits(
         getF2());
-    hash = (37 * hash) + F3_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getF3());
-    hash = (37 * hash) + F4_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getF4());
-    hash = (37 * hash) + F5_FIELD_NUMBER;
-    hash = (53 * hash) + java.lang.Float.floatToIntBits(
-        getF5());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -635,19 +494,9 @@ private static final long serialVersionUID = 0L;
 
       i3_ = 0;
 
-      i4_ = 0;
-
-      i5_ = 0;
-
       f1_ = 0F;
 
       f2_ = 0F;
-
-      f3_ = 0F;
-
-      f4_ = 0F;
-
-      f5_ = 0F;
 
       return this;
     }
@@ -681,13 +530,8 @@ private static final long serialVersionUID = 0L;
       result.i1_ = i1_;
       result.i2_ = i2_;
       result.i3_ = i3_;
-      result.i4_ = i4_;
-      result.i5_ = i5_;
       result.f1_ = f1_;
       result.f2_ = f2_;
-      result.f3_ = f3_;
-      result.f4_ = f4_;
-      result.f5_ = f5_;
       onBuilt();
       return result;
     }
@@ -754,26 +598,11 @@ private static final long serialVersionUID = 0L;
       if (other.getI3() != 0) {
         setI3(other.getI3());
       }
-      if (other.getI4() != 0) {
-        setI4(other.getI4());
-      }
-      if (other.getI5() != 0) {
-        setI5(other.getI5());
-      }
       if (other.getF1() != 0F) {
         setF1(other.getF1());
       }
       if (other.getF2() != 0F) {
         setF2(other.getF2());
-      }
-      if (other.getF3() != 0F) {
-        setF3(other.getF3());
-      }
-      if (other.getF4() != 0F) {
-        setF4(other.getF4());
-      }
-      if (other.getF5() != 0F) {
-        setF5(other.getF5());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -990,68 +819,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int i4_ ;
-    /**
-     * <code>int32 i4 = 7;</code>
-     * @return The i4.
-     */
-    @java.lang.Override
-    public int getI4() {
-      return i4_;
-    }
-    /**
-     * <code>int32 i4 = 7;</code>
-     * @param value The i4 to set.
-     * @return This builder for chaining.
-     */
-    public Builder setI4(int value) {
-      
-      i4_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 i4 = 7;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearI4() {
-      
-      i4_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int i5_ ;
-    /**
-     * <code>int32 i5 = 8;</code>
-     * @return The i5.
-     */
-    @java.lang.Override
-    public int getI5() {
-      return i5_;
-    }
-    /**
-     * <code>int32 i5 = 8;</code>
-     * @param value The i5 to set.
-     * @return This builder for chaining.
-     */
-    public Builder setI5(int value) {
-      
-      i5_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 i5 = 8;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearI5() {
-      
-      i5_ = 0;
-      onChanged();
-      return this;
-    }
-
     private float f1_ ;
     /**
      * <code>float f1 = 21;</code>
@@ -1110,99 +877,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearF2() {
       
       f2_ = 0F;
-      onChanged();
-      return this;
-    }
-
-    private float f3_ ;
-    /**
-     * <code>float f3 = 23;</code>
-     * @return The f3.
-     */
-    @java.lang.Override
-    public float getF3() {
-      return f3_;
-    }
-    /**
-     * <code>float f3 = 23;</code>
-     * @param value The f3 to set.
-     * @return This builder for chaining.
-     */
-    public Builder setF3(float value) {
-      
-      f3_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>float f3 = 23;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearF3() {
-      
-      f3_ = 0F;
-      onChanged();
-      return this;
-    }
-
-    private float f4_ ;
-    /**
-     * <code>float f4 = 24;</code>
-     * @return The f4.
-     */
-    @java.lang.Override
-    public float getF4() {
-      return f4_;
-    }
-    /**
-     * <code>float f4 = 24;</code>
-     * @param value The f4 to set.
-     * @return This builder for chaining.
-     */
-    public Builder setF4(float value) {
-      
-      f4_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>float f4 = 24;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearF4() {
-      
-      f4_ = 0F;
-      onChanged();
-      return this;
-    }
-
-    private float f5_ ;
-    /**
-     * <code>float f5 = 25;</code>
-     * @return The f5.
-     */
-    @java.lang.Override
-    public float getF5() {
-      return f5_;
-    }
-    /**
-     * <code>float f5 = 25;</code>
-     * @param value The f5 to set.
-     * @return This builder for chaining.
-     */
-    public Builder setF5(float value) {
-      
-      f5_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>float f5 = 25;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearF5() {
-      
-      f5_ = 0F;
       onChanged();
       return this;
     }

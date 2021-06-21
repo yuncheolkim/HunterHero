@@ -41,7 +41,7 @@ public class DamageHeroCalc extends BaseHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            damage = CalcUtil.calcRateFinal(damage, dataConfigData.damage);
+            damage = CalcUtil.calcRateFinal100(damage, dataConfigData.damage);
         }
 
         // 天赋

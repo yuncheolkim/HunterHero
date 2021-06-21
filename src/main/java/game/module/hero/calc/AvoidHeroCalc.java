@@ -41,7 +41,7 @@ public class AvoidHeroCalc extends BaseHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            value = CalcUtil.calcRateFinal(value, dataConfigData.avoid);
+            value = CalcUtil.calcRateFinal100(value, dataConfigData.avoid);
         }
         value = calcTalent(old, value, 4);
 

@@ -41,7 +41,7 @@ public class HpHeroCalc extends BaseHeroCalc {
         if (realm != null) {
             DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            value = CalcUtil.calcRateFinal(value, dataConfigData.hp);
+            value = CalcUtil.calcRateFinal100(value, dataConfigData.hp);
         }
 
         // Talent

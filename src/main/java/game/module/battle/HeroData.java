@@ -75,6 +75,10 @@ public class HeroData {
         return this;
     }
 
+    public HeroData copy() {
+        return new HeroData().merge(this);
+    }
+
     public int getMaxHp() {
         return maxHp;
     }

@@ -35,7 +35,7 @@ public class CalcUtil {
      * @param rate 比例
      * @return 最终算好的值
      */
-    public static int calcRateFinal(int val, int rate) {
+    public static int calcRateFinal100(int val, int rate) {
 
         if (rate <= 0) {
             return val;
