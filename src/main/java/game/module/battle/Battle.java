@@ -100,11 +100,13 @@ public class Battle {
 
             // 出手
             for (final Hero hero : actionOrderList) {
+                processHero(ActionPoint.出手开始前);
                 do {
                     if (hero.isAlive()) {
                         hero.action();
                     }
                 } while (hero.isAlive() && hero.isContinueAction() && !hasWinner());
+                processHero(ActionPoint.出手结束后);
             }
 
             processHero(ActionPoint.回合结束后);

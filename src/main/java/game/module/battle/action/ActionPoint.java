@@ -8,6 +8,8 @@ package game.module.battle.action;
  */
 public enum ActionPoint {
     开场,
+    出手开始前,
+    出手结束后,
     出手前,
     出手后,
     回合开始前,
