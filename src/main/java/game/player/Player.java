@@ -230,6 +230,7 @@ public class Player {
         // 英雄 test
         addHero(1001);
         addHero(1002);
+        addHero(1003);
     }
 
     /**

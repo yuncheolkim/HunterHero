@@ -92,7 +92,7 @@ public class Battle {
         nextRound();
         Logs.trace("==============================================");
         int roundCount = 0;
-        while (!checkWin()) {
+        while (!hasWinner()) {
             roundCount += 1;
             Logs.trace("回合开始：", currentRound.getRoundCount());
 
@@ -100,9 +100,11 @@ public class Battle {
 
             // 出手
             for (final Hero hero : actionOrderList) {
-                if (hero.isAlive()) {
-                    hero.action();
-                }
+                do {
+                    if (hero.isAlive()) {
+                        hero.action();
+                    }
+                } while (hero.isAlive() && hero.isContinueAction() && !hasWinner());
             }
 
             processHero(ActionPoint.回合结束后);
@@ -175,7 +177,7 @@ public class Battle {
     /**
      * 检查是否有一方胜利
      */
-    private boolean checkWin() {
+    private boolean hasWinner() {
         Optional<Hero> first = sideAhero.values().stream().filter(Hero::isAlive).findFirst();
         if (!first.isPresent()) {
             winSide = Side.B;

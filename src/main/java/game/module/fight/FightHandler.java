@@ -67,8 +67,8 @@ public class FightHandler {
             fightEnemy.setSide(Side.B);
             fightEnemy.setPos(Pos.from(enemy.getPos()));
             fightEnemy.setSpeed(fightEnemy.getPos().getIndex());
-            fightEnemy.init();
             fightEnemy.setBattle(battle);
+            fightEnemy.init();
             battle.addHero(fightEnemy);
         }
 
@@ -82,8 +82,8 @@ public class FightHandler {
             hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
             hero.setSpeed(fightHeroPos.getOrder());
-            hero.init();
             hero.setBattle(battle);
+            hero.init();
 
             battle.addHero(hero);
         }

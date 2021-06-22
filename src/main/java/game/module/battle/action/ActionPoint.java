@@ -28,4 +28,5 @@ public enum ActionPoint {
     buff移除后,
     重新计算属性,
 
+    选择目标后
 }

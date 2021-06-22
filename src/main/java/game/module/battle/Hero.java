@@ -121,6 +121,11 @@ public class Hero {
     public DamageInfo damageInfo;
 
     /**
+     * 是否继续行动
+     */
+    private boolean continueAction;
+
+    /**
      * 初始化
      */
     public void init() {
@@ -197,14 +202,21 @@ public class Hero {
         attack();
     }
 
+    List<Hero> targetList;
+
     /**
      * 普通攻击
      */
     public void attack() {
 
-        List<Hero> targetList = findTarget();
+        targetList = findTarget();
+        processSkill(ActionPoint.选择目标后);
 
         for (Hero target : targetList) {
+
+            if (target.isDead()) {
+                continue;
+            }
             resetFightingData();
             damageInfo = new DamageInfo();
             damageInfo.type = (DamageSourceType.ATTACK);
@@ -232,12 +244,11 @@ public class Hero {
                     // 受到伤害
                     damage(damageInfo);
                 }
-
-                // action
-                processAll(ActionPoint.出手后);
             } else {
                 Logs.trace("无法行动", this);
             }
+            // action
+            processAll(ActionPoint.出手后);
 
         }
     }
@@ -672,6 +683,18 @@ public class Hero {
 
     public List<FindTargetStrategy> getTargetStrategies() {
         return targetStrategies;
+    }
+
+    public List<Hero> getTargetList() {
+        return targetList;
+    }
+
+    public boolean isContinueAction() {
+        return continueAction;
+    }
+
+    public void setContinueAction(boolean continueAction) {
+        this.continueAction = continueAction;
     }
 
     @Override
