@@ -37,7 +37,7 @@ public class ZhaoyunSkill2 extends Skill {
         } else if (actionPoint == ActionPoint.出手后) {
             if (curAttack < canAttackCount) {
 
-                hero.setContinueAction(CalcUtil.happened100(20));
+                hero.setContinueAction(CalcUtil.happened100(rate));
 
             } else {
                 curAttack = 0;
