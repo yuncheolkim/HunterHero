@@ -154,6 +154,16 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * NpcShowEnum 显示与否npc
+   * </pre>
+   *
+   * <code>int32 showNpc = 17;</code>
+   * @return The showNpc.
+   */
+  int getShowNpc();
+
+  /**
+   * <pre>
    * 功能开启标记
    * 1:银行
    * </pre>

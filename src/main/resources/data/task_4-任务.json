@@ -145,7 +145,7 @@
     "15": {
         "completeContentId": 13,
         "completeNpcId": 4,
-        "completeType": 1,
+        "completeType": 2,
         "contentId": 39,
         "conversationId": 0,
         "id": 15,
@@ -154,15 +154,13 @@
             14
         ],
         "list2": [
-            16
+            22
         ],
         "notCompleteContentId": 29,
         "npcId": 8,
         "reward": "1=100",
+        "s1": "去趟银行",
         "speakType": 1,
-        "targetList": [
-            15
-        ],
         "taskType": 1,
         "title": "银行小案"
     },
@@ -175,7 +173,7 @@
         "id": 16,
         "level": 7,
         "list1": [
-            15
+            22
         ],
         "list2": [
             17
@@ -309,6 +307,48 @@
         ],
         "taskType": 1,
         "title": "海螺肉的诱惑"
+    },
+    "21": {
+        "completeContentId": 13,
+        "completeNpcId": 14,
+        "completeType": 2,
+        "contentId": 4,
+        "conversationId": 0,
+        "id": 21,
+        "level": 8,
+        "list1": [
+            16
+        ],
+        "notCompleteContentId": 29,
+        "npcId": 14,
+        "s1": "跟苏离交谈",
+        "speakType": 1,
+        "taskType": 1,
+        "title": "苏离"
+    },
+    "22": {
+        "completeContentId": 13,
+        "completeNpcId": 4,
+        "completeType": 1,
+        "contentId": 4,
+        "conversationId": 0,
+        "id": 22,
+        "level": 7,
+        "list1": [
+            15
+        ],
+        "list2": [
+            16
+        ],
+        "notCompleteContentId": 29,
+        "npcId": 4,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            15
+        ],
+        "taskType": 1,
+        "title": "可疑的蜡烛"
     },
     "3": {
         "completeContentId": 13,

@@ -139,6 +139,11 @@ private static final long serialVersionUID = 0L;
             battleId_ = input.readInt32();
             break;
           }
+          case 136: {
+
+            showNpc_ = input.readInt32();
+            break;
+          }
           case 800: {
 
             openFeature_ = input.readInt32();
@@ -589,6 +594,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getBattleId() {
     return battleId_;
+  }
+
+  public static final int SHOWNPC_FIELD_NUMBER = 17;
+  private int showNpc_;
+  /**
+   * <pre>
+   * NpcShowEnum 显示与否npc
+   * </pre>
+   *
+   * <code>int32 showNpc = 17;</code>
+   * @return The showNpc.
+   */
+  @java.lang.Override
+  public int getShowNpc() {
+    return showNpc_;
   }
 
   public static final int OPENFEATURE_FIELD_NUMBER = 100;
@@ -1247,6 +1267,9 @@ private static final long serialVersionUID = 0L;
     if (battleId_ != 0) {
       output.writeInt32(16, battleId_);
     }
+    if (showNpc_ != 0) {
+      output.writeInt32(17, showNpc_);
+    }
     if (openFeature_ != 0) {
       output.writeInt32(100, openFeature_);
     }
@@ -1359,6 +1382,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(16, battleId_);
     }
+    if (showNpc_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(17, showNpc_);
+    }
     if (openFeature_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(100, openFeature_);
@@ -1468,6 +1495,8 @@ private static final long serialVersionUID = 0L;
         != other.getSkillFishLevel()) return false;
     if (getBattleId()
         != other.getBattleId()) return false;
+    if (getShowNpc()
+        != other.getShowNpc()) return false;
     if (getOpenFeature()
         != other.getOpenFeature()) return false;
     if (hasTask() != other.hasTask()) return false;
@@ -1542,6 +1571,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getSkillFishLevel();
     hash = (37 * hash) + BATTLEID_FIELD_NUMBER;
     hash = (53 * hash) + getBattleId();
+    hash = (37 * hash) + SHOWNPC_FIELD_NUMBER;
+    hash = (53 * hash) + getShowNpc();
     hash = (37 * hash) + OPENFEATURE_FIELD_NUMBER;
     hash = (53 * hash) + getOpenFeature();
     if (hasTask()) {
@@ -1778,6 +1809,8 @@ private static final long serialVersionUID = 0L;
 
       battleId_ = 0;
 
+      showNpc_ = 0;
+
       openFeature_ = 0;
 
       if (taskBuilder_ == null) {
@@ -1864,6 +1897,7 @@ private static final long serialVersionUID = 0L;
       result.fishAreaId_ = fishAreaId_;
       result.skillFishLevel_ = skillFishLevel_;
       result.battleId_ = battleId_;
+      result.showNpc_ = showNpc_;
       result.openFeature_ = openFeature_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
@@ -2001,6 +2035,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getBattleId() != 0) {
         setBattleId(other.getBattleId());
+      }
+      if (other.getShowNpc() != 0) {
+        setShowNpc(other.getShowNpc());
       }
       if (other.getOpenFeature() != 0) {
         setOpenFeature(other.getOpenFeature());
@@ -2785,6 +2822,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearBattleId() {
       
       battleId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int showNpc_ ;
+    /**
+     * <pre>
+     * NpcShowEnum 显示与否npc
+     * </pre>
+     *
+     * <code>int32 showNpc = 17;</code>
+     * @return The showNpc.
+     */
+    @java.lang.Override
+    public int getShowNpc() {
+      return showNpc_;
+    }
+    /**
+     * <pre>
+     * NpcShowEnum 显示与否npc
+     * </pre>
+     *
+     * <code>int32 showNpc = 17;</code>
+     * @param value The showNpc to set.
+     * @return This builder for chaining.
+     */
+    public Builder setShowNpc(int value) {
+      
+      showNpc_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * NpcShowEnum 显示与否npc
+     * </pre>
+     *
+     * <code>int32 showNpc = 17;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearShowNpc() {
+      
+      showNpc_ = 0;
       onChanged();
       return this;
     }

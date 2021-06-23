@@ -47,6 +47,9 @@ enum No {
     EnterFightAreaReq = 3002;
     ExitFightAreaReq = 3003;
 
+    // Npc
+    NpcShowChangePush = 3101;
+
     // Hero
     HeroUpReq = 4001;
     HeroTalentChangeReq = 4002;
@@ -91,5 +94,7 @@ enum No {
     // Chat
     ChatMessageReq = 9001;
     ChatMessagePush = 9002;
+
+
 
 }

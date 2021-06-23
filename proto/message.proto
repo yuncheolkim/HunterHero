@@ -136,6 +136,9 @@ message ExitFightAreaReq {
     int32 id = 1;
 }
 
+message BattleEnterReq{
+    int32 id = 1;
+}
 ///////////////////////////////////////////////  hero
 // 4001 提高英雄属性
 message HeroUpReq {
@@ -370,9 +373,9 @@ message TitleNewPush{
     int32 id = 1;
 }
 
-///////////////////////////////////////////////  Battle
+///////////////////////////////////////////////  Npc
 
-message BattleEnterReq{
-    int32 id = 1;
+message NpcShowChangePush{
+    int32 showNo = 1;
+    int32 npcId = 2;
 }
-

@@ -35,6 +35,9 @@ message PlayerData {
     // 正在进行的战役
     int32 battleId = 16;
 
+    // NpcShowEnum 显示与否npc
+    int32 showNpc = 17;
+
     // 功能开启标记
     // 1:银行
     int32 openFeature = 100;
@@ -305,7 +308,10 @@ message BagSlot {
     ItemData data = 2;
 }
 
-
+enum NpcShowEnum{
+    NPC_NONE = 0;
+    NPC_SHOW_1 = 1;
+}
 
 
 

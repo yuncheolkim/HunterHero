@@ -142,6 +142,14 @@ public enum No
   ExitFightAreaReq(3003),
   /**
    * <pre>
+   * Npc
+   * </pre>
+   *
+   * <code>NpcShowChangePush = 3101;</code>
+   */
+  NpcShowChangePush(3101),
+  /**
+   * <pre>
    * Hero
    * </pre>
    *
@@ -426,6 +434,14 @@ public enum No
   public static final int ExitFightAreaReq_VALUE = 3003;
   /**
    * <pre>
+   * Npc
+   * </pre>
+   *
+   * <code>NpcShowChangePush = 3101;</code>
+   */
+  public static final int NpcShowChangePush_VALUE = 3101;
+  /**
+   * <pre>
    * Hero
    * </pre>
    *
@@ -623,6 +639,7 @@ public enum No
       case 3001: return EnterSceneReq;
       case 3002: return EnterFightAreaReq;
       case 3003: return ExitFightAreaReq;
+      case 3101: return NpcShowChangePush;
       case 4001: return HeroUpReq;
       case 4002: return HeroTalentChangeReq;
       case 4003: return HeroChangePush;
