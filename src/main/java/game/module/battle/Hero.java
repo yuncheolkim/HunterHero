@@ -230,6 +230,7 @@ public class Hero {
 
             if (this.heroStats.active) {
 
+                Logs.trace("calcAttack:", this);
                 calcAttack();
                 processAction(ActionPoint.出手);
                 // skill 主动技能
@@ -700,7 +701,7 @@ public class Hero {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
-                .add("property", property)
+                .add("fightingData", fightingData)
                 .add("id", id)
                 .add("pos", pos)
                 .add("side", side)

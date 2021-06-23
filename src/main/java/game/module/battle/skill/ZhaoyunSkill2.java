@@ -14,6 +14,7 @@ import game.utils.CalcUtil;
  */
 public class ZhaoyunSkill2 extends Skill {
 
+
     private int canAttackCount = 2;
 
     private int curAttack;
@@ -49,4 +50,9 @@ public class ZhaoyunSkill2 extends Skill {
     public void setRate(int rate) {
         this.rate = rate;
     }
+
+    public void setCanAttackCount(int canAttackCount) {
+        this.canAttackCount = canAttackCount;
+    }
 }
+
