@@ -87,6 +87,19 @@ public enum Cmd {
             }
         }
     },
+    CMD11(11, "Clean npc show") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            player.pd.setShowNpc(0);
+        }
+    },
+    CMD12(12, "Remove hero") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int i = Integer.parseInt(line.get(0));
+            player.pd.removeHero(i);
+        }
+    },
     ;
 
     public final int id;

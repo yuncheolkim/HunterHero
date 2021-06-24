@@ -2,6 +2,7 @@ package game.module.event.handler;
 
 import game.game.FeatureEnum;
 import game.module.event.IPlayerEventHandler;
+import game.module.hero.HeroService;
 import game.module.player.PlayerService;
 import game.player.Player;
 
@@ -25,9 +26,14 @@ public class TaskCompleteEventHandler implements IPlayerEventHandler<TaskComplet
                 // 开启银行
                 PlayerService.openFeature(player, FeatureEnum.银行);
                 break;
-            case 16:// 解决案件后 触发免费英雄
+            case 17:// 回到旅店 触发免费英雄
                 PlayerService.showOrHideNpc(player, 14, true);
                 break;
+            case 21:
+                HeroService.addHero(player, 1003, true);
+                PlayerService.showOrHideNpc(player, 14, false);
+                break;
+
         }
 
     }

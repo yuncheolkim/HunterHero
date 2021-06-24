@@ -97,6 +97,10 @@ public enum No
    */
   TaskNpcReq(1005),
   /**
+   * <code>TaskAbandonReq = 1006;</code>
+   */
+  TaskAbandonReq(1006),
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -168,6 +172,10 @@ public enum No
    * <code>HeroEquipmentReq = 4004;</code>
    */
   HeroEquipmentReq(4004),
+  /**
+   * <code>NewHeroPush = 4005;</code>
+   */
+  NewHeroPush(4005),
   /**
    * <pre>
    * Formation
@@ -389,6 +397,10 @@ public enum No
    */
   public static final int TaskNpcReq_VALUE = 1005;
   /**
+   * <code>TaskAbandonReq = 1006;</code>
+   */
+  public static final int TaskAbandonReq_VALUE = 1006;
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -460,6 +472,10 @@ public enum No
    * <code>HeroEquipmentReq = 4004;</code>
    */
   public static final int HeroEquipmentReq_VALUE = 4004;
+  /**
+   * <code>NewHeroPush = 4005;</code>
+   */
+  public static final int NewHeroPush_VALUE = 4005;
   /**
    * <pre>
    * Formation
@@ -631,6 +647,7 @@ public enum No
       case 1003: return TaskNewPush;
       case 1004: return TaskStatusChangePush;
       case 1005: return TaskNpcReq;
+      case 1006: return TaskAbandonReq;
       case 2001: return FightStartReq;
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;
@@ -644,6 +661,7 @@ public enum No
       case 4002: return HeroTalentChangeReq;
       case 4003: return HeroChangePush;
       case 4004: return HeroEquipmentReq;
+      case 4005: return NewHeroPush;
       case 4101: return FormationCreateReq;
       case 4102: return FormationListReq;
       case 4103: return FormationUpdateReq;

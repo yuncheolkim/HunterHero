@@ -96,6 +96,10 @@ message TaskNpcRes {
     map<int32, RunTask> runTask = 3;
 }
 
+// Abandon task
+message TaskAbandonReq{
+    int32 taskId = 1;
+}
 /////////////////////////////////////////////////  战斗
 // 2001 开始战斗
 message FightStartReq {
@@ -158,6 +162,11 @@ message HeroTalentChangeReq{
 message HeroTalentChangeRes{
     int32 heroId = 1;
     int32 talent = 2;
+}
+
+// 添加新英雄
+message NewHeroPush{
+    PlayerHero hero = 1;
 }
 ///////////////////////////////////////////////  formation
 // 创建阵型

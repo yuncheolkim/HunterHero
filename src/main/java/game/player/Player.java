@@ -8,7 +8,6 @@ import game.base.Logs;
 import game.base.Work;
 import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
-import game.config.data.HeroBaseConfigData;
 import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
@@ -24,6 +23,7 @@ import game.module.event.handler.ExpAddEvent;
 import game.module.event.handler.ItemAddEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceChangeEvent;
+import game.module.hero.HeroService;
 import game.net.Transport;
 import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
@@ -34,7 +34,6 @@ import game.proto.back.PlayerBackData;
 import game.proto.data.*;
 import game.proto.no.No;
 import game.repo.PlayerRepo;
-import game.utils.CalcUtil;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
@@ -230,7 +229,6 @@ public class Player {
         // 英雄 test
         addHero(1001);
         addHero(1002);
-        addHero(1003);
     }
 
     /**
@@ -261,28 +259,7 @@ public class Player {
      * @param heroId
      */
     public void addHero(final int heroId) {
-
-        if (getPd().getHeroMap().containsKey(heroId)) {
-            return;
-        }
-
-        final PlayerHero.Builder builder = PlayerHero.newBuilder();
-        final HeroBaseConfigData d = ConfigManager.heroBaseProperty(0, 1);
-        builder.setId(heroId);
-        builder.setLevel(1);
-        builder.setTalent(99999);
-
-        builder.setProperty(d.property);
-
-
-        Property property = builder.getProperty();
-        builder.getPropertyEffectBuilder()
-                .setDefRate(CalcUtil.calcRateProperty(property.getDef(), property.getDefBase()))
-                .setAvoidRate(CalcUtil.calcRateProperty(property.getAvoid(), property.getAvoidBase()))
-                .setCriticalRate(CalcUtil.calcRateProperty(property.getCritical(), property.getCriticalBase()));
-
-        getPd().putHero(heroId, builder.build());
-
+        HeroService.addHero(this, heroId, false);
     }
 
     /**
