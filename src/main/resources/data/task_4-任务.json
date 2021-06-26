@@ -223,10 +223,7 @@
         "id": 18,
         "level": 7,
         "list1": [
-            20
-        ],
-        "list2": [
-            19
+            21
         ],
         "notCompleteContentId": 29,
         "npcId": 7,
@@ -286,7 +283,7 @@
     },
     "20": {
         "completeContentId": 13,
-        "completeNpcId": 7,
+        "completeNpcId": 14,
         "completeType": 1,
         "contentId": 4,
         "conversationId": 0,
@@ -296,10 +293,10 @@
             17
         ],
         "list2": [
-            18
+            21
         ],
         "notCompleteContentId": 29,
-        "npcId": 7,
+        "npcId": 14,
         "reward": "1=500",
         "speakType": 1,
         "targetList": [
@@ -317,7 +314,10 @@
         "id": 21,
         "level": 8,
         "list1": [
-            16
+            20
+        ],
+        "list2": [
+            18
         ],
         "notCompleteContentId": 29,
         "npcId": 14,

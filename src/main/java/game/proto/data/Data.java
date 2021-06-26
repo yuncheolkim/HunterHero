@@ -277,8 +277,10 @@ public final class Data {
       "\014\n\010DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_DEF_1\020" +
       "\003*E\n\nRewardType\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017RE" +
       "WARD_RESOURCE\020\001\022\017\n\013REWARD_ITEM\020\002*+\n\013NpcS" +
-      "howEnum\022\014\n\010NPC_NONE\020\000\022\016\n\nNPC_SHOW_1\020\001B\025\n" +
-      "\017game.proto.dataH\001P\001b\006proto3"
+      "howEnum\022\014\n\010NPC_NONE\020\000\022\016\n\nNPC_SHOW_1\020\001*S\n" +
+      "\017EnumItemQuality\022\n\n\006Q_NONE\020\000\022\007\n\003Q_W\020\001\022\007\n" +
+      "\003Q_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003Q_P\020\004\022\007\n\003Q_O\020\005\022\007\n\003Q_R" +
+      "\020\006B\025\n\017game.proto.dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

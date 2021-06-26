@@ -45,7 +45,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static game.base.constants.GameConstants.MAX_PLAYER_LEVEL;
-import static game.module.bag.BagUpdateService.updatePlayerBank;
+import static game.module.bag.BagService.findBagUpdateService;
 
 /**
  * 线程安全
@@ -589,12 +589,12 @@ public class Player {
 
     }
 
-    private BagUpdateService findBagUpdateService(final int type) {
-        if (type == 1) {
-            return BagUpdateService.updatePlayerBag;
-        }
-        return updatePlayerBank;
-    }
+//    private BagUpdateService findBagUpdateService(final int type) {
+//        if (type == 1) {
+//            return BagUpdateService.updatePlayerBag;
+//        }
+//        return updatePlayerBank;
+//    }
 
     /**
      * 整理背包

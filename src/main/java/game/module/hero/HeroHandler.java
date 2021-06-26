@@ -6,6 +6,7 @@ import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
 import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
+import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
 import game.game.ConsumeTypeEnum;
 import game.manager.ConfigManager;
@@ -60,9 +61,12 @@ public class HeroHandler {
         final BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);
         final ItemConfigData item = ConfigManager.getItem(bagSlot.getData().getItemId());
-        final int type2 = item.type2;
 
         final PlayerHero hero = player.pd.getHeroOrThrow(req.getHeroId());
+        EvilAssert.isTrue(item.level <= hero.getLevel(), "物品等级大于英雄等级");
+
+        final int type2 = item.type2;
+
         final Equipment equipment = hero.getEquipmentMap().get(type2);
         // 从背包删除
         player.removeBagItem(GameConstants.ITEM_BAG, 1, bagSlot.getSlotId());

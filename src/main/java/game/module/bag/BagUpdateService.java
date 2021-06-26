@@ -1,8 +1,12 @@
 package game.module.bag;
 
+import com.google.common.collect.Multimap;
 import game.player.Player;
 import game.proto.data.BagSlot;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,22 +27,65 @@ public interface BagUpdateService {
 
     Map<Integer, BagSlot> findAll(Player p);
 
+    default List<BagSlot> removeItem(Player p, int itemId, int count) {
+
+        ItemBoxData box = box(p);
+
+        if (!box.hasItem(itemId, count)) {
+            return Collections.emptyList();
+        }
+
+        List<BagSlot> remove = new ArrayList<>(1);
+        List<BagSlot> update = new ArrayList<>(1);
+
+        Multimap<Integer, BagSlot> bagSlotMap = box.bagSlotMap;
+        for (BagSlot bagSlot : bagSlotMap.get(itemId)) {
+            bagSlotMap.remove(itemId, bagSlot);
+            int have = bagSlot.getData().getCount();
+            BagSlot.Builder builder = bagSlot.toBuilder();
+            if (have <= count) {
+                count -= have;
+                builder.getDataBuilder().setCount(0);
+                remove.add(builder.build());
+            } else {
+                builder.getDataBuilder().setCount(have - count);
+                update.add(builder.build());
+                break;
+            }
+
+            if (count == 0) {
+                break;
+            }
+
+        }
+        for (BagSlot bagSlot : remove) {
+            update(p, bagSlot);
+        }
+
+        for (BagSlot bagSlot : update) {
+            update(p, bagSlot);
+        }
+        remove.addAll(update);
+        return remove;
+    }
+
     /**
      * 更新银行
      */
     BagUpdateService updatePlayerBank = new BagUpdateService() {
         @Override
         public void update(Player p, BagSlot d) {
+            ItemBoxData box = box(p);
             if (d.getData().getCount() == 0) {
                 p.pd.removeBank(d.getSlotId());
-                box(p).count -= 1;
+                box.count -= 1;
 
             } else {
                 if (!p.pd.containsBank(d.getSlotId())) {
-                    box(p).count += 1;
+                    box.count += 1;
                 }
                 p.getPd().putBank(d.getSlotId(), d);
-                box(p).bagSlotMap.put(d.getData().getItemId(), d);
+                box.bagSlotMap.put(d.getData().getItemId(), d);
             }
         }
 
@@ -73,15 +120,16 @@ public interface BagUpdateService {
     BagUpdateService updatePlayerBag = new BagUpdateService() {
         @Override
         public void update(Player p, BagSlot d) {
+            ItemBoxData box = box(p);
             if (d.getData().getCount() == 0) {
                 p.pd.removeBag(d.getSlotId());
-                box(p).count -= 1;
+                box.count -= 1;
             } else {
                 if (!p.pd.containsBag(d.getSlotId())) {
-                    box(p).count += 1;
+                    box.count += 1;
                 }
                 p.pd.putBag(d.getSlotId(), d);
-                box(p).bagSlotMap.put(d.getData().getItemId(), d);
+                box.bagSlotMap.put(d.getData().getItemId(), d);
             }
         }
 

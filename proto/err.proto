@@ -1,0 +1,11 @@
+syntax = "proto3";
+package Error;
+option java_package = "game.proto.err";
+option optimize_for = SPEED;
+option java_multiple_files = true;
+
+
+enum Error{
+    NONE = 0;
+    a = 1;
+}

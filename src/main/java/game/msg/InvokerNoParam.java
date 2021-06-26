@@ -6,6 +6,7 @@ import game.exception.EvilException;
 import game.exception.ModuleException;
 import game.player.Player;
 import game.proto.Message;
+import game.proto.no.No;
 
 /**
  * @author Yunzhe.Jin
@@ -17,6 +18,11 @@ public class InvokerNoParam implements IInvoke {
 
     private final int msgNo;
 
+
+    public InvokerNoParam(final No msgNo, final IPlayerHandler handler) {
+        this.handler = handler;
+        this.msgNo = msgNo.getNumber();
+    }
 
     public InvokerNoParam(final int msgNo, final IPlayerHandler handler) {
         this.handler = handler;

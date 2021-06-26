@@ -8,6 +8,7 @@ import game.exception.EvilException;
 import game.exception.ModuleException;
 import game.player.Player;
 import game.proto.Message;
+import game.proto.no.No;
 
 import java.util.function.Supplier;
 
@@ -29,6 +30,13 @@ public class Invoker<T extends MessageLite> implements IInvoke {
         this.msgNo = msgNo;
         this.supplier = supplier;
     }
+
+    public Invoker(No msgNo, final IMsgHandler<T> handler, final Supplier<Parser<T>> supplier) {
+        this.handler = handler;
+        this.msgNo = msgNo.getNumber();
+        this.supplier = supplier;
+    }
+
 
     @Override
     public void invoke(final Player player, final Message msg) {

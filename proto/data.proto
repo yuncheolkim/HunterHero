@@ -315,7 +315,18 @@ enum NpcShowEnum{
 
 
 
+///////////////////////////////////////////////  Enum
 
+// 物品品质
+enum EnumItemQuality{
+    Q_NONE = 0;
+    Q_W = 1;
+    Q_G = 2;
+    Q_B = 3;
+    Q_P = 4;
+    Q_O = 5;
+    Q_R = 6;
+}
 
 
 

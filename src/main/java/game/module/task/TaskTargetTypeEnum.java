@@ -1,7 +1,7 @@
 package game.module.task;
 
-import game.base.G;
-import game.config.base.DataConfigData;
+import game.config.data.TaskTargetConfigData;
+import game.manager.ConfigManager;
 import game.proto.data.TaskTarget;
 
 /**
@@ -33,12 +33,12 @@ public enum TaskTargetTypeEnum {
     }
 
     public boolean happened(int sourceId, TaskTarget target) {
-        DataConfigData data = G.C.taskMap5.get(target.getId());
+        TaskTargetConfigData data = ConfigManager.taskTargetDataBox.findById(target.getId());
         return data.v1 == sourceId && data.v2 > target.getValue();
     }
 
     public TaskTarget addValue(int addCount, TaskTarget target) {
-        DataConfigData data = G.C.taskMap5.get(target.getId());
+        TaskTargetConfigData data = ConfigManager.taskTargetDataBox.findById(target.getId());
         int count = Math.min(target.getValue() + addCount, data.v2);
 
         return target.toBuilder()
@@ -46,6 +46,5 @@ public enum TaskTargetTypeEnum {
                 .setComplete(count == data.v2)
                 .build();
     }
-
 
 }

@@ -4,8 +4,11 @@ import game.base.G;
 import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
 import game.config.data.ExpConfigData;
+import game.config.data.ItemConfigData;
+import game.config.data.TaskTargetConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
+import game.game.ItemTypeEnum;
 import game.game.ResourceEnum;
 import game.game.ResourceSourceEnum;
 import game.manager.ConfigManager;
@@ -120,9 +123,9 @@ public class TaskHandler {
         final RunTask runtask = taskBuilder.getRunTaskOrThrow(req.getTaskId());
 
         if (runtask.getComplete()) {
-            // 给奖励
             final DataConfigData task = G.C.getTask(req.getTaskId());
 
+            // 给奖励
             final List<Reward> make = RewardUtil.make(task.reward);
             // 检查物品
             final List<ItemData> collect = make.stream()
@@ -134,6 +137,17 @@ public class TaskHandler {
                             .build()).collect(Collectors.toList());
 
             ModuleAssert.isTrue(BagService.canPutReward(player, collect), ErrorEnum.ERR_104);
+
+            // 消耗任务物品
+            for (TaskTarget target : runtask.getTargetList()) {
+                TaskTargetConfigData targetData = ConfigManager.taskTargetDataBox.findById(target.getId());
+                if (targetData.type == TaskTargetTypeEnum.SEARCH.id) {
+                    ItemConfigData item = ConfigManager.getItem(targetData.v1);
+                    if (item.type != ItemTypeEnum.TASK) {
+                        ModuleAssert.isTrue(BagService.removeItemFromBag(player, targetData.v1, targetData.v2), ErrorEnum.ERR_102);
+                    }
+                }
+            }
 
             for (final Reward reward : make) {
                 if (reward.getType() == RewardType.REWARD_RESOURCE) {
@@ -210,7 +224,7 @@ public class TaskHandler {
      * @param player
      * @param req
      */
-    public static TaskNpcRes findNpcTask(final Player player, final TaskNpcReq req) {
+    public static TaskNpcRes TaskNpcReq(final Player player, final TaskNpcReq req) {
         final Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
 
         if (npcTask != null && !npcTask.isEmpty()) {
@@ -257,5 +271,23 @@ public class TaskHandler {
         }
 
         return null;
+    }
+
+    /**
+     * 放弃任务
+     *
+     * @param player
+     * @param req
+     */
+    public static TaskAbandonRes TaskAbandonReq(Player player, TaskAbandonReq req) {
+        final PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
+        final int taskId = req.getTaskId();
+        if (!taskBuilder.getRunTaskMap().containsKey(taskId)) {
+            return null;
+        }
+
+        player.pd.getTaskBuilder().removeRunTask(taskId);
+
+        return TaskAbandonRes.newBuilder().setTaskId(req.getTaskId()).buildPartial();
     }
 }

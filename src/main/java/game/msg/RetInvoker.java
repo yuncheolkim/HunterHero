@@ -8,6 +8,7 @@ import game.exception.EvilException;
 import game.exception.ModuleException;
 import game.player.Player;
 import game.proto.Message;
+import game.proto.no.No;
 
 import java.util.function.Supplier;
 
@@ -27,6 +28,12 @@ public class RetInvoker<T extends MessageLite> implements IInvoke {
     public RetInvoker(final int msgNo, final IMsgRetHandler<T> handler, final Supplier<Parser<T>> supplier) {
         this.handler = handler;
         this.msgNo = msgNo;
+        this.supplier = supplier;
+    }
+
+    public RetInvoker(final No msgNo, final IMsgRetHandler<T> handler, final Supplier<Parser<T>> supplier) {
+        this.handler = handler;
+        this.msgNo = msgNo.getNumber();
         this.supplier = supplier;
     }
 

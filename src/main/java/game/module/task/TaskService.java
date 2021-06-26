@@ -2,6 +2,7 @@ package game.module.task;
 
 import game.base.G;
 import game.config.base.DataConfigData;
+import game.config.data.TaskTargetConfigData;
 import game.manager.ConfigManager;
 import game.module.bag.BagService;
 import game.player.Player;
@@ -37,7 +38,7 @@ public class TaskService {
                         if (taskTarget.getComplete()) {
                             continue;
                         }
-                        DataConfigData dataConfigData = G.C.taskMap5.get(taskTarget.getId());
+                        TaskTargetConfigData dataConfigData = ConfigManager.taskTargetDataBox.findById(taskTarget.getId());
                         if (dataConfigData.v4 > 0 && dataConfigData.v3 == enemyId && CalcUtil.happened10000(dataConfigData.v4)) {
                             // 需要收集物品
                             list.add(Reward.newBuilder()
@@ -87,8 +88,8 @@ public class TaskService {
                 }
                 for (int i = 0; i < task.getTargetCount(); i++) {
                     TaskTarget target = task.getTarget(i);
-                    DataConfigData targetData = G.C.taskMap5.get(target.getId());
-                    if (targetData.type == targetTypeEnum.id && targetTypeEnum.happened(sourceId, target)) {
+                    TaskTargetConfigData dataConfigData = ConfigManager.taskTargetDataBox.findById(target.getId());
+                    if (dataConfigData.type == targetTypeEnum.id && targetTypeEnum.happened(sourceId, target)) {
                         index = i;
                         taskTarget = targetTypeEnum.addValue(addCount, target);
                         taskResult = task;
@@ -173,7 +174,7 @@ public class TaskService {
      * @return
      */
     public static TaskTarget makeTaskTarget(Player player, Integer targetId) {
-        DataConfigData targetData = G.C.taskMap5.get(targetId);
+        TaskTargetConfigData targetData = ConfigManager.taskTargetDataBox.findById(targetId);
 
         TaskTarget.Builder builder = TaskTarget.newBuilder();
         builder.setId(targetId);

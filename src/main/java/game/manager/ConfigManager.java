@@ -60,8 +60,6 @@ public class ConfigManager extends AbsLifecycle {
 
     public static Map<Integer, DataConfigData> taskMap4;
 
-    public Map<Integer, DataConfigData> taskMap5;
-
     // Npc任务
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
     public static Multimap<Integer, DataConfigData> levelTaskMap = ArrayListMultimap.create(60, 4);
@@ -89,6 +87,7 @@ public class ConfigManager extends AbsLifecycle {
     public static final HeroDataBox heroDataBox = new HeroDataBox();
     public static final TalentDataBox talentDataBox = new TalentDataBox();
     public static final BuffDataBox buffDataBox = new BuffDataBox();
+    public static final TaskTargetDataBox taskTargetDataBox = new TaskTargetDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -107,6 +106,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(heroDataBox);
         list.add(talentDataBox);
         list.add(buffDataBox);
+        list.add(taskTargetDataBox);
     }
 
     @Override
@@ -129,7 +129,6 @@ public class ConfigManager extends AbsLifecycle {
         taskMap2 = new JsonConfig("data/task_2-对话选项.json").load();
         taskMap3 = new JsonConfig("data/task_3-选项内容.json").load();
         taskMap4 = new JsonConfig("data/task_4-任务.json").load();
-        taskMap5 = new JsonConfig("data/task_5-任务目标.json").load();
         // npc task
         for (final DataConfigData value : taskMap4.values()) {
             npcTaskMap.put(value.npcId, value);

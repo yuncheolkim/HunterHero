@@ -86,57 +86,58 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(MsgNoBackInner.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
 
         // heart
-        addHandler(new InvokerReturn<>(No.HeartbeatReq_VALUE, PlayerHandler::heartbeat, HeartbeatReq::parser));
+        addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
-        addHandler(new Invoker<>(No.PlayerCreateNameReq_VALUE, PlayerHandler::createName, PlayerCreateNameReq::parser));
-        addHandler(new Invoker<>(No.PlayerMoveReq_VALUE, PlayerHandler::move, PlayerMoveReq::parser));
-        addHandler(new InvokerNoParam(No.PlayerGoHotelReq_VALUE, PlayerHandler::hotel));
-        addHandler(new RetInvoker<>(No.PlayerChooseHotelReq_VALUE, PlayerHandler::chooseHotel, PlayerChooseHotelReq::parser));
+        addHandler(new Invoker<>(No.PlayerCreateNameReq, PlayerHandler::createName, PlayerCreateNameReq::parser));
+        addHandler(new Invoker<>(No.PlayerMoveReq, PlayerHandler::move, PlayerMoveReq::parser));
+        addHandler(new InvokerNoParam(No.PlayerGoHotelReq, PlayerHandler::hotel));
+        addHandler(new RetInvoker<>(No.PlayerChooseHotelReq, PlayerHandler::chooseHotel, PlayerChooseHotelReq::parser));
         // title
-        addHandler(new RetInvoker<>(No.TitleChooseReq_VALUE, TitleHandler::TitleChooseReq, TitleChooseReq::parser));
+        addHandler(new RetInvoker<>(No.TitleChooseReq, TitleHandler::TitleChooseReq, TitleChooseReq::parser));
         // Resource
-        addHandler(new Invoker<>(No.RecoverPowerReq_VALUE, PlayerHandler::addPower, RecoverPowerReq::parser));
+        addHandler(new Invoker<>(No.RecoverPowerReq, PlayerHandler::addPower, RecoverPowerReq::parser));
         // task
-        addHandler(new Invoker<>(No.TaskAcceptReq_VALUE, TaskHandler::acceptTask, TaskReq::parser));
-        addHandler(new Invoker<>(No.TaskCompleteReq_VALUE, TaskHandler::completeTask, TaskReq::parser));
-        addHandler(new RetInvoker<>(No.TaskNpcReq_VALUE, TaskHandler::findNpcTask, TaskNpcReq::parser));
+        addHandler(new Invoker<>(No.TaskAcceptReq, TaskHandler::acceptTask, TaskReq::parser));
+        addHandler(new Invoker<>(No.TaskCompleteReq, TaskHandler::completeTask, TaskReq::parser));
+        addHandler(new RetInvoker<>(No.TaskNpcReq, TaskHandler::TaskNpcReq, TaskNpcReq::parser));
+        addHandler(new RetInvoker<>(No.TaskAbandonReq, TaskHandler::TaskAbandonReq, TaskAbandonReq::parser));
 
         // scene
-        addHandler(new Invoker<>(No.EnterSceneReq_VALUE, SceneHandler::enterScene, EnterSceneReq::parser));
-        addHandler(new Invoker<>(No.EnterFightAreaReq_VALUE, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
-        addHandler(new Invoker<>(No.ExitFightAreaReq_VALUE, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
+        addHandler(new Invoker<>(No.EnterSceneReq, SceneHandler::enterScene, EnterSceneReq::parser));
+        addHandler(new Invoker<>(No.EnterFightAreaReq, SceneHandler::enterFightArea, EnterFightAreaReq::parser));
+        addHandler(new Invoker<>(No.ExitFightAreaReq, SceneHandler::exitFightArea, ExitFightAreaReq::parser));
         // fight
-        addHandler(new Invoker<>(No.FightStartReq_VALUE, FightHandler::fight, FightStartReq::parser));
-        addHandler(new InvokerNoParam(No.FightEndReq_VALUE, FightHandler::endFight));
-        addHandler(new RetInvoker<>(No.FightTestReq_VALUE, FightHandler::fightExercise, FightTestReq::parser));
+        addHandler(new Invoker<>(No.FightStartReq, FightHandler::fight, FightStartReq::parser));
+        addHandler(new InvokerNoParam(No.FightEndReq, FightHandler::endFight));
+        addHandler(new RetInvoker<>(No.FightTestReq, FightHandler::fightExercise, FightTestReq::parser));
         // battle
-        addHandler(new Invoker<>(No.BattleEnterReq_VALUE, FightHandler::battleEnter, BattleEnterReq::parser));
+        addHandler(new Invoker<>(No.BattleEnterReq, FightHandler::battleEnter, BattleEnterReq::parser));
         // hero
-        addHandler(new Invoker<>(No.HeroUpReq_VALUE, HeroHandler::powerUp, HeroUpReq::parser));
-        addHandler(new RetInvoker<>(No.HeroTalentChangeReq_VALUE, HeroHandler::HeroTalentChangeReq, HeroTalentChangeReq::parser));
+        addHandler(new Invoker<>(No.HeroUpReq, HeroHandler::powerUp, HeroUpReq::parser));
+        addHandler(new RetInvoker<>(No.HeroTalentChangeReq, HeroHandler::HeroTalentChangeReq, HeroTalentChangeReq::parser));
         // bag
-        addHandler(new Invoker<>(No.BagCleanReq_VALUE, BagHandler::clean, BagCleanReq::parser));
-        addHandler(new Invoker<>(No.ItemDiscardReq_VALUE, BagHandler::discardItem, ItemDiscardReq::parser));
-        addHandler(new Invoker<>(No.ItemExchangeReq_VALUE, BagHandler::exchangeItem, ItemExchangeReq::parser));
+        addHandler(new Invoker<>(No.BagCleanReq, BagHandler::clean, BagCleanReq::parser));
+        addHandler(new Invoker<>(No.ItemDiscardReq, BagHandler::discardItem, ItemDiscardReq::parser));
+        addHandler(new Invoker<>(No.ItemExchangeReq, BagHandler::exchangeItem, ItemExchangeReq::parser));
         // 购买物品
-        addHandler(new Invoker<>(No.ItemBuyReq_VALUE, ShopHandler::buyItem, ItemBuyReq::parser));
+        addHandler(new Invoker<>(No.ItemBuyReq, ShopHandler::buyItem, ItemBuyReq::parser));
         // 出售物品
-        addHandler(new Invoker<>(No.ItemSellReq_VALUE, ShopHandler::sellItem, ItemSellReq::parser));
+        addHandler(new Invoker<>(No.ItemSellReq, ShopHandler::sellItem, ItemSellReq::parser));
         // 装备物品
-        addHandler(new Invoker<>(No.HeroEquipmentReq_VALUE, HeroHandler::equip, HeroEquipmentReq::parser));
+        addHandler(new Invoker<>(No.HeroEquipmentReq, HeroHandler::equip, HeroEquipmentReq::parser));
         // 阵型
-        addHandler(new RetInvoker<>(No.FormationCreateReq_VALUE, FormationHandler::create, FormationCreateReq::parser));
-        addHandler(new Invoker<>(No.FormationDeleteReq_VALUE, FormationHandler::delete, FormationDeleteReq::parser));
-        addHandler(new RetInvoker<>(No.FormationUpdateReq_VALUE, FormationHandler::update, FormationUpdateReq::parser));
-        addHandler(new RetInvoker<>(No.FormationSettingReq_VALUE, FormationHandler::setting, FormationSettingReq::parser));
+        addHandler(new RetInvoker<>(No.FormationCreateReq, FormationHandler::create, FormationCreateReq::parser));
+        addHandler(new Invoker<>(No.FormationDeleteReq, FormationHandler::delete, FormationDeleteReq::parser));
+        addHandler(new RetInvoker<>(No.FormationUpdateReq, FormationHandler::update, FormationUpdateReq::parser));
+        addHandler(new RetInvoker<>(No.FormationSettingReq, FormationHandler::setting, FormationSettingReq::parser));
 
         // 钓鱼
-        addHandler(new Invoker<>(No.FishReq_VALUE, FishHandler::fish, FishReq::parser));
-        addHandler(new Invoker<>(No.FishHookReq_VALUE, FishHandler::fishHook, FishHookReq::parser));
-        addHandler(new Invoker<>(No.FishEnterAreaReq_VALUE, FishHandler::enterArea, FishEnterAreaReq::parser));
-        addHandler(new Invoker<>(No.FishExitAreaReq_VALUE, FishHandler::exitArea, FishExitAreaReq::parser));
+        addHandler(new Invoker<>(No.FishReq, FishHandler::fish, FishReq::parser));
+        addHandler(new Invoker<>(No.FishHookReq, FishHandler::fishHook, FishHookReq::parser));
+        addHandler(new Invoker<>(No.FishEnterAreaReq, FishHandler::enterArea, FishEnterAreaReq::parser));
+        addHandler(new Invoker<>(No.FishExitAreaReq, FishHandler::exitArea, FishExitAreaReq::parser));
         // Chat
-        addHandler(new Invoker<>(No.ChatMessageReq_VALUE, ChatHandler::chat, ChatMessageReq::parser));
+        addHandler(new Invoker<>(No.ChatMessageReq, ChatHandler::chat, ChatMessageReq::parser));
 
     }
 
