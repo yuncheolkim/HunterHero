@@ -60,7 +60,6 @@ public class ConfigManager extends AbsLifecycle {
     public static final ExpDataBox expDataBox = new ExpDataBox();
     public static final BattleFormationDataBox battleFormationDataBox = new BattleFormationDataBox();
     public static final ItemDataBox itemDataBox = new ItemDataBox();
-    public static final EnemyDataBox enemyDataBox = new EnemyDataBox();
     public static final EnemyCountDataBox enemyCountDataBox = new EnemyCountDataBox();
     public static final DropItemAreaDataBox dropItemAreaDataBox = new DropItemAreaDataBox();
     public static final DropItemEnemyDataBox dropItemEnemyDataBox = new DropItemEnemyDataBox();
@@ -81,7 +80,6 @@ public class ConfigManager extends AbsLifecycle {
         list.add(fishWeightAreaDataBox);
         list.add(expDataBox);
         list.add(itemDataBox);
-        list.add(enemyDataBox);
         list.add(enemyCountDataBox);
         list.add(dropItemAreaDataBox);
         list.add(dropItemEnemyDataBox);

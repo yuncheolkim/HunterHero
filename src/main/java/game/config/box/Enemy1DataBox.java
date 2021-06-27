@@ -11,7 +11,7 @@ public class Enemy1DataBox extends MapConfigDataBox<Enemy1ConfigData> {
 
 
     public Enemy1DataBox() {
-        super("data/data_15-enemy1.json");
+        super("data/data_15-enemy.json");
     }
 
 }
