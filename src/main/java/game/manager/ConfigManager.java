@@ -27,36 +27,16 @@ import java.util.stream.Collectors;
 public class ConfigManager extends AbsLifecycle {
 
 
-    public Map<Integer, DataConfigData> dataMap2;
-
-    public Map<Integer, DataConfigData> dataMap4;
-
-    public Map<Integer, DataConfigData> dataMap5;
+    public static Map<Integer, DataConfigData> dataMap5;
 
 
     public Map<Integer, DataConfigData> dataMap7;
 
-    public Map<Integer, DataConfigData> dataMap10;
-
-    public Map<Integer, DataConfigData> dataMap11;
 
     public Map<Integer, DataConfigData> dataMap12;
 
     public Map<Integer, DataConfigData> dataMap13;
 
-    public Map<Integer, DataConfigData> dataMap14;
-
-    public Map<Integer, DataConfigData> dataMap16;
-
-    public Map<Integer, DataConfigData> dataMap17;
-
-    public Map<Integer, DataConfigData> dataMap18;
-
-    public Map<Integer, DataConfigData> taskMap1;
-
-    public Map<Integer, DataConfigData> taskMap2;
-
-    public Map<Integer, DataConfigData> taskMap3;
 
     public static Map<Integer, DataConfigData> taskMap4;
 
@@ -88,6 +68,8 @@ public class ConfigManager extends AbsLifecycle {
     public static final TalentDataBox talentDataBox = new TalentDataBox();
     public static final BuffDataBox buffDataBox = new BuffDataBox();
     public static final TaskTargetDataBox taskTargetDataBox = new TaskTargetDataBox();
+    public static final Enemy1DataBox enemy1DataBox = new Enemy1DataBox();
+    public static final EnemyPropertyDataBox enemyPropertyDataBox = new EnemyPropertyDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -107,27 +89,17 @@ public class ConfigManager extends AbsLifecycle {
         list.add(talentDataBox);
         list.add(buffDataBox);
         list.add(taskTargetDataBox);
+        list.add(enemy1DataBox);
+        list.add(enemyPropertyDataBox);
     }
 
     @Override
     public void start() {
         super.start();
-        dataMap2 = new JsonConfig("data/data_2-skill.json").load();
-        dataMap4 = new JsonConfig("data/data_4-npc.json").load();
         dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
-        dataMap10 = new JsonConfig("data/data_10-资源.json", 16).load();
-        dataMap11 = new JsonConfig("data/data_11-称谓.json", 32).load();
         dataMap12 = new JsonConfig("data/data_12-历练.json", 64).load();
         dataMap13 = new JsonConfig("data/data_13-修炼.json", 32).load();
-        dataMap14 = new JsonConfig("data/data_14-历练修炼选项.json").load();
-        dataMap16 = new JsonConfig("data/data_16-区域敌人数量.json").load();
-        dataMap17 = new JsonConfig("data/data_17-掉落.json").load();
-        dataMap18 = new JsonConfig("data/data_18-商店.json").load();
-        taskMap1 = new JsonConfig("data/task_1-对话.json").load();
-
-        taskMap2 = new JsonConfig("data/task_2-对话选项.json").load();
-        taskMap3 = new JsonConfig("data/task_3-选项内容.json").load();
         taskMap4 = new JsonConfig("data/task_4-任务.json").load();
         // npc task
         for (final DataConfigData value : taskMap4.values()) {
@@ -269,8 +241,8 @@ public class ConfigManager extends AbsLifecycle {
     }
 
 
-    public static List<EnemyConfigData> getFightArea(final int areaId) {
-        return enemyDataBox.findByCollectId(areaId);
+    public static Enemy1ConfigData getFightArea(final int areaId) {
+        return enemy1DataBox.findById(areaId);
     }
 
     public static ItemConfigData getItem(final int itemId) {
@@ -339,5 +311,9 @@ public class ConfigManager extends AbsLifecycle {
         return heroDataBox.findById(heroId).name;
     }
 
+
+    public static String getEnemyName(int id) {
+        return dataMap5.get(id).name;
+    }
 }
 

@@ -1,92 +1,87 @@
 {
-    "1": {
-        "count": 1,
-        "enemyAreaId": 201,
-        "id": 1,
-        "weight": 5
-    },
-    "10": {
-        "count": 6,
-        "enemyAreaId": 204,
-        "id": 10,
-        "weight": 1
-    },
     "11": {
-        "count": 7,
-        "enemyAreaId": 204,
         "id": 11,
-        "weight": 1
+        "max": 5,
+        "min": 3
+    },
+    "12": {
+        "id": 12,
+        "max": 5,
+        "min": 3
     },
     "13": {
-        "count": 5,
-        "enemyAreaId": 205,
         "id": 13,
-        "weight": 2
+        "max": 6,
+        "min": 4
     },
     "14": {
-        "count": 6,
-        "enemyAreaId": 205,
         "id": 14,
-        "weight": 2
+        "max": 5,
+        "min": 3
     },
     "15": {
-        "count": 7,
-        "enemyAreaId": 205,
         "id": 15,
-        "weight": 1
+        "max": 6,
+        "min": 4
     },
     "16": {
-        "count": 8,
-        "enemyAreaId": 205,
         "id": 16,
-        "weight": 1
+        "max": 6,
+        "min": 4
     },
-    "2": {
-        "count": 2,
-        "enemyAreaId": 201,
-        "id": 2,
-        "weight": 3
+    "17": {
+        "id": 17,
+        "max": 8,
+        "min": 6
     },
-    "3": {
-        "count": 1,
-        "enemyAreaId": 202,
-        "id": 3,
-        "weight": 3
+    "18": {
+        "id": 18,
+        "max": 7,
+        "min": 5
     },
-    "4": {
-        "count": 2,
-        "enemyAreaId": 202,
-        "id": 4,
-        "weight": 1
+    "19": {
+        "id": 19,
+        "max": 8,
+        "min": 6
     },
-    "5": {
-        "count": 3,
-        "enemyAreaId": 202,
-        "id": 5,
-        "weight": 3
+    "20": {
+        "id": 20,
+        "max": 8,
+        "min": 7
     },
-    "6": {
-        "count": 2,
-        "enemyAreaId": 203,
-        "id": 6,
-        "weight": 1
+    "201": {
+        "id": 201,
+        "max": 2,
+        "min": 1
     },
-    "7": {
-        "count": 4,
-        "enemyAreaId": 203,
-        "id": 7,
-        "weight": 2
+    "202": {
+        "id": 202,
+        "max": 3,
+        "min": 1
     },
-    "8": {
-        "count": 4,
-        "enemyAreaId": 204,
-        "id": 8,
-        "weight": 3
+    "203": {
+        "id": 203,
+        "max": 4,
+        "min": 2
     },
-    "9": {
-        "count": 5,
-        "enemyAreaId": 204,
-        "id": 9,
-        "weight": 2
+    "204": {
+        "id": 204,
+        "max": 7,
+        "min": 4
+    },
+    "205": {
+        "id": 205,
+        "max": 8,
+        "min": 5
+    },
+    "21": {
+        "id": 21,
+        "max": 8,
+        "min": 8
+    },
+    "22": {
+        "id": 22,
+        "max": 8,
+        "min": 8
     }
 }

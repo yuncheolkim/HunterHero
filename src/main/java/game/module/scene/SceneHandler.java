@@ -1,7 +1,7 @@
 package game.module.scene;
 
-import game.base.G;
 import game.base.Logs;
+import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
@@ -42,7 +42,7 @@ public class SceneHandler {
     public static void enterFightArea(final Player player, final EnterFightAreaReq req) {
 
         Logs.C.info("进入战斗区域：{}", req.getId());
-        if (!player.D.getFightAreaList().contains(req.getId()) && G.C.getFightArea(req.getId()) != null) {
+        if (!player.D.getFightAreaList().contains(req.getId()) && ConfigManager.getFightArea(req.getId()) != null) {
             player.D.addFightArea(req.getId());
             final long now = System.currentTimeMillis();
             if (player.D.getFightTime() < now) {

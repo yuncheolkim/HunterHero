@@ -1,7 +1,7 @@
 package game.module.fight;
 
-import game.base.G;
 import game.base.Logs;
+import game.config.base.WeightData;
 import game.config.data.*;
 import game.manager.ConfigManager;
 import game.player.Player;
@@ -69,25 +69,29 @@ public class FightService {
 
         Logs.C.debug("生成敌人");
         int allWeight = 0;
-        final List<EnemyConfigData> enemyList = new ArrayList<>();
+        final List<WeightData<Integer>> enemyList = new ArrayList<>();
         for (final Integer enemyAreaId : player.D.getFightAreaList()) {
-            final List<EnemyConfigData> enemy = ConfigManager.enemyDataBox.findByCollectId(enemyAreaId);
-            if (!enemy.isEmpty()) {
-                enemyList.addAll(enemy);
+            final Enemy1ConfigData enemy = ConfigManager.enemy1DataBox.findById(enemyAreaId);
+            if (enemy != null) {
+                allWeight += enemy.allWeight;
+                enemyList.addAll(enemy.list);
             }
         }
 
         // count
-        final List<EnemyCountConfigData> enemyCountList = new ArrayList<>();
+        int min = 0;
+        int max = 0;
         for (final Integer enemyAreaId : player.D.getFightAreaList()) {
-            final List<EnemyCountConfigData> list = ConfigManager.enemyCountDataBox.findByCollectId(enemyAreaId);
-            enemyCountList.addAll(list);
+            EnemyCountConfigData data = ConfigManager.enemyCountDataBox.findById(enemyAreaId);
+            min = Math.min(min, data.min);
+            max = Math.max(max, data.max);
         }
-        final int count = CalcUtil.weightRandom(enemyCountList).count;
+        final int count = CalcUtil.random(min, max);
+
         // hero info
-        final List<EnemyConfigData> result = new ArrayList<>(count);
+        final List<WeightData<Integer>> result = new ArrayList<>(count);
         for (int i = 0; i < count; i++) {
-            result.add(CalcUtil.weightRandom(enemyList));
+            result.add(CalcUtil.weightRandom(enemyList, allWeight));
         }
 
         // hero pos
@@ -97,13 +101,15 @@ public class FightService {
 
         for (int i = 0; i < count; i++) {
             final FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
-            final EnemyConfigData d = result.get(i);
-            builder.setId(d.enemyId);
+            final WeightData<Integer> d = result.get(i);
+            EnemyPropertyConfigData p = ConfigManager.enemyPropertyDataBox.findById(d.data);
+
+            builder.setId(p.enemyId);
             builder.setPos(pos.get(i));
-            builder.setLevel(d.level);
+            builder.setLevel(p.level);
             builder.setType(EnemyType.CREATURE);
-            builder.setName(G.C.dataMap5.get(d.enemyId).name);
-            builder.setProperty(d.property);
+            builder.setName(ConfigManager.getEnemyName(p.enemyId));
+            builder.setProperty(p.property);
 
             push.addInfo(builder);
         }
