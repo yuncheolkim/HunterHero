@@ -35,7 +35,7 @@ public class WeiyanSkill2 extends Skill {
             damaged += damageInfo.attackedDamage;
         } else if (actionPoint == ActionPoint.回合结束后) {
 
-            if (damaged > 0) {
+            if (damaged > 0 && hero.isAlive()) {
                 final int addHp = CalcUtil.calcRateChangeValue(damaged, rate);
                 if (addHp > 0) {
                     hero.addHp(addHp);
