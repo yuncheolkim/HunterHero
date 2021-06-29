@@ -29,7 +29,7 @@ public class WeiyanSkill1 extends Skill {
 
         final int addHp = CalcUtil.calcRateChangeValue(i, rate);
 
-        if (addHp > 0) {
+        if (addHp > 0 && !hero.isFullHp()) {
             hero.addHp(addHp);
         }
     }

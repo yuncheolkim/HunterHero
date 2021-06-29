@@ -547,6 +547,10 @@ public class Hero {
         }
     }
 
+    public boolean isFullHp() {
+        return property.getMaxHp() == heroStats.hp;
+    }
+
     private void addHpRecord(int add) {
         Record record = new Record(RecordType.HEALTH_CHANGE);
         record.heroId = id;

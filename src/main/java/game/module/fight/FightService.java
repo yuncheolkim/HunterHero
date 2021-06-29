@@ -79,11 +79,11 @@ public class FightService {
         }
 
         // count
-        int min = 0;
-        int max = 0;
+        int min = 1;
+        int max = 1;
         for (final Integer enemyAreaId : player.D.getFightAreaList()) {
             EnemyCountConfigData data = ConfigManager.enemyCountDataBox.findById(enemyAreaId);
-            min = Math.min(min, data.min);
+            min = Math.max(min, data.min);
             max = Math.max(max, data.max);
         }
         final int count = CalcUtil.random(min, max);

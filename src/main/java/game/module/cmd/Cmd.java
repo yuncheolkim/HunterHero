@@ -100,6 +100,13 @@ public enum Cmd {
             player.pd.removeHero(i);
         }
     },
+    CMD13(13, "Add hero") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int i = Integer.parseInt(line.get(0));
+            HeroService.addHero(player, i, true);
+        }
+    },
     ;
 
     public final int id;

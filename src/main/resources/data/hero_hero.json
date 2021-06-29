@@ -103,5 +103,77 @@
         ],
         "name": "苏离",
         "title": "红魔"
+    },
+    "1004": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
+        "id": 1004,
+        "list1": [
+            10,
+            11
+        ],
+        "name": "睿华",
+        "title": "大地之王"
+    },
+    "1005": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
+        "id": 1005,
+        "list1": [
+            15,
+            16
+        ],
+        "name": "拉福",
+        "title": "海王"
+    },
+    "1006": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
+        "id": 1006,
+        "list1": [
+            20,
+            21
+        ],
+        "name": "千水",
+        "title": "冰霜女王"
+    },
+    "1007": {
+        "avoid": 100,
+        "avoidBase": 100,
+        "critical": 100,
+        "criticalBase": 100,
+        "criticalDamage": 100,
+        "damage": 100,
+        "def": 100,
+        "defBase": 100,
+        "hp": 100,
+        "id": 1007,
+        "list1": [
+            25,
+            26
+        ],
+        "name": "暮楚",
+        "title": "黑夜亡灵"
     }
 }

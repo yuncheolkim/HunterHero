@@ -3,9 +3,7 @@ package game.module.fight;
 import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
-import game.module.battle.hero.Guanyu;
-import game.module.battle.hero.Huangzhong;
-import game.module.battle.hero.Zhaoyun;
+import game.module.battle.hero.*;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.player.Player;
 import game.proto.data.FightEnemyInfo;
@@ -34,20 +32,35 @@ public class HeroFactory {
                 hero = new Zhaoyun();
                 break;
             }
+            case 1004: {
+                hero = new Weiyan();
+                break;
+            }
+            case 1005: {
+                hero = new Machao();
+                break;
+            }
+            case 1006: {
+                hero = new Lusu();
+                break;
+            }
+            case 1007: {
+                hero = new Xiahoudun();
+                break;
+            }
+
         }
 
-        if (hero != null) {
-            hero.setId(heroId);
-            hero.setLevel(playerHero.getLevel());
-            hero.setName(ConfigManager.getHeroName(heroId));
-            hero.setTalentInfo(playerHero.getTalent());
-            // property data
-            HeroData data = makeData(playerHero.getProperty());
+        assert hero != null;
+        hero.setId(heroId);
+        hero.setLevel(playerHero.getLevel());
+        hero.setName(ConfigManager.getHeroName(heroId));
+        hero.setTalentInfo(playerHero.getTalent());
+        // property data
+        HeroData data = makeData(playerHero.getProperty());
 
-            hero.origin = data;
-            hero.heroStats.hp = data.getMaxHp();
-
-        }
+        hero.origin = data;
+        hero.heroStats.hp = data.getMaxHp();
 
         return hero;
     }
@@ -60,7 +73,6 @@ public class HeroFactory {
         data.setAvoid(property.getAvoid());
         data.setCritical(property.getCritical());
         data.setCriticalDamageRate(property.getCriticalDamage());
-        data.setSpeed(property.getSpeed());
         data.setAvoidBase(property.getAvoidBase());
         data.setCriticalBase(property.getCriticalBase());
         data.setDefBase(property.getDefBase());
