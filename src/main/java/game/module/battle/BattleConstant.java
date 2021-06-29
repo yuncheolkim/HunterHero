@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author Yunzhe.Jin
  * 2021/1/8 16:52
  */
-public class Constant {
+public class BattleConstant {
 
 
     public static final AtomicLong ID_GEN = new AtomicLong();

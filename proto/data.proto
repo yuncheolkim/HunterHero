@@ -179,7 +179,7 @@ message PropertyEffect {
     int32 criticalRate = 3; //闪避概率
 }
 
-////////////////// 战斗
+////////////////// Fight
 message FightHeroPos {
     int32 heroId = 1;
     int32 pos = 2;
@@ -227,6 +227,7 @@ enum RecordType {
     BUFF_UPDATE = 6;
     HERO_ACTION = 7;
     SKILL_USE = 8;
+    SHIELD_CHANGE = 9; // 护盾变化
 }
 enum DamageType {
     DAMAGE_NORMAL = 0;
@@ -328,6 +329,12 @@ enum EnumItemQuality{
     Q_R = 6;
 }
 
+// 伤害类型
+enum EnumDamageType{
+    D_NONE = 0; // 普通
+    D_FIRE = 1; // 火焰
+    D_LIGHT = 2; // 闪电
+}
 
 
 

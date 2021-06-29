@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.FindTargetStrategy;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
@@ -42,7 +42,7 @@ public class HuanzhongSkill1 extends Skill {
         actionPoint.put(ActionPoint.开场, 1);
         id = 10;
         name = "多重箭";
-        cd = Constant.INFINITE;
+        cd = BattleConstant.INFINITE;
     }
 
     @Override
@@ -59,13 +59,13 @@ public class HuanzhongSkill1 extends Skill {
             final int c = happenCount;
             hero.addAction(ActionPoint.回合开始前, h -> {
 
-                boolean h1 = CalcUtil.happened100(happen);
+                final boolean h1 = CalcUtil.happened100(happen);
 
                 int add = 0;
                 if (h1) {
                     add = c;
                 }
-                for (FindTargetStrategy targetStrategy : hero.getTargetStrategies()) {
+                for (final FindTargetStrategy targetStrategy : hero.getTargetStrategies()) {
                     if (targetStrategy instanceof MultipleBackTargetStrategy) {
                         ((MultipleBackTargetStrategy) targetStrategy).setAdd(add);
                     }
@@ -79,15 +79,15 @@ public class HuanzhongSkill1 extends Skill {
         return null;
     }
 
-    public void setCount(int count) {
+    public void setCount(final int count) {
         this.count = count;
     }
 
-    public void addCount(int c) {
+    public void addCount(final int c) {
         this.count += c;
     }
 
-    public void setRate(int rate) {
+    public void setRate(final int rate) {
         this.rate = rate;
     }
 
@@ -95,15 +95,15 @@ public class HuanzhongSkill1 extends Skill {
         return rate;
     }
 
-    public void addRate(int rate) {
+    public void addRate(final int rate) {
         this.rate += rate;
     }
 
-    public void setHappenRate(int happenRate) {
+    public void setHappenRate(final int happenRate) {
         this.happenRate = happenRate;
     }
 
-    public void setHappenCount(int happenCount) {
+    public void setHappenCount(final int happenCount) {
         this.happenCount = happenCount;
     }
 }

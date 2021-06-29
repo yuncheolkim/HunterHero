@@ -7,7 +7,7 @@ import game.module.battle.record.BuffData;
 
 import java.util.*;
 
-import static game.module.battle.Constant.BUFF_INFINITE;
+import static game.module.battle.BattleConstant.BUFF_INFINITE;
 
 /**
  * @author Yunzhe.Jin
@@ -68,7 +68,7 @@ public abstract class Buff {
      */
     protected boolean move;
 
-    public void initRound(int round) {
+    public void initRound(final int round) {
         this.round = round;
         this.remainRound = round;
 
@@ -105,8 +105,8 @@ public abstract class Buff {
      * @param actionPoint
      * @param hero
      */
-    public void process(ActionPoint actionPoint, Hero hero) {
-        for (BuffEffect effect : effects) {
+    public void process(final ActionPoint actionPoint, final Hero hero) {
+        for (final BuffEffect effect : effects) {
             if (!effect.doEffect(hero, this)) {
                 break;
             }
@@ -128,7 +128,7 @@ public abstract class Buff {
      *
      * @param from
      */
-    public void mergeBuff(Buff from) {
+    public void mergeBuff(final Buff from) {
         if (from.id == id) {
             remainRound = round;
             buffVal().merge(from.buffVal());
@@ -137,7 +137,7 @@ public abstract class Buff {
 
     public BuffData buffData() {
 
-        BuffData data = new BuffData();
+        final BuffData data = new BuffData();
         data.buffId = id;
         data.round = round;
         data.remainRound = remainRound;
@@ -149,7 +149,7 @@ public abstract class Buff {
      *
      * @return
      */
-    public BuffMergeType calcBuffMergeType(Buff addBuf) {
+    public BuffMergeType calcBuffMergeType(final Buff addBuf) {
         return buffMergeType;
     }
 
@@ -161,7 +161,7 @@ public abstract class Buff {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -169,7 +169,7 @@ public abstract class Buff {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(final int priority) {
         this.priority = priority;
     }
 
@@ -177,7 +177,7 @@ public abstract class Buff {
         return round;
     }
 
-    public void setRound(int round) {
+    public void setRound(final int round) {
         this.round = round;
     }
 
@@ -185,7 +185,7 @@ public abstract class Buff {
         return source;
     }
 
-    public void setSource(Hero source) {
+    public void setSource(final Hero source) {
         this.source = source;
     }
 
@@ -193,7 +193,7 @@ public abstract class Buff {
         return remainRound;
     }
 
-    public void setRemainRound(int remainRound) {
+    public void setRemainRound(final int remainRound) {
         this.remainRound = remainRound;
     }
 
@@ -201,7 +201,7 @@ public abstract class Buff {
         return buffMergeType;
     }
 
-    public void setBuffMergeType(BuffMergeType buffMergeType) {
+    public void setBuffMergeType(final BuffMergeType buffMergeType) {
         this.buffMergeType = buffMergeType;
     }
 
@@ -210,10 +210,10 @@ public abstract class Buff {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Buff buff = (Buff) o;
+        final Buff buff = (Buff) o;
         return id == buff.id;
     }
 

@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -20,7 +20,7 @@ public class SunquanSkill2 extends Skill {
         actionPoint.put(ActionPoint.受到伤害之前, 1);
         id = 200009;
         name = "威慑";
-        cd = Constant.INFINITE;
+        cd = BattleConstant.INFINITE;
     }
 
 

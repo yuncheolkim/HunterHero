@@ -1,5 +1,7 @@
 package game.module.battle.damage;
 
+import game.module.battle.Hero;
+
 /**
  * 受到伤害-计算护盾
  *
@@ -9,7 +11,18 @@ package game.module.battle.damage;
 public class ShieldDamagedProcess implements DamagedProcess {
 
     @Override
-    public boolean process(DamageInfo hero) {
-        return false;
+    public boolean process(final DamageInfo info) {
+        final Hero target = info.target;
+
+        final int damage = info.allSourceDamage();
+        final int shield = target.heroStats.getShield();
+
+        if (shield > 0) {
+            final int i = target.heroStats.reduceShield(Math.min(damage, shield));
+            info.reduceDamageValue(i);
+            target.recordShieldChange();
+        }
+
+        return info.allSourceDamage() > 0;
     }
 }

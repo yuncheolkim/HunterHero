@@ -139,11 +139,11 @@ public class Hero {
     protected void initTalent() {
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(final int speed) {
         origin.setSpeed(speed);
     }
 
-    public void processAll(ActionPoint actionPoint) {
+    public void processAll(final ActionPoint actionPoint) {
         processSkill(actionPoint);
         processBuff(actionPoint);
         processAction(actionPoint);
@@ -154,23 +154,23 @@ public class Hero {
      *
      * @param actionPoint 相应的动作
      */
-    public void processAction(ActionPoint actionPoint) {
-        Collection<HeroActionPointHandler> pointHandler = actionMap.get(actionPoint);
+    public void processAction(final ActionPoint actionPoint) {
+        final Collection<HeroActionPointHandler> pointHandler = actionMap.get(actionPoint);
         if (!pointHandler.isEmpty()) {
             Logs.trace("action", this, actionPoint);
-            for (HeroActionPointHandler heroActionPointHandler : pointHandler) {
+            for (final HeroActionPointHandler heroActionPointHandler : pointHandler) {
                 heroActionPointHandler.handle(this);
             }
         }
     }
 
-    public void addAction(ActionPoint actionPoint, HeroActionPointHandler h) {
+    public void addAction(final ActionPoint actionPoint, final HeroActionPointHandler h) {
 
         actionMap.put(actionPoint, h);
 
     }
 
-    public void removeAction(ActionPoint actionPoint, HeroActionPointHandler h) {
+    public void removeAction(final ActionPoint actionPoint, final HeroActionPointHandler h) {
 
         actionMap.remove(actionPoint, h);
     }
@@ -180,9 +180,9 @@ public class Hero {
      */
     public List<Hero> findTarget() {
 
-        List<Hero> list = new ArrayList<>();
+        final List<Hero> list = new ArrayList<>();
 
-        for (FindTargetStrategy targetStrategy : targetStrategies) {
+        for (final FindTargetStrategy targetStrategy : targetStrategies) {
             if (!targetStrategy.find(this, list)) {
                 break;
             }
@@ -195,7 +195,7 @@ public class Hero {
     }
 
     public void action() {
-        Record record = new Record(ACTION);
+        final Record record = new Record(ACTION);
         record.heroId = id;
         record.pos = pos.getIndex();
         battle.addRecord(record);
@@ -212,7 +212,7 @@ public class Hero {
         targetList = findTarget();
         processSkill(ActionPoint.选择目标后);
 
-        for (Hero target : targetList) {
+        for (final Hero target : targetList) {
 
             if (target.isDead()) {
                 continue;
@@ -234,7 +234,7 @@ public class Hero {
                 calcAttack();
                 processAction(ActionPoint.出手);
                 // skill 主动技能
-                boolean skillFire = processSkill(ActionPoint.出手);
+                final boolean skillFire = processSkill(ActionPoint.出手);
 
                 // 计算伤害
                 Logs.trace("attack:", this.getSimple(), "--->", target.getSimple(), damageInfo);
@@ -260,7 +260,7 @@ public class Hero {
      *
      * @param target 目标
      */
-    public void damage(DamageInfo info) {
+    public void damage(final DamageInfo info) {
         info.target.attacked(info);
     }
 
@@ -279,8 +279,8 @@ public class Hero {
 
 
     private void attackRecord() {
-        Record attackRecord = new Record(ATTACK);
-        HeroRecordSimple simple = damageInfo.source.getSimple();
+        final Record attackRecord = new Record(ATTACK);
+        final HeroRecordSimple simple = damageInfo.source.getSimple();
         attackRecord.heroId = simple.id;
         attackRecord.pos = simple.pos.getIndex();
         attackRecord.targetList = Lists.newArrayList(damageInfo.target.getSimple().pos.getIndex());
@@ -290,21 +290,21 @@ public class Hero {
     /**
      * 执行buff
      */
-    public void processBuff(ActionPoint actionPoint) {
+    public void processBuff(final ActionPoint actionPoint) {
         Collection<Buff> buffs = buffMap.get(actionPoint);
         if (actionPoint == ActionPoint.重新计算属性) {
             buffs = buffMap.values();
         }
         if (buffs != null) {
-            for (Buff buff : buffs) {
+            for (final Buff buff : buffs) {
                 buff.process(actionPoint, this);
             }
         }
 
         //检查回合
-        Collection<Map.Entry<ActionPoint, Buff>> values = buffMap.entries();
-        List<Map.Entry<ActionPoint, Buff>> removeValue = new ArrayList<>();
-        for (Map.Entry<ActionPoint, Buff> entry : values) {
+        final Collection<Map.Entry<ActionPoint, Buff>> values = buffMap.entries();
+        final List<Map.Entry<ActionPoint, Buff>> removeValue = new ArrayList<>();
+        for (final Map.Entry<ActionPoint, Buff> entry : values) {
             if (entry.getValue().reducePoint() == actionPoint) {
                 if (!entry.getValue().isActive()) {
                     removeValue.add(entry);
@@ -313,7 +313,7 @@ public class Hero {
         }
 
         if (!removeValue.isEmpty()) {
-            for (Map.Entry<ActionPoint, Buff> actionPointBuffEntry : removeValue) {
+            for (final Map.Entry<ActionPoint, Buff> actionPointBuffEntry : removeValue) {
                 removeBuff(actionPointBuffEntry.getKey(), actionPointBuffEntry.getValue());
             }
         }
@@ -323,10 +323,10 @@ public class Hero {
     /**
      * 移除buff
      */
-    public void removeBuff(ActionPoint actionPoint, Buff buff) {
+    public void removeBuff(final ActionPoint actionPoint, final Buff buff) {
         Logs.trace("移除buff", buff);
         contextData = buff;
-        Record record = new Record(RecordType.BUFF_REMOVE);
+        final Record record = new Record(RecordType.BUFF_REMOVE);
         record.actionPoint = actionPoint;
         record.heroId = id;
         record.pos = pos.getIndex();
@@ -344,10 +344,10 @@ public class Hero {
     /**
      * 执行技能
      */
-    public boolean processSkill(ActionPoint actionPoint) {
-        Collection<Skill> skills = skillMap.get(actionPoint);
+    public boolean processSkill(final ActionPoint actionPoint) {
+        final Collection<Skill> skills = skillMap.get(actionPoint);
         boolean fired = false;
-        for (Skill skill : skills) {
+        for (final Skill skill : skills) {
             // 减少cd
             if (actionPoint == skill.reduceCoolDownPoint) {
                 skill.reduceCoolDown(1);
@@ -357,7 +357,7 @@ public class Hero {
                 Logs.trace("使用技能", this);
 
                 // 使用技能
-                Record record = skill.process(actionPoint, this);
+                final Record record = skill.process(actionPoint, this);
                 if (skill.getSkillType() == SkillType.Z && record != null) {
                     battle.addRecord(record);
                 }
@@ -378,7 +378,7 @@ public class Hero {
      *
      * @param info
      */
-    public void attacked(DamageInfo info) {
+    public void attacked(final DamageInfo info) {
         resetFightingData();
         Logs.trace("attacked:", this);
         processAll(ActionPoint.被攻击之前);
@@ -393,7 +393,7 @@ public class Hero {
             processAll(ActionPoint.闪避之前);
         }
         if (info.avoid) {
-            Record record = new Record(RecordType.AVOID);
+            final Record record = new Record(RecordType.AVOID);
             record.heroId = id;
             record.pos = pos.getIndex();
             battle.addRecord(record);
@@ -415,10 +415,10 @@ public class Hero {
      *
      * @param num
      */
-    public void reduceHp(DamageInfo i) {
-        Hero target = i.target;
-        int num = i.attackedDamage;
-        HealthChangeInfo info = new HealthChangeInfo();
+    public void reduceHp(final DamageInfo i) {
+        final Hero target = i.target;
+        final int num = i.attackedDamage;
+        final HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
         info.setOldValue(target.heroStats.hp);
 
@@ -432,7 +432,7 @@ public class Hero {
             processAll(ActionPoint.死之前);
         }
 
-        for (HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
+        for (final HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
             statusChangeListener.changHp(info);
         }
 
@@ -442,8 +442,8 @@ public class Hero {
 
     }
 
-    public void addSkill(Skill s) {
-        for (ActionPoint actionPoint : s.actionPoint.keySet()) {
+    public void addSkill(final Skill s) {
+        for (final ActionPoint actionPoint : s.actionPoint.keySet()) {
             skillMap.put(actionPoint, s);
         }
     }
@@ -453,22 +453,22 @@ public class Hero {
      *
      * @param addBuff
      */
-    public void addBuff(Buff addBuff) {
+    public void addBuff(final Buff addBuff) {
 
 
-        Set<ActionPoint> values = addBuff.effectPoint.keySet();
+        final Set<ActionPoint> values = addBuff.effectPoint.keySet();
 
         Buff added = null;
-        for (ActionPoint actionPoint : values) {
+        for (final ActionPoint actionPoint : values) {
             Logs.trace("添加buff", this, actionPoint.name(), addBuff.name());
 
-            Collection<Buff> buffs = getBuffMap().get(actionPoint);
+            final Collection<Buff> buffs = getBuffMap().get(actionPoint);
 
-            Optional<Buff> first = buffs.stream().filter(buff -> buff.getId() == addBuff.getId()).findFirst();
+            final Optional<Buff> first = buffs.stream().filter(buff -> buff.getId() == addBuff.getId()).findFirst();
             if (first.isPresent()) {
                 switch (first.get().calcBuffMergeType(addBuff)) {
                     case MERGE: {
-                        Buff buff = first.get();
+                        final Buff buff = first.get();
                         buff.mergeBuff(addBuff);
                         Logs.trace("Buff存在合并");
                         added = buff;
@@ -495,17 +495,17 @@ public class Hero {
     /**
      * 重新计算buff效果
      */
-    public void calcBuffEffect(ActionPoint point) {
+    public void calcBuffEffect(final ActionPoint point) {
         property = origin.copy();
         processBuff(point);
     }
 
-    private void addBuffRecord(Buff buff) {
+    private void addBuffRecord(final Buff buff) {
         if (buff == null) {
             return;
         }
-        BuffData data = buff.buffData();
-        Record addBuffRecord = new Record(RecordType.BUFF_ADD);
+        final BuffData data = buff.buffData();
+        final Record addBuffRecord = new Record(RecordType.BUFF_ADD);
         addBuffRecord.buffData = data;
         addBuffRecord.heroId = id;
         addBuffRecord.pos = pos.getIndex();
@@ -514,7 +514,7 @@ public class Hero {
     }
 
     public HeroRecordSimple getSimple() {
-        HeroRecordSimple simple = new HeroRecordSimple();
+        final HeroRecordSimple simple = new HeroRecordSimple();
         simple.id = id;
         simple.pos = pos;
         simple.hp = heroStats.hp;
@@ -530,8 +530,8 @@ public class Hero {
      *
      * @param num
      */
-    public void addHp(int num) {
-        HealthChangeInfo info = new HealthChangeInfo();
+    public void addHp(final int num) {
+        final HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
         info.setOldValue(heroStats.hp);
         heroStats.hp += num;
@@ -542,7 +542,7 @@ public class Hero {
 
         addHpRecord(info.getNewValue() - info.getOldValue());
 
-        for (HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
+        for (final HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
             statusChangeListener.changHp(info);
         }
     }
@@ -551,8 +551,8 @@ public class Hero {
         return property.getMaxHp() == heroStats.hp;
     }
 
-    private void addHpRecord(int add) {
-        Record record = new Record(RecordType.HEALTH_CHANGE);
+    private void addHpRecord(final int add) {
+        final Record record = new Record(RecordType.HEALTH_CHANGE);
         record.heroId = id;
         record.pos = pos.getIndex();
         record.value = add;
@@ -561,13 +561,24 @@ public class Hero {
     }
 
     /**
+     * 护盾变化通知
+     */
+    public void recordShieldChange() {
+        final Record record = new Record(RecordType.HEALTH_CHANGE);
+        record.heroId = id;
+        record.pos = pos.getIndex();
+        record.value = heroStats.getShield();
+        battle.addRecord(record);
+    }
+
+    /**
      * 战斗记录
      *
      * @param info
      */
-    private void addDamageRecord(DamageInfo info) {
+    private void addDamageRecord(final DamageInfo info) {
         Record record = new Record(RecordType.HEALTH_CHANGE);
-        HeroRecordSimple simple = info.target.getSimple();
+        final HeroRecordSimple simple = info.target.getSimple();
         record.heroId = simple.id;
         record.pos = simple.pos.getIndex();
         record.dp = DisplayPoint.DP_DEF_1;
@@ -588,13 +599,13 @@ public class Hero {
     }
 
     public HeroRecordData record() {
-        HeroRecordData d = new HeroRecordData();
+        final HeroRecordData d = new HeroRecordData();
         d.simple = getSimple();
         d.property = property;
         return d;
     }
 
-    public Optional<Buff> findBuff(int id) {
+    public Optional<Buff> findBuff(final int id) {
         return buffMap.values().stream().filter(buff -> buff.getId() == id).findFirst();
     }
 
@@ -615,7 +626,7 @@ public class Hero {
         return battle.mySideHeroes(side);
     }
 
-    public void addTargetStrategy(FindTargetStrategy s) {
+    public void addTargetStrategy(final FindTargetStrategy s) {
         targetStrategies.add(s);
 
     }
@@ -624,7 +635,7 @@ public class Hero {
         return pos;
     }
 
-    public void setPos(Pos pos) {
+    public void setPos(final Pos pos) {
         this.pos = pos;
     }
 
@@ -632,7 +643,7 @@ public class Hero {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -640,7 +651,7 @@ public class Hero {
         return battle;
     }
 
-    public void setBattle(Battle battle) {
+    public void setBattle(final Battle battle) {
         this.battle = battle;
     }
 
@@ -648,7 +659,7 @@ public class Hero {
         return side;
     }
 
-    public void setSide(Side side) {
+    public void setSide(final Side side) {
         this.side = side;
     }
 
@@ -670,7 +681,7 @@ public class Hero {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -678,11 +689,11 @@ public class Hero {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(final int level) {
         this.level = level;
     }
 
-    public void setTalentInfo(int talentInfo) {
+    public void setTalentInfo(final int talentInfo) {
         this.talentInfo = talentInfo;
     }
 
@@ -698,7 +709,7 @@ public class Hero {
         return continueAction;
     }
 
-    public void setContinueAction(boolean continueAction) {
+    public void setContinueAction(final boolean continueAction) {
         this.continueAction = continueAction;
     }
 

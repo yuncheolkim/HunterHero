@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -17,12 +17,12 @@ public class ZhangfeiSkill1 extends Skill {
         actionPoint.put(ActionPoint.开场, 1);
         id = 200001;
         name = "ZhangfeiSkill1";
-        cd = Constant.INFINITE;
+        cd = BattleConstant.INFINITE;
     }
 
     @Override
-    public Record process(ActionPoint point, Hero hero) {
-        Record record = super.process(point, hero);
+    public Record process(final ActionPoint point, final Hero hero) {
+        final Record record = super.process(point, hero);
 
         hero.addBuff(new ZhangfeiBuff1());
 

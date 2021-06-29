@@ -1,7 +1,7 @@
 package game.module.battle.buff.hero;
 
 import game.manager.ConfigManager;
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.DefaultDataBuff;
@@ -44,7 +44,7 @@ public class ZhaoyunBuff1 extends DefaultDataBuff {
         effectPoint.put(ActionPoint.闪避之后, 1);
         effectPoint.put(ActionPoint.受到伤害之后, 1);
         effectPoint.put(ActionPoint.出手结束后, 1);
-        id = Constant.buff_zhaoyun_1;
+        id = BattleConstant.buff_zhaoyun_1;
         move = ConfigManager.buffDataBox
                 .findById(id).move;
     }

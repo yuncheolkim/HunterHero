@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -27,13 +27,14 @@ public class GuanyuSkill2 extends Skill {
      * 溅射比例
      */
     private int rate = 40;
+
     private boolean row;
 
     public GuanyuSkill2() {
         actionPoint.put(ActionPoint.出手后, 1);
         id = 200003;
         name = "GuanyuSkill2";
-        cd = Constant.INFINITE;
+        cd = BattleConstant.INFINITE;
     }
 
     @Override
@@ -43,20 +44,20 @@ public class GuanyuSkill2 extends Skill {
     }
 
     private List<Hero> attackHero(final Hero hero) {
-        Map<Integer, Hero> enemy = hero.getBattle().oppositeHeroes(hero.getSide());
+        final Map<Integer, Hero> enemy = hero.getBattle().oppositeHeroes(hero.getSide());
         final Collection<Hero> list = enemy.values();
         final Hero currentTarget = hero.damageInfo.target;
         if (currentTarget == null) {
             return new ArrayList<>();
         }
         if (row) {
-            List<Integer> row = currentTarget.getBattle().getFormation().row(currentTarget.getPos());
-            List<Hero> result = new ArrayList<>(4);
-            for (Integer pos : row) {
+            final List<Integer> row = currentTarget.getBattle().getFormation().row(currentTarget.getPos());
+            final List<Hero> result = new ArrayList<>(4);
+            for (final Integer pos : row) {
                 if (pos == currentTarget.getPos().getIndex()) {
                     continue;
                 }
-                Hero h = enemy.get(pos);
+                final Hero h = enemy.get(pos);
                 if (h != null && h.isAlive()) {
                     result.add(h);
                 }
@@ -95,11 +96,11 @@ public class GuanyuSkill2 extends Skill {
         return process;
     }
 
-    public void setRate(int rate) {
+    public void setRate(final int rate) {
         this.rate = rate;
     }
 
-    public void setRow(boolean row) {
+    public void setRow(final boolean row) {
         this.row = row;
     }
 }

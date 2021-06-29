@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.HeroActionPointHandler;
 import game.module.battle.Skill;
@@ -20,6 +20,7 @@ public class GuanyuSkill1 extends Skill {
     private OneAttackBuffData data;
 
     private int addDamageRate;
+
     private int addCritical;
 
     private HeroActionPointHandler action;
@@ -32,13 +33,13 @@ public class GuanyuSkill1 extends Skill {
     }
 
     @Override
-    public Record process(ActionPoint point, Hero hero) {
-        Record record = super.process(point, hero);
-        OneAttackBuffData d = new OneAttackBuffData();
+    public Record process(final ActionPoint point, final Hero hero) {
+        final Record record = super.process(point, hero);
+        final OneAttackBuffData d = new OneAttackBuffData();
         d.setStack(data.getStack());
         d.setCurrent(data.getCurrent());
         hero.addBuff(new OneAttackBuff(hero.damageInfo.target, d));
-        OneAttackBuff buff = (OneAttackBuff) hero.findBuff(Constant.buff_guanyu_skill1).get();
+        final OneAttackBuff buff = (OneAttackBuff) hero.findBuff(BattleConstant.buff_guanyu_skill1).get();
 
         if (addCritical > 0) {
             if (buff.isMax() && action == null) {
@@ -62,15 +63,15 @@ public class GuanyuSkill1 extends Skill {
         return record;
     }
 
-    public void setData(OneAttackBuffData data) {
+    public void setData(final OneAttackBuffData data) {
         this.data = data;
     }
 
-    public void setAddDamageRate(int addDamageRate) {
+    public void setAddDamageRate(final int addDamageRate) {
         this.addDamageRate = addDamageRate;
     }
 
-    public void setAddCritical(int addCritical) {
+    public void setAddCritical(final int addCritical) {
         this.addCritical = addCritical;
     }
 }

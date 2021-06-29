@@ -10,7 +10,7 @@ import game.utils.JacksonUtil;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static game.module.battle.Constant.ID_GEN;
+import static game.module.battle.BattleConstant.ID_GEN;
 
 /**
  * 一场战斗
@@ -69,7 +69,7 @@ public class Battle {
         // 护甲
         takeDamageProcessList.add(new DefDamagedProcess());
         // 护盾
-//        takeDamageProcessList.add(new ShieldDamagedProcess());
+        takeDamageProcessList.add(new ShieldDamagedProcess());
     }
 
 
@@ -230,8 +230,8 @@ public class Battle {
     }
 
 
-    public void addHero(Hero hero) {
-        Map<Integer, Hero> map;
+    public void addHero(final Hero hero) {
+        final Map<Integer, Hero> map;
 
         if (hero.side == Side.A) {
             map = sideAhero;

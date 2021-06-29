@@ -1,6 +1,6 @@
 package game.module.battle.buff;
 
-import game.module.battle.Constant;
+import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.data.OneAttackBuffData;
@@ -18,7 +18,7 @@ public class OneAttackBuff extends Buff {
 
     public Hero target;
 
-    public OneAttackBuff(final Hero t, OneAttackBuffData data) {
+    public OneAttackBuff(final Hero t, final OneAttackBuffData data) {
         effects.add(new BuffEffect() {
             @Override
             public boolean doEffect(final Hero hero, final Buff buff) {
@@ -30,7 +30,7 @@ public class OneAttackBuff extends Buff {
         buffType = BuffType.BUFF;
         buffMergeType = BuffMergeType.MERGE;
         target = t;
-        id = Constant.buff_guanyu_skill1;
+        id = BattleConstant.buff_guanyu_skill1;
         buffData = data;
         initRound(2);
     }

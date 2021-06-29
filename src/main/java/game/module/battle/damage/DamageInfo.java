@@ -53,9 +53,23 @@ public class DamageInfo {
         return sourceDamage + sourceCriticalDamage;
     }
 
-    public void reduceDamage(float rate) {
+    public void reduceDamage(final float rate) {
         sourceDamage = CalcUtil.calcRateSub(sourceDamage, rate);
         sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
+    }
+
+    /**
+     * 减少伤害
+     *
+     * @param v
+     */
+    public void reduceDamageValue(final int v) {
+        final int s = sourceCriticalDamage;
+        sourceCriticalDamage -= Math.max(s, s - v);
+
+        if (sourceCriticalDamage == 0) {
+            sourceDamage -= Math.min(v - s, sourceDamage);
+        }
     }
 
     /**
@@ -63,10 +77,10 @@ public class DamageInfo {
      *
      * @param maxDamageable
      */
-    public void adjustDamageHp(int maxDamageable) {
+    public void adjustDamageHp(final int maxDamageable) {
 
         if (allSourceDamage() > maxDamageable) {
-            int temp = (allSourceDamage() - maxDamageable) / 2;
+            final int temp = (allSourceDamage() - maxDamageable) / 2;
 
             sourceDamage -= temp;
             sourceCriticalDamage -= temp;

@@ -26,7 +26,7 @@ public class Skill {
     /**
      * 冷却时间
      */
-    protected CoolDown cd = Constant.INFINITE;
+    protected CoolDown cd = BattleConstant.INFINITE;
 
     /**
      * 触发时机
@@ -45,9 +45,9 @@ public class Skill {
 
     protected SkillType skillType = SkillType.B;
 
-    public Record process(ActionPoint actionPoint, Hero hero) {
-        Record record = new Record(RecordType.SKILL_USE);
-        HeroRecordSimple simple = hero.getSimple();
+    public Record process(final ActionPoint actionPoint, final Hero hero) {
+        final Record record = new Record(RecordType.SKILL_USE);
+        final HeroRecordSimple simple = hero.getSimple();
         record.heroId = simple.id;
         record.pos = simple.pos.getIndex();
         record.id = id;
@@ -58,7 +58,7 @@ public class Skill {
         return record;
     }
 
-    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
     }
 
     /**
@@ -67,7 +67,7 @@ public class Skill {
      * @param hero
      * @return
      */
-    public boolean canProcess(Hero hero) {
+    public boolean canProcess(final Hero hero) {
         return true;
     }
 
@@ -83,7 +83,7 @@ public class Skill {
      *
      * @param round
      */
-    public void reduceCoolDown(int round) {
+    public void reduceCoolDown(final int round) {
         Logs.trace("减少cd", this, round);
         cd.reduce(round);
     }
@@ -103,7 +103,7 @@ public class Skill {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -111,7 +111,7 @@ public class Skill {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(final int priority) {
         this.priority = priority;
     }
 
@@ -119,7 +119,7 @@ public class Skill {
         return cd;
     }
 
-    public void setCd(CoolDown cd) {
+    public void setCd(final CoolDown cd) {
         this.cd = cd;
     }
 
@@ -127,7 +127,7 @@ public class Skill {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
