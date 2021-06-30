@@ -3,6 +3,7 @@ package game.module.battle.damage;
 import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
+import game.module.battle.action.ActionPoint;
 import game.utils.CalcUtil;
 
 /**
@@ -13,19 +14,19 @@ import game.utils.CalcUtil;
  */
 public class CriticalDamageProcess implements DamageProcess {
     @Override
-    public boolean process(Hero hero) {
+    public boolean process(final Hero hero) {
 
-        HeroData processData = hero.fightingData;
+        final HeroData processData = hero.fightingData;
 
-        int rate = processData.getCritical();
-        boolean happened = CalcUtil.happened(hero.getBattle().getRandom(), rate, rate + processData.getCriticalBase());
+        final int rate = processData.getCritical();
+        final boolean happened = CalcUtil.happened(hero.getBattle().getRandom(), rate, rate + processData.getCriticalBase());
 
         // 暴击伤害
         if (happened) {
-            int damage = processData.getDamage();
-            int damageRate = processData.getCriticalDamageRate();
+            final int damage = processData.getDamage();
+            final int damageRate = processData.getCriticalDamageRate();
             hero.damageInfo.sourceCriticalDamage = hero.damageInfo.sourceCriticalDamage + CalcUtil.calcRateChangeValue(damage, damageRate);
-
+            hero.processAll(ActionPoint.暴击之后);
             Logs.trace("暴击伤害", rate, processData.getCriticalDamageRate());
         }
 

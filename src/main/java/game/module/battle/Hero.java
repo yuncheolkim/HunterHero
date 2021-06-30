@@ -560,6 +560,11 @@ public class Hero {
         battle.addRecord(record);
     }
 
+    public void addShield(final int round, final int v) {
+        heroStats.addShield(new ShieldInfo(round, v));
+        recordShieldChange();
+    }
+
     /**
      * 护盾变化通知
      */

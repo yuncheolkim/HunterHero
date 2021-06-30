@@ -14,4 +14,12 @@ public class ShieldInfo {
     public int round;
 
     public int count;
+
+    public ShieldInfo() {
+    }
+
+    public ShieldInfo(final int round, final int count) {
+        this.round = round;
+        this.count = count;
+    }
 }
