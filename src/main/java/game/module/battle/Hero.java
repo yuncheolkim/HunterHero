@@ -601,9 +601,13 @@ public class Hero {
         final Record record = new Record(RecordType.SHIELD_CHANGE);
         record.heroId = id;
         record.pos = pos.getIndex();
-        record.dp = DisplayPoint.DP_ATT_2;
+        record.dp = DisplayPoint.DP_ATT_3;
         record.value = change;
-        delayRecord.put(recordPoint, record);
+        if (recordPoint != null) {
+            delayRecord.put(recordPoint, record);
+        } else {
+            battle.addRecord(record);
+        }
     }
 
     /**

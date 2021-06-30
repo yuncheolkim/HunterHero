@@ -2,6 +2,7 @@ package game.module.battle.action;
 
 import game.module.battle.Hero;
 import game.module.battle.HeroActionPointHandler;
+import game.module.battle.HeroStats;
 
 /**
  * 回合结束后处理
@@ -19,5 +20,16 @@ public class RoundEndHandler implements HeroActionPointHandler {
     @Override
     public void handle(Hero hero) {
 
+        // 计算护盾
+        HeroStats heroStats = hero.heroStats;
+        int old = heroStats.getShield();
+        if (old <= 0) {
+            return;
+        }
+        heroStats.roundShield();
+        if (old != heroStats.getShield()) {
+            // 护盾减少记录
+            hero.recordShieldChange(null, heroStats.getShield() - old);
+        }
     }
 }

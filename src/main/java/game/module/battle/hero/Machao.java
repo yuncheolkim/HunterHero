@@ -19,7 +19,9 @@ public class Machao extends DefaultTargetHero {
         final MachaoBuff1 buff1 = new MachaoBuff1();
         final MachaoSkill2 skill2 = new MachaoSkill2();
 
-        origin.setCritical(origin.getCriticalBase() * 2);
+        //region todo test
+        origin.setCritical(origin.getCriticalBase() * 20);
+        //endregion
 
         addAction(ActionPoint.开场, hero -> {
             hero.addBuff(buff1);

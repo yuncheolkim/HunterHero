@@ -1,5 +1,7 @@
 package game.module.battle;
 
+import game.base.Logs;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -102,6 +104,8 @@ public class HeroStats {
             final ShieldInfo next = iterator.next();
             if (--next.round == 0) {
                 shield = Math.max(0, shield - next.count);
+
+                Logs.trace("移除护盾", shield, next.count);
                 iterator.remove();
             }
         }

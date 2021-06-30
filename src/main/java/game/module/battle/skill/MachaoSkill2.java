@@ -12,7 +12,7 @@ import game.utils.CalcUtil;
  */
 public class MachaoSkill2 extends Skill {
 
-    private int round = 2;
+    private int round = 1;
 
     private int rate = 20;
 
