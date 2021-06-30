@@ -5,7 +5,7 @@ package game.proto.data;
 
 /**
  * <pre>
- *&#47;/////////////// 战斗
+ *&#47;/////////////// Fight
  * </pre>
  *
  * Protobuf type {@code Message.FightHeroPos}
@@ -338,7 +338,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *&#47;/////////////// 战斗
+   *&#47;/////////////// Fight
    * </pre>
    *
    * Protobuf type {@code Message.FightHeroPos}

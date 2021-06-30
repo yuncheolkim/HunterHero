@@ -44,6 +44,14 @@ public enum RecordType
    * <code>SKILL_USE = 8;</code>
    */
   SKILL_USE(8),
+  /**
+   * <pre>
+   * 护盾变化
+   * </pre>
+   *
+   * <code>SHIELD_CHANGE = 9;</code>
+   */
+  SHIELD_CHANGE(9),
   UNRECOGNIZED(-1),
   ;
 
@@ -83,6 +91,14 @@ public enum RecordType
    * <code>SKILL_USE = 8;</code>
    */
   public static final int SKILL_USE_VALUE = 8;
+  /**
+   * <pre>
+   * 护盾变化
+   * </pre>
+   *
+   * <code>SHIELD_CHANGE = 9;</code>
+   */
+  public static final int SHIELD_CHANGE_VALUE = 9;
 
 
   public final int getNumber() {
@@ -118,6 +134,7 @@ public enum RecordType
       case 6: return BUFF_UPDATE;
       case 7: return HERO_ACTION;
       case 8: return SKILL_USE;
+      case 9: return SHIELD_CHANGE;
       default: return null;
     }
   }
