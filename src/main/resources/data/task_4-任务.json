@@ -10,7 +10,6 @@
         "list2": [
             2
         ],
-        "notCompleteContentId": 0,
         "npcId": 1,
         "reward": "1=100#401003=1",
         "s1": "去找东边的渔夫",
@@ -19,7 +18,7 @@
         "title": "帮助渔夫"
     },
     "10": {
-        "completeContentId": 13,
+        "completeContentId": 62,
         "completeNpcId": 6,
         "completeType": 2,
         "contentId": 34,
@@ -32,7 +31,6 @@
         "list2": [
             11
         ],
-        "notCompleteContentId": 29,
         "npcId": 10,
         "reward": "1=100",
         "s1": "去王大户家找王小户",
@@ -44,7 +42,7 @@
         "title": "纠缠不清"
     },
     "11": {
-        "completeContentId": 13,
+        "completeContentId": 63,
         "completeNpcId": 6,
         "completeType": 1,
         "contentId": 35,
@@ -58,7 +56,6 @@
         "list2": [
             12
         ],
-        "notCompleteContentId": 29,
         "npcId": 6,
         "reward": "1=200",
         "speakType": 1,
@@ -69,7 +66,7 @@
         "title": "一决胜负"
     },
     "12": {
-        "completeContentId": 13,
+        "completeContentId": 64,
         "completeNpcId": 10,
         "completeType": 2,
         "contentId": 36,
@@ -82,7 +79,6 @@
         "list2": [
             13
         ],
-        "notCompleteContentId": 29,
         "npcId": 6,
         "reward": "1=100",
         "s1": "去李家找李小丽",
@@ -94,10 +90,11 @@
         "title": "好吧，你赢了"
     },
     "13": {
-        "completeContentId": 13,
+        "completeContentId": 65,
         "completeNpcId": 7,
         "completeType": 2,
         "contentId": 37,
+        "conversationId": 0,
         "id": 13,
         "level": 7,
         "list1": [
@@ -106,7 +103,6 @@
         "list2": [
             14
         ],
-        "notCompleteContentId": 29,
         "npcId": 10,
         "reward": "1=100",
         "s1": "去找旅店王小二",
@@ -118,7 +114,7 @@
         "title": "好意心领了"
     },
     "14": {
-        "completeContentId": 13,
+        "completeContentId": 66,
         "completeNpcId": 8,
         "completeType": 2,
         "contentId": 38,
@@ -131,7 +127,6 @@
         "list2": [
             15
         ],
-        "notCompleteContentId": 29,
         "npcId": 7,
         "reward": "1=100",
         "s1": "去衙门找正光明",
@@ -143,7 +138,7 @@
         "title": "衙门通知"
     },
     "15": {
-        "completeContentId": 13,
+        "completeContentId": 67,
         "completeNpcId": 4,
         "completeType": 2,
         "contentId": 39,
@@ -156,7 +151,6 @@
         "list2": [
             22
         ],
-        "notCompleteContentId": 29,
         "npcId": 8,
         "reward": "1=100",
         "s1": "去趟银行",
@@ -165,10 +159,10 @@
         "title": "银行小案"
     },
     "16": {
-        "completeContentId": 13,
+        "completeContentId": 43,
         "completeNpcId": 8,
         "completeType": 2,
-        "contentId": 4,
+        "contentId": 42,
         "conversationId": 0,
         "id": 16,
         "level": 7,
@@ -178,7 +172,6 @@
         "list2": [
             17
         ],
-        "notCompleteContentId": 29,
         "npcId": 4,
         "reward": "1=100",
         "s1": "去衙门找正光明",
@@ -190,10 +183,10 @@
         "title": "解决案件"
     },
     "17": {
-        "completeContentId": 13,
+        "completeContentId": 45,
         "completeNpcId": 7,
         "completeType": 2,
-        "contentId": 4,
+        "contentId": 44,
         "conversationId": 0,
         "id": 17,
         "level": 7,
@@ -203,7 +196,6 @@
         "list2": [
             20
         ],
-        "notCompleteContentId": 29,
         "npcId": 8,
         "reward": "1=100",
         "s1": "去找旅店王小二",
@@ -215,17 +207,16 @@
         "title": "回到旅店"
     },
     "18": {
-        "completeContentId": 13,
+        "completeContentId": 47,
         "completeNpcId": 51,
         "completeType": 2,
-        "contentId": 4,
+        "contentId": 46,
         "conversationId": 0,
         "id": 18,
         "level": 7,
         "list1": [
             21
         ],
-        "notCompleteContentId": 29,
         "npcId": 7,
         "reward": "1=100",
         "s1": "去钟离城旅店找苏酒",
@@ -237,7 +228,7 @@
         "title": "前往钟离"
     },
     "19": {
-        "completeContentId": 13,
+        "completeContentId": 55,
         "completeNpcId": 9,
         "completeType": 1,
         "contentId": 31,
@@ -247,7 +238,7 @@
         "list2": [
             8
         ],
-        "notCompleteContentId": 29,
+        "notCompleteContentId": 68,
         "npcId": 9,
         "reward": "1=200",
         "speakType": 1,
@@ -282,10 +273,10 @@
         "title": "海龟泛滥"
     },
     "20": {
-        "completeContentId": 13,
+        "completeContentId": 49,
         "completeNpcId": 14,
         "completeType": 1,
-        "contentId": 4,
+        "contentId": 48,
         "conversationId": 0,
         "id": 20,
         "level": 8,
@@ -295,7 +286,7 @@
         "list2": [
             21
         ],
-        "notCompleteContentId": 29,
+        "notCompleteContentId": 69,
         "npcId": 14,
         "reward": "1=500",
         "speakType": 1,
@@ -306,10 +297,10 @@
         "title": "海螺肉的诱惑"
     },
     "21": {
-        "completeContentId": 13,
+        "completeContentId": 51,
         "completeNpcId": 14,
         "completeType": 2,
-        "contentId": 4,
+        "contentId": 50,
         "conversationId": 0,
         "id": 21,
         "level": 8,
@@ -319,7 +310,6 @@
         "list2": [
             18
         ],
-        "notCompleteContentId": 29,
         "npcId": 14,
         "s1": "跟苏离交谈",
         "speakType": 1,
@@ -327,10 +317,10 @@
         "title": "苏离"
     },
     "22": {
-        "completeContentId": 13,
+        "completeContentId": 53,
         "completeNpcId": 4,
         "completeType": 1,
-        "contentId": 4,
+        "contentId": 52,
         "conversationId": 0,
         "id": 22,
         "level": 7,
@@ -340,7 +330,7 @@
         "list2": [
             16
         ],
-        "notCompleteContentId": 29,
+        "notCompleteContentId": 54,
         "npcId": 4,
         "reward": "1=100",
         "speakType": 1,
@@ -351,7 +341,7 @@
         "title": "可疑的蜡烛"
     },
     "3": {
-        "completeContentId": 13,
+        "completeContentId": 56,
         "completeNpcId": 2,
         "completeType": 1,
         "contentId": 20,
@@ -372,7 +362,7 @@
         "title": "美味蟹肉"
     },
     "4": {
-        "completeContentId": 13,
+        "completeContentId": 57,
         "completeNpcId": 11,
         "completeType": 1,
         "contentId": 21,
@@ -406,7 +396,6 @@
         "list2": [
             6
         ],
-        "notCompleteContentId": 29,
         "npcId": 2,
         "reward": "1=100",
         "s1": "去找旅店王小二",
@@ -418,7 +407,7 @@
         "title": "旅店伙计的烦恼"
     },
     "6": {
-        "completeContentId": 13,
+        "completeContentId": 58,
         "completeNpcId": 10,
         "completeType": 1,
         "contentId": 26,
@@ -431,7 +420,7 @@
         "list2": [
             7
         ],
-        "notCompleteContentId": 29,
+        "notCompleteContentId": 70,
         "npcId": 7,
         "reward": "1=100",
         "speakType": 1,
@@ -442,7 +431,7 @@
         "title": "借花献佛"
     },
     "7": {
-        "completeContentId": 13,
+        "completeContentId": 59,
         "completeNpcId": 9,
         "completeType": 2,
         "contentId": 30,
@@ -455,7 +444,6 @@
         "list2": [
             8
         ],
-        "notCompleteContentId": 29,
         "npcId": 10,
         "reward": "1=100",
         "s1": "去武器店看看",
@@ -467,7 +455,7 @@
         "title": "武装力量"
     },
     "8": {
-        "completeContentId": 13,
+        "completeContentId": 60,
         "completeNpcId": 12,
         "completeType": 2,
         "contentId": 32,
@@ -481,7 +469,6 @@
         "list2": [
             9
         ],
-        "notCompleteContentId": 29,
         "npcId": 9,
         "reward": "1=100",
         "s1": "去装备店看看",
@@ -493,7 +480,7 @@
         "title": "更好的保护"
     },
     "9": {
-        "completeContentId": 13,
+        "completeContentId": 61,
         "completeNpcId": 10,
         "completeType": 2,
         "contentId": 33,
@@ -506,7 +493,6 @@
         "list2": [
             10
         ],
-        "notCompleteContentId": 29,
         "npcId": 12,
         "reward": "1=100",
         "s1": "去李家找李小丽",

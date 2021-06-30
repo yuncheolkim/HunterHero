@@ -12,7 +12,6 @@ public class Weiyan extends DefaultTargetHero {
 
     public Weiyan() {
         super(true);
-        id = 1004;
     }
 
     @Override

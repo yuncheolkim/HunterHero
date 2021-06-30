@@ -22,7 +22,7 @@ public class TaskCompleteEventHandler implements IPlayerEventHandler<TaskComplet
                 player.pd.setSkillFishLevel(1);
                 PlayerService.openFeature(player, FeatureEnum.钓鱼);
                 break;
-            case 15:
+            case 22:
                 // 开启银行
                 PlayerService.openFeature(player, FeatureEnum.银行);
                 break;
