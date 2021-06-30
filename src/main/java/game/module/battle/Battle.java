@@ -106,6 +106,9 @@ public class Battle {
                         hero.action();
                     }
                 } while (hero.isAlive() && hero.isContinueAction() && !hasWinner());
+                if (hasWinner()) {
+                    break;
+                }
                 processHero(ActionPoint.出手结束后);
             }
 
@@ -153,7 +156,9 @@ public class Battle {
      */
     private void processHero(final ActionPoint actionPoint) {
         for (final Hero hero : actionOrderList) {
-            hero.processAll(actionPoint);
+            if (hero.isAlive()) {
+                hero.processAll(actionPoint);
+            }
         }
     }
 
