@@ -18,12 +18,6 @@ public class Zhaoyun extends DefaultTargetHero {
     }
 
     @Override
-    public void init() {
-        super.init();
-
-    }
-
-    @Override
     protected void initTalent() {
 
         ZhaoyunSkill2 skill2 = new ZhaoyunSkill2();

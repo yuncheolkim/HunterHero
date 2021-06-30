@@ -17,13 +17,8 @@ public class Huangzhong extends Hero {
         id = 1002;
     }
 
-    @Override
-    public void init() {
-        super.init();
-        processTalent();
-    }
 
-    private void processTalent() {
+    protected void initTalent() {
 
         HuanzhongSkill1 skill1 = new HuanzhongSkill1();
         HuanzhongSkill2 skill2 = new HuanzhongSkill2();

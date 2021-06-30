@@ -42,11 +42,13 @@ public class MachaoBuff1 extends DefaultDataBuff {
                 data.setInt1(data.getInt1() + rate);
                 break;
             case 出手前:
-                hero.fightingData.setCritical(CalcUtil.calcRateFinal100(hero.fightingData.getCritical(), data.getInt1()));
+                if (data.getInt1() > 0) {
+                    hero.fightingData.setCritical(CalcUtil.calcRateFinal100(hero.fightingData.getCritical(), data.getInt1()));
+                }
                 break;
-            case 出手结束后:
-                data.setInt1(0);
-                break;
+//            case 出手结束后:
+//                data.setInt1(0);
+//                break;
 
         }
     }

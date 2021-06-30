@@ -25,12 +25,6 @@ public class Guanyu extends Hero {
         targetStrategies.add(new BackTargetStrategy());
     }
 
-    @Override
-    public void init() {
-        super.init();
-    }
-
-    
     protected void initTalent() {
 
         GuanyuSkill1 skill1 = new GuanyuSkill1();

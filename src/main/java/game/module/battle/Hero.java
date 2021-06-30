@@ -6,6 +6,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import game.base.Logs;
 import game.module.battle.action.ActionPoint;
+import game.module.battle.action.RoundEndHandler;
 import game.module.battle.buff.Buff;
 import game.module.battle.damage.DamageInfo;
 import game.module.battle.damage.DamageSourceType;
@@ -126,12 +127,21 @@ public class Hero {
     private boolean continueAction;
 
     /**
+     * 战报写入时机
+     */
+    private Multimap<ActionPoint, Record> delayRecord = ArrayListMultimap.create();
+
+    /**
      * 初始化
      */
-    public void init() {
+    public final void init() {
         property = origin.copy();
+        // 回合结束后计算
+        actionMap.put(ActionPoint.回合结束后, RoundEndHandler.INSTANCE);
         initTalent();
+
     }
+
 
     /**
      * 初始化天赋
@@ -147,6 +157,14 @@ public class Hero {
         processSkill(actionPoint);
         processBuff(actionPoint);
         processAction(actionPoint);
+
+        Collection<Record> records = delayRecord.get(actionPoint);
+        if (records != null) {
+            for (Record record : records) {
+                battle.addRecord(record);
+            }
+            delayRecord.removeAll(actionPoint);
+        }
     }
 
     /**
@@ -200,6 +218,8 @@ public class Hero {
         record.pos = pos.getIndex();
         battle.addRecord(record);
         attack();
+        // 清楚临时战报
+        delayRecord.clear();
     }
 
     List<Hero> targetList;
@@ -418,6 +438,10 @@ public class Hero {
     public void reduceHp(final DamageInfo i) {
         final Hero target = i.target;
         final int num = i.attackedDamage;
+
+        if (num <= 0) {
+            return;
+        }
         final HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
         info.setOldValue(target.heroStats.hp);
@@ -531,6 +555,9 @@ public class Hero {
      * @param num
      */
     public void addHp(final int num) {
+        if (num <= 0) {
+            return;
+        }
         final HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
         info.setOldValue(heroStats.hp);
@@ -560,20 +587,23 @@ public class Hero {
         battle.addRecord(record);
     }
 
-    public void addShield(final int round, final int v) {
+    public void addShield(final int round, final int v, ActionPoint recordPoint) {
         heroStats.addShield(new ShieldInfo(round, v));
-        recordShieldChange();
+        recordShieldChange(recordPoint, v);
     }
 
     /**
      * 护盾变化通知
+     *
+     * @param recordPoint
      */
-    public void recordShieldChange() {
-        final Record record = new Record(RecordType.HEALTH_CHANGE);
+    public void recordShieldChange(ActionPoint recordPoint, int change) {
+        final Record record = new Record(RecordType.SHIELD_CHANGE);
         record.heroId = id;
         record.pos = pos.getIndex();
-        record.value = heroStats.getShield();
-        battle.addRecord(record);
+        record.dp = DisplayPoint.DP_ATT_2;
+        record.value = change;
+        delayRecord.put(recordPoint, record);
     }
 
     /**

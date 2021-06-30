@@ -239,7 +239,7 @@ enum DisplayPoint{
     DP_ATT_1 = 0;// 出发
     DP_ATT_2 = 1;// 到达
     DP_ATT_3 = 2;// 返回
-    DP_DEF_1 = 3;
+    DP_DEF_1 = 3;// 防守方的位置
 }
 
 message Record {
