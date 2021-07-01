@@ -6,7 +6,7 @@ import game.module.battle.skill.HuanzhongSkill2;
 import game.module.fight.FightService;
 
 /**
- * 张飞
+ * 黄忠
  *
  * @author Yunzhe.Jin
  * 2021/2/1 14:32
@@ -18,10 +18,11 @@ public class Huangzhong extends Hero {
     }
 
 
+    @Override
     protected void initTalent() {
 
-        HuanzhongSkill1 skill1 = new HuanzhongSkill1();
-        HuanzhongSkill2 skill2 = new HuanzhongSkill2();
+        final HuanzhongSkill1 skill1 = new HuanzhongSkill1();
+        final HuanzhongSkill2 skill2 = new HuanzhongSkill2();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 

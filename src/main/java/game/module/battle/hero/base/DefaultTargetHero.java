@@ -10,7 +10,11 @@ import game.module.battle.find.FrontTargetStrategy;
  */
 public class DefaultTargetHero extends Hero {
 
-    public DefaultTargetHero(boolean front) {
+    public DefaultTargetHero() {
+        this(true);
+    }
+
+    public DefaultTargetHero(final boolean front) {
         if (front) {
 
             addTargetStrategy(new FrontTargetStrategy());

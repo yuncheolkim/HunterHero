@@ -7,6 +7,8 @@ import game.module.battle.skill.ZhaoyunSkill2;
 import game.module.fight.FightService;
 
 /**
+ * 赵云
+ *
  * @author Yunzhe.Jin
  * 2021/6/19 23:37
  */
@@ -14,19 +16,18 @@ public class Zhaoyun extends DefaultTargetHero {
 
     public Zhaoyun() {
         super(true);
-        id = 1003;
     }
 
     @Override
     protected void initTalent() {
 
-        ZhaoyunSkill2 skill2 = new ZhaoyunSkill2();
+        final ZhaoyunSkill2 skill2 = new ZhaoyunSkill2();
 
-        ZhaoyunBuff1 addBuff = new ZhaoyunBuff1();
+        final ZhaoyunBuff1 addBuff = new ZhaoyunBuff1();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 
-            int i1 = tdata.i1;
+            final int i1 = tdata.i1;
             switch (tdata.talentId) {
                 case 33:
                     addBuff.setRate(i1);

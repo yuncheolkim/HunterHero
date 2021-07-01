@@ -6,6 +6,8 @@ import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.MachaoSkill2;
 
 /**
+ * 马超
+ *
  * @author Yunzhe.Jin
  * 2021/6/28 21:46
  */

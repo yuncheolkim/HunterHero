@@ -5,6 +5,8 @@ import game.module.battle.skill.WeiyanSkill1;
 import game.module.battle.skill.WeiyanSkill2;
 
 /**
+ * 魏延
+ *
  * @author Yunzhe.Jin
  * 2021/6/28 15:45
  */
@@ -17,8 +19,8 @@ public class Weiyan extends DefaultTargetHero {
     @Override
     protected void initTalent() {
 
-        WeiyanSkill1 weiyanSkill1 = new WeiyanSkill1();
-        WeiyanSkill2 weiyanSkill2 = new WeiyanSkill2();
+        final WeiyanSkill1 weiyanSkill1 = new WeiyanSkill1();
+        final WeiyanSkill2 weiyanSkill2 = new WeiyanSkill2();
 
         addSkill(weiyanSkill1);
         addSkill(weiyanSkill2);
