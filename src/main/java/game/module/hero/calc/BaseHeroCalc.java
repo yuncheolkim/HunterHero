@@ -23,20 +23,20 @@ public abstract class BaseHeroCalc implements IHeroCalc {
      * @param type
      * @return
      */
-    protected int calcTalent(PlayerHero hero, int value, int type) {
-        HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(hero.getId());
-        List<Integer> talentList = CalcUtil.getIntList(hero.getTalent());
+    protected int calcTalent(final PlayerHero hero, int value, final int type) {
+        final HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(hero.getId());
+        final List<Integer> talentList = CalcUtil.getIntList(hero.getTalent());
         for (int i = 0; i < talentList.size(); i++) {
             final Integer talentRowIndex = talentList.get(i);
             if (talentRowIndex == 9) {
                 continue;
             }
-            int index = i * 3 + talentRowIndex - 1;
-            Integer talentId = heroConfig.talent.get(index);
-            TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
+            final int index = i * 3 + talentRowIndex - 1;
+            final Integer talentId = heroConfig.talent.get(index);
+            final TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
 
             if (tdata.talentId == type) {
-                value = CalcUtil.calcRateFinal100(value, tdata.i1);
+                value = CalcUtil.final100(value, tdata.i1);
             }
         }
         return value;

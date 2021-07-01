@@ -51,7 +51,7 @@ public class HuanzhongSkill1 extends Skill {
         hero.addTargetStrategy(new MultipleFrontTargetStrategy(count));
 
         hero.addAction(ActionPoint.开场, h -> {
-            h.property.damage = CalcUtil.calcRateChangeValue(h.property.damage, rate);
+            h.property.damage = CalcUtil.add100(h.property.damage, rate);
         });
 
         if (happenRate > 0) {
@@ -77,6 +77,11 @@ public class HuanzhongSkill1 extends Skill {
         }
 
         return null;
+    }
+
+    @Override
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
+
     }
 
     public void setCount(final int count) {

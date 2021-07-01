@@ -12,19 +12,19 @@ import java.util.List;
  */
 public class ResourceCalcUtil {
 
-    public static int calcExp(int level, List<Tuple2<Integer, Integer>> list) {
+    public static int calcExp(final int level, final List<Tuple2<Integer, Integer>> list) {
 
         int exp = 0;
 
-        for (Tuple2<Integer, Integer> v : list) {
-            Integer enemyLevel = v.first;
-            Integer earnExt = v.second;
+        for (final Tuple2<Integer, Integer> v : list) {
+            final Integer enemyLevel = v.first;
+            final Integer earnExt = v.second;
 
-            int diff = level - enemyLevel;
+            final int diff = level - enemyLevel;
 
             if (diff > 3) {// 差距大于3级
 
-                exp += CalcUtil.calcRateChangeValue(earnExt, 100 - (diff - 3) * 20);
+                exp += CalcUtil.add100(earnExt, 100 - (diff - 3) * 20);
 
             } else {
                 exp += earnExt;

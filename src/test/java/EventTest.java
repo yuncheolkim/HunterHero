@@ -1,3 +1,5 @@
+import com.google.common.base.Stopwatch;
+import game.module.battle.HeroData;
 import game.module.event.IEvent;
 import game.module.event.IPlayerEventHandler;
 import game.module.event.handler.ExpAddEventHandler;
@@ -23,4 +25,20 @@ public class EventTest {
         }
     }
 
+    volatile int i = 0;
+
+    @Test
+    public void test2() {
+
+        HeroData a = new HeroData();
+        a.critical = 2;
+
+        Stopwatch s = Stopwatch.createStarted();
+        for (int i = 0; i < 1000000; i++) {
+            i += a.getCritical();
+        }
+
+        System.out.println(s.stop().toString());
+
+    }
 }

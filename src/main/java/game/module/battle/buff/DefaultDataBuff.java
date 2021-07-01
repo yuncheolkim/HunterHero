@@ -6,7 +6,7 @@ import game.module.battle.record.BuffData;
  * @author Yunzhe.Jin
  * 2021/2/3 20:02
  */
-public class DefaultDataBuff extends Buff {
+public abstract class DefaultDataBuff extends Buff {
     protected DefaultBuffData data = new DefaultBuffData();
 
     public DefaultDataBuff() {
@@ -18,13 +18,15 @@ public class DefaultDataBuff extends Buff {
      *
      * @return
      */
+    @Override
     public IBuffVal buffVal() {
         return data;
     }
 
+    @Override
     public BuffData buffData() {
 
-        BuffData d = super.buffData();
+        final BuffData d = super.buffData();
         d.i1 = data.i1();
         d.i2 = data.i2();
         d.i3 = data.i3();

@@ -31,7 +31,7 @@ public class MachaoBuff1 extends DefaultDataBuff {
 
 
     @Override
-    public void process(final ActionPoint actionPoint, final Hero hero) {
+    public void process0(final ActionPoint actionPoint, final Hero hero) {
 
 
         switch (actionPoint) {
@@ -43,7 +43,7 @@ public class MachaoBuff1 extends DefaultDataBuff {
                 break;
             case 出手前:
                 if (data.getInt1() > 0) {
-                    hero.fightingData.setCritical(CalcUtil.calcRateFinal100(hero.fightingData.getCritical(), data.getInt1()));
+                    hero.fightingData.setCritical(CalcUtil.final100(hero.fightingData.getCritical(), data.getInt1()));
                 }
                 break;
 //            case 出手结束后:

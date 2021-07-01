@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import game.base.Logs;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.action.RoundEndHandler;
+import game.module.battle.action.ShieldRoundEndHandler;
 import game.module.battle.buff.Buff;
 import game.module.battle.damage.DamageInfo;
 import game.module.battle.damage.DamageSourceType;
@@ -82,6 +82,11 @@ public class Hero {
     protected Multimap<ActionPoint, Buff> buffMap = ArrayListMultimap.create();
 
     /**
+     * buff cd检查
+     */
+    protected Multimap<ActionPoint, Buff> buffCdMap = ArrayListMultimap.create();
+
+    /**
      * 动作
      */
     protected Multimap<ActionPoint, HeroActionPointHandler> actionMap = ArrayListMultimap.create();
@@ -137,7 +142,7 @@ public class Hero {
     public final void init() {
         property = origin.copy();
         // 回合结束后计算
-        actionMap.put(ActionPoint.回合结束后, RoundEndHandler.INSTANCE);
+        actionMap.put(ActionPoint.回合结束后, ShieldRoundEndHandler.INSTANCE);
         initTalent();
 
     }
@@ -158,9 +163,9 @@ public class Hero {
         processBuff(actionPoint);
         processAction(actionPoint);
 
-        Collection<Record> records = delayRecord.get(actionPoint);
+        final Collection<Record> records = delayRecord.get(actionPoint);
         if (records != null) {
-            for (Record record : records) {
+            for (final Record record : records) {
                 battle.addRecord(record);
             }
             delayRecord.removeAll(actionPoint);
@@ -318,45 +323,34 @@ public class Hero {
             }
         }
 
-        //检查回合
-        final Collection<Map.Entry<ActionPoint, Buff>> values = buffMap.entries();
-        final List<Map.Entry<ActionPoint, Buff>> removeValue = new ArrayList<>();
-        for (final Map.Entry<ActionPoint, Buff> entry : values) {
-            if (entry.getValue().reducePoint() == actionPoint) {
-                if (!entry.getValue().isActive()) {
-                    removeValue.add(entry);
-                }
-            }
-        }
-
-        if (!removeValue.isEmpty()) {
-            for (final Map.Entry<ActionPoint, Buff> actionPointBuffEntry : removeValue) {
-                removeBuff(actionPointBuffEntry.getKey(), actionPointBuffEntry.getValue());
-            }
-        }
-
+        // Check round
+        buffCdMap.get(actionPoint).forEach(buff -> buff.checkRound(actionPoint, this));
     }
 
-    /**
-     * 移除buff
-     */
-    public void removeBuff(final ActionPoint actionPoint, final Buff buff) {
-        Logs.trace("移除buff", buff);
+    public void removeBuff(final Buff buff) {
+
         contextData = buff;
+        for (final ActionPoint actionPoint : buff.effectPoint.keySet()) {
+            buffMap.remove(actionPoint, buff);
+            removeBuffRecord(actionPoint, buff);
+            processAll(ActionPoint.buff移除后);
+        }
+        contextData = null;
+
+        if (buff.needReCalcProperty()) {
+            calcBuffEffect(ActionPoint.重新计算属性);
+        }
+    }
+
+    private void removeBuffRecord(final ActionPoint actionPoint, final Buff buff) {
+
         final Record record = new Record(RecordType.BUFF_REMOVE);
         record.actionPoint = actionPoint;
         record.heroId = id;
         record.pos = pos.getIndex();
         record.id = buff.getId();
         battle.addRecord(record);
-
-        buffMap.remove(actionPoint, buff);
-        // 重新计算增加buff的效果
-        calcBuffEffect(ActionPoint.重新计算属性);
-        processAll(ActionPoint.buff移除后);
-        contextData = null;
     }
-
 
     /**
      * 执行技能
@@ -508,8 +502,14 @@ public class Hero {
                 buffMap.put(actionPoint, addBuff);
             }
         }
+
+        if (!added.isInfinite()) {
+            buffCdMap.put(addBuff.reducePoint(), addBuff);
+        }
         processAll(ActionPoint.增加buff后);
-        calcBuffEffect(ActionPoint.重新计算属性);
+        if (addBuff.needReCalcProperty()) {
+            calcBuffEffect(ActionPoint.重新计算属性);
+        }
         addBuffRecord(added);
     }
 
@@ -584,7 +584,7 @@ public class Hero {
         battle.addRecord(record);
     }
 
-    public void addShield(final int round, final int v, ActionPoint recordPoint) {
+    public void addShield(final int round, final int v, final ActionPoint recordPoint) {
         heroStats.addShield(new ShieldInfo(round, v));
         recordShieldChange(recordPoint, v);
     }
@@ -594,7 +594,7 @@ public class Hero {
      *
      * @param recordPoint
      */
-    public void recordShieldChange(ActionPoint recordPoint, int change) {
+    public void recordShieldChange(final ActionPoint recordPoint, final int change) {
         final Record record = new Record(RecordType.SHIELD_CHANGE);
         record.heroId = id;
         record.pos = pos.getIndex();

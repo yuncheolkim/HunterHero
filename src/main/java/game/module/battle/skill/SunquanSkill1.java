@@ -31,12 +31,17 @@ public class SunquanSkill1 extends Skill {
         final int maxHp = hero.property.getMaxHp();
         final int hp = hero.getHp();
 
-        final int add = CalcUtil.calcRateChangeValue(maxHp - hp, rate);
+        final int add = CalcUtil.add100(maxHp - hp, rate);
         if (add <= 0) {
             return null;
         }
         hero.addHp(add);
 
         return process;
+    }
+
+    @Override
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
+
     }
 }

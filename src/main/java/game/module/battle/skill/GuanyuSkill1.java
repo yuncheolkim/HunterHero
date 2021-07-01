@@ -1,14 +1,13 @@
 package game.module.battle.skill;
 
-import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
-import game.module.battle.HeroActionPointHandler;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.OneAttackBuff;
-import game.module.battle.buff.data.OneAttackBuffData;
 import game.module.battle.record.Record;
 import game.utils.CalcUtil;
+
+import static game.module.battle.action.ActionPoint.出手前;
+import static game.module.battle.action.ActionPoint.出手后;
 
 /**
  * 关羽技能1
@@ -17,54 +16,57 @@ import game.utils.CalcUtil;
  * 2021/1/11 10:30
  */
 public class GuanyuSkill1 extends Skill {
-    private OneAttackBuffData data;
 
-    private int addDamageRate;
+    private int targetHeroId;
 
+    /**
+     * 每次增加伤害比例
+     */
+    private int addDamageRate = 10;
+
+    /**
+     * 最高可叠加数
+     */
+    private int maxDamageRate = 50;
+
+    /**
+     * 当前叠加的伤害
+     */
+    private int curDamageRate;
+
+    /**
+     * 暴击伤害
+     */
     private int addCritical;
 
-    private HeroActionPointHandler action;
-
     public GuanyuSkill1() {
-        id = 200002;
-        name = "GuanyuSkill1";
-        actionPoint.put(ActionPoint.出手后, 1);
-        priority = 1;
+        id = 2;
+        actionPoint.put(出手前, 1);
+        actionPoint.put(出手后, 1);
     }
 
     @Override
-    public Record process(final ActionPoint point, final Hero hero) {
-        final Record record = super.process(point, hero);
-        final OneAttackBuffData d = new OneAttackBuffData();
-        d.setStack(data.getStack());
-        d.setCurrent(data.getCurrent());
-        hero.addBuff(new OneAttackBuff(hero.damageInfo.target, d));
-        final OneAttackBuff buff = (OneAttackBuff) hero.findBuff(BattleConstant.buff_guanyu_skill1).get();
-
-        if (addCritical > 0) {
-            if (buff.isMax() && action == null) {
-                action = h -> {
-                    h.fightingData.setCritical(CalcUtil.calcRateFinal100(h.fightingData.getCritical(), addCritical));
-                };
-                hero.addAction(ActionPoint.出手前, action);
-            } else if (!buff.isMax() && action != null) {
-                hero.removeAction(ActionPoint.出手前, action);
-                action = null;
-            }
-        }
-
-
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         final Hero currentTarget = hero.damageInfo.target;
 
-        if (currentTarget.isDead()) {
-            hero.property.damage += CalcUtil.calcRateChangeValue(hero.origin.damage, addDamageRate);
+        switch (actionPoint) {
+            case 出手后:
+                if (targetHeroId == 0) {
+                    targetHeroId = currentTarget.getId();
+                    curDamageRate = 0;
+                }
+                curDamageRate = Math.max(addDamageRate + curDamageRate, maxDamageRate);
+                break;
+            case 出手前:
+                hero.fightingData.damage += CalcUtil.add100(hero.origin.damage, curDamageRate);
+
+                if (curDamageRate == maxDamageRate) {
+                    hero.fightingData.critical += CalcUtil.add100(hero.origin.critical, addCritical);
+
+                }
+                break;
         }
 
-        return record;
-    }
-
-    public void setData(final OneAttackBuffData data) {
-        this.data = data;
     }
 
     public void setAddDamageRate(final int addDamageRate) {
@@ -74,4 +76,10 @@ public class GuanyuSkill1 extends Skill {
     public void setAddCritical(final int addCritical) {
         this.addCritical = addCritical;
     }
+
+    public void setMaxDamageRate(int maxDamageRate) {
+        this.maxDamageRate = maxDamageRate;
+    }
+
+
 }

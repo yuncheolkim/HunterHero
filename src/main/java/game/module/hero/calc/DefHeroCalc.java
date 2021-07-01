@@ -17,31 +17,31 @@ import game.utils.CalcUtil;
  */
 public class DefHeroCalc extends BaseHeroCalc {
     @Override
-    public void calc(PlayerHero old, PlayerHero.Builder builder) {
-        HeroBaseConfigData data = ConfigManager.heroBaseProperty(old.getId(), old.getLevel());
+    public void calc(final PlayerHero old, final PlayerHero.Builder builder) {
+        final HeroBaseConfigData data = ConfigManager.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
         int value = data.getDef();
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentMap().values()) {
+            for (final Equipment equipment : old.getEquipmentMap().values()) {
                 value += equipment.getProperty().getDef();
             }
         }
         // 历练
         HeroRealm realm = old.getPowerUpMap().get(3);
         if (realm != null) {
-            DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
+            final DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             value += dataConfigData.def;
         }
         realm = old.getPowerUpMap().get(13);
 
         // 修炼
         if (realm != null) {
-            DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
+            final DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            value = CalcUtil.calcRateFinal100(value, dataConfigData.def);
+            value = CalcUtil.final100(value, dataConfigData.def);
         }
         value = calcTalent(old, value, 3);
 

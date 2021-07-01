@@ -24,7 +24,7 @@ public class LiubeiBuff1 extends DefaultDataBuff {
     }
 
     @Override
-    public void process(ActionPoint actionPoint, Hero hero) {
-        hero.property.damage += CalcUtil.calcRateChangeValue(hero.origin.damage, data.getInt1());
+    public void process0(final ActionPoint actionPoint, final Hero hero) {
+        hero.property.damage += CalcUtil.add100(hero.origin.damage, data.getInt1());
     }
 }

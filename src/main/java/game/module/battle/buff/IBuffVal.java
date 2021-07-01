@@ -17,31 +17,11 @@ public interface IBuffVal {
         return 0;
     }
 
-    default int i4() {
-        return 0;
-    }
-
-    default int i5() {
-        return 0;
-    }
-
     default float f1() {
         return 0.0f;
     }
 
     default float f2() {
-        return 0.0f;
-    }
-
-    default float f3() {
-        return 0.0f;
-    }
-
-    default float f4() {
-        return 0.0f;
-    }
-
-    default float f5() {
         return 0.0f;
     }
 

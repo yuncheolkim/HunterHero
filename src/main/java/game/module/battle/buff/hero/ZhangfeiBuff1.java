@@ -25,17 +25,17 @@ public class ZhangfeiBuff1 extends Buff {
     }
 
     @Override
-    public void process(ActionPoint actionPoint, Hero hero) {
+    public void process0(final ActionPoint actionPoint, final Hero hero) {
 
-        DamageInfo damageInfo = hero.damageInfo;
+        final DamageInfo damageInfo = hero.damageInfo;
         if (actionPoint == ActionPoint.攻击方计算伤害前) {
             // 减少对手的暴击率
             int critical = damageInfo.source.fightingData.getCritical();
-            critical -= CalcUtil.calcRateChangeValue(critical, this.critical);
+            critical -= CalcUtil.add100(critical, this.critical);
             damageInfo.source.fightingData.setCritical(critical);
         } else {
             if (hero.damageInfo.sourceCriticalDamage != 0) {
-                hero.damageInfo.sourceCriticalDamage -= CalcUtil.calcRateChangeValue(hero.damageInfo.sourceCriticalDamage, this.criticalDamage);
+                hero.damageInfo.sourceCriticalDamage -= CalcUtil.add100(hero.damageInfo.sourceCriticalDamage, this.criticalDamage);
             }
         }
     }
@@ -54,7 +54,7 @@ public class ZhangfeiBuff1 extends Buff {
             }
 
             @Override
-            public void merge(IBuffVal from) {
+            public void merge(final IBuffVal from) {
 
             }
         };

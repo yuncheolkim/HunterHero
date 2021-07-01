@@ -42,6 +42,7 @@ public class ConfigManager extends AbsLifecycle {
 
     // Npc任务
     public Multimap<Integer, DataConfigData> npcTaskMap = ArrayListMultimap.create(128, 16);
+
     public static Multimap<Integer, DataConfigData> levelTaskMap = ArrayListMultimap.create(60, 4);
 
     // 参数
@@ -54,20 +55,35 @@ public class ConfigManager extends AbsLifecycle {
 
     // Data box
     public static final HeroBaseDataBox heroBaseDataBox = new HeroBaseDataBox();
+
     public static final TitleDataBox titleDataBox = new TitleDataBox();
+
     public static final FishAreaDataBox fishAreaDataBox = new FishAreaDataBox();
+
     public static final FishDataBox fishWeightAreaDataBox = new FishDataBox();
+
     public static final ExpDataBox expDataBox = new ExpDataBox();
+
     public static final BattleFormationDataBox battleFormationDataBox = new BattleFormationDataBox();
+
     public static final ItemDataBox itemDataBox = new ItemDataBox();
+
     public static final EnemyCountDataBox enemyCountDataBox = new EnemyCountDataBox();
+
     public static final DropItemAreaDataBox dropItemAreaDataBox = new DropItemAreaDataBox();
+
     public static final DropItemEnemyDataBox dropItemEnemyDataBox = new DropItemEnemyDataBox();
+
     public static final HeroDataBox heroDataBox = new HeroDataBox();
+
     public static final TalentDataBox talentDataBox = new TalentDataBox();
+
     public static final BuffDataBox buffDataBox = new BuffDataBox();
+
     public static final TaskTargetDataBox taskTargetDataBox = new TaskTargetDataBox();
+
     public static final Enemy1DataBox enemy1DataBox = new Enemy1DataBox();
+
     public static final EnemyPropertyDataBox enemyPropertyDataBox = new EnemyPropertyDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
@@ -118,13 +134,13 @@ public class ConfigManager extends AbsLifecycle {
         shopMap = makeMapData("data/data_18-商店.json", ShopConfigData::new);
 
         // 解析配置表
-        for (IConfigParse iConfigParse : list) {
+        for (final IConfigParse iConfigParse : list) {
             iConfigParse.parse();
         }
-        for (IConfigParse iConfigParse : list) {
+        for (final IConfigParse iConfigParse : list) {
             iConfigParse.afterAllLoad();
         }
-        for (IConfigParse iConfigParse : list) {
+        for (final IConfigParse iConfigParse : list) {
             iConfigParse.end();
         }
     }
@@ -140,15 +156,15 @@ public class ConfigManager extends AbsLifecycle {
      */
     public static Property makeProperty(final Property v, final DataConfigData f) {
         return Property.newBuilder()
-                .setHp(CalcUtil.calcRateChangeValue(v.getHp(), f.hp))
-                .setDamage(CalcUtil.calcRateChangeValue(v.getDamage(), f.damage))
-                .setDef(CalcUtil.calcRateChangeValue(v.getDef(), f.def))
-                .setDefBase(CalcUtil.calcRateChangeValue(v.getDefBase(), f.defBase))
-                .setAvoid(CalcUtil.calcRateChangeValue(v.getAvoid(), f.avoid))
-                .setAvoidBase(CalcUtil.calcRateChangeValue(v.getAvoidBase(), f.avoidBase))
-                .setCritical(CalcUtil.calcRateChangeValue(v.getCritical(), f.critical))
-                .setCriticalBase(CalcUtil.calcRateChangeValue(v.getCriticalBase(), f.criticalBase))
-                .setCriticalDamage(CalcUtil.calcRateChangeValue(v.getCriticalDamage(), f.criticalDamage))
+                .setHp(CalcUtil.add100(v.getHp(), f.hp))
+                .setDamage(CalcUtil.add100(v.getDamage(), f.damage))
+                .setDef(CalcUtil.add100(v.getDef(), f.def))
+                .setDefBase(CalcUtil.add100(v.getDefBase(), f.defBase))
+                .setAvoid(CalcUtil.add100(v.getAvoid(), f.avoid))
+                .setAvoidBase(CalcUtil.add100(v.getAvoidBase(), f.avoidBase))
+                .setCritical(CalcUtil.add100(v.getCritical(), f.critical))
+                .setCriticalBase(CalcUtil.add100(v.getCriticalBase(), f.criticalBase))
+                .setCriticalDamage(CalcUtil.add100(v.getCriticalDamage(), f.criticalDamage))
                 .build();
     }
 
@@ -305,12 +321,12 @@ public class ConfigManager extends AbsLifecycle {
         return titleDataBox.findById(id);
     }
 
-    public static String getHeroName(int heroId) {
+    public static String getHeroName(final int heroId) {
         return heroDataBox.findById(heroId).name;
     }
 
 
-    public static String getEnemyName(int id) {
+    public static String getEnemyName(final int id) {
         return dataMap5.get(id).name;
     }
 }

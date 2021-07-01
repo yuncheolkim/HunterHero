@@ -1,5 +1,6 @@
 package game.module.battle;
 
+import com.google.common.base.Stopwatch;
 import game.base.Logs;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.damage.*;
@@ -79,8 +80,9 @@ public class Battle {
      * @return
      */
     public BattleRecord start() {
+        Stopwatch stopwatch = Stopwatch.createStarted();
 
-        // 计算出售顺序
+        // 计算出手顺序
         actionOrderList = decideOrder();
 
         final BattleRecord battleRecord = new BattleRecord(this);
@@ -132,6 +134,7 @@ public class Battle {
         battleRecord.setRoundList(roundList);
         battleRecord.setWinSide(winSide);
         Logs.C.info("end:\n{}", JacksonUtil.toStr(battleRecord));
+        Logs.C.info("=============> 战斗耗时:{}", stopwatch.stop());
 
         return battleRecord;
     }

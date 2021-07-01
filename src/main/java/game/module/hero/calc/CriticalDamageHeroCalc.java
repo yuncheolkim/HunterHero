@@ -17,31 +17,31 @@ import game.utils.CalcUtil;
  */
 public class CriticalDamageHeroCalc extends BaseHeroCalc {
     @Override
-    public void calc(PlayerHero old, PlayerHero.Builder builder) {
-        HeroBaseConfigData data = ConfigManager.heroBaseProperty(old.getId(), old.getLevel());
+    public void calc(final PlayerHero old, final PlayerHero.Builder builder) {
+        final HeroBaseConfigData data = ConfigManager.heroBaseProperty(old.getId(), old.getLevel());
 
         // base
         int value = data.getCriticalDamage();
 
         // equipment
         if (old.getEquipmentCount() > 0) {
-            for (Equipment equipment : old.getEquipmentMap().values()) {
+            for (final Equipment equipment : old.getEquipmentMap().values()) {
                 value += equipment.getProperty().getCriticalDamage();
             }
         }
         // 历练
         HeroRealm realm = old.getPowerUpMap().get(6);
         if (realm != null) {
-            DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
+            final DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
             value += dataConfigData.criticalDamage;
         }
         realm = old.getPowerUpMap().get(16);
 
         // 修炼
         if (realm != null) {
-            DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
+            final DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
 
-            value = CalcUtil.calcRateFinal100(value, dataConfigData.criticalDamage);
+            value = CalcUtil.final100(value, dataConfigData.criticalDamage);
         }
         value = calcTalent(old, value, 6);
 

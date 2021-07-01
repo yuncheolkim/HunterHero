@@ -23,13 +23,9 @@ public class SunquanSkill2 extends Skill {
         cd = BattleConstant.INFINITE;
     }
 
-
     @Override
-    public Record process(final ActionPoint actionPoint, final Hero hero) {
-        final Record process = super.process(actionPoint, hero);
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
 
         hero.damageInfo.reduceDamage(rate);
-
-        return process;
     }
 }

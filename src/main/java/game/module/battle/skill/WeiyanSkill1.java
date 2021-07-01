@@ -27,7 +27,7 @@ public class WeiyanSkill1 extends Skill {
         final DamageInfo damageInfo = hero.damageInfo;
         final int i = damageInfo.allSourceDamage();
 
-        final int addHp = CalcUtil.calcRateChangeValue(i, rate);
+        final int addHp = CalcUtil.add100(i, rate);
 
         if (addHp > 0 && !hero.isFullHp()) {
             hero.addHp(addHp);

@@ -7,7 +7,9 @@ import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.BuffData;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 import static game.module.battle.BattleConstant.BUFF_INFINITE;
 
@@ -41,11 +43,6 @@ public abstract class Buff {
     protected BuffType buffType = BuffType.BUFF;
 
     /**
-     * buff 效果
-     */
-    protected List<BuffEffect> effects = new ArrayList<>();
-
-    /**
      * buff触发时机
      */
     public Map<ActionPoint, Integer> effectPoint = new HashMap<>();
@@ -72,7 +69,7 @@ public abstract class Buff {
 
 
     public void init() {
-        BuffConfigData data = ConfigManager.buffDataBox.findById(id);
+        final BuffConfigData data = ConfigManager.buffDataBox.findById(id);
         move = data.move;
         buffType = data.type;
         name = data.name;
@@ -82,6 +79,15 @@ public abstract class Buff {
         this.round = round;
         this.remainRound = round;
 
+    }
+
+    /**
+     * 是否需要重新计算属性
+     *
+     * @return
+     */
+    public boolean needReCalcProperty() {
+        return effectPoint.containsKey(ActionPoint.重新计算属性);
     }
 
     /**
@@ -102,6 +108,10 @@ public abstract class Buff {
 
     }
 
+    public boolean isInfinite() {
+        return round == BUFF_INFINITE;
+    }
+
     public int reduceRound() {
         if (round == BUFF_INFINITE) {
             return BUFF_INFINITE;
@@ -115,13 +125,22 @@ public abstract class Buff {
      * @param actionPoint
      * @param hero
      */
-    public void process(final ActionPoint actionPoint, final Hero hero) {
-        for (final BuffEffect effect : effects) {
-            if (!effect.doEffect(hero, this)) {
-                break;
+    public final void process(final ActionPoint actionPoint, final Hero hero) {
+
+        process0(actionPoint, hero);
+    }
+
+    public void checkRound(final ActionPoint actionPoint, final Hero hero) {
+        if (!isInfinite() && actionPoint == reducePoint()) {
+            reduceRound();
+
+            if (remainRound == 0) {
+                hero.removeBuff(this);
             }
         }
     }
+
+    protected abstract void process0(final ActionPoint actionPoint, final Hero hero);
 
 
     /**

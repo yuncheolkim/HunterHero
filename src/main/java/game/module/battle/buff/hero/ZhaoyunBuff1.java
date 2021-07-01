@@ -51,8 +51,7 @@ public class ZhaoyunBuff1 extends DefaultDataBuff {
 
 
     @Override
-    public void process(ActionPoint actionPoint, Hero hero) {
-
+    public void process0(final ActionPoint actionPoint, final Hero hero) {
 
         switch (actionPoint) {
             case 闪避之后:
@@ -68,9 +67,9 @@ public class ZhaoyunBuff1 extends DefaultDataBuff {
                 }
                 break;
             case 被攻击之前:
-                hero.fightingData.setAvoid(CalcUtil.calcRateFinal100(hero.fightingData.getAvoid(), data.getInt1()));
+                hero.fightingData.setAvoid(CalcUtil.final100(hero.fightingData.getAvoid(), data.getInt1()));
                 if (data.getInt2() > 0) {
-                    hero.fightingData.setDef(CalcUtil.calcRateFinal100(hero.fightingData.getDef(), data.getInt2()));
+                    hero.fightingData.setDef(CalcUtil.final100(hero.fightingData.getDef(), data.getInt2()));
                 }
 
                 // 加攻击
@@ -84,28 +83,28 @@ public class ZhaoyunBuff1 extends DefaultDataBuff {
                 break;
             case 出手前:
                 if (data.getInt3() > 0) {
-                    hero.fightingData.setDamage(CalcUtil.calcRateFinal100(hero.fightingData.getDamage(), data.getInt3()));
+                    hero.fightingData.setDamage(CalcUtil.final100(hero.fightingData.getDamage(), data.getInt3()));
                 }
 
                 break;
         }
     }
 
-    public void setRate(int rate) {
+    public void setRate(final int rate) {
         this.rate = rate;
     }
 
-    public void setDefRateData(int defRateData) {
+    public void setDefRateData(final int defRateData) {
         this.defRateData = defRateData;
     }
 
-    public void setAttRateAdd(int attRateAdd) {
+    public void setAttRateAdd(final int attRateAdd) {
         this.attRateAdd = attRateAdd;
         effectPoint.put(ActionPoint.出手前, 1);
 
     }
 
-    public void setAvoidTime(int avoidTime) {
+    public void setAvoidTime(final int avoidTime) {
         this.avoidTime = avoidTime;
         this.avoidTimeData = avoidTime;
     }

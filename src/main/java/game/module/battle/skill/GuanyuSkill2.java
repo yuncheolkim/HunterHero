@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -31,10 +30,8 @@ public class GuanyuSkill2 extends Skill {
     private boolean row;
 
     public GuanyuSkill2() {
-        actionPoint.put(ActionPoint.出手后, 1);
         id = 200003;
-        name = "GuanyuSkill2";
-        cd = BattleConstant.INFINITE;
+        actionPoint.put(ActionPoint.出手后, 1);
     }
 
     @Override
@@ -89,7 +86,7 @@ public class GuanyuSkill2 extends Skill {
             damageInfo.type = (DamageSourceType.SKILL);
             damageInfo.source = (hero);
             damageInfo.target = (target);
-            damageInfo.sourceDamage = CalcUtil.calcRateChangeValue(hero.damageInfo.allSourceDamage(), rate);
+            damageInfo.sourceDamage = CalcUtil.add100(hero.damageInfo.allSourceDamage(), rate);
 
             hero.damage(damageInfo);
         }

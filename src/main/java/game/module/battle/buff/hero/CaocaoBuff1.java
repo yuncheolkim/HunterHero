@@ -24,12 +24,12 @@ public class CaocaoBuff1 extends DefaultDataBuff {
     }
 
     @Override
-    public void process(ActionPoint actionPoint, Hero hero) {
+    public void process0(final ActionPoint actionPoint, final Hero hero) {
         if (actionPoint == ActionPoint.闪避之后) {
             data.setInt1(data.getInt1() + data.getInt2());
-            hero.property.damage += CalcUtil.calcRateChangeValue(hero.origin.damage, data.getInt2());
+            hero.property.damage += CalcUtil.add100(hero.origin.damage, data.getInt2());
         } else {
-            hero.property.damage += CalcUtil.calcRateChangeValue(hero.origin.damage, data.getInt1());
+            hero.property.damage += CalcUtil.add100(hero.origin.damage, data.getInt1());
         }
     }
 }

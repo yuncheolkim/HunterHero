@@ -19,14 +19,15 @@ public class BattleConstant {
     /**
      * buff
      */
-    public static final int BUFF_INFINITE = -8;
+    public static final int BUFF_INFINITE = 0;
 
 
-    public static final int buff_guanyu_skill1 = 2;
+    public static final int buff_guanyu_1 = 2;
 
     public static final int buff_zhaoyun_1 = 6;
 
     public static final int buff_machao_1 = 7;
+
     public static final int buff_lusu_1 = 8;
 
 }

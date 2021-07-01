@@ -30,16 +30,19 @@ public class HeroData {
      */
     private int avoid;
 
+    /**
+     * 闪避基数
+     */
     private int avoidBase;
 
     /**
      * 暴击概率
      * x/(x+criticalBase)
      */
-    private int critical;
+    public int critical;
 
     /**
-     * 基数
+     * 暴击基数
      */
     private int criticalBase;
 
@@ -56,11 +59,18 @@ public class HeroData {
     private int speed;
 
     /**
-     * 护甲穿透比例,万分比
+     * 对敌方护甲穿透比例
+     * 万分比
      */
     private int defReduce;
 
-    public HeroData merge(HeroData o) {
+    /**
+     * 伤害加深比例
+     * 万分比
+     */
+    private int harmRate;
+
+    public HeroData merge(final HeroData o) {
         maxHp += o.maxHp;
         def += o.def;
         damage += o.damage;
@@ -83,7 +93,7 @@ public class HeroData {
         return maxHp;
     }
 
-    public void setMaxHp(int maxHp) {
+    public void setMaxHp(final int maxHp) {
         this.maxHp = maxHp;
     }
 
@@ -91,7 +101,7 @@ public class HeroData {
         return def;
     }
 
-    public void setDef(int def) {
+    public void setDef(final int def) {
         this.def = def;
     }
 
@@ -99,7 +109,7 @@ public class HeroData {
         return damage;
     }
 
-    public void setDamage(int damage) {
+    public void setDamage(final int damage) {
         this.damage = damage;
     }
 
@@ -107,7 +117,7 @@ public class HeroData {
         return avoid;
     }
 
-    public void setAvoid(int avoid) {
+    public void setAvoid(final int avoid) {
         this.avoid = avoid;
     }
 
@@ -115,7 +125,7 @@ public class HeroData {
         return critical;
     }
 
-    public void setCritical(int critical) {
+    public void setCritical(final int critical) {
         this.critical = critical;
     }
 
@@ -123,7 +133,7 @@ public class HeroData {
         return speed;
     }
 
-    public void setSpeed(int speed) {
+    public void setSpeed(final int speed) {
         this.speed = speed;
     }
 
@@ -131,7 +141,7 @@ public class HeroData {
         return criticalDamageRate;
     }
 
-    public void setCriticalDamageRate(int criticalDamageRate) {
+    public void setCriticalDamageRate(final int criticalDamageRate) {
         this.criticalDamageRate = criticalDamageRate;
     }
 
@@ -140,7 +150,7 @@ public class HeroData {
         return defBase;
     }
 
-    public void setDefBase(int defBase) {
+    public void setDefBase(final int defBase) {
         this.defBase = defBase;
     }
 
@@ -148,7 +158,7 @@ public class HeroData {
         return avoidBase;
     }
 
-    public void setAvoidBase(int avoidBase) {
+    public void setAvoidBase(final int avoidBase) {
         this.avoidBase = avoidBase;
     }
 
@@ -156,7 +166,7 @@ public class HeroData {
         return criticalBase;
     }
 
-    public void setCriticalBase(int criticalBase) {
+    public void setCriticalBase(final int criticalBase) {
         this.criticalBase = criticalBase;
     }
 
@@ -164,8 +174,17 @@ public class HeroData {
         return defReduce;
     }
 
-    public void setDefReduce(int defReduce) {
+    public void setDefReduce(final int defReduce) {
         this.defReduce = defReduce;
+    }
+
+
+    public int getHarmRate() {
+        return harmRate;
+    }
+
+    public void setHarmRate(final int harmRate) {
+        this.harmRate = harmRate;
     }
 
     @Override

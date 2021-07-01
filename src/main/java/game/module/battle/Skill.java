@@ -14,7 +14,7 @@ import java.util.Map;
  * @author Yunzhe.Jin
  * 2021/1/8 14:27
  */
-public class Skill {
+public abstract class Skill {
     protected int id;
 
     /**
@@ -44,6 +44,10 @@ public class Skill {
     protected String name;
 
     protected SkillType skillType = SkillType.B;
+
+    public void init() {
+
+    }
 
     public Record process(final ActionPoint actionPoint, final Hero hero) {
         final Record record = new Record(RecordType.SKILL_USE);
