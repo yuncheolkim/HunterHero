@@ -50,7 +50,10 @@ public abstract class Skill {
     public Skill(int id) {
         this.id = id;
         config = ConfigManager.skillDataBox.findById(id);
-        this.data = Arrays.copyOf(config.data, config.data.length);
+
+        if (config.data != null) {
+            this.data = Arrays.copyOf(config.data, config.data.length);
+        }
         cd = config.getCd();
         if (cd.getCd() > 0) {
             reduceCoolDownPoint.add(ActionPoint.回合开始前);
