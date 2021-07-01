@@ -19,7 +19,7 @@ public class HuanzhongSkill2 extends Skill {
     private int rate = 2000;
 
     public HuanzhongSkill2() {
-        id = 5;
+        super(5);
         actionPoint.put(ActionPoint.开场, 1);
     }
 

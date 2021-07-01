@@ -13,9 +13,8 @@ import game.module.battle.record.Record;
 public class CaocaoSkill1 extends Skill {
 
     public CaocaoSkill1() {
+        super(1);
         actionPoint.put(ActionPoint.开场, 1);
-        id = 200006;
-        name = "奸雄";
     }
 
     @Override

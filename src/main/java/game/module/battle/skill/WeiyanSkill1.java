@@ -18,8 +18,8 @@ public class WeiyanSkill1 extends Skill {
     private int rate = 30;
 
     public WeiyanSkill1() {
+        super(10);
         actionPoint.put(ActionPoint.出手后, 1);
-        id = 10;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class WeiyanSkill1 extends Skill {
 
         final int addHp = CalcUtil.add100(i, rate);
 
-        if (addHp > 0 && !hero.isFullHp()) {
+        if (addHp > 0 && hero.harmed()) {
             hero.addHp(addHp);
         }
     }

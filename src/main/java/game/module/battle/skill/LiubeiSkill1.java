@@ -17,9 +17,9 @@ import java.util.Optional;
 public class LiubeiSkill1 extends Skill {
 
     public LiubeiSkill1() {
+        super(1);
         actionPoint.put(ActionPoint.回合开始前, 1);
         id = 200004;
-        name = "激励";
     }
 
     @Override

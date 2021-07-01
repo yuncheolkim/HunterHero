@@ -13,10 +13,8 @@ import game.module.battle.record.Record;
 public class LiubeiSkill2 extends Skill {
 
     public LiubeiSkill2() {
+        super(1);
         actionPoint.put(ActionPoint.开场, 1);
-
-        id = 200005;
-        name = "以德服人";
     }
 
     @Override

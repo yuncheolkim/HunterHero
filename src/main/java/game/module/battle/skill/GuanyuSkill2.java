@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -17,20 +18,17 @@ import java.util.stream.Collectors;
 /**
  * 关羽技能2
  * 溅射伤害
+ * <p>
+ * 0:溅射比例
+ * 1:是否一排 - T
  *
  * @author Yunzhe.Jin
  * 2021/1/11 10:30
  */
 public class GuanyuSkill2 extends Skill {
-    /**
-     * 溅射比例
-     */
-    private int rate = 40;
-
-    private boolean row;
 
     public GuanyuSkill2() {
-        id = 200003;
+        super(3);
         actionPoint.put(ActionPoint.出手后, 1);
     }
 
@@ -47,7 +45,7 @@ public class GuanyuSkill2 extends Skill {
         if (currentTarget == null) {
             return new ArrayList<>();
         }
-        if (row) {
+        if (data[1] != 0) {
             final List<Integer> row = currentTarget.getBattle().getFormation().row(currentTarget.getPos());
             final List<Hero> result = new ArrayList<>(4);
             for (final Integer pos : row) {
@@ -80,6 +78,7 @@ public class GuanyuSkill2 extends Skill {
         final List<Hero> collect = attackHero(hero);
         process.targetList = collect.stream().map(h -> h.getPos().getIndex()).collect(Collectors.toList());
 
+        final int rate = data[0];
         for (final Hero target : collect) {
             final DamageInfo damageInfo = new DamageInfo();
             damageInfo.sourceId = id;
@@ -93,11 +92,11 @@ public class GuanyuSkill2 extends Skill {
         return process;
     }
 
-    public void setRate(final int rate) {
-        this.rate = rate;
+    public void talent1(int id) {
+        data[1] = 1;
     }
 
-    public void setRow(final boolean row) {
-        this.row = row;
+    public void talent2(int id) {
+        data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

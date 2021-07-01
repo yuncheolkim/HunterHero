@@ -30,24 +30,25 @@ public class Guanyu extends Hero {
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 
-            switch (tdata.talentId) {
+            final int talentId = tdata.talentId;
+            switch (talentId) {
                 case 21:
-                    skill1.setMaxDamageRate(tdata.i1);
+                    skill1.talent1(talentId);
                     break;
                 case 22:
-                    skill1.setAddDamageRate(tdata.i1);
+                    skill1.talent2(talentId);
                     break;
                 case 23:
-                    skill2.setRow(true);
+                    skill2.talent1(talentId);
                     break;
                 case 24:
-                    skill1.setAddDamageRate(tdata.i1);
+                    skill1.talent4(talentId);
                     break;
                 case 25:
-                    skill1.setAddCritical(tdata.i1);
+                    skill1.talent3(talentId);
                     break;
                 case 26:
-                    skill2.setRate(tdata.i1);
+                    skill2.talent2(talentId);
                     break;
             }
         });

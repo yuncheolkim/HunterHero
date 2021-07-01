@@ -1,13 +1,18 @@
 package game.module.battle;
 
 import com.google.common.base.MoreObjects;
+import com.google.common.collect.Lists;
 import game.base.Logs;
+import game.config.data.SkillConfigData;
+import game.manager.ConfigManager;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.proto.data.RecordType;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -16,17 +21,20 @@ import java.util.Map;
  */
 public abstract class Skill {
     protected int id;
-
     /**
-     * 优先级
-     * 数字越低优先级越高
+     * 技能配置
      */
-    protected int priority;
+    protected SkillConfigData config;
 
     /**
      * 冷却时间
      */
-    protected CoolDown cd = BattleConstant.INFINITE;
+    protected CoolDown cd;
+
+    /**
+     * 减少冷却时间时机
+     */
+    protected List<ActionPoint> reduceCoolDownPoint = Lists.newArrayList(ActionPoint.回合开始前);
 
     /**
      * 触发时机
@@ -34,28 +42,33 @@ public abstract class Skill {
     public Map<ActionPoint, Integer> actionPoint = new HashMap<>();
 
     /**
-     * 减少冷却时间时机
+     * 配置数据
      */
-    protected ActionPoint reduceCoolDownPoint = ActionPoint.回合开始前;
+    protected int[] data;
 
     /**
-     * 技能名
+     * 是否需要记录数据
      */
-    protected String name;
+    protected boolean needRecord;
 
-    protected SkillType skillType = SkillType.B;
-
-    public void init() {
-
+    public Skill(int id) {
+        this.id = id;
+        config = ConfigManager.skillDataBox.findById(id);
+        this.data = Arrays.copyOf(config.data, config.data.length);
+        cd = config.getCd();
     }
 
     public Record process(final ActionPoint actionPoint, final Hero hero) {
-        final Record record = new Record(RecordType.SKILL_USE);
-        final HeroRecordSimple simple = hero.getSimple();
-        record.heroId = simple.id;
-        record.pos = simple.pos.getIndex();
-        record.id = id;
-        record.actionPoint = actionPoint;
+
+        Record record = null;
+        if (needRecord) {
+            record = new Record(RecordType.SKILL_USE);
+            final HeroRecordSimple simple = hero.getSimple();
+            record.heroId = simple.id;
+            record.pos = simple.pos.getIndex();
+            record.id = id;
+            record.actionPoint = actionPoint;
+        }
 
         process(record, actionPoint, hero);
 
@@ -92,6 +105,10 @@ public abstract class Skill {
         cd.reduce(round);
     }
 
+    public void addCdPoint(ActionPoint point) {
+        reduceCoolDownPoint.add(point);
+    }
+
     /**
      * 重置冷却
      */
@@ -112,11 +129,7 @@ public abstract class Skill {
     }
 
     public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(final int priority) {
-        this.priority = priority;
+        return config.priority;
     }
 
     public CoolDown getCd() {
@@ -128,26 +141,22 @@ public abstract class Skill {
     }
 
     public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
+        return ConfigManager.skillDataBox.findById(id).name;
     }
 
     public SkillType getSkillType() {
-        return skillType;
+        return config.skillType;
     }
 
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
-                .add("priority", priority)
+                .add("priority", config.priority)
                 .add("cd", cd)
                 .add("actionPoint", actionPoint)
                 .add("reduceCoolDownPoint", reduceCoolDownPoint)
-                .add("name", name)
+                .add("name", getName())
                 .toString();
     }
 }

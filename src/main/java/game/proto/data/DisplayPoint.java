@@ -33,6 +33,10 @@ public enum DisplayPoint
    */
   DP_ATT_3(2),
   /**
+   * <pre>
+   * 防守方的位置
+   * </pre>
+   *
    * <code>DP_DEF_1 = 3;</code>
    */
   DP_DEF_1(3),
@@ -64,6 +68,10 @@ public enum DisplayPoint
    */
   public static final int DP_ATT_3_VALUE = 2;
   /**
+   * <pre>
+   * 防守方的位置
+   * </pre>
+   *
    * <code>DP_DEF_1 = 3;</code>
    */
   public static final int DP_DEF_1_VALUE = 3;

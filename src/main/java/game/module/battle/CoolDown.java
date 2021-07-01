@@ -18,6 +18,14 @@ public class CoolDown {
      */
     private int curCd;
 
+    public CoolDown() {
+        this(0);
+    }
+
+    public CoolDown(int cd) {
+        this.cd = cd;
+    }
+
     /**
      * 冷却
      */

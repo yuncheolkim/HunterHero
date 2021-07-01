@@ -17,7 +17,7 @@ public class MachaoSkill2 extends Skill {
     private int rate = 20;
 
     public MachaoSkill2() {
-        id = 16;
+        super(17);
         actionPoint.put(ActionPoint.暴击之后, 1);
     }
 

@@ -86,6 +86,8 @@ public class ConfigManager extends AbsLifecycle {
 
     public static final EnemyPropertyDataBox enemyPropertyDataBox = new EnemyPropertyDataBox();
 
+    public static final SkillDataBox skillDataBox = new SkillDataBox();
+
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
     static {
@@ -105,6 +107,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(taskTargetDataBox);
         list.add(enemy1DataBox);
         list.add(enemyPropertyDataBox);
+        list.add(skillDataBox);
     }
 
     @Override

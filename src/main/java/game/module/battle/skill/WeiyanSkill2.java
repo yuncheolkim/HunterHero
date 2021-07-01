@@ -23,9 +23,9 @@ public class WeiyanSkill2 extends Skill {
     private int damaged = 0;
 
     public WeiyanSkill2() {
+        super(11);
         actionPoint.put(ActionPoint.受到伤害之后, 1);
         actionPoint.put(ActionPoint.回合结束后, 1);
-        id = 12;
     }
 
     @Override
@@ -37,7 +37,7 @@ public class WeiyanSkill2 extends Skill {
 
             if (damaged > 0 && hero.isAlive()) {
                 final int addHp = CalcUtil.add100(damaged, rate);
-                if (addHp > 0 && !hero.isFullHp()) {
+                if (addHp > 0 && hero.harmed()) {
                     hero.addHp(addHp);
                 }
                 damaged = 0;

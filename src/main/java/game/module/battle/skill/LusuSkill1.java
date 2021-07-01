@@ -53,10 +53,10 @@ public class LusuSkill1 extends Skill {
     private int buffHarmRate = 2;
 
     public LusuSkill1() {
+        super(10);
         actionPoint.put(ActionPoint.开场, 1);
         actionPoint.put(ActionPoint.出手前, 1);
         actionPoint.put(ActionPoint.出手后, 1);
-        id = 10;
     }
 
     @Override

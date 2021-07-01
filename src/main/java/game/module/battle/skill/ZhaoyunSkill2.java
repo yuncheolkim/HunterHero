@@ -25,7 +25,7 @@ public class ZhaoyunSkill2 extends Skill {
     private int rate = 20;
 
     public ZhaoyunSkill2() {
-        id = 7;
+        super(7);
         actionPoint.put(ActionPoint.出手前, 1);
         actionPoint.put(ActionPoint.出手后, 1);
     }

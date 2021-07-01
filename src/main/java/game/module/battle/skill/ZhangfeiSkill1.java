@@ -13,9 +13,8 @@ import game.module.battle.record.Record;
 public class ZhangfeiSkill1 extends Skill {
 
     public ZhangfeiSkill1() {
+        super(1);
         actionPoint.put(ActionPoint.开场, 1);
-        id = 200001;
-        name = "ZhangfeiSkill1";
     }
 
     @Override

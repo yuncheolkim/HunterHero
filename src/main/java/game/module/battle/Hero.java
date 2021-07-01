@@ -77,6 +77,11 @@ public class Hero {
     protected Multimap<ActionPoint, Skill> skillMap = ArrayListMultimap.create();
 
     /**
+     * 技能 cd检查
+     */
+    protected Multimap<ActionPoint, Skill> skillCdMap = ArrayListMultimap.create();
+
+    /**
      * buff 列表
      */
     protected Multimap<ActionPoint, Buff> buffMap = ArrayListMultimap.create();
@@ -359,11 +364,6 @@ public class Hero {
         final Collection<Skill> skills = skillMap.get(actionPoint);
         boolean fired = false;
         for (final Skill skill : skills) {
-            // 减少cd
-            if (actionPoint == skill.reduceCoolDownPoint) {
-                skill.reduceCoolDown(1);
-            }
-
             if (skill.isReady() && skill.canProcess(this)) {
                 Logs.trace("使用技能", this);
 
@@ -380,6 +380,9 @@ public class Hero {
                 fired = true;
             }
         }
+
+        // Check round
+        skillCdMap.get(actionPoint).forEach(s -> s.reduceCoolDown(1));
 
         return fired;
     }
@@ -458,9 +461,13 @@ public class Hero {
     }
 
     public void addSkill(final Skill s) {
+
         for (final ActionPoint actionPoint : s.actionPoint.keySet()) {
             skillMap.put(actionPoint, s);
         }
+
+        // cd point
+        s.reduceCoolDownPoint.forEach(p -> skillCdMap.put(p, s));
     }
 
     /**
@@ -571,8 +578,13 @@ public class Hero {
         }
     }
 
-    public boolean isFullHp() {
-        return property.getMaxHp() == heroStats.hp;
+    /**
+     * 是否受伤
+     *
+     * @return
+     */
+    public boolean harmed() {
+        return heroStats.hp < property.getMaxHp();
     }
 
     private void addHpRecord(final int add) {

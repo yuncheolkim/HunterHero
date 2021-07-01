@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.module.battle.BattleConstant;
+import game.manager.ConfigManager;
 import game.module.battle.FindTargetStrategy;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
@@ -12,103 +12,76 @@ import game.utils.CalcUtil;
 
 /**
  * 多重箭,可以同时打多个目标
+ * 0:个数
+ * 1:伤害比例
+ * 2:额外发射概率 - T
+ * 3:额外发射数量 - T
+ * 4:额外伤害 - T
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
  */
 public class HuanzhongSkill1 extends Skill {
 
-    /**
-     * 攻击目标数量
-     */
-    private int count = 2;
-
-    /**
-     * 伤害
-     */
-    private int rate = 60;
-
-    /**
-     * 额外发射率
-     */
-    private int happenRate = 0;
-
-    /**
-     * 额外发射数量
-     */
-    private int happenCount = 0;
 
     public HuanzhongSkill1() {
+        super(4);
         actionPoint.put(ActionPoint.开场, 1);
-        id = 10;
-        name = "多重箭";
-        cd = BattleConstant.INFINITE;
+        actionPoint.put(ActionPoint.出手前, 1);
+        actionPoint.put(ActionPoint.回合开始前, 1);
     }
 
+
     @Override
-    public Record process(final ActionPoint point, final Hero hero) {
-        hero.addTargetStrategy(new MultipleBackTargetStrategy(count));
-        hero.addTargetStrategy(new MultipleFrontTargetStrategy(count));
+    protected void process(final Record record, final ActionPoint point, final Hero hero) {
 
-        hero.addAction(ActionPoint.开场, h -> {
-            h.property.damage = CalcUtil.add100(h.property.damage, rate);
-        });
-
-        if (happenRate > 0) {
-            final int happen = happenRate;
-            final int c = happenCount;
-            hero.addAction(ActionPoint.回合开始前, h -> {
-
-                final boolean h1 = CalcUtil.happened100(happen);
-
-                int add = 0;
-                if (h1) {
-                    add = c;
+        final int count = data[0];
+        final int rate = data[1] + data[4];
+        final int happenRate = data[2];
+        final int happenCount = data[3];
+        if (point == ActionPoint.出手前) {
+            hero.fightingData.damage = CalcUtil.add100(hero.fightingData.damage, rate);
+        } else if (point == ActionPoint.回合开始前) {
+            if (happenRate == 0) {
+                return;
+            }
+            final boolean h1 = CalcUtil.happened100(happenRate);
+            int add = 0;
+            if (h1) {
+                add = happenCount;
+            }
+            for (final FindTargetStrategy targetStrategy : hero.getTargetStrategies()) {
+                if (targetStrategy instanceof MultipleBackTargetStrategy) {
+                    ((MultipleBackTargetStrategy) targetStrategy).setAdd(add);
                 }
-                for (final FindTargetStrategy targetStrategy : hero.getTargetStrategies()) {
-                    if (targetStrategy instanceof MultipleBackTargetStrategy) {
-                        ((MultipleBackTargetStrategy) targetStrategy).setAdd(add);
-                    }
-                    if (targetStrategy instanceof MultipleFrontTargetStrategy) {
-                        ((MultipleFrontTargetStrategy) targetStrategy).setAdd(add);
-                    }
+                if (targetStrategy instanceof MultipleFrontTargetStrategy) {
+                    ((MultipleFrontTargetStrategy) targetStrategy).setAdd(add);
                 }
-            });
+            }
+        } else if (point == ActionPoint.开场) {
+            hero.addTargetStrategy(new MultipleBackTargetStrategy(count));
+            hero.addTargetStrategy(new MultipleFrontTargetStrategy(count));
         }
-
-        return null;
     }
 
-    @Override
-    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
-
+    public void talent1(int id) {
+        data[0] += ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void setCount(final int count) {
-        this.count = count;
+    public void talent2(int id) {
+        data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void addCount(final int c) {
-        this.count += c;
+    public void talent3(int id) {
+        data[0] += ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void setRate(final int rate) {
-        this.rate = rate;
+    public void talent4(int id) {
+        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+        data[3] = ConfigManager.talentDataBox.findById(id).i2;
     }
 
-    public int getRate() {
-        return rate;
-    }
-
-    public void addRate(final int rate) {
-        this.rate += rate;
-    }
-
-    public void setHappenRate(final int happenRate) {
-        this.happenRate = happenRate;
-    }
-
-    public void setHappenCount(final int happenCount) {
-        this.happenCount = happenCount;
+    public void talent5(int id) {
+        data[4] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

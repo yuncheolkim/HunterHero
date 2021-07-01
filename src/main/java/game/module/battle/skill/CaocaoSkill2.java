@@ -24,9 +24,9 @@ public class CaocaoSkill2 extends Skill {
     private final int rate = 100;
 
     public CaocaoSkill2() {
+        super(1);
         actionPoint.put(ActionPoint.被攻击之前, 1);
         id = 200007;
-        name = "护驾";
     }
 
     @Override

@@ -21,7 +21,6 @@ public class BattleConstant {
      */
     public static final int BUFF_INFINITE = 0;
 
-
     public static final int buff_guanyu_1 = 2;
 
     public static final int buff_zhaoyun_1 = 6;
