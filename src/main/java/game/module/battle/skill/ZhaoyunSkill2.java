@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -7,7 +8,9 @@ import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
 /**
- * 有20%概率攻击2次
+ * 有30%概率攻击2次
+ * 0:连击概率
+ * 1:连击次数
  *
  * @author Yunzhe.Jin
  * 2021/6/19 23:38
@@ -15,14 +18,10 @@ import game.utils.CalcUtil;
 public class ZhaoyunSkill2 extends Skill {
 
 
-    private int canAttackCount = 2;
-
-    private int curAttack;
-
     /**
-     * 发生连击的概率
+     * 当前出手次数
      */
-    private int rate = 20;
+    private int curAttack;
 
     public ZhaoyunSkill2() {
         super(7);
@@ -33,13 +32,14 @@ public class ZhaoyunSkill2 extends Skill {
     @Override
     protected void process(Record record, ActionPoint actionPoint, Hero hero) {
 
+
         if (actionPoint == ActionPoint.出手前) {
             curAttack++;
         } else if (actionPoint == ActionPoint.出手后) {
+            final int rate = data[0];
+            final int canAttackCount = data[1];
             if (curAttack < canAttackCount) {
-
                 hero.setContinueAction(CalcUtil.happened100(rate));
-
             } else {
                 curAttack = 0;
                 hero.setContinueAction(false);
@@ -47,12 +47,13 @@ public class ZhaoyunSkill2 extends Skill {
         }
     }
 
-    public void setRate(int rate) {
-        this.rate = rate;
+    public void talent1(int id) {
+        data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void setCanAttackCount(int canAttackCount) {
-        this.canAttackCount = canAttackCount;
+    public void talent2(int id) {
+        data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
+
 }
 

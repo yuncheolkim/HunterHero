@@ -20,9 +20,6 @@ public class ShieldRoundEndHandler implements HeroActionPointHandler {
     @Override
     public void handle(final Hero hero) {
 
-        //region test
-        hero.recordShieldChange(null, -10);
-        //endregion
         // 计算护盾
         final HeroStats heroStats = hero.heroStats;
         final int old = heroStats.getShield();
@@ -33,7 +30,7 @@ public class ShieldRoundEndHandler implements HeroActionPointHandler {
                 hero.recordShieldChange(null, heroStats.getShield() - old);
             }
         }
-       
+
 
     }
 

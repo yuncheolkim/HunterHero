@@ -235,8 +235,9 @@ public class ConfigManager extends AbsLifecycle {
      * @return
      */
     public static HeroBaseConfigData heroBaseProperty(final int heroId, final int level) {
-        // todo
+        //region todo 需要根据heroid获取数据
         return heroBaseDataBox.findById(level);
+        //endregion
     }
 
     /**

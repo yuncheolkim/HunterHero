@@ -6,7 +6,7 @@ import game.module.battle.action.ActionPoint;
 import game.module.battle.record.Record;
 
 /**
- * 多重箭,可以同时打多个目标
+ * 护甲穿透
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -23,14 +23,13 @@ public class HuanzhongSkill2 extends Skill {
         actionPoint.put(ActionPoint.开场, 1);
     }
 
+
     @Override
-    public Record process(ActionPoint actionPoint, Hero hero) {
-        Record process = super.process(actionPoint, hero);
+    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
         hero.origin.setDefReduce(hero.origin.getDefReduce() + rate);
         hero.property.setDefReduce(hero.origin.getDefReduce());
-        return process;
-    }
 
+    }
 
     public void setRate(int rate) {
         this.rate = rate;

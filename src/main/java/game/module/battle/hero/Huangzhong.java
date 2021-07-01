@@ -26,25 +26,26 @@ public class Huangzhong extends Hero {
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 
+            final int id = tdata.id;
             final int talentId = tdata.talentId;
             switch (talentId) {
                 case 27:
-                    skill1.talent1(talentId);
+                    skill1.talent1(id);
                     break;
                 case 28:
-                    skill1.talent2(talentId);
+                    skill1.talent2(id);
                     break;
                 case 29:
                     skill2.setRate(tdata.i1);
                     break;
                 case 30:
-                    skill1.talent3(talentId);
+                    skill1.talent3(id);
                     break;
                 case 31:
-                    skill1.talent4(talentId);
+                    skill1.talent4(id);
                     break;
                 case 32:
-                    skill1.talent5(talentId);
+                    skill1.talent5(id);
                     break;
             }
         });

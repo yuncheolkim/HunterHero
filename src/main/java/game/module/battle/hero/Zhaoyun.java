@@ -1,8 +1,7 @@
 package game.module.battle.hero;
 
-import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.ZhaoyunBuff1;
 import game.module.battle.hero.base.DefaultTargetHero;
+import game.module.battle.skill.ZhaoyunSkill1;
 import game.module.battle.skill.ZhaoyunSkill2;
 import game.module.fight.FightService;
 
@@ -23,34 +22,31 @@ public class Zhaoyun extends DefaultTargetHero {
 
         final ZhaoyunSkill2 skill2 = new ZhaoyunSkill2();
 
-        final ZhaoyunBuff1 addBuff = new ZhaoyunBuff1();
+        final ZhaoyunSkill1 skill1 = new ZhaoyunSkill1();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 
-            final int i1 = tdata.i1;
+            final int id = tdata.id;
             switch (tdata.talentId) {
                 case 33:
-                    addBuff.setRate(i1);
+                    skill1.talent1(id);
                     break;
                 case 34:
-                    addBuff.setDefRateData(i1);
+                    skill1.talent2(id);
                     break;
                 case 35:
-                    skill2.setCanAttackCount(i1);
+                    skill2.talent2(id);
                     break;
                 case 36:
-                    addBuff.setAttRateAdd(i1);
+                    skill1.talent3(id);
                     break;
                 case 37:
-                    skill2.setRate(i1);
+                    skill2.talent1(id);
                     break;
                 case 38:
-                    addBuff.setAvoidTime(i1);
+                    skill1.talent4(id);
                     break;
             }
-        });
-        addAction(ActionPoint.开场, hero -> {
-            hero.addBuff(addBuff);
         });
         addSkill(skill2);
     }

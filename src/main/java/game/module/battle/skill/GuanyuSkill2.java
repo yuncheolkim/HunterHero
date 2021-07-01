@@ -30,6 +30,7 @@ public class GuanyuSkill2 extends Skill {
     public GuanyuSkill2() {
         super(3);
         actionPoint.put(ActionPoint.出手后, 1);
+        needRecord = true;
     }
 
     @Override

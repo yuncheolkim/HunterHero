@@ -1,7 +1,6 @@
 package game.module.battle;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.collect.Lists;
 import game.base.Logs;
 import game.config.data.SkillConfigData;
 import game.manager.ConfigManager;
@@ -10,10 +9,7 @@ import game.module.battle.record.HeroRecordSimple;
 import game.module.battle.record.Record;
 import game.proto.data.RecordType;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author Yunzhe.Jin
@@ -34,7 +30,7 @@ public abstract class Skill {
     /**
      * 减少冷却时间时机
      */
-    protected List<ActionPoint> reduceCoolDownPoint = Lists.newArrayList(ActionPoint.回合开始前);
+    protected List<ActionPoint> reduceCoolDownPoint = new ArrayList<>(2);
 
     /**
      * 触发时机
@@ -56,6 +52,9 @@ public abstract class Skill {
         config = ConfigManager.skillDataBox.findById(id);
         this.data = Arrays.copyOf(config.data, config.data.length);
         cd = config.getCd();
+        if (cd.getCd() > 0) {
+            reduceCoolDownPoint.add(ActionPoint.回合开始前);
+        }
     }
 
     public Record process(final ActionPoint actionPoint, final Hero hero) {

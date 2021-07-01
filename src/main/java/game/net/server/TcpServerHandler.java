@@ -56,7 +56,6 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
             }
         }
 
-        // todo
     }
 
     private boolean isLogin(final int msgNo) {

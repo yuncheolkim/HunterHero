@@ -60,7 +60,7 @@ public class LusuSkill1 extends Skill {
     }
 
     @Override
-    public Record process(final ActionPoint point, final Hero hero) {
+    public void process(Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
             case 开场:
@@ -93,7 +93,6 @@ public class LusuSkill1 extends Skill {
                 break;
         }
 
-        return null;
     }
 
     public void setCount(final int count) {
