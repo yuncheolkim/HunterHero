@@ -10,7 +10,7 @@ import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
 /**
- * 冰锥,攻击所有目标
+ * 冰锥,攻击8目标
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -30,7 +30,7 @@ public class LusuSkill1 extends Skill {
     public LusuSkill1() {
         actionPoint.put(ActionPoint.开场, 1);
         id = 10;
-        name = "多重箭";
+        name = "冰锥";
         cd = BattleConstant.INFINITE;
     }
 

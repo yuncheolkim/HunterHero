@@ -9,6 +9,10 @@ import game.module.battle.record.BuffData;
 public class DefaultDataBuff extends Buff {
     protected DefaultBuffData data = new DefaultBuffData();
 
+    public DefaultDataBuff() {
+
+    }
+
     /**
      * 返回buff相关数据
      *

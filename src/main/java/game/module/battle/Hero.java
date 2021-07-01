@@ -183,13 +183,10 @@ public class Hero {
     }
 
     public void addAction(final ActionPoint actionPoint, final HeroActionPointHandler h) {
-
         actionMap.put(actionPoint, h);
-
     }
 
     public void removeAction(final ActionPoint actionPoint, final HeroActionPointHandler h) {
-
         actionMap.remove(actionPoint, h);
     }
 

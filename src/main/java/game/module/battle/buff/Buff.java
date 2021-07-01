@@ -1,6 +1,8 @@
 package game.module.battle.buff;
 
 import com.google.common.base.MoreObjects;
+import game.config.data.BuffConfigData;
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.BuffData;
@@ -34,6 +36,11 @@ public abstract class Buff {
     protected int remainRound;
 
     /**
+     * bufftype
+     */
+    protected BuffType buffType = BuffType.BUFF;
+
+    /**
      * buff 效果
      */
     protected List<BuffEffect> effects = new ArrayList<>();
@@ -42,11 +49,6 @@ public abstract class Buff {
      * buff触发时机
      */
     public Map<ActionPoint, Integer> effectPoint = new HashMap<>();
-
-    /**
-     * bufftype
-     */
-    protected BuffType buffType = BuffType.BUFF;
 
     /**
      * buff 来源
@@ -67,6 +69,14 @@ public abstract class Buff {
      * 是否可以移除
      */
     protected boolean move;
+
+
+    public void init() {
+        BuffConfigData data = ConfigManager.buffDataBox.findById(id);
+        move = data.move;
+        buffType = data.type;
+        name = data.name;
+    }
 
     public void initRound(final int round) {
         this.round = round;
