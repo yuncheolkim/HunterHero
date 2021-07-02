@@ -17,6 +17,7 @@ import java.util.*;
  */
 public abstract class Skill {
     protected int id;
+
     /**
      * 技能配置
      */
@@ -35,7 +36,7 @@ public abstract class Skill {
     /**
      * 触发时机
      */
-    public Map<ActionPoint, Integer> actionPoint = new HashMap<>();
+    public Map<ActionPoint, Integer> actionPoint = new HashMap<>(4);
 
     /**
      * 配置数据
@@ -47,7 +48,7 @@ public abstract class Skill {
      */
     protected boolean needRecord;
 
-    public Skill(int id) {
+    public Skill(final int id) {
         this.id = id;
         config = ConfigManager.skillDataBox.findById(id);
 
@@ -107,7 +108,7 @@ public abstract class Skill {
         cd.reduce(round);
     }
 
-    public void addCdPoint(ActionPoint point) {
+    public void addCdPoint(final ActionPoint point) {
         reduceCoolDownPoint.add(point);
     }
 

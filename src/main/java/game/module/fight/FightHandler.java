@@ -239,13 +239,7 @@ public class FightHandler {
                 }
                 if (r.buffData != null) {
                     re.getBuffRecordBuilder().setBuffId(r.buffData.buffId);
-                    re.getBuffRecordBuilder().setRound(r.buffData.round);
                     re.getBuffRecordBuilder().setRemainRound(r.buffData.remainRound);
-                    re.getBuffRecordBuilder().setI1(r.buffData.i1);
-                    re.getBuffRecordBuilder().setI2(r.buffData.i2);
-                    re.getBuffRecordBuilder().setI3(r.buffData.i3);
-                    re.getBuffRecordBuilder().setF1(r.buffData.f1);
-                    re.getBuffRecordBuilder().setF2(r.buffData.f2);
                 }
                 rb.addRecord(re.build());
             }
@@ -279,12 +273,12 @@ public class FightHandler {
      *
      * @param player
      */
-    public static void battleEnter(final Player player, BattleEnterReq req) {
-        BattleFormationDataBox formationDataBox = ConfigManager.battleFormationDataBox;
+    public static void battleEnter(final Player player, final BattleEnterReq req) {
+        final BattleFormationDataBox formationDataBox = ConfigManager.battleFormationDataBox;
         EvilAssert.notNull(formationDataBox.findByCollectId(req.getId()), "战役不存在");
         ModuleAssert.isFalse(player.getPd().getFightInfoCount() > 0, ErrorEnum.ERR_113);
 
-        FightStartPush fightStartPush = FightService.genBattleEnemy(req.getId());
+        final FightStartPush fightStartPush = FightService.genBattleEnemy(req.getId());
 
         player.pd.addAllFightInfo(fightStartPush.getInfoList());
         player.pd.setBattleId(req.getId());

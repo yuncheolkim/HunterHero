@@ -26,7 +26,7 @@ public abstract class Buff {
     /**
      * buff触发时机
      */
-    public Map<ActionPoint, Integer> effectPoint = new HashMap<>();
+    public Map<ActionPoint, Integer> effectPoint = new HashMap<>(4);
 
     /**
      * buff 来源
@@ -42,12 +42,19 @@ public abstract class Buff {
 
     public CoolDown cd;
 
-    public Buff(int id) {
+    public Buff(final int id) {
         this.id = id;
         config = ConfigManager.buffDataBox.findById(id);
         cd = config.getCd().cold();
+        data = new int[dataLen()];
     }
 
+    /**
+     * 使用数据的长度
+     *
+     * @return
+     */
+    protected abstract int dataLen();
 
     /**
      * 是否需要重新计算属性
@@ -113,7 +120,7 @@ public abstract class Buff {
         }
     }
 
-    protected void mergeData(Buff from) {
+    protected void mergeData(final Buff from) {
 
     }
 

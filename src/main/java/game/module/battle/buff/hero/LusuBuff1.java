@@ -21,8 +21,13 @@ public class LusuBuff1 extends Buff {
 
     public LusuBuff1() {
         super(BattleConstant.buff_lusu_1);
-        buffMergeType = BuffMergeType.MERGE;
         effectPoint.put(ActionPoint.被攻击之前, 1);
+        buffMergeType = BuffMergeType.MERGE;
+    }
+
+    @Override
+    protected int dataLen() {
+        return 2;
     }
 
     @Override
@@ -44,11 +49,11 @@ public class LusuBuff1 extends Buff {
         }
     }
 
-    public void setDefRate(int v) {
+    public void setDefRate(final int v) {
         data[0] = v;
     }
 
-    public void setHarmRate(int v) {
+    public void setHarmRate(final int v) {
         data[1] = v;
 
     }

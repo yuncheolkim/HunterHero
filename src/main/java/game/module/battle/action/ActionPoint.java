@@ -28,5 +28,6 @@ public enum ActionPoint {
     增加buff后,
     buff移除后,
     重新计算属性,
-    选择目标后
+    选择目标后;
+
 }
