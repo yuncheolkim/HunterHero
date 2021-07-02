@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.function.Supplier;
 
 /**
  * 计算数值
@@ -14,7 +15,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * 2021/1/8 17:24
  */
 public class CalcUtil {
-    public final static ThreadLocalRandom DEFAULT_RANDOM = ThreadLocalRandom.current();
+    public final static Supplier<ThreadLocalRandom> DEFAULT_RANDOM = ThreadLocalRandom::current;
 
     /**
      * 随机
@@ -24,7 +25,7 @@ public class CalcUtil {
      * @return
      */
     public static int random(final int min, final int max) {
-        return DEFAULT_RANDOM.nextInt(max - min + 1) + min;
+        return DEFAULT_RANDOM.get().nextInt(max - min + 1) + min;
     }
 
 
@@ -95,11 +96,11 @@ public class CalcUtil {
      * @return
      */
     public static boolean happened10000(final int rate) {
-        return DEFAULT_RANDOM.nextInt(10000) < rate;
+        return DEFAULT_RANDOM.get().nextInt(10000) < rate;
     }
 
     public static boolean happened100(final int rate) {
-        return DEFAULT_RANDOM.nextInt(100) < rate;
+        return DEFAULT_RANDOM.get().nextInt(100) < rate;
     }
 
     /**
@@ -127,7 +128,7 @@ public class CalcUtil {
      */
     public static <T extends IWeight> T weightRandom(final List<T> weightList, final int weightAll) {
 
-        final int i = DEFAULT_RANDOM.nextInt(weightAll) + 1;
+        final int i = DEFAULT_RANDOM.get().nextInt(weightAll) + 1;
         int sum = 0;
         for (final IWeight iWeight : weightList) {
 
