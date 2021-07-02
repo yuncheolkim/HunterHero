@@ -23,7 +23,6 @@ public class LusuBuff1 extends Buff {
         super(BattleConstant.buff_lusu_1);
         buffMergeType = BuffMergeType.MERGE;
         effectPoint.put(ActionPoint.被攻击之前, 1);
-        init();
     }
 
     @Override
@@ -37,7 +36,6 @@ public class LusuBuff1 extends Buff {
             if (int1 > 0) {
                 hero.fightingData.setDef(CalcUtil.add100(hero.fightingData.getDef(), int1));
             }
-
 
             if (int2 > 0) {
                 final int harmRate = hero.fightingData.getHarmRate();

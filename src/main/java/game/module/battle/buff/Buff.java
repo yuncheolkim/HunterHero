@@ -48,8 +48,6 @@ public abstract class Buff {
         cd = config.getCd().cold();
     }
 
-    public void init() {
-    }
 
     /**
      * 是否需要重新计算属性
