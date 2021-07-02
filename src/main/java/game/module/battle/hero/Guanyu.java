@@ -1,8 +1,6 @@
 package game.module.battle.hero;
 
-import game.module.battle.Hero;
-import game.module.battle.find.BackTargetStrategy;
-import game.module.battle.find.FrontTargetStrategy;
+import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.GuanyuSkill1;
 import game.module.battle.skill.GuanyuSkill2;
 import game.module.fight.FightService;
@@ -13,13 +11,10 @@ import game.module.fight.FightService;
  * @author Yunzhe.Jin
  * 2021/1/11 10:33
  */
-public class Guanyu extends Hero {
+public class Guanyu extends DefaultTargetHero {
 
 
     public Guanyu() {
-        id = 1001;
-        targetStrategies.add(new FrontTargetStrategy());
-        targetStrategies.add(new BackTargetStrategy());
     }
 
     @Override

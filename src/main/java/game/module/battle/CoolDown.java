@@ -11,7 +11,7 @@ public class CoolDown {
     /**
      * 冷却回数
      */
-    private int cd;
+    private final int cd;
 
     /**
      * 当前冷却数
@@ -27,7 +27,7 @@ public class CoolDown {
     }
 
     /**
-     * 冷却
+     * 使用冷却
      */
     public void cold() {
         curCd = cd;
@@ -64,18 +64,6 @@ public class CoolDown {
 
     public int getCd() {
         return cd;
-    }
-
-    public void setCd(int cd) {
-        this.cd = cd;
-    }
-
-    public int getCurCd() {
-        return curCd;
-    }
-
-    public void setCurCd(int curCd) {
-        this.curCd = curCd;
     }
 
     @Override

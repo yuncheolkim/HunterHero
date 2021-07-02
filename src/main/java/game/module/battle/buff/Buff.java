@@ -67,6 +67,7 @@ public abstract class Buff {
      */
     protected boolean move;
 
+    public int[] data;
 
     public void init() {
         final BuffConfigData data = ConfigManager.buffDataBox.findById(id);

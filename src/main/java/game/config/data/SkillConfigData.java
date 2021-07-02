@@ -13,15 +13,18 @@ import game.module.battle.SkillType;
 public class SkillConfigData extends BaseConfigData<SkillConfigData> {
 
     public int round;
+
     public int[] data;
+
     public SkillType skillType;
+
     public int priority;
 
     @Override
     protected void fill(DataConfigData d) {
 
-        round = d.round;
         skillType = d.type == 1 ? SkillType.Z : SkillType.B;
+        round = d.round;
         priority = d.priority;
 
         if (d.list1 != null) {

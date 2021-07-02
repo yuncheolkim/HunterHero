@@ -14,7 +14,6 @@ import game.module.fight.FightService;
 public class Huangzhong extends Hero {
 
     public Huangzhong() {
-        id = 1002;
     }
 
 

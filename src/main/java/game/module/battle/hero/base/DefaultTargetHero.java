@@ -16,7 +16,6 @@ public class DefaultTargetHero extends Hero {
 
     public DefaultTargetHero(final boolean front) {
         if (front) {
-
             addTargetStrategy(new FrontTargetStrategy());
             addTargetStrategy(new BackTargetStrategy());
         } else {

@@ -1,7 +1,6 @@
 package game.module.battle.hero;
 
 import game.module.battle.Hero;
-import game.module.battle.skill.ZhangfeiSkill1;
 
 /**
  * 张飞
@@ -12,9 +11,6 @@ import game.module.battle.skill.ZhangfeiSkill1;
 public class Zhangfei extends Hero {
 
     public Zhangfei() {
-
-        id = 100002;
-        addSkill(new ZhangfeiSkill1());
     }
 
 }
