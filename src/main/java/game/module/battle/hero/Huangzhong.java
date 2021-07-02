@@ -35,7 +35,7 @@ public class Huangzhong extends Hero {
                     skill1.talent2(id);
                     break;
                 case 29:
-                    skill2.setRate(tdata.i1);
+                    skill2.talent1(id);
                     break;
                 case 30:
                     skill1.talent3(id);

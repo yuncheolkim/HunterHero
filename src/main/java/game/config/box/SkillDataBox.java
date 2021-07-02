@@ -11,6 +11,6 @@ public class SkillDataBox extends MapConfigDataBox<SkillConfigData> {
 
 
     public SkillDataBox() {
-        super("data/data_2-skill.json");
+        super("data/hero_skill.json");
     }
 }

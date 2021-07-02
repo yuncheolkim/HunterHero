@@ -10,6 +10,6 @@ import game.config.data.BuffConfigData;
 public class BuffDataBox extends MapConfigDataBox<BuffConfigData> {
 
     public BuffDataBox() {
-        super("data/data_3-buff.json");
+        super("data/hero_buff.json");
     }
 }
