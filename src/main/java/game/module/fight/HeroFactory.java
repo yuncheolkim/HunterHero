@@ -29,11 +29,11 @@ public class HeroFactory {
                 break;
             }
             case 1003: {
-                hero = new Zhaoyun();
+                hero = new ZhaoYun();
                 break;
             }
             case 1004: {
-                hero = new Weiyan();
+                hero = new WeiYan();
                 break;
             }
             case 1005: {
@@ -45,7 +45,7 @@ public class HeroFactory {
                 break;
             }
             case 1007: {
-                hero = new Xiahoudun();
+                hero = new XiaHouDun();
                 break;
             }
 

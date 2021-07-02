@@ -8,8 +8,8 @@ import game.module.battle.hero.base.DefaultTargetHero;
  * @author Yunzhe.Jin
  * 2021/6/28 21:48
  */
-public class Xiahoudun extends DefaultTargetHero {
-    public Xiahoudun() {
+public class XiaHouDun extends DefaultTargetHero {
+    public XiaHouDun() {
         super(true);
     }
 }

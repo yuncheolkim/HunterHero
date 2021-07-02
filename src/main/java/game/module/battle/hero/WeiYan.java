@@ -10,9 +10,9 @@ import game.module.battle.skill.WeiyanSkill2;
  * @author Yunzhe.Jin
  * 2021/6/28 15:45
  */
-public class Weiyan extends DefaultTargetHero {
+public class WeiYan extends DefaultTargetHero {
 
-    public Weiyan() {
+    public WeiYan() {
         super(true);
     }
 

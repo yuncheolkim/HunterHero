@@ -11,9 +11,9 @@ import game.module.fight.FightService;
  * @author Yunzhe.Jin
  * 2021/6/19 23:37
  */
-public class Zhaoyun extends DefaultTargetHero {
+public class ZhaoYun extends DefaultTargetHero {
 
-    public Zhaoyun() {
+    public ZhaoYun() {
         super(true);
     }
 

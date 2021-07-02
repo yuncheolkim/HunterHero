@@ -3,7 +3,7 @@ package hunter;
 import game.module.battle.Battle;
 import game.module.battle.Pos;
 import game.module.battle.Side;
-import game.module.battle.hero.Caocao;
+import game.module.battle.hero.CaoCao;
 import game.module.battle.hero.Guanyu;
 import game.module.battle.hero.base.BlankHero;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import org.junit.Test;
  * @author Yunzhe.Jin
  * 2021/2/1 14:31
  */
-public class TestCaocao {
+public class TestCaoCao {
 
 
     @Test
@@ -24,7 +24,7 @@ public class TestCaocao {
             g.origin.setSpeed(10);
         });
 
-        Common.newHero(newBattle, Side.B, Pos.from(-1), Caocao::new, g -> {
+        Common.newHero(newBattle, Side.B, Pos.from(-1), CaoCao::new, g -> {
             g.origin.setSpeed(50);
             g.heroStats.hp = 2000;
             g.origin.setAvoid(500);
@@ -46,7 +46,7 @@ public class TestCaocao {
             g.origin.setSpeed(10);
         });
 
-        Common.newHero(newBattle, Side.B, Pos.from(-1), Caocao::new, g -> {
+        Common.newHero(newBattle, Side.B, Pos.from(-1), CaoCao::new, g -> {
             g.origin.setSpeed(50);
             g.heroStats.hp = 2000;
         });

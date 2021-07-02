@@ -8,8 +8,8 @@ import game.module.battle.Hero;
  * @author Yunzhe.Jin
  * 2021/2/5 14:55
  */
-public class Caocao extends Hero {
+public class CaoCao extends Hero {
 
-    public Caocao() {
+    public CaoCao() {
     }
 }
