@@ -3,6 +3,8 @@ package game.module.battle.buff;
 import com.google.common.base.MoreObjects;
 import game.config.data.BuffConfigData;
 import game.manager.ConfigManager;
+import game.module.battle.BattleConstant;
+import game.module.battle.CoolDown;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.BuffData;
@@ -10,8 +12,6 @@ import game.module.battle.record.BuffData;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
-import static game.module.battle.BattleConstant.BUFF_INFINITE;
 
 /**
  * @author Yunzhe.Jin
@@ -21,26 +21,7 @@ public abstract class Buff {
 
     protected int id;
 
-    /**
-     * 优先级
-     */
-    protected int priority;
-
-    /**
-     * 持续回合
-     * BUFF_INFINITE 永久有效
-     */
-    protected int round = BUFF_INFINITE;
-
-    /**
-     * 剩余回合
-     */
-    protected int remainRound;
-
-    /**
-     * bufftype
-     */
-    protected BuffType buffType = BuffType.BUFF;
+    protected BuffConfigData config;
 
     /**
      * buff触发时机
@@ -57,29 +38,17 @@ public abstract class Buff {
      */
     protected BuffMergeType buffMergeType = BuffMergeType.REPLACE;
 
-    /**
-     * buff名
-     */
-    protected String name;
-
-    /**
-     * 是否可以移除
-     */
-    protected boolean move;
-
     public int[] data;
 
-    public void init() {
-        final BuffConfigData data = ConfigManager.buffDataBox.findById(id);
-        move = data.move;
-        buffType = data.type;
-        name = data.name;
+    public CoolDown cd;
+
+    public Buff(int id) {
+        this.id = id;
+        config = ConfigManager.buffDataBox.findById(id);
+        cd = config.getCd().cold();
     }
 
-    public void initRound(final int round) {
-        this.round = round;
-        this.remainRound = round;
-
+    public void init() {
     }
 
     /**
@@ -100,24 +69,14 @@ public abstract class Buff {
         return ActionPoint.回合结束后;
     }
 
-    public boolean isActive() {
-        if (round == BUFF_INFINITE) {
-            return true;
-        }
-
-        return remainRound > 0;
-
-    }
 
     public boolean isInfinite() {
-        return round == BUFF_INFINITE;
+        return cd == BattleConstant.INFINITE;
     }
 
-    public int reduceRound() {
-        if (round == BUFF_INFINITE) {
-            return BUFF_INFINITE;
-        }
-        return --remainRound;
+    public void reduceRound() {
+
+        cd.reduce(1);
     }
 
     /**
@@ -135,7 +94,7 @@ public abstract class Buff {
         if (!isInfinite() && actionPoint == reducePoint()) {
             reduceRound();
 
-            if (remainRound == 0) {
+            if (cd.ready()) {
                 hero.removeBuff(this);
             }
         }
@@ -145,32 +104,26 @@ public abstract class Buff {
 
 
     /**
-     * 返回buff相关数据
-     *
-     * @return
-     */
-    public IBuffVal buffVal() {
-        return new DefaultBuffData();
-    }
-
-    /**
      * 合并buff
      *
      * @param from
      */
     public void mergeBuff(final Buff from) {
         if (from.id == id) {
-            remainRound = round;
-            buffVal().merge(from.buffVal());
+            cd.cold();
+            mergeData(from);
         }
+    }
+
+    protected void mergeData(Buff from) {
+
     }
 
     public BuffData buffData() {
 
         final BuffData data = new BuffData();
         data.buffId = id;
-        data.round = round;
-        data.remainRound = remainRound;
+        data.remainRound = cd.getRemainCd();
         return data;
     }
 
@@ -196,19 +149,7 @@ public abstract class Buff {
     }
 
     public int getPriority() {
-        return priority;
-    }
-
-    public void setPriority(final int priority) {
-        this.priority = priority;
-    }
-
-    public int getRound() {
-        return round;
-    }
-
-    public void setRound(final int round) {
-        this.round = round;
+        return config.priority;
     }
 
     public Hero getSource() {
@@ -219,24 +160,12 @@ public abstract class Buff {
         this.source = source;
     }
 
-    public int getRemainRound() {
-        return remainRound;
-    }
-
-    public void setRemainRound(final int remainRound) {
-        this.remainRound = remainRound;
-    }
-
     public BuffMergeType getBuffMergeType() {
         return buffMergeType;
     }
 
     public void setBuffMergeType(final BuffMergeType buffMergeType) {
         this.buffMergeType = buffMergeType;
-    }
-
-    public boolean isMove() {
-        return move;
     }
 
     @Override
@@ -257,7 +186,7 @@ public abstract class Buff {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
                 .add("actionPoint", effectPoint)
-                .add("buffType", buffType)
                 .toString();
     }
+
 }

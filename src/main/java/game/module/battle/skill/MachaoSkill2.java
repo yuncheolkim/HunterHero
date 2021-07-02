@@ -12,12 +12,8 @@ import game.utils.CalcUtil;
  */
 public class MachaoSkill2 extends Skill {
 
-    private int round = 1;
-
-    private int rate = 20;
-
     public MachaoSkill2() {
-        super(17);
+        super(16);
         actionPoint.put(ActionPoint.暴击之后, 1);
     }
 
@@ -25,6 +21,8 @@ public class MachaoSkill2 extends Skill {
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         switch (actionPoint) {
             case 暴击之后:
+                final int rate = data[0];
+                final int round = data[1];
                 final int i = CalcUtil.add100(hero.origin.getMaxHp(), rate);
                 hero.addShield(round, i, ActionPoint.出手后);
                 break;

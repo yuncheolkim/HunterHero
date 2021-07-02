@@ -29,8 +29,9 @@ public class CoolDown {
     /**
      * 使用冷却
      */
-    public void cold() {
+    public CoolDown cold() {
         curCd = cd;
+        return this;
     }
 
     /**
@@ -38,18 +39,17 @@ public class CoolDown {
      *
      * @param round 减少的回合数
      */
-    public void reduce(int round) {
-        curCd -= round;
-        if (curCd < 0) {
-            curCd = 0;
-        }
+    public CoolDown reduce(int round) {
+        curCd = Math.max(0, curCd - round);
+        return this;
     }
 
     /**
      * 重置
      */
-    public void reset() {
+    public CoolDown reset() {
         curCd = 0;
+        return this;
     }
 
     /**
@@ -64,6 +64,10 @@ public class CoolDown {
 
     public int getCd() {
         return cd;
+    }
+
+    public int getRemainCd() {
+        return curCd;
     }
 
     @Override

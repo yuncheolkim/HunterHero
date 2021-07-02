@@ -9,13 +9,14 @@ import game.utils.CalcUtil;
 
 /**
  * 吸血30%伤害, 不受buff影响
+ * <p>
+ * 0:吸血比例
  *
  * @author Yunzhe.Jin
  * 2021/6/28 15:55
  */
 public class WeiyanSkill1 extends Skill {
 
-    private int rate = 30;
 
     public WeiyanSkill1() {
         super(10);
@@ -27,14 +28,11 @@ public class WeiyanSkill1 extends Skill {
         final DamageInfo damageInfo = hero.damageInfo;
         final int i = damageInfo.allSourceDamage();
 
-        final int addHp = CalcUtil.add100(i, rate);
+        final int addHp = CalcUtil.add100(i, data[0]);
 
         if (addHp > 0 && hero.harmed()) {
             hero.addHp(addHp);
         }
     }
 
-    public void setRate(final int rate) {
-        this.rate = rate;
-    }
 }
