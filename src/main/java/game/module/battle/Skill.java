@@ -161,4 +161,5 @@ public abstract class Skill {
                 .add("name", getName())
                 .toString();
     }
+
 }

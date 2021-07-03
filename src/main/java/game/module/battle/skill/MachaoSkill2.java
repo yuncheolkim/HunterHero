@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -7,6 +8,9 @@ import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
 /**
+ * 0:增加护甲的比例
+ * 1:回合数
+ *
  * @author Yunzhe.Jin
  * 2021/6/30 14:10
  */
@@ -29,4 +33,8 @@ public class MachaoSkill2 extends Skill {
         }
     }
 
+    public void talent1(final int id) {
+        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+        data[1] = ConfigManager.talentDataBox.findById(id).i2;
+    }
 }

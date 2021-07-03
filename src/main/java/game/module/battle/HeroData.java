@@ -18,6 +18,9 @@ public class HeroData {
      */
     private int def;
 
+    /**
+     * 护甲基数
+     */
     private int defBase;
 
     /**
@@ -42,6 +45,11 @@ public class HeroData {
     public int critical;
 
     /**
+     * 当前必然暴击
+     */
+    public boolean mustCritical;
+
+    /**
      * 暴击基数
      */
     private int criticalBase;
@@ -50,7 +58,7 @@ public class HeroData {
      * 暴击伤害比例
      * x/(100)
      */
-    private int criticalDamageRate;
+    public int criticalDamageRate;
 
 
     /**

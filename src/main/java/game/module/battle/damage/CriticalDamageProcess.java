@@ -19,7 +19,7 @@ public class CriticalDamageProcess implements DamageProcess {
         final HeroData processData = hero.fightingData;
 
         final int rate = processData.getCritical();
-        final boolean happened = CalcUtil.happened(hero.getBattle().getRandom(), rate, rate + processData.getCriticalBase());
+        final boolean happened = processData.mustCritical || CalcUtil.happened(hero.getBattle().getRandom(), rate, rate + processData.getCriticalBase());
 
         // 暴击伤
         if (happened) {
