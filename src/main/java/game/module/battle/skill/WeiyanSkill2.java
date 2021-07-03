@@ -30,7 +30,7 @@ public class WeiyanSkill2 extends Skill {
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
-        final DamageInfo damageInfo = hero.damageInfo;
+        final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
         if (actionPoint == ActionPoint.受到伤害之后) {
             damaged += damageInfo.attackedDamage;
         } else if (actionPoint == ActionPoint.回合结束后) {

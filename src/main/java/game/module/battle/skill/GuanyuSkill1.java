@@ -43,9 +43,9 @@ public class GuanyuSkill1 extends Skill {
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
-        final Hero currentTarget = hero.damageInfo.target;
-        int addDamageRate = data[0];
-        int maxDamageRate = data[1];
+        final Hero currentTarget = hero.getBattle().getDamageInfo().target;
+        final int addDamageRate = data[0];
+        final int maxDamageRate = data[1];
 
         switch (actionPoint) {
             case 出手后:
@@ -69,19 +69,19 @@ public class GuanyuSkill1 extends Skill {
 
     }
 
-    public void talent1(int id) {
+    public void talent1(final int id) {
         data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent2(int id) {
+    public void talent2(final int id) {
         data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent3(int id) {
+    public void talent3(final int id) {
         data[2] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent4(int id) {
+    public void talent4(final int id) {
         data[3] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

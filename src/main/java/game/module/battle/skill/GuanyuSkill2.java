@@ -42,7 +42,7 @@ public class GuanyuSkill2 extends Skill {
     private List<Hero> attackHero(final Hero hero) {
         final Map<Integer, Hero> enemy = hero.getBattle().oppositeHeroes(hero.getSide());
         final Collection<Hero> list = enemy.values();
-        final Hero currentTarget = hero.damageInfo.target;
+        final Hero currentTarget = hero.getBattle().getDamageInfo().target;
         if (currentTarget == null) {
             return new ArrayList<>();
         }
@@ -80,13 +80,14 @@ public class GuanyuSkill2 extends Skill {
         process.targetList = collect.stream().map(h -> h.getPos().getIndex()).collect(Collectors.toList());
 
         final int rate = data[0];
+        final DamageInfo damageInfo1 = hero.getBattle().getDamageInfo();
         for (final Hero target : collect) {
             final DamageInfo damageInfo = new DamageInfo();
             damageInfo.sourceId = id;
             damageInfo.type = DamageType.DAMAGE_SKILL;
             damageInfo.source = (hero);
             damageInfo.target = (target);
-            damageInfo.sourceDamage = CalcUtil.add100(hero.damageInfo.allSourceDamage(), rate);
+            damageInfo.sourceDamage = CalcUtil.add100(damageInfo1.allSourceDamage(), rate);
 
             hero.damage(damageInfo);
         }
@@ -94,15 +95,15 @@ public class GuanyuSkill2 extends Skill {
     }
 
     @Override
-    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
 
     }
 
-    public void talent1(int id) {
+    public void talent1(final int id) {
         data[1] = 1;
     }
 
-    public void talent2(int id) {
+    public void talent2(final int id) {
         data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

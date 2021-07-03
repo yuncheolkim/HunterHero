@@ -126,11 +126,6 @@ public class Hero {
     protected Object contextData;
 
     /**
-     * 当前攻击信息
-     */
-    public DamageInfo damageInfo;
-
-    /**
      * 是否继续行动
      */
     private boolean continueAction;
@@ -246,13 +241,13 @@ public class Hero {
                 continue;
             }
             resetFightingData();
-            damageInfo = new DamageInfo();
+            final DamageInfo damageInfo = new DamageInfo();
             damageInfo.type = DamageType.DAMAGE_NORMAL;
             damageInfo.origin = this;
             damageInfo.source = this;
             damageInfo.target = target;
             damageInfo.sourceDamage = property.getDamage();
-            target.damageInfo = damageInfo;
+            battle.setDamageInfo(damageInfo);
 
             processAll(ActionPoint.出手前);
 
@@ -296,9 +291,9 @@ public class Hero {
      * 计算攻击方最终伤害
      */
     public void calcAttack() {
-        damageInfo.target.processBuff(ActionPoint.攻击方计算伤害前);
+        battle.getDamageInfo().target.processBuff(ActionPoint.攻击方计算伤害前);
         battle.calcAttack(this);
-        damageInfo.target.processBuff(ActionPoint.攻击方计算伤害后);
+        battle.getDamageInfo().target.processBuff(ActionPoint.攻击方计算伤害后);
     }
 
     private void resetFightingData() {
@@ -308,10 +303,10 @@ public class Hero {
 
     private void attackRecord() {
         final Record attackRecord = new Record(ATTACK);
-        final HeroRecordSimple simple = damageInfo.source.getSimple();
+        final HeroRecordSimple simple = battle.getDamageInfo().source.getSimple();
         attackRecord.heroId = simple.id;
         attackRecord.pos = simple.pos.getIndex();
-        attackRecord.targetList = Lists.newArrayList(damageInfo.target.getSimple().pos.getIndex());
+        attackRecord.targetList = Lists.newArrayList(battle.getDamageInfo().target.getSimple().pos.getIndex());
         battle.addRecord(attackRecord);
     }
 

@@ -31,7 +31,7 @@ public class WeiyanSkill1 extends Skill {
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
-        final DamageInfo damageInfo = hero.damageInfo;
+        final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
         final int i = damageInfo.allSourceDamage();
 
         final int addHp = CalcUtil.add100(i, data[0]);

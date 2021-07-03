@@ -19,10 +19,10 @@ public class XiaHouDunSkill1 extends Skill {
     }
 
     @Override
-    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         switch (actionPoint) {
             case 受到伤害之后:
-                final DamageInfo damageInfo = hero.damageInfo;
+                final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
                 if (damageInfo.source == hero) {
                     return;
                 }
@@ -31,7 +31,7 @@ public class XiaHouDunSkill1 extends Skill {
                 damage.type = DamageType.DAMAGE_SKILL;
                 damage.source = hero;
                 damage.target = damageInfo.source;
-                float rate = hero.hpLoseRate();
+                final float rate = hero.hpLoseRate();
                 damage.sourceDamage = CalcUtil.add100(damageInfo.allSourceDamage(), rate);
 
                 damageInfo.source.damage(damage);

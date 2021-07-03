@@ -29,7 +29,7 @@ public class LusuSkill2 extends Skill {
                 final int addBuffRate = data[0];
                 if (CalcUtil.happened100(addBuffRate)) {
                     //加buff
-                    final Hero target = hero.damageInfo.target;
+                    final Hero target = hero.getBattle().getDamageInfo().target;
                     final LusuBuff1 addBuff = new LusuBuff1();
                     final int buffDefRate = data[1];
                     final int buffHarmRate = data[2];

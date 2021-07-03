@@ -27,7 +27,7 @@ public class LusuSkill3 extends Skill {
 
         switch (point) {
             case 出手前:
-                final DamageInfo damageInfo = hero.damageInfo;
+                final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
                 final boolean buff = damageInfo.target.hasBuff(BattleConstant.buff_lusu_1);
 
                 if (buff) {
