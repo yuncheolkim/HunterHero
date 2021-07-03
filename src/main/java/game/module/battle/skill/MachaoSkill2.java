@@ -10,6 +10,8 @@ import game.utils.CalcUtil;
 /**
  * 0:增加护甲的比例
  * 1:回合数
+ * 2:队友增加护甲的比例
+ * 3:队友回合数
  *
  * @author Yunzhe.Jin
  * 2021/6/30 14:10
@@ -29,6 +31,20 @@ public class MachaoSkill2 extends Skill {
                 final int round = data[1];
                 final int i = CalcUtil.add100(hero.origin.getMaxHp(), rate);
                 hero.addShield(round, i, ActionPoint.出手后);
+
+                final int friendRate = data[2];
+                if (friendRate > 0) {
+                    final int friendRound = data[3];
+
+                    final int friendShield = CalcUtil.add100(i, friendRate);
+
+                    for (final Hero value : hero.getBattle().mySideHeroes(hero.getSide()).values()) {
+                        if (value.isAlive()) {
+                            value.addShield(friendRound, friendShield, ActionPoint.出手后);
+                        }
+                    }
+                }
+
                 break;
         }
     }
@@ -36,5 +52,11 @@ public class MachaoSkill2 extends Skill {
     public void talent1(final int id) {
         data[0] = ConfigManager.talentDataBox.findById(id).i1;
         data[1] = ConfigManager.talentDataBox.findById(id).i2;
+    }
+
+    public void talent2(final int id) {
+        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+        data[3] = ConfigManager.talentDataBox.findById(id).i2;
+
     }
 }

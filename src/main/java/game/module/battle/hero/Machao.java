@@ -43,6 +43,7 @@ public class Machao extends DefaultTargetHero {
                     skill1.talent2(id);
                     break;
                 case 415:
+                    skill2.talent2(id);
                     break;
             }
         });
