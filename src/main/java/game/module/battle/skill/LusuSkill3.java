@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.manager.ConfigManager;
 import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
@@ -31,10 +32,13 @@ public class LusuSkill3 extends Skill {
                 final boolean buff = damageInfo.target.hasBuff(BattleConstant.buff_lusu_1);
 
                 if (buff) {
-                    hero.fightingData.damage = CalcUtil.add100(hero.fightingData.damage, data[0]);
+                    hero.fightingData.damage = CalcUtil.final100(hero.fightingData.damage, data[0]);
                 }
                 break;
         }
+    }
 
+    public void talent1(final int id) {
+        data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

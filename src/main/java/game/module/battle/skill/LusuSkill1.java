@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -10,6 +11,9 @@ import game.utils.CalcUtil;
 
 /**
  * 冰锥,攻击8目标,对冰冻目标造成额外100%伤害
+ * <p>
+ * 0: 数量
+ * 1: 伤害
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -36,5 +40,11 @@ public class LusuSkill1 extends Skill {
                 break;
         }
 
+    }
+
+
+    public void talent1(final int id) {
+
+        data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

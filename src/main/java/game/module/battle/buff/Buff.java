@@ -132,6 +132,10 @@ public abstract class Buff {
         return data;
     }
 
+    public void SetCd(final int round) {
+        cd = new CoolDown(round);
+    }
+
     /**
      * 计算合并策略
      *

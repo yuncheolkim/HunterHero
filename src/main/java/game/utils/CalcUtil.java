@@ -37,12 +37,10 @@ public class CalcUtil {
      * @return 最终算好的值
      */
     public static int final100(final int val, final int rate) {
-
         if (rate <= 0) {
             return val;
         }
-        final float f = rate / 100.0f + 1;
-        return Math.round(val * f);
+        return add100(val, rate) + val;
     }
 
     /**
