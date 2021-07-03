@@ -78,8 +78,7 @@ public abstract class Skill {
         return record;
     }
 
-    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
-    }
+    protected abstract void process(final Record record, final ActionPoint actionPoint, final Hero hero);
 
     /**
      * 能不能使用技能

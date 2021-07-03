@@ -5,8 +5,8 @@ import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.damage.DamageInfo;
-import game.module.battle.damage.DamageSourceType;
 import game.module.battle.record.Record;
+import game.proto.data.DamageType;
 import game.utils.CalcUtil;
 
 import java.util.ArrayList;
@@ -83,7 +83,7 @@ public class GuanyuSkill2 extends Skill {
         for (final Hero target : collect) {
             final DamageInfo damageInfo = new DamageInfo();
             damageInfo.sourceId = id;
-            damageInfo.type = (DamageSourceType.SKILL);
+            damageInfo.type = DamageType.DAMAGE_SKILL;
             damageInfo.source = (hero);
             damageInfo.target = (target);
             damageInfo.sourceDamage = CalcUtil.add100(hero.damageInfo.allSourceDamage(), rate);
@@ -91,6 +91,11 @@ public class GuanyuSkill2 extends Skill {
             hero.damage(damageInfo);
         }
         return process;
+    }
+
+    @Override
+    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
+
     }
 
     public void talent1(int id) {

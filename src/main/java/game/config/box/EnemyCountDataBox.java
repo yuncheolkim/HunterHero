@@ -11,7 +11,7 @@ public class EnemyCountDataBox extends RandomConfigDataBox<EnemyCountConfigData>
 
 
     public EnemyCountDataBox() {
-        super("data/data_16-区域敌人数量.json");
+        super("data/map_区域敌人数量.json");
     }
 
 

@@ -1,6 +1,7 @@
 package game.module.battle.damage;
 
 import game.module.battle.Hero;
+import game.proto.data.DamageType;
 import game.utils.CalcUtil;
 
 /**
@@ -10,7 +11,7 @@ import game.utils.CalcUtil;
  * 2021/1/11 14:56
  */
 public class DamageInfo {
-    public DamageSourceType type;
+    public DamageType type;
 
     public int sourceId;
 

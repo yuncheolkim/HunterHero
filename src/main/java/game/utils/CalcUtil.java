@@ -82,7 +82,7 @@ public class CalcUtil {
     }
 
     public static int add100(final int val, final float rate) {
-        return (int) (val * rate);
+        return Math.round(val * rate);
     }
 
     public static boolean happened(final Random r, final int rate, final int total) {

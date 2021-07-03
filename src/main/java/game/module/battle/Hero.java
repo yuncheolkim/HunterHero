@@ -9,7 +9,6 @@ import game.module.battle.action.ActionPoint;
 import game.module.battle.action.ShieldRoundEndHandler;
 import game.module.battle.buff.Buff;
 import game.module.battle.damage.DamageInfo;
-import game.module.battle.damage.DamageSourceType;
 import game.module.battle.record.BuffData;
 import game.module.battle.record.HeroRecordData;
 import game.module.battle.record.HeroRecordSimple;
@@ -246,7 +245,7 @@ public class Hero {
             }
             resetFightingData();
             damageInfo = new DamageInfo();
-            damageInfo.type = (DamageSourceType.ATTACK);
+            damageInfo.type = DamageType.DAMAGE_NORMAL;
             damageInfo.origin = this;
             damageInfo.source = this;
             damageInfo.target = target;
@@ -419,7 +418,9 @@ public class Hero {
             // 减血
             reduceHp(info);
 
-            processAll(ActionPoint.受到伤害之后);
+            if (isAlive()) {
+                processAll(ActionPoint.受到伤害之后);
+            }
         }
     }
 
@@ -631,7 +632,7 @@ public class Hero {
         record.pos = simple.pos.getIndex();
         record.dp = DisplayPoint.DP_DEF_1;
         record.value = info.sourceDamage * -1;
-        record.damageType = DamageType.DAMAGE_NORMAL;
+        record.damageType = info.type;
         battle.addRecord(record);
 
         // 暴击
@@ -655,6 +656,15 @@ public class Hero {
 
     public Optional<Buff> findBuff(final int id) {
         return buffMap.values().stream().filter(buff -> buff.getId() == id).findFirst();
+    }
+
+
+    public float hpRate() {
+        return heroStats.hp * 1.0f / Math.max(property.getMaxHp(), fightingData.getMaxHp());
+    }
+
+    public float hpLoseRate() {
+        return Math.max(0, 1 - hpRate());
     }
 
     public boolean isDead() {

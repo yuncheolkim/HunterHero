@@ -113,7 +113,7 @@ public class ConfigManager extends AbsLifecycle {
     @Override
     public void start() {
         super.start();
-        dataMap5 = new JsonConfig("data/data_5-怪物id.json").load();
+        dataMap5 = new JsonConfig("data/enemy_怪列表.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
         dataMap12 = new JsonConfig("data/data_12-历练.json", 64).load();
         dataMap13 = new JsonConfig("data/data_13-修炼.json", 32).load();

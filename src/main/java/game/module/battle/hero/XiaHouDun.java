@@ -1,6 +1,7 @@
 package game.module.battle.hero;
 
 import game.module.battle.hero.base.DefaultTargetHero;
+import game.module.battle.skill.XiaHouDunSkill1;
 
 /**
  * 夏侯惇
@@ -11,5 +12,14 @@ import game.module.battle.hero.base.DefaultTargetHero;
 public class XiaHouDun extends DefaultTargetHero {
     public XiaHouDun() {
         super(true);
+    }
+
+    @Override
+    protected void initTalent() {
+        XiaHouDunSkill1 skill1 = new XiaHouDunSkill1();
+
+
+        addSkill(skill1);
+
     }
 }

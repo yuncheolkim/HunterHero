@@ -9,32 +9,48 @@ package game.proto.data;
 public enum DamageType
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>DAMAGE_NORMAL = 0;</code>
+   * <code>DAMAGE_NONE = 0;</code>
    */
-  DAMAGE_NORMAL(0),
+  DAMAGE_NONE(0),
   /**
-   * <code>DAMAGE_CRITICAL = 1;</code>
+   * <code>DAMAGE_NORMAL = 1;</code>
    */
-  DAMAGE_CRITICAL(1),
+  DAMAGE_NORMAL(1),
   /**
-   * <code>DAMAGE_NONE = 2;</code>
+   * <code>DAMAGE_CRITICAL = 2;</code>
    */
-  DAMAGE_NONE(2),
+  DAMAGE_CRITICAL(2),
+  /**
+   * <code>DAMAGE_SKILL = 3;</code>
+   */
+  DAMAGE_SKILL(3),
+  /**
+   * <code>DAMAGE_BUFF = 4;</code>
+   */
+  DAMAGE_BUFF(4),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>DAMAGE_NORMAL = 0;</code>
+   * <code>DAMAGE_NONE = 0;</code>
    */
-  public static final int DAMAGE_NORMAL_VALUE = 0;
+  public static final int DAMAGE_NONE_VALUE = 0;
   /**
-   * <code>DAMAGE_CRITICAL = 1;</code>
+   * <code>DAMAGE_NORMAL = 1;</code>
    */
-  public static final int DAMAGE_CRITICAL_VALUE = 1;
+  public static final int DAMAGE_NORMAL_VALUE = 1;
   /**
-   * <code>DAMAGE_NONE = 2;</code>
+   * <code>DAMAGE_CRITICAL = 2;</code>
    */
-  public static final int DAMAGE_NONE_VALUE = 2;
+  public static final int DAMAGE_CRITICAL_VALUE = 2;
+  /**
+   * <code>DAMAGE_SKILL = 3;</code>
+   */
+  public static final int DAMAGE_SKILL_VALUE = 3;
+  /**
+   * <code>DAMAGE_BUFF = 4;</code>
+   */
+  public static final int DAMAGE_BUFF_VALUE = 4;
 
 
   public final int getNumber() {
@@ -61,9 +77,11 @@ public enum DamageType
    */
   public static DamageType forNumber(int value) {
     switch (value) {
-      case 0: return DAMAGE_NORMAL;
-      case 1: return DAMAGE_CRITICAL;
-      case 2: return DAMAGE_NONE;
+      case 0: return DAMAGE_NONE;
+      case 1: return DAMAGE_NORMAL;
+      case 2: return DAMAGE_CRITICAL;
+      case 3: return DAMAGE_SKILL;
+      case 4: return DAMAGE_BUFF;
       default: return null;
     }
   }

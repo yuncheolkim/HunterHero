@@ -417,7 +417,7 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < target_.size(); i++) {
       output.writeInt32NoTag(target_.getInt(i));
     }
-    if (damageType_ != game.proto.data.DamageType.DAMAGE_NORMAL.getNumber()) {
+    if (damageType_ != game.proto.data.DamageType.DAMAGE_NONE.getNumber()) {
       output.writeEnum(21, damageType_);
     }
     if (value_ != 0) {
@@ -472,7 +472,7 @@ private static final long serialVersionUID = 0L;
       }
       targetMemoizedSerializedSize = dataSize;
     }
-    if (damageType_ != game.proto.data.DamageType.DAMAGE_NORMAL.getNumber()) {
+    if (damageType_ != game.proto.data.DamageType.DAMAGE_NONE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(21, damageType_);
     }
