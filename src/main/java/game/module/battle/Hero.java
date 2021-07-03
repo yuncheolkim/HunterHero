@@ -163,9 +163,11 @@ public class Hero {
     }
 
     public void processAll(final ActionPoint actionPoint) {
-        processSkill(actionPoint);
-        processBuff(actionPoint);
-        processAction(actionPoint);
+        if (isAlive() || actionPoint == ActionPoint.死之前 || actionPoint == ActionPoint.死之后) {
+            processSkill(actionPoint);
+            processBuff(actionPoint);
+            processAction(actionPoint);
+        }
 
         final Collection<Record> records = delayRecord.get(actionPoint);
         if (records != null) {
@@ -314,6 +316,44 @@ public class Hero {
     }
 
     /**
+     * 被攻击
+     *
+     * @param info
+     */
+    public void attacked(final DamageInfo info) {
+        resetFightingData();
+        Logs.trace("attacked:", this);
+        processAll(ActionPoint.被攻击之前);
+        if (info.target.id != this.id) {
+            info.target.attacked(info);
+            return;
+        }
+
+        // 计算受到的伤害
+        battle.calcAttackedProcess(info);
+        if (info.avoid) {
+            processAll(ActionPoint.闪避之前);
+        }
+        if (info.avoid) {
+            final Record record = new Record(RecordType.AVOID);
+            record.heroId = id;
+            record.pos = pos.getIndex();
+            battle.addRecord(record);
+            processAll(ActionPoint.闪避之后);
+        } else {
+            // 计算buff
+            processAll(ActionPoint.受到伤害之前);
+            info.attackedDamage = info.allSourceDamage();
+            // 减血
+            reduceHp(info);
+
+            if (isAlive()) {
+                processAll(ActionPoint.受到伤害之后);
+            }
+        }
+    }
+
+    /**
      * 执行buff
      */
     public void processBuff(final ActionPoint actionPoint) {
@@ -384,44 +424,6 @@ public class Hero {
         skillCdMap.get(actionPoint).forEach(s -> s.reduceCoolDown(1));
 
         return fired;
-    }
-
-    /**
-     * 被攻击
-     *
-     * @param info
-     */
-    public void attacked(final DamageInfo info) {
-        resetFightingData();
-        Logs.trace("attacked:", this);
-        processAll(ActionPoint.被攻击之前);
-        if (info.target.id != this.id) {
-            info.target.attacked(info);
-            return;
-        }
-
-        // 计算受到的伤害
-        battle.calcAttackedProcess(info);
-        if (info.avoid) {
-            processAll(ActionPoint.闪避之前);
-        }
-        if (info.avoid) {
-            final Record record = new Record(RecordType.AVOID);
-            record.heroId = id;
-            record.pos = pos.getIndex();
-            battle.addRecord(record);
-            processAll(ActionPoint.闪避之后);
-        } else {
-            // 计算buff
-            processAll(ActionPoint.受到伤害之前);
-            info.attackedDamage = info.allSourceDamage();
-            // 减血
-            reduceHp(info);
-
-            if (isAlive()) {
-                processAll(ActionPoint.受到伤害之后);
-            }
-        }
     }
 
 
@@ -555,28 +557,26 @@ public class Hero {
 
     /**
      * 增加血量
-     * todo
      *
      * @param num
      */
-    public void addHp(final int num) {
-        if (num <= 0) {
-            return;
+    public int addHp(final int num) {
+        if (num <= 0 || !harmed()) {
+            return 0;
         }
         final HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
         info.setOldValue(heroStats.hp);
-        heroStats.hp += num;
-        if (heroStats.hp > property.getMaxHp()) {
-            heroStats.hp = property.getMaxHp();
-        }
+        heroStats.hp = Math.min(num + heroStats.hp, property.getMaxHp());
         info.setNewValue(heroStats.hp);
 
-        addHpRecord(info.getNewValue() - info.getOldValue());
+        final int add = info.getNewValue() - info.getOldValue();
+        addHpRecord(add);
 
         for (final HeroStatusChangeListener statusChangeListener : statusChangeListeners) {
             statusChangeListener.changHp(info);
         }
+        return add;
     }
 
     /**

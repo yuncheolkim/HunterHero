@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -9,6 +10,7 @@ import game.utils.CalcUtil;
 
 /**
  * 回合结束后恢复伤害的20%血量
+ * 0:恢复量
  *
  * @author Yunzhe.Jin
  * 2021/6/28 15:55
@@ -36,11 +38,15 @@ public class WeiyanSkill2 extends Skill {
             if (damaged > 0 && hero.isAlive()) {
                 final int rate = data[0];
                 final int addHp = CalcUtil.add100(damaged, rate);
-                if (addHp > 0 && hero.harmed()) {
+                if (addHp > 0) {
                     hero.addHp(addHp);
                 }
                 damaged = 0;
             }
         }
+    }
+
+    public void talent1(final int id) {
+        data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }
