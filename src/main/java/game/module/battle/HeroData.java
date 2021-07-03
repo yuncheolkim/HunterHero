@@ -11,17 +11,17 @@ public class HeroData {
     /**
      * 最大血量
      */
-    private int maxHp;
+    public int maxHp;
 
     /**
      * 护甲
      */
-    private int def;
+    public int def;
 
     /**
      * 护甲基数
      */
-    private int defBase;
+    public int defBase;
 
     /**
      * 伤害

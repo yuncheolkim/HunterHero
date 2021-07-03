@@ -42,7 +42,7 @@ public class CalcUtil {
             return val;
         }
         final float f = rate / 100.0f + 1;
-        return (int) (val * f);
+        return Math.round(val * f);
     }
 
     /**
@@ -54,7 +54,7 @@ public class CalcUtil {
         if (rate <= 0) {
             return 0;
         }
-        return (int) (val * rate / 100.0f);
+        return Math.round(val * rate / 100.0f);
     }
 
     /**

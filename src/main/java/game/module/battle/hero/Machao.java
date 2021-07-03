@@ -3,6 +3,7 @@ package game.module.battle.hero;
 import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.MachaoSkill1;
 import game.module.battle.skill.MachaoSkill2;
+import game.module.battle.skill.common.CriticalAddRateSkill;
 import game.module.fight.FightService;
 
 /**
@@ -36,9 +37,10 @@ public class Machao extends DefaultTargetHero {
                     skill2.talent1(id);
                     break;
                 case 413:
-                    skill1.talent2(id);
+                    addSkill(new CriticalAddRateSkill());
                     break;
                 case 414:
+                    skill1.talent2(id);
                     break;
                 case 415:
                     break;
