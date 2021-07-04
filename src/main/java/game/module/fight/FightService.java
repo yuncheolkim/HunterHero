@@ -52,7 +52,7 @@ public class FightService {
                         .setBody(fightStartPush.toByteString())
                         .build());
                 // 选择英雄时间
-                player.D.setFightTime(DateUtils.now() + TimeUnit.MINUTES.toMillis(10));
+                player.D.setFightTime(now + TimeUnit.MINUTES.toMillis(10));
             }
         } else {
             player.D.setFightTime(0);
