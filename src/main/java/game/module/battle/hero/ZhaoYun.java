@@ -13,10 +13,6 @@ import game.module.fight.FightService;
  */
 public class ZhaoYun extends DefaultTargetHero {
 
-    public ZhaoYun() {
-        super(true);
-    }
-
     @Override
     protected void initTalent() {
 

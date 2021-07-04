@@ -14,9 +14,6 @@ import game.module.fight.FightService;
  */
 public class Lusu extends Hero {
 
-    public Lusu() {
-    }
-
     @Override
     protected void initTalent() {
         final LusuSkill1 skill1 = new LusuSkill1();

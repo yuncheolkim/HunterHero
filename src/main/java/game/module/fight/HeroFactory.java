@@ -16,9 +16,9 @@ import game.proto.data.Property;
  */
 public class HeroFactory {
 
-    public static Hero createPlayerHero(Player player, PlayerHero playerHero) {
+    public static Hero createPlayerHero(final Player player, final PlayerHero playerHero) {
         Hero hero = null;
-        int heroId = playerHero.getId();
+        final int heroId = playerHero.getId();
         switch (heroId) {
             case 1001: {
                 hero = new Guanyu();
@@ -48,6 +48,26 @@ public class HeroFactory {
                 hero = new XiaHouDun();
                 break;
             }
+            case 1008: {
+                hero = new ZhouYu();
+                break;
+            }
+            case 1009: {
+                hero = new ZhuGeLiang();
+                break;
+            }
+            case 1010: {
+                hero = new DaQiao();
+                break;
+            }
+            case 1011: {
+                hero = new DianWei();
+                break;
+            }
+            case 1012: {
+                hero = new JiangWei();
+                break;
+            }
 
         }
 
@@ -57,7 +77,7 @@ public class HeroFactory {
         hero.setName(ConfigManager.getHeroName(heroId));
         hero.setTalentInfo(playerHero.getTalent());
         // property data
-        HeroData data = makeData(playerHero.getProperty());
+        final HeroData data = makeData(playerHero.getProperty());
 
         hero.origin = data;
         hero.heroStats.hp = data.getMaxHp();
@@ -65,8 +85,8 @@ public class HeroFactory {
         return hero;
     }
 
-    private static HeroData makeData(Property property) {
-        HeroData data = new HeroData();
+    private static HeroData makeData(final Property property) {
+        final HeroData data = new HeroData();
         data.setMaxHp(property.getHp());
         data.setDef(property.getDef());
         data.setDamage(property.getDamage());
@@ -79,13 +99,13 @@ public class HeroFactory {
         return data;
     }
 
-    public static CreatureTarget createFightEnemy(FightEnemyInfo info) {
+    public static CreatureTarget createFightEnemy(final FightEnemyInfo info) {
 
-        CreatureTarget target = new CreatureTarget();
+        final CreatureTarget target = new CreatureTarget();
         target.setId(info.getId());
         target.setName(info.getName());
         target.setLevel(info.getLevel());
-        HeroData data = makeData(info.getProperty());
+        final HeroData data = makeData(info.getProperty());
         target.origin = data;
         target.heroStats.hp = data.getMaxHp();
 
