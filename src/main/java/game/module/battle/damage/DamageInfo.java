@@ -25,10 +25,6 @@ public class DamageInfo {
      */
     public int sourceCriticalDamage;
 
-    /**
-     * 造成的伤害
-     */
-    public int attackedDamage;
 
     /**
      * 是否闪避
@@ -36,14 +32,14 @@ public class DamageInfo {
     public boolean avoid;
 
     /**
-     * 目标
-     */
-    public Hero target;
-
-    /**
      * 最初伤害来源
      */
     public Hero origin;
+
+    /**
+     * 目标
+     */
+    public Hero target;
 
     /**
      * 直接伤害来源
@@ -53,6 +49,7 @@ public class DamageInfo {
     public int allSourceDamage() {
         return sourceDamage + sourceCriticalDamage;
     }
+
 
     public void reduceDamage(final float rate) {
         sourceDamage = CalcUtil.calcRateSub(sourceDamage, rate);
@@ -103,7 +100,6 @@ public class DamageInfo {
     @Override
     public String toString() {
         return "DamageInfo{" +
-                "value=" + attackedDamage +
                 ", avoid=" + avoid +
                 ", target=" + target +
                 ", origin=" + origin +

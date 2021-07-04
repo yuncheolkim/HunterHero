@@ -14,19 +14,21 @@ public class CommonTest {
     @Test
     public void test1() {
 
-        D d = new D();
+        final D d = new D();
         d.task = new HashSet<>();
 
         d.task.add(1123);
         d.task.add(1);
 
-        String s = JsonUtil.toJsonString(d);
+        final String s = JsonUtil.toJsonString(d);
         System.out.println(s);
 
     }
+
 }
 
 class D {
     @JsonProperty
     public Set<Integer> task;
 }
+

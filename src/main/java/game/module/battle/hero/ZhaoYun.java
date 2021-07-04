@@ -17,7 +17,6 @@ public class ZhaoYun extends DefaultTargetHero {
     protected void initTalent() {
 
         final ZhaoyunSkill2 skill2 = new ZhaoyunSkill2();
-
         final ZhaoyunSkill1 skill1 = new ZhaoyunSkill1();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
@@ -44,6 +43,7 @@ public class ZhaoYun extends DefaultTargetHero {
                     break;
             }
         });
+        addSkill(skill1);
         addSkill(skill2);
     }
 }

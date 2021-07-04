@@ -4,7 +4,12 @@ import game.config.base.BaseConfigData;
 import game.config.base.DataConfigData;
 import game.module.battle.BattleConstant;
 import game.module.battle.CoolDown;
+import game.module.battle.action.ActionPoint;
+import game.module.battle.buff.BuffMergeType;
 import game.module.battle.buff.BuffType;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Yunzhe.Jin
@@ -19,14 +24,18 @@ public class BuffConfigData extends BaseConfigData<BuffConfigData> {
 
     public BuffType type;
 
+    public BuffMergeType mergeType;
+
     public int priority;
 
     public int round;
 
     public int[] data;
 
+    public List<ActionPoint> actionPointList = new ArrayList<>(1);
+
     @Override
-    protected void fill(DataConfigData d) {
+    protected void fill(final DataConfigData d) {
 
         move = d.i1 == 1;
         type = d.type == 1 ? BuffType.BUFF : BuffType.DE_BUFF;
@@ -40,6 +49,15 @@ public class BuffConfigData extends BaseConfigData<BuffConfigData> {
                 data[i] = d.list1.get(i);
             }
         }
+
+        if (d.sList != null) {
+            for (final String action : d.sList) {
+                final ActionPoint actionPoint = ActionPoint.valueOf(action);
+                actionPointList.add(actionPoint);
+            }
+        }
+
+        mergeType = d.i2 == 1 ? BuffMergeType.MERGE : BuffMergeType.REPLACE;
     }
 
     public CoolDown getCd() {

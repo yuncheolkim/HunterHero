@@ -2,7 +2,7 @@
     "1": {
         "avoid": 15,
         "critical": 15,
-        "criticalDamage": 2,
+        "criticalDamage": 1,
         "damage": 18,
         "def": 15,
         "gold": 85,
@@ -12,7 +12,7 @@
     "10": {
         "avoid": 123,
         "critical": 123,
-        "criticalDamage": 25,
+        "criticalDamage": 10,
         "damage": 172,
         "def": 123,
         "gold": 373,
@@ -22,7 +22,7 @@
     "11": {
         "avoid": 145,
         "critical": 145,
-        "criticalDamage": 27,
+        "criticalDamage": 11,
         "damage": 188,
         "def": 145,
         "gold": 400,
@@ -32,7 +32,7 @@
     "12": {
         "avoid": 169,
         "critical": 169,
-        "criticalDamage": 30,
+        "criticalDamage": 12,
         "damage": 203,
         "def": 169,
         "gold": 426,
@@ -42,7 +42,7 @@
     "13": {
         "avoid": 195,
         "critical": 195,
-        "criticalDamage": 32,
+        "criticalDamage": 13,
         "damage": 219,
         "def": 195,
         "gold": 450,
@@ -52,7 +52,7 @@
     "14": {
         "avoid": 223,
         "critical": 223,
-        "criticalDamage": 35,
+        "criticalDamage": 14,
         "damage": 234,
         "def": 223,
         "gold": 473,
@@ -62,7 +62,7 @@
     "15": {
         "avoid": 253,
         "critical": 253,
-        "criticalDamage": 37,
+        "criticalDamage": 15,
         "damage": 249,
         "def": 253,
         "gold": 495,
@@ -72,7 +72,7 @@
     "16": {
         "avoid": 285,
         "critical": 285,
-        "criticalDamage": 39,
+        "criticalDamage": 16,
         "damage": 263,
         "def": 285,
         "gold": 515,
@@ -82,7 +82,7 @@
     "17": {
         "avoid": 319,
         "critical": 319,
-        "criticalDamage": 42,
+        "criticalDamage": 17,
         "damage": 277,
         "def": 319,
         "gold": 534,
@@ -92,7 +92,7 @@
     "18": {
         "avoid": 355,
         "critical": 355,
-        "criticalDamage": 44,
+        "criticalDamage": 18,
         "damage": 291,
         "def": 355,
         "gold": 551,
@@ -102,7 +102,7 @@
     "19": {
         "avoid": 393,
         "critical": 393,
-        "criticalDamage": 46,
+        "criticalDamage": 19,
         "damage": 304,
         "def": 393,
         "gold": 568,
@@ -112,7 +112,7 @@
     "2": {
         "avoid": 19,
         "critical": 19,
-        "criticalDamage": 5,
+        "criticalDamage": 2,
         "damage": 35,
         "def": 19,
         "gold": 120,
@@ -122,7 +122,7 @@
     "20": {
         "avoid": 433,
         "critical": 433,
-        "criticalDamage": 49,
+        "criticalDamage": 20,
         "damage": 317,
         "def": 433,
         "gold": 583,
@@ -132,7 +132,7 @@
     "21": {
         "avoid": 475,
         "critical": 475,
-        "criticalDamage": 51,
+        "criticalDamage": 21,
         "damage": 330,
         "def": 475,
         "gold": 597,
@@ -142,7 +142,7 @@
     "22": {
         "avoid": 519,
         "critical": 519,
-        "criticalDamage": 53,
+        "criticalDamage": 22,
         "damage": 342,
         "def": 519,
         "gold": 610,
@@ -152,7 +152,7 @@
     "23": {
         "avoid": 565,
         "critical": 565,
-        "criticalDamage": 55,
+        "criticalDamage": 23,
         "damage": 354,
         "def": 565,
         "gold": 622,
@@ -162,7 +162,7 @@
     "24": {
         "avoid": 613,
         "critical": 613,
-        "criticalDamage": 58,
+        "criticalDamage": 24,
         "damage": 365,
         "def": 613,
         "gold": 634,
@@ -172,7 +172,7 @@
     "25": {
         "avoid": 663,
         "critical": 663,
-        "criticalDamage": 60,
+        "criticalDamage": 25,
         "damage": 376,
         "def": 663,
         "gold": 644,
@@ -182,7 +182,7 @@
     "26": {
         "avoid": 715,
         "critical": 715,
-        "criticalDamage": 62,
+        "criticalDamage": 26,
         "damage": 386,
         "def": 715,
         "gold": 653,
@@ -192,7 +192,7 @@
     "27": {
         "avoid": 769,
         "critical": 769,
-        "criticalDamage": 64,
+        "criticalDamage": 27,
         "damage": 396,
         "def": 769,
         "gold": 662,
@@ -202,7 +202,7 @@
     "28": {
         "avoid": 825,
         "critical": 825,
-        "criticalDamage": 66,
+        "criticalDamage": 28,
         "damage": 406,
         "def": 825,
         "gold": 670,
@@ -212,7 +212,7 @@
     "29": {
         "avoid": 883,
         "critical": 883,
-        "criticalDamage": 69,
+        "criticalDamage": 29,
         "damage": 416,
         "def": 883,
         "gold": 677,
@@ -222,7 +222,7 @@
     "3": {
         "avoid": 25,
         "critical": 25,
-        "criticalDamage": 7,
+        "criticalDamage": 3,
         "damage": 53,
         "def": 25,
         "gold": 154,
@@ -232,7 +232,7 @@
     "30": {
         "avoid": 943,
         "critical": 943,
-        "criticalDamage": 71,
+        "criticalDamage": 30,
         "damage": 425,
         "def": 943,
         "gold": 684,
@@ -242,7 +242,7 @@
     "31": {
         "avoid": 1005,
         "critical": 1005,
-        "criticalDamage": 73,
+        "criticalDamage": 31,
         "damage": 433,
         "def": 1005,
         "gold": 690,
@@ -252,7 +252,7 @@
     "32": {
         "avoid": 1069,
         "critical": 1069,
-        "criticalDamage": 75,
+        "criticalDamage": 32,
         "damage": 441,
         "def": 1069,
         "gold": 695,
@@ -262,7 +262,7 @@
     "33": {
         "avoid": 1135,
         "critical": 1135,
-        "criticalDamage": 77,
+        "criticalDamage": 33,
         "damage": 449,
         "def": 1135,
         "gold": 700,
@@ -272,7 +272,7 @@
     "34": {
         "avoid": 1203,
         "critical": 1203,
-        "criticalDamage": 79,
+        "criticalDamage": 34,
         "damage": 457,
         "def": 1203,
         "gold": 705,
@@ -282,7 +282,7 @@
     "35": {
         "avoid": 1273,
         "critical": 1273,
-        "criticalDamage": 81,
+        "criticalDamage": 35,
         "damage": 464,
         "def": 1273,
         "gold": 709,
@@ -292,7 +292,7 @@
     "36": {
         "avoid": 1345,
         "critical": 1345,
-        "criticalDamage": 82,
+        "criticalDamage": 36,
         "damage": 471,
         "def": 1345,
         "gold": 713,
@@ -302,7 +302,7 @@
     "37": {
         "avoid": 1419,
         "critical": 1419,
-        "criticalDamage": 84,
+        "criticalDamage": 37,
         "damage": 478,
         "def": 1419,
         "gold": 716,
@@ -312,7 +312,7 @@
     "38": {
         "avoid": 1495,
         "critical": 1495,
-        "criticalDamage": 86,
+        "criticalDamage": 38,
         "damage": 484,
         "def": 1495,
         "gold": 719,
@@ -322,7 +322,7 @@
     "39": {
         "avoid": 1573,
         "critical": 1573,
-        "criticalDamage": 88,
+        "criticalDamage": 39,
         "damage": 490,
         "def": 1573,
         "gold": 722,
@@ -332,7 +332,7 @@
     "4": {
         "avoid": 33,
         "critical": 33,
-        "criticalDamage": 10,
+        "criticalDamage": 4,
         "damage": 70,
         "def": 33,
         "gold": 188,
@@ -342,7 +342,7 @@
     "40": {
         "avoid": 1653,
         "critical": 1653,
-        "criticalDamage": 90,
+        "criticalDamage": 40,
         "damage": 496,
         "def": 1653,
         "gold": 725,
@@ -352,7 +352,7 @@
     "41": {
         "avoid": 1735,
         "critical": 1735,
-        "criticalDamage": 91,
+        "criticalDamage": 41,
         "damage": 501,
         "def": 1735,
         "gold": 727,
@@ -362,7 +362,7 @@
     "42": {
         "avoid": 1819,
         "critical": 1819,
-        "criticalDamage": 93,
+        "criticalDamage": 42,
         "damage": 506,
         "def": 1819,
         "gold": 729,
@@ -372,7 +372,7 @@
     "43": {
         "avoid": 1905,
         "critical": 1905,
-        "criticalDamage": 95,
+        "criticalDamage": 43,
         "damage": 511,
         "def": 1905,
         "gold": 731,
@@ -382,7 +382,7 @@
     "44": {
         "avoid": 1993,
         "critical": 1993,
-        "criticalDamage": 96,
+        "criticalDamage": 44,
         "damage": 516,
         "def": 1993,
         "gold": 733,
@@ -392,7 +392,7 @@
     "45": {
         "avoid": 2083,
         "critical": 2083,
-        "criticalDamage": 98,
+        "criticalDamage": 45,
         "damage": 521,
         "def": 2083,
         "gold": 735,
@@ -402,7 +402,7 @@
     "46": {
         "avoid": 2175,
         "critical": 2175,
-        "criticalDamage": 99,
+        "criticalDamage": 46,
         "damage": 525,
         "def": 2175,
         "gold": 736,
@@ -412,7 +412,7 @@
     "47": {
         "avoid": 2269,
         "critical": 2269,
-        "criticalDamage": 101,
+        "criticalDamage": 47,
         "damage": 529,
         "def": 2269,
         "gold": 737,
@@ -422,7 +422,7 @@
     "48": {
         "avoid": 2365,
         "critical": 2365,
-        "criticalDamage": 102,
+        "criticalDamage": 48,
         "damage": 533,
         "def": 2365,
         "gold": 739,
@@ -432,7 +432,7 @@
     "49": {
         "avoid": 2463,
         "critical": 2463,
-        "criticalDamage": 104,
+        "criticalDamage": 49,
         "damage": 536,
         "def": 2463,
         "gold": 740,
@@ -442,7 +442,7 @@
     "5": {
         "avoid": 43,
         "critical": 43,
-        "criticalDamage": 12,
+        "criticalDamage": 5,
         "damage": 88,
         "def": 43,
         "gold": 221,
@@ -452,7 +452,7 @@
     "50": {
         "avoid": 2563,
         "critical": 2563,
-        "criticalDamage": 105,
+        "criticalDamage": 50,
         "damage": 540,
         "def": 2563,
         "gold": 741,
@@ -462,7 +462,7 @@
     "51": {
         "avoid": 2665,
         "critical": 2665,
-        "criticalDamage": 107,
+        "criticalDamage": 51,
         "damage": 543,
         "def": 2665,
         "gold": 742,
@@ -472,7 +472,7 @@
     "52": {
         "avoid": 2769,
         "critical": 2769,
-        "criticalDamage": 108,
+        "criticalDamage": 52,
         "damage": 546,
         "def": 2769,
         "gold": 742,
@@ -482,7 +482,7 @@
     "53": {
         "avoid": 2875,
         "critical": 2875,
-        "criticalDamage": 109,
+        "criticalDamage": 53,
         "damage": 549,
         "def": 2875,
         "gold": 743,
@@ -492,7 +492,7 @@
     "54": {
         "avoid": 2983,
         "critical": 2983,
-        "criticalDamage": 110,
+        "criticalDamage": 54,
         "damage": 552,
         "def": 2983,
         "gold": 744,
@@ -502,7 +502,7 @@
     "55": {
         "avoid": 3093,
         "critical": 3093,
-        "criticalDamage": 111,
+        "criticalDamage": 55,
         "damage": 555,
         "def": 3093,
         "gold": 744,
@@ -512,7 +512,7 @@
     "56": {
         "avoid": 3205,
         "critical": 3205,
-        "criticalDamage": 113,
+        "criticalDamage": 56,
         "damage": 557,
         "def": 3205,
         "gold": 745,
@@ -522,7 +522,7 @@
     "57": {
         "avoid": 3319,
         "critical": 3319,
-        "criticalDamage": 114,
+        "criticalDamage": 57,
         "damage": 559,
         "def": 3319,
         "gold": 745,
@@ -532,7 +532,7 @@
     "58": {
         "avoid": 3435,
         "critical": 3435,
-        "criticalDamage": 115,
+        "criticalDamage": 58,
         "damage": 562,
         "def": 3435,
         "gold": 746,
@@ -542,7 +542,7 @@
     "59": {
         "avoid": 3553,
         "critical": 3553,
-        "criticalDamage": 116,
+        "criticalDamage": 59,
         "damage": 564,
         "def": 3553,
         "gold": 746,
@@ -552,7 +552,7 @@
     "6": {
         "avoid": 55,
         "critical": 55,
-        "criticalDamage": 15,
+        "criticalDamage": 6,
         "damage": 105,
         "def": 55,
         "gold": 254,
@@ -562,7 +562,7 @@
     "60": {
         "avoid": 3673,
         "critical": 3673,
-        "criticalDamage": 117,
+        "criticalDamage": 60,
         "damage": 566,
         "def": 3673,
         "gold": 747,
@@ -572,7 +572,7 @@
     "7": {
         "avoid": 69,
         "critical": 69,
-        "criticalDamage": 17,
+        "criticalDamage": 7,
         "damage": 122,
         "def": 69,
         "gold": 285,
@@ -582,7 +582,7 @@
     "8": {
         "avoid": 85,
         "critical": 85,
-        "criticalDamage": 20,
+        "criticalDamage": 8,
         "damage": 139,
         "def": 85,
         "gold": 316,
@@ -592,7 +592,7 @@
     "9": {
         "avoid": 103,
         "critical": 103,
-        "criticalDamage": 22,
+        "criticalDamage": 9,
         "damage": 155,
         "def": 103,
         "gold": 345,

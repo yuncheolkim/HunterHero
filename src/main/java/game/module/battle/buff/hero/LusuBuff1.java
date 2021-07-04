@@ -4,7 +4,6 @@ import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.Buff;
-import game.module.battle.buff.BuffMergeType;
 import game.utils.CalcUtil;
 
 /**
@@ -19,15 +18,8 @@ import game.utils.CalcUtil;
 public class LusuBuff1 extends Buff {
 
 
-    public LusuBuff1() {
-        super(BattleConstant.buff_lusu_1);
-        effectPoint.put(ActionPoint.被攻击之前, 1);
-        buffMergeType = BuffMergeType.MERGE;
-    }
-
-    @Override
-    protected int dataLen() {
-        return 2;
+    public LusuBuff1(final int sourceHeroId) {
+        super(BattleConstant.buff_lusu_1, sourceHeroId);
     }
 
     @Override
@@ -55,7 +47,6 @@ public class LusuBuff1 extends Buff {
 
     public void setHarmRate(final int v) {
         data[1] = v;
-
     }
 }
 

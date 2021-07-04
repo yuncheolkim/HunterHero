@@ -9,6 +9,7 @@ import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.BuffData;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -31,30 +32,25 @@ public abstract class Buff {
     /**
      * buff 来源
      */
-    protected Hero source;
-
-    /**
-     * 相同buff合并规则
-     */
-    protected BuffMergeType buffMergeType = BuffMergeType.REPLACE;
+    protected int sourceHeroId;
 
     public int[] data;
 
     public CoolDown cd;
 
-    public Buff(final int id) {
+    public Buff(final int id, final int sourceHeroId) {
         this.id = id;
+        this.sourceHeroId = sourceHeroId;
         config = ConfigManager.buffDataBox.findById(id);
         cd = config.getCd().cold();
-        data = new int[dataLen()];
-    }
+        if (config.data != null) {
+            this.data = Arrays.copyOf(config.data, config.data.length);
+        }
 
-    /**
-     * 使用数据的长度
-     *
-     * @return
-     */
-    protected abstract int dataLen();
+        for (final ActionPoint actionPoint : config.actionPointList) {
+            effectPoint.put(actionPoint, 1);
+        }
+    }
 
     /**
      * 是否需要重新计算属性
@@ -121,6 +117,11 @@ public abstract class Buff {
     }
 
     protected void mergeData(final Buff from) {
+        if (data != null) {
+            for (int i = 0; i < data.length; i++) {
+                data[i] += from.data[i];
+            }
+        }
 
     }
 
@@ -142,7 +143,7 @@ public abstract class Buff {
      * @return
      */
     public BuffMergeType calcBuffMergeType(final Buff addBuf) {
-        return buffMergeType;
+        return config.mergeType;
     }
 
     public String name() {
@@ -161,23 +162,6 @@ public abstract class Buff {
         return config.priority;
     }
 
-    public Hero getSource() {
-        return source;
-    }
-
-    public void setSource(final Hero source) {
-        this.source = source;
-    }
-
-    public BuffMergeType getBuffMergeType() {
-        return buffMergeType;
-    }
-
-    public void setBuffMergeType(final BuffMergeType buffMergeType) {
-        this.buffMergeType = buffMergeType;
-    }
-
-    @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

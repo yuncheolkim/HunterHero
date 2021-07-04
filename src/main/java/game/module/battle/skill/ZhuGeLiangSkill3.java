@@ -4,26 +4,24 @@ import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.LusuBuff1;
+import game.module.battle.buff.hero.ZhuoShaoBuff;
 import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
 /**
- * 攻击施加冰冻buff
+ * 攻击施加灼烧buff
  * <p>
  * 0: 施加buff概率
- * 1: 防御比例
- * 2: 伤害加深比例
- * 3: CD时间
+ * 1: 持续时间
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
  */
-public class LusuSkill2 extends Skill {
+public class ZhuGeLiangSkill3 extends Skill {
 
 
-    public LusuSkill2() {
-        super(21);
+    public ZhuGeLiangSkill3() {
+        super(37);
         actionPoint.put(ActionPoint.出手后, 1);
     }
 
@@ -36,12 +34,10 @@ public class LusuSkill2 extends Skill {
                 if (CalcUtil.happened100(addBuffRate)) {
                     //加buff
                     final Hero target = hero.getBattle().getDamageInfo().target;
-                    final LusuBuff1 addBuff = new LusuBuff1(hero.getId());
-                    final int buffDefRate = data[1];
-                    final int buffHarmRate = data[2];
-                    addBuff.setDefRate(buffDefRate);
-                    addBuff.setHarmRate(buffHarmRate);
-                    addBuff.SetCd(data[3]);
+                    final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
+                    if (data[1] > 0) {
+                        addBuff.SetCd(data[1]);
+                    }
                     target.addBuff(addBuff);
                 }
                 break;

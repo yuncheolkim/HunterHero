@@ -170,6 +170,8 @@ public class DataConfigData {
     public List<Integer> targetList;
 
     @JsonProperty
+    public List<String> sList;
+    @JsonProperty
     public List<Integer> list1;
 
     @JsonProperty

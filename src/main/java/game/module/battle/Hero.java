@@ -338,7 +338,6 @@ public class Hero {
         } else {
             // 计算buff
             processAll(ActionPoint.受到伤害之前);
-            info.attackedDamage = info.allSourceDamage();
             // 减血
             reduceHp(info);
 
@@ -429,7 +428,7 @@ public class Hero {
      */
     public void reduceHp(final DamageInfo i) {
         final Hero target = i.target;
-        final int num = i.attackedDamage;
+        final int num = i.allSourceDamage();
 
         if (num <= 0) {
             return;
