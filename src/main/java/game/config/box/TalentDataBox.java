@@ -11,6 +11,6 @@ public class TalentDataBox extends MapConfigDataBox<TalentConfigData> {
 
 
     public TalentDataBox() {
-        super("data/talent_英雄天赋.json");
+        super("data/hero_英雄天赋.json");
     }
 }

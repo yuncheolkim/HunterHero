@@ -43,6 +43,10 @@ public class CalcUtil {
         return add100(val, rate) + val;
     }
 
+    public static float final100(final float val, final int rate) {
+        return val * rate / 100 + val;
+    }
+
     /**
      * @param val
      * @param rate
@@ -53,6 +57,13 @@ public class CalcUtil {
             return 0;
         }
         return Math.round(val * rate / 100.0f);
+    }
+
+    public static float add100(final float val, final int rate) {
+        if (rate <= 0) {
+            return 0;
+        }
+        return val * rate / 100.0f;
     }
 
     /**

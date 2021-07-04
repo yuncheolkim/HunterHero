@@ -4,6 +4,7 @@ import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
+import game.module.battle.damage.DamageInfo;
 import game.module.battle.record.Record;
 
 /**
@@ -21,6 +22,10 @@ public class ReduceDamageSkill extends Skill {
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
+        final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
+        if (damageInfo.origin == hero) {
+            return;
+        }
         switch (actionPoint) {
             case 受到伤害之前:
                 Logs.trace("ReduceDamageSkill", data[0] / 100.f);
