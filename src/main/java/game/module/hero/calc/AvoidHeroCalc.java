@@ -1,8 +1,7 @@
 package game.module.hero.calc;
 
-import game.base.G;
-import game.config.base.DataConfigData;
 import game.config.data.HeroBaseConfigData;
+import game.config.data.PropertyConfigData;
 import game.manager.ConfigManager;
 import game.proto.data.Equipment;
 import game.proto.data.HeroRealm;
@@ -32,16 +31,16 @@ public class AvoidHeroCalc extends BaseHeroCalc {
         // 历练
         HeroRealm realm = old.getPowerUpMap().get(4);
         if (realm != null) {
-            final DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
-            value += dataConfigData.avoid;
+            final PropertyConfigData dataConfigData = ConfigManager.lilianBox.findById(realm.getLevel());
+            value += dataConfigData.property.getAvoid();
         }
 
         realm = old.getPowerUpMap().get(14);
         // 修炼
         if (realm != null) {
-            final DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
+            final PropertyConfigData dataConfigData = ConfigManager.xiulianBox.findById(realm.getLevel());
 
-            value = CalcUtil.final100(value, dataConfigData.avoid);
+            value = CalcUtil.final100(value, dataConfigData.property.getAvoid());
         }
         value = calcTalent(old, value, 4);
 

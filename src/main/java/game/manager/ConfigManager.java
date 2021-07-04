@@ -4,7 +4,6 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Multimap;
 import game.base.AbsLifecycle;
-import game.base.G;
 import game.config.base.BaseConfigData;
 import game.config.base.DataConfigData;
 import game.config.base.IConfigParse;
@@ -27,15 +26,7 @@ import java.util.stream.Collectors;
 public class ConfigManager extends AbsLifecycle {
 
 
-    public static Map<Integer, DataConfigData> dataMap5;
-
-
     public Map<Integer, DataConfigData> dataMap7;
-
-
-    public Map<Integer, DataConfigData> dataMap12;
-
-    public Map<Integer, DataConfigData> dataMap13;
 
 
     public static Map<Integer, DataConfigData> taskMap4;
@@ -88,6 +79,10 @@ public class ConfigManager extends AbsLifecycle {
 
     public static final SkillDataBox skillDataBox = new SkillDataBox();
 
+    public static final EmptyDataBox enemyNameBox = new EmptyDataBox("data/enemy_怪列表.json");
+    public static final PropertyDataBox lilianBox = new PropertyDataBox("data/hero_历练.json");
+    public static final PropertyDataBox xiulianBox = new PropertyDataBox("data/hero_修炼.json");
+
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
     static {
@@ -108,15 +103,15 @@ public class ConfigManager extends AbsLifecycle {
         list.add(enemy1DataBox);
         list.add(enemyPropertyDataBox);
         list.add(skillDataBox);
+        list.add(enemyNameBox);
+        list.add(lilianBox);
+        list.add(xiulianBox);
     }
 
     @Override
     public void start() {
         super.start();
-        dataMap5 = new JsonConfig("data/enemy_怪列表.json").load();
         dataMap7 = new JsonConfig("data/data_7-地区.json", 16).load();
-        dataMap12 = new JsonConfig("data/data_12-历练.json", 64).load();
-        dataMap13 = new JsonConfig("data/data_13-修炼.json", 32).load();
         taskMap4 = new JsonConfig("data/task_4-任务.json").load();
         // npc task
         for (final DataConfigData value : taskMap4.values()) {
@@ -299,12 +294,12 @@ public class ConfigManager extends AbsLifecycle {
         return paramConfigData;
     }
 
-    public DataConfigData GetPowerUpData(final int id, final int level) {
+    public static PropertyConfigData GetPowerUpData(final int id, final int level) {
 
         if (id < 10) {
-            return G.C.dataMap12.get(level);
+            return lilianBox.findById(level);
         } else if (id < 20) {
-            return G.C.dataMap13.get(level);
+            return xiulianBox.findById(level);
         }
         return null;
     }
@@ -331,7 +326,7 @@ public class ConfigManager extends AbsLifecycle {
 
 
     public static String getEnemyName(final int id) {
-        return dataMap5.get(id).name;
+        return enemyNameBox.findById(id).name;
     }
 }
 

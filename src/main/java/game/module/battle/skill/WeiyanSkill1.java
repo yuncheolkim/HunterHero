@@ -35,38 +35,28 @@ public class WeiyanSkill1 extends Skill {
         final int i = damageInfo.allSourceDamage();
 
         final int addHp = CalcUtil.add100(i, data[0]);
+        final int old = hero.getHp();
 
-        if (addHp > 0 && hero.harmed()) {
-            final int old = hero.getHp();
+        if (addHp > 0) {
             hero.addHp(addHp);
-
             if (overHpHeal) {
-
-                final int added = hero.getHp() - old;
-                final int overflow = Math.max(0, addHp - added);
-                if (overflow > 0) {
-                    int remain = overflow;
-                    final Map<Integer, Hero> friends = hero.getBattle().mySideHeroes(hero.getSide());
-                    for (final Hero friend : friends.values()) {
-                        if (friend.getId() != hero.getId() && friend.isAlive()) {
-                            remain -= friend.addHp(remain);
-                            if (remain == 0) {
-                                break;
-                            }
+                int remain = addHp;
+                final Map<Integer, Hero> friends = hero.getBattle().mySideHeroes(hero.getSide());
+                for (final Hero friend : friends.values()) {
+                    if (friend.getId() != hero.getId() && friend.isAlive()) {
+                        remain -= friend.addHp(remain);
+                        if (remain == 0) {
+                            break;
                         }
                     }
                 }
             }
-
             if (overHpShield) {
-                final int added = hero.getHp() - old;
-                final int overflow = Math.max(0, addHp - added);
-                if (overflow > 0) {
-                    hero.addShield(data[1], overflow, null);
-                }
+                hero.addShield(data[1], addHp, null);
             }
-
         }
+
+
     }
 
     public void talent1(final int id) {

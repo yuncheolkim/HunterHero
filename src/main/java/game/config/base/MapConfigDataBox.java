@@ -8,29 +8,29 @@ import java.util.Map;
  * @author Yunzhe.Jin
  * 2021/6/12 19:22
  */
-public abstract class MapConfigDataBox<T extends BaseConfigData<T>> extends ConfigDataBox<T> {
+public class MapConfigDataBox<T extends BaseConfigData<T>> extends ConfigDataBox<T> {
 
     protected Map<Integer, T> map;
 
-    public MapConfigDataBox(String path) {
+    public MapConfigDataBox(final String path) {
         super(path);
     }
 
     @Override
-    protected void parse(Map<Integer, DataConfigData> dataMap) {
+    protected void parse(final Map<Integer, DataConfigData> dataMap) {
         final ImmutableMap.Builder<Integer, T> temp = ImmutableMap.builder();
         dataMap.forEach((integer, dataConfigData) -> temp.put(integer, supplier(dataConfigData)));
         map = temp.build();
     }
 
     @Override
-    public T findById(int id) {
+    public T findById(final int id) {
         return map.get(id);
     }
 
     @Override
     public void end() {
-        for (T t : map.values()) {
+        for (final T t : map.values()) {
             t.end();
         }
     }

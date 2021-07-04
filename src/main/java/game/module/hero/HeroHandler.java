@@ -1,10 +1,9 @@
 package game.module.hero;
 
 import game.anno.InsideMsgHandler;
-import game.base.G;
 import game.base.constants.GameConstants;
-import game.config.base.DataConfigData;
 import game.config.data.ItemConfigData;
+import game.config.data.PropertyConfigData;
 import game.exception.ErrorEnum;
 import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
@@ -36,7 +35,7 @@ public class HeroHandler {
             final HeroRealm realm = hero.getPowerUpMap().get(req.getStepId());
             level = realm.getLevel() + 1;
         }
-        final DataConfigData dataConfigData = G.C.GetPowerUpData(req.getStepId(), level);
+        final PropertyConfigData dataConfigData = ConfigManager.GetPowerUpData(req.getStepId(), level);
         ModuleAssert.notNull(dataConfigData, ErrorEnum.ERR_5);
         // Gold
         player.consumeGold(dataConfigData.gold, ConsumeTypeEnum.历练);

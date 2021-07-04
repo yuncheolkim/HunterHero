@@ -82,11 +82,12 @@ public class FightService {
         int min = 1;
         int max = 1;
         for (final Integer enemyAreaId : player.D.getFightAreaList()) {
-            EnemyCountConfigData data = ConfigManager.enemyCountDataBox.findById(enemyAreaId);
+            final EnemyCountConfigData data = ConfigManager.enemyCountDataBox.findById(enemyAreaId);
             min = Math.max(min, data.min);
             max = Math.max(max, data.max);
         }
-        final int count = CalcUtil.random(min, max);
+
+        final int count = (min ^ max) == 0 ? min : CalcUtil.random(min, max);
 
         // hero info
         final List<WeightData<Integer>> result = new ArrayList<>(count);
@@ -102,7 +103,7 @@ public class FightService {
         for (int i = 0; i < count; i++) {
             final FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
             final WeightData<Integer> d = result.get(i);
-            EnemyPropertyConfigData p = ConfigManager.enemyPropertyDataBox.findById(d.data);
+            final EnemyPropertyConfigData p = ConfigManager.enemyPropertyDataBox.findById(d.data);
 
             builder.setId(p.enemyId);
             builder.setPos(pos.get(i));
@@ -117,11 +118,11 @@ public class FightService {
         return push.build();
     }
 
-    public static FightStartPush genBattleEnemy(int battleId) {
+    public static FightStartPush genBattleEnemy(final int battleId) {
 
-        List<BattleFormationConfigData> enemyList = ConfigManager.battleFormationDataBox.findByCollectId(battleId);
+        final List<BattleFormationConfigData> enemyList = ConfigManager.battleFormationDataBox.findByCollectId(battleId);
         final FightStartPush.Builder push = FightStartPush.newBuilder();
-        for (BattleFormationConfigData d : enemyList) {
+        for (final BattleFormationConfigData d : enemyList) {
 
             final FightEnemyInfo.Builder builder = FightEnemyInfo.newBuilder();
             builder.setId(d.enemyId);
@@ -136,18 +137,18 @@ public class FightService {
     }
 
 
-    public static void talentProcess(int heroId, int talentInfo, Consumer<TalentConfigData> talent) {
-        HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(heroId);
+    public static void talentProcess(final int heroId, final int talentInfo, final Consumer<TalentConfigData> talent) {
+        final HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(heroId);
 
-        List<Integer> talentList = CalcUtil.getIntList(talentInfo);
+        final List<Integer> talentList = CalcUtil.getIntList(talentInfo);
         for (int i = 0; i < talentList.size(); i++) {
             final int talentRowIndex = talentList.get(i);
             if (talentRowIndex == 9) {
                 continue;
             }
-            int index = i * 3 + talentRowIndex - 1;
-            int talentId = heroConfig.talent.get(index);
-            TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
+            final int index = i * 3 + talentRowIndex - 1;
+            final int talentId = heroConfig.talent.get(index);
+            final TalentConfigData tdata = ConfigManager.talentDataBox.findById(talentId);
             if (tdata.talentId <= 20) {
                 continue;
             }

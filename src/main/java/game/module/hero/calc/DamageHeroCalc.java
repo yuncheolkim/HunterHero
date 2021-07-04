@@ -1,8 +1,7 @@
 package game.module.hero.calc;
 
-import game.base.G;
-import game.config.base.DataConfigData;
 import game.config.data.HeroBaseConfigData;
+import game.config.data.PropertyConfigData;
 import game.manager.ConfigManager;
 import game.proto.data.Equipment;
 import game.proto.data.HeroRealm;
@@ -32,16 +31,16 @@ public class DamageHeroCalc extends BaseHeroCalc {
         // 历练
         HeroRealm realm = old.getPowerUpMap().get(2);
         if (realm != null) {
-            final DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
-            damage += dataConfigData.damage;
+            final PropertyConfigData dataConfigData = ConfigManager.lilianBox.findById(realm.getLevel());
+            damage += dataConfigData.property.getDamage();
         }
         realm = old.getPowerUpMap().get(12);
 
         // 修炼
         if (realm != null) {
-            final DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
+            final PropertyConfigData dataConfigData = ConfigManager.xiulianBox.findById(realm.getLevel());
 
-            damage = CalcUtil.final100(damage, dataConfigData.damage);
+            damage = CalcUtil.final100(damage, dataConfigData.property.getDamage());
         }
 
         // 天赋

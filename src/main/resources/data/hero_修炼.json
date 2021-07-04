@@ -1,0 +1,1002 @@
+{
+    "1": {
+        "avoid": 2,
+        "critical": 2,
+        "criticalDamage": 1,
+        "damage": 2,
+        "def": 2,
+        "gold": 50,
+        "hp": 2,
+        "id": 1
+    },
+    "10": {
+        "avoid": 20,
+        "critical": 20,
+        "criticalDamage": 10,
+        "damage": 20,
+        "def": 20,
+        "gold": 140,
+        "hp": 20,
+        "id": 10
+    },
+    "100": {
+        "avoid": 200,
+        "critical": 200,
+        "criticalDamage": 100,
+        "damage": 200,
+        "def": 200,
+        "gold": 1040,
+        "hp": 200,
+        "id": 100
+    },
+    "11": {
+        "avoid": 22,
+        "critical": 22,
+        "criticalDamage": 11,
+        "damage": 22,
+        "def": 22,
+        "gold": 150,
+        "hp": 22,
+        "id": 11
+    },
+    "12": {
+        "avoid": 24,
+        "critical": 24,
+        "criticalDamage": 12,
+        "damage": 24,
+        "def": 24,
+        "gold": 160,
+        "hp": 24,
+        "id": 12
+    },
+    "13": {
+        "avoid": 26,
+        "critical": 26,
+        "criticalDamage": 13,
+        "damage": 26,
+        "def": 26,
+        "gold": 170,
+        "hp": 26,
+        "id": 13
+    },
+    "14": {
+        "avoid": 28,
+        "critical": 28,
+        "criticalDamage": 14,
+        "damage": 28,
+        "def": 28,
+        "gold": 180,
+        "hp": 28,
+        "id": 14
+    },
+    "15": {
+        "avoid": 30,
+        "critical": 30,
+        "criticalDamage": 15,
+        "damage": 30,
+        "def": 30,
+        "gold": 190,
+        "hp": 30,
+        "id": 15
+    },
+    "16": {
+        "avoid": 32,
+        "critical": 32,
+        "criticalDamage": 16,
+        "damage": 32,
+        "def": 32,
+        "gold": 200,
+        "hp": 32,
+        "id": 16
+    },
+    "17": {
+        "avoid": 34,
+        "critical": 34,
+        "criticalDamage": 17,
+        "damage": 34,
+        "def": 34,
+        "gold": 210,
+        "hp": 34,
+        "id": 17
+    },
+    "18": {
+        "avoid": 36,
+        "critical": 36,
+        "criticalDamage": 18,
+        "damage": 36,
+        "def": 36,
+        "gold": 220,
+        "hp": 36,
+        "id": 18
+    },
+    "19": {
+        "avoid": 38,
+        "critical": 38,
+        "criticalDamage": 19,
+        "damage": 38,
+        "def": 38,
+        "gold": 230,
+        "hp": 38,
+        "id": 19
+    },
+    "2": {
+        "avoid": 4,
+        "critical": 4,
+        "criticalDamage": 2,
+        "damage": 4,
+        "def": 4,
+        "gold": 60,
+        "hp": 4,
+        "id": 2
+    },
+    "20": {
+        "avoid": 40,
+        "critical": 40,
+        "criticalDamage": 20,
+        "damage": 40,
+        "def": 40,
+        "gold": 240,
+        "hp": 40,
+        "id": 20
+    },
+    "21": {
+        "avoid": 42,
+        "critical": 42,
+        "criticalDamage": 21,
+        "damage": 42,
+        "def": 42,
+        "gold": 250,
+        "hp": 42,
+        "id": 21
+    },
+    "22": {
+        "avoid": 44,
+        "critical": 44,
+        "criticalDamage": 22,
+        "damage": 44,
+        "def": 44,
+        "gold": 260,
+        "hp": 44,
+        "id": 22
+    },
+    "23": {
+        "avoid": 46,
+        "critical": 46,
+        "criticalDamage": 23,
+        "damage": 46,
+        "def": 46,
+        "gold": 270,
+        "hp": 46,
+        "id": 23
+    },
+    "24": {
+        "avoid": 48,
+        "critical": 48,
+        "criticalDamage": 24,
+        "damage": 48,
+        "def": 48,
+        "gold": 280,
+        "hp": 48,
+        "id": 24
+    },
+    "25": {
+        "avoid": 50,
+        "critical": 50,
+        "criticalDamage": 25,
+        "damage": 50,
+        "def": 50,
+        "gold": 290,
+        "hp": 50,
+        "id": 25
+    },
+    "26": {
+        "avoid": 52,
+        "critical": 52,
+        "criticalDamage": 26,
+        "damage": 52,
+        "def": 52,
+        "gold": 300,
+        "hp": 52,
+        "id": 26
+    },
+    "27": {
+        "avoid": 54,
+        "critical": 54,
+        "criticalDamage": 27,
+        "damage": 54,
+        "def": 54,
+        "gold": 310,
+        "hp": 54,
+        "id": 27
+    },
+    "28": {
+        "avoid": 56,
+        "critical": 56,
+        "criticalDamage": 28,
+        "damage": 56,
+        "def": 56,
+        "gold": 320,
+        "hp": 56,
+        "id": 28
+    },
+    "29": {
+        "avoid": 58,
+        "critical": 58,
+        "criticalDamage": 29,
+        "damage": 58,
+        "def": 58,
+        "gold": 330,
+        "hp": 58,
+        "id": 29
+    },
+    "3": {
+        "avoid": 6,
+        "critical": 6,
+        "criticalDamage": 3,
+        "damage": 6,
+        "def": 6,
+        "gold": 70,
+        "hp": 6,
+        "id": 3
+    },
+    "30": {
+        "avoid": 60,
+        "critical": 60,
+        "criticalDamage": 30,
+        "damage": 60,
+        "def": 60,
+        "gold": 340,
+        "hp": 60,
+        "id": 30
+    },
+    "31": {
+        "avoid": 62,
+        "critical": 62,
+        "criticalDamage": 31,
+        "damage": 62,
+        "def": 62,
+        "gold": 350,
+        "hp": 62,
+        "id": 31
+    },
+    "32": {
+        "avoid": 64,
+        "critical": 64,
+        "criticalDamage": 32,
+        "damage": 64,
+        "def": 64,
+        "gold": 360,
+        "hp": 64,
+        "id": 32
+    },
+    "33": {
+        "avoid": 66,
+        "critical": 66,
+        "criticalDamage": 33,
+        "damage": 66,
+        "def": 66,
+        "gold": 370,
+        "hp": 66,
+        "id": 33
+    },
+    "34": {
+        "avoid": 68,
+        "critical": 68,
+        "criticalDamage": 34,
+        "damage": 68,
+        "def": 68,
+        "gold": 380,
+        "hp": 68,
+        "id": 34
+    },
+    "35": {
+        "avoid": 70,
+        "critical": 70,
+        "criticalDamage": 35,
+        "damage": 70,
+        "def": 70,
+        "gold": 390,
+        "hp": 70,
+        "id": 35
+    },
+    "36": {
+        "avoid": 72,
+        "critical": 72,
+        "criticalDamage": 36,
+        "damage": 72,
+        "def": 72,
+        "gold": 400,
+        "hp": 72,
+        "id": 36
+    },
+    "37": {
+        "avoid": 74,
+        "critical": 74,
+        "criticalDamage": 37,
+        "damage": 74,
+        "def": 74,
+        "gold": 410,
+        "hp": 74,
+        "id": 37
+    },
+    "38": {
+        "avoid": 76,
+        "critical": 76,
+        "criticalDamage": 38,
+        "damage": 76,
+        "def": 76,
+        "gold": 420,
+        "hp": 76,
+        "id": 38
+    },
+    "39": {
+        "avoid": 78,
+        "critical": 78,
+        "criticalDamage": 39,
+        "damage": 78,
+        "def": 78,
+        "gold": 430,
+        "hp": 78,
+        "id": 39
+    },
+    "4": {
+        "avoid": 8,
+        "critical": 8,
+        "criticalDamage": 4,
+        "damage": 8,
+        "def": 8,
+        "gold": 80,
+        "hp": 8,
+        "id": 4
+    },
+    "40": {
+        "avoid": 80,
+        "critical": 80,
+        "criticalDamage": 40,
+        "damage": 80,
+        "def": 80,
+        "gold": 440,
+        "hp": 80,
+        "id": 40
+    },
+    "41": {
+        "avoid": 82,
+        "critical": 82,
+        "criticalDamage": 41,
+        "damage": 82,
+        "def": 82,
+        "gold": 450,
+        "hp": 82,
+        "id": 41
+    },
+    "42": {
+        "avoid": 84,
+        "critical": 84,
+        "criticalDamage": 42,
+        "damage": 84,
+        "def": 84,
+        "gold": 460,
+        "hp": 84,
+        "id": 42
+    },
+    "43": {
+        "avoid": 86,
+        "critical": 86,
+        "criticalDamage": 43,
+        "damage": 86,
+        "def": 86,
+        "gold": 470,
+        "hp": 86,
+        "id": 43
+    },
+    "44": {
+        "avoid": 88,
+        "critical": 88,
+        "criticalDamage": 44,
+        "damage": 88,
+        "def": 88,
+        "gold": 480,
+        "hp": 88,
+        "id": 44
+    },
+    "45": {
+        "avoid": 90,
+        "critical": 90,
+        "criticalDamage": 45,
+        "damage": 90,
+        "def": 90,
+        "gold": 490,
+        "hp": 90,
+        "id": 45
+    },
+    "46": {
+        "avoid": 92,
+        "critical": 92,
+        "criticalDamage": 46,
+        "damage": 92,
+        "def": 92,
+        "gold": 500,
+        "hp": 92,
+        "id": 46
+    },
+    "47": {
+        "avoid": 94,
+        "critical": 94,
+        "criticalDamage": 47,
+        "damage": 94,
+        "def": 94,
+        "gold": 510,
+        "hp": 94,
+        "id": 47
+    },
+    "48": {
+        "avoid": 96,
+        "critical": 96,
+        "criticalDamage": 48,
+        "damage": 96,
+        "def": 96,
+        "gold": 520,
+        "hp": 96,
+        "id": 48
+    },
+    "49": {
+        "avoid": 98,
+        "critical": 98,
+        "criticalDamage": 49,
+        "damage": 98,
+        "def": 98,
+        "gold": 530,
+        "hp": 98,
+        "id": 49
+    },
+    "5": {
+        "avoid": 10,
+        "critical": 10,
+        "criticalDamage": 5,
+        "damage": 10,
+        "def": 10,
+        "gold": 90,
+        "hp": 10,
+        "id": 5
+    },
+    "50": {
+        "avoid": 100,
+        "critical": 100,
+        "criticalDamage": 50,
+        "damage": 100,
+        "def": 100,
+        "gold": 540,
+        "hp": 100,
+        "id": 50
+    },
+    "51": {
+        "avoid": 102,
+        "critical": 102,
+        "criticalDamage": 51,
+        "damage": 102,
+        "def": 102,
+        "gold": 550,
+        "hp": 102,
+        "id": 51
+    },
+    "52": {
+        "avoid": 104,
+        "critical": 104,
+        "criticalDamage": 52,
+        "damage": 104,
+        "def": 104,
+        "gold": 560,
+        "hp": 104,
+        "id": 52
+    },
+    "53": {
+        "avoid": 106,
+        "critical": 106,
+        "criticalDamage": 53,
+        "damage": 106,
+        "def": 106,
+        "gold": 570,
+        "hp": 106,
+        "id": 53
+    },
+    "54": {
+        "avoid": 108,
+        "critical": 108,
+        "criticalDamage": 54,
+        "damage": 108,
+        "def": 108,
+        "gold": 580,
+        "hp": 108,
+        "id": 54
+    },
+    "55": {
+        "avoid": 110,
+        "critical": 110,
+        "criticalDamage": 55,
+        "damage": 110,
+        "def": 110,
+        "gold": 590,
+        "hp": 110,
+        "id": 55
+    },
+    "56": {
+        "avoid": 112,
+        "critical": 112,
+        "criticalDamage": 56,
+        "damage": 112,
+        "def": 112,
+        "gold": 600,
+        "hp": 112,
+        "id": 56
+    },
+    "57": {
+        "avoid": 114,
+        "critical": 114,
+        "criticalDamage": 57,
+        "damage": 114,
+        "def": 114,
+        "gold": 610,
+        "hp": 114,
+        "id": 57
+    },
+    "58": {
+        "avoid": 116,
+        "critical": 116,
+        "criticalDamage": 58,
+        "damage": 116,
+        "def": 116,
+        "gold": 620,
+        "hp": 116,
+        "id": 58
+    },
+    "59": {
+        "avoid": 118,
+        "critical": 118,
+        "criticalDamage": 59,
+        "damage": 118,
+        "def": 118,
+        "gold": 630,
+        "hp": 118,
+        "id": 59
+    },
+    "6": {
+        "avoid": 12,
+        "critical": 12,
+        "criticalDamage": 6,
+        "damage": 12,
+        "def": 12,
+        "gold": 100,
+        "hp": 12,
+        "id": 6
+    },
+    "60": {
+        "avoid": 120,
+        "critical": 120,
+        "criticalDamage": 60,
+        "damage": 120,
+        "def": 120,
+        "gold": 640,
+        "hp": 120,
+        "id": 60
+    },
+    "61": {
+        "avoid": 122,
+        "critical": 122,
+        "criticalDamage": 61,
+        "damage": 122,
+        "def": 122,
+        "gold": 650,
+        "hp": 122,
+        "id": 61
+    },
+    "62": {
+        "avoid": 124,
+        "critical": 124,
+        "criticalDamage": 62,
+        "damage": 124,
+        "def": 124,
+        "gold": 660,
+        "hp": 124,
+        "id": 62
+    },
+    "63": {
+        "avoid": 126,
+        "critical": 126,
+        "criticalDamage": 63,
+        "damage": 126,
+        "def": 126,
+        "gold": 670,
+        "hp": 126,
+        "id": 63
+    },
+    "64": {
+        "avoid": 128,
+        "critical": 128,
+        "criticalDamage": 64,
+        "damage": 128,
+        "def": 128,
+        "gold": 680,
+        "hp": 128,
+        "id": 64
+    },
+    "65": {
+        "avoid": 130,
+        "critical": 130,
+        "criticalDamage": 65,
+        "damage": 130,
+        "def": 130,
+        "gold": 690,
+        "hp": 130,
+        "id": 65
+    },
+    "66": {
+        "avoid": 132,
+        "critical": 132,
+        "criticalDamage": 66,
+        "damage": 132,
+        "def": 132,
+        "gold": 700,
+        "hp": 132,
+        "id": 66
+    },
+    "67": {
+        "avoid": 134,
+        "critical": 134,
+        "criticalDamage": 67,
+        "damage": 134,
+        "def": 134,
+        "gold": 710,
+        "hp": 134,
+        "id": 67
+    },
+    "68": {
+        "avoid": 136,
+        "critical": 136,
+        "criticalDamage": 68,
+        "damage": 136,
+        "def": 136,
+        "gold": 720,
+        "hp": 136,
+        "id": 68
+    },
+    "69": {
+        "avoid": 138,
+        "critical": 138,
+        "criticalDamage": 69,
+        "damage": 138,
+        "def": 138,
+        "gold": 730,
+        "hp": 138,
+        "id": 69
+    },
+    "7": {
+        "avoid": 14,
+        "critical": 14,
+        "criticalDamage": 7,
+        "damage": 14,
+        "def": 14,
+        "gold": 110,
+        "hp": 14,
+        "id": 7
+    },
+    "70": {
+        "avoid": 140,
+        "critical": 140,
+        "criticalDamage": 70,
+        "damage": 140,
+        "def": 140,
+        "gold": 740,
+        "hp": 140,
+        "id": 70
+    },
+    "71": {
+        "avoid": 142,
+        "critical": 142,
+        "criticalDamage": 71,
+        "damage": 142,
+        "def": 142,
+        "gold": 750,
+        "hp": 142,
+        "id": 71
+    },
+    "72": {
+        "avoid": 144,
+        "critical": 144,
+        "criticalDamage": 72,
+        "damage": 144,
+        "def": 144,
+        "gold": 760,
+        "hp": 144,
+        "id": 72
+    },
+    "73": {
+        "avoid": 146,
+        "critical": 146,
+        "criticalDamage": 73,
+        "damage": 146,
+        "def": 146,
+        "gold": 770,
+        "hp": 146,
+        "id": 73
+    },
+    "74": {
+        "avoid": 148,
+        "critical": 148,
+        "criticalDamage": 74,
+        "damage": 148,
+        "def": 148,
+        "gold": 780,
+        "hp": 148,
+        "id": 74
+    },
+    "75": {
+        "avoid": 150,
+        "critical": 150,
+        "criticalDamage": 75,
+        "damage": 150,
+        "def": 150,
+        "gold": 790,
+        "hp": 150,
+        "id": 75
+    },
+    "76": {
+        "avoid": 152,
+        "critical": 152,
+        "criticalDamage": 76,
+        "damage": 152,
+        "def": 152,
+        "gold": 800,
+        "hp": 152,
+        "id": 76
+    },
+    "77": {
+        "avoid": 154,
+        "critical": 154,
+        "criticalDamage": 77,
+        "damage": 154,
+        "def": 154,
+        "gold": 810,
+        "hp": 154,
+        "id": 77
+    },
+    "78": {
+        "avoid": 156,
+        "critical": 156,
+        "criticalDamage": 78,
+        "damage": 156,
+        "def": 156,
+        "gold": 820,
+        "hp": 156,
+        "id": 78
+    },
+    "79": {
+        "avoid": 158,
+        "critical": 158,
+        "criticalDamage": 79,
+        "damage": 158,
+        "def": 158,
+        "gold": 830,
+        "hp": 158,
+        "id": 79
+    },
+    "8": {
+        "avoid": 16,
+        "critical": 16,
+        "criticalDamage": 8,
+        "damage": 16,
+        "def": 16,
+        "gold": 120,
+        "hp": 16,
+        "id": 8
+    },
+    "80": {
+        "avoid": 160,
+        "critical": 160,
+        "criticalDamage": 80,
+        "damage": 160,
+        "def": 160,
+        "gold": 840,
+        "hp": 160,
+        "id": 80
+    },
+    "81": {
+        "avoid": 162,
+        "critical": 162,
+        "criticalDamage": 81,
+        "damage": 162,
+        "def": 162,
+        "gold": 850,
+        "hp": 162,
+        "id": 81
+    },
+    "82": {
+        "avoid": 164,
+        "critical": 164,
+        "criticalDamage": 82,
+        "damage": 164,
+        "def": 164,
+        "gold": 860,
+        "hp": 164,
+        "id": 82
+    },
+    "83": {
+        "avoid": 166,
+        "critical": 166,
+        "criticalDamage": 83,
+        "damage": 166,
+        "def": 166,
+        "gold": 870,
+        "hp": 166,
+        "id": 83
+    },
+    "84": {
+        "avoid": 168,
+        "critical": 168,
+        "criticalDamage": 84,
+        "damage": 168,
+        "def": 168,
+        "gold": 880,
+        "hp": 168,
+        "id": 84
+    },
+    "85": {
+        "avoid": 170,
+        "critical": 170,
+        "criticalDamage": 85,
+        "damage": 170,
+        "def": 170,
+        "gold": 890,
+        "hp": 170,
+        "id": 85
+    },
+    "86": {
+        "avoid": 172,
+        "critical": 172,
+        "criticalDamage": 86,
+        "damage": 172,
+        "def": 172,
+        "gold": 900,
+        "hp": 172,
+        "id": 86
+    },
+    "87": {
+        "avoid": 174,
+        "critical": 174,
+        "criticalDamage": 87,
+        "damage": 174,
+        "def": 174,
+        "gold": 910,
+        "hp": 174,
+        "id": 87
+    },
+    "88": {
+        "avoid": 176,
+        "critical": 176,
+        "criticalDamage": 88,
+        "damage": 176,
+        "def": 176,
+        "gold": 920,
+        "hp": 176,
+        "id": 88
+    },
+    "89": {
+        "avoid": 178,
+        "critical": 178,
+        "criticalDamage": 89,
+        "damage": 178,
+        "def": 178,
+        "gold": 930,
+        "hp": 178,
+        "id": 89
+    },
+    "9": {
+        "avoid": 18,
+        "critical": 18,
+        "criticalDamage": 9,
+        "damage": 18,
+        "def": 18,
+        "gold": 130,
+        "hp": 18,
+        "id": 9
+    },
+    "90": {
+        "avoid": 180,
+        "critical": 180,
+        "criticalDamage": 90,
+        "damage": 180,
+        "def": 180,
+        "gold": 940,
+        "hp": 180,
+        "id": 90
+    },
+    "91": {
+        "avoid": 182,
+        "critical": 182,
+        "criticalDamage": 91,
+        "damage": 182,
+        "def": 182,
+        "gold": 950,
+        "hp": 182,
+        "id": 91
+    },
+    "92": {
+        "avoid": 184,
+        "critical": 184,
+        "criticalDamage": 92,
+        "damage": 184,
+        "def": 184,
+        "gold": 960,
+        "hp": 184,
+        "id": 92
+    },
+    "93": {
+        "avoid": 186,
+        "critical": 186,
+        "criticalDamage": 93,
+        "damage": 186,
+        "def": 186,
+        "gold": 970,
+        "hp": 186,
+        "id": 93
+    },
+    "94": {
+        "avoid": 188,
+        "critical": 188,
+        "criticalDamage": 94,
+        "damage": 188,
+        "def": 188,
+        "gold": 980,
+        "hp": 188,
+        "id": 94
+    },
+    "95": {
+        "avoid": 190,
+        "critical": 190,
+        "criticalDamage": 95,
+        "damage": 190,
+        "def": 190,
+        "gold": 990,
+        "hp": 190,
+        "id": 95
+    },
+    "96": {
+        "avoid": 192,
+        "critical": 192,
+        "criticalDamage": 96,
+        "damage": 192,
+        "def": 192,
+        "gold": 1000,
+        "hp": 192,
+        "id": 96
+    },
+    "97": {
+        "avoid": 194,
+        "critical": 194,
+        "criticalDamage": 97,
+        "damage": 194,
+        "def": 194,
+        "gold": 1010,
+        "hp": 194,
+        "id": 97
+    },
+    "98": {
+        "avoid": 196,
+        "critical": 196,
+        "criticalDamage": 98,
+        "damage": 196,
+        "def": 196,
+        "gold": 1020,
+        "hp": 196,
+        "id": 98
+    },
+    "99": {
+        "avoid": 198,
+        "critical": 198,
+        "criticalDamage": 99,
+        "damage": 198,
+        "def": 198,
+        "gold": 1030,
+        "hp": 198,
+        "id": 99
+    }
+}

@@ -1,8 +1,7 @@
 package game.module.hero.calc;
 
-import game.base.G;
-import game.config.base.DataConfigData;
 import game.config.data.HeroBaseConfigData;
+import game.config.data.PropertyConfigData;
 import game.manager.ConfigManager;
 import game.proto.data.Equipment;
 import game.proto.data.HeroRealm;
@@ -29,20 +28,21 @@ public class CriticalHeroCalc extends BaseHeroCalc {
                 value += equipment.getProperty().getCritical();
             }
         }
+
         // 历练
         HeroRealm realm = old.getPowerUpMap().get(5);
         if (realm != null) {
-            final DataConfigData dataConfigData = G.C.dataMap12.get(realm.getLevel());
-            value += dataConfigData.critical;
+            final PropertyConfigData dataConfigData = ConfigManager.lilianBox.findById(realm.getLevel());
+            value += dataConfigData.property.getCritical();
         }
         realm = old.getPowerUpMap().get(15);
 
         // 修炼
         if (realm != null) {
-            final DataConfigData dataConfigData = G.C.dataMap13.get(realm.getLevel());
-
-            value = CalcUtil.final100(value, dataConfigData.critical);
+            final PropertyConfigData dataConfigData = ConfigManager.xiulianBox.findById(realm.getLevel());
+            value = CalcUtil.final100(value, dataConfigData.property.getCritical());
         }
+
         // 天赋
         value = calcTalent(old, value, 5);
         builder.getPropertyBuilder().setCritical(value);
