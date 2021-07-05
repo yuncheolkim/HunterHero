@@ -179,7 +179,7 @@ public class Player {
                 }
             }
         }
-        if (D.getFightAreaCount() == 0) {
+        if (D.getFightAreaCount() == 0 && pd.getBattleId() == 0) {
             pd.clearFightInfo();
         }
 
@@ -499,7 +499,7 @@ public class Player {
 
     }
 
-    public void addItemToBag(ItemData data) {
+    public void addItemToBag(final ItemData data) {
         addItem(data, GameConstants.ITEM_BAG);
     }
 

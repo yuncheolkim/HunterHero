@@ -118,6 +118,12 @@ public class FightService {
         return push.build();
     }
 
+    /**
+     * 战役
+     *
+     * @param battleId
+     * @return
+     */
     public static FightStartPush genBattleEnemy(final int battleId) {
 
         final List<BattleFormationConfigData> enemyList = ConfigManager.battleFormationDataBox.findByCollectId(battleId);

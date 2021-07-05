@@ -14,21 +14,20 @@ public class BattleFormationConfigData extends BaseConfigData<BattleFormationCon
     public int enemyId;
     public int battleId;
     public int pos;
-    public int order;
     public Property property;
 
     @Override
-    protected void fill(DataConfigData d) {
+    protected void fill(final DataConfigData d) {
 
         enemyId = d.i4;
         battleId = d.i1;
         pos = d.i2;
-        order = d.i3;
     }
 
     @Override
-    protected void afterAllLoad0(DataConfigData data) {
+    protected void afterAllLoad0(final DataConfigData data) {
         property = ConfigManager.makePropertyFromHero(data);
+        property = property.toBuilder().setSpeed(data.i3 * 100).build();
 
     }
 }

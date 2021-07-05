@@ -20,7 +20,14 @@ import static game.module.battle.BattleConstant.ID_GEN;
  * 2021/1/8 14:24
  */
 public class Battle {
-    private final long battleId;
+    /**
+     * 当前战斗id
+     */
+    private final long fightId;
+    /**
+     * 战斗
+     */
+    private int battleId;
 
     private final long seed;
 
@@ -59,7 +66,7 @@ public class Battle {
     private DamageInfo damageInfo;
 
     public Battle() {
-        battleId = ID_GEN.addAndGet(1);
+        fightId = ID_GEN.addAndGet(1);
         seed = System.currentTimeMillis();
         random = new Random(seed);
 
@@ -80,7 +87,7 @@ public class Battle {
      * @return
      */
     public BattleRecord start() {
-        Stopwatch stopwatch = Stopwatch.createStarted();
+        final Stopwatch stopwatch = Stopwatch.createStarted();
 
         // 计算出手顺序
         actionOrderList = decideOrder();
@@ -88,14 +95,18 @@ public class Battle {
         final BattleRecord battleRecord = new BattleRecord(this);
 
         currentRound = new Round();
+        roundList.add(currentRound);
         Logs.trace("开场");
         // 开场
         processHero(ActionPoint.开场);
-        nextRound();
+
+        // 记录场景
+        currentRound = new Round();
+        currentRound.setRoundCount(1);
+        roundList.add(currentRound);
+
         Logs.trace("==============================================");
-        int roundCount = 0;
-        while (!hasWinner()) {
-            roundCount += 1;
+        do {
             Logs.trace("回合开始：", currentRound.getRoundCount());
 
             processHero(ActionPoint.回合开始前);
@@ -122,13 +133,16 @@ public class Battle {
             Logs.trace("回合结束：", currentRound.getRoundCount());
             Logs.trace("==============================================");
 
-            if (roundCount == 30) {
+            if (currentRound.getRoundCount() == 30) {
+                if (!hasWinner()) {
+                    winSide = actionOrderList.get(0).getSide() == Side.A ? Side.B : Side.A;
+                }
                 // 最多30回合
                 break;
             }
             //下一回合
             nextRound();
-        }
+        } while (!hasWinner());
         // 结算
         Logs.trace("游戏结束", "胜利：", winSide);
         battleRecord.setRoundList(roundList);
@@ -137,19 +151,6 @@ public class Battle {
         Logs.C.info("=============> 战斗耗时:{}", stopwatch.stop());
 
         return battleRecord;
-    }
-
-    /**
-     * 获取水平附近的英雄
-     *
-     * @param from
-     * @return
-     */
-    public List<Hero> findHNear(final Hero from) {
-        final List<Hero> list = new ArrayList<>();
-
-
-        return list;
     }
 
     /**
@@ -177,10 +178,10 @@ public class Battle {
     }
 
     private void nextRound() {
-        roundList.add(currentRound);
         final int nextRound = currentRound.getRoundCount() + 1;
         currentRound = new Round();
         currentRound.setRoundCount(nextRound);
+        roundList.add(currentRound);
 
     }
 
@@ -320,6 +321,18 @@ public class Battle {
 
     public void setFormation(final Formation formation) {
         this.formation = formation;
+    }
+
+    public int getBattleId() {
+        return battleId;
+    }
+
+    public void setBattleId(final int battleId) {
+        this.battleId = battleId;
+    }
+
+    public long getFightId() {
+        return fightId;
     }
 }
 
