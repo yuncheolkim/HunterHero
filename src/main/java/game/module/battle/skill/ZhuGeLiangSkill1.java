@@ -70,7 +70,7 @@ public class ZhuGeLiangSkill1 extends Skill {
                 break;
             }
             final Hero enemy = enemyMap.get(index);
-            if (enemy != null) {
+            if (enemy != null && enemy.isAlive()) {
                 remain -= 1;
                 acc++;
                 enemyList.add(enemy);

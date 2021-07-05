@@ -427,6 +427,10 @@ public class Hero {
      * @param num
      */
     public void reduceHp(final DamageInfo i) {
+        if (!isAlive()) {
+            return;
+        }
+
         final Hero target = i.target;
         final int num = i.allSourceDamage();
 
@@ -557,7 +561,7 @@ public class Hero {
      * @param num
      */
     public int addHp(final int num) {
-        if (num <= 0 || !harmed()) {
+        if (num <= 0 || !harmed() || !isAlive()) {
             return 0;
         }
         final HealthChangeInfo info = new HealthChangeInfo();
@@ -664,6 +668,10 @@ public class Hero {
 
     public float hpLoseRate() {
         return Math.max(0, 1 - hpRate());
+    }
+
+    public int hpLose() {
+        return property.getMaxHp() - getHp();
     }
 
     public boolean isDead() {

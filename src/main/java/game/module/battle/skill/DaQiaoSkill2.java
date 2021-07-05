@@ -4,15 +4,15 @@ import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.ZhuoShaoBuff;
 import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
+import java.util.Map;
+
 /**
- * 攻击施加灼烧buff
+ * 每1回合全体恢复血量 {0}%
  * <p>
- * 0: 施加buff概率
- * 1: 持续时间
+ * 0: 回血比例
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -30,17 +30,16 @@ public class DaQiaoSkill2 extends Skill {
 
         switch (point) {
             case 出手后:
-                final int addBuffRate = data[0];
-                if (CalcUtil.happened100(addBuffRate)) {
-                    //加buff
-                    final Hero target = hero.getBattle().getDamageInfo().target;
-                    final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
-                    if (data[1] > 0) {
-                        addBuff.SetCd(data[1]);
-                    }
-                    target.addBuff(addBuff);
-                }
+                addAllHp(record, hero);
+
                 break;
+        }
+    }
+
+    private void addAllHp(final Record record, final Hero hero) {
+        final Map<Integer, Hero> friend = hero.getBattle().mySideHeroes(hero.getSide());
+        for (final Hero h : friend.values()) {
+            h.addHp(CalcUtil.add100(h.property.maxHp, data[0]));
         }
     }
 

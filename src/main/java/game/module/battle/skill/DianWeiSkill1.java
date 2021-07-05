@@ -4,15 +4,14 @@ import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.ZhuoShaoBuff;
+import game.module.battle.damage.DamageInfo;
 import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
 /**
- * 攻击施加灼烧buff
+ * 增加敌方失去血量百分比的伤害
  * <p>
- * 0: 施加buff概率
- * 1: 持续时间
+ * 0: 伤害比例
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -22,24 +21,17 @@ public class DianWeiSkill1 extends Skill {
 
     public DianWeiSkill1() {
         super(45);
-        actionPoint.put(ActionPoint.出手后, 1);
+        actionPoint.put(ActionPoint.出手前, 1);
     }
 
     @Override
     public void process(final Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
-            case 出手后:
-                final int addBuffRate = data[0];
-                if (CalcUtil.happened100(addBuffRate)) {
-                    //加buff
-                    final Hero target = hero.getBattle().getDamageInfo().target;
-                    final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
-                    if (data[1] > 0) {
-                        addBuff.SetCd(data[1]);
-                    }
-                    target.addBuff(addBuff);
-                }
+            case 出手前:
+                final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
+                final float v = CalcUtil.add100(damageInfo.target.hpLoseRate(), data[0]);
+                hero.fightingData.damage += CalcUtil.add100(hero.property.damage, v);
                 break;
         }
     }
