@@ -461,6 +461,8 @@ public class Hero {
 
         for (final ActionPoint actionPoint : s.actionPoint.keySet()) {
             skillMap.put(actionPoint, s);
+            final List<Skill> list = (List<Skill>) skillMap.get(actionPoint);
+            list.sort(Comparator.comparingInt(Skill::getPriority));
         }
 
         // cd point
@@ -652,6 +654,9 @@ public class Hero {
         return buffMap.values().stream().filter(buff -> buff.getId() == id).findFirst();
     }
 
+    public Optional<Skill> findSkill(final int id) {
+        return skillMap.values().stream().filter(s -> s.getId() == id).findFirst();
+    }
 
     public float hpRate() {
         return heroStats.hp * 1.0f / Math.max(property.getMaxHp(), fightingData.getMaxHp());

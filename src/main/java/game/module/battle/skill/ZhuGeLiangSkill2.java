@@ -4,15 +4,16 @@ import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.ZhuoShaoBuff;
+import game.module.battle.damage.DamageInfo;
 import game.module.battle.record.Record;
+import game.proto.data.DamageType;
 import game.utils.CalcUtil;
 
 /**
- * 攻击施加灼烧buff
+ * 5点雷电,触发神锤,200%伤害
  * <p>
- * 0: 施加buff概率
- * 1: 持续时间
+ * 0: 能量点
+ * 1: 伤害比例
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -21,7 +22,7 @@ public class ZhuGeLiangSkill2 extends Skill {
 
 
     public ZhuGeLiangSkill2() {
-        super(36);
+        super(37);
         actionPoint.put(ActionPoint.出手后, 1);
     }
 
@@ -30,18 +31,31 @@ public class ZhuGeLiangSkill2 extends Skill {
 
         switch (point) {
             case 出手后:
-                final int addBuffRate = data[0];
-                if (CalcUtil.happened100(addBuffRate)) {
-                    //加buff
-                    final Hero target = hero.getBattle().getDamageInfo().target;
-                    final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
-                    if (data[1] > 0) {
-                        addBuff.SetCd(data[1]);
-                    }
-                    target.addBuff(addBuff);
-                }
+                attack(record, hero);
                 break;
         }
+    }
+
+    private void attack(final Record record, final Hero hero) {
+        final ZhuGeLiangSkill1 skill = (ZhuGeLiangSkill1) hero.findSkill(36).get();
+
+        final int acc = skill.getAcc();
+        final int need = data[0];
+        if (acc >= need) {
+            skill.setAcc(acc - need);
+            //
+            final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
+
+            final DamageInfo tempInfo = new DamageInfo();
+            tempInfo.sourceId = id;
+            tempInfo.type = DamageType.DAMAGE_SKILL;
+            tempInfo.source = hero;
+            tempInfo.target = damageInfo.target;
+            tempInfo.origin = hero;
+            tempInfo.sourceDamage = CalcUtil.add100(hero.fightingData.damage, data[1]);
+            hero.damage(tempInfo);
+        }
+
     }
 
 

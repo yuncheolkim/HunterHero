@@ -3,7 +3,6 @@ package game.module.battle.hero;
 import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.ZhuGeLiangSkill1;
 import game.module.battle.skill.ZhuGeLiangSkill2;
-import game.module.battle.skill.ZhuGeLiangSkill3;
 import game.module.fight.FightService;
 
 /**
@@ -16,7 +15,6 @@ public class ZhuGeLiang extends DefaultTargetHero {
     protected void initTalent() {
         final ZhuGeLiangSkill1 skill1 = new ZhuGeLiangSkill1();
         final ZhuGeLiangSkill2 skill2 = new ZhuGeLiangSkill2();
-        final ZhuGeLiangSkill3 skill3 = new ZhuGeLiangSkill3();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
             final int id = tdata.id;
@@ -43,6 +41,5 @@ public class ZhuGeLiang extends DefaultTargetHero {
         });
         addSkill(skill1);
         addSkill(skill2);
-        addSkill(skill3);
     }
 }
