@@ -34,9 +34,11 @@ public class ZhuoShaoBuff extends Buff {
                     info.target = hero;
                     hero.reduceHp(info);
                 }
-
                 break;
         }
+    }
 
+    public void addDamageRate(final int rate) {
+        data[0] = CalcUtil.final100(data[0], rate);
     }
 }

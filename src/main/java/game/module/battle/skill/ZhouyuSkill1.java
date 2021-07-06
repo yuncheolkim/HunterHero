@@ -13,6 +13,7 @@ import game.utils.CalcUtil;
  * <p>
  * 0: 施加buff概率
  * 1: 持续时间
+ * 2: 提高灼烧效果 - T
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -35,9 +36,12 @@ public class ZhouyuSkill1 extends Skill {
                     //加buff
                     final Hero target = hero.getBattle().getDamageInfo().target;
                     final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
+
                     if (data[1] > 0) {
                         addBuff.SetCd(data[1]);
                     }
+
+                    addBuff.addDamageRate(data[2]);
                     target.addBuff(addBuff);
                 }
                 break;
@@ -45,20 +49,30 @@ public class ZhouyuSkill1 extends Skill {
     }
 
 
+    /**
+     * 灼烧额外持续1回合
+     *
+     * @param id
+     */
     public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+        data[1] += ConfigManager.talentDataBox.findById(id).i1;
     }
 
+    /**
+     * 灼烧概率提高到80%
+     *
+     * @param id
+     */
     public void talent2(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent3(final int id) {
         data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent4(final int id) {
-        data[1] += ConfigManager.talentDataBox.findById(id).i1;
-        data[2] += ConfigManager.talentDataBox.findById(id).i2;
+    /**
+     * 灼烧效果提高100%
+     *
+     * @param id
+     */
+    public void talent3(final int id) {
+        data[2] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

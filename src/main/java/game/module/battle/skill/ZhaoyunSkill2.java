@@ -17,7 +17,6 @@ import game.utils.CalcUtil;
  */
 public class ZhaoyunSkill2 extends Skill {
 
-
     /**
      * 当前出手次数
      */
@@ -30,7 +29,7 @@ public class ZhaoyunSkill2 extends Skill {
     }
 
     @Override
-    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
 
 
         if (actionPoint == ActionPoint.出手前) {
@@ -47,11 +46,11 @@ public class ZhaoyunSkill2 extends Skill {
         }
     }
 
-    public void talent1(int id) {
+    public void talent1(final int id) {
         data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent2(int id) {
+    public void talent2(final int id) {
         data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
