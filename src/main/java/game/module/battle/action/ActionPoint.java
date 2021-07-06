@@ -24,6 +24,7 @@ public enum ActionPoint {
     受到伤害之后,
     闪避之前,
     闪避之后,
+    暴击计算,
     暴击之后,
     增加buff后,
     buff移除后,

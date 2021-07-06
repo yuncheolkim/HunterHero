@@ -30,8 +30,8 @@ public class DianWeiSkill1 extends Skill {
         switch (point) {
             case 出手前:
                 final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
-                final float v = CalcUtil.add100(damageInfo.target.hpLoseRate(), data[0]);
-                hero.fightingData.damage += CalcUtil.add100(hero.property.damage, v);
+                final float v = CalcUtil.change100(damageInfo.target.hpLoseRate(), data[0]);
+                hero.fightingData.damage += CalcUtil.change100(hero.property.damage, v);
                 break;
         }
     }

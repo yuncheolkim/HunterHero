@@ -18,10 +18,14 @@ public class Record {
     public RecordType type;
 
     public ActionPoint actionPoint;
-    public int heroId;
-    public int pos;
 
     public DisplayPoint dp = DisplayPoint.DP_DEF_1;
+
+    public DamageType damageType;
+
+    public int heroId;
+
+    public int pos;
 
     /**
      * 目标位置
@@ -34,11 +38,9 @@ public class Record {
 
     public BuffData buffData;
 
-    public DamageType damageType;
-
     public int value;
 
-    public Record(RecordType type) {
+    public Record(final RecordType type) {
         this.type = type;
     }
 

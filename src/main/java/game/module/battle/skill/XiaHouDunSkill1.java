@@ -49,12 +49,12 @@ public class XiaHouDunSkill1 extends Skill {
                 float rate = hero.hpLoseRate();
                 rate = CalcUtil.final100(rate, data[0]);
 
-                damage.sourceDamage = CalcUtil.add100(damageInfo.allSourceDamage(), rate);
+                damage.sourceDamage = CalcUtil.change100(damageInfo.allSourceDamage(), rate);
 
                 damageInfo.source.damage(damage);
 
                 if (data[3] > 0) {
-                    final int addShield = CalcUtil.add100(damage.sourceDamage, data[3]);
+                    final int addShield = CalcUtil.change100(damage.sourceDamage, data[3]);
                     hero.addShield(data[4], addShield, null);
                 }
                 break;

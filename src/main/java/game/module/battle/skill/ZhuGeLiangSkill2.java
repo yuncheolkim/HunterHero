@@ -52,7 +52,7 @@ public class ZhuGeLiangSkill2 extends Skill {
             tempInfo.source = hero;
             tempInfo.target = damageInfo.target;
             tempInfo.origin = hero;
-            tempInfo.sourceDamage = CalcUtil.add100(hero.fightingData.damage, data[1]);
+            tempInfo.sourceDamage = CalcUtil.change100(hero.fightingData.damage, data[1]);
             hero.damage(tempInfo);
         }
 

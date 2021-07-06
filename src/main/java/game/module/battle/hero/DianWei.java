@@ -2,7 +2,8 @@ package game.module.battle.hero;
 
 import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.DianWeiSkill1;
-import game.module.battle.skill.DianWeiSkill2;
+import game.module.battle.skill.common.DamageBloodSkill;
+import game.module.battle.skill.common.ReduceCriticalSkill;
 import game.module.fight.FightService;
 
 /**
@@ -15,8 +16,10 @@ public class DianWei extends DefaultTargetHero {
     @Override
     protected void initTalent() {
         final DianWeiSkill1 skill1 = new DianWeiSkill1();
-        final DianWeiSkill2 skill2 = new DianWeiSkill2();
-
+        final ReduceCriticalSkill skill2 = new ReduceCriticalSkill();
+        final DamageBloodSkill skill3 = new DamageBloodSkill();
+        skill2.setRate(50);
+        skill3.setBloodRate(20);
         FightService.talentProcess(id, talentInfo, tdata -> {
 
             final int id = tdata.id;
@@ -28,13 +31,11 @@ public class DianWei extends DefaultTargetHero {
                     skill1.talent2(id);
                     break;
                 case 35:
-                    skill2.talent2(id);
                     break;
                 case 36:
                     skill1.talent3(id);
                     break;
                 case 37:
-                    skill2.talent1(id);
                     break;
                 case 38:
                     skill1.talent4(id);
@@ -43,5 +44,6 @@ public class DianWei extends DefaultTargetHero {
         });
         addSkill(skill1);
         addSkill(skill2);
+        addSkill(skill3);
     }
 }

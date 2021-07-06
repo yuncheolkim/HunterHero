@@ -28,8 +28,8 @@ public class XiaHouDunSkill2 extends Skill {
         switch (actionPoint) {
             case 被攻击之前:
                 float rate = hero.hpLoseRate();
-                rate = CalcUtil.add100(rate, data[0]);
-                hero.fightingData.def += CalcUtil.add100(hero.fightingData.def, rate);
+                rate = CalcUtil.change100(rate, data[0]);
+                hero.fightingData.def += CalcUtil.change100(hero.fightingData.def, rate);
                 break;
         }
     }

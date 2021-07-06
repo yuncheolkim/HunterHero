@@ -29,14 +29,14 @@ public class MachaoSkill2 extends Skill {
             case 暴击之后:
                 final int rate = data[0];
                 final int round = data[1];
-                final int i = CalcUtil.add100(hero.origin.getMaxHp(), rate);
+                final int i = CalcUtil.change100(hero.origin.getMaxHp(), rate);
                 hero.addShield(round, i, ActionPoint.出手后);
 
                 final int friendRate = data[2];
                 if (friendRate > 0) {
                     final int friendRound = data[3];
 
-                    final int friendShield = CalcUtil.add100(i, friendRate);
+                    final int friendShield = CalcUtil.change100(i, friendRate);
 
                     for (final Hero value : hero.getBattle().mySideHeroes(hero.getSide()).values()) {
                         if (value.isAlive()) {

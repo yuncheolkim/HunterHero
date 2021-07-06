@@ -32,7 +32,7 @@ public class DaQiaoSkill1 extends Skill {
             case 出手后:
                 if (CalcUtil.happened100(data[0])) {
                     final Hero targetHero = findHero(hero);
-                    final int addHp = CalcUtil.add100(targetHero.property.getMaxHp(), data[1]);
+                    final int addHp = CalcUtil.change100(targetHero.property.getMaxHp(), data[1]);
                     targetHero.addHp(addHp);
                 }
                 break;

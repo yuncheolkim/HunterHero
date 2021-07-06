@@ -22,6 +22,7 @@ import java.util.Map;
 public class WeiyanSkill1 extends Skill {
 
     private boolean overHpHeal;
+
     private boolean overHpShield;
 
     public WeiyanSkill1() {
@@ -34,7 +35,7 @@ public class WeiyanSkill1 extends Skill {
         final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
         final int i = damageInfo.allSourceDamage();
 
-        final int addHp = CalcUtil.add100(i, data[0]);
+        final int addHp = CalcUtil.change100(i, data[0]);
         final int old = hero.getHp();
 
         if (addHp > 0) {

@@ -39,7 +39,7 @@ public class DaQiaoSkill2 extends Skill {
     private void addAllHp(final Record record, final Hero hero) {
         final Map<Integer, Hero> friend = hero.getBattle().mySideHeroes(hero.getSide());
         for (final Hero h : friend.values()) {
-            h.addHp(CalcUtil.add100(h.property.maxHp, data[0]));
+            h.addHp(CalcUtil.change100(h.property.maxHp, data[0]));
         }
     }
 

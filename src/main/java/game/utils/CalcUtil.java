@@ -40,7 +40,7 @@ public class CalcUtil {
         if (rate <= 0) {
             return val;
         }
-        return add100(val, rate) + val;
+        return change100(val, rate) + val;
     }
 
     public static float final100(final float val, final int rate) {
@@ -52,14 +52,14 @@ public class CalcUtil {
      * @param rate
      * @return 比例增值
      */
-    public static int add100(final int val, final int rate) {
+    public static int change100(final int val, final int rate) {
         if (rate <= 0) {
             return 0;
         }
         return Math.round(val * rate / 100.0f);
     }
 
-    public static float add100(final float val, final int rate) {
+    public static float change100(final float val, final int rate) {
         if (rate <= 0) {
             return 0;
         }
@@ -71,7 +71,7 @@ public class CalcUtil {
      * @param rate
      * @return 比例增值
      */
-    public static int add10000(final int val, final int rate) {
+    public static int change10000(final int val, final int rate) {
         return (int) (val * rate / 10000.0f);
     }
 
@@ -90,12 +90,16 @@ public class CalcUtil {
         return (int) (val * (1 - rate));
     }
 
-    public static int add100(final int val, final float rate) {
+    public static int change100(final int val, final float rate) {
         return Math.round(val * rate);
     }
 
     public static boolean happened(final Random r, final int rate, final int total) {
         return rate + 1 > r.nextInt(total);
+    }
+
+    public static boolean happened(final int rate, final int total) {
+        return rate + 1 > DEFAULT_RANDOM.get().nextInt(total);
     }
 
     /**

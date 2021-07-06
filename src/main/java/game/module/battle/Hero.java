@@ -318,11 +318,11 @@ public class Hero {
     public void attacked(final DamageInfo info) {
         resetFightingData();
         Logs.trace("attacked:", this);
-        processAll(ActionPoint.被攻击之前);
         if (info.target.id != this.id) {
             info.target.attacked(info);
             return;
         }
+        processAll(ActionPoint.被攻击之前);
 
         // 计算受到的伤害
         battle.calcAttackedProcess(info);

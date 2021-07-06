@@ -58,7 +58,7 @@ public class MachaoSkill1 extends Skill {
                 critical += data[0];
                 break;
             case 开场:
-                hero.origin.maxHp -= CalcUtil.add100(hero.origin.maxHp, data[2]);
+                hero.origin.maxHp -= CalcUtil.change100(hero.origin.maxHp, data[2]);
                 hero.origin.critical = CalcUtil.final100(hero.origin.critical, data[3]);
                 hero.property.maxHp = hero.origin.maxHp;
                 hero.property.critical = hero.origin.critical;

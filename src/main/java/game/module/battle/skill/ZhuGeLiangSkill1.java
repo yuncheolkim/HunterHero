@@ -84,7 +84,7 @@ public class ZhuGeLiangSkill1 extends Skill {
         int damage = damageInfo.allSourceDamage();
 
         for (final Hero target : enemyList) {
-            damage -= CalcUtil.add100(damage, rate);
+            damage -= CalcUtil.change100(damage, rate);
             final DamageInfo tempInfo = new DamageInfo();
             tempInfo.sourceId = id;
             tempInfo.type = DamageType.DAMAGE_SKILL;

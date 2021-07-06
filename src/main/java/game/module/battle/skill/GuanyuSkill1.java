@@ -59,10 +59,10 @@ public class GuanyuSkill1 extends Skill {
                 curDamageRate = Math.max(addDamageRate + curDamageRate, maxDamageRate);
                 break;
             case 出手前:
-                hero.fightingData.damage += CalcUtil.add100(hero.origin.damage, curDamageRate + addDamage);
+                hero.fightingData.damage += CalcUtil.change100(hero.origin.damage, curDamageRate + addDamage);
 
                 if (curDamageRate == maxDamageRate) {
-                    hero.fightingData.critical += CalcUtil.add100(hero.origin.critical, data[2]);
+                    hero.fightingData.critical += CalcUtil.change100(hero.origin.critical, data[2]);
                 }
                 break;
         }

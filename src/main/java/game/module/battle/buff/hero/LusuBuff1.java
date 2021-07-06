@@ -31,7 +31,7 @@ public class LusuBuff1 extends Buff {
             final int int2 = data[1];
 
             if (int1 > 0) {
-                hero.fightingData.setDef(CalcUtil.add100(hero.fightingData.getDef(), int1));
+                hero.fightingData.setDef(CalcUtil.change100(hero.fightingData.getDef(), int1));
             }
 
             if (int2 > 0) {

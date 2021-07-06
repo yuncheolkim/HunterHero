@@ -7,35 +7,37 @@ import game.module.battle.damage.DamageInfo;
 import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
+import static game.module.battle.action.ActionPoint.暴击计算;
+
 /**
  * 减少暴击概率
- * 0:吸血比例
+ * 0:减少比例
  *
  * @author Yunzhe.Jin
  * 2021/7/5 16:43
  */
-public class CriticalReduceSkill extends Skill {
+public class ReduceCriticalSkill extends Skill {
 
-    public CriticalReduceSkill() {
-        super(1004);
+    public ReduceCriticalSkill() {
+        super(1005);
+        actionPoint.put(暴击计算, 1);
     }
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         switch (actionPoint) {
-            case 出手后:
+            case 暴击计算:
                 final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
-                final int i = damageInfo.allSourceDamage();
+                final int cri = damageInfo.source.fightingData.critical;
+                damageInfo.source.fightingData.critical = CalcUtil.change100(cri, data[0]);
 
-                final int addHp = CalcUtil.add100(i, data[0]);
 
-                hero.addHp(addHp);
                 break;
         }
 
     }
 
-    public void setBloodRate(final int rate) {
+    public void setRate(final int rate) {
         data[0] = rate;
     }
 }

@@ -25,7 +25,7 @@ public class ZhuoShaoBuff extends Buff {
 
         switch (actionPoint) {
             case 回合结束后:
-                final int damage = CalcUtil.add100(hero.getHp(), data[0]);
+                final int damage = CalcUtil.change100(hero.getHp(), data[0]);
                 if (damage > 0) {
                     final DamageInfo info = new DamageInfo();
                     info.type = DamageType.DAMAGE_BUFF;

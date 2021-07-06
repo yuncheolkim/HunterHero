@@ -80,7 +80,9 @@ public class ConfigManager extends AbsLifecycle {
     public static final SkillDataBox skillDataBox = new SkillDataBox();
 
     public static final EmptyDataBox enemyNameBox = new EmptyDataBox("data/enemy_怪列表.json");
+
     public static final PropertyDataBox lilianBox = new PropertyDataBox("data/hero_历练.json");
+
     public static final PropertyDataBox xiulianBox = new PropertyDataBox("data/hero_修炼.json");
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
@@ -154,15 +156,15 @@ public class ConfigManager extends AbsLifecycle {
      */
     public static Property makeProperty(final Property v, final DataConfigData f) {
         return Property.newBuilder()
-                .setHp(CalcUtil.add100(v.getHp(), f.hp))
-                .setDamage(CalcUtil.add100(v.getDamage(), f.damage))
-                .setDef(CalcUtil.add100(v.getDef(), f.def))
-                .setDefBase(CalcUtil.add100(v.getDefBase(), f.defBase))
-                .setAvoid(CalcUtil.add100(v.getAvoid(), f.avoid))
-                .setAvoidBase(CalcUtil.add100(v.getAvoidBase(), f.avoidBase))
-                .setCritical(CalcUtil.add100(v.getCritical(), f.critical))
-                .setCriticalBase(CalcUtil.add100(v.getCriticalBase(), f.criticalBase))
-                .setCriticalDamage(CalcUtil.add100(v.getCriticalDamage(), f.criticalDamage))
+                .setHp(CalcUtil.change100(v.getHp(), f.hp))
+                .setDamage(CalcUtil.change100(v.getDamage(), f.damage))
+                .setDef(CalcUtil.change100(v.getDef(), f.def))
+                .setDefBase(CalcUtil.change100(v.getDefBase(), f.defBase))
+                .setAvoid(CalcUtil.change100(v.getAvoid(), f.avoid))
+                .setAvoidBase(CalcUtil.change100(v.getAvoidBase(), f.avoidBase))
+                .setCritical(CalcUtil.change100(v.getCritical(), f.critical))
+                .setCriticalBase(CalcUtil.change100(v.getCriticalBase(), f.criticalBase))
+                .setCriticalDamage(CalcUtil.change100(v.getCriticalDamage(), f.criticalDamage))
                 .build();
     }
 

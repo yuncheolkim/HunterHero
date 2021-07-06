@@ -37,7 +37,7 @@ public class WeiyanSkill2 extends Skill {
 
             if (damaged > 0 && hero.isAlive()) {
                 final int rate = data[0];
-                final int addHp = CalcUtil.add100(damaged, rate);
+                final int addHp = CalcUtil.change100(damaged, rate);
                 if (addHp > 0) {
                     hero.addHp(addHp);
                 }

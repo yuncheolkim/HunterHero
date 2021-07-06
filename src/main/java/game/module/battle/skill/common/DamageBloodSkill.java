@@ -28,7 +28,7 @@ public class DamageBloodSkill extends Skill {
                 final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
                 final int i = damageInfo.allSourceDamage();
 
-                final int addHp = CalcUtil.add100(i, data[0]);
+                final int addHp = CalcUtil.change100(i, data[0]);
 
                 hero.addHp(addHp);
                 break;

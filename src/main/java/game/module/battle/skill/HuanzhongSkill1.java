@@ -40,7 +40,7 @@ public class HuanzhongSkill1 extends Skill {
         final int happenRate = data[2];
         final int happenCount = data[3];
         if (point == ActionPoint.出手前) {
-            hero.fightingData.damage = CalcUtil.add100(hero.fightingData.damage, rate);
+            hero.fightingData.damage = CalcUtil.change100(hero.fightingData.damage, rate);
         } else if (point == ActionPoint.回合开始前) {
             if (happenRate == 0) {
                 return;
@@ -64,24 +64,24 @@ public class HuanzhongSkill1 extends Skill {
         }
     }
 
-    public void talent1(int id) {
+    public void talent1(final int id) {
         data[0] += ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent2(int id) {
+    public void talent2(final int id) {
         data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent3(int id) {
+    public void talent3(final int id) {
         data[0] += ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent4(int id) {
+    public void talent4(final int id) {
         data[2] = ConfigManager.talentDataBox.findById(id).i1;
         data[3] = ConfigManager.talentDataBox.findById(id).i2;
     }
 
-    public void talent5(int id) {
+    public void talent5(final int id) {
         data[4] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

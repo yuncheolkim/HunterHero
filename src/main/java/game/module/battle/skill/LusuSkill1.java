@@ -35,8 +35,8 @@ public class LusuSkill1 extends Skill {
                 final int rate = data[1];
                 hero.addTargetStrategy(new MultipleBackTargetStrategy(count));
                 hero.addTargetStrategy(new MultipleFrontTargetStrategy(count));
-                hero.origin.damage = CalcUtil.add100(hero.origin.damage, rate);
-                hero.property.damage = CalcUtil.add100(hero.property.damage, rate);
+                hero.origin.damage = CalcUtil.change100(hero.origin.damage, rate);
+                hero.property.damage = CalcUtil.change100(hero.property.damage, rate);
                 break;
         }
 

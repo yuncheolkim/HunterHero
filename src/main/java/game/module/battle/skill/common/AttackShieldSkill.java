@@ -29,7 +29,7 @@ public class AttackShieldSkill extends Skill {
         final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
         final int i = damageInfo.allSourceDamage();
 
-        final int value = CalcUtil.add100(i, data[0]);
+        final int value = CalcUtil.change100(i, data[0]);
 
         if (value > 0) {
             hero.addShield(data[1], value, null);
