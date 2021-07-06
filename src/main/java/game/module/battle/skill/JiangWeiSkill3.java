@@ -6,37 +6,38 @@ import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.record.Record;
 
-import java.util.Optional;
-
 /**
- * 每次攻击获得一点能量,3点能量后必爆击
+ * 消耗{0}点能量必暴击
  * <p>
- * 0: 获得能量数
+ * 0: 暴能条件数量
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
  */
-public class JiangWeiSkill1 extends Skill {
+public class JiangWeiSkill3 extends Skill {
 
+    private int power;
 
-    public JiangWeiSkill1() {
-        super(50);
-        actionPoint.put(ActionPoint.出手后, 1);
+    public JiangWeiSkill3() {
+        super(52);
+        actionPoint.put(ActionPoint.出手前, 1);
     }
 
     @Override
     public void process(final Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
-            case 出手后:
-                final Optional<Skill> skill = hero.findSkill(52);
-                if (skill.isPresent()) {
-                    final JiangWeiSkill3 skill3 = (JiangWeiSkill3) skill.get();
-                    skill3.addPower(data[0]);
+            case 出手前:
+                if (power >= data[0]) {
+                    hero.fightingData.mustCritical = true;
+                    power -= data[0];
                 }
-
                 break;
         }
+    }
+
+    public void addPower(final int v) {
+        power += v;
     }
 
 

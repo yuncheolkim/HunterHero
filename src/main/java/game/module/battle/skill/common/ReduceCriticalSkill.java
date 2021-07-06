@@ -30,8 +30,6 @@ public class ReduceCriticalSkill extends Skill {
                 final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
                 final int cri = damageInfo.source.fightingData.critical;
                 damageInfo.source.fightingData.critical = CalcUtil.change100(cri, data[0]);
-
-
                 break;
         }
 

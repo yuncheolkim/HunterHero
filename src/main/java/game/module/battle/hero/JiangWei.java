@@ -3,6 +3,7 @@ package game.module.battle.hero;
 import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.JiangWeiSkill1;
 import game.module.battle.skill.JiangWeiSkill2;
+import game.module.battle.skill.JiangWeiSkill3;
 import game.module.fight.FightService;
 
 /**
@@ -11,11 +12,11 @@ import game.module.fight.FightService;
  */
 public class JiangWei extends DefaultTargetHero {
 
-
     @Override
     protected void initTalent() {
         final JiangWeiSkill1 skill1 = new JiangWeiSkill1();
         final JiangWeiSkill2 skill2 = new JiangWeiSkill2();
+        final JiangWeiSkill3 skill3 = new JiangWeiSkill3();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 
@@ -43,5 +44,6 @@ public class JiangWei extends DefaultTargetHero {
         });
         addSkill(skill1);
         addSkill(skill2);
+        addSkill(skill3);
     }
 }

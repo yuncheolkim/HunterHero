@@ -4,9 +4,9 @@ import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.ZhuoShaoBuff;
 import game.module.battle.record.Record;
-import game.utils.CalcUtil;
+
+import java.util.Optional;
 
 /**
  * 攻击施加灼烧buff
@@ -22,23 +22,18 @@ public class JiangWeiSkill2 extends Skill {
 
     public JiangWeiSkill2() {
         super(51);
-        actionPoint.put(ActionPoint.出手后, 1);
+        actionPoint.put(ActionPoint.暴击之后, 1);
     }
 
     @Override
     public void process(final Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
-            case 出手后:
-                final int addBuffRate = data[0];
-                if (CalcUtil.happened100(addBuffRate)) {
-                    //加buff
-                    final Hero target = hero.getBattle().getDamageInfo().target;
-                    final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
-                    if (data[1] > 0) {
-                        addBuff.SetCd(data[1]);
-                    }
-                    target.addBuff(addBuff);
+            case 暴击之后:
+                final Optional<Skill> skill = hero.findSkill(52);
+                if (skill.isPresent()) {
+                    final JiangWeiSkill3 skill3 = (JiangWeiSkill3) skill.get();
+                    skill3.addPower(data[0]);
                 }
                 break;
         }
