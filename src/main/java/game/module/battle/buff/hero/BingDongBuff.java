@@ -15,10 +15,10 @@ import game.utils.CalcUtil;
  * @author Yunzhe.Jin
  * 2021/7/1 12:44
  */
-public class LusuBuff1 extends Buff {
+public class BingDongBuff extends Buff {
 
 
-    public LusuBuff1(final int sourceHeroId) {
+    public BingDongBuff(final int sourceHeroId) {
         super(BattleConstant.buff_lusu_1, sourceHeroId);
     }
 

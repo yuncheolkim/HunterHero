@@ -24,6 +24,8 @@ public class ReduceDamageSkill extends Skill {
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
         if (damageInfo.origin == hero) {
+            // 反弹伤害会出现这种情况
+            // 这时候 battle 获取的info 不是当前在使用的info
             return;
         }
         switch (actionPoint) {

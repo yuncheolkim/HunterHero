@@ -4,7 +4,7 @@ import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
-import game.module.battle.buff.hero.LusuBuff1;
+import game.module.battle.buff.hero.BingDongBuff;
 import game.module.battle.record.Record;
 import game.utils.CalcUtil;
 
@@ -36,7 +36,7 @@ public class LusuSkill2 extends Skill {
                 if (CalcUtil.happened100(addBuffRate)) {
                     //加buff
                     final Hero target = hero.getBattle().getDamageInfo().target;
-                    final LusuBuff1 addBuff = new LusuBuff1(hero.getId());
+                    final BingDongBuff addBuff = new BingDongBuff(hero.getId());
                     final int buffDefRate = data[1];
                     final int buffHarmRate = data[2];
                     addBuff.setDefRate(buffDefRate);

@@ -28,6 +28,11 @@ public class BattleConstant {
     public static final int buff_machao_1 = 7;
 
     public static final int buff_lusu_1 = 1;
+
     public static final int buff_zhuoshao = 2;
+
+    public static final int buff_huichun = 3;
+
+    public static final int buff_zhufu = 4;
 
 }

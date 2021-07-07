@@ -31,7 +31,6 @@ public class DaQiaoSkill2 extends Skill {
         switch (point) {
             case 出手后:
                 addAllHp(record, hero);
-
                 break;
         }
     }
@@ -46,18 +45,5 @@ public class DaQiaoSkill2 extends Skill {
 
     public void talent1(final int id) {
         data[3] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent2(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent3(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent4(final int id) {
-        data[1] += ConfigManager.talentDataBox.findById(id).i1;
-        data[2] += ConfigManager.talentDataBox.findById(id).i2;
     }
 }

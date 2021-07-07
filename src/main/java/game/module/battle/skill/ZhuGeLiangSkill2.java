@@ -22,7 +22,7 @@ public class ZhuGeLiangSkill2 extends Skill {
 
 
     public ZhuGeLiangSkill2() {
-        super(37);
+        super(36);
         actionPoint.put(ActionPoint.出手后, 1);
     }
 
