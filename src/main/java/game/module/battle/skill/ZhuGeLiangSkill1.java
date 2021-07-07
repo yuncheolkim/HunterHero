@@ -22,6 +22,7 @@ import java.util.stream.Collectors;
  * 0: 个数
  * 1: 削减比例
  * 2: 攻击获得雷能数
+ * 3: 暴击获得能量数
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -45,7 +46,20 @@ public class ZhuGeLiangSkill1 extends Skill {
             case 出手后:
                 attack(record, hero);
                 break;
+            case 暴击后:
+                afterCritical(record, hero);
+                break;
         }
+    }
+
+    /**
+     * 暴击后
+     *
+     * @param record
+     * @param hero
+     */
+    private void afterCritical(final Record record, final Hero hero) {
+        acc++;
     }
 
     /**
@@ -104,20 +118,23 @@ public class ZhuGeLiangSkill1 extends Skill {
         this.acc = acc;
     }
 
+    /**
+     * 伤害减少20%
+     *
+     * @param id
+     */
     public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+        data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
+    /**
+     * 暴击增加1点能量
+     *
+     * @param id
+     */
     public void talent2(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+        actionPoint.put(ActionPoint.暴击后, 1);
     }
 
-    public void talent3(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent4(final int id) {
-        data[1] += ConfigManager.talentDataBox.findById(id).i1;
-        data[2] += ConfigManager.talentDataBox.findById(id).i2;
-    }
 }

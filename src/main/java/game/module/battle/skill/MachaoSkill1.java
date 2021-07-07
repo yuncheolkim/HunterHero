@@ -30,8 +30,8 @@ public class MachaoSkill1 extends Skill {
 
     public MachaoSkill1() {
         super(15);
-        actionPoint.put(ActionPoint.暴击之后, 1);
-        actionPoint.put(ActionPoint.受到伤害之后, 1);
+        actionPoint.put(ActionPoint.暴击后, 1);
+        actionPoint.put(ActionPoint.受到伤害后, 1);
         actionPoint.put(ActionPoint.出手前, 1);
         actionPoint.put(ActionPoint.开场, 1);
     }
@@ -51,10 +51,10 @@ public class MachaoSkill1 extends Skill {
                     hero.fightingData.setCritical(CalcUtil.final100(hero.fightingData.getCritical(), critical));
                 }
                 break;
-            case 暴击之后:
+            case 暴击后:
                 critical = 0;
                 break;
-            case 受到伤害之后:
+            case 受到伤害后:
                 critical += data[0];
                 break;
             case 开场:

@@ -22,14 +22,14 @@ public class JiangWeiSkill2 extends Skill {
 
     public JiangWeiSkill2() {
         super(51);
-        actionPoint.put(ActionPoint.暴击之后, 1);
+        actionPoint.put(ActionPoint.暴击后, 1);
     }
 
     @Override
     public void process(final Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
-            case 暴击之后:
+            case 暴击后:
                 final Optional<Skill> skill = hero.findSkill(52);
                 if (skill.isPresent()) {
                     final JiangWeiSkill3 skill3 = (JiangWeiSkill3) skill.get();

@@ -20,7 +20,7 @@ public class CriticalAddRateSkill extends Skill {
 
     public CriticalAddRateSkill() {
         super(1003);
-        actionPoint.put(ActionPoint.暴击之后, 1);
+        actionPoint.put(ActionPoint.暴击后, 1);
         actionPoint.put(ActionPoint.出手前, 1);
 
     }
@@ -29,7 +29,7 @@ public class CriticalAddRateSkill extends Skill {
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
 
         switch (actionPoint) {
-            case 暴击之后:
+            case 暴击后:
                 happenCri = true;
                 break;
             case 出手前:

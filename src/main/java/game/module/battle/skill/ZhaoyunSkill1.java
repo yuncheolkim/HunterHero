@@ -21,20 +21,23 @@ import game.utils.CalcUtil;
 public class ZhaoyunSkill1 extends Skill {
 
     private int avoid;
+
     private int def;
+
     private int damage;
+
     private int attCount;
 
     public ZhaoyunSkill1() {
         super(6);
         actionPoint.put(ActionPoint.被攻击之前, 1);
         actionPoint.put(ActionPoint.闪避之后, 1);
-        actionPoint.put(ActionPoint.受到伤害之后, 1);
+        actionPoint.put(ActionPoint.受到伤害后, 1);
         actionPoint.put(ActionPoint.出手结束后, 1);
     }
 
     @Override
-    protected void process(Record record, ActionPoint actionPoint, Hero hero) {
+    protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         final int avoidRate = data[0];
         final int defRate = data[1];
         final int damageRate = data[2];
@@ -47,7 +50,7 @@ public class ZhaoyunSkill1 extends Skill {
                     def = 0;
                 }
                 break;
-            case 受到伤害之后:
+            case 受到伤害后:
                 avoid += avoidRate;
                 def += defRate;
                 break;
@@ -68,19 +71,19 @@ public class ZhaoyunSkill1 extends Skill {
     }
 
 
-    public void talent1(int id) {
+    public void talent1(final int id) {
         data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent2(int id) {
+    public void talent2(final int id) {
         data[1] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent3(int id) {
+    public void talent3(final int id) {
         data[2] = ConfigManager.talentDataBox.findById(id).i1;
     }
 
-    public void talent4(int id) {
+    public void talent4(final int id) {
         data[3] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

@@ -17,7 +17,7 @@ import game.module.battle.record.Record;
 public class ReduceDamageSkill extends Skill {
     public ReduceDamageSkill() {
         super(1002);
-        actionPoint.put(ActionPoint.受到伤害之前, 1);
+        actionPoint.put(ActionPoint.受到伤害前, 1);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ReduceDamageSkill extends Skill {
             return;
         }
         switch (actionPoint) {
-            case 受到伤害之前:
+            case 受到伤害前:
                 Logs.trace("ReduceDamageSkill", data[0] / 100.f);
                 hero.getBattle().getDamageInfo().reduceDamage(data[0] / 100.0f);
                 break;

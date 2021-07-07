@@ -10,7 +10,7 @@ import game.module.battle.record.Record;
 import game.proto.data.DamageType;
 import game.utils.CalcUtil;
 
-import static game.module.battle.action.ActionPoint.受到伤害之前;
+import static game.module.battle.action.ActionPoint.受到伤害前;
 import static game.module.battle.action.ActionPoint.回合开始前;
 
 /**
@@ -29,7 +29,7 @@ public class XiaHouDunSkill1 extends Skill {
 
     public XiaHouDunSkill1() {
         super(25);
-        actionPoint.put(ActionPoint.受到伤害之后, 1);
+        actionPoint.put(ActionPoint.受到伤害后, 1);
     }
 
     @Override
@@ -39,7 +39,7 @@ public class XiaHouDunSkill1 extends Skill {
             return;
         }
         switch (actionPoint) {
-            case 受到伤害之后:
+            case 受到伤害后:
                 final DamageInfo damage = new DamageInfo();
                 damage.sourceId = id;
                 damage.type = DamageType.DAMAGE_SKILL;
@@ -61,7 +61,7 @@ public class XiaHouDunSkill1 extends Skill {
             case 回合开始前:
                 --round;
                 break;
-            case 受到伤害之前:
+            case 受到伤害前:
                 if (round == 0) {
                     Logs.trace("XiaHouDunSkill1", data[2] / 100.f);
                     hero.getBattle().getDamageInfo().reduceDamage(data[2] / 100.0f);
@@ -77,7 +77,7 @@ public class XiaHouDunSkill1 extends Skill {
         data[2] = ConfigManager.talentDataBox.findById(id).i2;
         round = data[1];
         actionPoint.put(回合开始前, 1);
-        actionPoint.put(受到伤害之前, 1);
+        actionPoint.put(受到伤害前, 1);
     }
 
     public void talent2(final int id) {

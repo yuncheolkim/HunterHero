@@ -337,12 +337,12 @@ public class Hero {
             processAll(ActionPoint.闪避之后);
         } else {
             // 计算buff
-            processAll(ActionPoint.受到伤害之前);
+            processAll(ActionPoint.受到伤害前);
             // 减血
             reduceHp(info);
 
             if (isAlive()) {
-                processAll(ActionPoint.受到伤害之后);
+                processAll(ActionPoint.受到伤害后);
             }
         }
     }

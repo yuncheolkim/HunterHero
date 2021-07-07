@@ -21,7 +21,7 @@ public class ShieldDamagedProcess implements DamagedProcess {
         if (shield > 0) {
             final int i = target.heroStats.reduceShield(Math.min(damage, shield));
             info.reduceDamageValue(i);
-            target.recordShieldChange(ActionPoint.受到伤害之后, -i);
+            target.recordShieldChange(ActionPoint.受到伤害后, -i);
         }
 
         return info.allSourceDamage() > 0;

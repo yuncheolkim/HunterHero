@@ -20,13 +20,13 @@ public class MachaoSkill2 extends Skill {
 
     public MachaoSkill2() {
         super(16);
-        actionPoint.put(ActionPoint.暴击之后, 1);
+        actionPoint.put(ActionPoint.暴击后, 1);
     }
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         switch (actionPoint) {
-            case 暴击之后:
+            case 暴击后:
                 final int rate = data[0];
                 final int round = data[1];
                 final int i = CalcUtil.change100(hero.origin.getMaxHp(), rate);

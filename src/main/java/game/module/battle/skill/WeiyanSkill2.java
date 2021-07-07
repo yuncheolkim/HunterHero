@@ -24,14 +24,14 @@ public class WeiyanSkill2 extends Skill {
 
     public WeiyanSkill2() {
         super(11);
-        actionPoint.put(ActionPoint.受到伤害之后, 1);
+        actionPoint.put(ActionPoint.受到伤害后, 1);
         actionPoint.put(ActionPoint.回合结束后, 1);
     }
 
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
-        if (actionPoint == ActionPoint.受到伤害之后) {
+        if (actionPoint == ActionPoint.受到伤害后) {
             damaged += damageInfo.allSourceDamage();
         } else if (actionPoint == ActionPoint.回合结束后) {
 
