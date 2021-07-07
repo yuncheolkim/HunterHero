@@ -70,13 +70,11 @@ public abstract class Buff {
         return ActionPoint.回合结束后;
     }
 
-
     public boolean isInfinite() {
         return cd == BattleConstant.INFINITE;
     }
 
     public void reduceRound() {
-
         cd.reduce(1);
     }
 

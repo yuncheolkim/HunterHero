@@ -37,7 +37,6 @@ public class DaQiaoSkill1 extends Skill {
                         break;
                     }
                 }
-
                 break;
         }
     }
