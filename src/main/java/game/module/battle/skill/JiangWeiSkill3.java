@@ -1,15 +1,19 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
+import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
+import game.module.battle.damage.DamageInfo;
 import game.module.battle.record.Record;
+
+import static game.module.battle.action.ActionPoint.暴击后;
 
 /**
  * 消耗{0}点能量必暴击
  * <p>
  * 0: 暴能条件数量
+ * 1: 暴击伤害增加量
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -33,6 +37,14 @@ public class JiangWeiSkill3 extends Skill {
                     power -= data[0];
                 }
                 break;
+            case 暴击后:
+                if (hero.fightingData.mustCritical) {
+                    final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
+                    Logs.trace("天赋：增加暴击伤害>>>", damageInfo);
+                    damageInfo.addCriticalDamage(data[1]);
+                    Logs.trace("天赋：增加暴击伤害<<<", damageInfo);
+                }
+                break;
         }
     }
 
@@ -40,21 +52,22 @@ public class JiangWeiSkill3 extends Skill {
         power += v;
     }
 
-
-    public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+    /**
+     * 3点能量后暴击
+     *
+     * @param v
+     */
+    public void talent1(final int v) {
+        data[0] = v;
     }
 
-    public void talent2(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent3(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
-    }
-
-    public void talent4(final int id) {
-        data[1] += ConfigManager.talentDataBox.findById(id).i1;
-        data[2] += ConfigManager.talentDataBox.findById(id).i2;
+    /**
+     * 能量暴击伤害提高50%
+     *
+     * @param v
+     */
+    public void talent2(final int v) {
+        data[1] = v;
+        addActionPoint(暴击后);
     }
 }

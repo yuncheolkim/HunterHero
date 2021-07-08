@@ -4,6 +4,8 @@ import game.module.battle.Hero;
 import game.proto.data.DamageType;
 import game.utils.CalcUtil;
 
+import java.util.StringJoiner;
+
 /**
  * 造成伤害的信息
  *
@@ -56,6 +58,15 @@ public class DamageInfo {
         sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
     }
 
+    /**
+     * 增加暴击伤害
+     *
+     * @param rate 百分比
+     */
+    public void addCriticalDamage(final int rate) {
+        sourceCriticalDamage = CalcUtil.final100(sourceCriticalDamage, rate);
+    }
+
     public void reduceCriticalDamage(final float rate) {
         sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
     }
@@ -103,10 +114,15 @@ public class DamageInfo {
 
     @Override
     public String toString() {
-        return "DamageInfo{" +
-                ", avoid=" + avoid +
-                ", target=" + target +
-                ", origin=" + origin +
-                '}';
+        return new StringJoiner(", ", DamageInfo.class.getSimpleName() + "[", "]")
+                .add("type=" + type)
+                .add("sourceId=" + sourceId)
+                .add("sourceDamage=" + sourceDamage)
+                .add("sourceCriticalDamage=" + sourceCriticalDamage)
+                .add("avoid=" + avoid)
+                .add("origin=" + origin.getId())
+                .add("target=" + target.getId())
+                .add("source=" + source.getId())
+                .toString();
     }
 }

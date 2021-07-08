@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -9,19 +8,24 @@ import game.module.battle.record.Record;
 import java.util.Optional;
 
 /**
- * 每次攻击获得一点能量,3点能量后必爆击
+ * 每次攻击获得一点能量
  * <p>
  * 0: 获得能量数
+ * 1: 暴击增加数
+ * 2: 伤害增加数
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
  */
 public class JiangWeiSkill1 extends Skill {
 
+    private int criticalRate;
+
+    private int damageRate;
 
     public JiangWeiSkill1() {
         super(50);
-        actionPoint.put(ActionPoint.出手后, 1);
+        addActionPoint(ActionPoint.出手后);
     }
 
     @Override
@@ -34,26 +38,39 @@ public class JiangWeiSkill1 extends Skill {
                     final JiangWeiSkill3 skill3 = (JiangWeiSkill3) skill.get();
                     skill3.addPower(data[0]);
                 }
-
                 break;
         }
     }
 
 
-    public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+    /**
+     * 攻击获得2点能量
+     *
+     * @param v
+     */
+    public void talent1(final int v) {
+        data[0] = v;
     }
 
-    public void talent2(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+    /**
+     * 每点能量本场暴击增加1%
+     *
+     * @param v
+     */
+    public void talent2(final int v) {
+        data[1] = v;
+        addActionPoint(ActionPoint.出手前);
     }
 
-    public void talent3(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+    /**
+     * 每点能量本场伤害增加2%
+     *
+     * @param v
+     */
+    public void talent3(final int v) {
+        data[2] = v;
+        addActionPoint(ActionPoint.出手前);
     }
 
-    public void talent4(final int id) {
-        data[1] += ConfigManager.talentDataBox.findById(id).i1;
-        data[2] += ConfigManager.talentDataBox.findById(id).i2;
-    }
+
 }
