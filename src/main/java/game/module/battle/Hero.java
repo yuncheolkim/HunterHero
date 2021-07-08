@@ -121,7 +121,8 @@ public class Hero {
     protected List<FindTargetStrategy> targetStrategies = new ArrayList<>();
 
     /**
-     * 上下文数据根据情况来存储转换
+     * 上下文数据根据情况来存储转换,
+     * 需要合适的时机清除
      */
     protected Object contextData;
 
@@ -560,10 +561,12 @@ public class Hero {
      *
      * @param num
      */
-    public int addHp(final int num) {
+    public int addHp(int num) {
         if (num <= 0 || !harmed() || !isAlive()) {
             return 0;
         }
+        num = beforeHeal(num);
+
         final HealthChangeInfo info = new HealthChangeInfo();
         info.setTarget(this);
         info.setOldValue(heroStats.hp);
@@ -577,6 +580,20 @@ public class Hero {
             statusChangeListener.changHp(info);
         }
         return add;
+    }
+
+    /**
+     * 治疗前
+     *
+     * @param num
+     * @return
+     */
+    private int beforeHeal(int num) {
+        contextData = num;
+        processAll(ActionPoint.治疗前);
+        num = (int) contextData;
+        contextData = null;
+        return num;
     }
 
     /**
@@ -652,6 +669,10 @@ public class Hero {
         d.simple = getSimple();
         d.property = property;
         return d;
+    }
+
+    public <T> T getContextData() {
+        return (T) contextData;
     }
 
     public Optional<Buff> findBuff(final int id) {

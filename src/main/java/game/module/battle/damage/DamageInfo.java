@@ -56,6 +56,10 @@ public class DamageInfo {
         sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
     }
 
+    public void reduceCriticalDamage(final float rate) {
+        sourceCriticalDamage = CalcUtil.calcRateSub(sourceCriticalDamage, rate);
+    }
+
     /**
      * 减少伤害
      *

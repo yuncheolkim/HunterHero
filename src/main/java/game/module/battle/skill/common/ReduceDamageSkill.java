@@ -20,6 +20,11 @@ public class ReduceDamageSkill extends Skill {
         actionPoint.put(ActionPoint.受到伤害前, 1);
     }
 
+    public ReduceDamageSkill(final int rate) {
+        this();
+        data[0] = rate;
+    }
+
     @Override
     protected void process(final Record record, final ActionPoint actionPoint, final Hero hero) {
         final DamageInfo damageInfo = hero.getBattle().getDamageInfo();

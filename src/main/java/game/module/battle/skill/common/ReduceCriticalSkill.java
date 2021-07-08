@@ -10,7 +10,7 @@ import game.utils.CalcUtil;
 import static game.module.battle.action.ActionPoint.暴击计算;
 
 /**
- * 减少暴击概率
+ * 减少暴击
  * 0:减少比例
  *
  * @author Yunzhe.Jin

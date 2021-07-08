@@ -59,6 +59,14 @@ public abstract class Skill {
         if (cd.getCd() > 0) {
             reduceCoolDownPoint.add(ActionPoint.回合开始前);
         }
+
+    }
+
+    public void addActionPoint(ActionPoint point) {
+        if (!actionPoint.containsKey(point)) {
+            actionPoint.put(point, 1);
+        }
+       
     }
 
     public Record process(final ActionPoint actionPoint, final Hero hero) {

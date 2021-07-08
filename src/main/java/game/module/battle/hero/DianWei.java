@@ -2,8 +2,7 @@ package game.module.battle.hero;
 
 import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.DianWeiSkill1;
-import game.module.battle.skill.common.DamageBloodSkill;
-import game.module.battle.skill.common.ReduceCriticalSkill;
+import game.module.battle.skill.common.*;
 import game.module.fight.FightService;
 
 /**
@@ -24,21 +23,23 @@ public class DianWei extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 33:
+                case 1004:
                     skill1.talent1(id);
                     break;
-                case 34:
-                    skill1.talent2(id);
+                case 1005:
+                    skill2.setRate(tdata.i1);
                     break;
-                case 35:
+                case 1006:
+                    addSkill(new ReduceCriticalDamageSkill(tdata.i1));
                     break;
-                case 36:
-                    skill1.talent3(id);
+                case 1013:
+                    skill1.talent2(tdata.i1, tdata.i2);
                     break;
-                case 37:
+                case 1014:
+                    addSkill(new IncreaseHealthSkill(tdata.i1));
                     break;
-                case 38:
-                    skill1.talent4(id);
+                case 1015:
+                    addSkill(new ReduceDamageSkill(tdata.i1));
                     break;
             }
         });
