@@ -86,6 +86,9 @@ enum No {
     // 出售物品
     ItemSellReq = 7004;
 
+    // Temple
+    TempleHeroBuyReq = 7101;
+
     // fish
     FishReq = 8001;
     FishHookReq = 8002;
@@ -96,6 +99,7 @@ enum No {
     // Chat
     ChatMessageReq = 9001;
     ChatMessagePush = 9002;
+
 
 
 }

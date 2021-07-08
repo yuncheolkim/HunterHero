@@ -271,6 +271,14 @@ public enum No
   ItemSellReq(7004),
   /**
    * <pre>
+   * Temple
+   * </pre>
+   *
+   * <code>TempleHeroBuyReq = 7101;</code>
+   */
+  TempleHeroBuyReq(7101),
+  /**
+   * <pre>
    * fish
    * </pre>
    *
@@ -571,6 +579,14 @@ public enum No
   public static final int ItemSellReq_VALUE = 7004;
   /**
    * <pre>
+   * Temple
+   * </pre>
+   *
+   * <code>TempleHeroBuyReq = 7101;</code>
+   */
+  public static final int TempleHeroBuyReq_VALUE = 7101;
+  /**
+   * <pre>
    * fish
    * </pre>
    *
@@ -678,6 +694,7 @@ public enum No
       case 7002: return ItemBuyReq;
       case 7003: return ItemExchangeReq;
       case 7004: return ItemSellReq;
+      case 7101: return TempleHeroBuyReq;
       case 8001: return FishReq;
       case 8002: return FishHookReq;
       case 8003: return FishEnterAreaReq;

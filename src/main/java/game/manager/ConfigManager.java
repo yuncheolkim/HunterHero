@@ -85,6 +85,8 @@ public class ConfigManager extends AbsLifecycle {
 
     public static final PropertyDataBox xiulianBox = new PropertyDataBox("data/hero_修炼.json");
 
+    public static final TempleHeroDataBox templeHeroDataBox = new TempleHeroDataBox();
+
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
     static {
@@ -108,6 +110,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(enemyNameBox);
         list.add(lilianBox);
         list.add(xiulianBox);
+        list.add(templeHeroDataBox);
     }
 
     @Override

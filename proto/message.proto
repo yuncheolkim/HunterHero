@@ -391,3 +391,13 @@ message NpcShowChangePush{
     int32 showNo = 1;
     int32 npcId = 2;
 }
+///////////////////////////////////////////////  Temple
+// 购买英雄
+message TempleHeroBuyReq{
+    int32 id = 1;
+    // 1:金币, 2:宝石
+    int32 type = 2;
+}
+message TempleHeroBuyRes{
+    int32 id = 1;
+}

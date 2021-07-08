@@ -349,6 +349,16 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_NpcShowChangePush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_TempleHeroBuyReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_TempleHeroBuyReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_TempleHeroBuyRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_TempleHeroBuyRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -447,10 +457,12 @@ public final class MessageOuterClass {
       "\t\022\014\n\004name\030\013 \001(\t\"\034\n\016TitleChooseReq\022\n\n\002id\030" +
       "\001 \001(\005\"\034\n\016TitleChooseRes\022\n\n\002id\030\001 \001(\005\"\032\n\014T" +
       "itleNewPush\022\n\n\002id\030\001 \001(\005\"2\n\021NpcShowChange" +
-      "Push\022\016\n\006showNo\030\001 \001(\005\022\r\n\005npcId\030\002 \001(\005*R\n\013C" +
-      "hatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GRO" +
-      "UP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B" +
-      "\020\n\ngame.protoH\001P\001b\006proto3"
+      "Push\022\016\n\006showNo\030\001 \001(\005\022\r\n\005npcId\030\002 \001(\005\",\n\020T" +
+      "empleHeroBuyReq\022\n\n\002id\030\001 \001(\005\022\014\n\004type\030\002 \001(" +
+      "\005\"\036\n\020TempleHeroBuyRes\022\n\n\002id\030\001 \001(\005*R\n\013Cha" +
+      "tChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP" +
+      "\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n" +
+      "\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -859,6 +871,18 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_NpcShowChangePush_descriptor,
         new java.lang.String[] { "ShowNo", "NpcId", });
+    internal_static_Message_TempleHeroBuyReq_descriptor =
+      getDescriptor().getMessageTypes().get(66);
+    internal_static_Message_TempleHeroBuyReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_TempleHeroBuyReq_descriptor,
+        new java.lang.String[] { "Id", "Type", });
+    internal_static_Message_TempleHeroBuyRes_descriptor =
+      getDescriptor().getMessageTypes().get(67);
+    internal_static_Message_TempleHeroBuyRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_TempleHeroBuyRes_descriptor,
+        new java.lang.String[] { "Id", });
     game.proto.data.Data.getDescriptor();
   }
 

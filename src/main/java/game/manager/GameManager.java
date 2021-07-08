@@ -16,6 +16,7 @@ import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
 import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
+import game.module.temple.TempleHandler;
 import game.module.title.TitleHandler;
 import game.msg.*;
 import game.proto.*;
@@ -138,7 +139,8 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.FishExitAreaReq, FishHandler::exitArea, FishExitAreaReq::parser));
         // Chat
         addHandler(new Invoker<>(No.ChatMessageReq, ChatHandler::chat, ChatMessageReq::parser));
-
+        // Temple
+        addHandler(new RetInvoker<>(No.TempleHeroBuyReq, TempleHandler::TempleHeroBuyReq, TempleHeroBuyReq::parser));
     }
 
     private void initScene() {

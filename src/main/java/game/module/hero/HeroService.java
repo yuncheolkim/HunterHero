@@ -37,6 +37,13 @@ public class HeroService {
 
     }
 
+    /**
+     * 是否有英雄
+     *
+     * @param player
+     * @param heroId
+     * @return
+     */
     public static boolean hasHero(final Player player, final int heroId) {
         return player.pd.containsHero(heroId);
     }
@@ -49,7 +56,7 @@ public class HeroService {
      * @param heroId
      * @param push
      */
-    public static void addHero(final Player player, final int heroId, boolean push) {
+    public static void addHero(final Player player, final int heroId, final boolean push) {
         if (player.getPd().getHeroMap().containsKey(heroId)) {
             return;
         }
@@ -62,13 +69,13 @@ public class HeroService {
         builder.setProperty(d.property);
 
 
-        Property property = builder.getProperty();
+        final Property property = builder.getProperty();
         builder.getPropertyEffectBuilder()
                 .setDefRate(CalcUtil.calcRateProperty(property.getDef(), property.getDefBase()))
                 .setAvoidRate(CalcUtil.calcRateProperty(property.getAvoid(), property.getAvoidBase()))
                 .setCriticalRate(CalcUtil.calcRateProperty(property.getCritical(), property.getCriticalBase()));
 
-        PlayerHero newHero = builder.build();
+        final PlayerHero newHero = builder.build();
         player.getPd().putHero(heroId, newHero);
 
         if (push) {

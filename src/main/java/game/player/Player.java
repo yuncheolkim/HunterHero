@@ -432,7 +432,7 @@ public class Player {
      *
      * @param typeEnum
      * @param count
-     * @return
+     * @return 消费是否成功
      */
     public boolean consumeGem(final ConsumeTypeEnum typeEnum, final int count) {
         if (pd.getResourceBuilder().getLei() < count || count <= 0) {

@@ -23,6 +23,7 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     ERR_5(5, "已最高级"),
     ERR_6(6, "体力已满"),
     ERR_7(7, "雷石不足"),
+    ERR_8(8, "英雄已存在"),
     ERR_102(102, "物品不足"),
     ERR_103(103, "数字不能小于等于0"),
     ERR_104(104, "背包空间不足"),
