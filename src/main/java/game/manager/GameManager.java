@@ -144,7 +144,6 @@ public class GameManager extends AbsLifecycle {
     }
 
     private void initScene() {
-
         chatScene.setWork(G.W.getSceneWork());
     }
 
