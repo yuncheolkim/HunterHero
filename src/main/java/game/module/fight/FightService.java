@@ -142,7 +142,13 @@ public class FightService {
         return push.build();
     }
 
-
+    /**
+     * 执行天赋逻辑
+     *
+     * @param heroId
+     * @param talentInfo
+     * @param talent
+     */
     public static void talentProcess(final int heroId, final int talentInfo, final Consumer<TalentConfigData> talent) {
         final HeroConfigData heroConfig = ConfigManager.heroDataBox.findById(heroId);
 

@@ -52,6 +52,12 @@ public abstract class Buff {
         }
     }
 
+    public void addEffectPoint(final ActionPoint actionPoint) {
+        if (!effectPoint.containsKey(actionPoint)) {
+            effectPoint.put(actionPoint, 1);
+        }
+    }
+
     /**
      * 是否需要重新计算属性
      *
@@ -160,6 +166,7 @@ public abstract class Buff {
         return config.priority;
     }
 
+    @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

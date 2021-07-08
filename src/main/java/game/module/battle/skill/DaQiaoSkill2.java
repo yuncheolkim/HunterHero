@@ -43,7 +43,12 @@ public class DaQiaoSkill2 extends Skill {
     }
 
 
+    /**
+     * 每1回合全体恢复血量 15%
+     *
+     * @param id
+     */
     public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+        data[0] = ConfigManager.talentDataBox.findById(id).i1;
     }
 }

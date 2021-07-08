@@ -23,6 +23,24 @@ public class DaQiao extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
+                case 904:
+                    skill1.talent1(id);
+                    break;
+                case 905:
+                    skill2.talent1(id);
+                    break;
+                case 906:
+                    skill3.talent1(id);
+                    break;
+                case 913:
+                    skill1.talent2(id);
+                    break;
+                case 914:
+                    skill1.talent3(id);
+                    break;
+                case 915:
+                    skill1.talent4(id);
+                    break;
             }
         });
         addSkill(skill1);

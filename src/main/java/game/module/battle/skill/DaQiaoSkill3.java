@@ -6,6 +6,7 @@ import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.hero.ZhuFuBuff;
 import game.module.battle.record.Record;
+import game.utils.CalcUtil;
 
 /**
  * 添加祝福光环，减少5%伤害
@@ -33,8 +34,13 @@ public class DaQiaoSkill3 extends Skill {
 
     }
 
+    /**
+     * 祝福光环效果翻倍
+     *
+     * @param id
+     */
     public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+        data[0] = CalcUtil.final100(data[0], ConfigManager.talentDataBox.findById(id).i1);
     }
 
 }
