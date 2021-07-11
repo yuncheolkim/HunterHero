@@ -1,36 +1,29 @@
 {
     "1": {
-        "area": "建业",
+        "areaId": "1",
         "i1": 3,
         "id": 1,
-        "inHouse": 1,
         "name": "左右",
-        "pos": "5,-12",
         "speakId": 1001,
         "title": "指引",
         "type": 1
     },
     "10": {
-        "area": "建业",
-        "houseName": "李家",
+        "areaId": "1",
         "id": 10,
-        "inHouse": 2,
         "name": "李小丽",
         "speakId": 2009,
         "type": 1
     },
     "11": {
-        "area": "建业",
-        "houseName": "鱼屋",
+        "areaId": "1",
         "id": 11,
-        "inHouse": 1,
         "name": "渔夫",
         "speakId": 1001,
         "type": 1
     },
     "12": {
-        "area": "建业",
-        "houseName": "装备店",
+        "areaId": "1",
         "i1": 4,
         "id": 12,
         "name": "陆少",
@@ -40,8 +33,7 @@
         "type": 2
     },
     "13": {
-        "area": "建业",
-        "houseName": "材料店",
+        "areaId": "1",
         "i1": 4,
         "id": 13,
         "name": "纯棉",
@@ -51,24 +43,22 @@
         "type": 2
     },
     "14": {
+        "areaId": "4",
         "id": 14,
         "name": "苏离",
         "title": "英雄",
         "type": 1
     },
     "2": {
-        "area": "东海",
+        "areaId": "2",
         "id": 2,
-        "inHouse": 1,
         "name": "青宁",
         "speakId": 1001,
         "type": 1
     },
     "3": {
-        "area": "建业",
-        "houseName": "花店",
+        "areaId": "1",
         "id": 3,
-        "inHouse": 2,
         "name": "如花",
         "shopId": 2,
         "speakId": 1001,
@@ -76,21 +66,17 @@
         "type": 2
     },
     "4": {
-        "area": "建业",
-        "houseName": "仓库",
+        "areaId": "1",
         "id": 4,
-        "inHouse": 2,
         "name": "旧守财",
         "speakId": 1001,
         "title": "银行老板",
         "type": 3
     },
     "5": {
-        "area": "建业",
-        "houseName": "杂货店",
+        "areaId": "1",
         "i1": 4,
         "id": 5,
-        "inHouse": 2,
         "name": "乔小",
         "shopId": 1,
         "speakId": 1001,
@@ -104,8 +90,7 @@
         "type": 1
     },
     "51": {
-        "area": "钟离",
-        "houseName": "材料店",
+        "areaId": "4",
         "id": 51,
         "name": "苏酒",
         "speakId": 1001,
@@ -113,86 +98,147 @@
         "type": 4
     },
     "52": {
-        "id": 52
+        "areaId": "4",
+        "id": 52,
+        "name": "麻森",
+        "title": "旅店老板",
+        "type": 4
     },
     "53": {
-        "id": 53
+        "areaId": "4",
+        "id": 53,
+        "name": "泥涵",
+        "shopId": 11,
+        "title": "武器商",
+        "type": 2
     },
     "54": {
-        "id": 54
+        "areaId": "4",
+        "id": 54,
+        "name": "钟夕",
+        "shopId": 12,
+        "title": "装备商",
+        "type": 2
     },
     "55": {
-        "id": 55
+        "areaId": "4",
+        "id": 55,
+        "name": "米辰",
+        "type": 1
     },
     "56": {
-        "id": 56
+        "areaId": "4",
+        "id": 56,
+        "name": "沃丁",
+        "type": 1
     },
     "57": {
-        "id": 57
+        "areaId": "4",
+        "id": 57,
+        "name": "青桥",
+        "type": 1
     },
     "58": {
-        "id": 58
+        "areaId": "4",
+        "id": 58,
+        "name": "晁夏",
+        "type": 1
     },
     "59": {
-        "id": 59
+        "areaId": "4",
+        "id": 59,
+        "name": "方雁",
+        "type": 1
     },
     "6": {
-        "area": "建业",
-        "houseName": "王大户",
+        "areaId": "1",
         "id": 6,
-        "inHouse": 2,
         "name": "王小户",
         "speakId": 1001,
         "type": 1
     },
     "60": {
-        "id": 60
+        "areaId": "4",
+        "id": 60,
+        "name": "希洛",
+        "type": 1
     },
     "61": {
-        "id": 61
+        "areaId": "4",
+        "id": 61,
+        "name": "洋子",
+        "type": 1
     },
     "62": {
-        "id": 62
+        "areaId": "4",
+        "id": 62,
+        "name": "依竹",
+        "type": 1
     },
     "63": {
-        "id": 63
+        "areaId": "4",
+        "id": 63,
+        "name": "于德",
+        "type": 1
     },
     "64": {
-        "id": 64
+        "areaId": "4",
+        "id": 64,
+        "name": "扬楚",
+        "type": 1
     },
     "65": {
-        "id": 65
+        "areaId": "4",
+        "id": 65,
+        "name": "德楚",
+        "type": 1
     },
     "66": {
-        "id": 66
+        "areaId": "4",
+        "id": 66,
+        "name": "卢霞",
+        "type": 1
+    },
+    "67": {
+        "areaId": "4",
+        "id": 67,
+        "name": "六菲",
+        "type": 1
+    },
+    "68": {
+        "areaId": "4",
+        "id": 68,
+        "name": "蔡竹",
+        "type": 1
+    },
+    "69": {
+        "areaId": "4",
+        "id": 69,
+        "name": "睿华",
+        "title": "英雄",
+        "type": 1
     },
     "7": {
-        "area": "建业",
-        "houseName": "酒馆",
+        "areaId": "1",
         "i1": 4,
         "id": 7,
-        "inHouse": 2,
         "name": "王小二",
         "speakId": 1003,
         "title": "旅店伙计",
         "type": 4
     },
     "8": {
-        "area": "建业",
-        "houseName": "衙门",
+        "areaId": "1",
         "id": 8,
-        "inHouse": 2,
         "name": "正光明",
         "speakId": 1001,
         "title": "秉公执法",
         "type": 1
     },
     "9": {
-        "area": "建业",
-        "houseName": "武器店",
+        "areaId": "1",
         "i1": 4,
         "id": 9,
-        "inHouse": 2,
         "name": "钢强",
         "shopId": 3,
         "speakId": 1001,
