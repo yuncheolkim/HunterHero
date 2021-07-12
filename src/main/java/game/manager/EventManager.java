@@ -1,5 +1,7 @@
 package game.manager;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import game.base.G;
 import game.base.Logs;
 import game.base.Work;
@@ -10,8 +12,7 @@ import game.module.event.handler.*;
 import game.player.Player;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Collection;
 import java.util.Optional;
 
 /**
@@ -22,7 +23,7 @@ import java.util.Optional;
  * 2021/2/25 10:56
  */
 public class EventManager {
-    private static final Map<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = new HashMap<>();
+    private static final Multimap<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = ArrayListMultimap.create();
 
     public EventManager() {
         // 杀敌事件
@@ -46,17 +47,17 @@ public class EventManager {
     /**
      * @param handler 必须要有默认构造函数
      */
-    private void addEvent(IPlayerEventHandler<? extends IEvent> handler) {
+    private void addEvent(final IPlayerEventHandler<? extends IEvent> handler) {
 
         try {
-            for (Method declaredMethod : handler.getClass().getMethods()) {
+            for (final Method declaredMethod : handler.getClass().getMethods()) {
                 if (declaredMethod.getName().equals("handler") && !declaredMethod.isBridge()) {
-                    Class<?> idClazz = declaredMethod.getParameterTypes()[1];
-                    IEvent o = (IEvent) idClazz.newInstance();
+                    final Class<?> idClazz = declaredMethod.getParameterTypes()[1];
+                    final IEvent o = (IEvent) idClazz.newInstance();
                     playerEventMap.put(o.type(), handler);
                 }
             }
-        } catch (Exception e) {
+        } catch (final Exception e) {
             G.findException(e);
         }
     }
@@ -67,26 +68,32 @@ public class EventManager {
      * @param player
      * @param event
      */
-    public static <T extends IEvent> void firePlayerEvent(Player player, T event) {
-        IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
-        try {
-            iPlayerEventHandler.handler(player, event);
-        } catch (Exception e) {
-            Logs.C.error(e);
+    public static <T extends IEvent> void firePlayerEvent(final Player player, final T event) {
+        final Collection<IPlayerEventHandler<? extends IEvent>> iPlayerEventHandler = playerEventMap.get(event.type());
+        for (final IPlayerEventHandler<? extends IEvent> playerEventHandler : iPlayerEventHandler) {
+            try {
+
+                ((IPlayerEventHandler<T>) playerEventHandler).handler(player, event);
+            } catch (final Exception e) {
+                Logs.C.error(e);
+            }
         }
     }
 
-    public static <T extends IEvent> void firePlayerEvent(long pid, T event) {
-        IPlayerEventHandler<T> iPlayerEventHandler = (IPlayerEventHandler<T>) playerEventMap.get(event.type());
-        Optional<Player> f = G.P.findPlayer(pid);
+    public static <T extends IEvent> void firePlayerEvent(final long pid, final T event) {
+        final Collection<IPlayerEventHandler<? extends IEvent>> iPlayerEventHandler = playerEventMap.get(event.type());
+        final Optional<Player> f = G.P.findPlayer(pid);
         if (f.isPresent()) {
-            Work playerWork = G.W.getPlayerWork(pid);
-            Player player = f.get();
+            final Work playerWork = G.W.getPlayerWork(pid);
+            final Player player = f.get();
             playerWork.addTask(() -> {
-                try {
-                    iPlayerEventHandler.handler(player, event);
-                } catch (Exception e) {
-                    Logs.C.error(e);
+                for (final IPlayerEventHandler<? extends IEvent> playerEventHandler : iPlayerEventHandler) {
+                    try {
+
+                        ((IPlayerEventHandler<T>) playerEventHandler).handler(player, event);
+                    } catch (final Exception e) {
+                        Logs.C.error(e);
+                    }
                 }
             });
         }
