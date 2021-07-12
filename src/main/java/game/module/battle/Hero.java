@@ -217,6 +217,7 @@ public class Hero {
     }
 
     public void action() {
+        Logs.trace("出手------------------>", this);
         final Record record = new Record(ACTION);
         record.heroId = id;
         record.pos = pos.getIndex();
@@ -254,14 +255,15 @@ public class Hero {
 
             if (this.heroStats.active) {
 
-                Logs.trace("calcAttack:", this);
+                Logs.trace("计算攻击前:", this);
                 calcAttack();
+                Logs.trace("计算攻击后:", this);
                 processAction(ActionPoint.出手);
                 // skill 主动技能
                 final boolean skillFire = processSkill(ActionPoint.出手);
 
                 // 计算伤害
-                Logs.trace("attack:", this.getSimple(), "--->", target.getSimple(), damageInfo);
+                Logs.trace("开始攻击--->", this.getSimple(), "--->", target.getSimple(), damageInfo);
 
                 if (!skillFire) {// 普通攻击
                     attackRecord();
@@ -318,11 +320,11 @@ public class Hero {
      */
     public void attacked(final DamageInfo info) {
         resetFightingData();
-        Logs.trace("attacked:", this);
         if (info.target.id != this.id) {
             info.target.attacked(info);
             return;
         }
+        Logs.trace("受到攻击--->", this);
         processAll(ActionPoint.被攻击之前);
 
         // 计算受到的伤害
@@ -399,7 +401,7 @@ public class Hero {
         boolean fired = false;
         for (final Skill skill : skills) {
             if (skill.isReady() && skill.canProcess(this)) {
-                Logs.trace("使用技能", this);
+                Logs.trace("技能--------->", actionPoint.name(), skill.getClass().getSimpleName(), this.getSimple());
 
                 // 使用技能
                 final Record record = skill.process(actionPoint, this);
@@ -446,7 +448,7 @@ public class Hero {
         info.setNewValue(target.heroStats.hp);
 
         addDamageRecord(i);
-        Logs.trace("reduceHp", info);
+        Logs.trace("掉血", info);
         if (info.getNewValue() <= 0) {
             deadInfo = info;
             processAll(ActionPoint.死之前);

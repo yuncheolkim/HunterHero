@@ -30,7 +30,7 @@ public class CriticalDamageProcess implements DamageProcess {
             final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
             damageInfo.sourceCriticalDamage = damageInfo.sourceCriticalDamage + CalcUtil.change100(damage, damageRate);
             hero.processAll(ActionPoint.暴击后);
-            Logs.trace("暴击伤害", rate, processData.getCriticalDamageRate());
+            Logs.trace("发生暴击，暴击伤害", rate, processData.getCriticalDamageRate() + "%");
         }
 
         return true;

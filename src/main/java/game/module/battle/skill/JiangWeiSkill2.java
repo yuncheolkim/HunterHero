@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -31,6 +32,7 @@ public class JiangWeiSkill2 extends Skill {
                 final Optional<Skill> skill = hero.findSkill(52);
                 if (skill.isPresent() && !hero.fightingData.mustCritical) {
                     final JiangWeiSkill3 skill3 = (JiangWeiSkill3) skill.get();
+                    Logs.trace("暴击后", "增加点数", data[0]);
                     skill3.addPower(data[0]);
                 }
                 break;

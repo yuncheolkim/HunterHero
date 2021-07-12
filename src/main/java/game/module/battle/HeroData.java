@@ -52,7 +52,7 @@ public class HeroData {
     /**
      * 暴击基数
      */
-    private int criticalBase;
+    public int criticalBase;
 
     /**
      * 暴击伤害比例

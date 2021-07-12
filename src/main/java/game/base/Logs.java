@@ -21,10 +21,10 @@ public class Logs {
 
     public static void trace(final Object... args) {
 
-//        for (final Object arg : args) {
-//            System.out.print(arg + " ");
-//        }
-//        System.out.println();
+        for (final Object arg : args) {
+            System.out.print(arg + " ");
+        }
+        System.out.println();
 
     }
 

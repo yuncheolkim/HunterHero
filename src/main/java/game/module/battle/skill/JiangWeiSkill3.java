@@ -13,7 +13,7 @@ import static game.module.battle.action.ActionPoint.暴击后;
  * 消耗{0}点能量必暴击
  * <p>
  * 0: 暴能条件数量
- * 1: 暴击伤害增加量
+ * 1: 暴击伤害增加量 - T
  *
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
@@ -33,6 +33,7 @@ public class JiangWeiSkill3 extends Skill {
         switch (point) {
             case 出手前:
                 if (power >= data[0]) {
+                    Logs.trace("JiangWeiSkill3  触发必暴", power, data[0]);
                     hero.fightingData.mustCritical = true;
                     power -= data[0];
                 }

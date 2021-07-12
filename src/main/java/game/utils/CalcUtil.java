@@ -99,6 +99,9 @@ public class CalcUtil {
     }
 
     public static boolean happened(final int rate, final int total) {
+        if (rate == 0) {
+            return false;
+        }
         return rate + 1 > DEFAULT_RANDOM.get().nextInt(total);
     }
 
