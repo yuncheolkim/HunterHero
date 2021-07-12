@@ -41,9 +41,6 @@ public class ConfigManager extends AbsLifecycle {
 
     private Map<Integer, TransformConfigData> transformMap;
 
-    // 18-shop
-    private static Map<Integer, ShopConfigData> shopMap;
-
     // Data box
     public static final HeroBaseDataBox heroBaseDataBox = new HeroBaseDataBox();
 
@@ -86,6 +83,7 @@ public class ConfigManager extends AbsLifecycle {
     public static final PropertyDataBox xiulianBox = new PropertyDataBox("data/hero_修炼.json");
 
     public static final TempleHeroDataBox templeHeroDataBox = new TempleHeroDataBox();
+    public static final ShopDataBox shopDataBox = new ShopDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -111,6 +109,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(lilianBox);
         list.add(xiulianBox);
         list.add(templeHeroDataBox);
+        list.add(shopDataBox);
     }
 
     @Override
@@ -132,9 +131,6 @@ public class ConfigManager extends AbsLifecycle {
 
         // 20-传送点
         transformMap = makeMapData("data/data_20-传送点.json", TransformConfigData::new);
-
-        // 18-商店
-        shopMap = makeMapData("data/data_18-商店.json", ShopConfigData::new);
 
         // 解析配置表
         for (final IConfigParse iConfigParse : list) {
@@ -318,7 +314,7 @@ public class ConfigManager extends AbsLifecycle {
     }
 
     public static ShopConfigData getShop(final int id) {
-        return shopMap.get(id);
+        return shopDataBox.findById(id);
     }
 
     public static TitleConfigData getTitle(final int id) {

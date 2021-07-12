@@ -14,9 +14,7 @@ public class ShopConfigData extends BaseConfigData<ShopConfigData> {
     public List<Integer> items = new ArrayList<>();
 
     @Override
-    public ShopConfigData convert(final DataConfigData data) {
-        final ShopConfigData convert = super.convert(data);
-        convert.items.addAll(data.list1);
-        return convert;
+    protected void fill(final DataConfigData d) {
+        items.addAll(d.list1);
     }
 }

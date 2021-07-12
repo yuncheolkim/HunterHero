@@ -106,7 +106,7 @@ public class Battle {
         roundList.add(currentRound);
 
         Logs.trace("==============================================");
-        do {
+        while (true) {
             Logs.trace("回合开始：", currentRound.getRoundCount());
 
             processHero(ActionPoint.回合开始前);
@@ -140,9 +140,12 @@ public class Battle {
                 // 最多30回合
                 break;
             }
+            if (hasWinner()) {
+                break;
+            }
             //下一回合
             nextRound();
-        } while (!hasWinner());
+        }
         // 结算
         Logs.trace("游戏结束", "胜利：", winSide);
         battleRecord.setRoundList(roundList);

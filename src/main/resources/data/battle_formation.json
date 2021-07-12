@@ -4,7 +4,7 @@
         "avoidBase": 150,
         "critical": 150,
         "criticalBase": 150,
-        "criticalDamage": 150,
+        "criticalDamage": 200,
         "damage": 150,
         "def": 200,
         "defBase": 150,
@@ -14,7 +14,7 @@
         "i3": 1,
         "i4": 6,
         "id": 1,
-        "level": 5,
+        "level": 6,
         "name": "佣人1"
     },
     "10": {
@@ -147,9 +147,9 @@
         "avoid": 300,
         "avoidBase": 150,
         "critical": 150,
-        "criticalBase": 150,
+        "criticalBase": 200,
         "criticalDamage": 150,
-        "damage": 150,
+        "damage": 200,
         "def": 150,
         "defBase": 150,
         "hp": 150,
@@ -158,7 +158,7 @@
         "i3": 2,
         "i4": 7,
         "id": 2,
-        "level": 5,
+        "level": 6,
         "name": "佣人2"
     },
     "3": {
@@ -176,7 +176,7 @@
         "i3": 3,
         "i4": 5,
         "id": 3,
-        "level": 6,
+        "level": 7,
         "name": "王小户"
     },
     "4": {

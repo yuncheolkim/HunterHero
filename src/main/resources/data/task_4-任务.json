@@ -35,9 +35,6 @@
         "reward": "1=100",
         "s1": "去王大户家找王小户",
         "speakType": 1,
-        "targetList": [
-            10
-        ],
         "taskType": 1,
         "title": "纠缠不清"
     },
@@ -83,9 +80,6 @@
         "reward": "1=100",
         "s1": "去李家找李小丽",
         "speakType": 1,
-        "targetList": [
-            12
-        ],
         "taskType": 1,
         "title": "好吧，你赢了"
     },
@@ -107,9 +101,6 @@
         "reward": "1=100",
         "s1": "去找旅店王小二",
         "speakType": 1,
-        "targetList": [
-            13
-        ],
         "taskType": 1,
         "title": "好意心领了"
     },
@@ -131,9 +122,6 @@
         "reward": "1=100",
         "s1": "去衙门找正光明",
         "speakType": 1,
-        "targetList": [
-            14
-        ],
         "taskType": 1,
         "title": "衙门通知"
     },
@@ -176,9 +164,6 @@
         "reward": "1=100",
         "s1": "去衙门找正光明",
         "speakType": 1,
-        "targetList": [
-            16
-        ],
         "taskType": 1,
         "title": "解决案件"
     },
@@ -200,9 +185,6 @@
         "reward": "1=100",
         "s1": "去找旅店王小二",
         "speakType": 1,
-        "targetList": [
-            17
-        ],
         "taskType": 1,
         "title": "回到旅店"
     },
@@ -221,9 +203,6 @@
         "reward": "1=100",
         "s1": "去钟离城旅店找苏酒",
         "speakType": 1,
-        "targetList": [
-            18
-        ],
         "taskType": 1,
         "title": "前往钟离"
     },
@@ -400,9 +379,6 @@
         "reward": "1=100",
         "s1": "去找旅店王小二",
         "speakType": 1,
-        "targetList": [
-            5
-        ],
         "taskType": 1,
         "title": "旅店伙计的烦恼"
     },
@@ -448,9 +424,6 @@
         "reward": "1=100",
         "s1": "去武器店看看",
         "speakType": 1,
-        "targetList": [
-            7
-        ],
         "taskType": 1,
         "title": "武装力量"
     },
@@ -473,9 +446,6 @@
         "reward": "1=100",
         "s1": "去装备店看看",
         "speakType": 1,
-        "targetList": [
-            8
-        ],
         "taskType": 1,
         "title": "更好的保护"
     },
@@ -497,9 +467,6 @@
         "reward": "1=100",
         "s1": "去李家找李小丽",
         "speakType": 1,
-        "targetList": [
-            9
-        ],
         "taskType": 1,
         "title": "去找小丽"
     }
