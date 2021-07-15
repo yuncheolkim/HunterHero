@@ -5,6 +5,7 @@
         "completeType": 2,
         "contentId": 14,
         "conversationId": 0,
+        "i1": 1,
         "id": 1,
         "level": 1,
         "list2": [
@@ -23,6 +24,7 @@
         "completeType": 2,
         "contentId": 34,
         "conversationId": 0,
+        "i1": 7,
         "id": 10,
         "level": 7,
         "list1": [
@@ -38,12 +40,67 @@
         "taskType": 1,
         "title": "纠缠不清"
     },
+    "101": {
+        "i1": 10,
+        "id": 101,
+        "level": 10,
+        "title": "山鸡的味道"
+    },
+    "102": {
+        "i1": 10,
+        "id": 102,
+        "level": 10,
+        "title": "野兔"
+    },
+    "103": {
+        "i1": 11,
+        "id": 103,
+        "level": 10,
+        "title": "野猪"
+    },
+    "104": {
+        "i1": 11,
+        "id": 104,
+        "level": 10,
+        "title": "野猪牙"
+    },
+    "105": {
+        "i1": 12,
+        "id": 105,
+        "level": 10,
+        "title": "蜘蛛"
+    },
+    "106": {
+        "i1": 12,
+        "id": 106,
+        "level": 10,
+        "title": "羊毛"
+    },
+    "107": {
+        "i1": 13,
+        "id": 107,
+        "level": 10,
+        "title": "斑马的威胁"
+    },
+    "108": {
+        "i1": 14,
+        "id": 108,
+        "level": 10,
+        "title": "消灭狼"
+    },
+    "109": {
+        "i1": 14,
+        "id": 109,
+        "level": 10,
+        "title": "获得狼皮"
+    },
     "11": {
         "completeContentId": 63,
         "completeNpcId": 6,
         "completeType": 1,
         "contentId": 35,
         "conversationId": 0,
+        "i1": 7,
         "i2": "2",
         "id": 11,
         "level": 7,
@@ -62,12 +119,73 @@
         "taskType": 1,
         "title": "一决胜负"
     },
+    "110": {
+        "i1": 15,
+        "id": 110,
+        "level": 10,
+        "title": "消灭狼王"
+    },
+    "111": {
+        "i1": 15,
+        "id": 111,
+        "level": 10,
+        "title": "可怕的兔子"
+    },
+    "112": {
+        "i1": 16,
+        "id": 112,
+        "level": 10,
+        "title": "消灭强盗"
+    },
+    "113": {
+        "i1": 17,
+        "id": 113,
+        "level": 10,
+        "title": "夺取货物"
+    },
+    "114": {
+        "i1": 18,
+        "id": 114,
+        "level": 10,
+        "title": "消灭黑熊"
+    },
+    "115": {
+        "i1": 18,
+        "id": 115,
+        "level": 10,
+        "title": "熊肉"
+    },
+    "116": {
+        "i1": 19,
+        "id": 116,
+        "level": 10,
+        "title": "下马威"
+    },
+    "117": {
+        "i1": 19,
+        "id": 117,
+        "level": 10,
+        "title": "老虎"
+    },
+    "118": {
+        "i1": 19,
+        "id": 118,
+        "level": 10,
+        "title": "威慑"
+    },
+    "119": {
+        "i1": 20,
+        "id": 119,
+        "level": 10,
+        "title": "虎骨酒"
+    },
     "12": {
         "completeContentId": 64,
         "completeNpcId": 10,
         "completeType": 2,
         "contentId": 36,
         "conversationId": 0,
+        "i1": 7,
         "id": 12,
         "level": 7,
         "list1": [
@@ -83,12 +201,25 @@
         "taskType": 1,
         "title": "好吧，你赢了"
     },
+    "120": {
+        "i1": 20,
+        "id": 120,
+        "level": 10,
+        "title": "抵御山贼"
+    },
+    "121": {
+        "i1": 20,
+        "id": 121,
+        "level": 10,
+        "title": "攻破山贼巢穴"
+    },
     "13": {
         "completeContentId": 65,
         "completeNpcId": 7,
         "completeType": 2,
         "contentId": 37,
         "conversationId": 0,
+        "i1": 7,
         "id": 13,
         "level": 7,
         "list1": [
@@ -110,6 +241,7 @@
         "completeType": 2,
         "contentId": 38,
         "conversationId": 0,
+        "i1": 7,
         "id": 14,
         "level": 7,
         "list1": [
@@ -131,6 +263,7 @@
         "completeType": 2,
         "contentId": 39,
         "conversationId": 0,
+        "i1": 7,
         "id": 15,
         "level": 7,
         "list1": [
@@ -152,6 +285,7 @@
         "completeType": 2,
         "contentId": 42,
         "conversationId": 0,
+        "i1": 7,
         "id": 16,
         "level": 7,
         "list1": [
@@ -173,6 +307,7 @@
         "completeType": 2,
         "contentId": 44,
         "conversationId": 0,
+        "i1": 7,
         "id": 17,
         "level": 7,
         "list1": [
@@ -194,6 +329,7 @@
         "completeType": 2,
         "contentId": 46,
         "conversationId": 0,
+        "i1": 7,
         "id": 18,
         "level": 7,
         "list1": [
@@ -212,6 +348,7 @@
         "completeType": 1,
         "contentId": 31,
         "conversationId": 0,
+        "i1": 5,
         "id": 19,
         "level": 5,
         "list2": [
@@ -233,6 +370,7 @@
         "completeType": 1,
         "contentId": 16,
         "conversationId": 0,
+        "i1": 1,
         "id": 2,
         "level": 1,
         "list1": [
@@ -257,6 +395,7 @@
         "completeType": 1,
         "contentId": 48,
         "conversationId": 0,
+        "i1": 8,
         "id": 20,
         "level": 8,
         "list1": [
@@ -281,6 +420,7 @@
         "completeType": 2,
         "contentId": 50,
         "conversationId": 0,
+        "i1": 8,
         "id": 21,
         "level": 8,
         "list1": [
@@ -301,6 +441,7 @@
         "completeType": 1,
         "contentId": 52,
         "conversationId": 0,
+        "i1": 7,
         "id": 22,
         "level": 7,
         "list1": [
@@ -325,6 +466,7 @@
         "completeType": 1,
         "contentId": 20,
         "conversationId": 0,
+        "i1": 2,
         "id": 3,
         "level": 2,
         "list2": [
@@ -346,6 +488,7 @@
         "completeType": 1,
         "contentId": 21,
         "conversationId": 0,
+        "i1": 3,
         "id": 4,
         "level": 3,
         "list1": [
@@ -367,6 +510,7 @@
         "completeType": 2,
         "contentId": 24,
         "conversationId": 0,
+        "i1": 4,
         "id": 5,
         "level": 4,
         "list1": [
@@ -388,6 +532,7 @@
         "completeType": 1,
         "contentId": 26,
         "conversationId": 0,
+        "i1": 4,
         "id": 6,
         "level": 4,
         "list1": [
@@ -412,6 +557,7 @@
         "completeType": 2,
         "contentId": 30,
         "conversationId": 0,
+        "i1": 4,
         "id": 7,
         "level": 4,
         "list1": [
@@ -433,6 +579,7 @@
         "completeType": 2,
         "contentId": 32,
         "conversationId": 0,
+        "i1": 6,
         "id": 8,
         "level": 6,
         "list1": [
@@ -455,6 +602,7 @@
         "completeType": 2,
         "contentId": 33,
         "conversationId": 0,
+        "i1": 7,
         "id": 9,
         "level": 7,
         "list1": [
