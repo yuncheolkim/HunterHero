@@ -1,6 +1,10 @@
 package game.tools.task;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Yunzhe.Jin
@@ -8,26 +12,29 @@ import com.alibaba.excel.annotation.ExcelProperty;
  */
 public class TaskExcelData {
 
+    @ExcelIgnore
+    public int nodeId;
+    @ExcelIgnore
+    public Set<Integer> before = new HashSet<>();
+    @ExcelIgnore
+    public Set<Integer> after = new HashSet<>();
+    @ExcelIgnore
+    public boolean completeNext;
+
     @ExcelProperty("id")
     public int id;
 
-    @ExcelProperty("name")
-    public String name;
+    @ExcelProperty("title")
+    public String title;
 
-    @ExcelProperty("area")
-    public int level;
-
-    @ExcelProperty("area")
-    public int i1;
-
-    @ExcelProperty("area")
+    @ExcelProperty("areaId")
     public int areaId;
 
-    @ExcelProperty("area")
+    @ExcelProperty("npcId")
     public int npcId;
 
-    @ExcelProperty("area")
-    public int num;
+    @ExcelProperty("i3")
+    public int i3;
 
     @ExcelProperty("completeNpcId")
     public int completeNpcId;
@@ -41,36 +48,23 @@ public class TaskExcelData {
     @ExcelProperty("completeType")
     public int completeType;
 
+    @ExcelProperty("targetList")
+    public String targetList;
+
     public int getId() {
         return id;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(final String title) {
+        this.title = title;
+    }
+
     public void setId(final int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(final int level) {
-        this.level = level;
-    }
-
-    public int getI1() {
-        return i1;
-    }
-
-    public void setI1(final int i1) {
-        this.i1 = i1;
     }
 
     public int getAreaId() {
@@ -89,12 +83,12 @@ public class TaskExcelData {
         this.npcId = npcId;
     }
 
-    public int getNum() {
-        return num;
+    public int getI3() {
+        return i3;
     }
 
-    public void setNum(final int num) {
-        this.num = num;
+    public void setI3(final int i3) {
+        this.i3 = i3;
     }
 
     public int getCompleteNpcId() {
@@ -127,5 +121,13 @@ public class TaskExcelData {
 
     public void setCompleteType(final int completeType) {
         this.completeType = completeType;
+    }
+
+    public String getTargetList() {
+        return targetList;
+    }
+
+    public void setTargetList(final String targetList) {
+        this.targetList = targetList;
     }
 }

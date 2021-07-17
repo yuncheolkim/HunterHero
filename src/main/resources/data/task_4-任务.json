@@ -1,11 +1,13 @@
 {
     "1": {
+        "areaId": 1,
         "completeContentId": 15,
         "completeNpcId": 11,
         "completeType": 2,
         "contentId": 14,
         "conversationId": 0,
         "i1": 1,
+        "i3": 1,
         "id": 1,
         "level": 1,
         "list2": [
@@ -19,12 +21,14 @@
         "title": "帮助渔夫"
     },
     "10": {
+        "areaId": 1,
         "completeContentId": 62,
         "completeNpcId": 6,
         "completeType": 2,
         "contentId": 34,
         "conversationId": 0,
         "i1": 7,
+        "i3": 10,
         "id": 10,
         "level": 7,
         "list1": [
@@ -40,61 +44,8 @@
         "taskType": 1,
         "title": "纠缠不清"
     },
-    "101": {
-        "i1": 10,
-        "id": 101,
-        "level": 10,
-        "title": "山鸡的味道"
-    },
-    "102": {
-        "i1": 10,
-        "id": 102,
-        "level": 10,
-        "title": "野兔"
-    },
-    "103": {
-        "i1": 11,
-        "id": 103,
-        "level": 10,
-        "title": "野猪"
-    },
-    "104": {
-        "i1": 11,
-        "id": 104,
-        "level": 10,
-        "title": "野猪牙"
-    },
-    "105": {
-        "i1": 12,
-        "id": 105,
-        "level": 10,
-        "title": "蜘蛛"
-    },
-    "106": {
-        "i1": 12,
-        "id": 106,
-        "level": 10,
-        "title": "羊毛"
-    },
-    "107": {
-        "i1": 13,
-        "id": 107,
-        "level": 10,
-        "title": "斑马的威胁"
-    },
-    "108": {
-        "i1": 14,
-        "id": 108,
-        "level": 10,
-        "title": "消灭狼"
-    },
-    "109": {
-        "i1": 14,
-        "id": 109,
-        "level": 10,
-        "title": "获得狼皮"
-    },
     "11": {
+        "areaId": 1,
         "completeContentId": 63,
         "completeNpcId": 6,
         "completeType": 1,
@@ -102,6 +53,7 @@
         "conversationId": 0,
         "i1": 7,
         "i2": "2",
+        "i3": 11,
         "id": 11,
         "level": 7,
         "list1": [
@@ -119,73 +71,15 @@
         "taskType": 1,
         "title": "一决胜负"
     },
-    "110": {
-        "i1": 15,
-        "id": 110,
-        "level": 10,
-        "title": "消灭狼王"
-    },
-    "111": {
-        "i1": 15,
-        "id": 111,
-        "level": 10,
-        "title": "可怕的兔子"
-    },
-    "112": {
-        "i1": 16,
-        "id": 112,
-        "level": 10,
-        "title": "消灭强盗"
-    },
-    "113": {
-        "i1": 17,
-        "id": 113,
-        "level": 10,
-        "title": "夺取货物"
-    },
-    "114": {
-        "i1": 18,
-        "id": 114,
-        "level": 10,
-        "title": "消灭黑熊"
-    },
-    "115": {
-        "i1": 18,
-        "id": 115,
-        "level": 10,
-        "title": "熊肉"
-    },
-    "116": {
-        "i1": 19,
-        "id": 116,
-        "level": 10,
-        "title": "下马威"
-    },
-    "117": {
-        "i1": 19,
-        "id": 117,
-        "level": 10,
-        "title": "老虎"
-    },
-    "118": {
-        "i1": 19,
-        "id": 118,
-        "level": 10,
-        "title": "威慑"
-    },
-    "119": {
-        "i1": 20,
-        "id": 119,
-        "level": 10,
-        "title": "虎骨酒"
-    },
     "12": {
+        "areaId": 1,
         "completeContentId": 64,
         "completeNpcId": 10,
         "completeType": 2,
         "contentId": 36,
         "conversationId": 0,
         "i1": 7,
+        "i3": 12,
         "id": 12,
         "level": 7,
         "list1": [
@@ -201,25 +95,15 @@
         "taskType": 1,
         "title": "好吧，你赢了"
     },
-    "120": {
-        "i1": 20,
-        "id": 120,
-        "level": 10,
-        "title": "抵御山贼"
-    },
-    "121": {
-        "i1": 20,
-        "id": 121,
-        "level": 10,
-        "title": "攻破山贼巢穴"
-    },
     "13": {
+        "areaId": 1,
         "completeContentId": 65,
         "completeNpcId": 7,
         "completeType": 2,
         "contentId": 37,
         "conversationId": 0,
         "i1": 7,
+        "i3": 13,
         "id": 13,
         "level": 7,
         "list1": [
@@ -236,12 +120,14 @@
         "title": "好意心领了"
     },
     "14": {
+        "areaId": 1,
         "completeContentId": 66,
         "completeNpcId": 8,
         "completeType": 2,
         "contentId": 38,
         "conversationId": 0,
         "i1": 7,
+        "i3": 14,
         "id": 14,
         "level": 7,
         "list1": [
@@ -258,12 +144,14 @@
         "title": "衙门通知"
     },
     "15": {
+        "areaId": 1,
         "completeContentId": 67,
         "completeNpcId": 4,
         "completeType": 2,
         "contentId": 39,
         "conversationId": 0,
         "i1": 7,
+        "i3": 15,
         "id": 15,
         "level": 7,
         "list1": [
@@ -280,12 +168,14 @@
         "title": "银行小案"
     },
     "16": {
+        "areaId": 1,
         "completeContentId": 43,
         "completeNpcId": 8,
         "completeType": 2,
         "contentId": 42,
         "conversationId": 0,
         "i1": 7,
+        "i3": 16,
         "id": 16,
         "level": 7,
         "list1": [
@@ -302,12 +192,14 @@
         "title": "解决案件"
     },
     "17": {
+        "areaId": 1,
         "completeContentId": 45,
         "completeNpcId": 7,
         "completeType": 2,
         "contentId": 44,
         "conversationId": 0,
         "i1": 7,
+        "i3": 17,
         "id": 17,
         "level": 7,
         "list1": [
@@ -324,12 +216,14 @@
         "title": "回到旅店"
     },
     "18": {
+        "areaId": 1,
         "completeContentId": 47,
         "completeNpcId": 51,
         "completeType": 2,
         "contentId": 46,
         "conversationId": 0,
         "i1": 7,
+        "i3": 18,
         "id": 18,
         "level": 7,
         "list1": [
@@ -343,12 +237,14 @@
         "title": "前往钟离"
     },
     "19": {
+        "areaId": 1,
         "completeContentId": 55,
         "completeNpcId": 9,
         "completeType": 1,
         "contentId": 31,
         "conversationId": 0,
         "i1": 5,
+        "i3": 19,
         "id": 19,
         "level": 5,
         "list2": [
@@ -365,12 +261,14 @@
         "title": "消灭大虾"
     },
     "2": {
+        "areaId": 1,
         "completeContentId": 18,
         "completeNpcId": 11,
         "completeType": 1,
         "contentId": 16,
         "conversationId": 0,
         "i1": 1,
+        "i3": 2,
         "id": 2,
         "level": 1,
         "list1": [
@@ -390,12 +288,14 @@
         "title": "海龟泛滥"
     },
     "20": {
+        "areaId": 1,
         "completeContentId": 49,
         "completeNpcId": 14,
         "completeType": 1,
         "contentId": 48,
         "conversationId": 0,
         "i1": 8,
+        "i3": 20,
         "id": 20,
         "level": 8,
         "list1": [
@@ -415,12 +315,14 @@
         "title": "海螺肉的诱惑"
     },
     "21": {
+        "areaId": 1,
         "completeContentId": 51,
         "completeNpcId": 14,
         "completeType": 2,
         "contentId": 50,
         "conversationId": 0,
         "i1": 8,
+        "i3": 21,
         "id": 21,
         "level": 8,
         "list1": [
@@ -436,12 +338,14 @@
         "title": "苏离"
     },
     "22": {
-        "completeContentId": 53,
+        "areaId": 1,
+        "completeContentId": 47,
         "completeNpcId": 4,
         "completeType": 1,
-        "contentId": 52,
+        "contentId": 46,
         "conversationId": 0,
         "i1": 7,
+        "i3": 22,
         "id": 22,
         "level": 7,
         "list1": [
@@ -450,7 +354,6 @@
         "list2": [
             16
         ],
-        "notCompleteContentId": 54,
         "npcId": 4,
         "reward": "1=100",
         "speakType": 1,
@@ -461,12 +364,14 @@
         "title": "可疑的蜡烛"
     },
     "3": {
+        "areaId": 2,
         "completeContentId": 56,
         "completeNpcId": 2,
         "completeType": 1,
         "contentId": 20,
         "conversationId": 0,
         "i1": 2,
+        "i3": 3,
         "id": 3,
         "level": 2,
         "list2": [
@@ -483,12 +388,14 @@
         "title": "美味蟹肉"
     },
     "4": {
+        "areaId": 1,
         "completeContentId": 57,
         "completeNpcId": 11,
         "completeType": 1,
         "contentId": 21,
         "conversationId": 0,
         "i1": 3,
+        "i3": 4,
         "id": 4,
         "level": 3,
         "list1": [
@@ -505,12 +412,14 @@
         "title": "钓鱼技术"
     },
     "5": {
+        "areaId": 2,
         "completeContentId": 25,
         "completeNpcId": 7,
         "completeType": 2,
         "contentId": 24,
         "conversationId": 0,
         "i1": 4,
+        "i3": 5,
         "id": 5,
         "level": 4,
         "list1": [
@@ -526,13 +435,369 @@
         "taskType": 1,
         "title": "旅店伙计的烦恼"
     },
+    "510402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 51,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 10,
+        "i3": 2,
+        "id": 510402,
+        "level": 10,
+        "list1": [
+            670401
+        ],
+        "list2": [
+            600401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 51,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            510402
+        ],
+        "taskType": 1,
+        "title": "19 虎骨酒"
+    },
+    "550401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 55,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 10,
+        "i3": 1,
+        "id": 550401,
+        "level": 10,
+        "list1": [],
+        "list2": [
+            550402
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 55,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            550401
+        ],
+        "taskType": 1,
+        "title": "山鸡的味道"
+    },
+    "550402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 55,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 11,
+        "i3": 2,
+        "id": 550402,
+        "level": 10,
+        "list1": [
+            550401
+        ],
+        "list2": [
+            550403,
+            550404
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 55,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            550402
+        ],
+        "taskType": 1,
+        "title": "野兔"
+    },
+    "550403": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 55,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 11,
+        "i3": 3,
+        "id": 550403,
+        "level": 10,
+        "list1": [
+            550402
+        ],
+        "list2": [
+            570404
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 55,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            550403
+        ],
+        "taskType": 1,
+        "title": "野猪"
+    },
+    "550404": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 57,
+        "completeType": 2,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 11,
+        "i3": 4,
+        "id": 550404,
+        "level": 10,
+        "list1": [
+            550402
+        ],
+        "list2": [
+            570401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 55,
+        "reward": "1=100",
+        "s1": "找青桥",
+        "speakType": 1,
+        "targetList": [
+            550404
+        ],
+        "taskType": 1,
+        "title": "找青桥"
+    },
+    "570401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 57,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 12,
+        "i3": 1,
+        "id": 570401,
+        "level": 10,
+        "list1": [
+            550404
+        ],
+        "list2": [
+            570402,
+            570403
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 57,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            570401
+        ],
+        "taskType": 1,
+        "title": "野猪牙"
+    },
+    "570402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 57,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 12,
+        "i3": 2,
+        "id": 570402,
+        "level": 10,
+        "list1": [
+            570401
+        ],
+        "list2": [
+            570404
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 57,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            570402
+        ],
+        "taskType": 1,
+        "title": "5 蜘蛛"
+    },
+    "570403": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 57,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 12,
+        "i3": 3,
+        "id": 570403,
+        "level": 10,
+        "list1": [
+            570401
+        ],
+        "list2": [
+            570404
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 57,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            570403
+        ],
+        "taskType": 1,
+        "title": "6 羊毛"
+    },
+    "570404": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 59,
+        "completeType": 2,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 13,
+        "i3": 4,
+        "id": 570404,
+        "level": 10,
+        "list1": [
+            570402,
+            550403,
+            570403
+        ],
+        "list2": [
+            590401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 57,
+        "reward": "1=100",
+        "s1": "找方雁",
+        "speakType": 1,
+        "targetList": [
+            570404
+        ],
+        "taskType": 1,
+        "title": "找方雁"
+    },
+    "590401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 59,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 14,
+        "i3": 1,
+        "id": 590401,
+        "level": 10,
+        "list1": [
+            570404
+        ],
+        "list2": [
+            590402
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 59,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            590401
+        ],
+        "taskType": 1,
+        "title": "7 斑马的威胁"
+    },
+    "590402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 59,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 14,
+        "i3": 2,
+        "id": 590402,
+        "level": 10,
+        "list1": [
+            590401
+        ],
+        "list2": [
+            590403,
+            590404
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 59,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            590402
+        ],
+        "taskType": 1,
+        "title": "8 消灭狼"
+    },
+    "590403": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 59,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 15,
+        "i3": 3,
+        "id": 590403,
+        "level": 10,
+        "list1": [
+            590402
+        ],
+        "list2": [
+            690401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 59,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            590403
+        ],
+        "taskType": 1,
+        "title": "9 获得狼皮"
+    },
+    "590404": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 59,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 15,
+        "i3": 4,
+        "id": 590404,
+        "level": 10,
+        "list1": [
+            590402
+        ],
+        "list2": [],
+        "notCompleteContentId": 69,
+        "npcId": 59,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            590404
+        ],
+        "taskType": 1,
+        "title": "10 消灭狼王"
+    },
     "6": {
+        "areaId": 1,
         "completeContentId": 58,
         "completeNpcId": 10,
         "completeType": 1,
         "contentId": 26,
         "conversationId": 0,
         "i1": 4,
+        "i3": 6,
         "id": 6,
         "level": 4,
         "list1": [
@@ -551,13 +816,284 @@
         "taskType": 1,
         "title": "借花献佛"
     },
+    "600401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 60,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 16,
+        "i3": 1,
+        "id": 600401,
+        "level": 10,
+        "list1": [
+            510402,
+            670402
+        ],
+        "list2": [
+            600402
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 60,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            600401
+        ],
+        "taskType": 1,
+        "title": "20 抵御山贼"
+    },
+    "600402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 60,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 17,
+        "i3": 2,
+        "id": 600402,
+        "level": 10,
+        "list1": [
+            600401
+        ],
+        "list2": [],
+        "notCompleteContentId": 69,
+        "npcId": 60,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            600402
+        ],
+        "taskType": 1,
+        "title": "攻破山贼巢穴"
+    },
+    "630401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 63,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 18,
+        "i3": 1,
+        "id": 630401,
+        "level": 10,
+        "list1": [
+            690401
+        ],
+        "list2": [
+            630402
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 63,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            630401
+        ],
+        "taskType": 1,
+        "title": "12 消灭强盗"
+    },
+    "630402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 63,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 18,
+        "i3": 2,
+        "id": 630402,
+        "level": 10,
+        "list1": [
+            630401
+        ],
+        "list2": [
+            660401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 63,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            630402
+        ],
+        "taskType": 1,
+        "title": "13 夺取货物"
+    },
+    "630403": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 63,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 19,
+        "i3": 3,
+        "id": 630403,
+        "level": 10,
+        "list1": [
+            660402
+        ],
+        "list2": [],
+        "notCompleteContentId": 69,
+        "npcId": 63,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            630403
+        ],
+        "taskType": 1,
+        "title": "16 下马威"
+    },
+    "660401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 66,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 19,
+        "i3": 1,
+        "id": 660401,
+        "level": 10,
+        "list1": [
+            630402
+        ],
+        "list2": [
+            660402
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 66,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            660401
+        ],
+        "taskType": 1,
+        "title": "14 消灭黑熊"
+    },
+    "660402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 66,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 19,
+        "i3": 2,
+        "id": 660402,
+        "level": 10,
+        "list1": [
+            660401
+        ],
+        "list2": [
+            630403,
+            670401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 66,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            660402
+        ],
+        "taskType": 1,
+        "title": "15 熊肉"
+    },
+    "670401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 67,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 20,
+        "i3": 1,
+        "id": 670401,
+        "level": 10,
+        "list1": [
+            660402
+        ],
+        "list2": [
+            510402,
+            670402
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 67,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            670401
+        ],
+        "taskType": 1,
+        "title": "17 老虎"
+    },
+    "670402": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 67,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 20,
+        "i3": 2,
+        "id": 670402,
+        "level": 10,
+        "list1": [
+            670401
+        ],
+        "list2": [
+            600401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 67,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            670402
+        ],
+        "taskType": 1,
+        "title": "18 威慑"
+    },
+    "690401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 69,
+        "completeType": 1,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 20,
+        "i3": 1,
+        "id": 690401,
+        "level": 10,
+        "list1": [
+            590403
+        ],
+        "list2": [
+            630401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 69,
+        "reward": "1=100",
+        "speakType": 1,
+        "targetList": [
+            690401
+        ],
+        "taskType": 1,
+        "title": "11 可怕的兔子"
+    },
     "7": {
+        "areaId": 1,
         "completeContentId": 59,
         "completeNpcId": 9,
         "completeType": 2,
         "contentId": 30,
         "conversationId": 0,
         "i1": 4,
+        "i3": 7,
         "id": 7,
         "level": 4,
         "list1": [
@@ -574,12 +1110,14 @@
         "title": "武装力量"
     },
     "8": {
+        "areaId": 1,
         "completeContentId": 60,
         "completeNpcId": 12,
         "completeType": 2,
         "contentId": 32,
         "conversationId": 0,
         "i1": 6,
+        "i3": 8,
         "id": 8,
         "level": 6,
         "list1": [
@@ -597,12 +1135,14 @@
         "title": "更好的保护"
     },
     "9": {
+        "areaId": 1,
         "completeContentId": 61,
         "completeNpcId": 10,
         "completeType": 2,
         "contentId": 33,
         "conversationId": 0,
         "i1": 7,
+        "i3": 9,
         "id": 9,
         "level": 7,
         "list1": [

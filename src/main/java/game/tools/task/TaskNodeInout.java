@@ -5,4 +5,6 @@ package game.tools.task;
  * 2021/7/16 14:47
  */
 public class TaskNodeInout {
+    public int nodeId;
+
 }
