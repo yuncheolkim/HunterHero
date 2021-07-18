@@ -62,7 +62,7 @@ public enum No
   FeatureOpenPush(204),
   /**
    * <pre>
-   * 称谓
+   * 称谓 - title
    * </pre>
    *
    * <code>TitleChooseReq = 301;</code>
@@ -133,9 +133,9 @@ public enum No
    */
   FightHmActionReq(2013),
   /**
-   * <code>FightHmEndRes = 2014;</code>
+   * <code>FightHmEndPush = 2014;</code>
    */
-  FightHmEndRes(2014),
+  FightHmEndPush(2014),
   /**
    * <pre>
    * Battle
@@ -386,7 +386,7 @@ public enum No
   public static final int FeatureOpenPush_VALUE = 204;
   /**
    * <pre>
-   * 称谓
+   * 称谓 - title
    * </pre>
    *
    * <code>TitleChooseReq = 301;</code>
@@ -457,9 +457,9 @@ public enum No
    */
   public static final int FightHmActionReq_VALUE = 2013;
   /**
-   * <code>FightHmEndRes = 2014;</code>
+   * <code>FightHmEndPush = 2014;</code>
    */
-  public static final int FightHmEndRes_VALUE = 2014;
+  public static final int FightHmEndPush_VALUE = 2014;
   /**
    * <pre>
    * Battle
@@ -703,7 +703,7 @@ public enum No
       case 2011: return FightHmStartReq;
       case 2012: return FightHmStartRes;
       case 2013: return FightHmActionReq;
-      case 2014: return FightHmEndRes;
+      case 2014: return FightHmEndPush;
       case 2010: return BattleEnterReq;
       case 3001: return EnterSceneReq;
       case 3002: return EnterFightAreaReq;

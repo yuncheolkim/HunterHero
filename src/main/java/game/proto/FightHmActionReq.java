@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FightHmActionReq() {
+    fromTo_ = emptyIntList();
   }
 
   @java.lang.Override
@@ -42,6 +43,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -53,13 +55,24 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 8: {
-
-            fromPos_ = input.readInt32();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              fromTo_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            fromTo_.addInt(input.readInt32());
             break;
           }
-          case 16: {
-
-            toPos_ = input.readInt32();
+          case 10: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+              fromTo_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              fromTo_.addInt(input.readInt32());
+            }
+            input.popLimit(limit);
             break;
           }
           default: {
@@ -77,6 +90,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        fromTo_.makeImmutable(); // C
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -94,27 +110,33 @@ private static final long serialVersionUID = 0L;
             game.proto.FightHmActionReq.class, game.proto.FightHmActionReq.Builder.class);
   }
 
-  public static final int FROMPOS_FIELD_NUMBER = 1;
-  private int fromPos_;
+  public static final int FROMTO_FIELD_NUMBER = 1;
+  private com.google.protobuf.Internal.IntList fromTo_;
   /**
-   * <code>int32 fromPos = 1;</code>
-   * @return The fromPos.
+   * <code>repeated int32 fromTo = 1;</code>
+   * @return A list containing the fromTo.
    */
   @java.lang.Override
-  public int getFromPos() {
-    return fromPos_;
+  public java.util.List<java.lang.Integer>
+      getFromToList() {
+    return fromTo_;
   }
-
-  public static final int TOPOS_FIELD_NUMBER = 2;
-  private int toPos_;
   /**
-   * <code>int32 toPos = 2;</code>
-   * @return The toPos.
+   * <code>repeated int32 fromTo = 1;</code>
+   * @return The count of fromTo.
    */
-  @java.lang.Override
-  public int getToPos() {
-    return toPos_;
+  public int getFromToCount() {
+    return fromTo_.size();
   }
+  /**
+   * <code>repeated int32 fromTo = 1;</code>
+   * @param index The index of the element to return.
+   * @return The fromTo at the given index.
+   */
+  public int getFromTo(int index) {
+    return fromTo_.getInt(index);
+  }
+  private int fromToMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -130,11 +152,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (fromPos_ != 0) {
-      output.writeInt32(1, fromPos_);
+    getSerializedSize();
+    if (getFromToList().size() > 0) {
+      output.writeUInt32NoTag(10);
+      output.writeUInt32NoTag(fromToMemoizedSerializedSize);
     }
-    if (toPos_ != 0) {
-      output.writeInt32(2, toPos_);
+    for (int i = 0; i < fromTo_.size(); i++) {
+      output.writeInt32NoTag(fromTo_.getInt(i));
     }
     unknownFields.writeTo(output);
   }
@@ -145,13 +169,19 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (fromPos_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, fromPos_);
-    }
-    if (toPos_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, toPos_);
+    {
+      int dataSize = 0;
+      for (int i = 0; i < fromTo_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(fromTo_.getInt(i));
+      }
+      size += dataSize;
+      if (!getFromToList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      fromToMemoizedSerializedSize = dataSize;
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -168,10 +198,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.FightHmActionReq other = (game.proto.FightHmActionReq) obj;
 
-    if (getFromPos()
-        != other.getFromPos()) return false;
-    if (getToPos()
-        != other.getToPos()) return false;
+    if (!getFromToList()
+        .equals(other.getFromToList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -183,10 +211,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + FROMPOS_FIELD_NUMBER;
-    hash = (53 * hash) + getFromPos();
-    hash = (37 * hash) + TOPOS_FIELD_NUMBER;
-    hash = (53 * hash) + getToPos();
+    if (getFromToCount() > 0) {
+      hash = (37 * hash) + FROMTO_FIELD_NUMBER;
+      hash = (53 * hash) + getFromToList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -324,10 +352,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      fromPos_ = 0;
-
-      toPos_ = 0;
-
+      fromTo_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -354,8 +380,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.FightHmActionReq buildPartial() {
       game.proto.FightHmActionReq result = new game.proto.FightHmActionReq(this);
-      result.fromPos_ = fromPos_;
-      result.toPos_ = toPos_;
+      int from_bitField0_ = bitField0_;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        fromTo_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
+      result.fromTo_ = fromTo_;
       onBuilt();
       return result;
     }
@@ -404,11 +434,15 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.FightHmActionReq other) {
       if (other == game.proto.FightHmActionReq.getDefaultInstance()) return this;
-      if (other.getFromPos() != 0) {
-        setFromPos(other.getFromPos());
-      }
-      if (other.getToPos() != 0) {
-        setToPos(other.getToPos());
+      if (!other.fromTo_.isEmpty()) {
+        if (fromTo_.isEmpty()) {
+          fromTo_ = other.fromTo_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensureFromToIsMutable();
+          fromTo_.addAll(other.fromTo_);
+        }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -438,65 +472,83 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
-    private int fromPos_ ;
-    /**
-     * <code>int32 fromPos = 1;</code>
-     * @return The fromPos.
-     */
-    @java.lang.Override
-    public int getFromPos() {
-      return fromPos_;
+    private com.google.protobuf.Internal.IntList fromTo_ = emptyIntList();
+    private void ensureFromToIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        fromTo_ = mutableCopy(fromTo_);
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
-     * <code>int32 fromPos = 1;</code>
-     * @param value The fromPos to set.
+     * <code>repeated int32 fromTo = 1;</code>
+     * @return A list containing the fromTo.
+     */
+    public java.util.List<java.lang.Integer>
+        getFromToList() {
+      return ((bitField0_ & 0x00000001) != 0) ?
+               java.util.Collections.unmodifiableList(fromTo_) : fromTo_;
+    }
+    /**
+     * <code>repeated int32 fromTo = 1;</code>
+     * @return The count of fromTo.
+     */
+    public int getFromToCount() {
+      return fromTo_.size();
+    }
+    /**
+     * <code>repeated int32 fromTo = 1;</code>
+     * @param index The index of the element to return.
+     * @return The fromTo at the given index.
+     */
+    public int getFromTo(int index) {
+      return fromTo_.getInt(index);
+    }
+    /**
+     * <code>repeated int32 fromTo = 1;</code>
+     * @param index The index to set the value at.
+     * @param value The fromTo to set.
      * @return This builder for chaining.
      */
-    public Builder setFromPos(int value) {
-      
-      fromPos_ = value;
+    public Builder setFromTo(
+        int index, int value) {
+      ensureFromToIsMutable();
+      fromTo_.setInt(index, value);
       onChanged();
       return this;
     }
     /**
-     * <code>int32 fromPos = 1;</code>
+     * <code>repeated int32 fromTo = 1;</code>
+     * @param value The fromTo to add.
      * @return This builder for chaining.
      */
-    public Builder clearFromPos() {
-      
-      fromPos_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int toPos_ ;
-    /**
-     * <code>int32 toPos = 2;</code>
-     * @return The toPos.
-     */
-    @java.lang.Override
-    public int getToPos() {
-      return toPos_;
-    }
-    /**
-     * <code>int32 toPos = 2;</code>
-     * @param value The toPos to set.
-     * @return This builder for chaining.
-     */
-    public Builder setToPos(int value) {
-      
-      toPos_ = value;
+    public Builder addFromTo(int value) {
+      ensureFromToIsMutable();
+      fromTo_.addInt(value);
       onChanged();
       return this;
     }
     /**
-     * <code>int32 toPos = 2;</code>
+     * <code>repeated int32 fromTo = 1;</code>
+     * @param values The fromTo to add.
      * @return This builder for chaining.
      */
-    public Builder clearToPos() {
-      
-      toPos_ = 0;
+    public Builder addAllFromTo(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureFromToIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, fromTo_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 fromTo = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFromTo() {
+      fromTo_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }

@@ -137,16 +137,14 @@ message FightHmStartRes{
 }
 // 手动战斗操作 req
 message FightHmActionReq{
-    int32 fromPos = 1;
-    int32 toPos = 2;
+    repeated int32 fromTo = 1;
 }
 // 手动战斗进行中
 message FightHmActionRes{
     RoundRecord round = 1;
 }
 // 手动战斗结束
-message FightHmEndRes{
-    RoundRecord round = 1;
+message FightHmEndPush{
     bool win = 4; // 是否胜利
     repeated Reward reward = 5; // 奖励
 }

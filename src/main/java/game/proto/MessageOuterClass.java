@@ -150,10 +150,10 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FightHmActionRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_FightHmEndRes_descriptor;
+    internal_static_Message_FightHmEndPush_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_FightHmEndRes_fieldAccessorTable;
+      internal_static_Message_FightHmEndPush_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_EnterSceneReq_descriptor;
   static final 
@@ -423,74 +423,72 @@ public final class MessageOuterClass {
       "estRes\022\013\n\003win\030\001 \001(\010\022$\n\006record\030\004 \001(\0132\024.Me" +
       "ssage.FightRecord\"a\n\017FightHmStartRes\022&\n\005" +
       "sideA\030\002 \003(\0132\027.Message.HeroDataRecord\022&\n\005" +
-      "sideB\030\003 \003(\0132\027.Message.HeroDataRecord\"2\n\020" +
-      "FightHmActionReq\022\017\n\007fromPos\030\001 \001(\005\022\r\n\005toP" +
-      "os\030\002 \001(\005\"7\n\020FightHmActionRes\022#\n\005round\030\001 " +
-      "\001(\0132\024.Message.RoundRecord\"b\n\rFightHmEndR" +
-      "es\022#\n\005round\030\001 \001(\0132\024.Message.RoundRecord\022" +
-      "\013\n\003win\030\004 \001(\010\022\037\n\006reward\030\005 \003(\0132\017.Message.R" +
-      "eward\"1\n\rEnterSceneReq\022 \n\004data\030\001 \001(\0132\022.M" +
-      "essage.SceneData\"\037\n\021EnterFightAreaReq\022\n\n" +
-      "\002id\030\001 \001(\005\"\036\n\020ExitFightAreaReq\022\n\n\002id\030\001 \001(" +
-      "\005\"\034\n\016BattleEnterReq\022\n\n\002id\030\001 \001(\005\"+\n\tHeroU" +
-      "pReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006stepId\030\003 \001(\005\"3\n\016" +
-      "HeroChangePush\022!\n\004hero\030\001 \001(\0132\023.Message.P" +
-      "layerHero\"5\n\023HeroTalentChangeReq\022\016\n\006hero" +
-      "Id\030\001 \001(\005\022\016\n\006talent\030\002 \001(\005\"5\n\023HeroTalentCh" +
-      "angeRes\022\016\n\006heroId\030\001 \001(\005\022\016\n\006talent\030\002 \001(\005\"" +
-      "0\n\013NewHeroPush\022!\n\004hero\030\001 \001(\0132\023.Message.P" +
-      "layerHero\"\024\n\022FormationCreateReq\")\n\022Forma" +
-      "tionCreateRes\022\023\n\013formationId\030\001 \001(\005\"M\n\022Fo" +
-      "rmationUpdateReq\022\023\n\013formationId\030\001 \001(\005\022\"\n" +
-      "\003pos\030\002 \001(\0132\025.Message.FormationPos\"T\n\022For" +
-      "mationUpdateRes\022\023\n\013formationId\030\001 \001(\005\022)\n\004" +
-      "data\030\002 \003(\0132\033.Message.FormationPosUpdate\"" +
-      "#\n\022FormationDeleteReq\022\r\n\005index\030\001 \001(\005\"n\n\023" +
-      "FormationSettingReq\022\r\n\005index\030\001 \001(\005\022\014\n\004na" +
-      "me\030\002 \001(\t\022\035\n\025defaultFormationIndex\030\003 \001(\005\022" +
-      "\033\n\023arenaFormationIndex\030\004 \001(\005\"n\n\023Formatio" +
-      "nSettingRes\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(\t" +
-      "\022\035\n\025defaultFormationIndex\030\003 \001(\005\022\033\n\023arena" +
-      "FormationIndex\030\004 \001(\005\"Y\n\022ResourceChangePu" +
-      "sh\022\022\n\nresourceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r" +
-      "\n\005count\030\003 \001(\005\022\020\n\010curCount\030\004 \001(\005\"&\n\025Playe" +
-      "rLevelChangePush\022\r\n\005value\030\001 \001(\005\"?\n\rExpCh" +
-      "angePush\022\016\n\006heroId\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005" +
-      "\022\016\n\006curExp\030\003 \001(\005\":\n\017RecoverPowerReq\022\014\n\004t" +
-      "ype\030\001 \001(\005\022\013\n\003gem\030\002 \001(\005\022\014\n\004gold\030\003 \001(\005\"b\n\021" +
-      "BagInfoChangePush\022\r\n\005clean\030\t \001(\010\022\014\n\004type" +
-      "\030\n \001(\005\022\020\n\010capacity\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020" +
-      ".Message.BagSlot\"\033\n\013BagCleanReq\022\014\n\004type\030" +
-      "\001 \001(\005\"M\n\016ItemDiscardReq\022\016\n\006itemId\030\001 \001(\005\022" +
-      "\r\n\005count\030\002 \001(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004" +
-      " \001(\005\";\n\nItemBuyReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005co" +
-      "unt\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\">\n\017ItemExchang" +
-      "eReq\022\014\n\004type\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005co" +
-      "unt\030\003 \001(\005\",\n\013ItemSellReq\022\016\n\006slotId\030\001 \001(\005" +
-      "\022\r\n\005count\030\002 \001(\005\"2\n\020HeroEquipmentReq\022\016\n\006s" +
-      "lotId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\"%\n\rPlayerMov" +
-      "eReq\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\" \n\020PlayerGoHo" +
-      "telRes\022\014\n\004time\030\001 \001(\003\"\"\n\024PlayerChooseHote" +
-      "lReq\022\n\n\002id\030\001 \001(\005\"\"\n\024PlayerChooseHotelRes" +
-      "\022\n\n\002id\030\001 \001(\005\"\t\n\007FishReq\"\016\n\014FishHookPush\"" +
-      "<\n\010FishPush\022\017\n\007success\030\001 \001(\010\022\037\n\006reward\030\002" +
-      " \003(\0132\017.Message.Reward\"\r\n\013FishHookReq\"\036\n\020" +
-      "FishEnterAreaReq\022\n\n\002id\030\001 \001(\005\"\035\n\017FishExit" +
-      "AreaReq\022\n\n\002id\030\001 \001(\005\"X\n\016ChatMessageReq\022%\n" +
-      "\007channel\030\001 \001(\0162\024.Message.ChatChannel\022\016\n\006" +
-      "toUser\030\002 \001(\003\022\017\n\007content\030\n \001(\t\"\203\001\n\017ChatMe" +
-      "ssagePush\022%\n\007channel\030\001 \001(\0162\024.Message.Cha" +
-      "tChannel\022\020\n\010fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003" +
-      "\022\n\n\002id\030\004 \001(\003\022\017\n\007content\030\n \001(\t\022\014\n\004name\030\013 " +
-      "\001(\t\"\034\n\016TitleChooseReq\022\n\n\002id\030\001 \001(\005\"\034\n\016Tit" +
-      "leChooseRes\022\n\n\002id\030\001 \001(\005\"\032\n\014TitleNewPush\022" +
-      "\n\n\002id\030\001 \001(\005\"2\n\021NpcShowChangePush\022\016\n\006show" +
-      "No\030\001 \001(\005\022\r\n\005npcId\030\002 \001(\005\",\n\020TempleHeroBuy" +
-      "Req\022\n\n\002id\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\"\036\n\020TempleH" +
-      "eroBuyRes\022\n\n\002id\030\001 \001(\005*R\n\013ChatChannel\022\n\n\006" +
-      "C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVAC" +
-      "Y\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH" +
-      "\001P\001b\006proto3"
+      "sideB\030\003 \003(\0132\027.Message.HeroDataRecord\"\"\n\020" +
+      "FightHmActionReq\022\016\n\006fromTo\030\001 \003(\005\"7\n\020Figh" +
+      "tHmActionRes\022#\n\005round\030\001 \001(\0132\024.Message.Ro" +
+      "undRecord\">\n\016FightHmEndPush\022\013\n\003win\030\004 \001(\010" +
+      "\022\037\n\006reward\030\005 \003(\0132\017.Message.Reward\"1\n\rEnt" +
+      "erSceneReq\022 \n\004data\030\001 \001(\0132\022.Message.Scene" +
+      "Data\"\037\n\021EnterFightAreaReq\022\n\n\002id\030\001 \001(\005\"\036\n" +
+      "\020ExitFightAreaReq\022\n\n\002id\030\001 \001(\005\"\034\n\016BattleE" +
+      "nterReq\022\n\n\002id\030\001 \001(\005\"+\n\tHeroUpReq\022\016\n\006hero" +
+      "Id\030\001 \001(\005\022\016\n\006stepId\030\003 \001(\005\"3\n\016HeroChangePu" +
+      "sh\022!\n\004hero\030\001 \001(\0132\023.Message.PlayerHero\"5\n" +
+      "\023HeroTalentChangeReq\022\016\n\006heroId\030\001 \001(\005\022\016\n\006" +
+      "talent\030\002 \001(\005\"5\n\023HeroTalentChangeRes\022\016\n\006h" +
+      "eroId\030\001 \001(\005\022\016\n\006talent\030\002 \001(\005\"0\n\013NewHeroPu" +
+      "sh\022!\n\004hero\030\001 \001(\0132\023.Message.PlayerHero\"\024\n" +
+      "\022FormationCreateReq\")\n\022FormationCreateRe" +
+      "s\022\023\n\013formationId\030\001 \001(\005\"M\n\022FormationUpdat" +
+      "eReq\022\023\n\013formationId\030\001 \001(\005\022\"\n\003pos\030\002 \001(\0132\025" +
+      ".Message.FormationPos\"T\n\022FormationUpdate" +
+      "Res\022\023\n\013formationId\030\001 \001(\005\022)\n\004data\030\002 \003(\0132\033" +
+      ".Message.FormationPosUpdate\"#\n\022Formation" +
+      "DeleteReq\022\r\n\005index\030\001 \001(\005\"n\n\023FormationSet" +
+      "tingReq\022\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025" +
+      "defaultFormationIndex\030\003 \001(\005\022\033\n\023arenaForm" +
+      "ationIndex\030\004 \001(\005\"n\n\023FormationSettingRes\022" +
+      "\r\n\005index\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025defaultF" +
+      "ormationIndex\030\003 \001(\005\022\033\n\023arenaFormationInd" +
+      "ex\030\004 \001(\005\"Y\n\022ResourceChangePush\022\022\n\nresour" +
+      "ceId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(" +
+      "\005\022\020\n\010curCount\030\004 \001(\005\"&\n\025PlayerLevelChange" +
+      "Push\022\r\n\005value\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006" +
+      "heroId\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003" +
+      " \001(\005\":\n\017RecoverPowerReq\022\014\n\004type\030\001 \001(\005\022\013\n" +
+      "\003gem\030\002 \001(\005\022\014\n\004gold\030\003 \001(\005\"b\n\021BagInfoChang" +
+      "ePush\022\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010ca" +
+      "pacity\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.Bag" +
+      "Slot\"\033\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016Ite" +
+      "mDiscardReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001" +
+      "(\005\022\016\n\006slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItem" +
+      "BuyReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n" +
+      "\006shopId\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type" +
+      "\030\001 \001(\005\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n" +
+      "\013ItemSellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 " +
+      "\001(\005\"2\n\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022" +
+      "\016\n\006heroId\030\002 \001(\005\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 " +
+      "\001(\002\022\t\n\001y\030\002 \001(\002\" \n\020PlayerGoHotelRes\022\014\n\004ti" +
+      "me\030\001 \001(\003\"\"\n\024PlayerChooseHotelReq\022\n\n\002id\030\001" +
+      " \001(\005\"\"\n\024PlayerChooseHotelRes\022\n\n\002id\030\001 \001(\005" +
+      "\"\t\n\007FishReq\"\016\n\014FishHookPush\"<\n\010FishPush\022" +
+      "\017\n\007success\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Messa" +
+      "ge.Reward\"\r\n\013FishHookReq\"\036\n\020FishEnterAre" +
+      "aReq\022\n\n\002id\030\001 \001(\005\"\035\n\017FishExitAreaReq\022\n\n\002i" +
+      "d\030\001 \001(\005\"X\n\016ChatMessageReq\022%\n\007channel\030\001 \001" +
+      "(\0162\024.Message.ChatChannel\022\016\n\006toUser\030\002 \001(\003" +
+      "\022\017\n\007content\030\n \001(\t\"\203\001\n\017ChatMessagePush\022%\n" +
+      "\007channel\030\001 \001(\0162\024.Message.ChatChannel\022\020\n\010" +
+      "fromUser\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\n\n\002id\030\004 \001(\003" +
+      "\022\017\n\007content\030\n \001(\t\022\014\n\004name\030\013 \001(\t\"\034\n\016Title" +
+      "ChooseReq\022\n\n\002id\030\001 \001(\005\"\034\n\016TitleChooseRes\022" +
+      "\n\n\002id\030\001 \001(\005\"\032\n\014TitleNewPush\022\n\n\002id\030\001 \001(\005\"" +
+      "2\n\021NpcShowChangePush\022\016\n\006showNo\030\001 \001(\005\022\r\n\005" +
+      "npcId\030\002 \001(\005\",\n\020TempleHeroBuyReq\022\n\n\002id\030\001 " +
+      "\001(\005\022\014\n\004type\030\002 \001(\005\"\036\n\020TempleHeroBuyRes\022\n\n" +
+      "\002id\030\001 \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005" +
+      "WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTE" +
+      "M\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -652,19 +650,19 @@ public final class MessageOuterClass {
     internal_static_Message_FightHmActionReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FightHmActionReq_descriptor,
-        new java.lang.String[] { "FromPos", "ToPos", });
+        new java.lang.String[] { "FromTo", });
     internal_static_Message_FightHmActionRes_descriptor =
       getDescriptor().getMessageTypes().get(25);
     internal_static_Message_FightHmActionRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FightHmActionRes_descriptor,
         new java.lang.String[] { "Round", });
-    internal_static_Message_FightHmEndRes_descriptor =
+    internal_static_Message_FightHmEndPush_descriptor =
       getDescriptor().getMessageTypes().get(26);
-    internal_static_Message_FightHmEndRes_fieldAccessorTable = new
+    internal_static_Message_FightHmEndPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_FightHmEndRes_descriptor,
-        new java.lang.String[] { "Round", "Win", "Reward", });
+        internal_static_Message_FightHmEndPush_descriptor,
+        new java.lang.String[] { "Win", "Reward", });
     internal_static_Message_EnterSceneReq_descriptor =
       getDescriptor().getMessageTypes().get(27);
     internal_static_Message_EnterSceneReq_fieldAccessorTable = new

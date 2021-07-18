@@ -19,6 +19,7 @@ import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.bag.BagUpdateService;
 import game.module.bag.ItemBoxData;
+import game.module.battle.battle.HalfManualBattle;
 import game.module.event.handler.ExpAddEvent;
 import game.module.event.handler.ItemAddEvent;
 import game.module.event.handler.LevelUpEvent;
@@ -95,6 +96,11 @@ public class Player {
     public ItemBoxData bank = new ItemBoxData();
 
     public FishAction fishAction = new FishAction();
+
+    /**
+     * 手动战斗
+     */
+    public HalfManualBattle hmBattle;
 
     public Player(final long pid) {
         this.pid = pid;
@@ -197,6 +203,9 @@ public class Player {
         }
         bank.capacity = pd.getBankCapacity();
         bank.count = pd.getBankCount();
+
+        // 战斗清理
+        hmBattle = null;
 
     }
 

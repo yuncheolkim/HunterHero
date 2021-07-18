@@ -3,24 +3,9 @@
 
 package game.proto;
 
-public interface FightHmEndResOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Message.FightHmEndRes)
+public interface FightHmEndPushOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Message.FightHmEndPush)
     com.google.protobuf.MessageOrBuilder {
-
-  /**
-   * <code>.Message.RoundRecord round = 1;</code>
-   * @return Whether the round field is set.
-   */
-  boolean hasRound();
-  /**
-   * <code>.Message.RoundRecord round = 1;</code>
-   * @return The round.
-   */
-  game.proto.data.RoundRecord getRound();
-  /**
-   * <code>.Message.RoundRecord round = 1;</code>
-   */
-  game.proto.data.RoundRecordOrBuilder getRoundOrBuilder();
 
   /**
    * <pre>

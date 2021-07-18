@@ -15,6 +15,9 @@ import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.battle.*;
 import game.module.battle.battle.AutoBattle;
+import game.module.battle.battle.HalfManualAction;
+import game.module.battle.battle.HalfManualBattle;
+import game.module.battle.find.ManualTargetStrategy;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.HeroRecordData;
@@ -96,104 +99,112 @@ public class FightHandler {
         final FightRecord.Builder result = buildFightRecord(record);
         result.setWin(record.getWinSide() == Side.A);
         if (player.consumePower(ConsumeTypeEnum.野外战斗, ResourceService.calcPower(player.D.getFightType())) && result.getWin()) {
-            int gold = 0;
-
-            final IntObjectHashMap<Integer> enemyCountMap = new IntObjectHashMap<>(record.getSideBhero().size());
-
-
-            final List<Tuple2<Integer, Integer>> expList = new ArrayList<>(8);
-            // 杀敌
-            for (final HeroRecordData sideBhero : record.getSideBhero()) {
-                final int enemyId = sideBhero.simple.id;
-                final int earnExp = ItemDropService.dropExp(sideBhero.simple.level);
-                expList.add(new Tuple2<>(sideBhero.simple.level, earnExp));
-                gold += ItemDropService.enemyDropGold(sideBhero.simple.level);
-                Integer enemyCount = enemyCountMap.get(enemyId);
-                if (enemyCount == null) {
-                    enemyCount = 0;
-                }
-                enemyCount += 1;
-                enemyCountMap.put(enemyId, enemyCount);
-
-                // enemy item
-                List<Reward> itemRewardList = ItemDropService.dropEnemyItem(enemyId);
-                if (!itemRewardList.isEmpty()) {
-                    result.addAllReward(itemRewardList);
-                }
-                // task item
-                itemRewardList = TaskService.dropEnemyItem(player, enemyId);
-                if (!itemRewardList.isEmpty()) {
-                    result.addAllReward(itemRewardList);
-                }
-            }
-
-            // 记录杀敌
-            for (final Map.Entry<Integer, Integer> entry : enemyCountMap.entrySet()) {
-                EventManager.firePlayerEvent(player, new KillEvent(entry.getKey(), entry.getValue()));
-            }
-            // 奖励
-            if (gold > 0) {
-                result.addReward(Reward.newBuilder()
-                        .setType(RewardType.REWARD_RESOURCE)
-                        .setHeroId(0)
-                        .setRewardId(ResourceEnum.GOLD.id)
-                        .setCount(gold)
-                        .build());
-
-                player.addGold(gold, ResourceSourceEnum.打怪);
-            }
-
-            // area item
-            final List<Reward> itemRewardList = ItemDropService.dropAreaItem(player.pd.getSceneData().getId());
-            if (!itemRewardList.isEmpty()) {
-                result.addAllReward(itemRewardList);
-            }
-
-
-            // 经验
-            // 计算衰减
-            final int playerExt = ResourceCalcUtil.calcExp(player.pd.getLevel(), expList);
-            player.addPlayerExp(playerExt, ResourceSourceEnum.打怪);
-            result.addReward(Reward.newBuilder()
-                    .setType(RewardType.REWARD_RESOURCE)
-                    .setHeroId(0)
-                    .setRewardId(ResourceEnum.EXP.id)
-                    .setCount(playerExt)
-                    .build());
-            // Add hero exp
-            for (final HeroRecordData sideAhero : record.getSideAhero()) {
-                final int exp = ResourceCalcUtil.calcExp(sideAhero.simple.level, expList);
-                player.addHeroExp(sideAhero.simple.id, exp, ResourceSourceEnum.打怪);
-                result.addReward(Reward.newBuilder()
-                        .setType(RewardType.REWARD_RESOURCE)
-                        .setHeroId(sideAhero.simple.id)
-                        .setRewardId(ResourceEnum.EXP.id)
-                        .setCount(exp)
-                        .build());
-            }
-            // 发道具奖励
-            for (final Reward reward : result.getRewardList()) {
-                if (reward.getType() == RewardType.REWARD_ITEM) {
-                    try {
-                        player.addItem(ItemData.newBuilder().setItemId(reward.getRewardId())
-                                .setCount(reward.getCount())
-                                .setProperty(reward.getProperty())
-                                .build(), GameConstants.ITEM_BAG);
-                    } catch (final Exception e) {
-                        if (e instanceof ModuleException) {
-                            player.getTransport().sendError((ErrorEnum) ((ModuleException) e).getErrorNo());
-                        }
-                        // 加入失败, 背包满
-                        Logs.C.error(e);
-                        player.getTransport().sendError(ErrorEnum.ERR_104);
-                        break;
-                    }
-                }
-            }
-
+            List<Reward> rewardList = fightReward(player, record);
+            result.addAllReward(rewardList);
         }
         player.getTransport().send(MsgNo.fight_start_VALUE, result.build());
 
+    }
+
+    private static List<Reward> fightReward(Player player, BattleRecord record) {
+        int gold = 0;
+
+        final IntObjectHashMap<Integer> enemyCountMap = new IntObjectHashMap<>(record.getSideBhero().size());
+
+        List<Reward> rewardList = new ArrayList<>(16);
+        final List<Tuple2<Integer, Integer>> expList = new ArrayList<>(8);
+        // 杀敌
+        for (final HeroRecordData sideBhero : record.getSideBhero()) {
+            final int enemyId = sideBhero.simple.id;
+            final int earnExp = ItemDropService.dropExp(sideBhero.simple.level);
+            expList.add(new Tuple2<>(sideBhero.simple.level, earnExp));
+            gold += ItemDropService.enemyDropGold(sideBhero.simple.level);
+            Integer enemyCount = enemyCountMap.get(enemyId);
+            if (enemyCount == null) {
+                enemyCount = 0;
+            }
+            enemyCount += 1;
+            enemyCountMap.put(enemyId, enemyCount);
+
+            // enemy item
+            List<Reward> itemRewardList = ItemDropService.dropEnemyItem(enemyId);
+            if (!itemRewardList.isEmpty()) {
+                rewardList.addAll(itemRewardList);
+//                result.addAllReward(itemRewardList);
+            }
+            // task item
+            itemRewardList = TaskService.dropEnemyItem(player, enemyId);
+            if (!itemRewardList.isEmpty()) {
+                rewardList.addAll(itemRewardList);
+//                result.addAllReward(itemRewardList);
+            }
+        }
+
+        // 记录杀敌
+        for (final Map.Entry<Integer, Integer> entry : enemyCountMap.entrySet()) {
+            EventManager.firePlayerEvent(player, new KillEvent(entry.getKey(), entry.getValue()));
+        }
+        // 奖励
+        if (gold > 0) {
+            rewardList.add(Reward.newBuilder()
+                    .setType(RewardType.REWARD_RESOURCE)
+                    .setHeroId(0)
+                    .setRewardId(ResourceEnum.GOLD.id)
+                    .setCount(gold)
+                    .build());
+
+            player.addGold(gold, ResourceSourceEnum.打怪);
+        }
+
+        // area item
+        final List<Reward> itemRewardList = ItemDropService.dropAreaItem(player.pd.getSceneData().getId());
+        if (!itemRewardList.isEmpty()) {
+            rewardList.addAll(itemRewardList);
+        }
+
+
+        // 经验
+        // 计算衰减
+        final int playerExt = ResourceCalcUtil.calcExp(player.pd.getLevel(), expList);
+        player.addPlayerExp(playerExt, ResourceSourceEnum.打怪);
+        rewardList.add(Reward.newBuilder()
+                .setType(RewardType.REWARD_RESOURCE)
+                .setHeroId(0)
+                .setRewardId(ResourceEnum.EXP.id)
+                .setCount(playerExt)
+                .build());
+        // Add hero exp
+        for (final HeroRecordData sideAhero : record.getSideAhero()) {
+            final int exp = ResourceCalcUtil.calcExp(sideAhero.simple.level, expList);
+            player.addHeroExp(sideAhero.simple.id, exp, ResourceSourceEnum.打怪);
+
+            rewardList.add(Reward.newBuilder()
+                    .setType(RewardType.REWARD_RESOURCE)
+                    .setHeroId(sideAhero.simple.id)
+                    .setRewardId(ResourceEnum.EXP.id)
+                    .setCount(exp)
+                    .build());
+        }
+        // 发道具奖励
+        for (final Reward reward : rewardList) {
+            if (reward.getType() == RewardType.REWARD_ITEM) {
+                try {
+                    player.addItem(ItemData.newBuilder().setItemId(reward.getRewardId())
+                            .setCount(reward.getCount())
+                            .setProperty(reward.getProperty())
+                            .build(), GameConstants.ITEM_BAG);
+                } catch (final Exception e) {
+                    if (e instanceof ModuleException) {
+                        player.getTransport().sendError((ErrorEnum) ((ModuleException) e).getErrorNo());
+                    }
+                    // 加入失败, 背包满
+                    Logs.C.error(e);
+                    player.getTransport().sendError(ErrorEnum.ERR_104);
+                    break;
+                }
+            }
+        }
+        return rewardList;
     }
 
     private static FightRecord.Builder buildFightRecord(final BattleRecord record) {
@@ -216,41 +227,47 @@ public class FightHandler {
                     .build());
         }
 
-        for (final Round round : record.getRoundList()) {
-            final RoundRecord.Builder rb = RoundRecord.newBuilder();
-            rb.setRound(round.getRoundCount());
-            for (final Record r : round.getRecordList()) {
-                final game.proto.data.Record.Builder re = game.proto.data.Record.newBuilder();
-                re.setType(r.type);
-                re.setId(r.id);
-                re.setValue(r.value);
-                if (r.dp != null) {
-                    re.setDp(r.dp);
-                }
-                re.setPos(r.pos);
-                if (r.damageType != null) {
-                    re.setDamageType(r.damageType);
-                }
-                if (r.actionPoint != null) {
-                    re.setActionPoint(r.actionPoint.name());
-                }
-                re.setHeroId(r.heroId);
-                re.setDp(r.dp);
-                if (r.targetList != null) {
-                    re.addAllTarget(r.targetList);
-                }
-                if (r.buffData != null) {
-                    re.getBuffRecordBuilder().setBuffId(r.buffData.buffId);
-                    re.getBuffRecordBuilder().setRemainRound(r.buffData.remainRound);
-                }
-                rb.addRecord(re.build());
+        if (record.getRoundList() != null) {
+
+            for (final Round round : record.getRoundList()) {
+
+                builder.addRound(roundReport(round));
             }
 
-            builder.addRound(rb.build());
         }
-
         return builder;
 
+    }
+
+    private static RoundRecord roundReport(Round round) {
+        final RoundRecord.Builder rb = RoundRecord.newBuilder();
+        for (final Record r : round.getRecordList()) {
+            final game.proto.data.Record.Builder re = game.proto.data.Record.newBuilder();
+            re.setType(r.type);
+            re.setId(r.id);
+            re.setValue(r.value);
+            if (r.dp != null) {
+                re.setDp(r.dp);
+            }
+            re.setPos(r.pos);
+            if (r.damageType != null) {
+                re.setDamageType(r.damageType);
+            }
+            if (r.actionPoint != null) {
+                re.setActionPoint(r.actionPoint.name());
+            }
+            re.setHeroId(r.heroId);
+            re.setDp(r.dp);
+            if (r.targetList != null) {
+                re.addAllTarget(r.targetList);
+            }
+            if (r.buffData != null) {
+                re.getBuffRecordBuilder().setBuffId(r.buffData.buffId);
+                re.getBuffRecordBuilder().setRemainRound(r.buffData.remainRound);
+            }
+            rb.addRecord(re.build());
+        }
+        return rb.buildPartial();
     }
 
     /**
@@ -262,6 +279,7 @@ public class FightHandler {
     public static void endFight(final Player player) {
         player.pd.clearFightInfo();
         player.pd.setBattleId(0);
+        player.hmBattle = null;
 
         // 是否还在战斗区域
         if (player.D.getFightAreaCount() > 0) {
@@ -315,6 +333,7 @@ public class FightHandler {
             final Hero hero = HeroFactory.createPlayerHero(player, playerHero);
             hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
+            hero.addTargetStrategyFirst(ManualTargetStrategy.I);
             hero.init();
             hero.setBattle(battle);
 
@@ -339,7 +358,85 @@ public class FightHandler {
      * @param req
      */
     public static void manualFight(final Player player, final FightStartReq req) {
+        if (player.hmBattle != null) {
+            Logs.C.warn("战斗已经存在");
+            return;
+        }
 
+        final HalfManualBattle battle = new HalfManualBattle();
+        player.hmBattle = battle;
+
+        // enemy
+        for (final FightEnemyInfo enemy : player.getPd().getFightInfoList()) {
+            final CreatureTarget fightEnemy = HeroFactory.createFightEnemy(enemy);
+            fightEnemy.setSide(Side.B);
+            fightEnemy.setPos(Pos.from(enemy.getPos()));
+            fightEnemy.setSpeed(enemy.getProperty().getSpeed() == 0 ? fightEnemy.getPos().getIndex() : enemy.getProperty().getSpeed());
+            fightEnemy.setBattle(battle);
+            fightEnemy.init();
+            battle.addHero(fightEnemy);
+        }
+
+        // player
+        for (final FightHeroPos fightHeroPos : req.getPosList()) {
+            final PlayerHero playerHero = player.getPd().getHeroMap().get(fightHeroPos.getHeroId());
+            if (playerHero == null) {
+                return;
+            }
+            final Hero hero = HeroFactory.createPlayerHero(player, playerHero);
+            hero.setSide(Side.A);
+            hero.setPos(Pos.from(fightHeroPos.getPos()));
+            hero.setSpeed(fightHeroPos.getOrder());
+            hero.setBattle(battle);
+            hero.init();
+
+            battle.addHero(hero);
+        }
+
+        battle.setSideAPid(player.getPid());
+        battle.setPve(true);
+        BattleRecord start = battle.start();
+        final FightRecord.Builder result = buildFightRecord(start);
+
+
+        FightHmStartRes res = FightHmStartRes.newBuilder()
+                .addAllSideA(result.getSideAList())
+                .addAllSideB(result.getSideBList()).build();
+
+        player.getTransport().send(No.FightHmStartReq, res);
     }
 
+    /**
+     * 手动战斗 - 操作
+     *
+     * @param player
+     * @param req
+     */
+    public static void manualFightAction(final Player player, final FightHmActionReq req) {
+
+        HalfManualBattle hmBattle = player.hmBattle;
+        if (hmBattle == null) {
+            return;
+        }
+
+        HalfManualAction action = new HalfManualAction();
+        action.pid = player.getPid();
+        action.actions = req.getFromToList();
+        Round ready = hmBattle.ready(action);
+
+        player.getTransport().send(No.FightHmActionReq, FightHmActionRes.newBuilder().setRound(roundReport(ready)).build());
+        if (hmBattle.hasWinner()) {
+            FightHmEndPush.Builder result = FightHmEndPush.newBuilder();
+            // win
+            result.setWin(hmBattle.isWin(player.getPid()));
+
+            if (result.getWin()) {
+                // reward
+                List<Reward> rewardList = fightReward(player, hmBattle.getBattleRecord());
+                result.addAllReward(rewardList);
+            }
+
+            player.getTransport().send(No.FightHmEndPush, result.buildPartial());
+        }
+    }
 }

@@ -1,12 +1,14 @@
 package game.module.battle.battle;
 
-import game.base.util.Tuple2;
+import game.base.Logs;
 import game.module.battle.Battle;
 import game.module.battle.Hero;
 import game.module.battle.Round;
 import game.module.battle.Side;
 import game.module.battle.record.BattleRecord;
+import game.utils.JacksonUtil;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -20,15 +22,17 @@ public class HalfManualBattle extends Battle {
 
     private HalfManualSideStatus sideA = new HalfManualSideStatus();
     private HalfManualSideStatus sideB = new HalfManualSideStatus();
-
     private boolean pve = true;
+
+    private Map<Integer, Integer> targetMap = new HashMap<>(8);
 
     @Override
     public BattleRecord start() {
+
+        init();
         beforeBattle();
-
-
-        return null;
+        Logs.trace(JacksonUtil.toStr(battleRecord));
+        return battleRecord;
     }
 
     private void init() {
@@ -37,6 +41,10 @@ public class HalfManualBattle extends Battle {
             sideB.order = 10;
             sideB.ready = true;
         }
+    }
+
+    public void setSideAPid(long pid) {
+        sideA.pid = pid;
     }
 
     /**
@@ -49,7 +57,7 @@ public class HalfManualBattle extends Battle {
         HalfManualSideStatus status;
 
 
-        if (action.side == Side.A) {
+        if (action.pid == sideA.pid) {
             heroMap = sideAhero;
             status = sideA;
         } else {
@@ -58,8 +66,12 @@ public class HalfManualBattle extends Battle {
         }
         int order = status.order;
 
-        for (Tuple2<Integer, Integer> a : action.actions) {
-            Hero hero = heroMap.get(a.first);
+        for (Integer a : action.actions) {
+            Integer from = a / 100;
+            Integer to = a % 100;
+            targetMap.put(from, to);
+
+            Hero hero = heroMap.get(from);
             if (hero != null) {
                 hero.setSpeed(order);
                 order += 2;
@@ -74,13 +86,40 @@ public class HalfManualBattle extends Battle {
     private Round checkStart() {
 
         if (sideA.ready && sideB.ready) {
+            decideOrder();
             //开始战斗
             fight();
 
+            cleanRoundStatus();
             return currentRound;
 
         }
         return null;
     }
 
+    /**
+     * 一回合结束后清理相关状态
+     */
+    private void cleanRoundStatus() {
+        targetMap.clear();
+        if (sideA.pid != 0) {
+            sideA.ready = false;
+        }
+        if (sideB.pid != 0) {
+            sideB.ready = false;
+        }
+    }
+
+    public void setPve(boolean pve) {
+        this.pve = pve;
+    }
+
+    public Integer targetPos(int heroPos) {
+        return targetMap.get(heroPos);
+    }
+
+    public boolean isWin(long pid) {
+        Side mySide = sideA.pid == pid ? Side.A : Side.B;
+        return getWinSide() == mySide;
+    }
 }

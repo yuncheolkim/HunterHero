@@ -1,8 +1,5 @@
 package game.module.battle.battle;
 
-import game.base.util.Tuple2;
-import game.module.battle.Side;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,11 +9,11 @@ import java.util.List;
  */
 public class HalfManualAction {
 
-    public Side side;
+    public long pid;
 
     /**
      * from -> to
      */
-    public List<Tuple2<Integer, Integer>> actions = new ArrayList<>(8);
+    public List<Integer> actions = new ArrayList<>(8);
 
 }

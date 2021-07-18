@@ -722,7 +722,11 @@ public class Hero {
 
     public void addTargetStrategy(final FindTargetStrategy s) {
         targetStrategies.add(s);
+    }
 
+    public void addTargetStrategyFirst(final FindTargetStrategy s) {
+
+        targetStrategies.add(0, s);
     }
 
     public Pos getPos() {

@@ -8,18 +8,18 @@ package game.proto;
  * 手动战斗结束
  * </pre>
  *
- * Protobuf type {@code Message.FightHmEndRes}
+ * Protobuf type {@code Message.FightHmEndPush}
  */
-public final class FightHmEndRes extends
+public final class FightHmEndPush extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.FightHmEndRes)
-    FightHmEndResOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.FightHmEndPush)
+    FightHmEndPushOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use FightHmEndRes.newBuilder() to construct.
-  private FightHmEndRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use FightHmEndPush.newBuilder() to construct.
+  private FightHmEndPush(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private FightHmEndRes() {
+  private FightHmEndPush() {
     reward_ = java.util.Collections.emptyList();
   }
 
@@ -27,7 +27,7 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new FightHmEndRes();
+    return new FightHmEndPush();
   }
 
   @java.lang.Override
@@ -35,7 +35,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private FightHmEndRes(
+  private FightHmEndPush(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -54,19 +54,6 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 10: {
-            game.proto.data.RoundRecord.Builder subBuilder = null;
-            if (round_ != null) {
-              subBuilder = round_.toBuilder();
-            }
-            round_ = input.readMessage(game.proto.data.RoundRecord.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(round_);
-              round_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
           case 32: {
 
             win_ = input.readBool();
@@ -105,41 +92,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_FightHmEndRes_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_FightHmEndPush_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_FightHmEndRes_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_FightHmEndPush_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.FightHmEndRes.class, game.proto.FightHmEndRes.Builder.class);
-  }
-
-  public static final int ROUND_FIELD_NUMBER = 1;
-  private game.proto.data.RoundRecord round_;
-  /**
-   * <code>.Message.RoundRecord round = 1;</code>
-   * @return Whether the round field is set.
-   */
-  @java.lang.Override
-  public boolean hasRound() {
-    return round_ != null;
-  }
-  /**
-   * <code>.Message.RoundRecord round = 1;</code>
-   * @return The round.
-   */
-  @java.lang.Override
-  public game.proto.data.RoundRecord getRound() {
-    return round_ == null ? game.proto.data.RoundRecord.getDefaultInstance() : round_;
-  }
-  /**
-   * <code>.Message.RoundRecord round = 1;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.RoundRecordOrBuilder getRoundOrBuilder() {
-    return getRound();
+            game.proto.FightHmEndPush.class, game.proto.FightHmEndPush.Builder.class);
   }
 
   public static final int WIN_FIELD_NUMBER = 4;
@@ -231,9 +192,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (round_ != null) {
-      output.writeMessage(1, getRound());
-    }
     if (win_ != false) {
       output.writeBool(4, win_);
     }
@@ -249,10 +207,6 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (round_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(1, getRound());
-    }
     if (win_ != false) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(4, win_);
@@ -271,16 +225,11 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.FightHmEndRes)) {
+    if (!(obj instanceof game.proto.FightHmEndPush)) {
       return super.equals(obj);
     }
-    game.proto.FightHmEndRes other = (game.proto.FightHmEndRes) obj;
+    game.proto.FightHmEndPush other = (game.proto.FightHmEndPush) obj;
 
-    if (hasRound() != other.hasRound()) return false;
-    if (hasRound()) {
-      if (!getRound()
-          .equals(other.getRound())) return false;
-    }
     if (getWin()
         != other.getWin()) return false;
     if (!getRewardList()
@@ -296,10 +245,6 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasRound()) {
-      hash = (37 * hash) + ROUND_FIELD_NUMBER;
-      hash = (53 * hash) + getRound().hashCode();
-    }
     hash = (37 * hash) + WIN_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getWin());
@@ -312,69 +257,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FightHmEndRes parseFrom(byte[] data)
+  public static game.proto.FightHmEndPush parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.FightHmEndRes parseFrom(java.io.InputStream input)
+  public static game.proto.FightHmEndPush parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.FightHmEndRes parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.FightHmEndPush parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.FightHmEndRes parseDelimitedFrom(
+  public static game.proto.FightHmEndPush parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.FightHmEndRes parseFrom(
+  public static game.proto.FightHmEndPush parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -387,7 +332,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.FightHmEndRes prototype) {
+  public static Builder newBuilder(game.proto.FightHmEndPush prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -407,26 +352,26 @@ private static final long serialVersionUID = 0L;
    * 手动战斗结束
    * </pre>
    *
-   * Protobuf type {@code Message.FightHmEndRes}
+   * Protobuf type {@code Message.FightHmEndPush}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.FightHmEndRes)
-      game.proto.FightHmEndResOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.FightHmEndPush)
+      game.proto.FightHmEndPushOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_FightHmEndRes_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_FightHmEndPush_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_FightHmEndRes_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_FightHmEndPush_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.FightHmEndRes.class, game.proto.FightHmEndRes.Builder.class);
+              game.proto.FightHmEndPush.class, game.proto.FightHmEndPush.Builder.class);
     }
 
-    // Construct using game.proto.FightHmEndRes.newBuilder()
+    // Construct using game.proto.FightHmEndPush.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -445,12 +390,6 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (roundBuilder_ == null) {
-        round_ = null;
-      } else {
-        round_ = null;
-        roundBuilder_ = null;
-      }
       win_ = false;
 
       if (rewardBuilder_ == null) {
@@ -465,17 +404,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_FightHmEndRes_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_FightHmEndPush_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.FightHmEndRes getDefaultInstanceForType() {
-      return game.proto.FightHmEndRes.getDefaultInstance();
+    public game.proto.FightHmEndPush getDefaultInstanceForType() {
+      return game.proto.FightHmEndPush.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.FightHmEndRes build() {
-      game.proto.FightHmEndRes result = buildPartial();
+    public game.proto.FightHmEndPush build() {
+      game.proto.FightHmEndPush result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -483,14 +422,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.FightHmEndRes buildPartial() {
-      game.proto.FightHmEndRes result = new game.proto.FightHmEndRes(this);
+    public game.proto.FightHmEndPush buildPartial() {
+      game.proto.FightHmEndPush result = new game.proto.FightHmEndPush(this);
       int from_bitField0_ = bitField0_;
-      if (roundBuilder_ == null) {
-        result.round_ = round_;
-      } else {
-        result.round_ = roundBuilder_.build();
-      }
       result.win_ = win_;
       if (rewardBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -539,19 +473,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.FightHmEndRes) {
-        return mergeFrom((game.proto.FightHmEndRes)other);
+      if (other instanceof game.proto.FightHmEndPush) {
+        return mergeFrom((game.proto.FightHmEndPush)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.FightHmEndRes other) {
-      if (other == game.proto.FightHmEndRes.getDefaultInstance()) return this;
-      if (other.hasRound()) {
-        mergeRound(other.getRound());
-      }
+    public Builder mergeFrom(game.proto.FightHmEndPush other) {
+      if (other == game.proto.FightHmEndPush.getDefaultInstance()) return this;
       if (other.getWin() != false) {
         setWin(other.getWin());
       }
@@ -596,11 +527,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.FightHmEndRes parsedMessage = null;
+      game.proto.FightHmEndPush parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.FightHmEndRes) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.FightHmEndPush) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -610,125 +541,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     private int bitField0_;
-
-    private game.proto.data.RoundRecord round_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.RoundRecord, game.proto.data.RoundRecord.Builder, game.proto.data.RoundRecordOrBuilder> roundBuilder_;
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     * @return Whether the round field is set.
-     */
-    public boolean hasRound() {
-      return roundBuilder_ != null || round_ != null;
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     * @return The round.
-     */
-    public game.proto.data.RoundRecord getRound() {
-      if (roundBuilder_ == null) {
-        return round_ == null ? game.proto.data.RoundRecord.getDefaultInstance() : round_;
-      } else {
-        return roundBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    public Builder setRound(game.proto.data.RoundRecord value) {
-      if (roundBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        round_ = value;
-        onChanged();
-      } else {
-        roundBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    public Builder setRound(
-        game.proto.data.RoundRecord.Builder builderForValue) {
-      if (roundBuilder_ == null) {
-        round_ = builderForValue.build();
-        onChanged();
-      } else {
-        roundBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    public Builder mergeRound(game.proto.data.RoundRecord value) {
-      if (roundBuilder_ == null) {
-        if (round_ != null) {
-          round_ =
-            game.proto.data.RoundRecord.newBuilder(round_).mergeFrom(value).buildPartial();
-        } else {
-          round_ = value;
-        }
-        onChanged();
-      } else {
-        roundBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    public Builder clearRound() {
-      if (roundBuilder_ == null) {
-        round_ = null;
-        onChanged();
-      } else {
-        round_ = null;
-        roundBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    public game.proto.data.RoundRecord.Builder getRoundBuilder() {
-      
-      onChanged();
-      return getRoundFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    public game.proto.data.RoundRecordOrBuilder getRoundOrBuilder() {
-      if (roundBuilder_ != null) {
-        return roundBuilder_.getMessageOrBuilder();
-      } else {
-        return round_ == null ?
-            game.proto.data.RoundRecord.getDefaultInstance() : round_;
-      }
-    }
-    /**
-     * <code>.Message.RoundRecord round = 1;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.RoundRecord, game.proto.data.RoundRecord.Builder, game.proto.data.RoundRecordOrBuilder> 
-        getRoundFieldBuilder() {
-      if (roundBuilder_ == null) {
-        roundBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            game.proto.data.RoundRecord, game.proto.data.RoundRecord.Builder, game.proto.data.RoundRecordOrBuilder>(
-                getRound(),
-                getParentForChildren(),
-                isClean());
-        round_ = null;
-      }
-      return roundBuilder_;
-    }
 
     private boolean win_ ;
     /**
@@ -1097,41 +909,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.FightHmEndRes)
+    // @@protoc_insertion_point(builder_scope:Message.FightHmEndPush)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.FightHmEndRes)
-  private static final game.proto.FightHmEndRes DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.FightHmEndPush)
+  private static final game.proto.FightHmEndPush DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.FightHmEndRes();
+    DEFAULT_INSTANCE = new game.proto.FightHmEndPush();
   }
 
-  public static game.proto.FightHmEndRes getDefaultInstance() {
+  public static game.proto.FightHmEndPush getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<FightHmEndRes>
-      PARSER = new com.google.protobuf.AbstractParser<FightHmEndRes>() {
+  private static final com.google.protobuf.Parser<FightHmEndPush>
+      PARSER = new com.google.protobuf.AbstractParser<FightHmEndPush>() {
     @java.lang.Override
-    public FightHmEndRes parsePartialFrom(
+    public FightHmEndPush parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new FightHmEndRes(input, extensionRegistry);
+      return new FightHmEndPush(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<FightHmEndRes> parser() {
+  public static com.google.protobuf.Parser<FightHmEndPush> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<FightHmEndRes> getParserForType() {
+  public com.google.protobuf.Parser<FightHmEndPush> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.FightHmEndRes getDefaultInstanceForType() {
+  public game.proto.FightHmEndPush getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

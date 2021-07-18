@@ -21,7 +21,7 @@ enum No {
     PlayerChooseHotelReq = 203;
     FeatureOpenPush = 204;
 
-    // 称谓
+    // 称谓 - title
     TitleChooseReq = 301;
     TitleNewPush = 302;
 
@@ -43,11 +43,10 @@ enum No {
     FightHmStartReq = 2011;
     FightHmStartRes = 2012;
     FightHmActionReq = 2013;
-    FightHmEndRes = 2014;
+    FightHmEndPush = 2014;
 
     // Battle
     BattleEnterReq = 2010;
-
     // Scene
     EnterSceneReq = 3001;
     EnterFightAreaReq = 3002;

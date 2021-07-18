@@ -71,7 +71,7 @@ public class Battle {
      */
     private DamageInfo damageInfo;
 
-    BattleRecord battleRecord;
+    protected BattleRecord battleRecord;
 
     public Battle() {
         fightId = ID_GEN.addAndGet(1);
@@ -369,5 +369,10 @@ public class Battle {
     public long getFightId() {
         return fightId;
     }
+
+    public BattleRecord getBattleRecord() {
+        return battleRecord;
+    }
 }
+
 
