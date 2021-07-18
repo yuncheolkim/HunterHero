@@ -60,12 +60,6 @@ public class HeroData {
      */
     public int criticalDamageRate;
 
-
-    /**
-     * 出手顺序
-     */
-    private int speed;
-
     /**
      * 对敌方护甲穿透比例
      * 万分比
@@ -85,7 +79,6 @@ public class HeroData {
         avoid += o.avoid;
         critical += o.critical;
         criticalDamageRate += o.criticalDamageRate;
-        speed += o.speed;
         criticalBase += o.criticalBase;
         avoidBase += o.avoidBase;
         defBase += o.defBase;
@@ -137,13 +130,6 @@ public class HeroData {
         this.critical = critical;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void setSpeed(final int speed) {
-        this.speed = speed;
-    }
 
     public int getCriticalDamageRate() {
         return criticalDamageRate;
@@ -204,7 +190,6 @@ public class HeroData {
                 .add("avoid", avoid)
                 .add("critical", critical)
                 .add("criticalDamageRate", criticalDamageRate)
-                .add("speed", speed)
                 .toString();
     }
 }

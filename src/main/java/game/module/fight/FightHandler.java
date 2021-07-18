@@ -14,6 +14,7 @@ import game.game.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.battle.*;
+import game.module.battle.battle.AutoBattle;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.HeroRecordData;
@@ -47,6 +48,7 @@ public class FightHandler {
 
     /**
      * 战斗开始,计算后推送给前端
+     * 自动战斗
      *
      * @param player
      * @param req
@@ -59,7 +61,7 @@ public class FightHandler {
         // 观看战斗设定为10分钟
         player.D.setFightTime(DateUtils.now() + TimeUnit.MINUTES.toMillis(10));
 
-        final Battle battle = new Battle();
+        final Battle battle = new AutoBattle();
 
         // enemy
         for (final FightEnemyInfo enemy : player.getPd().getFightInfoList()) {
@@ -326,4 +328,18 @@ public class FightHandler {
                 .setRecord(result).buildPartial();
 
     }
+
+
+    /////////////////////////  手动战斗
+
+    /**
+     * 手动战斗 - 开始战斗
+     *
+     * @param player
+     * @param req
+     */
+    public static void manualFight(final Player player, final FightStartReq req) {
+
+    }
+
 }

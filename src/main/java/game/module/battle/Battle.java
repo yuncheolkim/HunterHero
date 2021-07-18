@@ -37,11 +37,17 @@ public class Battle {
 
     private final List<Round> roundList = new ArrayList<>();
 
-    private Round currentRound;
+    protected Round currentRound;
 
-    private Map<Integer, Hero> sideAhero = new HashMap<>(8);
+    /**
+     * key:pos
+     */
+    protected Map<Integer, Hero> sideAhero = new HashMap<>(8);
 
-    private Map<Integer, Hero> sideBhero = new HashMap<>(8);
+    /**
+     * key:pos
+     */
+    protected Map<Integer, Hero> sideBhero = new HashMap<>(8);
 
     /**
      * 出手顺序
@@ -64,6 +70,8 @@ public class Battle {
      * 当前执行人动作信息
      */
     private DamageInfo damageInfo;
+
+    BattleRecord battleRecord;
 
     public Battle() {
         fightId = ID_GEN.addAndGet(1);
@@ -89,10 +97,79 @@ public class Battle {
     public BattleRecord start() {
         final Stopwatch stopwatch = Stopwatch.createStarted();
 
+        beforeBattle();
+        inBattle();
+        endBattle();
+        Logs.C.info("=============> 战斗耗时:{}", stopwatch.stop());
+
+        return battleRecord;
+    }
+
+    /**
+     * 战斗中
+     */
+    protected void inBattle() {
+        while (!fight()) {
+            //下一回合
+            nextRound();
+        }
+    }
+
+    /**
+     * 战斗
+     *
+     * @return 是否有胜负
+     */
+    protected boolean fight() {
+        Logs.trace("回合开始：", currentRound.getRoundCount());
+
+        processHero(ActionPoint.回合开始前);
+
+        // 出手
+        for (final Hero hero : actionOrderList) {
+            processHero(ActionPoint.出手开始前);
+            do {
+                if (hero.isAlive()) {
+                    hero.action();
+                }
+            } while (hero.isAlive() && hero.isContinueAction() && !checkWinner());
+            if (checkWinner()) {
+                return true;
+            }
+            processHero(ActionPoint.出手结束后);
+        }
+
+        processHero(ActionPoint.回合结束后);
+        // debug
+        for (final Hero hero : actionOrderList) {
+            Logs.trace("回合结束后状态", hero);
+        }
+        Logs.trace("回合结束：", currentRound.getRoundCount());
+        Logs.trace("==============================================");
+
+        if (currentRound.getRoundCount() == 30) {
+            if (!checkWinner()) {
+                winSide = actionOrderList.get(0).getSide() == Side.A ? Side.B : Side.A;
+            }
+            // 最多30回合
+            return true;
+        }
+        return checkWinner();
+    }
+
+    protected void endBattle() {
+        // 结算
+        Logs.trace("游戏结束", "胜利：", winSide);
+        battleRecord.setRoundList(roundList);
+        battleRecord.setWinSide(winSide);
+        Logs.C.info("end:\n{}", JacksonUtil.toStr(battleRecord));
+    }
+
+    protected void beforeBattle() {
         // 计算出手顺序
         actionOrderList = decideOrder();
 
-        final BattleRecord battleRecord = new BattleRecord(this);
+        battleRecord = new BattleRecord(this);
 
         currentRound = new Round();
         roundList.add(currentRound);
@@ -104,56 +181,6 @@ public class Battle {
         currentRound = new Round();
         currentRound.setRoundCount(1);
         roundList.add(currentRound);
-
-        Logs.trace("==============================================");
-        while (true) {
-            Logs.trace("回合开始：", currentRound.getRoundCount());
-
-            processHero(ActionPoint.回合开始前);
-
-            // 出手
-            for (final Hero hero : actionOrderList) {
-                processHero(ActionPoint.出手开始前);
-                do {
-                    if (hero.isAlive()) {
-                        hero.action();
-                    }
-                } while (hero.isAlive() && hero.isContinueAction() && !hasWinner());
-                if (hasWinner()) {
-                    break;
-                }
-                processHero(ActionPoint.出手结束后);
-            }
-
-            processHero(ActionPoint.回合结束后);
-            // debug
-            for (final Hero hero : actionOrderList) {
-                Logs.trace("回合结束后状态", hero);
-            }
-            Logs.trace("回合结束：", currentRound.getRoundCount());
-            Logs.trace("==============================================");
-
-            if (currentRound.getRoundCount() == 30) {
-                if (!hasWinner()) {
-                    winSide = actionOrderList.get(0).getSide() == Side.A ? Side.B : Side.A;
-                }
-                // 最多30回合
-                break;
-            }
-            if (hasWinner()) {
-                break;
-            }
-            //下一回合
-            nextRound();
-        }
-        // 结算
-        Logs.trace("游戏结束", "胜利：", winSide);
-        battleRecord.setRoundList(roundList);
-        battleRecord.setWinSide(winSide);
-        Logs.C.info("end:\n{}", JacksonUtil.toStr(battleRecord));
-        Logs.C.info("=============> 战斗耗时:{}", stopwatch.stop());
-
-        return battleRecord;
     }
 
     /**
@@ -161,7 +188,7 @@ public class Battle {
      *
      * @param actionPoint
      */
-    private void processHero(final ActionPoint actionPoint) {
+    protected void processHero(final ActionPoint actionPoint) {
         for (final Hero hero : actionOrderList) {
             if (hero.isAlive()) {
                 hero.processAll(actionPoint);
@@ -172,11 +199,11 @@ public class Battle {
     /**
      * 根据速度计算出手顺序
      */
-    private List<Hero> decideOrder() {
+    protected List<Hero> decideOrder() {
         final List<Hero> order = new ArrayList<>();
         order.addAll(sideAhero.values().stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
         order.addAll(sideBhero.values().stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
-        order.sort(Comparator.comparingInt(o -> o.property.getSpeed()));
+        order.sort(Comparator.comparingInt(Hero::getSpeed));
         return order;
     }
 
@@ -191,7 +218,7 @@ public class Battle {
     /**
      * 检查是否有一方胜利
      */
-    private boolean hasWinner() {
+    private boolean checkWinner() {
         Optional<Hero> first = sideAhero.values().stream().filter(Hero::isAlive).findFirst();
         if (!first.isPresent()) {
             winSide = Side.B;
@@ -205,6 +232,11 @@ public class Battle {
         }
         return false;
     }
+
+    public boolean hasWinner() {
+        return winSide != null;
+    }
+
 
     /**
      * 对方英雄

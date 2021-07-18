@@ -135,7 +135,7 @@ public enum DisplayPoint
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(4);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(7);
   }
 
   private static final DisplayPoint[] VALUES = values();

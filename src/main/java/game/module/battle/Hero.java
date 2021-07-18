@@ -50,6 +50,8 @@ public class Hero {
 
     protected int level;
 
+    private int speed;
+
     /**
      * 英雄原始数据，开局后永远不变
      */
@@ -155,7 +157,11 @@ public class Hero {
     }
 
     public void setSpeed(final int speed) {
-        origin.setSpeed(speed);
+        this.speed = speed;
+    }
+
+    public int getSpeed() {
+        return speed;
     }
 
     public void processAll(final ActionPoint actionPoint) {

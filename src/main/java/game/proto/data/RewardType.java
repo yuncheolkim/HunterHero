@@ -110,7 +110,7 @@ public enum RewardType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(5);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(4);
   }
 
   private static final RewardType[] VALUES = values();

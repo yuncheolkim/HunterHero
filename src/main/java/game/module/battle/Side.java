@@ -5,5 +5,9 @@ package game.module.battle;
  * 2021/1/11 10:38
  */
 public enum Side {
-    A,B
+    A, B;
+
+    public Side opposite() {
+        return this == A ? B : A;
+    }
 }

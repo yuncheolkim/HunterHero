@@ -40,6 +40,11 @@ enum No {
     FightEndReq = 2004;
     FightTestReq = 2005;
 
+    FightHmStartReq = 2011;
+    FightHmStartRes = 2012;
+    FightHmActionReq = 2013;
+    FightHmEndRes = 2014;
+
     // Battle
     BattleEnterReq = 2010;
 

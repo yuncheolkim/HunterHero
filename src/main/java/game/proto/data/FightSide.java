@@ -4,73 +4,37 @@
 package game.proto.data;
 
 /**
- * <pre>
- * 物品品质
- * </pre>
- *
- * Protobuf enum {@code Message.EnumItemQuality}
+ * Protobuf enum {@code Message.FightSide}
  */
-public enum EnumItemQuality
+public enum FightSide
     implements com.google.protobuf.ProtocolMessageEnum {
   /**
-   * <code>Q_NONE = 0;</code>
+   * <code>FS_NONE = 0;</code>
    */
-  Q_NONE(0),
+  FS_NONE(0),
   /**
-   * <code>Q_W = 1;</code>
+   * <code>FS_A = 1;</code>
    */
-  Q_W(1),
+  FS_A(1),
   /**
-   * <code>Q_G = 2;</code>
+   * <code>FS_B = 2;</code>
    */
-  Q_G(2),
-  /**
-   * <code>Q_B = 3;</code>
-   */
-  Q_B(3),
-  /**
-   * <code>Q_P = 4;</code>
-   */
-  Q_P(4),
-  /**
-   * <code>Q_O = 5;</code>
-   */
-  Q_O(5),
-  /**
-   * <code>Q_R = 6;</code>
-   */
-  Q_R(6),
+  FS_B(2),
   UNRECOGNIZED(-1),
   ;
 
   /**
-   * <code>Q_NONE = 0;</code>
+   * <code>FS_NONE = 0;</code>
    */
-  public static final int Q_NONE_VALUE = 0;
+  public static final int FS_NONE_VALUE = 0;
   /**
-   * <code>Q_W = 1;</code>
+   * <code>FS_A = 1;</code>
    */
-  public static final int Q_W_VALUE = 1;
+  public static final int FS_A_VALUE = 1;
   /**
-   * <code>Q_G = 2;</code>
+   * <code>FS_B = 2;</code>
    */
-  public static final int Q_G_VALUE = 2;
-  /**
-   * <code>Q_B = 3;</code>
-   */
-  public static final int Q_B_VALUE = 3;
-  /**
-   * <code>Q_P = 4;</code>
-   */
-  public static final int Q_P_VALUE = 4;
-  /**
-   * <code>Q_O = 5;</code>
-   */
-  public static final int Q_O_VALUE = 5;
-  /**
-   * <code>Q_R = 6;</code>
-   */
-  public static final int Q_R_VALUE = 6;
+  public static final int FS_B_VALUE = 2;
 
 
   public final int getNumber() {
@@ -87,7 +51,7 @@ public enum EnumItemQuality
    * @deprecated Use {@link #forNumber(int)} instead.
    */
   @java.lang.Deprecated
-  public static EnumItemQuality valueOf(int value) {
+  public static FightSide valueOf(int value) {
     return forNumber(value);
   }
 
@@ -95,28 +59,24 @@ public enum EnumItemQuality
    * @param value The numeric wire value of the corresponding enum entry.
    * @return The enum associated with the given numeric wire value.
    */
-  public static EnumItemQuality forNumber(int value) {
+  public static FightSide forNumber(int value) {
     switch (value) {
-      case 0: return Q_NONE;
-      case 1: return Q_W;
-      case 2: return Q_G;
-      case 3: return Q_B;
-      case 4: return Q_P;
-      case 5: return Q_O;
-      case 6: return Q_R;
+      case 0: return FS_NONE;
+      case 1: return FS_A;
+      case 2: return FS_B;
       default: return null;
     }
   }
 
-  public static com.google.protobuf.Internal.EnumLiteMap<EnumItemQuality>
+  public static com.google.protobuf.Internal.EnumLiteMap<FightSide>
       internalGetValueMap() {
     return internalValueMap;
   }
   private static final com.google.protobuf.Internal.EnumLiteMap<
-      EnumItemQuality> internalValueMap =
-        new com.google.protobuf.Internal.EnumLiteMap<EnumItemQuality>() {
-          public EnumItemQuality findValueByNumber(int number) {
-            return EnumItemQuality.forNumber(number);
+      FightSide> internalValueMap =
+        new com.google.protobuf.Internal.EnumLiteMap<FightSide>() {
+          public FightSide findValueByNumber(int number) {
+            return FightSide.forNumber(number);
           }
         };
 
@@ -134,12 +94,12 @@ public enum EnumItemQuality
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(1);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(10);
   }
 
-  private static final EnumItemQuality[] VALUES = values();
+  private static final FightSide[] VALUES = values();
 
-  public static EnumItemQuality valueOf(
+  public static FightSide valueOf(
       com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
     if (desc.getType() != getDescriptor()) {
       throw new java.lang.IllegalArgumentException(
@@ -153,10 +113,10 @@ public enum EnumItemQuality
 
   private final int value;
 
-  private EnumItemQuality(int value) {
+  private FightSide(int value) {
     this.value = value;
   }
 
-  // @@protoc_insertion_point(enum_scope:Message.EnumItemQuality)
+  // @@protoc_insertion_point(enum_scope:Message.FightSide)
 }
 

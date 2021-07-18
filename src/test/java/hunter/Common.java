@@ -37,7 +37,6 @@ public class Common {
         data.setCritical(0);
         data.setCriticalBase(100);
         data.setCriticalDamageRate(100);
-        data.setSpeed(100);
 
         return data;
     }

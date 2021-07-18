@@ -85,7 +85,7 @@ public enum NpcShowEnum
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(6);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final NpcShowEnum[] VALUES = values();

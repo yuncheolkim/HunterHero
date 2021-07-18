@@ -8,6 +8,7 @@ import org.junit.Test;
 
 /**
  * 测试闪避
+ *
  * @author Yunzhe.Jin
  * 2021/2/1 14:31
  */
@@ -20,13 +21,11 @@ public class TestAvoid {
         Battle newBattle = new Battle();
         Common.newHero(newBattle, Side.A, Pos.from(1), Guanyu::new, g -> {
             g.heroStats.hp = (2000);
-            g.origin.setSpeed(30);
             g.origin.setCritical(5000);
         });
 
         Common.newHero(newBattle, Side.B, Pos.from(-1), Guanyu::new, g -> {
             g.heroStats.hp = (2000);
-            g.origin.setSpeed(20);
             g.origin.setCritical(5000);
             g.origin.setAvoid(2000);
         });

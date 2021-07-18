@@ -68,13 +68,6 @@ message PlayerData {
     int32 arenaFormationIndex = 703;
 
 }
-
-enum FormationType {
-    FORMATION_NONE = 0;
-    FORMATION_DEFAULT = 1; //默认阵型
-    FORMATION_ARENA = 2; // 竞技场防守
-}
-
 // 法阵
 message FormationEnhance{
 
@@ -187,13 +180,6 @@ message FightHeroPos {
     int32 order = 4;
 }
 
-enum EnemyType {
-    CREATURE = 0;
-    PLAYER = 1;
-    NPC = 2;
-    EXERCISE = 3;
-
-}
 
 message FightEnemyInfo {
     int32 id = 1;
@@ -215,33 +201,6 @@ message HeroDataRecord {
 message RoundRecord {
     int32 round = 1;
     repeated Record record = 2;
-}
-
-enum RecordType {
-    ACTION = 0;
-    ATTACK = 1;
-    HEALTH_CHANGE = 2;
-    AVOID = 3;
-    BUFF_ADD = 4;
-    BUFF_REMOVE = 5;
-    BUFF_UPDATE = 6;
-    HERO_ACTION = 7;
-    SKILL_USE = 8;
-    SHIELD_CHANGE = 9; // 护盾变化
-}
-enum DamageType {
-    DAMAGE_NONE = 0;
-    DAMAGE_NORMAL = 1;
-    DAMAGE_CRITICAL = 2;
-    DAMAGE_SKILL = 3;
-    DAMAGE_BUFF = 4;
-}
-
-enum DisplayPoint{
-    DP_ATT_1 = 0;// 出发
-    DP_ATT_2 = 1;// 到达
-    DP_ATT_3 = 2;// 返回
-    DP_DEF_1 = 3;// 防守方的位置
 }
 
 message Record {
@@ -278,13 +237,6 @@ message BuffRecord {
     float f2 = 22;
 
 }
-enum RewardType {
-    REWARD_NORMAL = 0;
-    // 资源
-    REWARD_RESOURCE = 1;
-    // 物品
-    REWARD_ITEM = 2;
-}
 // Reward
 message Reward {
     RewardType type = 100;
@@ -311,15 +263,15 @@ message BagSlot {
     ItemData data = 2;
 }
 
-enum NpcShowEnum{
-    NPC_NONE = 0;
-    NPC_SHOW_1 = 1;
-}
 
 
 
 ///////////////////////////////////////////////  Enum
 
+enum NpcShowEnum{
+    NPC_NONE = 0;
+    NPC_SHOW_1 = 1;
+}
 // 物品品质
 enum EnumItemQuality{
     Q_NONE = 0;
@@ -340,5 +292,63 @@ enum EnumDamageType{
 
 
 
+enum FormationType {
+    FORMATION_NONE = 0;
+    FORMATION_DEFAULT = 1; //默认阵型
+    FORMATION_ARENA = 2; // 竞技场防守
+}
+
+enum RewardType {
+    REWARD_NORMAL = 0;
+    // 资源
+    REWARD_RESOURCE = 1;
+    // 物品
+    REWARD_ITEM = 2;
+}
 
 
+enum RecordType {
+    ACTION = 0;
+    ATTACK = 1;
+    HEALTH_CHANGE = 2;
+    AVOID = 3;
+    BUFF_ADD = 4;
+    BUFF_REMOVE = 5;
+    BUFF_UPDATE = 6;
+    HERO_ACTION = 7;
+    SKILL_USE = 8;
+    SHIELD_CHANGE = 9; // 护盾变化
+}
+enum DamageType {
+    DAMAGE_NONE = 0;
+    DAMAGE_NORMAL = 1;
+    DAMAGE_CRITICAL = 2;
+    DAMAGE_SKILL = 3;
+    DAMAGE_BUFF = 4;
+}
+
+enum DisplayPoint{
+    DP_ATT_1 = 0;// 出发
+    DP_ATT_2 = 1;// 到达
+    DP_ATT_3 = 2;// 返回
+    DP_DEF_1 = 3;// 防守方的位置
+}
+enum EnemyType {
+    CREATURE = 0;
+    PLAYER = 1;
+    NPC = 2;
+    EXERCISE = 3;
+}
+
+// 手动战斗,执行的动作
+enum ManualActionType{
+    MA_NONE = 0;
+    MA_ATTACK = 1;// 攻击
+    MA_SKILL = 2;// 使用技能
+}
+
+enum FightSide{
+    FS_NONE = 0;
+    FS_A = 1;
+    FS_B = 2;
+}

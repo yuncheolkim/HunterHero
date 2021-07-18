@@ -20,12 +20,12 @@ public class TestZhangfei {
         Battle newBattle = new Battle();
         Common.newHero(newBattle, Side.A, Pos.from(1), Guanyu::new, g -> {
             g.heroStats.hp = (2000);
-            g.origin.setSpeed(10);
+            g.setSpeed(10);
             g.origin.setCritical(5000);
         });
 
         Common.newHero(newBattle, Side.B, Pos.from(-1), Zhangfei::new, g -> {
-            g.origin.setSpeed(50);
+            g.setSpeed(50);
             g.heroStats.hp = 2000;
         });
 

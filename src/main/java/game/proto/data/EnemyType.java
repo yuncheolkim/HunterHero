@@ -103,7 +103,7 @@ public enum EnemyType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(1);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(8);
   }
 
   private static final EnemyType[] VALUES = values();

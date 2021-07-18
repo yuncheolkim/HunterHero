@@ -121,6 +121,22 @@ public enum No
    */
   FightTestReq(2005),
   /**
+   * <code>FightHmStartReq = 2011;</code>
+   */
+  FightHmStartReq(2011),
+  /**
+   * <code>FightHmStartRes = 2012;</code>
+   */
+  FightHmStartRes(2012),
+  /**
+   * <code>FightHmActionReq = 2013;</code>
+   */
+  FightHmActionReq(2013),
+  /**
+   * <code>FightHmEndRes = 2014;</code>
+   */
+  FightHmEndRes(2014),
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -429,6 +445,22 @@ public enum No
    */
   public static final int FightTestReq_VALUE = 2005;
   /**
+   * <code>FightHmStartReq = 2011;</code>
+   */
+  public static final int FightHmStartReq_VALUE = 2011;
+  /**
+   * <code>FightHmStartRes = 2012;</code>
+   */
+  public static final int FightHmStartRes_VALUE = 2012;
+  /**
+   * <code>FightHmActionReq = 2013;</code>
+   */
+  public static final int FightHmActionReq_VALUE = 2013;
+  /**
+   * <code>FightHmEndRes = 2014;</code>
+   */
+  public static final int FightHmEndRes_VALUE = 2014;
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -668,6 +700,10 @@ public enum No
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;
       case 2005: return FightTestReq;
+      case 2011: return FightHmStartReq;
+      case 2012: return FightHmStartRes;
+      case 2013: return FightHmActionReq;
+      case 2014: return FightHmEndRes;
       case 2010: return BattleEnterReq;
       case 3001: return EnterSceneReq;
       case 3002: return EnterFightAreaReq;

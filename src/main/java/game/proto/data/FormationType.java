@@ -110,7 +110,7 @@ public enum FormationType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.data.Data.getDescriptor().getEnumTypes().get(0);
+    return game.proto.data.Data.getDescriptor().getEnumTypes().get(3);
   }
 
   private static final FormationType[] VALUES = values();
