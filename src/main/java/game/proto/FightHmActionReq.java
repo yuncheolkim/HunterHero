@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private FightHmActionReq() {
-    fromTo_ = emptyIntList();
+    pos_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -54,25 +54,13 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              fromTo_ = newIntList();
-              mutable_bitField0_ |= 0x00000001;
-            }
-            fromTo_.addInt(input.readInt32());
-            break;
-          }
           case 10: {
-            int length = input.readRawVarint32();
-            int limit = input.pushLimit(length);
-            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
-              fromTo_ = newIntList();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              pos_ = new java.util.ArrayList<game.proto.data.FightHmHeroPos>();
               mutable_bitField0_ |= 0x00000001;
             }
-            while (input.getBytesUntilLimit() > 0) {
-              fromTo_.addInt(input.readInt32());
-            }
-            input.popLimit(limit);
+            pos_.add(
+                input.readMessage(game.proto.data.FightHmHeroPos.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -91,7 +79,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        fromTo_.makeImmutable(); // C
+        pos_ = java.util.Collections.unmodifiableList(pos_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -110,33 +98,45 @@ private static final long serialVersionUID = 0L;
             game.proto.FightHmActionReq.class, game.proto.FightHmActionReq.Builder.class);
   }
 
-  public static final int FROMTO_FIELD_NUMBER = 1;
-  private com.google.protobuf.Internal.IntList fromTo_;
+  public static final int POS_FIELD_NUMBER = 1;
+  private java.util.List<game.proto.data.FightHmHeroPos> pos_;
   /**
-   * <code>repeated int32 fromTo = 1;</code>
-   * @return A list containing the fromTo.
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
    */
   @java.lang.Override
-  public java.util.List<java.lang.Integer>
-      getFromToList() {
-    return fromTo_;
+  public java.util.List<game.proto.data.FightHmHeroPos> getPosList() {
+    return pos_;
   }
   /**
-   * <code>repeated int32 fromTo = 1;</code>
-   * @return The count of fromTo.
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
    */
-  public int getFromToCount() {
-    return fromTo_.size();
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.FightHmHeroPosOrBuilder> 
+      getPosOrBuilderList() {
+    return pos_;
   }
   /**
-   * <code>repeated int32 fromTo = 1;</code>
-   * @param index The index of the element to return.
-   * @return The fromTo at the given index.
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
    */
-  public int getFromTo(int index) {
-    return fromTo_.getInt(index);
+  @java.lang.Override
+  public int getPosCount() {
+    return pos_.size();
   }
-  private int fromToMemoizedSerializedSize = -1;
+  /**
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FightHmHeroPos getPos(int index) {
+    return pos_.get(index);
+  }
+  /**
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FightHmHeroPosOrBuilder getPosOrBuilder(
+      int index) {
+    return pos_.get(index);
+  }
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -152,13 +152,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    getSerializedSize();
-    if (getFromToList().size() > 0) {
-      output.writeUInt32NoTag(10);
-      output.writeUInt32NoTag(fromToMemoizedSerializedSize);
-    }
-    for (int i = 0; i < fromTo_.size(); i++) {
-      output.writeInt32NoTag(fromTo_.getInt(i));
+    for (int i = 0; i < pos_.size(); i++) {
+      output.writeMessage(1, pos_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -169,19 +164,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    {
-      int dataSize = 0;
-      for (int i = 0; i < fromTo_.size(); i++) {
-        dataSize += com.google.protobuf.CodedOutputStream
-          .computeInt32SizeNoTag(fromTo_.getInt(i));
-      }
-      size += dataSize;
-      if (!getFromToList().isEmpty()) {
-        size += 1;
-        size += com.google.protobuf.CodedOutputStream
-            .computeInt32SizeNoTag(dataSize);
-      }
-      fromToMemoizedSerializedSize = dataSize;
+    for (int i = 0; i < pos_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(1, pos_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -198,8 +183,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.FightHmActionReq other = (game.proto.FightHmActionReq) obj;
 
-    if (!getFromToList()
-        .equals(other.getFromToList())) return false;
+    if (!getPosList()
+        .equals(other.getPosList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -211,9 +196,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (getFromToCount() > 0) {
-      hash = (37 * hash) + FROMTO_FIELD_NUMBER;
-      hash = (53 * hash) + getFromToList().hashCode();
+    if (getPosCount() > 0) {
+      hash = (37 * hash) + POS_FIELD_NUMBER;
+      hash = (53 * hash) + getPosList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -347,13 +332,18 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getPosFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      fromTo_ = emptyIntList();
-      bitField0_ = (bitField0_ & ~0x00000001);
+      if (posBuilder_ == null) {
+        pos_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      } else {
+        posBuilder_.clear();
+      }
       return this;
     }
 
@@ -381,11 +371,15 @@ private static final long serialVersionUID = 0L;
     public game.proto.FightHmActionReq buildPartial() {
       game.proto.FightHmActionReq result = new game.proto.FightHmActionReq(this);
       int from_bitField0_ = bitField0_;
-      if (((bitField0_ & 0x00000001) != 0)) {
-        fromTo_.makeImmutable();
-        bitField0_ = (bitField0_ & ~0x00000001);
+      if (posBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          pos_ = java.util.Collections.unmodifiableList(pos_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.pos_ = pos_;
+      } else {
+        result.pos_ = posBuilder_.build();
       }
-      result.fromTo_ = fromTo_;
       onBuilt();
       return result;
     }
@@ -434,15 +428,31 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.FightHmActionReq other) {
       if (other == game.proto.FightHmActionReq.getDefaultInstance()) return this;
-      if (!other.fromTo_.isEmpty()) {
-        if (fromTo_.isEmpty()) {
-          fromTo_ = other.fromTo_;
-          bitField0_ = (bitField0_ & ~0x00000001);
-        } else {
-          ensureFromToIsMutable();
-          fromTo_.addAll(other.fromTo_);
+      if (posBuilder_ == null) {
+        if (!other.pos_.isEmpty()) {
+          if (pos_.isEmpty()) {
+            pos_ = other.pos_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensurePosIsMutable();
+            pos_.addAll(other.pos_);
+          }
+          onChanged();
         }
-        onChanged();
+      } else {
+        if (!other.pos_.isEmpty()) {
+          if (posBuilder_.isEmpty()) {
+            posBuilder_.dispose();
+            posBuilder_ = null;
+            pos_ = other.pos_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            posBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getPosFieldBuilder() : null;
+          } else {
+            posBuilder_.addAllMessages(other.pos_);
+          }
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -474,83 +484,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.google.protobuf.Internal.IntList fromTo_ = emptyIntList();
-    private void ensureFromToIsMutable() {
+    private java.util.List<game.proto.data.FightHmHeroPos> pos_ =
+      java.util.Collections.emptyList();
+    private void ensurePosIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        fromTo_ = mutableCopy(fromTo_);
+        pos_ = new java.util.ArrayList<game.proto.data.FightHmHeroPos>(pos_);
         bitField0_ |= 0x00000001;
        }
     }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.FightHmHeroPos, game.proto.data.FightHmHeroPos.Builder, game.proto.data.FightHmHeroPosOrBuilder> posBuilder_;
+
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @return A list containing the fromTo.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public java.util.List<java.lang.Integer>
-        getFromToList() {
-      return ((bitField0_ & 0x00000001) != 0) ?
-               java.util.Collections.unmodifiableList(fromTo_) : fromTo_;
+    public java.util.List<game.proto.data.FightHmHeroPos> getPosList() {
+      if (posBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(pos_);
+      } else {
+        return posBuilder_.getMessageList();
+      }
     }
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @return The count of fromTo.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public int getFromToCount() {
-      return fromTo_.size();
+    public int getPosCount() {
+      if (posBuilder_ == null) {
+        return pos_.size();
+      } else {
+        return posBuilder_.getCount();
+      }
     }
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @param index The index of the element to return.
-     * @return The fromTo at the given index.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public int getFromTo(int index) {
-      return fromTo_.getInt(index);
+    public game.proto.data.FightHmHeroPos getPos(int index) {
+      if (posBuilder_ == null) {
+        return pos_.get(index);
+      } else {
+        return posBuilder_.getMessage(index);
+      }
     }
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @param index The index to set the value at.
-     * @param value The fromTo to set.
-     * @return This builder for chaining.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public Builder setFromTo(
-        int index, int value) {
-      ensureFromToIsMutable();
-      fromTo_.setInt(index, value);
-      onChanged();
+    public Builder setPos(
+        int index, game.proto.data.FightHmHeroPos value) {
+      if (posBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensurePosIsMutable();
+        pos_.set(index, value);
+        onChanged();
+      } else {
+        posBuilder_.setMessage(index, value);
+      }
       return this;
     }
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @param value The fromTo to add.
-     * @return This builder for chaining.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public Builder addFromTo(int value) {
-      ensureFromToIsMutable();
-      fromTo_.addInt(value);
-      onChanged();
+    public Builder setPos(
+        int index, game.proto.data.FightHmHeroPos.Builder builderForValue) {
+      if (posBuilder_ == null) {
+        ensurePosIsMutable();
+        pos_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        posBuilder_.setMessage(index, builderForValue.build());
+      }
       return this;
     }
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @param values The fromTo to add.
-     * @return This builder for chaining.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public Builder addAllFromTo(
-        java.lang.Iterable<? extends java.lang.Integer> values) {
-      ensureFromToIsMutable();
-      com.google.protobuf.AbstractMessageLite.Builder.addAll(
-          values, fromTo_);
-      onChanged();
+    public Builder addPos(game.proto.data.FightHmHeroPos value) {
+      if (posBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensurePosIsMutable();
+        pos_.add(value);
+        onChanged();
+      } else {
+        posBuilder_.addMessage(value);
+      }
       return this;
     }
     /**
-     * <code>repeated int32 fromTo = 1;</code>
-     * @return This builder for chaining.
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
      */
-    public Builder clearFromTo() {
-      fromTo_ = emptyIntList();
-      bitField0_ = (bitField0_ & ~0x00000001);
-      onChanged();
+    public Builder addPos(
+        int index, game.proto.data.FightHmHeroPos value) {
+      if (posBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensurePosIsMutable();
+        pos_.add(index, value);
+        onChanged();
+      } else {
+        posBuilder_.addMessage(index, value);
+      }
       return this;
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public Builder addPos(
+        game.proto.data.FightHmHeroPos.Builder builderForValue) {
+      if (posBuilder_ == null) {
+        ensurePosIsMutable();
+        pos_.add(builderForValue.build());
+        onChanged();
+      } else {
+        posBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public Builder addPos(
+        int index, game.proto.data.FightHmHeroPos.Builder builderForValue) {
+      if (posBuilder_ == null) {
+        ensurePosIsMutable();
+        pos_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        posBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public Builder addAllPos(
+        java.lang.Iterable<? extends game.proto.data.FightHmHeroPos> values) {
+      if (posBuilder_ == null) {
+        ensurePosIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, pos_);
+        onChanged();
+      } else {
+        posBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public Builder clearPos() {
+      if (posBuilder_ == null) {
+        pos_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        posBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public Builder removePos(int index) {
+      if (posBuilder_ == null) {
+        ensurePosIsMutable();
+        pos_.remove(index);
+        onChanged();
+      } else {
+        posBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public game.proto.data.FightHmHeroPos.Builder getPosBuilder(
+        int index) {
+      return getPosFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public game.proto.data.FightHmHeroPosOrBuilder getPosOrBuilder(
+        int index) {
+      if (posBuilder_ == null) {
+        return pos_.get(index);  } else {
+        return posBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public java.util.List<? extends game.proto.data.FightHmHeroPosOrBuilder> 
+         getPosOrBuilderList() {
+      if (posBuilder_ != null) {
+        return posBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(pos_);
+      }
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public game.proto.data.FightHmHeroPos.Builder addPosBuilder() {
+      return getPosFieldBuilder().addBuilder(
+          game.proto.data.FightHmHeroPos.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public game.proto.data.FightHmHeroPos.Builder addPosBuilder(
+        int index) {
+      return getPosFieldBuilder().addBuilder(
+          index, game.proto.data.FightHmHeroPos.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+     */
+    public java.util.List<game.proto.data.FightHmHeroPos.Builder> 
+         getPosBuilderList() {
+      return getPosFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.FightHmHeroPos, game.proto.data.FightHmHeroPos.Builder, game.proto.data.FightHmHeroPosOrBuilder> 
+        getPosFieldBuilder() {
+      if (posBuilder_ == null) {
+        posBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.FightHmHeroPos, game.proto.data.FightHmHeroPos.Builder, game.proto.data.FightHmHeroPosOrBuilder>(
+                pos_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        pos_ = null;
+      }
+      return posBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -189,6 +189,12 @@ message FightEnemyInfo {
     EnemyType type = 5;
     string name = 6;
 }
+message FightHmHeroPos {
+    int32 heroId = 1;
+    int32 fromPos = 2;
+    int32 toPos = 3;
+    int32 order = 4;
+}
 
 message HeroDataRecord {
     int32 id = 1;

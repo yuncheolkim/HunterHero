@@ -137,8 +137,9 @@ message FightHmStartRes{
 }
 // 手动战斗操作 req
 message FightHmActionReq{
-    repeated int32 fromTo = 1;
+    repeated FightHmHeroPos pos = 1;
 }
+
 // 手动战斗进行中
 message FightHmActionRes{
     RoundRecord round = 1;

@@ -1,5 +1,7 @@
 package game.module.battle.battle;
 
+import game.proto.data.FightHmHeroPos;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +16,6 @@ public class HalfManualAction {
     /**
      * from -> to
      */
-    public List<Integer> actions = new ArrayList<>(8);
+    public List<FightHmHeroPos> actions = new ArrayList<>(8);
 
 }

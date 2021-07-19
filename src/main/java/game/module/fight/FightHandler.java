@@ -421,7 +421,7 @@ public class FightHandler {
 
         HalfManualAction action = new HalfManualAction();
         action.pid = player.getPid();
-        action.actions = req.getFromToList();
+        action.actions = req.getPosList();
         Round ready = hmBattle.ready(action);
 
         player.getTransport().send(No.FightHmActionReq, FightHmActionRes.newBuilder().setRound(roundReport(ready)).build());

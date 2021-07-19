@@ -8,19 +8,26 @@ public interface FightHmActionReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated int32 fromTo = 1;</code>
-   * @return A list containing the fromTo.
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
    */
-  java.util.List<java.lang.Integer> getFromToList();
+  java.util.List<game.proto.data.FightHmHeroPos> 
+      getPosList();
   /**
-   * <code>repeated int32 fromTo = 1;</code>
-   * @return The count of fromTo.
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
    */
-  int getFromToCount();
+  game.proto.data.FightHmHeroPos getPos(int index);
   /**
-   * <code>repeated int32 fromTo = 1;</code>
-   * @param index The index of the element to return.
-   * @return The fromTo at the given index.
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
    */
-  int getFromTo(int index);
+  int getPosCount();
+  /**
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+   */
+  java.util.List<? extends game.proto.data.FightHmHeroPosOrBuilder> 
+      getPosOrBuilderList();
+  /**
+   * <code>repeated .Message.FightHmHeroPos pos = 1;</code>
+   */
+  game.proto.data.FightHmHeroPosOrBuilder getPosOrBuilder(
+      int index);
 }

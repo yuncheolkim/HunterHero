@@ -6,6 +6,7 @@ import game.module.battle.Hero;
 import game.module.battle.Round;
 import game.module.battle.Side;
 import game.module.battle.record.BattleRecord;
+import game.proto.data.FightHmHeroPos;
 import game.utils.JacksonUtil;
 
 import java.util.HashMap;
@@ -66,15 +67,14 @@ public class HalfManualBattle extends Battle {
         }
         int order = status.order;
 
-        for (Integer a : action.actions) {
-            Integer from = a / 100;
-            Integer to = a % 100;
+        for (FightHmHeroPos a : action.actions) {
+            Integer from = a.getFromPos();
+            Integer to = a.getFromPos();
             targetMap.put(from, to);
 
             Hero hero = heroMap.get(from);
             if (hero != null) {
-                hero.setSpeed(order);
-                order += 2;
+                hero.setSpeed(a.getOrder() * 2 - order);
             }
         }
 
