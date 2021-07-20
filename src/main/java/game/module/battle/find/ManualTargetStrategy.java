@@ -24,18 +24,15 @@ public class ManualTargetStrategy implements FindTargetStrategy {
 
         Integer targetPos = battle.targetPos(search.getPos().getIndex());
 
-        if (targetPos == null) {
-            return false;
+        if (targetPos != null) {
+
+            Map<Integer, Hero> integerHeroMap = battle.oppositeHeroes(search.getSide());
+
+            Hero target = integerHeroMap.get(targetPos);
+            if (target != null && target.isAlive()) {
+                found.add(target);
+            }
         }
-
-        Map<Integer, Hero> integerHeroMap = battle.mySideHeroes(search.getSide());
-
-        Hero target = integerHeroMap.get(targetPos);
-        if (target == null) {
-            return false;
-        }
-
-        found.add(target);
 
         return true;
     }

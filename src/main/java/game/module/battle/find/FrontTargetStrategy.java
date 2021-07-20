@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 攻击前排
+ * 攻击前排一个目标
  *
  * @author Yunzhe.Jin
  * 2021/6/20 14:35
@@ -17,6 +17,9 @@ import java.util.Map;
 public class FrontTargetStrategy implements FindTargetStrategy {
     @Override
     public boolean find(Hero search, List<Hero> found) {
+        if (found.size() >= 1) {
+            return false;
+        }
 
         Battle battle = search.getBattle();
         Formation formation = battle.getFormation();

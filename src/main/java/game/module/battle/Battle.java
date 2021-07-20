@@ -109,6 +109,10 @@ public class Battle {
      * 战斗中
      */
     protected void inBattle() {
+        // 记录场景
+        currentRound = new Round();
+        currentRound.setRoundCount(1);
+        roundList.add(currentRound);
         while (!fight()) {
             //下一回合
             nextRound();
@@ -177,10 +181,6 @@ public class Battle {
         // 开场
         processHero(ActionPoint.开场);
 
-        // 记录场景
-        currentRound = new Round();
-        currentRound.setRoundCount(1);
-        roundList.add(currentRound);
     }
 
     /**
@@ -207,7 +207,7 @@ public class Battle {
         return order;
     }
 
-    private void nextRound() {
+    protected void nextRound() {
         final int nextRound = currentRound.getRoundCount() + 1;
         currentRound = new Round();
         currentRound.setRoundCount(nextRound);

@@ -57,7 +57,6 @@ public class HalfManualBattle extends Battle {
         Map<Integer, Hero> heroMap;
         HalfManualSideStatus status;
 
-
         if (action.pid == sideA.pid) {
             heroMap = sideAhero;
             status = sideA;
@@ -68,14 +67,14 @@ public class HalfManualBattle extends Battle {
         int order = status.order;
 
         for (FightHmHeroPos a : action.actions) {
-            Integer from = a.getFromPos();
-            Integer to = a.getFromPos();
-            targetMap.put(from, to);
-
+            int from = a.getFromPos();
+            int to = a.getToPos();
             Hero hero = heroMap.get(from);
-            if (hero != null) {
-                hero.setSpeed(a.getOrder() * 2 - order);
+            if (to != 0) {
+                targetMap.put(from, to);
             }
+
+            hero.setSpeed(a.getOrder() * 2 - order);
         }
 
         status.ready = true;
@@ -86,13 +85,13 @@ public class HalfManualBattle extends Battle {
     private Round checkStart() {
 
         if (sideA.ready && sideB.ready) {
+            nextRound();
             decideOrder();
             //开始战斗
             fight();
 
             cleanRoundStatus();
             return currentRound;
-
         }
         return null;
     }

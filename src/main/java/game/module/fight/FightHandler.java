@@ -33,6 +33,7 @@ import game.proto.data.*;
 import game.proto.no.No;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
+import game.utils.JsonUtil;
 import game.utils.ResourceCalcUtil;
 import io.netty.util.collection.IntObjectHashMap;
 
@@ -333,7 +334,6 @@ public class FightHandler {
             final Hero hero = HeroFactory.createPlayerHero(player, playerHero);
             hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
-            hero.addTargetStrategyFirst(ManualTargetStrategy.I);
             hero.init();
             hero.setBattle(battle);
 
@@ -387,6 +387,7 @@ public class FightHandler {
             hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
             hero.setSpeed(fightHeroPos.getOrder());
+            hero.addTargetStrategyFirst(ManualTargetStrategy.I);
             hero.setBattle(battle);
             hero.init();
 
@@ -415,14 +416,16 @@ public class FightHandler {
     public static void manualFightAction(final Player player, final FightHmActionReq req) {
 
         HalfManualBattle hmBattle = player.hmBattle;
-        if (hmBattle == null) {
+        if (hmBattle == null || hmBattle.hasWinner()) {
             return;
         }
+
 
         HalfManualAction action = new HalfManualAction();
         action.pid = player.getPid();
         action.actions = req.getPosList();
         Round ready = hmBattle.ready(action);
+        Logs.trace(JsonUtil.toJsonString(ready));
 
         player.getTransport().send(No.FightHmActionReq, FightHmActionRes.newBuilder().setRound(roundReport(ready)).build());
         if (hmBattle.hasWinner()) {

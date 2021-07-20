@@ -37,7 +37,7 @@ public class MultipleFrontTargetStrategy implements FindTargetStrategy {
             Map<Integer, Hero> enemyMap = battle.oppositeHeroes(search.getSide());
             for (Integer pos : posList) {
                 Hero hero = enemyMap.get(pos);
-                if (hero != null && hero.isAlive()) {
+                if (hero != null && hero.isAlive() && !found.contains(hero)) {
                     found.add(hero);
                     find--;
                 }

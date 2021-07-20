@@ -22,7 +22,6 @@ public class MultipleTargetStrategy implements FindTargetStrategy {
         } else {
             f[1] = new MultipleFrontTargetStrategy(count);
             f[0] = new MultipleBackTargetStrategy(count);
-
         }
     }
 
