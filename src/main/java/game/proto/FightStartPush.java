@@ -63,6 +63,11 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.FightEnemyInfo.parser(), extensionRegistry));
             break;
           }
+          case 16: {
+
+            manual_ = input.readBool();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -138,6 +143,21 @@ private static final long serialVersionUID = 0L;
     return info_.get(index);
   }
 
+  public static final int MANUAL_FIELD_NUMBER = 2;
+  private boolean manual_;
+  /**
+   * <pre>
+   * 是否可手动
+   * </pre>
+   *
+   * <code>bool manual = 2;</code>
+   * @return The manual.
+   */
+  @java.lang.Override
+  public boolean getManual() {
+    return manual_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -155,6 +175,9 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < info_.size(); i++) {
       output.writeMessage(1, info_.get(i));
     }
+    if (manual_ != false) {
+      output.writeBool(2, manual_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -167,6 +190,10 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < info_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, info_.get(i));
+    }
+    if (manual_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(2, manual_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -185,6 +212,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getInfoList()
         .equals(other.getInfoList())) return false;
+    if (getManual()
+        != other.getManual()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -200,6 +229,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + INFO_FIELD_NUMBER;
       hash = (53 * hash) + getInfoList().hashCode();
     }
+    hash = (37 * hash) + MANUAL_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getManual());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -344,6 +376,8 @@ private static final long serialVersionUID = 0L;
       } else {
         infoBuilder_.clear();
       }
+      manual_ = false;
+
       return this;
     }
 
@@ -380,6 +414,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.info_ = infoBuilder_.build();
       }
+      result.manual_ = manual_;
       onBuilt();
       return result;
     }
@@ -453,6 +488,9 @@ private static final long serialVersionUID = 0L;
             infoBuilder_.addAllMessages(other.info_);
           }
         }
+      }
+      if (other.getManual() != false) {
+        setManual(other.getManual());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -722,6 +760,49 @@ private static final long serialVersionUID = 0L;
         info_ = null;
       }
       return infoBuilder_;
+    }
+
+    private boolean manual_ ;
+    /**
+     * <pre>
+     * 是否可手动
+     * </pre>
+     *
+     * <code>bool manual = 2;</code>
+     * @return The manual.
+     */
+    @java.lang.Override
+    public boolean getManual() {
+      return manual_;
+    }
+    /**
+     * <pre>
+     * 是否可手动
+     * </pre>
+     *
+     * <code>bool manual = 2;</code>
+     * @param value The manual to set.
+     * @return This builder for chaining.
+     */
+    public Builder setManual(boolean value) {
+      
+      manual_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 是否可手动
+     * </pre>
+     *
+     * <code>bool manual = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearManual() {
+      
+      manual_ = false;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

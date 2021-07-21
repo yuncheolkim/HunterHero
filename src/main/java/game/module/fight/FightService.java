@@ -6,7 +6,6 @@ import game.config.data.*;
 import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.FightStartPush;
-import game.proto.Message;
 import game.proto.back.FightType;
 import game.proto.data.EnemyType;
 import game.proto.data.FightEnemyInfo;
@@ -28,7 +27,7 @@ import static game.module.battle.PosGen.RANDOM_8;
 public class FightService {
 
     /**
-     * 检查战斗
+     * 野外检查战斗
      *
      * @param player
      */
@@ -44,13 +43,11 @@ public class FightService {
             final long now = DateUtils.now();
             if (player.D.getFightTime() < now) {
                 // fight
-                final FightStartPush fightStartPush = genEnemy(player);
+                final FightStartPush.Builder fightStartPush = genEnemy(player);
+                fightStartPush.setManual(false);
                 player.getPd().addAllFightInfo(fightStartPush.getInfoList());
 
-                player.getTransport().send(Message.newBuilder()
-                        .setMsgNo(No.FightStartPush_VALUE)
-                        .setBody(fightStartPush.toByteString())
-                        .build());
+                player.send(No.FightStartPush, fightStartPush.buildPartial());
                 // 选择英雄时间
                 player.D.setFightTime(now + TimeUnit.MINUTES.toMillis(10));
             }
@@ -65,7 +62,7 @@ public class FightService {
      * @param player
      * @return
      */
-    private static FightStartPush genEnemy(final Player player) {
+    private static FightStartPush.Builder genEnemy(final Player player) {
 
         Logs.C.debug("生成敌人");
         int allWeight = 0;
@@ -115,7 +112,7 @@ public class FightService {
             push.addInfo(builder);
         }
 
-        return push.build();
+        return push;
     }
 
     /**
@@ -124,7 +121,7 @@ public class FightService {
      * @param battleId
      * @return
      */
-    public static FightStartPush genBattleEnemy(final int battleId) {
+    public static FightStartPush.Builder genBattleEnemy(final int battleId) {
 
         final List<BattleFormationConfigData> enemyList = ConfigManager.battleFormationDataBox.findByCollectId(battleId);
         final FightStartPush.Builder push = FightStartPush.newBuilder();
@@ -139,7 +136,7 @@ public class FightService {
             builder.setProperty(d.property);
             push.addInfo(builder);
         }
-        return push.build();
+        return push;
     }
 
     /**

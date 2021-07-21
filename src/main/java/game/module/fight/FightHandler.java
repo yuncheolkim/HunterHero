@@ -299,14 +299,12 @@ public class FightHandler {
         EvilAssert.notNull(formationDataBox.findByCollectId(req.getId()), "战役不存在");
         ModuleAssert.isFalse(player.getPd().getFightInfoCount() > 0, ErrorEnum.ERR_113);
 
-        final FightStartPush fightStartPush = FightService.genBattleEnemy(req.getId());
+        final FightStartPush.Builder fightStartPush = FightService.genBattleEnemy(req.getId());
+        fightStartPush.setManual(ConfigManager.battleInfoDataBox.findById(req.getId()).manual);
 
         player.pd.addAllFightInfo(fightStartPush.getInfoList());
         player.pd.setBattleId(req.getId());
-        player.getTransport().send(Message.newBuilder()
-                .setMsgNo(No.FightStartPush_VALUE)
-                .setBody(fightStartPush.toByteString())
-                .build());
+        player.send(No.FightStartPush, fightStartPush.buildPartial());
     }
 
     /**
@@ -362,6 +360,7 @@ public class FightHandler {
             Logs.C.warn("战斗已经存在");
             return;
         }
+        ModuleAssert.isTrue(player.pd.getManual());
 
         final HalfManualBattle battle = new HalfManualBattle();
         player.hmBattle = battle;
@@ -420,7 +419,6 @@ public class FightHandler {
             return;
         }
 
-
         HalfManualAction action = new HalfManualAction();
         action.pid = player.getPid();
         action.actions = req.getPosList();
@@ -440,6 +438,7 @@ public class FightHandler {
             }
 
             player.getTransport().send(No.FightHmEndPush, result.buildPartial());
+            endFight(player);
         }
     }
 }

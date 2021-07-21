@@ -354,6 +354,16 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 战斗是否手动
+   * </pre>
+   *
+   * <code>bool manual = 502;</code>
+   * @return The manual.
+   */
+  boolean getManual();
+
+  /**
+   * <pre>
    * 背包
    * </pre>
    *

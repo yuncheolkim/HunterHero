@@ -7,7 +7,6 @@ import game.base.G;
 import game.base.Logs;
 import game.base.Work;
 import game.base.constants.GameConstants;
-import game.config.base.DataConfigData;
 import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
@@ -174,15 +173,11 @@ public class Player {
         pd.getResourceBuilder().setNeedExp(ConfigManager.needExp(pd.getLevel()));
 
         // 检查战斗区域
-        final int id = pd.getSceneDataBuilder().getId();
-        final DataConfigData dataConfigData = G.C.dataMap7.get(id);
         final List<Integer> l = new ArrayList<>(D.getFightAreaList());
         D.clearFightArea();
         for (final Integer areaId : l) {
-            if (dataConfigData.enemyAreaList != null) {
-                if (dataConfigData.enemyAreaList.contains(areaId)) {
-                    D.addFightArea(areaId);
-                }
+            if (ConfigManager.getFightArea(areaId) != null) {
+                D.addFightArea(areaId);
             }
         }
         if (D.getFightAreaCount() == 0 && pd.getBattleId() == 0) {

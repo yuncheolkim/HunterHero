@@ -30,4 +30,14 @@ public interface FightStartPushOrBuilder extends
    */
   game.proto.data.FightEnemyInfoOrBuilder getInfoOrBuilder(
       int index);
+
+  /**
+   * <pre>
+   * 是否可手动
+   * </pre>
+   *
+   * <code>bool manual = 2;</code>
+   * @return The manual.
+   */
+  boolean getManual();
 }

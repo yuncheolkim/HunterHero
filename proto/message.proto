@@ -111,6 +111,7 @@ message FightStartReq {
 // 2002 发生战斗推送
 message FightStartPush {
     repeated FightEnemyInfo info = 1;
+    bool manual = 2;// 是否可手动
 }
 
 // 2003 战斗结果res

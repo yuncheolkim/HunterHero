@@ -52,6 +52,8 @@ message PlayerData {
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息
     repeated FightEnemyInfo fightInfo = 501;
+    // 战斗是否手动
+    bool manual = 502;
     // 背包
     map<int32, BagSlot> bag = 601;
     // 背包容量

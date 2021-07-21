@@ -210,6 +210,11 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.FightEnemyInfo.parser(), extensionRegistry));
             break;
           }
+          case 4016: {
+
+            manual_ = input.readBool();
+            break;
+          }
           case 4810: {
             if (!((mutable_bitField0_ & 0x00000008) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
@@ -898,6 +903,21 @@ private static final long serialVersionUID = 0L;
     return fightInfo_.get(index);
   }
 
+  public static final int MANUAL_FIELD_NUMBER = 502;
+  private boolean manual_;
+  /**
+   * <pre>
+   * 战斗是否手动
+   * </pre>
+   *
+   * <code>bool manual = 502;</code>
+   * @return The manual.
+   */
+  @java.lang.Override
+  public boolean getManual() {
+    return manual_;
+  }
+
   public static final int BAG_FIELD_NUMBER = 601;
   private static final class BagDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -1291,6 +1311,9 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < fightInfo_.size(); i++) {
       output.writeMessage(501, fightInfo_.get(i));
     }
+    if (manual_ != false) {
+      output.writeBool(502, manual_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -1416,6 +1439,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(501, fightInfo_.get(i));
     }
+    if (manual_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(502, manual_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
          : internalGetBag().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
@@ -1518,6 +1545,8 @@ private static final long serialVersionUID = 0L;
         other.internalGetHero())) return false;
     if (!getFightInfoList()
         .equals(other.getFightInfoList())) return false;
+    if (getManual()
+        != other.getManual()) return false;
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
     if (getBagCapacity()
@@ -1595,6 +1624,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + FIGHTINFO_FIELD_NUMBER;
       hash = (53 * hash) + getFightInfoList().hashCode();
     }
+    hash = (37 * hash) + MANUAL_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getManual());
     if (!internalGetBag().getMap().isEmpty()) {
       hash = (37 * hash) + BAG_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBag().hashCode();
@@ -1838,6 +1870,8 @@ private static final long serialVersionUID = 0L;
       } else {
         fightInfoBuilder_.clear();
       }
+      manual_ = false;
+
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
@@ -1925,6 +1959,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.fightInfo_ = fightInfoBuilder_.build();
       }
+      result.manual_ = manual_;
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
       result.bagCapacity_ = bagCapacity_;
@@ -2078,6 +2113,9 @@ private static final long serialVersionUID = 0L;
             fightInfoBuilder_.addAllMessages(other.fightInfo_);
           }
         }
+      }
+      if (other.getManual() != false) {
+        setManual(other.getManual());
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
@@ -3846,6 +3884,49 @@ private static final long serialVersionUID = 0L;
         fightInfo_ = null;
       }
       return fightInfoBuilder_;
+    }
+
+    private boolean manual_ ;
+    /**
+     * <pre>
+     * 战斗是否手动
+     * </pre>
+     *
+     * <code>bool manual = 502;</code>
+     * @return The manual.
+     */
+    @java.lang.Override
+    public boolean getManual() {
+      return manual_;
+    }
+    /**
+     * <pre>
+     * 战斗是否手动
+     * </pre>
+     *
+     * <code>bool manual = 502;</code>
+     * @param value The manual to set.
+     * @return This builder for chaining.
+     */
+    public Builder setManual(boolean value) {
+      
+      manual_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 战斗是否手动
+     * </pre>
+     *
+     * <code>bool manual = 502;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearManual() {
+      
+      manual_ = false;
+      onChanged();
+      return this;
     }
 
     private com.google.protobuf.MapField<
