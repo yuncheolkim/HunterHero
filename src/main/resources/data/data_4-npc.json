@@ -46,6 +46,7 @@
         "areaId": "1",
         "id": 14,
         "name": "苏离",
+        "speakId": 1001,
         "title": "英雄",
         "type": 1
     },
@@ -101,6 +102,7 @@
         "areaId": "4",
         "id": 52,
         "name": "麻森",
+        "speakId": 1001,
         "title": "旅店老板",
         "type": 4
     },
@@ -109,6 +111,7 @@
         "id": 53,
         "name": "泥涵",
         "shopId": 11,
+        "speakId": 1001,
         "title": "武器商",
         "type": 2
     },
@@ -117,6 +120,7 @@
         "id": 54,
         "name": "钟夕",
         "shopId": 12,
+        "speakId": 1001,
         "title": "装备商",
         "type": 2
     },
@@ -124,6 +128,7 @@
         "areaId": "4",
         "id": 55,
         "name": "米辰",
+        "speakId": 1001,
         "title": "厨师",
         "type": 1
     },
@@ -131,6 +136,7 @@
         "areaId": "4",
         "id": 56,
         "name": "沃丁",
+        "speakId": 1001,
         "title": "山贼头子",
         "type": 1
     },
@@ -138,6 +144,7 @@
         "areaId": "4",
         "id": 57,
         "name": "青桥",
+        "speakId": 1001,
         "title": "资深猎人",
         "type": 1
     },
@@ -145,6 +152,7 @@
         "areaId": "4",
         "id": 58,
         "name": "晁夏",
+        "speakId": 1001,
         "title": "蔬菜商",
         "type": 1
     },
@@ -152,6 +160,7 @@
         "areaId": "4",
         "id": 59,
         "name": "方雁",
+        "speakId": 1001,
         "title": "资深猎手",
         "type": 1
     },
@@ -166,6 +175,7 @@
         "areaId": "4",
         "id": 60,
         "name": "希洛",
+        "speakId": 1001,
         "title": "西京第五师指挥官",
         "type": 1
     },
@@ -173,6 +183,7 @@
         "areaId": "4",
         "id": 61,
         "name": "洋子",
+        "speakId": 1001,
         "title": "水果商",
         "type": 1
     },
@@ -180,6 +191,7 @@
         "areaId": "4",
         "id": 62,
         "name": "依竹",
+        "speakId": 1001,
         "title": "二当家",
         "type": 1
     },
@@ -187,6 +199,7 @@
         "areaId": "4",
         "id": 63,
         "name": "于德",
+        "speakId": 1001,
         "title": "西京第五师将军",
         "type": 1
     },
@@ -194,13 +207,18 @@
         "areaId": "4",
         "id": 64,
         "name": "扬楚",
+        "speakId": 1001,
         "title": "三当家",
         "type": 1
     },
     "65": {
         "areaId": "4",
         "id": 65,
+        "li1": [
+            630403
+        ],
         "name": "德楚",
+        "speakId": 1001,
         "title": "强盗头子",
         "type": 1
     },
@@ -208,6 +226,7 @@
         "areaId": "4",
         "id": 66,
         "name": "卢霞",
+        "speakId": 1001,
         "title": "猎人",
         "type": 1
     },
@@ -215,6 +234,7 @@
         "areaId": "4",
         "id": 67,
         "name": "六菲",
+        "speakId": 1001,
         "title": "传奇猎人",
         "type": 1
     },
@@ -222,12 +242,14 @@
         "areaId": "4",
         "id": 68,
         "name": "蔡竹",
+        "speakId": 1001,
         "type": 1
     },
     "69": {
         "areaId": "4",
         "id": 69,
         "name": "睿华",
+        "speakId": 1001,
         "title": "英雄",
         "type": 1
     },
@@ -245,6 +267,7 @@
         "i2": 4,
         "id": 70,
         "name": "狼王",
+        "speakId": 1001,
         "type": 5
     },
     "8": {

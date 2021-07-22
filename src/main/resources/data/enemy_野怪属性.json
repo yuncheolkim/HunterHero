@@ -239,6 +239,21 @@
         "level": 13,
         "name": "野兔"
     },
+    "1212": {
+        "avoid": 175,
+        "avoidBase": 175,
+        "critical": 175,
+        "criticalBase": 175,
+        "criticalDamage": 175,
+        "damage": 175,
+        "def": 175,
+        "defBase": 175,
+        "enemyId": 12,
+        "hp": 175,
+        "id": 1212,
+        "level": 12,
+        "name": "蜘蛛"
+    },
     "1213": {
         "avoid": 188,
         "avoidBase": 188,

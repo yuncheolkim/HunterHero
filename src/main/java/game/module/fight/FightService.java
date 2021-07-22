@@ -132,7 +132,7 @@ public class FightService {
             builder.setPos(d.pos);
             builder.setLevel(d.level);
             builder.setType(EnemyType.CREATURE);
-            builder.setName(d.name);
+            builder.setName(ConfigManager.getEnemyName(d.enemyId));
             builder.setProperty(d.property);
             push.addInfo(builder);
         }
