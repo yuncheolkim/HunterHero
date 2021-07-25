@@ -141,9 +141,29 @@ public enum No
    * Battle
    * </pre>
    *
-   * <code>BattleEnterReq = 2010;</code>
+   * <code>BattleEnterReq = 2030;</code>
    */
-  BattleEnterReq(2010),
+  BattleEnterReq(2030),
+  /**
+   * <code>BattleEndPush = 2031;</code>
+   */
+  BattleEndPush(2031),
+  /**
+   * <pre>
+   * Dungeon
+   * </pre>
+   *
+   * <code>DungeonEnterReq = 2101;</code>
+   */
+  DungeonEnterReq(2101),
+  /**
+   * <code>DungeonFightReq = 2102;</code>
+   */
+  DungeonFightReq(2102),
+  /**
+   * <code>DungeonExitReq = 2103;</code>
+   */
+  DungeonExitReq(2103),
   /**
    * <pre>
    * Scene
@@ -465,9 +485,29 @@ public enum No
    * Battle
    * </pre>
    *
-   * <code>BattleEnterReq = 2010;</code>
+   * <code>BattleEnterReq = 2030;</code>
    */
-  public static final int BattleEnterReq_VALUE = 2010;
+  public static final int BattleEnterReq_VALUE = 2030;
+  /**
+   * <code>BattleEndPush = 2031;</code>
+   */
+  public static final int BattleEndPush_VALUE = 2031;
+  /**
+   * <pre>
+   * Dungeon
+   * </pre>
+   *
+   * <code>DungeonEnterReq = 2101;</code>
+   */
+  public static final int DungeonEnterReq_VALUE = 2101;
+  /**
+   * <code>DungeonFightReq = 2102;</code>
+   */
+  public static final int DungeonFightReq_VALUE = 2102;
+  /**
+   * <code>DungeonExitReq = 2103;</code>
+   */
+  public static final int DungeonExitReq_VALUE = 2103;
   /**
    * <pre>
    * Scene
@@ -704,7 +744,11 @@ public enum No
       case 2012: return FightHmStartRes;
       case 2013: return FightHmActionReq;
       case 2014: return FightHmEndPush;
-      case 2010: return BattleEnterReq;
+      case 2030: return BattleEnterReq;
+      case 2031: return BattleEndPush;
+      case 2101: return DungeonEnterReq;
+      case 2102: return DungeonFightReq;
+      case 2103: return DungeonExitReq;
       case 3001: return EnterSceneReq;
       case 3002: return EnterFightAreaReq;
       case 3003: return ExitFightAreaReq;

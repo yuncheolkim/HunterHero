@@ -42,6 +42,9 @@ public class EventManager {
         addEvent(new HeroAddEventHandler());
         // 完成任务
         addEvent(new TaskCompleteEventHandler());
+        // 战役相关
+        addEvent(new BattleEndEventHandler());
+        addEvent(new BattleDungeonEndEventHandler());
     }
 
     /**

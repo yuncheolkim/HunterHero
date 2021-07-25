@@ -34,6 +34,8 @@ import game.proto.back.PlayerBackData;
 import game.proto.data.*;
 import game.proto.no.No;
 import game.repo.PlayerRepo;
+import game.utils.CalcUtil;
+import game.utils.DateUtils;
 import io.netty.channel.Channel;
 import org.apache.commons.lang3.StringUtils;
 import org.joda.time.LocalDateTime;
@@ -94,12 +96,16 @@ public class Player {
     @ProcessPersistenceData
     public ItemBoxData bank = new ItemBoxData();
 
+    /**
+     * 钓鱼状态
+     */
     public FishAction fishAction = new FishAction();
 
     /**
      * 手动战斗
      */
     public HalfManualBattle hmBattle;
+
 
     public Player(final long pid) {
         this.pid = pid;
@@ -172,7 +178,8 @@ public class Player {
         updateTime = LocalDateTime.fromDateFields(new Date(D.getUpdateTime()));
         pd.getResourceBuilder().setNeedExp(ConfigManager.needExp(pd.getLevel()));
 
-        // 检查战斗区域
+
+        // 检查战斗数据
         final List<Integer> l = new ArrayList<>(D.getFightAreaList());
         D.clearFightArea();
         for (final Integer areaId : l) {
@@ -182,7 +189,11 @@ public class Player {
         }
         if (D.getFightAreaCount() == 0 && pd.getBattleId() == 0) {
             pd.clearFightInfo();
+        } else if (D.getFightAreaCount() != 0) {
+            D.setFightTime(DateUtils.now() + CalcUtil.random(5000, 20000));
         }
+        // 战斗清理
+        hmBattle = null;
 
         // 背包
         bag = new ItemBoxData();
@@ -199,8 +210,6 @@ public class Player {
         bank.capacity = pd.getBankCapacity();
         bank.count = pd.getBankCount();
 
-        // 战斗清理
-        hmBattle = null;
 
     }
 

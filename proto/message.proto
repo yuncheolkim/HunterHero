@@ -151,6 +151,11 @@ message FightHmEndPush{
     repeated Reward reward = 5; // 奖励
 }
 
+// 战役结果通知
+message BattleEndPush{
+    bool win = 1;
+    int32 battleId = 2;
+}
 // 3001 进入场景
 message EnterSceneReq {
     SceneData data = 1;
@@ -421,4 +426,19 @@ message TempleHeroBuyReq{
 }
 message TempleHeroBuyRes{
     int32 id = 1;
+}
+///////////////////////////////////////////////  副本
+
+message DungeonEnterReq{
+    int32 id = 1;
+}
+message DungeonEnterRes{
+
+}
+message DungeonFightReq{
+    int32 targetId = 1;
+}
+message DungeonExitReq{
+}
+message DungeonExitRes{
 }

@@ -171,7 +171,7 @@ public class Battle {
 
     protected void beforeBattle() {
         // 计算出手顺序
-        actionOrderList = decideOrder();
+        decideOrder();
 
         battleRecord = new BattleRecord(this);
 
@@ -199,12 +199,12 @@ public class Battle {
     /**
      * 根据速度计算出手顺序
      */
-    protected List<Hero> decideOrder() {
+    protected void decideOrder() {
         final List<Hero> order = new ArrayList<>();
         order.addAll(sideAhero.values().stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
         order.addAll(sideBhero.values().stream().filter(hero -> !hero.isDead()).collect(Collectors.toList()));
         order.sort(Comparator.comparingInt(Hero::getSpeed));
-        return order;
+        actionOrderList = order;
     }
 
     protected void nextRound() {

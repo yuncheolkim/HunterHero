@@ -364,6 +364,33 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 地下城
+   * </pre>
+   *
+   * <code>.Message.Dungeon dungeon = 510;</code>
+   * @return Whether the dungeon field is set.
+   */
+  boolean hasDungeon();
+  /**
+   * <pre>
+   * 地下城
+   * </pre>
+   *
+   * <code>.Message.Dungeon dungeon = 510;</code>
+   * @return The dungeon.
+   */
+  game.proto.data.Dungeon getDungeon();
+  /**
+   * <pre>
+   * 地下城
+   * </pre>
+   *
+   * <code>.Message.Dungeon dungeon = 510;</code>
+   */
+  game.proto.data.DungeonOrBuilder getDungeonOrBuilder();
+
+  /**
+   * <pre>
    * 背包
    * </pre>
    *

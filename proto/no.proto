@@ -46,7 +46,14 @@ enum No {
     FightHmEndPush = 2014;
 
     // Battle
-    BattleEnterReq = 2010;
+    BattleEnterReq = 2030;
+    BattleEndPush = 2031;
+
+    // Dungeon
+    DungeonEnterReq = 2101;
+    DungeonFightReq = 2102;
+    DungeonExitReq = 2103;
+
     // Scene
     EnterSceneReq = 3001;
     EnterFightAreaReq = 3002;

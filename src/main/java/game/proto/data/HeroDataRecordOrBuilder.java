@@ -32,6 +32,16 @@ public interface HeroDataRecordOrBuilder extends
   int getLevel();
 
   /**
+   * <pre>
+   * 0:npc,1:玩家
+   * </pre>
+   *
+   * <code>int32 type = 5;</code>
+   * @return The type.
+   */
+  int getType();
+
+  /**
    * <code>string name = 10;</code>
    * @return The name.
    */

@@ -139,6 +139,12 @@ public class Hero {
     private Multimap<ActionPoint, Record> delayRecord = ArrayListMultimap.create();
 
     /**
+     * 0:npc
+     * 1:玩家
+     */
+    private int type;
+
+    /**
      * 初始化
      */
     public final void init() {
@@ -561,6 +567,7 @@ public class Hero {
         simple.angry = heroStats.angry;
         simple.name = getName();
         simple.level = level;
+        simple.type = type;
         return simple;
     }
 
@@ -809,6 +816,14 @@ public class Hero {
 
     public void setContinueAction(final boolean continueAction) {
         this.continueAction = continueAction;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     @Override

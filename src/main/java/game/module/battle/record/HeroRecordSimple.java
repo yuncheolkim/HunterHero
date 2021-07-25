@@ -20,6 +20,11 @@ public class HeroRecordSimple {
 
     public String name;
 
+    /**
+     * 0:npc,1:玩家
+     */
+    public int type;
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)

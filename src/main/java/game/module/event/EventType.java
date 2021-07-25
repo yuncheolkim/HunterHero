@@ -21,5 +21,7 @@ public enum EventType {
     HERO_ADD,
     // 完成任务
     TASK_COMPLETE,
+    // 战役结束
+    BATTLE_END,
 
 }

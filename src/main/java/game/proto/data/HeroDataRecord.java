@@ -69,6 +69,11 @@ private static final long serialVersionUID = 0L;
             level_ = input.readInt32();
             break;
           }
+          case 40: {
+
+            type_ = input.readInt32();
+            break;
+          }
           case 82: {
             java.lang.String s = input.readStringRequireUtf8();
 
@@ -151,6 +156,21 @@ private static final long serialVersionUID = 0L;
     return level_;
   }
 
+  public static final int TYPE_FIELD_NUMBER = 5;
+  private int type_;
+  /**
+   * <pre>
+   * 0:npc,1:玩家
+   * </pre>
+   *
+   * <code>int32 type = 5;</code>
+   * @return The type.
+   */
+  @java.lang.Override
+  public int getType() {
+    return type_;
+  }
+
   public static final int NAME_FIELD_NUMBER = 10;
   private volatile java.lang.Object name_;
   /**
@@ -215,6 +235,9 @@ private static final long serialVersionUID = 0L;
     if (level_ != 0) {
       output.writeInt32(4, level_);
     }
+    if (type_ != 0) {
+      output.writeInt32(5, type_);
+    }
     if (!getNameBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 10, name_);
     }
@@ -243,6 +266,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, level_);
     }
+    if (type_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, type_);
+    }
     if (!getNameBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, name_);
     }
@@ -269,6 +296,8 @@ private static final long serialVersionUID = 0L;
         != other.getHp()) return false;
     if (getLevel()
         != other.getLevel()) return false;
+    if (getType()
+        != other.getType()) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -290,6 +319,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getHp();
     hash = (37 * hash) + LEVEL_FIELD_NUMBER;
     hash = (53 * hash) + getLevel();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getType();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -433,6 +464,8 @@ private static final long serialVersionUID = 0L;
 
       level_ = 0;
 
+      type_ = 0;
+
       name_ = "";
 
       return this;
@@ -465,6 +498,7 @@ private static final long serialVersionUID = 0L;
       result.pos_ = pos_;
       result.hp_ = hp_;
       result.level_ = level_;
+      result.type_ = type_;
       result.name_ = name_;
       onBuilt();
       return result;
@@ -525,6 +559,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getLevel() != 0) {
         setLevel(other.getLevel());
+      }
+      if (other.getType() != 0) {
+        setType(other.getType());
       }
       if (!other.getName().isEmpty()) {
         name_ = other.name_;
@@ -679,6 +716,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearLevel() {
       
       level_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int type_ ;
+    /**
+     * <pre>
+     * 0:npc,1:玩家
+     * </pre>
+     *
+     * <code>int32 type = 5;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public int getType() {
+      return type_;
+    }
+    /**
+     * <pre>
+     * 0:npc,1:玩家
+     * </pre>
+     *
+     * <code>int32 type = 5;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 0:npc,1:玩家
+     * </pre>
+     *
+     * <code>int32 type = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
       onChanged();
       return this;
     }

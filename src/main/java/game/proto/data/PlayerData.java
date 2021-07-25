@@ -215,6 +215,19 @@ private static final long serialVersionUID = 0L;
             manual_ = input.readBool();
             break;
           }
+          case 4082: {
+            game.proto.data.Dungeon.Builder subBuilder = null;
+            if (dungeon_ != null) {
+              subBuilder = dungeon_.toBuilder();
+            }
+            dungeon_ = input.readMessage(game.proto.data.Dungeon.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(dungeon_);
+              dungeon_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           case 4810: {
             if (!((mutable_bitField0_ & 0x00000008) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
@@ -918,6 +931,44 @@ private static final long serialVersionUID = 0L;
     return manual_;
   }
 
+  public static final int DUNGEON_FIELD_NUMBER = 510;
+  private game.proto.data.Dungeon dungeon_;
+  /**
+   * <pre>
+   * 地下城
+   * </pre>
+   *
+   * <code>.Message.Dungeon dungeon = 510;</code>
+   * @return Whether the dungeon field is set.
+   */
+  @java.lang.Override
+  public boolean hasDungeon() {
+    return dungeon_ != null;
+  }
+  /**
+   * <pre>
+   * 地下城
+   * </pre>
+   *
+   * <code>.Message.Dungeon dungeon = 510;</code>
+   * @return The dungeon.
+   */
+  @java.lang.Override
+  public game.proto.data.Dungeon getDungeon() {
+    return dungeon_ == null ? game.proto.data.Dungeon.getDefaultInstance() : dungeon_;
+  }
+  /**
+   * <pre>
+   * 地下城
+   * </pre>
+   *
+   * <code>.Message.Dungeon dungeon = 510;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.DungeonOrBuilder getDungeonOrBuilder() {
+    return getDungeon();
+  }
+
   public static final int BAG_FIELD_NUMBER = 601;
   private static final class BagDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -1314,6 +1365,9 @@ private static final long serialVersionUID = 0L;
     if (manual_ != false) {
       output.writeBool(502, manual_);
     }
+    if (dungeon_ != null) {
+      output.writeMessage(510, getDungeon());
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -1443,6 +1497,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(502, manual_);
     }
+    if (dungeon_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(510, getDungeon());
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
          : internalGetBag().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
@@ -1547,6 +1605,11 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFightInfoList())) return false;
     if (getManual()
         != other.getManual()) return false;
+    if (hasDungeon() != other.hasDungeon()) return false;
+    if (hasDungeon()) {
+      if (!getDungeon()
+          .equals(other.getDungeon())) return false;
+    }
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
     if (getBagCapacity()
@@ -1627,6 +1690,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + MANUAL_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getManual());
+    if (hasDungeon()) {
+      hash = (37 * hash) + DUNGEON_FIELD_NUMBER;
+      hash = (53 * hash) + getDungeon().hashCode();
+    }
     if (!internalGetBag().getMap().isEmpty()) {
       hash = (37 * hash) + BAG_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBag().hashCode();
@@ -1872,6 +1939,12 @@ private static final long serialVersionUID = 0L;
       }
       manual_ = false;
 
+      if (dungeonBuilder_ == null) {
+        dungeon_ = null;
+      } else {
+        dungeon_ = null;
+        dungeonBuilder_ = null;
+      }
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
@@ -1960,6 +2033,11 @@ private static final long serialVersionUID = 0L;
         result.fightInfo_ = fightInfoBuilder_.build();
       }
       result.manual_ = manual_;
+      if (dungeonBuilder_ == null) {
+        result.dungeon_ = dungeon_;
+      } else {
+        result.dungeon_ = dungeonBuilder_.build();
+      }
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
       result.bagCapacity_ = bagCapacity_;
@@ -2116,6 +2194,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getManual() != false) {
         setManual(other.getManual());
+      }
+      if (other.hasDungeon()) {
+        mergeDungeon(other.getDungeon());
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
@@ -3927,6 +4008,161 @@ private static final long serialVersionUID = 0L;
       manual_ = false;
       onChanged();
       return this;
+    }
+
+    private game.proto.data.Dungeon dungeon_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.Dungeon, game.proto.data.Dungeon.Builder, game.proto.data.DungeonOrBuilder> dungeonBuilder_;
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     * @return Whether the dungeon field is set.
+     */
+    public boolean hasDungeon() {
+      return dungeonBuilder_ != null || dungeon_ != null;
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     * @return The dungeon.
+     */
+    public game.proto.data.Dungeon getDungeon() {
+      if (dungeonBuilder_ == null) {
+        return dungeon_ == null ? game.proto.data.Dungeon.getDefaultInstance() : dungeon_;
+      } else {
+        return dungeonBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    public Builder setDungeon(game.proto.data.Dungeon value) {
+      if (dungeonBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        dungeon_ = value;
+        onChanged();
+      } else {
+        dungeonBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    public Builder setDungeon(
+        game.proto.data.Dungeon.Builder builderForValue) {
+      if (dungeonBuilder_ == null) {
+        dungeon_ = builderForValue.build();
+        onChanged();
+      } else {
+        dungeonBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    public Builder mergeDungeon(game.proto.data.Dungeon value) {
+      if (dungeonBuilder_ == null) {
+        if (dungeon_ != null) {
+          dungeon_ =
+            game.proto.data.Dungeon.newBuilder(dungeon_).mergeFrom(value).buildPartial();
+        } else {
+          dungeon_ = value;
+        }
+        onChanged();
+      } else {
+        dungeonBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    public Builder clearDungeon() {
+      if (dungeonBuilder_ == null) {
+        dungeon_ = null;
+        onChanged();
+      } else {
+        dungeon_ = null;
+        dungeonBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    public game.proto.data.Dungeon.Builder getDungeonBuilder() {
+      
+      onChanged();
+      return getDungeonFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    public game.proto.data.DungeonOrBuilder getDungeonOrBuilder() {
+      if (dungeonBuilder_ != null) {
+        return dungeonBuilder_.getMessageOrBuilder();
+      } else {
+        return dungeon_ == null ?
+            game.proto.data.Dungeon.getDefaultInstance() : dungeon_;
+      }
+    }
+    /**
+     * <pre>
+     * 地下城
+     * </pre>
+     *
+     * <code>.Message.Dungeon dungeon = 510;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.Dungeon, game.proto.data.Dungeon.Builder, game.proto.data.DungeonOrBuilder> 
+        getDungeonFieldBuilder() {
+      if (dungeonBuilder_ == null) {
+        dungeonBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.Dungeon, game.proto.data.Dungeon.Builder, game.proto.data.DungeonOrBuilder>(
+                getDungeon(),
+                getParentForChildren(),
+                isClean());
+        dungeon_ = null;
+      }
+      return dungeonBuilder_;
     }
 
     private com.google.protobuf.MapField<

@@ -11,4 +11,5 @@ public class HeroRecordData {
     public HeroRecordSimple simple;
 
     public HeroData property;
+
 }
