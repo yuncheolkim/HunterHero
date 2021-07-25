@@ -17,7 +17,8 @@ public class BattleDungeonEndEventHandler implements IPlayerEventHandler<BattleE
     public void handler(Player player, BattleEndEvent data) {
 
         Logs.trace(this.getClass().getName());
-        
-
+        if (data.success && player.pd.hasDungeon()) {
+            player.pd.getDungeonBuilder().addDefeated(player.pd.getDungeonBuilder().getBossId());
+        }
     }
 }

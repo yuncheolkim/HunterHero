@@ -60,6 +60,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 16: {
+
+            bossId_ = input.readInt32();
+            break;
+          }
+          case 24: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               defeated_ = newIntList();
               mutable_bitField0_ |= 0x00000001;
@@ -67,7 +72,7 @@ private static final long serialVersionUID = 0L;
             defeated_.addInt(input.readInt32());
             break;
           }
-          case 18: {
+          case 26: {
             int length = input.readRawVarint32();
             int limit = input.pushLimit(length);
             if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
@@ -126,13 +131,28 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
-  public static final int DEFEATED_FIELD_NUMBER = 2;
+  public static final int BOSSID_FIELD_NUMBER = 2;
+  private int bossId_;
+  /**
+   * <pre>
+   * 当前战斗的boss
+   * </pre>
+   *
+   * <code>int32 bossId = 2;</code>
+   * @return The bossId.
+   */
+  @java.lang.Override
+  public int getBossId() {
+    return bossId_;
+  }
+
+  public static final int DEFEATED_FIELD_NUMBER = 3;
   private com.google.protobuf.Internal.IntList defeated_;
   /**
    * <pre>
    * </pre>
    *
-   * <code>repeated int32 defeated = 2;</code>
+   * <code>repeated int32 defeated = 3;</code>
    * @return A list containing the defeated.
    */
   @java.lang.Override
@@ -144,7 +164,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * </pre>
    *
-   * <code>repeated int32 defeated = 2;</code>
+   * <code>repeated int32 defeated = 3;</code>
    * @return The count of defeated.
    */
   public int getDefeatedCount() {
@@ -154,7 +174,7 @@ private static final long serialVersionUID = 0L;
    * <pre>
    * </pre>
    *
-   * <code>repeated int32 defeated = 2;</code>
+   * <code>repeated int32 defeated = 3;</code>
    * @param index The index of the element to return.
    * @return The defeated at the given index.
    */
@@ -181,8 +201,11 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       output.writeInt32(1, id_);
     }
+    if (bossId_ != 0) {
+      output.writeInt32(2, bossId_);
+    }
     if (getDefeatedList().size() > 0) {
-      output.writeUInt32NoTag(18);
+      output.writeUInt32NoTag(26);
       output.writeUInt32NoTag(defeatedMemoizedSerializedSize);
     }
     for (int i = 0; i < defeated_.size(); i++) {
@@ -200,6 +223,10 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(1, id_);
+    }
+    if (bossId_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, bossId_);
     }
     {
       int dataSize = 0;
@@ -232,6 +259,8 @@ private static final long serialVersionUID = 0L;
 
     if (getId()
         != other.getId()) return false;
+    if (getBossId()
+        != other.getBossId()) return false;
     if (!getDefeatedList()
         .equals(other.getDefeatedList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -247,6 +276,8 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
+    hash = (37 * hash) + BOSSID_FIELD_NUMBER;
+    hash = (53 * hash) + getBossId();
     if (getDefeatedCount() > 0) {
       hash = (37 * hash) + DEFEATED_FIELD_NUMBER;
       hash = (53 * hash) + getDefeatedList().hashCode();
@@ -390,6 +421,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       id_ = 0;
 
+      bossId_ = 0;
+
       defeated_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
       return this;
@@ -420,6 +453,7 @@ private static final long serialVersionUID = 0L;
       game.proto.data.Dungeon result = new game.proto.data.Dungeon(this);
       int from_bitField0_ = bitField0_;
       result.id_ = id_;
+      result.bossId_ = bossId_;
       if (((bitField0_ & 0x00000001) != 0)) {
         defeated_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -475,6 +509,9 @@ private static final long serialVersionUID = 0L;
       if (other == game.proto.data.Dungeon.getDefaultInstance()) return this;
       if (other.getId() != 0) {
         setId(other.getId());
+      }
+      if (other.getBossId() != 0) {
+        setBossId(other.getBossId());
       }
       if (!other.defeated_.isEmpty()) {
         if (defeated_.isEmpty()) {
@@ -547,6 +584,49 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int bossId_ ;
+    /**
+     * <pre>
+     * 当前战斗的boss
+     * </pre>
+     *
+     * <code>int32 bossId = 2;</code>
+     * @return The bossId.
+     */
+    @java.lang.Override
+    public int getBossId() {
+      return bossId_;
+    }
+    /**
+     * <pre>
+     * 当前战斗的boss
+     * </pre>
+     *
+     * <code>int32 bossId = 2;</code>
+     * @param value The bossId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setBossId(int value) {
+      
+      bossId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 当前战斗的boss
+     * </pre>
+     *
+     * <code>int32 bossId = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearBossId() {
+      
+      bossId_ = 0;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.Internal.IntList defeated_ = emptyIntList();
     private void ensureDefeatedIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
@@ -558,7 +638,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @return A list containing the defeated.
      */
     public java.util.List<java.lang.Integer>
@@ -570,7 +650,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @return The count of defeated.
      */
     public int getDefeatedCount() {
@@ -580,7 +660,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @param index The index of the element to return.
      * @return The defeated at the given index.
      */
@@ -591,7 +671,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @param index The index to set the value at.
      * @param value The defeated to set.
      * @return This builder for chaining.
@@ -607,7 +687,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @param value The defeated to add.
      * @return This builder for chaining.
      */
@@ -621,7 +701,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @param values The defeated to add.
      * @return This builder for chaining.
      */
@@ -637,7 +717,7 @@ private static final long serialVersionUID = 0L;
      * <pre>
      * </pre>
      *
-     * <code>repeated int32 defeated = 2;</code>
+     * <code>repeated int32 defeated = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearDefeated() {

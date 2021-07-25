@@ -277,30 +277,31 @@ public final class Data {
       "ssage.Property\"N\n\010ItemData\022\016\n\006itemId\030\001 \001" +
       "(\005\022\r\n\005count\030\002 \001(\005\022#\n\010property\030\003 \001(\0132\021.Me" +
       "ssage.Property\":\n\007BagSlot\022\016\n\006slotId\030\001 \001(" +
-      "\005\022\037\n\004data\030\002 \001(\0132\021.Message.ItemData\"\'\n\007Du" +
-      "ngeon\022\n\n\002id\030\001 \001(\005\022\020\n\010defeated\030\002 \003(\005*+\n\013N" +
-      "pcShowEnum\022\014\n\010NPC_NONE\020\000\022\016\n\nNPC_SHOW_1\020\001" +
-      "*S\n\017EnumItemQuality\022\n\n\006Q_NONE\020\000\022\007\n\003Q_W\020\001" +
-      "\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003Q_P\020\004\022\007\n\003Q_O\020\005\022\007\n\003" +
-      "Q_R\020\006*5\n\016EnumDamageType\022\n\n\006D_NONE\020\000\022\n\n\006D" +
-      "_FIRE\020\001\022\013\n\007D_LIGHT\020\002*O\n\rFormationType\022\022\n" +
-      "\016FORMATION_NONE\020\000\022\025\n\021FORMATION_DEFAULT\020\001" +
-      "\022\023\n\017FORMATION_ARENA\020\002*E\n\nRewardType\022\021\n\rR" +
-      "EWARD_NORMAL\020\000\022\023\n\017REWARD_RESOURCE\020\001\022\017\n\013R" +
-      "EWARD_ITEM\020\002*\245\001\n\nRecordType\022\n\n\006ACTION\020\000\022" +
-      "\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n\005AVOID\020" +
-      "\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF" +
-      "_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKILL_USE\020" +
-      "\010\022\021\n\rSHIELD_CHANGE\020\t*h\n\nDamageType\022\017\n\013DA" +
-      "MAGE_NONE\020\000\022\021\n\rDAMAGE_NORMAL\020\001\022\023\n\017DAMAGE" +
-      "_CRITICAL\020\002\022\020\n\014DAMAGE_SKILL\020\003\022\017\n\013DAMAGE_" +
-      "BUFF\020\004*F\n\014DisplayPoint\022\014\n\010DP_ATT_1\020\000\022\014\n\010" +
-      "DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*<" +
-      "\n\tEnemyType\022\014\n\010CREATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n" +
-      "\003NPC\020\002\022\014\n\010EXERCISE\020\003*<\n\020ManualActionType" +
-      "\022\013\n\007MA_NONE\020\000\022\r\n\tMA_ATTACK\020\001\022\014\n\010MA_SKILL" +
-      "\020\002*,\n\tFightSide\022\013\n\007FS_NONE\020\000\022\010\n\004FS_A\020\001\022\010" +
-      "\n\004FS_B\020\002B\025\n\017game.proto.dataH\001P\001b\006proto3"
+      "\005\022\037\n\004data\030\002 \001(\0132\021.Message.ItemData\"7\n\007Du" +
+      "ngeon\022\n\n\002id\030\001 \001(\005\022\016\n\006bossId\030\002 \001(\005\022\020\n\010def" +
+      "eated\030\003 \003(\005*+\n\013NpcShowEnum\022\014\n\010NPC_NONE\020\000" +
+      "\022\016\n\nNPC_SHOW_1\020\001*S\n\017EnumItemQuality\022\n\n\006Q" +
+      "_NONE\020\000\022\007\n\003Q_W\020\001\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003Q_" +
+      "P\020\004\022\007\n\003Q_O\020\005\022\007\n\003Q_R\020\006*5\n\016EnumDamageType\022" +
+      "\n\n\006D_NONE\020\000\022\n\n\006D_FIRE\020\001\022\013\n\007D_LIGHT\020\002*O\n\r" +
+      "FormationType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FOR" +
+      "MATION_DEFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002*E\n" +
+      "\nRewardType\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017REWARD" +
+      "_RESOURCE\020\001\022\017\n\013REWARD_ITEM\020\002*\245\001\n\nRecordT" +
+      "ype\022\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CH" +
+      "ANGE\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_" +
+      "REMOVE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTION" +
+      "\020\007\022\r\n\tSKILL_USE\020\010\022\021\n\rSHIELD_CHANGE\020\t*h\n\n" +
+      "DamageType\022\017\n\013DAMAGE_NONE\020\000\022\021\n\rDAMAGE_NO" +
+      "RMAL\020\001\022\023\n\017DAMAGE_CRITICAL\020\002\022\020\n\014DAMAGE_SK" +
+      "ILL\020\003\022\017\n\013DAMAGE_BUFF\020\004*F\n\014DisplayPoint\022\014" +
+      "\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002" +
+      "\022\014\n\010DP_DEF_1\020\003*<\n\tEnemyType\022\014\n\010CREATURE\020" +
+      "\000\022\n\n\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCISE\020\003*<\n\020" +
+      "ManualActionType\022\013\n\007MA_NONE\020\000\022\r\n\tMA_ATTA" +
+      "CK\020\001\022\014\n\010MA_SKILL\020\002*,\n\tFightSide\022\013\n\007FS_NO" +
+      "NE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS_B\020\002B\025\n\017game.proto.d" +
+      "ataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -503,7 +504,7 @@ public final class Data {
     internal_static_Message_Dungeon_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_Dungeon_descriptor,
-        new java.lang.String[] { "Id", "Defeated", });
+        new java.lang.String[] { "Id", "BossId", "Defeated", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -280,7 +280,8 @@ message BagSlot {
 // 副本
 message Dungeon{
     int32 id = 1;
-    repeated int32 defeated = 2;//
+    int32 bossId = 2;// 当前战斗的boss
+    repeated int32 defeated = 3;//
 
 }
 

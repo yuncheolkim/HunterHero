@@ -160,7 +160,7 @@ public class TaskHandler {
             }
 
             // 经验
-            ExpConfigData exp = ConfigManager.getExp(task.level);
+            ExpConfigData exp = ConfigManager.getExp(task.i1);
             player.addPlayerExp(exp.taskExp, ResourceSourceEnum.任务);
 
 

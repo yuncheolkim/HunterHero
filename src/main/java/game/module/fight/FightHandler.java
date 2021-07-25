@@ -265,7 +265,15 @@ public class FightHandler {
             }
 
             player.getTransport().send(No.FightHmEndPush, result.buildPartial());
-            endFight(player);
+            if (player.pd.getBattleId() != 0) {
+                BattleEndEvent event = new BattleEndEvent();
+                event.battleId = player.pd.getBattleId();
+                event.success = result.getWin();
+                EventManager.firePlayerEvent(player, event);
+            }
+
+            FightService.endFight(player);
+
         }
     }
 }

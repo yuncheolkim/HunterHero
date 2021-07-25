@@ -15,9 +15,19 @@ public interface DungeonOrBuilder extends
 
   /**
    * <pre>
+   * 当前战斗的boss
    * </pre>
    *
-   * <code>repeated int32 defeated = 2;</code>
+   * <code>int32 bossId = 2;</code>
+   * @return The bossId.
+   */
+  int getBossId();
+
+  /**
+   * <pre>
+   * </pre>
+   *
+   * <code>repeated int32 defeated = 3;</code>
    * @return A list containing the defeated.
    */
   java.util.List<java.lang.Integer> getDefeatedList();
@@ -25,7 +35,7 @@ public interface DungeonOrBuilder extends
    * <pre>
    * </pre>
    *
-   * <code>repeated int32 defeated = 2;</code>
+   * <code>repeated int32 defeated = 3;</code>
    * @return The count of defeated.
    */
   int getDefeatedCount();
@@ -33,7 +43,7 @@ public interface DungeonOrBuilder extends
    * <pre>
    * </pre>
    *
-   * <code>repeated int32 defeated = 2;</code>
+   * <code>repeated int32 defeated = 3;</code>
    * @param index The index of the element to return.
    * @return The defeated at the given index.
    */
