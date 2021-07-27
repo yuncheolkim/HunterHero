@@ -87,6 +87,7 @@ public class ConfigManager extends AbsLifecycle {
     public static final BattleInfoDataBox battleInfoDataBox = new BattleInfoDataBox();
     public static final DungeonDataBox dungeonDataBox = new DungeonDataBox();
     public static final DungeonInfoDataBox dungeonInfoDataBox = new DungeonInfoDataBox();
+    public static final ExpressDataBox expressDataBox = new ExpressDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -116,6 +117,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(battleInfoDataBox);
         list.add(dungeonDataBox);
         list.add(dungeonInfoDataBox);
+        list.add(expressDataBox);
     }
 
     @Override

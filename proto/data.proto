@@ -48,16 +48,16 @@ message PlayerData {
     SceneData sceneData = 201;
     // 资源信息
     Resource resource = 301;
+    // 跑镖信息
+    ExpressInfo expressInfo = 310;
     // 英雄信息
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息
     repeated FightEnemyInfo fightInfo = 501;
     // 战斗是否手动
     bool manual = 502;
-
     // 地下城
     Dungeon dungeon = 510;
-
     // 背包
     map<int32, BagSlot> bag = 601;
     // 背包容量
@@ -283,6 +283,12 @@ message Dungeon{
     int32 bossId = 2;// 当前战斗的boss
     repeated int32 defeated = 3;//
 
+}
+///////////////////////////////////////////////  Express
+
+// 跑镖信息
+message ExpressInfo{
+    int32 id = 1;
 }
 
 ///////////////////////////////////////////////  Enum

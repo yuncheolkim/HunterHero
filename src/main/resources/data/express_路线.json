@@ -1,0 +1,26 @@
+{
+    "1": {
+        "fromNpcId": 101,
+        "gold": 300,
+        "i1": 3,
+        "id": 1,
+        "time": 100,
+        "toNpcId": 7
+    },
+    "2": {
+        "fromNpcId": 101,
+        "gold": 200,
+        "i1": 2,
+        "id": 2,
+        "time": 100,
+        "toNpcId": 10
+    },
+    "3": {
+        "fromNpcId": 101,
+        "gold": 100,
+        "i1": 1,
+        "id": 3,
+        "time": 60,
+        "toNpcId": 60
+    }
+}
