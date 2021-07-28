@@ -4,7 +4,8 @@ import game.config.data.ExpressConfigData;
 import game.exception.ErrorEnum;
 import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
-import game.game.ConsumeTypeEnum;
+import game.game.enums.ConsumeTypeEnum;
+import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.ExpressCompleteReq;
@@ -28,7 +29,6 @@ public class ExpressHandler {
      */
     public static ExpressStartRqRs start(final Player player, final ExpressStartRqRs req) {
         ModuleAssert.isFalse(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
-
         final ExpressConfigData data = ConfigManager.expressDataBox.findById(req.getId());
         EvilAssert.notNull(data, "不存的跑镖配置");
         player.consumePowerAssert(ConsumeTypeEnum.跑镖, data.power);
@@ -45,7 +45,12 @@ public class ExpressHandler {
      * @return
      */
     public static ExpressCompleteRes complete(final Player player, final ExpressCompleteReq req) {
+        ModuleAssert.isTrue(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
 
-        return null;
+        final ExpressConfigData data = ConfigManager.expressDataBox.findById(player.pd.getExpressInfo().getId());
+        player.addGold(data.gold, ResourceSourceEnum.跑镖);
+
+        return ExpressCompleteRes.getDefaultInstance();
     }
+
 }

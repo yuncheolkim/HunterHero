@@ -1,6 +1,6 @@
 package game.module.event.handler;
 
-import game.game.ResourceSourceEnum;
+import game.game.enums.ResourceSourceEnum;
 import game.module.event.EventType;
 import game.module.event.IEvent;
 

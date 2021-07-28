@@ -1,4 +1,4 @@
-package game.game;
+package game.game.enums;
 
 /**
  * 资源来源
@@ -15,6 +15,7 @@ public enum ResourceSourceEnum {
     任务,
     升级,
     购买体力,
+    跑镖,
     ;
 
 }

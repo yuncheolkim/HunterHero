@@ -2,7 +2,7 @@ package game.module.fight;
 
 import game.base.Logs;
 import game.exception.ModuleAssert;
-import game.game.ConsumeTypeEnum;
+import game.game.enums.ConsumeTypeEnum;
 import game.manager.EventManager;
 import game.module.battle.*;
 import game.module.battle.battle.AutoBattle;

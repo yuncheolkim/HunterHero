@@ -4,7 +4,7 @@ import game.base.constants.GameConstants;
 import game.config.data.HeroBaseConfigData;
 import game.config.data.ItemConfigData;
 import game.exception.ModuleAssert;
-import game.game.ItemTypeEnum;
+import game.game.enums.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.NewHeroPush;

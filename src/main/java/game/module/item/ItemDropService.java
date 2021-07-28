@@ -4,7 +4,7 @@ import game.config.data.DropItemAreaConfigData;
 import game.config.data.DropItemEnemyConfigData;
 import game.config.data.ExpConfigData;
 import game.config.data.ItemConfigData;
-import game.game.ItemTypeEnum;
+import game.game.enums.ItemTypeEnum;
 import game.manager.ConfigManager;
 import game.proto.data.Reward;
 import game.proto.data.RewardType;

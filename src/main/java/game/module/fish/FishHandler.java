@@ -3,7 +3,7 @@ package game.module.fish;
 import game.base.G;
 import game.config.data.FishWeightConfigData;
 import game.exception.ModuleAssert;
-import game.game.ConsumeTypeEnum;
+import game.game.enums.ConsumeTypeEnum;
 import game.manager.ConfigManager;
 import game.player.FishAction;
 import game.player.Player;

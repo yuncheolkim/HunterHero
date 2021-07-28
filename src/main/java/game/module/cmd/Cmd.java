@@ -2,7 +2,7 @@ package game.module.cmd;
 
 import com.google.common.collect.ImmutableMap;
 import game.base.constants.GameConstants;
-import game.game.ResourceSourceEnum;
+import game.game.enums.ResourceSourceEnum;
 import game.module.hero.HeroService;
 import game.player.Player;
 import game.proto.TitleNewPush;

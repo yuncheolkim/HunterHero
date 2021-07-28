@@ -1,7 +1,7 @@
 package game.module.event.handler;
 
 import game.config.base.DataConfigData;
-import game.game.ResourceSourceEnum;
+import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.event.IPlayerEventHandler;

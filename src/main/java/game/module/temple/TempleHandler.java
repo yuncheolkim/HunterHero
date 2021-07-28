@@ -10,7 +10,7 @@ import game.proto.TempleHeroBuyReq;
 import game.proto.TempleHeroBuyRes;
 
 import static game.exception.ErrorEnum.ERR_8;
-import static game.game.ConsumeTypeEnum.神殿购买英雄;
+import static game.game.enums.ConsumeTypeEnum.神殿购买英雄;
 
 /**
  * 神殿

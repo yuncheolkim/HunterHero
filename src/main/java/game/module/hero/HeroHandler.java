@@ -7,7 +7,7 @@ import game.config.data.PropertyConfigData;
 import game.exception.ErrorEnum;
 import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
-import game.game.ConsumeTypeEnum;
+import game.game.enums.ConsumeTypeEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.event.handler.HeroPowerUpEvent;

@@ -1,4 +1,4 @@
-package game.game;
+package game.game.enums;
 
 import com.google.common.collect.ImmutableMap;
 import game.base.IIdDisplay;

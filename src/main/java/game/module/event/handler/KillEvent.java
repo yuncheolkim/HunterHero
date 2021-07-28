@@ -1,6 +1,5 @@
 package game.module.event.handler;
 
-import game.game.TargetType;
 import game.module.event.EventType;
 import game.module.event.IEvent;
 
@@ -15,7 +14,6 @@ public class KillEvent implements IEvent {
     public int targetId;
     public int count;
 
-    private TargetType targetType;
 
     public KillEvent() {
     }

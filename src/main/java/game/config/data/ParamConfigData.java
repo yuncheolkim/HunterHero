@@ -60,6 +60,11 @@ public class ParamConfigData {
      */
     public int powerRecoverGold;
 
+    /**
+     * 一天最多跑镖次数
+     */
+    public int expressCount;
+
 
     public void Init(final DataConfigData d) {
         final int count = d.count;
@@ -93,6 +98,9 @@ public class ParamConfigData {
                 break;
             case 10:
                 powerRecoverGold = count;
+                break;
+            case 11:
+                expressCount = count;
                 break;
         }
     }

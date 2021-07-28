@@ -2,9 +2,9 @@ package game.config.data;
 
 import game.config.base.BaseConfigData;
 import game.config.base.DataConfigData;
-import game.game.ItemQualityEnum;
-import game.game.ItemTypeEnum;
-import game.game.ResourceEnum;
+import game.game.enums.ItemQualityEnum;
+import game.game.enums.ItemTypeEnum;
+import game.game.enums.ResourceEnum;
 import game.manager.ConfigManager;
 import game.proto.data.Property;
 

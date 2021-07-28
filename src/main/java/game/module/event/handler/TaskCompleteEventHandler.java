@@ -1,6 +1,6 @@
 package game.module.event.handler;
 
-import game.game.FeatureEnum;
+import game.game.enums.FeatureEnum;
 import game.module.event.IPlayerEventHandler;
 import game.module.hero.HeroService;
 import game.module.player.PlayerService;
