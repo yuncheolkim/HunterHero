@@ -442,7 +442,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 10,
+        "i1": 19,
         "i3": 2,
         "id": 510402,
         "level": 10,
@@ -461,6 +461,32 @@
         ],
         "taskType": 1,
         "title": "19 虎骨酒"
+    },
+    "520401": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 101,
+        "completeType": 2,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 20,
+        "i3": 1,
+        "id": 520401,
+        "level": 10,
+        "list1": [
+            600403
+        ],
+        "list2": [],
+        "notCompleteContentId": 69,
+        "npcId": 52,
+        "reward": "1=100",
+        "s1": "找大哲",
+        "speakType": 1,
+        "targetList": [
+            520401
+        ],
+        "taskType": 1,
+        "title": "出色守护者"
     },
     "550401": {
         "areaId": 4,
@@ -494,7 +520,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 11,
+        "i1": 10,
         "i3": 2,
         "id": 550402,
         "level": 10,
@@ -562,7 +588,6 @@
         "notCompleteContentId": 69,
         "npcId": 55,
         "reward": "1=100",
-        "s1": "找青桥",
         "speakType": 1,
         "targetList": [
             550404
@@ -577,7 +602,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 12,
+        "i1": 11,
         "i3": 1,
         "id": 570401,
         "level": 10,
@@ -591,6 +616,7 @@
         "notCompleteContentId": 69,
         "npcId": 57,
         "reward": "1=100",
+        "s1": "找青桥",
         "speakType": 1,
         "targetList": [
             570401
@@ -659,7 +685,7 @@
         "completeType": 2,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 13,
+        "i1": 12,
         "i3": 4,
         "id": 570404,
         "level": 10,
@@ -674,7 +700,6 @@
         "notCompleteContentId": 69,
         "npcId": 57,
         "reward": "1=100",
-        "s1": "找方雁",
         "speakType": 1,
         "targetList": [
             570404
@@ -689,7 +714,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 14,
+        "i1": 13,
         "i3": 1,
         "id": 590401,
         "level": 10,
@@ -702,6 +727,7 @@
         "notCompleteContentId": 69,
         "npcId": 59,
         "reward": "1=100",
+        "s1": "找方雁",
         "speakType": 1,
         "targetList": [
             590401
@@ -744,7 +770,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 15,
+        "i1": 14,
         "i3": 3,
         "id": 590403,
         "level": 10,
@@ -823,7 +849,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 16,
+        "i1": 20,
         "i3": 1,
         "id": 600401,
         "level": 10,
@@ -851,14 +877,16 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 17,
+        "i1": 20,
         "i3": 2,
         "id": 600402,
         "level": 10,
         "list1": [
             600401
         ],
-        "list2": [],
+        "list2": [
+            600403
+        ],
         "notCompleteContentId": 69,
         "npcId": 60,
         "reward": "1=100",
@@ -869,6 +897,34 @@
         "taskType": 1,
         "title": "攻破山贼巢穴"
     },
+    "600403": {
+        "areaId": 4,
+        "completeContentId": 47,
+        "completeNpcId": 0,
+        "completeType": 2,
+        "contentId": 46,
+        "conversationId": 0,
+        "i1": 20,
+        "i3": 3,
+        "id": 600403,
+        "level": 10,
+        "list1": [
+            600402
+        ],
+        "list2": [
+            520401
+        ],
+        "notCompleteContentId": 69,
+        "npcId": 60,
+        "reward": "1=100",
+        "s1": "找了旅店老板",
+        "speakType": 1,
+        "targetList": [
+            600403
+        ],
+        "taskType": 1,
+        "title": "来自希洛的推荐"
+    },
     "630401": {
         "areaId": 4,
         "completeContentId": 47,
@@ -876,7 +932,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 18,
+        "i1": 16,
         "i3": 1,
         "id": 630401,
         "level": 10,
@@ -903,7 +959,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 18,
+        "i1": 17,
         "i3": 2,
         "id": 630402,
         "level": 10,
@@ -956,7 +1012,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 19,
+        "i1": 18,
         "i3": 1,
         "id": 660401,
         "level": 10,
@@ -983,7 +1039,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 19,
+        "i1": 18,
         "i3": 2,
         "id": 660402,
         "level": 10,
@@ -1011,7 +1067,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 20,
+        "i1": 19,
         "i3": 1,
         "id": 670401,
         "level": 10,
@@ -1066,7 +1122,7 @@
         "completeType": 1,
         "contentId": 46,
         "conversationId": 0,
-        "i1": 20,
+        "i1": 15,
         "i3": 1,
         "id": 690401,
         "level": 10,

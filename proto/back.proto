@@ -14,12 +14,18 @@ message PlayerBackData {
     int64 loginTime = 5;
     int64 updateTime = 6;
     int32 localId = 10;
-
+    GameCount count = 11; // 计数器
     FightType fightType = 21;// 战斗类型
-
     map<int32, bool> completeTask = 100;
 }
 
+message GameCount{
+    GameCountInfo express = 1;// 跑镖
+}
+message GameCountInfo{
+    uint32 count = 1;// 次数
+    uint64 updateTime = 2;// 最后更新时间点
+}
 
 message SaveData{
 

@@ -29,6 +29,7 @@ import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
 import game.proto.Message;
 import game.proto.ResourceChangePush;
+import game.proto.back.GameCount;
 import game.proto.back.MsgNo;
 import game.proto.back.PlayerBackData;
 import game.proto.data.*;
@@ -238,10 +239,11 @@ public class Player {
         pd.setTask(PlayerTask.newBuilder());
         // Hotel
         pd.setHotelId(1);
-
         // 英雄 test
         addHero(1001);
         addHero(1002);
+        // Counter
+        D.setCount(GameCount.newBuilder());
     }
 
     /**
@@ -437,7 +439,7 @@ public class Player {
      * @param typeEnum
      */
     public void consumePowerAssert(final ConsumeTypeEnum typeEnum, final int count) {
-        ModuleAssert.isTrue(consumeGem(typeEnum, count), ErrorEnum.ERR_106);
+        ModuleAssert.isTrue(consumeGem(typeEnum, count), ErrorEnum.ERR_10);
     }
 
     /**

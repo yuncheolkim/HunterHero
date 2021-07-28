@@ -15,8 +15,10 @@ import java.util.*;
  */
 public class TaskJsonToExcel {
 
+
     public static void main(final String[] args) throws IOException {
-        final String s = FileUtils.readFile("json/test.json");
+        String name = "city4";
+        final String s = FileUtils.readFile("json/" + name + ".json");
         System.out.println(s);
         final Multimap<Integer, Integer> fromTo = ArrayListMultimap.create();
         final Multimap<Integer, Integer> toFrom = ArrayListMultimap.create();
@@ -51,18 +53,16 @@ public class TaskJsonToExcel {
             value.list2 = value.after.toString();
             value.targetList = String.format("[%d]", value.id);
 
-            if (value.completeNext) {
-                value.completeNpcId = taskNodeMap.get(fromTo.get(value.nodeId).stream().findFirst().get()).npcId;
-            } else {
+            if (!value.completeNext) {
                 value.completeNpcId = value.npcId;
             }
 
             dataList.add(value);
         }
 
-        dataList.sort(Comparator.comparingInt(o -> o.id));
+        dataList.sort(Comparator.comparingInt(o -> o.nodeId));
 
-        EasyExcel.write("excel/task_city4.xlsx", TaskExcelData.class).sheet("模板").doWrite(dataList);
+        EasyExcel.write("excel/" + name + ".xlsx", TaskExcelData.class).sheet("模板").doWrite(dataList);
 
 
     }

@@ -13,35 +13,25 @@ message PlayerData {
     // 称谓
     string title = 4;
     int32 level = 9;
-
     // 回城 CD 恢复时间点,毫秒数
     int64 hotelCd = 10;
-
     // 回城旅店位置id
     int32 hotelId = 11;
-
     // vip等级
     int32 vipLevel = 12;
-
     // 收集的称谓
     repeated int32 collectTitle = 13;
-
     // Fish
     int32 fishAreaId = 14;
-
     // 钓鱼技能等级
     int32 skillFishLevel = 15;
-
     // 正在进行的战役
     int32 battleId = 16;
-
     // NpcShowEnum 显示与否npc
     int32 showNpc = 17;
-
     // 功能开启标记
     // 1:银行
     int32 openFeature = 100;
-
     // 任务信息
     PlayerTask task = 101;
     // 所在场景

@@ -101,6 +101,19 @@ private static final long serialVersionUID = 0L;
             localId_ = input.readInt32();
             break;
           }
+          case 90: {
+            game.proto.back.GameCount.Builder subBuilder = null;
+            if (count_ != null) {
+              subBuilder = count_.toBuilder();
+            }
+            count_ = input.readMessage(game.proto.back.GameCount.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(count_);
+              count_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           case 168: {
             int rawValue = input.readEnum();
 
@@ -258,6 +271,44 @@ private static final long serialVersionUID = 0L;
     return localId_;
   }
 
+  public static final int COUNT_FIELD_NUMBER = 11;
+  private game.proto.back.GameCount count_;
+  /**
+   * <pre>
+   * 计数器
+   * </pre>
+   *
+   * <code>.Message.GameCount count = 11;</code>
+   * @return Whether the count field is set.
+   */
+  @java.lang.Override
+  public boolean hasCount() {
+    return count_ != null;
+  }
+  /**
+   * <pre>
+   * 计数器
+   * </pre>
+   *
+   * <code>.Message.GameCount count = 11;</code>
+   * @return The count.
+   */
+  @java.lang.Override
+  public game.proto.back.GameCount getCount() {
+    return count_ == null ? game.proto.back.GameCount.getDefaultInstance() : count_;
+  }
+  /**
+   * <pre>
+   * 计数器
+   * </pre>
+   *
+   * <code>.Message.GameCount count = 11;</code>
+   */
+  @java.lang.Override
+  public game.proto.back.GameCountOrBuilder getCountOrBuilder() {
+    return getCount();
+  }
+
   public static final int FIGHTTYPE_FIELD_NUMBER = 21;
   private int fightType_;
   /**
@@ -403,6 +454,9 @@ private static final long serialVersionUID = 0L;
     if (localId_ != 0) {
       output.writeInt32(10, localId_);
     }
+    if (count_ != null) {
+      output.writeMessage(11, getCount());
+    }
     if (fightType_ != game.proto.back.FightType.F_NONE.getNumber()) {
       output.writeEnum(21, fightType_);
     }
@@ -455,6 +509,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(10, localId_);
     }
+    if (count_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(11, getCount());
+    }
     if (fightType_ != game.proto.back.FightType.F_NONE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(21, fightType_);
@@ -496,6 +554,11 @@ private static final long serialVersionUID = 0L;
         != other.getUpdateTime()) return false;
     if (getLocalId()
         != other.getLocalId()) return false;
+    if (hasCount() != other.hasCount()) return false;
+    if (hasCount()) {
+      if (!getCount()
+          .equals(other.getCount())) return false;
+    }
     if (fightType_ != other.fightType_) return false;
     if (!internalGetCompleteTask().equals(
         other.internalGetCompleteTask())) return false;
@@ -528,6 +591,10 @@ private static final long serialVersionUID = 0L;
         getUpdateTime());
     hash = (37 * hash) + LOCALID_FIELD_NUMBER;
     hash = (53 * hash) + getLocalId();
+    if (hasCount()) {
+      hash = (37 * hash) + COUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getCount().hashCode();
+    }
     hash = (37 * hash) + FIGHTTYPE_FIELD_NUMBER;
     hash = (53 * hash) + fightType_;
     if (!internalGetCompleteTask().getMap().isEmpty()) {
@@ -705,6 +772,12 @@ private static final long serialVersionUID = 0L;
 
       localId_ = 0;
 
+      if (countBuilder_ == null) {
+        count_ = null;
+      } else {
+        count_ = null;
+        countBuilder_ = null;
+      }
       fightType_ = 0;
 
       internalGetMutableCompleteTask().clear();
@@ -745,6 +818,11 @@ private static final long serialVersionUID = 0L;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
       result.localId_ = localId_;
+      if (countBuilder_ == null) {
+        result.count_ = count_;
+      } else {
+        result.count_ = countBuilder_.build();
+      }
       result.fightType_ = fightType_;
       result.completeTask_ = internalGetCompleteTask();
       result.completeTask_.makeImmutable();
@@ -820,6 +898,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getLocalId() != 0) {
         setLocalId(other.getLocalId());
+      }
+      if (other.hasCount()) {
+        mergeCount(other.getCount());
       }
       if (other.fightType_ != 0) {
         setFightTypeValue(other.getFightTypeValue());
@@ -1112,6 +1193,161 @@ private static final long serialVersionUID = 0L;
       localId_ = 0;
       onChanged();
       return this;
+    }
+
+    private game.proto.back.GameCount count_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.back.GameCount, game.proto.back.GameCount.Builder, game.proto.back.GameCountOrBuilder> countBuilder_;
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     * @return Whether the count field is set.
+     */
+    public boolean hasCount() {
+      return countBuilder_ != null || count_ != null;
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     * @return The count.
+     */
+    public game.proto.back.GameCount getCount() {
+      if (countBuilder_ == null) {
+        return count_ == null ? game.proto.back.GameCount.getDefaultInstance() : count_;
+      } else {
+        return countBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    public Builder setCount(game.proto.back.GameCount value) {
+      if (countBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        count_ = value;
+        onChanged();
+      } else {
+        countBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    public Builder setCount(
+        game.proto.back.GameCount.Builder builderForValue) {
+      if (countBuilder_ == null) {
+        count_ = builderForValue.build();
+        onChanged();
+      } else {
+        countBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    public Builder mergeCount(game.proto.back.GameCount value) {
+      if (countBuilder_ == null) {
+        if (count_ != null) {
+          count_ =
+            game.proto.back.GameCount.newBuilder(count_).mergeFrom(value).buildPartial();
+        } else {
+          count_ = value;
+        }
+        onChanged();
+      } else {
+        countBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    public Builder clearCount() {
+      if (countBuilder_ == null) {
+        count_ = null;
+        onChanged();
+      } else {
+        count_ = null;
+        countBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    public game.proto.back.GameCount.Builder getCountBuilder() {
+      
+      onChanged();
+      return getCountFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    public game.proto.back.GameCountOrBuilder getCountOrBuilder() {
+      if (countBuilder_ != null) {
+        return countBuilder_.getMessageOrBuilder();
+      } else {
+        return count_ == null ?
+            game.proto.back.GameCount.getDefaultInstance() : count_;
+      }
+    }
+    /**
+     * <pre>
+     * 计数器
+     * </pre>
+     *
+     * <code>.Message.GameCount count = 11;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.back.GameCount, game.proto.back.GameCount.Builder, game.proto.back.GameCountOrBuilder> 
+        getCountFieldBuilder() {
+      if (countBuilder_ == null) {
+        countBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.back.GameCount, game.proto.back.GameCount.Builder, game.proto.back.GameCountOrBuilder>(
+                getCount(),
+                getParentForChildren(),
+                isClean());
+        count_ = null;
+      }
+      return countBuilder_;
     }
 
     private int fightType_ = 0;

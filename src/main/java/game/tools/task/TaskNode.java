@@ -13,6 +13,7 @@ public class TaskNode {
     public String title;
     public int nodeType;
     public boolean completeNext;
+    public int completeNpc;
 
     public TaskExcelData toTaskExcelData() {
         final TaskExcelData d = new TaskExcelData();
@@ -25,6 +26,7 @@ public class TaskNode {
         d.i3 = num;
         d.completeType = nodeType;
         d.completeNext = completeNext;
+        d.completeNpcId = completeNpc;
 
         return d;
     }

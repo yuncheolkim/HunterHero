@@ -5,6 +5,7 @@ import game.exception.ErrorEnum;
 import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
 import game.game.enums.ConsumeTypeEnum;
+import game.game.enums.Counter;
 import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.player.Player;
@@ -31,8 +32,10 @@ public class ExpressHandler {
         ModuleAssert.isFalse(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
         final ExpressConfigData data = ConfigManager.expressDataBox.findById(req.getId());
         EvilAssert.notNull(data, "不存的跑镖配置");
-        player.consumePowerAssert(ConsumeTypeEnum.跑镖, data.power);
+        // 检查次数
+        ModuleAssert.isTrue(Counter.EXPRESS.Reduce(player), ErrorEnum.ERR_9);
 
+        player.consumePowerAssert(ConsumeTypeEnum.跑镖, data.power);
         player.pd.setExpressInfo(ExpressInfo.newBuilder().setId(data.id));
         return req;
     }

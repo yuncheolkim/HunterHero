@@ -64,6 +64,33 @@ public interface PlayerBackDataOrBuilder extends
 
   /**
    * <pre>
+   * 计数器
+   * </pre>
+   *
+   * <code>.Message.GameCount count = 11;</code>
+   * @return Whether the count field is set.
+   */
+  boolean hasCount();
+  /**
+   * <pre>
+   * 计数器
+   * </pre>
+   *
+   * <code>.Message.GameCount count = 11;</code>
+   * @return The count.
+   */
+  game.proto.back.GameCount getCount();
+  /**
+   * <pre>
+   * 计数器
+   * </pre>
+   *
+   * <code>.Message.GameCount count = 11;</code>
+   */
+  game.proto.back.GameCountOrBuilder getCountOrBuilder();
+
+  /**
+   * <pre>
    * 战斗类型
    * </pre>
    *

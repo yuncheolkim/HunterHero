@@ -144,7 +144,7 @@ public class TaskHandler {
                 if (targetData.type == TaskTargetTypeEnum.SEARCH.id) {
                     ItemConfigData item = ConfigManager.getItem(targetData.v1);
                     if (item.type != ItemTypeEnum.TASK) {
-                        ModuleAssert.isTrue(BagService.removeItemFromBag(player, targetData.v1, targetData.v2), ErrorEnum.ERR_102);
+                        ModuleAssert.isTrue(BagService.removeItemFromBag(player, targetData.v1, targetData.v2), ErrorEnum.ERR_11);
                     }
                 }
             }
