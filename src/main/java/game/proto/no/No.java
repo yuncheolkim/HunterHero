@@ -262,6 +262,18 @@ public enum No
   RecoverPowerReq(5005),
   /**
    * <pre>
+   * Express
+   * </pre>
+   *
+   * <code>ExpressStartRqRs = 5101;</code>
+   */
+  ExpressStartRqRs(5101),
+  /**
+   * <code>ExpressCompleteReq = 5102;</code>
+   */
+  ExpressCompleteReq(5102),
+  /**
+   * <pre>
    * Bag
    * </pre>
    *
@@ -606,6 +618,18 @@ public enum No
   public static final int RecoverPowerReq_VALUE = 5005;
   /**
    * <pre>
+   * Express
+   * </pre>
+   *
+   * <code>ExpressStartRqRs = 5101;</code>
+   */
+  public static final int ExpressStartRqRs_VALUE = 5101;
+  /**
+   * <code>ExpressCompleteReq = 5102;</code>
+   */
+  public static final int ExpressCompleteReq_VALUE = 5102;
+  /**
+   * <pre>
    * Bag
    * </pre>
    *
@@ -768,6 +792,8 @@ public enum No
       case 5003: return ExpChangePush;
       case 5004: return MaxPowerChangePush;
       case 5005: return RecoverPowerReq;
+      case 5101: return ExpressStartRqRs;
+      case 5102: return ExpressCompleteReq;
       case 6001: return BagInfoChangePush;
       case 6002: return BagCleanReq;
       case 7001: return ItemDiscardReq;

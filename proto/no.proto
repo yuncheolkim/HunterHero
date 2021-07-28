@@ -83,6 +83,10 @@ enum No {
     MaxPowerChangePush = 5004;
     RecoverPowerReq = 5005;
 
+    // Express
+    ExpressStartRqRs = 5101;
+    ExpressCompleteReq = 5102;
+
     // Bag
     BagInfoChangePush = 6001;
     BagCleanReq = 6002;
@@ -110,7 +114,6 @@ enum No {
     // Chat
     ChatMessageReq = 9001;
     ChatMessagePush = 9002;
-
 
 
 }

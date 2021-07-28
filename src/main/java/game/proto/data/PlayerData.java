@@ -188,6 +188,19 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 2482: {
+            game.proto.data.ExpressInfo.Builder subBuilder = null;
+            if (expressInfo_ != null) {
+              subBuilder = expressInfo_.toBuilder();
+            }
+            expressInfo_ = input.readMessage(game.proto.data.ExpressInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(expressInfo_);
+              expressInfo_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           case 3210: {
             if (!((mutable_bitField0_ & 0x00000002) != 0)) {
               hero_ = com.google.protobuf.MapField.newMapField(
@@ -757,6 +770,44 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public game.proto.data.ResourceOrBuilder getResourceOrBuilder() {
     return getResource();
+  }
+
+  public static final int EXPRESSINFO_FIELD_NUMBER = 310;
+  private game.proto.data.ExpressInfo expressInfo_;
+  /**
+   * <pre>
+   * 跑镖信息
+   * </pre>
+   *
+   * <code>.Message.ExpressInfo expressInfo = 310;</code>
+   * @return Whether the expressInfo field is set.
+   */
+  @java.lang.Override
+  public boolean hasExpressInfo() {
+    return expressInfo_ != null;
+  }
+  /**
+   * <pre>
+   * 跑镖信息
+   * </pre>
+   *
+   * <code>.Message.ExpressInfo expressInfo = 310;</code>
+   * @return The expressInfo.
+   */
+  @java.lang.Override
+  public game.proto.data.ExpressInfo getExpressInfo() {
+    return expressInfo_ == null ? game.proto.data.ExpressInfo.getDefaultInstance() : expressInfo_;
+  }
+  /**
+   * <pre>
+   * 跑镖信息
+   * </pre>
+   *
+   * <code>.Message.ExpressInfo expressInfo = 310;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.ExpressInfoOrBuilder getExpressInfoOrBuilder() {
+    return getExpressInfo();
   }
 
   public static final int HERO_FIELD_NUMBER = 401;
@@ -1353,6 +1404,9 @@ private static final long serialVersionUID = 0L;
     if (resource_ != null) {
       output.writeMessage(301, getResource());
     }
+    if (expressInfo_ != null) {
+      output.writeMessage(310, getExpressInfo());
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -1479,6 +1533,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(301, getResource());
     }
+    if (expressInfo_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(310, getExpressInfo());
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.PlayerHero> entry
          : internalGetHero().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.PlayerHero>
@@ -1599,6 +1657,11 @@ private static final long serialVersionUID = 0L;
       if (!getResource()
           .equals(other.getResource())) return false;
     }
+    if (hasExpressInfo() != other.hasExpressInfo()) return false;
+    if (hasExpressInfo()) {
+      if (!getExpressInfo()
+          .equals(other.getExpressInfo())) return false;
+    }
     if (!internalGetHero().equals(
         other.internalGetHero())) return false;
     if (!getFightInfoList()
@@ -1678,6 +1741,10 @@ private static final long serialVersionUID = 0L;
     if (hasResource()) {
       hash = (37 * hash) + RESOURCE_FIELD_NUMBER;
       hash = (53 * hash) + getResource().hashCode();
+    }
+    if (hasExpressInfo()) {
+      hash = (37 * hash) + EXPRESSINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getExpressInfo().hashCode();
     }
     if (!internalGetHero().getMap().isEmpty()) {
       hash = (37 * hash) + HERO_FIELD_NUMBER;
@@ -1930,6 +1997,12 @@ private static final long serialVersionUID = 0L;
         resource_ = null;
         resourceBuilder_ = null;
       }
+      if (expressInfoBuilder_ == null) {
+        expressInfo_ = null;
+      } else {
+        expressInfo_ = null;
+        expressInfoBuilder_ = null;
+      }
       internalGetMutableHero().clear();
       if (fightInfoBuilder_ == null) {
         fightInfo_ = java.util.Collections.emptyList();
@@ -2020,6 +2093,11 @@ private static final long serialVersionUID = 0L;
         result.resource_ = resource_;
       } else {
         result.resource_ = resourceBuilder_.build();
+      }
+      if (expressInfoBuilder_ == null) {
+        result.expressInfo_ = expressInfo_;
+      } else {
+        result.expressInfo_ = expressInfoBuilder_.build();
       }
       result.hero_ = internalGetHero();
       result.hero_.makeImmutable();
@@ -2163,6 +2241,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasResource()) {
         mergeResource(other.getResource());
+      }
+      if (other.hasExpressInfo()) {
+        mergeExpressInfo(other.getExpressInfo());
       }
       internalGetMutableHero().mergeFrom(
           other.internalGetHero());
@@ -3497,6 +3578,161 @@ private static final long serialVersionUID = 0L;
         resource_ = null;
       }
       return resourceBuilder_;
+    }
+
+    private game.proto.data.ExpressInfo expressInfo_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.ExpressInfo, game.proto.data.ExpressInfo.Builder, game.proto.data.ExpressInfoOrBuilder> expressInfoBuilder_;
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     * @return Whether the expressInfo field is set.
+     */
+    public boolean hasExpressInfo() {
+      return expressInfoBuilder_ != null || expressInfo_ != null;
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     * @return The expressInfo.
+     */
+    public game.proto.data.ExpressInfo getExpressInfo() {
+      if (expressInfoBuilder_ == null) {
+        return expressInfo_ == null ? game.proto.data.ExpressInfo.getDefaultInstance() : expressInfo_;
+      } else {
+        return expressInfoBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    public Builder setExpressInfo(game.proto.data.ExpressInfo value) {
+      if (expressInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        expressInfo_ = value;
+        onChanged();
+      } else {
+        expressInfoBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    public Builder setExpressInfo(
+        game.proto.data.ExpressInfo.Builder builderForValue) {
+      if (expressInfoBuilder_ == null) {
+        expressInfo_ = builderForValue.build();
+        onChanged();
+      } else {
+        expressInfoBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    public Builder mergeExpressInfo(game.proto.data.ExpressInfo value) {
+      if (expressInfoBuilder_ == null) {
+        if (expressInfo_ != null) {
+          expressInfo_ =
+            game.proto.data.ExpressInfo.newBuilder(expressInfo_).mergeFrom(value).buildPartial();
+        } else {
+          expressInfo_ = value;
+        }
+        onChanged();
+      } else {
+        expressInfoBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    public Builder clearExpressInfo() {
+      if (expressInfoBuilder_ == null) {
+        expressInfo_ = null;
+        onChanged();
+      } else {
+        expressInfo_ = null;
+        expressInfoBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    public game.proto.data.ExpressInfo.Builder getExpressInfoBuilder() {
+      
+      onChanged();
+      return getExpressInfoFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    public game.proto.data.ExpressInfoOrBuilder getExpressInfoOrBuilder() {
+      if (expressInfoBuilder_ != null) {
+        return expressInfoBuilder_.getMessageOrBuilder();
+      } else {
+        return expressInfo_ == null ?
+            game.proto.data.ExpressInfo.getDefaultInstance() : expressInfo_;
+      }
+    }
+    /**
+     * <pre>
+     * 跑镖信息
+     * </pre>
+     *
+     * <code>.Message.ExpressInfo expressInfo = 310;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.ExpressInfo, game.proto.data.ExpressInfo.Builder, game.proto.data.ExpressInfoOrBuilder> 
+        getExpressInfoFieldBuilder() {
+      if (expressInfoBuilder_ == null) {
+        expressInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.ExpressInfo, game.proto.data.ExpressInfo.Builder, game.proto.data.ExpressInfoOrBuilder>(
+                getExpressInfo(),
+                getParentForChildren(),
+                isClean());
+        expressInfo_ = null;
+      }
+      return expressInfoBuilder_;
     }
 
     private com.google.protobuf.MapField<

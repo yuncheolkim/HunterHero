@@ -431,6 +431,16 @@ public class Player {
     }
 
     /**
+     * 消耗体力,断言
+     *
+     * @param count
+     * @param typeEnum
+     */
+    public void consumePowerAssert(final ConsumeTypeEnum typeEnum, final int count) {
+        ModuleAssert.isTrue(consumeGem(typeEnum, count), ErrorEnum.ERR_106);
+    }
+
+    /**
      * 体力是否已满
      *
      * @return

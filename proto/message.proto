@@ -442,3 +442,15 @@ message DungeonExitReq{
 }
 message DungeonExitRes{
 }
+///////////////////////////////////////////////  Express
+
+message ExpressStartRqRs{
+    int32 id = 1;
+}
+
+message ExpressCompleteReq{
+
+}
+message ExpressCompleteRes{
+
+}

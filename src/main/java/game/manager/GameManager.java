@@ -7,6 +7,7 @@ import game.module.chat.ChatHandler;
 import game.module.chat.ChatScene;
 import game.module.cmd.CmdHandler;
 import game.module.dungeon.DungeonHandler;
+import game.module.escort.ExpressHandler;
 import game.module.fight.FightHandler;
 import game.module.fish.FishHandler;
 import game.module.formation.FormationHandler;
@@ -149,6 +150,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new RetInvoker<>(No.DungeonEnterReq, DungeonHandler::enter, DungeonEnterReq::parser));
         addHandler(new Invoker<>(No.DungeonFightReq, DungeonHandler::fight, DungeonFightReq::parser));
         addHandler(new RetInvoker<>(No.DungeonExitReq, DungeonHandler::exit, DungeonExitReq::parser));
+        // Express
+        addHandler(new RetInvoker<>(No.ExpressStartRqRs, ExpressHandler::start, ExpressStartRqRs::parser));
+        addHandler(new RetInvoker<>(No.ExpressCompleteReq, ExpressHandler::complete, ExpressCompleteReq::parser));
     }
 
     private void initScene() {

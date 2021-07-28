@@ -12,4 +12,5 @@ public enum ConsumeTypeEnum {
     野外战斗,
     购买体力,
     神殿购买英雄,
+    跑镖,
 }

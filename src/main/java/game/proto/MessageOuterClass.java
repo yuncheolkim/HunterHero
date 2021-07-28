@@ -409,6 +409,21 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_DungeonExitRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ExpressStartRqRs_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ExpressStartRqRs_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ExpressCompleteReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ExpressCompleteReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_ExpressCompleteRes_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_ExpressCompleteRes_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -521,10 +536,12 @@ public final class MessageOuterClass {
       "Res\022\n\n\002id\030\001 \001(\005\"\035\n\017DungeonEnterReq\022\n\n\002id" +
       "\030\001 \001(\005\"\021\n\017DungeonEnterRes\"#\n\017DungeonFigh" +
       "tReq\022\020\n\010targetId\030\001 \001(\005\"\020\n\016DungeonExitReq" +
-      "\"\020\n\016DungeonExitRes*R\n\013ChatChannel\022\n\n\006C_N" +
-      "ONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003" +
-      "\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001" +
-      "b\006proto3"
+      "\"\020\n\016DungeonExitRes\"\036\n\020ExpressStartRqRs\022\n" +
+      "\n\002id\030\001 \001(\005\"\024\n\022ExpressCompleteReq\"\024\n\022Expr" +
+      "essCompleteRes*R\n\013ChatChannel\022\n\n\006C_NONE\020" +
+      "\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006" +
+      "SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1004,6 +1021,24 @@ public final class MessageOuterClass {
     internal_static_Message_DungeonExitRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_DungeonExitRes_descriptor,
+        new java.lang.String[] { });
+    internal_static_Message_ExpressStartRqRs_descriptor =
+      getDescriptor().getMessageTypes().get(78);
+    internal_static_Message_ExpressStartRqRs_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ExpressStartRqRs_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_ExpressCompleteReq_descriptor =
+      getDescriptor().getMessageTypes().get(79);
+    internal_static_Message_ExpressCompleteReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ExpressCompleteReq_descriptor,
+        new java.lang.String[] { });
+    internal_static_Message_ExpressCompleteRes_descriptor =
+      getDescriptor().getMessageTypes().get(80);
+    internal_static_Message_ExpressCompleteRes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_ExpressCompleteRes_descriptor,
         new java.lang.String[] { });
     game.proto.data.Data.getDescriptor();
   }

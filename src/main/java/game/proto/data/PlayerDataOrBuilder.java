@@ -256,6 +256,33 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 跑镖信息
+   * </pre>
+   *
+   * <code>.Message.ExpressInfo expressInfo = 310;</code>
+   * @return Whether the expressInfo field is set.
+   */
+  boolean hasExpressInfo();
+  /**
+   * <pre>
+   * 跑镖信息
+   * </pre>
+   *
+   * <code>.Message.ExpressInfo expressInfo = 310;</code>
+   * @return The expressInfo.
+   */
+  game.proto.data.ExpressInfo getExpressInfo();
+  /**
+   * <pre>
+   * 跑镖信息
+   * </pre>
+   *
+   * <code>.Message.ExpressInfo expressInfo = 310;</code>
+   */
+  game.proto.data.ExpressInfoOrBuilder getExpressInfoOrBuilder();
+
+  /**
+   * <pre>
    * 英雄信息
    * </pre>
    *
