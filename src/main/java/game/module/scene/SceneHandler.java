@@ -1,6 +1,7 @@
 package game.module.scene;
 
 import game.base.Logs;
+import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.EnterFightAreaReq;
@@ -28,6 +29,7 @@ public class SceneHandler {
      */
     public static void enterScene(final Player player, final EnterSceneReq req) {
         Logs.C.info("进入场景：{}", req.getData().getId());
+        ModuleAssert.isPositive(req.getData().getId());
         player.getPd().mergeSceneData(req.getData());
         player.D.clearFightArea();
     }

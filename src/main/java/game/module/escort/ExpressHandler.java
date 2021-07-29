@@ -1,19 +1,26 @@
 package game.module.escort;
 
+import game.base.Logs;
 import game.config.data.ExpressConfigData;
 import game.exception.ErrorEnum;
 import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
 import game.game.enums.ConsumeTypeEnum;
 import game.game.enums.Counter;
+import game.game.enums.FeatureEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
+import game.module.player.PlayerService;
 import game.player.Player;
 import game.proto.ExpressCompleteReq;
 import game.proto.ExpressCompleteRes;
 import game.proto.ExpressInfoRes;
 import game.proto.ExpressStartRqRs;
 import game.proto.data.ExpressInfo;
+import game.proto.no.No;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 跑镖
@@ -23,10 +30,33 @@ import game.proto.data.ExpressInfo;
  */
 public class ExpressHandler {
 
-    public static ExpressInfoRes info(final Player player) {
+    /**
+     * 打开面板
+     *
+     * @param player
+     * @return
+     */
+    public static void open(final Player player) {
 
+        // 跑镖数据生成
+        if (PlayerService.isOpenFeature(player, FeatureEnum.跑镖)) {
+            boolean reduce = Counter.EXPRESS_INFO.Reduce(player);
+            if (reduce) {
+                // 生成跑镖
+                Logs.trace("生成跑镖数据");
 
-        return null;
+                ExpressInfoRes.Builder builder = ExpressInfoRes.newBuilder();
+                builder.setUpdate(true);
+                List<Integer> all = ConfigManager.expressDataBox.all(expressConfigData -> {
+                    return expressConfigData.level <= player.getLevel();
+                }).stream().map(expressConfigData -> expressConfigData.id).collect(Collectors.toList());
+
+                builder.addAllInfo(all);
+                player.send(No.ExpressOpenReq, builder.buildPartial());
+            }
+        }
+
+        player.send(No.ExpressOpenReq, ExpressInfoRes.newBuilder().setUpdate(false).buildPartial());
     }
 
 

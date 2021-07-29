@@ -8,17 +8,23 @@ public interface ExpressInfoResOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated int32 info = 1;</code>
+   * <code>bool update = 1;</code>
+   * @return The update.
+   */
+  boolean getUpdate();
+
+  /**
+   * <code>repeated int32 info = 2;</code>
    * @return A list containing the info.
    */
   java.util.List<java.lang.Integer> getInfoList();
   /**
-   * <code>repeated int32 info = 1;</code>
+   * <code>repeated int32 info = 2;</code>
    * @return The count of info.
    */
   int getInfoCount();
   /**
-   * <code>repeated int32 info = 1;</code>
+   * <code>repeated int32 info = 2;</code>
    * @param index The index of the element to return.
    * @return The info at the given index.
    */

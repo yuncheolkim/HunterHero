@@ -34,7 +34,10 @@ public class TaskCompleteEventHandler implements IPlayerEventHandler<TaskComplet
                 HeroService.addHero(player, 1003, true);
                 PlayerService.showOrHideNpc(player, 14, false);
                 break;
-
+            case 520401:
+                // 开启跑镖
+                PlayerService.openFeature(player, FeatureEnum.跑镖);
+                break;
         }
 
     }

@@ -10,7 +10,10 @@ import game.base.constants.GameConstants;
 import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
-import game.game.enums.*;
+import game.game.enums.ConsumeTypeEnum;
+import game.game.enums.ItemTypeEnum;
+import game.game.enums.ResourceEnum;
+import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.bag.BagUpdateService;
@@ -21,7 +24,6 @@ import game.module.event.handler.ItemAddEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceChangeEvent;
 import game.module.hero.HeroService;
-import game.module.player.PlayerService;
 import game.net.Transport;
 import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
@@ -208,17 +210,6 @@ public class Player {
         }
         bank.capacity = pd.getBankCapacity();
         bank.count = pd.getBankCount();
-
-        // 跑镖数据生成
-        if (PlayerService.isOpenFeature(this, FeatureEnum.跑镖)) {
-            boolean reduce = Counter.EXPRESS_INFO.Reduce(this);
-            if (reduce) {
-                // 生成跑镖
-                Logs.trace("生成跑镖数据");
-                
-
-            }
-        }
 
     }
 
@@ -794,5 +785,8 @@ public class Player {
         this.updateTime = updateTime;
     }
 
+    public int getLevel() {
+        return pd.getLevel();
+    }
 
 }

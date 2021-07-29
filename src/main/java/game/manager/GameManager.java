@@ -151,6 +151,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.DungeonFightReq, DungeonHandler::fight, DungeonFightReq::parser));
         addHandler(new RetInvoker<>(No.DungeonExitReq, DungeonHandler::exit, DungeonExitReq::parser));
         // Express
+        addHandler(new InvokerNoParam(No.ExpressOpenReq, ExpressHandler::open));
         addHandler(new RetInvoker<>(No.ExpressStartRqRs, ExpressHandler::start, ExpressStartRqRs::parser));
         addHandler(new RetInvoker<>(No.ExpressCompleteReq, ExpressHandler::complete, ExpressCompleteReq::parser));
     }

@@ -55,6 +55,11 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 8: {
+
+            update_ = input.readBool();
+            break;
+          }
+          case 16: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               info_ = newIntList();
               mutable_bitField0_ |= 0x00000001;
@@ -62,7 +67,7 @@ private static final long serialVersionUID = 0L;
             info_.addInt(input.readInt32());
             break;
           }
-          case 10: {
+          case 18: {
             int length = input.readRawVarint32();
             int limit = input.pushLimit(length);
             if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
@@ -110,10 +115,21 @@ private static final long serialVersionUID = 0L;
             game.proto.ExpressInfoRes.class, game.proto.ExpressInfoRes.Builder.class);
   }
 
-  public static final int INFO_FIELD_NUMBER = 1;
+  public static final int UPDATE_FIELD_NUMBER = 1;
+  private boolean update_;
+  /**
+   * <code>bool update = 1;</code>
+   * @return The update.
+   */
+  @java.lang.Override
+  public boolean getUpdate() {
+    return update_;
+  }
+
+  public static final int INFO_FIELD_NUMBER = 2;
   private com.google.protobuf.Internal.IntList info_;
   /**
-   * <code>repeated int32 info = 1;</code>
+   * <code>repeated int32 info = 2;</code>
    * @return A list containing the info.
    */
   @java.lang.Override
@@ -122,14 +138,14 @@ private static final long serialVersionUID = 0L;
     return info_;
   }
   /**
-   * <code>repeated int32 info = 1;</code>
+   * <code>repeated int32 info = 2;</code>
    * @return The count of info.
    */
   public int getInfoCount() {
     return info_.size();
   }
   /**
-   * <code>repeated int32 info = 1;</code>
+   * <code>repeated int32 info = 2;</code>
    * @param index The index of the element to return.
    * @return The info at the given index.
    */
@@ -153,8 +169,11 @@ private static final long serialVersionUID = 0L;
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
     getSerializedSize();
+    if (update_ != false) {
+      output.writeBool(1, update_);
+    }
     if (getInfoList().size() > 0) {
-      output.writeUInt32NoTag(10);
+      output.writeUInt32NoTag(18);
       output.writeUInt32NoTag(infoMemoizedSerializedSize);
     }
     for (int i = 0; i < info_.size(); i++) {
@@ -169,6 +188,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (update_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(1, update_);
+    }
     {
       int dataSize = 0;
       for (int i = 0; i < info_.size(); i++) {
@@ -198,6 +221,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.ExpressInfoRes other = (game.proto.ExpressInfoRes) obj;
 
+    if (getUpdate()
+        != other.getUpdate()) return false;
     if (!getInfoList()
         .equals(other.getInfoList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -211,6 +236,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + UPDATE_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getUpdate());
     if (getInfoCount() > 0) {
       hash = (37 * hash) + INFO_FIELD_NUMBER;
       hash = (53 * hash) + getInfoList().hashCode();
@@ -352,6 +380,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      update_ = false;
+
       info_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
       return this;
@@ -381,6 +411,7 @@ private static final long serialVersionUID = 0L;
     public game.proto.ExpressInfoRes buildPartial() {
       game.proto.ExpressInfoRes result = new game.proto.ExpressInfoRes(this);
       int from_bitField0_ = bitField0_;
+      result.update_ = update_;
       if (((bitField0_ & 0x00000001) != 0)) {
         info_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -434,6 +465,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.ExpressInfoRes other) {
       if (other == game.proto.ExpressInfoRes.getDefaultInstance()) return this;
+      if (other.getUpdate() != false) {
+        setUpdate(other.getUpdate());
+      }
       if (!other.info_.isEmpty()) {
         if (info_.isEmpty()) {
           info_ = other.info_;
@@ -474,6 +508,37 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
+    private boolean update_ ;
+    /**
+     * <code>bool update = 1;</code>
+     * @return The update.
+     */
+    @java.lang.Override
+    public boolean getUpdate() {
+      return update_;
+    }
+    /**
+     * <code>bool update = 1;</code>
+     * @param value The update to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUpdate(boolean value) {
+      
+      update_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool update = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUpdate() {
+      
+      update_ = false;
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.Internal.IntList info_ = emptyIntList();
     private void ensureInfoIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
@@ -482,7 +547,7 @@ private static final long serialVersionUID = 0L;
        }
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @return A list containing the info.
      */
     public java.util.List<java.lang.Integer>
@@ -491,14 +556,14 @@ private static final long serialVersionUID = 0L;
                java.util.Collections.unmodifiableList(info_) : info_;
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @return The count of info.
      */
     public int getInfoCount() {
       return info_.size();
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @param index The index of the element to return.
      * @return The info at the given index.
      */
@@ -506,7 +571,7 @@ private static final long serialVersionUID = 0L;
       return info_.getInt(index);
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @param index The index to set the value at.
      * @param value The info to set.
      * @return This builder for chaining.
@@ -519,7 +584,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @param value The info to add.
      * @return This builder for chaining.
      */
@@ -530,7 +595,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @param values The info to add.
      * @return This builder for chaining.
      */
@@ -543,7 +608,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated int32 info = 1;</code>
+     * <code>repeated int32 info = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearInfo() {

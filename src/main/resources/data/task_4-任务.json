@@ -482,9 +482,6 @@
         "reward": "1=100",
         "s1": "找大哲",
         "speakType": 1,
-        "targetList": [
-            520401
-        ],
         "taskType": 1,
         "title": "出色守护者"
     },
@@ -589,9 +586,6 @@
         "npcId": 55,
         "reward": "1=100",
         "speakType": 1,
-        "targetList": [
-            550404
-        ],
         "taskType": 1,
         "title": "找青桥"
     },
@@ -701,9 +695,6 @@
         "npcId": 57,
         "reward": "1=100",
         "speakType": 1,
-        "targetList": [
-            570404
-        ],
         "taskType": 1,
         "title": "找方雁"
     },
@@ -900,7 +891,7 @@
     "600403": {
         "areaId": 4,
         "completeContentId": 47,
-        "completeNpcId": 0,
+        "completeNpcId": 52,
         "completeType": 2,
         "contentId": 46,
         "conversationId": 0,
@@ -917,11 +908,8 @@
         "notCompleteContentId": 69,
         "npcId": 60,
         "reward": "1=100",
-        "s1": "找了旅店老板",
+        "s1": "找旅店老板",
         "speakType": 1,
-        "targetList": [
-            600403
-        ],
         "taskType": 1,
         "title": "来自希洛的推荐"
     },

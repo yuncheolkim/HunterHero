@@ -273,6 +273,10 @@ public enum No
    */
   ExpressCompleteReq(5102),
   /**
+   * <code>ExpressOpenReq = 5103;</code>
+   */
+  ExpressOpenReq(5103),
+  /**
    * <pre>
    * Bag
    * </pre>
@@ -629,6 +633,10 @@ public enum No
    */
   public static final int ExpressCompleteReq_VALUE = 5102;
   /**
+   * <code>ExpressOpenReq = 5103;</code>
+   */
+  public static final int ExpressOpenReq_VALUE = 5103;
+  /**
    * <pre>
    * Bag
    * </pre>
@@ -794,6 +802,7 @@ public enum No
       case 5005: return RecoverPowerReq;
       case 5101: return ExpressStartRqRs;
       case 5102: return ExpressCompleteReq;
+      case 5103: return ExpressOpenReq;
       case 6001: return BagInfoChangePush;
       case 6002: return BagCleanReq;
       case 7001: return ItemDiscardReq;

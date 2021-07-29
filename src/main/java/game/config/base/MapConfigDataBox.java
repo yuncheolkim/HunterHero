@@ -2,7 +2,10 @@ package game.config.base;
 
 import com.google.common.collect.ImmutableMap;
 
+import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @author Yunzhe.Jin
@@ -26,6 +29,10 @@ public class MapConfigDataBox<T extends BaseConfigData<T>> extends ConfigDataBox
     @Override
     public T findById(final int id) {
         return map.get(id);
+    }
+
+    public List<T> all(Predicate<T> predicate) {
+        return map.values().stream().filter(predicate).collect(Collectors.toList());
     }
 
     @Override

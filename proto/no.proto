@@ -86,6 +86,7 @@ enum No {
     // Express
     ExpressStartRqRs = 5101;
     ExpressCompleteReq = 5102;
+    ExpressOpenReq = 5103;
 
     // Bag
     BagInfoChangePush = 6001;
