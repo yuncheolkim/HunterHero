@@ -62,14 +62,15 @@ public final class Back {
       "htType\022?\n\014completeTask\030d \003(\0132).Message.P" +
       "layerBackData.CompleteTaskEntry\0323\n\021Compl" +
       "eteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\010" +
-      ":\0028\001\"4\n\tGameCount\022\'\n\007express\030\001 \001(\0132\026.Mes" +
-      "sage.GameCountInfo\"2\n\rGameCountInfo\022\r\n\005c" +
-      "ount\030\001 \001(\r\022\022\n\nupdateTime\030\002 \001(\004\"V\n\010SaveDa" +
-      "ta\022)\n\010backData\030\001 \001(\0132\027.Message.PlayerBac" +
-      "kData\022\037\n\002pd\030\002 \001(\0132\023.Message.PlayerData\"\026" +
-      "\n\010FishData\022\n\n\002id\030\001 \001(\005*%\n\tFightType\022\n\n\006F" +
-      "_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017game.proto.back" +
-      "H\001P\001b\006proto3"
+      ":\0028\001\"b\n\tGameCount\022\'\n\007express\030\001 \001(\0132\026.Mes" +
+      "sage.GameCountInfo\022,\n\014expressCount\030\002 \001(\013" +
+      "2\026.Message.GameCountInfo\"2\n\rGameCountInf" +
+      "o\022\r\n\005count\030\001 \001(\r\022\022\n\nupdateTime\030\002 \001(\004\"V\n\010" +
+      "SaveData\022)\n\010backData\030\001 \001(\0132\027.Message.Pla" +
+      "yerBackData\022\037\n\002pd\030\002 \001(\0132\023.Message.Player" +
+      "Data\"\026\n\010FishData\022\n\n\002id\030\001 \001(\005*%\n\tFightTyp" +
+      "e\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017game.prot" +
+      "o.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -93,7 +94,7 @@ public final class Back {
     internal_static_Message_GameCount_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_GameCount_descriptor,
-        new java.lang.String[] { "Express", });
+        new java.lang.String[] { "Express", "ExpressCount", });
     internal_static_Message_GameCountInfo_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_Message_GameCountInfo_fieldAccessorTable = new

@@ -21,6 +21,7 @@ message PlayerBackData {
 
 message GameCount{
     GameCountInfo express = 1;// 跑镖
+    GameCountInfo expressCount = 2;// 跑镖刷新
 }
 message GameCountInfo{
     uint32 count = 1;// 次数

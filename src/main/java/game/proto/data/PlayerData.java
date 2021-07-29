@@ -25,6 +25,7 @@ private static final long serialVersionUID = 0L;
     account_ = "";
     title_ = "";
     collectTitle_ = emptyIntList();
+    expressId_ = emptyIntList();
     fightInfo_ = java.util.Collections.emptyList();
     formation_ = java.util.Collections.emptyList();
   }
@@ -201,11 +202,32 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
-          case 3210: {
+          case 2488: {
             if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              expressId_ = newIntList();
+              mutable_bitField0_ |= 0x00000002;
+            }
+            expressId_.addInt(input.readInt32());
+            break;
+          }
+          case 2490: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000002) != 0) && input.getBytesUntilLimit() > 0) {
+              expressId_ = newIntList();
+              mutable_bitField0_ |= 0x00000002;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              expressId_.addInt(input.readInt32());
+            }
+            input.popLimit(limit);
+            break;
+          }
+          case 3210: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
               hero_ = com.google.protobuf.MapField.newMapField(
                   HeroDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000002;
+              mutable_bitField0_ |= 0x00000004;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.PlayerHero>
             hero__ = input.readMessage(
@@ -215,9 +237,9 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 4010: {
-            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000008) != 0)) {
               fightInfo_ = new java.util.ArrayList<game.proto.data.FightEnemyInfo>();
-              mutable_bitField0_ |= 0x00000004;
+              mutable_bitField0_ |= 0x00000008;
             }
             fightInfo_.add(
                 input.readMessage(game.proto.data.FightEnemyInfo.parser(), extensionRegistry));
@@ -242,10 +264,10 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 4810: {
-            if (!((mutable_bitField0_ & 0x00000008) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
                   BagDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000008;
+              mutable_bitField0_ |= 0x00000010;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
             bag__ = input.readMessage(
@@ -265,10 +287,10 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 4834: {
-            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000020) != 0)) {
               bank_ = com.google.protobuf.MapField.newMapField(
                   BankDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000010;
+              mutable_bitField0_ |= 0x00000020;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
             bank__ = input.readMessage(
@@ -278,9 +300,9 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 5610: {
-            if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000040) != 0)) {
               formation_ = new java.util.ArrayList<game.proto.data.Formation>();
-              mutable_bitField0_ |= 0x00000020;
+              mutable_bitField0_ |= 0x00000040;
             }
             formation_.add(
                 input.readMessage(game.proto.data.Formation.parser(), extensionRegistry));
@@ -314,10 +336,13 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
         collectTitle_.makeImmutable(); // C
       }
-      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+      if (((mutable_bitField0_ & 0x00000002) != 0)) {
+        expressId_.makeImmutable(); // C
+      }
+      if (((mutable_bitField0_ & 0x00000008) != 0)) {
         fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
       }
-      if (((mutable_bitField0_ & 0x00000020) != 0)) {
+      if (((mutable_bitField0_ & 0x00000040) != 0)) {
         formation_ = java.util.Collections.unmodifiableList(formation_);
       }
       this.unknownFields = unknownFields.build();
@@ -809,6 +834,46 @@ private static final long serialVersionUID = 0L;
   public game.proto.data.ExpressInfoOrBuilder getExpressInfoOrBuilder() {
     return getExpressInfo();
   }
+
+  public static final int EXPRESSID_FIELD_NUMBER = 311;
+  private com.google.protobuf.Internal.IntList expressId_;
+  /**
+   * <pre>
+   * 跑镖列表
+   * </pre>
+   *
+   * <code>repeated int32 expressId = 311;</code>
+   * @return A list containing the expressId.
+   */
+  @java.lang.Override
+  public java.util.List<java.lang.Integer>
+      getExpressIdList() {
+    return expressId_;
+  }
+  /**
+   * <pre>
+   * 跑镖列表
+   * </pre>
+   *
+   * <code>repeated int32 expressId = 311;</code>
+   * @return The count of expressId.
+   */
+  public int getExpressIdCount() {
+    return expressId_.size();
+  }
+  /**
+   * <pre>
+   * 跑镖列表
+   * </pre>
+   *
+   * <code>repeated int32 expressId = 311;</code>
+   * @param index The index of the element to return.
+   * @return The expressId at the given index.
+   */
+  public int getExpressId(int index) {
+    return expressId_.getInt(index);
+  }
+  private int expressIdMemoizedSerializedSize = -1;
 
   public static final int HERO_FIELD_NUMBER = 401;
   private static final class HeroDefaultEntryHolder {
@@ -1407,6 +1472,13 @@ private static final long serialVersionUID = 0L;
     if (expressInfo_ != null) {
       output.writeMessage(310, getExpressInfo());
     }
+    if (getExpressIdList().size() > 0) {
+      output.writeUInt32NoTag(2490);
+      output.writeUInt32NoTag(expressIdMemoizedSerializedSize);
+    }
+    for (int i = 0; i < expressId_.size(); i++) {
+      output.writeInt32NoTag(expressId_.getInt(i));
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -1537,6 +1609,20 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(310, getExpressInfo());
     }
+    {
+      int dataSize = 0;
+      for (int i = 0; i < expressId_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(expressId_.getInt(i));
+      }
+      size += dataSize;
+      if (!getExpressIdList().isEmpty()) {
+        size += 2;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      expressIdMemoizedSerializedSize = dataSize;
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.PlayerHero> entry
          : internalGetHero().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.PlayerHero>
@@ -1662,6 +1748,8 @@ private static final long serialVersionUID = 0L;
       if (!getExpressInfo()
           .equals(other.getExpressInfo())) return false;
     }
+    if (!getExpressIdList()
+        .equals(other.getExpressIdList())) return false;
     if (!internalGetHero().equals(
         other.internalGetHero())) return false;
     if (!getFightInfoList()
@@ -1745,6 +1833,10 @@ private static final long serialVersionUID = 0L;
     if (hasExpressInfo()) {
       hash = (37 * hash) + EXPRESSINFO_FIELD_NUMBER;
       hash = (53 * hash) + getExpressInfo().hashCode();
+    }
+    if (getExpressIdCount() > 0) {
+      hash = (37 * hash) + EXPRESSID_FIELD_NUMBER;
+      hash = (53 * hash) + getExpressIdList().hashCode();
     }
     if (!internalGetHero().getMap().isEmpty()) {
       hash = (37 * hash) + HERO_FIELD_NUMBER;
@@ -2003,10 +2095,12 @@ private static final long serialVersionUID = 0L;
         expressInfo_ = null;
         expressInfoBuilder_ = null;
       }
+      expressId_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000002);
       internalGetMutableHero().clear();
       if (fightInfoBuilder_ == null) {
         fightInfo_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
       } else {
         fightInfoBuilder_.clear();
       }
@@ -2026,7 +2120,7 @@ private static final long serialVersionUID = 0L;
       internalGetMutableBank().clear();
       if (formationBuilder_ == null) {
         formation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
       } else {
         formationBuilder_.clear();
       }
@@ -2099,12 +2193,17 @@ private static final long serialVersionUID = 0L;
       } else {
         result.expressInfo_ = expressInfoBuilder_.build();
       }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        expressId_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000002);
+      }
+      result.expressId_ = expressId_;
       result.hero_ = internalGetHero();
       result.hero_.makeImmutable();
       if (fightInfoBuilder_ == null) {
-        if (((bitField0_ & 0x00000004) != 0)) {
+        if (((bitField0_ & 0x00000008) != 0)) {
           fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000008);
         }
         result.fightInfo_ = fightInfo_;
       } else {
@@ -2123,9 +2222,9 @@ private static final long serialVersionUID = 0L;
       result.bank_ = internalGetBank();
       result.bank_.makeImmutable();
       if (formationBuilder_ == null) {
-        if (((bitField0_ & 0x00000020) != 0)) {
+        if (((bitField0_ & 0x00000040) != 0)) {
           formation_ = java.util.Collections.unmodifiableList(formation_);
-          bitField0_ = (bitField0_ & ~0x00000020);
+          bitField0_ = (bitField0_ & ~0x00000040);
         }
         result.formation_ = formation_;
       } else {
@@ -2245,13 +2344,23 @@ private static final long serialVersionUID = 0L;
       if (other.hasExpressInfo()) {
         mergeExpressInfo(other.getExpressInfo());
       }
+      if (!other.expressId_.isEmpty()) {
+        if (expressId_.isEmpty()) {
+          expressId_ = other.expressId_;
+          bitField0_ = (bitField0_ & ~0x00000002);
+        } else {
+          ensureExpressIdIsMutable();
+          expressId_.addAll(other.expressId_);
+        }
+        onChanged();
+      }
       internalGetMutableHero().mergeFrom(
           other.internalGetHero());
       if (fightInfoBuilder_ == null) {
         if (!other.fightInfo_.isEmpty()) {
           if (fightInfo_.isEmpty()) {
             fightInfo_ = other.fightInfo_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
           } else {
             ensureFightInfoIsMutable();
             fightInfo_.addAll(other.fightInfo_);
@@ -2264,7 +2373,7 @@ private static final long serialVersionUID = 0L;
             fightInfoBuilder_.dispose();
             fightInfoBuilder_ = null;
             fightInfo_ = other.fightInfo_;
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000008);
             fightInfoBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getFightInfoFieldBuilder() : null;
@@ -2293,7 +2402,7 @@ private static final long serialVersionUID = 0L;
         if (!other.formation_.isEmpty()) {
           if (formation_.isEmpty()) {
             formation_ = other.formation_;
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000040);
           } else {
             ensureFormationIsMutable();
             formation_.addAll(other.formation_);
@@ -2306,7 +2415,7 @@ private static final long serialVersionUID = 0L;
             formationBuilder_.dispose();
             formationBuilder_ = null;
             formation_ = other.formation_;
-            bitField0_ = (bitField0_ & ~0x00000020);
+            bitField0_ = (bitField0_ & ~0x00000040);
             formationBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getFormationFieldBuilder() : null;
@@ -3735,6 +3844,113 @@ private static final long serialVersionUID = 0L;
       return expressInfoBuilder_;
     }
 
+    private com.google.protobuf.Internal.IntList expressId_ = emptyIntList();
+    private void ensureExpressIdIsMutable() {
+      if (!((bitField0_ & 0x00000002) != 0)) {
+        expressId_ = mutableCopy(expressId_);
+        bitField0_ |= 0x00000002;
+       }
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @return A list containing the expressId.
+     */
+    public java.util.List<java.lang.Integer>
+        getExpressIdList() {
+      return ((bitField0_ & 0x00000002) != 0) ?
+               java.util.Collections.unmodifiableList(expressId_) : expressId_;
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @return The count of expressId.
+     */
+    public int getExpressIdCount() {
+      return expressId_.size();
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @param index The index of the element to return.
+     * @return The expressId at the given index.
+     */
+    public int getExpressId(int index) {
+      return expressId_.getInt(index);
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @param index The index to set the value at.
+     * @param value The expressId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpressId(
+        int index, int value) {
+      ensureExpressIdIsMutable();
+      expressId_.setInt(index, value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @param value The expressId to add.
+     * @return This builder for chaining.
+     */
+    public Builder addExpressId(int value) {
+      ensureExpressIdIsMutable();
+      expressId_.addInt(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @param values The expressId to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllExpressId(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensureExpressIdIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, expressId_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖列表
+     * </pre>
+     *
+     * <code>repeated int32 expressId = 311;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExpressId() {
+      expressId_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000002);
+      onChanged();
+      return this;
+    }
+
     private com.google.protobuf.MapField<
         java.lang.Integer, game.proto.data.PlayerHero> hero_;
     private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.PlayerHero>
@@ -3894,9 +4110,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<game.proto.data.FightEnemyInfo> fightInfo_ =
       java.util.Collections.emptyList();
     private void ensureFightInfoIsMutable() {
-      if (!((bitField0_ & 0x00000004) != 0)) {
+      if (!((bitField0_ & 0x00000008) != 0)) {
         fightInfo_ = new java.util.ArrayList<game.proto.data.FightEnemyInfo>(fightInfo_);
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
        }
     }
 
@@ -4090,7 +4306,7 @@ private static final long serialVersionUID = 0L;
     public Builder clearFightInfo() {
       if (fightInfoBuilder_ == null) {
         fightInfo_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         onChanged();
       } else {
         fightInfoBuilder_.clear();
@@ -4195,7 +4411,7 @@ private static final long serialVersionUID = 0L;
         fightInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             game.proto.data.FightEnemyInfo, game.proto.data.FightEnemyInfo.Builder, game.proto.data.FightEnemyInfoOrBuilder>(
                 fightInfo_,
-                ((bitField0_ & 0x00000004) != 0),
+                ((bitField0_ & 0x00000008) != 0),
                 getParentForChildren(),
                 isClean());
         fightInfo_ = null;
@@ -4802,9 +5018,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<game.proto.data.Formation> formation_ =
       java.util.Collections.emptyList();
     private void ensureFormationIsMutable() {
-      if (!((bitField0_ & 0x00000020) != 0)) {
+      if (!((bitField0_ & 0x00000040) != 0)) {
         formation_ = new java.util.ArrayList<game.proto.data.Formation>(formation_);
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
        }
     }
 
@@ -4998,7 +5214,7 @@ private static final long serialVersionUID = 0L;
     public Builder clearFormation() {
       if (formationBuilder_ == null) {
         formation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         onChanged();
       } else {
         formationBuilder_.clear();
@@ -5103,7 +5319,7 @@ private static final long serialVersionUID = 0L;
         formationBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             game.proto.data.Formation, game.proto.data.Formation.Builder, game.proto.data.FormationOrBuilder>(
                 formation_,
-                ((bitField0_ & 0x00000020) != 0),
+                ((bitField0_ & 0x00000040) != 0),
                 getParentForChildren(),
                 isClean());
         formation_ = null;

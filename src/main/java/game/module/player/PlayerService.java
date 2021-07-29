@@ -14,7 +14,6 @@ import game.proto.no.No;
  */
 public class PlayerService {
 
-
     /**
      * 开始新功能
      *
@@ -25,6 +24,17 @@ public class PlayerService {
         player.pd.setOpenFeature(player.pd.getOpenFeature() | featureEnum.id);
         player.send(No.FeatureOpenPush, FeatureOpenPush.newBuilder()
                 .setId(featureEnum.id).build());
+    }
+
+    /**
+     * 是否开始某项功能
+     *
+     * @param player
+     * @param featureEnum
+     * @return
+     */
+    public static boolean isOpenFeature(Player player, FeatureEnum featureEnum) {
+        return (player.pd.getOpenFeature() & 1 << featureEnum.id) != 0;
     }
 
     /**

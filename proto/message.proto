@@ -452,5 +452,8 @@ message ExpressCompleteReq{
 
 }
 message ExpressCompleteRes{
-
+}
+// 跑镖信息
+message ExpressInfoRes{
+    repeated int32 info = 1;
 }

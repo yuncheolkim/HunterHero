@@ -14,7 +14,7 @@ import org.joda.time.DateTimeUtils;
  */
 public enum Counter {
     /**
-     * Express count
+     * 跑镖次数
      */
     EXPRESS(CounterTime.AT_0) {
         @Override
@@ -39,6 +39,32 @@ public enum Counter {
             return false;
 
         }
+    },
+
+    /**
+     * 跑镖刷新
+     */
+    EXPRESS_INFO(CounterTime.AT_0) {
+        @Override
+        public boolean Reduce(Player player, int count) {
+            GameCount.Builder countBuilder = player.D.getCountBuilder();
+            GameCountInfo.Builder express = countBuilder.getExpressBuilder();
+            refresh(express);
+
+            if (express.getCount() >= count) {
+                express.setCount(express.getCount() - count);
+                countBuilder.setExpress(express);
+                return true;
+            }
+
+            return false;
+        }
+
+        @Override
+        protected int init() {
+            return 1;
+        }
+
     };
 
     /**
@@ -59,9 +85,7 @@ public enum Counter {
         return Reduce(player, 1);
     }
 
-    public boolean Reduce(Player player, int count) {
-        return false;
-    }
+    public abstract boolean Reduce(Player player, int count);
 
     /**
      * 更新数据

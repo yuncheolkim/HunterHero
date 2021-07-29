@@ -40,6 +40,9 @@ message PlayerData {
     Resource resource = 301;
     // 跑镖信息
     ExpressInfo expressInfo = 310;
+    // 跑镖列表
+    repeated int32 expressId = 311;
+
     // 英雄信息
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息

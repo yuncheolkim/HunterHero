@@ -61,6 +61,19 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 18: {
+            game.proto.back.GameCountInfo.Builder subBuilder = null;
+            if (expressCount_ != null) {
+              subBuilder = expressCount_.toBuilder();
+            }
+            expressCount_ = input.readMessage(game.proto.back.GameCountInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(expressCount_);
+              expressCount_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -131,6 +144,44 @@ private static final long serialVersionUID = 0L;
     return getExpress();
   }
 
+  public static final int EXPRESSCOUNT_FIELD_NUMBER = 2;
+  private game.proto.back.GameCountInfo expressCount_;
+  /**
+   * <pre>
+   * 跑镖刷新
+   * </pre>
+   *
+   * <code>.Message.GameCountInfo expressCount = 2;</code>
+   * @return Whether the expressCount field is set.
+   */
+  @java.lang.Override
+  public boolean hasExpressCount() {
+    return expressCount_ != null;
+  }
+  /**
+   * <pre>
+   * 跑镖刷新
+   * </pre>
+   *
+   * <code>.Message.GameCountInfo expressCount = 2;</code>
+   * @return The expressCount.
+   */
+  @java.lang.Override
+  public game.proto.back.GameCountInfo getExpressCount() {
+    return expressCount_ == null ? game.proto.back.GameCountInfo.getDefaultInstance() : expressCount_;
+  }
+  /**
+   * <pre>
+   * 跑镖刷新
+   * </pre>
+   *
+   * <code>.Message.GameCountInfo expressCount = 2;</code>
+   */
+  @java.lang.Override
+  public game.proto.back.GameCountInfoOrBuilder getExpressCountOrBuilder() {
+    return getExpressCount();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -148,6 +199,9 @@ private static final long serialVersionUID = 0L;
     if (express_ != null) {
       output.writeMessage(1, getExpress());
     }
+    if (expressCount_ != null) {
+      output.writeMessage(2, getExpressCount());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -160,6 +214,10 @@ private static final long serialVersionUID = 0L;
     if (express_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getExpress());
+    }
+    if (expressCount_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(2, getExpressCount());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -181,6 +239,11 @@ private static final long serialVersionUID = 0L;
       if (!getExpress()
           .equals(other.getExpress())) return false;
     }
+    if (hasExpressCount() != other.hasExpressCount()) return false;
+    if (hasExpressCount()) {
+      if (!getExpressCount()
+          .equals(other.getExpressCount())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -195,6 +258,10 @@ private static final long serialVersionUID = 0L;
     if (hasExpress()) {
       hash = (37 * hash) + EXPRESS_FIELD_NUMBER;
       hash = (53 * hash) + getExpress().hashCode();
+    }
+    if (hasExpressCount()) {
+      hash = (37 * hash) + EXPRESSCOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + getExpressCount().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -335,6 +402,12 @@ private static final long serialVersionUID = 0L;
         express_ = null;
         expressBuilder_ = null;
       }
+      if (expressCountBuilder_ == null) {
+        expressCount_ = null;
+      } else {
+        expressCount_ = null;
+        expressCountBuilder_ = null;
+      }
       return this;
     }
 
@@ -365,6 +438,11 @@ private static final long serialVersionUID = 0L;
         result.express_ = express_;
       } else {
         result.express_ = expressBuilder_.build();
+      }
+      if (expressCountBuilder_ == null) {
+        result.expressCount_ = expressCount_;
+      } else {
+        result.expressCount_ = expressCountBuilder_.build();
       }
       onBuilt();
       return result;
@@ -416,6 +494,9 @@ private static final long serialVersionUID = 0L;
       if (other == game.proto.back.GameCount.getDefaultInstance()) return this;
       if (other.hasExpress()) {
         mergeExpress(other.getExpress());
+      }
+      if (other.hasExpressCount()) {
+        mergeExpressCount(other.getExpressCount());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -599,6 +680,161 @@ private static final long serialVersionUID = 0L;
         express_ = null;
       }
       return expressBuilder_;
+    }
+
+    private game.proto.back.GameCountInfo expressCount_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.back.GameCountInfo, game.proto.back.GameCountInfo.Builder, game.proto.back.GameCountInfoOrBuilder> expressCountBuilder_;
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     * @return Whether the expressCount field is set.
+     */
+    public boolean hasExpressCount() {
+      return expressCountBuilder_ != null || expressCount_ != null;
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     * @return The expressCount.
+     */
+    public game.proto.back.GameCountInfo getExpressCount() {
+      if (expressCountBuilder_ == null) {
+        return expressCount_ == null ? game.proto.back.GameCountInfo.getDefaultInstance() : expressCount_;
+      } else {
+        return expressCountBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    public Builder setExpressCount(game.proto.back.GameCountInfo value) {
+      if (expressCountBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        expressCount_ = value;
+        onChanged();
+      } else {
+        expressCountBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    public Builder setExpressCount(
+        game.proto.back.GameCountInfo.Builder builderForValue) {
+      if (expressCountBuilder_ == null) {
+        expressCount_ = builderForValue.build();
+        onChanged();
+      } else {
+        expressCountBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    public Builder mergeExpressCount(game.proto.back.GameCountInfo value) {
+      if (expressCountBuilder_ == null) {
+        if (expressCount_ != null) {
+          expressCount_ =
+            game.proto.back.GameCountInfo.newBuilder(expressCount_).mergeFrom(value).buildPartial();
+        } else {
+          expressCount_ = value;
+        }
+        onChanged();
+      } else {
+        expressCountBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    public Builder clearExpressCount() {
+      if (expressCountBuilder_ == null) {
+        expressCount_ = null;
+        onChanged();
+      } else {
+        expressCount_ = null;
+        expressCountBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    public game.proto.back.GameCountInfo.Builder getExpressCountBuilder() {
+      
+      onChanged();
+      return getExpressCountFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    public game.proto.back.GameCountInfoOrBuilder getExpressCountOrBuilder() {
+      if (expressCountBuilder_ != null) {
+        return expressCountBuilder_.getMessageOrBuilder();
+      } else {
+        return expressCount_ == null ?
+            game.proto.back.GameCountInfo.getDefaultInstance() : expressCount_;
+      }
+    }
+    /**
+     * <pre>
+     * 跑镖刷新
+     * </pre>
+     *
+     * <code>.Message.GameCountInfo expressCount = 2;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.back.GameCountInfo, game.proto.back.GameCountInfo.Builder, game.proto.back.GameCountInfoOrBuilder> 
+        getExpressCountFieldBuilder() {
+      if (expressCountBuilder_ == null) {
+        expressCountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.back.GameCountInfo, game.proto.back.GameCountInfo.Builder, game.proto.back.GameCountInfoOrBuilder>(
+                getExpressCount(),
+                getParentForChildren(),
+                isClean());
+        expressCount_ = null;
+      }
+      return expressCountBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

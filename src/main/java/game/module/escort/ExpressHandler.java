@@ -11,6 +11,7 @@ import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.ExpressCompleteReq;
 import game.proto.ExpressCompleteRes;
+import game.proto.ExpressInfoRes;
 import game.proto.ExpressStartRqRs;
 import game.proto.data.ExpressInfo;
 
@@ -22,6 +23,13 @@ import game.proto.data.ExpressInfo;
  */
 public class ExpressHandler {
 
+    public static ExpressInfoRes info(final Player player) {
+
+
+        return null;
+    }
+
+
     /**
      * 开始跑镖
      *
@@ -31,7 +39,7 @@ public class ExpressHandler {
     public static ExpressStartRqRs start(final Player player, final ExpressStartRqRs req) {
         ModuleAssert.isFalse(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
         final ExpressConfigData data = ConfigManager.expressDataBox.findById(req.getId());
-        EvilAssert.notNull(data, "不存的跑镖配置");
+        EvilAssert.notNull(data, "不存在跑镖配置");
         // 检查次数
         ModuleAssert.isTrue(Counter.EXPRESS.Reduce(player), ErrorEnum.ERR_9);
 

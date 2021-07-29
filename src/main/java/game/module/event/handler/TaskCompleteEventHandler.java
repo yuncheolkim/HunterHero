@@ -20,6 +20,7 @@ public class TaskCompleteEventHandler implements IPlayerEventHandler<TaskComplet
         switch (data.taskId) {
             case 4:
                 player.pd.setSkillFishLevel(1);
+                // 开启钓鱼
                 PlayerService.openFeature(player, FeatureEnum.钓鱼);
                 break;
             case 22:

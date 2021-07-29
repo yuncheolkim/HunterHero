@@ -33,4 +33,31 @@ public interface GameCountOrBuilder extends
    * <code>.Message.GameCountInfo express = 1;</code>
    */
   game.proto.back.GameCountInfoOrBuilder getExpressOrBuilder();
+
+  /**
+   * <pre>
+   * 跑镖刷新
+   * </pre>
+   *
+   * <code>.Message.GameCountInfo expressCount = 2;</code>
+   * @return Whether the expressCount field is set.
+   */
+  boolean hasExpressCount();
+  /**
+   * <pre>
+   * 跑镖刷新
+   * </pre>
+   *
+   * <code>.Message.GameCountInfo expressCount = 2;</code>
+   * @return The expressCount.
+   */
+  game.proto.back.GameCountInfo getExpressCount();
+  /**
+   * <pre>
+   * 跑镖刷新
+   * </pre>
+   *
+   * <code>.Message.GameCountInfo expressCount = 2;</code>
+   */
+  game.proto.back.GameCountInfoOrBuilder getExpressCountOrBuilder();
 }

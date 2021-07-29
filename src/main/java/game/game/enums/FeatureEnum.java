@@ -7,6 +7,7 @@ package game.game.enums;
 public enum FeatureEnum {
     银行(0),
     钓鱼(1),
+    跑镖(2),
     ;
 
     public final int id;

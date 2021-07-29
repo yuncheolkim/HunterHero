@@ -283,6 +283,35 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 跑镖列表
+   * </pre>
+   *
+   * <code>repeated int32 expressId = 311;</code>
+   * @return A list containing the expressId.
+   */
+  java.util.List<java.lang.Integer> getExpressIdList();
+  /**
+   * <pre>
+   * 跑镖列表
+   * </pre>
+   *
+   * <code>repeated int32 expressId = 311;</code>
+   * @return The count of expressId.
+   */
+  int getExpressIdCount();
+  /**
+   * <pre>
+   * 跑镖列表
+   * </pre>
+   *
+   * <code>repeated int32 expressId = 311;</code>
+   * @param index The index of the element to return.
+   * @return The expressId at the given index.
+   */
+  int getExpressId(int index);
+
+  /**
+   * <pre>
    * 英雄信息
    * </pre>
    *
