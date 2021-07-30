@@ -11,8 +11,10 @@ public enum FeatureEnum {
     ;
 
     public final int id;
+    public final int index;
 
     FeatureEnum(int i) {
+        index = i;
         id = 1 << i;
     }
 }

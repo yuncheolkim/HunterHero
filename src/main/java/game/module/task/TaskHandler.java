@@ -227,9 +227,9 @@ public class TaskHandler {
     public static TaskNpcRes TaskNpcReq(final Player player, final TaskNpcReq req) {
         final Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
 
+        final TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
+        builder.setNpcId(req.getNpcId());
         if (npcTask != null && !npcTask.isEmpty()) {
-            final TaskNpcRes.Builder builder = TaskNpcRes.newBuilder();
-            builder.setNpcId(req.getNpcId());
             final Map<Integer, Boolean> completeTaskMap = player.D.getCompleteTaskMap();
             for (final DataConfigData data : npcTask) {
                 if (data.level > player.pd.getLevel()) {
@@ -259,18 +259,16 @@ public class TaskHandler {
                 }
             }
 
-            for (final RunTask value : player.pd.getTaskBuilder().getRunTaskMap().values()) {
-                if (value.getComplete()) {
-                    final DataConfigData task = G.C.getTask(value.getTaskId());
-                    if (task.completeNpcId == req.getNpcId()) {
-                        builder.putRunTask(value.getTaskId(), value);
-                    }
+        }
+        for (final RunTask value : player.pd.getTaskBuilder().getRunTaskMap().values()) {
+            if (value.getComplete()) {
+                final DataConfigData task = G.C.getTask(value.getTaskId());
+                if (task.completeNpcId == req.getNpcId()) {
+                    builder.putRunTask(value.getTaskId(), value);
                 }
             }
-            return builder.build();
         }
-
-        return null;
+        return builder.build();
     }
 
     /**
