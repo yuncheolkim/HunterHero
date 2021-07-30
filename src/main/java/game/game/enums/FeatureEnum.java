@@ -8,9 +8,11 @@ public enum FeatureEnum {
     银行(0),
     钓鱼(1),
     跑镖(2),
+    家园(3),
     ;
 
     public final int id;
+
     public final int index;
 
     FeatureEnum(int i) {

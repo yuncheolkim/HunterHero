@@ -17,8 +17,6 @@ message PlayerData {
     int64 hotelCd = 10;
     // 回城旅店位置id
     int32 hotelId = 11;
-    // vip等级
-    int32 vipLevel = 12;
     // 收集的称谓
     repeated int32 collectTitle = 13;
     // Fish
@@ -29,6 +27,10 @@ message PlayerData {
     int32 battleId = 16;
     // NpcShowEnum 显示与否npc
     int32 showNpc = 17;
+    // vip等级
+    int32 vipLevel = 18;
+    // vip经验
+    int32 vipExp = 19;
     // 功能开启标记
     // 1:银行
     int32 openFeature = 100;
@@ -42,7 +44,6 @@ message PlayerData {
     ExpressInfo expressInfo = 310;
     // 跑镖列表
     repeated int32 expressId = 311;
-
     // 英雄信息
     map<int32, PlayerHero> hero = 401;
     // 战斗中的信息
@@ -65,8 +66,47 @@ message PlayerData {
     int32 defaultFormationIndex = 702;
     // 竞技场防守阵型id
     int32 arenaFormationIndex = 703;
+    // 家园
+    HomeData homeData = 801;
 
 }
+// 家园数据
+message HomeData{
+    int32 level = 1;
+    string name = 2;
+    int32 exp = 3;
+    HomeRect rect = 4;// 当前开启区域
+    repeated HomePosData mapData = 10;
+}
+
+// 地图中位置信息
+message HomePosData{
+    int32 pos = 1;// |---16:x ---|--- 16:y ---|
+    int32 id = 2;
+    HomeType type = 3;
+    bytes body = 10;// 对应不同类型不同数据结构
+}
+
+
+// 农作物
+message HomeFarm{
+    int64 time = 1;
+
+}
+// 建筑物
+message HomeBuild{
+    int32 x = 1;
+    int32 y = 2;
+}
+
+// 开启区域
+message HomeRect{
+    int32 x = 1;
+    int32 y = 2;
+    int32 w = 3;
+    int32 h = 4;
+}
+
 // 法阵
 message FormationEnhance{
 
@@ -369,4 +409,12 @@ enum FightSide{
     FS_NONE = 0;
     FS_A = 1;
     FS_B = 2;
+}
+
+enum HomeType{
+    H_NONE = 0; // 空地
+    H_SOLID = 1; // 固定物体
+    H_FARM = 2; // 农作物
+    H_BUILD = 3; // 建筑物
+    H_OWEN = 4; // 所属类型,如建筑物
 }

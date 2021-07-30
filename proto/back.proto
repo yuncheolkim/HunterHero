@@ -38,6 +38,10 @@ message FishData{
     int32 id = 1;
 }
 
+message VipData{
+
+}
+
 enum FightType{
     F_NONE = 0;
     F_BATTLE = 1;// 野外战斗

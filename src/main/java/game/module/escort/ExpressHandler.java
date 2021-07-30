@@ -51,8 +51,10 @@ public class ExpressHandler {
                     return expressConfigData.level <= player.getLevel();
                 }).stream().map(expressConfigData -> expressConfigData.id).collect(Collectors.toList());
 
+                player.pd.addAllExpressId(all);
                 builder.addAllInfo(all);
                 player.send(No.ExpressOpenReq, builder.buildPartial());
+                return;
             }
         }
 

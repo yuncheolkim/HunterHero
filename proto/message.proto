@@ -459,3 +459,22 @@ message ExpressInfoRes{
     repeated int32 info = 2;
 
 }
+///////////////////////////////////////////////  Home
+
+// 区域
+message HomeOpenRectReq{
+    int32 id = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
