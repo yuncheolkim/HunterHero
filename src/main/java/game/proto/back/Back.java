@@ -44,6 +44,11 @@ public final class Back {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FishData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_VipData_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_VipData_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -68,9 +73,9 @@ public final class Back {
       "o\022\r\n\005count\030\001 \001(\r\022\022\n\nupdateTime\030\002 \001(\004\"V\n\010" +
       "SaveData\022)\n\010backData\030\001 \001(\0132\027.Message.Pla" +
       "yerBackData\022\037\n\002pd\030\002 \001(\0132\023.Message.Player" +
-      "Data\"\026\n\010FishData\022\n\n\002id\030\001 \001(\005*%\n\tFightTyp" +
-      "e\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017game.prot" +
-      "o.backH\001P\001b\006proto3"
+      "Data\"\026\n\010FishData\022\n\n\002id\030\001 \001(\005\"\t\n\007VipData*" +
+      "%\n\tFightType\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025" +
+      "\n\017game.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -113,6 +118,12 @@ public final class Back {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishData_descriptor,
         new java.lang.String[] { "Id", });
+    internal_static_Message_VipData_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_Message_VipData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_VipData_descriptor,
+        new java.lang.String[] { });
     game.proto.data.Data.getDescriptor();
   }
 

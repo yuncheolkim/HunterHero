@@ -85,16 +85,6 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
-   * vip等级
-   * </pre>
-   *
-   * <code>int32 vipLevel = 12;</code>
-   * @return The vipLevel.
-   */
-  int getVipLevel();
-
-  /**
-   * <pre>
    * 收集的称谓
    * </pre>
    *
@@ -161,6 +151,26 @@ public interface PlayerDataOrBuilder extends
    * @return The showNpc.
    */
   int getShowNpc();
+
+  /**
+   * <pre>
+   * vip等级
+   * </pre>
+   *
+   * <code>int32 vipLevel = 18;</code>
+   * @return The vipLevel.
+   */
+  int getVipLevel();
+
+  /**
+   * <pre>
+   * vip经验
+   * </pre>
+   *
+   * <code>int32 vipExp = 19;</code>
+   * @return The vipExp.
+   */
+  int getVipExp();
 
   /**
    * <pre>
@@ -256,7 +266,7 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
-   * 跑镖信息
+   * 当前跑镖信息
    * </pre>
    *
    * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -265,7 +275,7 @@ public interface PlayerDataOrBuilder extends
   boolean hasExpressInfo();
   /**
    * <pre>
-   * 跑镖信息
+   * 当前跑镖信息
    * </pre>
    *
    * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -274,7 +284,7 @@ public interface PlayerDataOrBuilder extends
   game.proto.data.ExpressInfo getExpressInfo();
   /**
    * <pre>
-   * 跑镖信息
+   * 当前跑镖信息
    * </pre>
    *
    * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -636,4 +646,31 @@ public interface PlayerDataOrBuilder extends
    * @return The arenaFormationIndex.
    */
   int getArenaFormationIndex();
+
+  /**
+   * <pre>
+   * 家园
+   * </pre>
+   *
+   * <code>.Message.HomeData homeData = 801;</code>
+   * @return Whether the homeData field is set.
+   */
+  boolean hasHomeData();
+  /**
+   * <pre>
+   * 家园
+   * </pre>
+   *
+   * <code>.Message.HomeData homeData = 801;</code>
+   * @return The homeData.
+   */
+  game.proto.data.HomeData getHomeData();
+  /**
+   * <pre>
+   * 家园
+   * </pre>
+   *
+   * <code>.Message.HomeData homeData = 801;</code>
+   */
+  game.proto.data.HomeDataOrBuilder getHomeDataOrBuilder();
 }

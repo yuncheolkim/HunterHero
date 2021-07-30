@@ -99,11 +99,6 @@ private static final long serialVersionUID = 0L;
             hotelId_ = input.readInt32();
             break;
           }
-          case 96: {
-
-            vipLevel_ = input.readInt32();
-            break;
-          }
           case 104: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               collectTitle_ = newIntList();
@@ -143,6 +138,16 @@ private static final long serialVersionUID = 0L;
           case 136: {
 
             showNpc_ = input.readInt32();
+            break;
+          }
+          case 144: {
+
+            vipLevel_ = input.readInt32();
+            break;
+          }
+          case 152: {
+
+            vipExp_ = input.readInt32();
             break;
           }
           case 800: {
@@ -316,6 +321,19 @@ private static final long serialVersionUID = 0L;
           case 5624: {
 
             arenaFormationIndex_ = input.readInt32();
+            break;
+          }
+          case 6410: {
+            game.proto.data.HomeData.Builder subBuilder = null;
+            if (homeData_ != null) {
+              subBuilder = homeData_.toBuilder();
+            }
+            homeData_ = input.readMessage(game.proto.data.HomeData.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(homeData_);
+              homeData_ = subBuilder.buildPartial();
+            }
+
             break;
           }
           default: {
@@ -552,21 +570,6 @@ private static final long serialVersionUID = 0L;
     return hotelId_;
   }
 
-  public static final int VIPLEVEL_FIELD_NUMBER = 12;
-  private int vipLevel_;
-  /**
-   * <pre>
-   * vip等级
-   * </pre>
-   *
-   * <code>int32 vipLevel = 12;</code>
-   * @return The vipLevel.
-   */
-  @java.lang.Override
-  public int getVipLevel() {
-    return vipLevel_;
-  }
-
   public static final int COLLECTTITLE_FIELD_NUMBER = 13;
   private com.google.protobuf.Internal.IntList collectTitle_;
   /**
@@ -665,6 +668,36 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getShowNpc() {
     return showNpc_;
+  }
+
+  public static final int VIPLEVEL_FIELD_NUMBER = 18;
+  private int vipLevel_;
+  /**
+   * <pre>
+   * vip等级
+   * </pre>
+   *
+   * <code>int32 vipLevel = 18;</code>
+   * @return The vipLevel.
+   */
+  @java.lang.Override
+  public int getVipLevel() {
+    return vipLevel_;
+  }
+
+  public static final int VIPEXP_FIELD_NUMBER = 19;
+  private int vipExp_;
+  /**
+   * <pre>
+   * vip经验
+   * </pre>
+   *
+   * <code>int32 vipExp = 19;</code>
+   * @return The vipExp.
+   */
+  @java.lang.Override
+  public int getVipExp() {
+    return vipExp_;
   }
 
   public static final int OPENFEATURE_FIELD_NUMBER = 100;
@@ -801,7 +834,7 @@ private static final long serialVersionUID = 0L;
   private game.proto.data.ExpressInfo expressInfo_;
   /**
    * <pre>
-   * 跑镖信息
+   * 当前跑镖信息
    * </pre>
    *
    * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -813,7 +846,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 跑镖信息
+   * 当前跑镖信息
    * </pre>
    *
    * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -825,7 +858,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 跑镖信息
+   * 当前跑镖信息
    * </pre>
    *
    * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -1399,6 +1432,44 @@ private static final long serialVersionUID = 0L;
     return arenaFormationIndex_;
   }
 
+  public static final int HOMEDATA_FIELD_NUMBER = 801;
+  private game.proto.data.HomeData homeData_;
+  /**
+   * <pre>
+   * 家园
+   * </pre>
+   *
+   * <code>.Message.HomeData homeData = 801;</code>
+   * @return Whether the homeData field is set.
+   */
+  @java.lang.Override
+  public boolean hasHomeData() {
+    return homeData_ != null;
+  }
+  /**
+   * <pre>
+   * 家园
+   * </pre>
+   *
+   * <code>.Message.HomeData homeData = 801;</code>
+   * @return The homeData.
+   */
+  @java.lang.Override
+  public game.proto.data.HomeData getHomeData() {
+    return homeData_ == null ? game.proto.data.HomeData.getDefaultInstance() : homeData_;
+  }
+  /**
+   * <pre>
+   * 家园
+   * </pre>
+   *
+   * <code>.Message.HomeData homeData = 801;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.HomeDataOrBuilder getHomeDataOrBuilder() {
+    return getHomeData();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -1435,9 +1506,6 @@ private static final long serialVersionUID = 0L;
     if (hotelId_ != 0) {
       output.writeInt32(11, hotelId_);
     }
-    if (vipLevel_ != 0) {
-      output.writeInt32(12, vipLevel_);
-    }
     if (getCollectTitleList().size() > 0) {
       output.writeUInt32NoTag(106);
       output.writeUInt32NoTag(collectTitleMemoizedSerializedSize);
@@ -1456,6 +1524,12 @@ private static final long serialVersionUID = 0L;
     }
     if (showNpc_ != 0) {
       output.writeInt32(17, showNpc_);
+    }
+    if (vipLevel_ != 0) {
+      output.writeInt32(18, vipLevel_);
+    }
+    if (vipExp_ != 0) {
+      output.writeInt32(19, vipExp_);
     }
     if (openFeature_ != 0) {
       output.writeInt32(100, openFeature_);
@@ -1521,6 +1595,9 @@ private static final long serialVersionUID = 0L;
     if (arenaFormationIndex_ != 0) {
       output.writeInt32(703, arenaFormationIndex_);
     }
+    if (homeData_ != null) {
+      output.writeMessage(801, getHomeData());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -1555,10 +1632,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(11, hotelId_);
     }
-    if (vipLevel_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(12, vipLevel_);
-    }
     {
       int dataSize = 0;
       for (int i = 0; i < collectTitle_.size(); i++) {
@@ -1588,6 +1661,14 @@ private static final long serialVersionUID = 0L;
     if (showNpc_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(17, showNpc_);
+    }
+    if (vipLevel_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(18, vipLevel_);
+    }
+    if (vipExp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(19, vipExp_);
     }
     if (openFeature_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -1685,6 +1766,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(703, arenaFormationIndex_);
     }
+    if (homeData_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(801, getHomeData());
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -1714,8 +1799,6 @@ private static final long serialVersionUID = 0L;
         != other.getHotelCd()) return false;
     if (getHotelId()
         != other.getHotelId()) return false;
-    if (getVipLevel()
-        != other.getVipLevel()) return false;
     if (!getCollectTitleList()
         .equals(other.getCollectTitleList())) return false;
     if (getFishAreaId()
@@ -1726,6 +1809,10 @@ private static final long serialVersionUID = 0L;
         != other.getBattleId()) return false;
     if (getShowNpc()
         != other.getShowNpc()) return false;
+    if (getVipLevel()
+        != other.getVipLevel()) return false;
+    if (getVipExp()
+        != other.getVipExp()) return false;
     if (getOpenFeature()
         != other.getOpenFeature()) return false;
     if (hasTask() != other.hasTask()) return false;
@@ -1775,6 +1862,11 @@ private static final long serialVersionUID = 0L;
         != other.getDefaultFormationIndex()) return false;
     if (getArenaFormationIndex()
         != other.getArenaFormationIndex()) return false;
+    if (hasHomeData() != other.hasHomeData()) return false;
+    if (hasHomeData()) {
+      if (!getHomeData()
+          .equals(other.getHomeData())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -1802,8 +1894,6 @@ private static final long serialVersionUID = 0L;
         getHotelCd());
     hash = (37 * hash) + HOTELID_FIELD_NUMBER;
     hash = (53 * hash) + getHotelId();
-    hash = (37 * hash) + VIPLEVEL_FIELD_NUMBER;
-    hash = (53 * hash) + getVipLevel();
     if (getCollectTitleCount() > 0) {
       hash = (37 * hash) + COLLECTTITLE_FIELD_NUMBER;
       hash = (53 * hash) + getCollectTitleList().hashCode();
@@ -1816,6 +1906,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getBattleId();
     hash = (37 * hash) + SHOWNPC_FIELD_NUMBER;
     hash = (53 * hash) + getShowNpc();
+    hash = (37 * hash) + VIPLEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getVipLevel();
+    hash = (37 * hash) + VIPEXP_FIELD_NUMBER;
+    hash = (53 * hash) + getVipExp();
     hash = (37 * hash) + OPENFEATURE_FIELD_NUMBER;
     hash = (53 * hash) + getOpenFeature();
     if (hasTask()) {
@@ -1873,6 +1967,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDefaultFormationIndex();
     hash = (37 * hash) + ARENAFORMATIONINDEX_FIELD_NUMBER;
     hash = (53 * hash) + getArenaFormationIndex();
+    if (hasHomeData()) {
+      hash = (37 * hash) + HOMEDATA_FIELD_NUMBER;
+      hash = (53 * hash) + getHomeData().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -2057,8 +2155,6 @@ private static final long serialVersionUID = 0L;
 
       hotelId_ = 0;
 
-      vipLevel_ = 0;
-
       collectTitle_ = emptyIntList();
       bitField0_ = (bitField0_ & ~0x00000001);
       fishAreaId_ = 0;
@@ -2068,6 +2164,10 @@ private static final long serialVersionUID = 0L;
       battleId_ = 0;
 
       showNpc_ = 0;
+
+      vipLevel_ = 0;
+
+      vipExp_ = 0;
 
       openFeature_ = 0;
 
@@ -2128,6 +2228,12 @@ private static final long serialVersionUID = 0L;
 
       arenaFormationIndex_ = 0;
 
+      if (homeDataBuilder_ == null) {
+        homeData_ = null;
+      } else {
+        homeData_ = null;
+        homeDataBuilder_ = null;
+      }
       return this;
     }
 
@@ -2162,7 +2268,6 @@ private static final long serialVersionUID = 0L;
       result.level_ = level_;
       result.hotelCd_ = hotelCd_;
       result.hotelId_ = hotelId_;
-      result.vipLevel_ = vipLevel_;
       if (((bitField0_ & 0x00000001) != 0)) {
         collectTitle_.makeImmutable();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -2172,6 +2277,8 @@ private static final long serialVersionUID = 0L;
       result.skillFishLevel_ = skillFishLevel_;
       result.battleId_ = battleId_;
       result.showNpc_ = showNpc_;
+      result.vipLevel_ = vipLevel_;
+      result.vipExp_ = vipExp_;
       result.openFeature_ = openFeature_;
       if (taskBuilder_ == null) {
         result.task_ = task_;
@@ -2232,6 +2339,11 @@ private static final long serialVersionUID = 0L;
       }
       result.defaultFormationIndex_ = defaultFormationIndex_;
       result.arenaFormationIndex_ = arenaFormationIndex_;
+      if (homeDataBuilder_ == null) {
+        result.homeData_ = homeData_;
+      } else {
+        result.homeData_ = homeDataBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -2304,9 +2416,6 @@ private static final long serialVersionUID = 0L;
       if (other.getHotelId() != 0) {
         setHotelId(other.getHotelId());
       }
-      if (other.getVipLevel() != 0) {
-        setVipLevel(other.getVipLevel());
-      }
       if (!other.collectTitle_.isEmpty()) {
         if (collectTitle_.isEmpty()) {
           collectTitle_ = other.collectTitle_;
@@ -2328,6 +2437,12 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getShowNpc() != 0) {
         setShowNpc(other.getShowNpc());
+      }
+      if (other.getVipLevel() != 0) {
+        setVipLevel(other.getVipLevel());
+      }
+      if (other.getVipExp() != 0) {
+        setVipExp(other.getVipExp());
       }
       if (other.getOpenFeature() != 0) {
         setOpenFeature(other.getOpenFeature());
@@ -2429,6 +2544,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getArenaFormationIndex() != 0) {
         setArenaFormationIndex(other.getArenaFormationIndex());
+      }
+      if (other.hasHomeData()) {
+        mergeHomeData(other.getHomeData());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -2856,49 +2974,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int vipLevel_ ;
-    /**
-     * <pre>
-     * vip等级
-     * </pre>
-     *
-     * <code>int32 vipLevel = 12;</code>
-     * @return The vipLevel.
-     */
-    @java.lang.Override
-    public int getVipLevel() {
-      return vipLevel_;
-    }
-    /**
-     * <pre>
-     * vip等级
-     * </pre>
-     *
-     * <code>int32 vipLevel = 12;</code>
-     * @param value The vipLevel to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVipLevel(int value) {
-      
-      vipLevel_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * vip等级
-     * </pre>
-     *
-     * <code>int32 vipLevel = 12;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearVipLevel() {
-      
-      vipLevel_ = 0;
-      onChanged();
-      return this;
-    }
-
     private com.google.protobuf.Internal.IntList collectTitle_ = emptyIntList();
     private void ensureCollectTitleIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
@@ -3174,6 +3249,92 @@ private static final long serialVersionUID = 0L;
     public Builder clearShowNpc() {
       
       showNpc_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int vipLevel_ ;
+    /**
+     * <pre>
+     * vip等级
+     * </pre>
+     *
+     * <code>int32 vipLevel = 18;</code>
+     * @return The vipLevel.
+     */
+    @java.lang.Override
+    public int getVipLevel() {
+      return vipLevel_;
+    }
+    /**
+     * <pre>
+     * vip等级
+     * </pre>
+     *
+     * <code>int32 vipLevel = 18;</code>
+     * @param value The vipLevel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVipLevel(int value) {
+      
+      vipLevel_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * vip等级
+     * </pre>
+     *
+     * <code>int32 vipLevel = 18;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearVipLevel() {
+      
+      vipLevel_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int vipExp_ ;
+    /**
+     * <pre>
+     * vip经验
+     * </pre>
+     *
+     * <code>int32 vipExp = 19;</code>
+     * @return The vipExp.
+     */
+    @java.lang.Override
+    public int getVipExp() {
+      return vipExp_;
+    }
+    /**
+     * <pre>
+     * vip经验
+     * </pre>
+     *
+     * <code>int32 vipExp = 19;</code>
+     * @param value The vipExp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setVipExp(int value) {
+      
+      vipExp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * vip经验
+     * </pre>
+     *
+     * <code>int32 vipExp = 19;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearVipExp() {
+      
+      vipExp_ = 0;
       onChanged();
       return this;
     }
@@ -3694,7 +3855,7 @@ private static final long serialVersionUID = 0L;
         game.proto.data.ExpressInfo, game.proto.data.ExpressInfo.Builder, game.proto.data.ExpressInfoOrBuilder> expressInfoBuilder_;
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3705,7 +3866,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3720,7 +3881,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3740,7 +3901,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3758,7 +3919,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3780,7 +3941,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3798,7 +3959,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3810,7 +3971,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -3825,7 +3986,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 跑镖信息
+     * 当前跑镖信息
      * </pre>
      *
      * <code>.Message.ExpressInfo expressInfo = 310;</code>
@@ -5411,6 +5572,161 @@ private static final long serialVersionUID = 0L;
       arenaFormationIndex_ = 0;
       onChanged();
       return this;
+    }
+
+    private game.proto.data.HomeData homeData_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.HomeData, game.proto.data.HomeData.Builder, game.proto.data.HomeDataOrBuilder> homeDataBuilder_;
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     * @return Whether the homeData field is set.
+     */
+    public boolean hasHomeData() {
+      return homeDataBuilder_ != null || homeData_ != null;
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     * @return The homeData.
+     */
+    public game.proto.data.HomeData getHomeData() {
+      if (homeDataBuilder_ == null) {
+        return homeData_ == null ? game.proto.data.HomeData.getDefaultInstance() : homeData_;
+      } else {
+        return homeDataBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    public Builder setHomeData(game.proto.data.HomeData value) {
+      if (homeDataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        homeData_ = value;
+        onChanged();
+      } else {
+        homeDataBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    public Builder setHomeData(
+        game.proto.data.HomeData.Builder builderForValue) {
+      if (homeDataBuilder_ == null) {
+        homeData_ = builderForValue.build();
+        onChanged();
+      } else {
+        homeDataBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    public Builder mergeHomeData(game.proto.data.HomeData value) {
+      if (homeDataBuilder_ == null) {
+        if (homeData_ != null) {
+          homeData_ =
+            game.proto.data.HomeData.newBuilder(homeData_).mergeFrom(value).buildPartial();
+        } else {
+          homeData_ = value;
+        }
+        onChanged();
+      } else {
+        homeDataBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    public Builder clearHomeData() {
+      if (homeDataBuilder_ == null) {
+        homeData_ = null;
+        onChanged();
+      } else {
+        homeData_ = null;
+        homeDataBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    public game.proto.data.HomeData.Builder getHomeDataBuilder() {
+      
+      onChanged();
+      return getHomeDataFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    public game.proto.data.HomeDataOrBuilder getHomeDataOrBuilder() {
+      if (homeDataBuilder_ != null) {
+        return homeDataBuilder_.getMessageOrBuilder();
+      } else {
+        return homeData_ == null ?
+            game.proto.data.HomeData.getDefaultInstance() : homeData_;
+      }
+    }
+    /**
+     * <pre>
+     * 家园
+     * </pre>
+     *
+     * <code>.Message.HomeData homeData = 801;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.HomeData, game.proto.data.HomeData.Builder, game.proto.data.HomeDataOrBuilder> 
+        getHomeDataFieldBuilder() {
+      if (homeDataBuilder_ == null) {
+        homeDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.HomeData, game.proto.data.HomeData.Builder, game.proto.data.HomeDataOrBuilder>(
+                getHomeData(),
+                getParentForChildren(),
+                isClean());
+        homeData_ = null;
+      }
+      return homeDataBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -34,7 +34,7 @@ public class PlayerService {
      * @return
      */
     public static boolean isOpenFeature(Player player, FeatureEnum featureEnum) {
-        return (player.pd.getOpenFeature() & 1 << featureEnum.id) != 0;
+        return (player.pd.getOpenFeature() & 1 << featureEnum.index) != 0;
     }
 
     /**

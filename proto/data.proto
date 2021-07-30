@@ -40,7 +40,7 @@ message PlayerData {
     SceneData sceneData = 201;
     // 资源信息
     Resource resource = 301;
-    // 跑镖信息
+    // 当前跑镖信息
     ExpressInfo expressInfo = 310;
     // 跑镖列表
     repeated int32 expressId = 311;
