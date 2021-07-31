@@ -19,6 +19,7 @@ import game.proto.ExpressStartRqRs;
 import game.proto.data.ExpressInfo;
 import game.proto.no.No;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,8 +51,8 @@ public class ExpressHandler {
                 List<Integer> all = ConfigManager.expressDataBox.all(expressConfigData -> {
                     return expressConfigData.level <= player.getLevel();
                 }).stream().map(expressConfigData -> expressConfigData.id).collect(Collectors.toList());
-
-                player.pd.addAllExpressId(all);
+                Collections.shuffle(all);
+                player.pd.addAllExpressId(all.stream().limit(5).collect(Collectors.toList()));
                 builder.addAllInfo(all);
                 player.send(No.ExpressOpenReq, builder.buildPartial());
                 return;
