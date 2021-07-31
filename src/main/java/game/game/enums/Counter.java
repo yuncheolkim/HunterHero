@@ -1,6 +1,5 @@
 package game.game.enums;
 
-import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.back.GameCount;
 import game.proto.back.GameCountInfo;
@@ -13,33 +12,33 @@ import org.joda.time.DateTimeUtils;
  * 2021/7/28 20:58
  */
 public enum Counter {
-    /**
-     * 跑镖次数
-     */
-    EXPRESS(CounterTime.AT_0) {
-        @Override
-        protected int init() {
-            return ConfigManager.paramConfigData.expressCount;
-        }
-
-        @Override
-        public boolean Reduce(Player player, int count) {
-
-            GameCount.Builder countBuilder = player.D.getCountBuilder();
-            GameCountInfo.Builder express = countBuilder.getExpressBuilder();
-
-            refresh(express);
-
-            if (express.getCount() >= count) {
-                express.setCount(express.getCount() - count);
-                countBuilder.setExpress(express);
-                return true;
-            }
-
-            return false;
-
-        }
-    },
+//    /**
+//     * 跑镖次数
+//     */
+//    EXPRESS(CounterTime.AT_0) {
+//        @Override
+//        protected int init() {
+//            return ConfigManager.paramConfigData.expressCount;
+//        }
+//
+//        @Override
+//        public boolean Reduce(Player player, int count) {
+//
+//            GameCount.Builder countBuilder = player.D.getCountBuilder();
+//            GameCountInfo.Builder express = countBuilder.getExpressBuilder();
+//
+//            refresh(express);
+//
+//            if (express.getCount() >= count) {
+//                express.setCount(express.getCount() - count);
+//                countBuilder.setExpress(express);
+//                return true;
+//            }
+//
+//            return false;
+//
+//        }
+//    },
 
     /**
      * 跑镖刷新

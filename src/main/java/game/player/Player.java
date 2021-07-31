@@ -438,7 +438,7 @@ public class Player {
      * @param typeEnum
      */
     public void consumePowerAssert(final ConsumeTypeEnum typeEnum, final int count) {
-        ModuleAssert.isTrue(consumeGem(typeEnum, count), ErrorEnum.ERR_10);
+        ModuleAssert.isTrue(consumePower(typeEnum, count), ErrorEnum.ERR_10);
     }
 
     /**

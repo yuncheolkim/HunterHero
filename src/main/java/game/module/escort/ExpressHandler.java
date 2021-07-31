@@ -70,10 +70,11 @@ public class ExpressHandler {
      */
     public static ExpressStartRqRs start(final Player player, final ExpressStartRqRs req) {
         ModuleAssert.isFalse(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
-        final ExpressConfigData data = ConfigManager.expressDataBox.findById(req.getId());
+        int id = req.getId();
+        final ExpressConfigData data = ConfigManager.expressDataBox.findById(id);
         EvilAssert.notNull(data, "不存在跑镖配置");
-        // 检查次数
-        ModuleAssert.isTrue(Counter.EXPRESS.Reduce(player), ErrorEnum.ERR_9);
+
+        ModuleAssert.isTrue(player.pd.getExpressIdList().contains(id));
 
         player.consumePowerAssert(ConsumeTypeEnum.跑镖, data.power);
         player.pd.setExpressInfo(ExpressInfo.newBuilder().setId(data.id));
@@ -90,10 +91,16 @@ public class ExpressHandler {
     public static ExpressCompleteRes complete(final Player player, final ExpressCompleteReq req) {
         ModuleAssert.isTrue(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
 
-        final ExpressConfigData data = ConfigManager.expressDataBox.findById(player.pd.getExpressInfo().getId());
-        player.addGold(data.gold, ResourceSourceEnum.跑镖);
+        final int expressId = player.pd.getExpressInfo().getId();
+        final ExpressConfigData data = ConfigManager.expressDataBox.findById(expressId);
 
-        return ExpressCompleteRes.getDefaultInstance();
+        List<Integer> expressIdList = player.pd.getExpressIdList();
+        player.pd.clearExpressId().addAllExpressId(expressIdList.stream()
+                .filter(id -> id != expressId).collect(Collectors.toList()));
+
+        player.addGold(data.gold, ResourceSourceEnum.跑镖);
+        player.pd.clearExpressInfo();
+        return ExpressCompleteRes.newBuilder().setId(expressId).build();
     }
 
 }

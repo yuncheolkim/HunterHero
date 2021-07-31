@@ -6,4 +6,10 @@ package game.proto;
 public interface ExpressCompleteResOrBuilder extends
     // @@protoc_insertion_point(interface_extends:Message.ExpressCompleteRes)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>int32 id = 1;</code>
+   * @return The id.
+   */
+  int getId();
 }

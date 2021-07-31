@@ -452,6 +452,7 @@ message ExpressCompleteReq{
 
 }
 message ExpressCompleteRes{
+    int32 id = 1;
 }
 // 跑镖信息
 message ExpressInfoRes{

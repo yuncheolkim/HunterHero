@@ -48,6 +48,11 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+
+            id_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -80,6 +85,17 @@ private static final long serialVersionUID = 0L;
             game.proto.ExpressCompleteRes.class, game.proto.ExpressCompleteRes.Builder.class);
   }
 
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_;
+  /**
+   * <code>int32 id = 1;</code>
+   * @return The id.
+   */
+  @java.lang.Override
+  public int getId() {
+    return id_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -94,6 +110,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (id_ != 0) {
+      output.writeInt32(1, id_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -103,6 +122,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (id_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(1, id_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -118,6 +141,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.ExpressCompleteRes other = (game.proto.ExpressCompleteRes) obj;
 
+    if (getId()
+        != other.getId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -129,6 +154,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + ID_FIELD_NUMBER;
+    hash = (53 * hash) + getId();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -262,6 +289,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      id_ = 0;
+
       return this;
     }
 
@@ -288,6 +317,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.ExpressCompleteRes buildPartial() {
       game.proto.ExpressCompleteRes result = new game.proto.ExpressCompleteRes(this);
+      result.id_ = id_;
       onBuilt();
       return result;
     }
@@ -336,6 +366,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.ExpressCompleteRes other) {
       if (other == game.proto.ExpressCompleteRes.getDefaultInstance()) return this;
+      if (other.getId() != 0) {
+        setId(other.getId());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -362,6 +395,37 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private int id_ ;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+    /**
+     * <code>int32 id = 1;</code>
+     * @param value The id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setId(int value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 id = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearId() {
+      
+      id_ = 0;
+      onChanged();
       return this;
     }
     @java.lang.Override
