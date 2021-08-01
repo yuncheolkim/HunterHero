@@ -13,6 +13,7 @@ import game.module.fish.FishHandler;
 import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
+import game.module.home.HomeHandler;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
@@ -154,6 +155,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new InvokerNoParam(No.ExpressOpenReq, ExpressHandler::open));
         addHandler(new RetInvoker<>(No.ExpressStartRqRs, ExpressHandler::start, ExpressStartRqRs::parser));
         addHandler(new RetInvoker<>(No.ExpressCompleteReq, ExpressHandler::complete, ExpressCompleteReq::parser));
+        // Home
+        addHandler(new RetInvoker<>(No.HomeOpenAreaRqRs, HomeHandler::openArea, HomeOpenAreaRqRs::parser));
+
     }
 
     private void initScene() {
