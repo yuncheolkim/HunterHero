@@ -33,30 +33,13 @@ public interface HomeDataOrBuilder extends
 
   /**
    * <pre>
-   * 当前开启区域
+   * 开启区域标记
    * </pre>
    *
-   * <code>.Message.HomeRect rect = 4;</code>
-   * @return Whether the rect field is set.
+   * <code>int64 openArea = 5;</code>
+   * @return The openArea.
    */
-  boolean hasRect();
-  /**
-   * <pre>
-   * 当前开启区域
-   * </pre>
-   *
-   * <code>.Message.HomeRect rect = 4;</code>
-   * @return The rect.
-   */
-  game.proto.data.HomeRect getRect();
-  /**
-   * <pre>
-   * 当前开启区域
-   * </pre>
-   *
-   * <code>.Message.HomeRect rect = 4;</code>
-   */
-  game.proto.data.HomeRectOrBuilder getRectOrBuilder();
+  long getOpenArea();
 
   /**
    * <code>repeated .Message.HomePosData mapData = 10;</code>

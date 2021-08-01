@@ -430,10 +430,10 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_ExpressInfoRes_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_Message_HomeOpenRectReq_descriptor;
+    internal_static_Message_HomeOpenAreaRqRs_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_Message_HomeOpenRectReq_fieldAccessorTable;
+      internal_static_Message_HomeOpenAreaRqRs_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -549,11 +549,11 @@ public final class MessageOuterClass {
       "\"\020\n\016DungeonExitRes\"\036\n\020ExpressStartRqRs\022\n" +
       "\n\002id\030\001 \001(\005\"\024\n\022ExpressCompleteReq\" \n\022Expr" +
       "essCompleteRes\022\n\n\002id\030\001 \001(\005\".\n\016ExpressInf" +
-      "oRes\022\016\n\006update\030\001 \001(\010\022\014\n\004info\030\002 \003(\005\"\035\n\017Ho" +
-      "meOpenRectReq\022\n\n\002id\030\001 \001(\005*R\n\013ChatChannel" +
-      "\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PR" +
-      "IVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.pr" +
-      "otoH\001P\001b\006proto3"
+      "oRes\022\016\n\006update\030\001 \001(\010\022\014\n\004info\030\002 \003(\005\"\036\n\020Ho" +
+      "meOpenAreaRqRs\022\n\n\002id\030\001 \001(\005*R\n\013ChatChanne" +
+      "l\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007P" +
+      "RIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.p" +
+      "rotoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1058,11 +1058,11 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_ExpressInfoRes_descriptor,
         new java.lang.String[] { "Update", "Info", });
-    internal_static_Message_HomeOpenRectReq_descriptor =
+    internal_static_Message_HomeOpenAreaRqRs_descriptor =
       getDescriptor().getMessageTypes().get(82);
-    internal_static_Message_HomeOpenRectReq_fieldAccessorTable = new
+    internal_static_Message_HomeOpenAreaRqRs_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_Message_HomeOpenRectReq_descriptor,
+        internal_static_Message_HomeOpenAreaRqRs_descriptor,
         new java.lang.String[] { "Id", });
     game.proto.data.Data.getDescriptor();
   }

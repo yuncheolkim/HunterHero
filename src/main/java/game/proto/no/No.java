@@ -102,6 +102,14 @@ public enum No
   TaskAbandonReq(1006),
   /**
    * <pre>
+   * Home
+   * </pre>
+   *
+   * <code>HomeOpenAreaRqRs = 1101;</code>
+   */
+  HomeOpenAreaRqRs(1101),
+  /**
+   * <pre>
    * Fight
    * </pre>
    *
@@ -462,6 +470,14 @@ public enum No
   public static final int TaskAbandonReq_VALUE = 1006;
   /**
    * <pre>
+   * Home
+   * </pre>
+   *
+   * <code>HomeOpenAreaRqRs = 1101;</code>
+   */
+  public static final int HomeOpenAreaRqRs_VALUE = 1101;
+  /**
+   * <pre>
    * Fight
    * </pre>
    *
@@ -768,6 +784,7 @@ public enum No
       case 1004: return TaskStatusChangePush;
       case 1005: return TaskNpcReq;
       case 1006: return TaskAbandonReq;
+      case 1101: return HomeOpenAreaRqRs;
       case 2001: return FightStartReq;
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;

@@ -8,25 +8,25 @@ package game.proto;
  * 区域
  * </pre>
  *
- * Protobuf type {@code Message.HomeOpenRectReq}
+ * Protobuf type {@code Message.HomeOpenAreaRqRs}
  */
-public final class HomeOpenRectReq extends
+public final class HomeOpenAreaRqRs extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.HomeOpenRectReq)
-    HomeOpenRectReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.HomeOpenAreaRqRs)
+    HomeOpenAreaRqRsOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use HomeOpenRectReq.newBuilder() to construct.
-  private HomeOpenRectReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use HomeOpenAreaRqRs.newBuilder() to construct.
+  private HomeOpenAreaRqRs(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private HomeOpenRectReq() {
+  private HomeOpenAreaRqRs() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new HomeOpenRectReq();
+    return new HomeOpenAreaRqRs();
   }
 
   @java.lang.Override
@@ -34,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private HomeOpenRectReq(
+  private HomeOpenAreaRqRs(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -78,15 +78,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_HomeOpenRectReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_HomeOpenAreaRqRs_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_HomeOpenRectReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_HomeOpenAreaRqRs_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.HomeOpenRectReq.class, game.proto.HomeOpenRectReq.Builder.class);
+            game.proto.HomeOpenAreaRqRs.class, game.proto.HomeOpenAreaRqRs.Builder.class);
   }
 
   public static final int ID_FIELD_NUMBER = 1;
@@ -140,10 +140,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.HomeOpenRectReq)) {
+    if (!(obj instanceof game.proto.HomeOpenAreaRqRs)) {
       return super.equals(obj);
     }
-    game.proto.HomeOpenRectReq other = (game.proto.HomeOpenRectReq) obj;
+    game.proto.HomeOpenAreaRqRs other = (game.proto.HomeOpenAreaRqRs) obj;
 
     if (getId()
         != other.getId()) return false;
@@ -165,69 +165,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(byte[] data)
+  public static game.proto.HomeOpenAreaRqRs parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(java.io.InputStream input)
+  public static game.proto.HomeOpenAreaRqRs parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.HomeOpenRectReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.HomeOpenAreaRqRs parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.HomeOpenRectReq parseDelimitedFrom(
+  public static game.proto.HomeOpenAreaRqRs parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.HomeOpenRectReq parseFrom(
+  public static game.proto.HomeOpenAreaRqRs parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -240,7 +240,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.HomeOpenRectReq prototype) {
+  public static Builder newBuilder(game.proto.HomeOpenAreaRqRs prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -260,26 +260,26 @@ private static final long serialVersionUID = 0L;
    * 区域
    * </pre>
    *
-   * Protobuf type {@code Message.HomeOpenRectReq}
+   * Protobuf type {@code Message.HomeOpenAreaRqRs}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.HomeOpenRectReq)
-      game.proto.HomeOpenRectReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.HomeOpenAreaRqRs)
+      game.proto.HomeOpenAreaRqRsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_HomeOpenRectReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_HomeOpenAreaRqRs_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_HomeOpenRectReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_HomeOpenAreaRqRs_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.HomeOpenRectReq.class, game.proto.HomeOpenRectReq.Builder.class);
+              game.proto.HomeOpenAreaRqRs.class, game.proto.HomeOpenAreaRqRs.Builder.class);
     }
 
-    // Construct using game.proto.HomeOpenRectReq.newBuilder()
+    // Construct using game.proto.HomeOpenAreaRqRs.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -305,17 +305,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_HomeOpenRectReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_HomeOpenAreaRqRs_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.HomeOpenRectReq getDefaultInstanceForType() {
-      return game.proto.HomeOpenRectReq.getDefaultInstance();
+    public game.proto.HomeOpenAreaRqRs getDefaultInstanceForType() {
+      return game.proto.HomeOpenAreaRqRs.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.HomeOpenRectReq build() {
-      game.proto.HomeOpenRectReq result = buildPartial();
+    public game.proto.HomeOpenAreaRqRs build() {
+      game.proto.HomeOpenAreaRqRs result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -323,8 +323,8 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.HomeOpenRectReq buildPartial() {
-      game.proto.HomeOpenRectReq result = new game.proto.HomeOpenRectReq(this);
+    public game.proto.HomeOpenAreaRqRs buildPartial() {
+      game.proto.HomeOpenAreaRqRs result = new game.proto.HomeOpenAreaRqRs(this);
       result.id_ = id_;
       onBuilt();
       return result;
@@ -364,16 +364,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.HomeOpenRectReq) {
-        return mergeFrom((game.proto.HomeOpenRectReq)other);
+      if (other instanceof game.proto.HomeOpenAreaRqRs) {
+        return mergeFrom((game.proto.HomeOpenAreaRqRs)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.HomeOpenRectReq other) {
-      if (other == game.proto.HomeOpenRectReq.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.HomeOpenAreaRqRs other) {
+      if (other == game.proto.HomeOpenAreaRqRs.getDefaultInstance()) return this;
       if (other.getId() != 0) {
         setId(other.getId());
       }
@@ -392,11 +392,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.HomeOpenRectReq parsedMessage = null;
+      game.proto.HomeOpenAreaRqRs parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.HomeOpenRectReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.HomeOpenAreaRqRs) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -449,41 +449,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.HomeOpenRectReq)
+    // @@protoc_insertion_point(builder_scope:Message.HomeOpenAreaRqRs)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.HomeOpenRectReq)
-  private static final game.proto.HomeOpenRectReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.HomeOpenAreaRqRs)
+  private static final game.proto.HomeOpenAreaRqRs DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.HomeOpenRectReq();
+    DEFAULT_INSTANCE = new game.proto.HomeOpenAreaRqRs();
   }
 
-  public static game.proto.HomeOpenRectReq getDefaultInstance() {
+  public static game.proto.HomeOpenAreaRqRs getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<HomeOpenRectReq>
-      PARSER = new com.google.protobuf.AbstractParser<HomeOpenRectReq>() {
+  private static final com.google.protobuf.Parser<HomeOpenAreaRqRs>
+      PARSER = new com.google.protobuf.AbstractParser<HomeOpenAreaRqRs>() {
     @java.lang.Override
-    public HomeOpenRectReq parsePartialFrom(
+    public HomeOpenAreaRqRs parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new HomeOpenRectReq(input, extensionRegistry);
+      return new HomeOpenAreaRqRs(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<HomeOpenRectReq> parser() {
+  public static com.google.protobuf.Parser<HomeOpenAreaRqRs> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<HomeOpenRectReq> getParserForType() {
+  public com.google.protobuf.Parser<HomeOpenAreaRqRs> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.HomeOpenRectReq getDefaultInstanceForType() {
+  public game.proto.HomeOpenAreaRqRs getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

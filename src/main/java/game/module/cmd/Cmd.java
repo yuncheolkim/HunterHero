@@ -2,8 +2,10 @@ package game.module.cmd;
 
 import com.google.common.collect.ImmutableMap;
 import game.base.constants.GameConstants;
+import game.game.enums.FeatureEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.module.hero.HeroService;
+import game.module.player.PlayerService;
 import game.player.Player;
 import game.proto.TitleNewPush;
 import game.proto.data.ItemData;
@@ -105,6 +107,13 @@ public enum Cmd {
         public void run(final Player player, final List<String> line) {
             int i = Integer.parseInt(line.get(0));
             HeroService.addHero(player, i, true);
+        }
+    },
+    CMD14(14, "Open Feature") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            FeatureEnum i = FeatureEnum.valueOf(line.get(0));
+            PlayerService.openFeature(player, i);
         }
     },
     ;

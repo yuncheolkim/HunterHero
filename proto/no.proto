@@ -34,6 +34,9 @@ enum No {
     TaskNpcReq = 1005;
     TaskAbandonReq = 1006;
 
+    // Home
+    HomeOpenAreaRqRs = 1101;
+
     // Fight
     FightStartReq = 2001;
     FightStartPush = 2002;

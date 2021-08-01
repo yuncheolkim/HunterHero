@@ -22,6 +22,7 @@ public class PlayerService {
      */
     public static void openFeature(Player player, FeatureEnum featureEnum) {
         player.pd.setOpenFeature(player.pd.getOpenFeature() | featureEnum.id);
+        featureEnum.openPrepare(player);
         player.send(No.FeatureOpenPush, FeatureOpenPush.newBuilder()
                 .setId(featureEnum.index).build());
     }

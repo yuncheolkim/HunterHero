@@ -1,6 +1,7 @@
 package game.module.home;
 
 import game.player.Player;
+import game.proto.HomeOpenAreaRqRs;
 
 /**
  * 家园系统
@@ -15,8 +16,9 @@ public class HomeHandler {
      *
      * @param player
      */
-    public static void openRect(Player player) {
+    public static HomeOpenAreaRqRs openArea(Player player, HomeOpenAreaRqRs req) {
 
+        return req;
     }
 
     /**

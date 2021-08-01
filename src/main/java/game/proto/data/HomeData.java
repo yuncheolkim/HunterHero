@@ -71,17 +71,9 @@ private static final long serialVersionUID = 0L;
             exp_ = input.readInt32();
             break;
           }
-          case 34: {
-            game.proto.data.HomeRect.Builder subBuilder = null;
-            if (rect_ != null) {
-              subBuilder = rect_.toBuilder();
-            }
-            rect_ = input.readMessage(game.proto.data.HomeRect.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(rect_);
-              rect_ = subBuilder.buildPartial();
-            }
+          case 40: {
 
+            openArea_ = input.readInt64();
             break;
           }
           case 82: {
@@ -188,42 +180,19 @@ private static final long serialVersionUID = 0L;
     return exp_;
   }
 
-  public static final int RECT_FIELD_NUMBER = 4;
-  private game.proto.data.HomeRect rect_;
+  public static final int OPENAREA_FIELD_NUMBER = 5;
+  private long openArea_;
   /**
    * <pre>
-   * 当前开启区域
+   * 开启区域标记
    * </pre>
    *
-   * <code>.Message.HomeRect rect = 4;</code>
-   * @return Whether the rect field is set.
+   * <code>int64 openArea = 5;</code>
+   * @return The openArea.
    */
   @java.lang.Override
-  public boolean hasRect() {
-    return rect_ != null;
-  }
-  /**
-   * <pre>
-   * 当前开启区域
-   * </pre>
-   *
-   * <code>.Message.HomeRect rect = 4;</code>
-   * @return The rect.
-   */
-  @java.lang.Override
-  public game.proto.data.HomeRect getRect() {
-    return rect_ == null ? game.proto.data.HomeRect.getDefaultInstance() : rect_;
-  }
-  /**
-   * <pre>
-   * 当前开启区域
-   * </pre>
-   *
-   * <code>.Message.HomeRect rect = 4;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.HomeRectOrBuilder getRectOrBuilder() {
-    return getRect();
+  public long getOpenArea() {
+    return openArea_;
   }
 
   public static final int MAPDATA_FIELD_NUMBER = 10;
@@ -289,8 +258,8 @@ private static final long serialVersionUID = 0L;
     if (exp_ != 0) {
       output.writeInt32(3, exp_);
     }
-    if (rect_ != null) {
-      output.writeMessage(4, getRect());
+    if (openArea_ != 0L) {
+      output.writeInt64(5, openArea_);
     }
     for (int i = 0; i < mapData_.size(); i++) {
       output.writeMessage(10, mapData_.get(i));
@@ -315,9 +284,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, exp_);
     }
-    if (rect_ != null) {
+    if (openArea_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, getRect());
+        .computeInt64Size(5, openArea_);
     }
     for (int i = 0; i < mapData_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
@@ -344,11 +313,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getName())) return false;
     if (getExp()
         != other.getExp()) return false;
-    if (hasRect() != other.hasRect()) return false;
-    if (hasRect()) {
-      if (!getRect()
-          .equals(other.getRect())) return false;
-    }
+    if (getOpenArea()
+        != other.getOpenArea()) return false;
     if (!getMapDataList()
         .equals(other.getMapDataList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -368,10 +334,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + EXP_FIELD_NUMBER;
     hash = (53 * hash) + getExp();
-    if (hasRect()) {
-      hash = (37 * hash) + RECT_FIELD_NUMBER;
-      hash = (53 * hash) + getRect().hashCode();
-    }
+    hash = (37 * hash) + OPENAREA_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getOpenArea());
     if (getMapDataCount() > 0) {
       hash = (37 * hash) + MAPDATA_FIELD_NUMBER;
       hash = (53 * hash) + getMapDataList().hashCode();
@@ -520,12 +485,8 @@ private static final long serialVersionUID = 0L;
 
       exp_ = 0;
 
-      if (rectBuilder_ == null) {
-        rect_ = null;
-      } else {
-        rect_ = null;
-        rectBuilder_ = null;
-      }
+      openArea_ = 0L;
+
       if (mapDataBuilder_ == null) {
         mapData_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
@@ -562,11 +523,7 @@ private static final long serialVersionUID = 0L;
       result.level_ = level_;
       result.name_ = name_;
       result.exp_ = exp_;
-      if (rectBuilder_ == null) {
-        result.rect_ = rect_;
-      } else {
-        result.rect_ = rectBuilder_.build();
-      }
+      result.openArea_ = openArea_;
       if (mapDataBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           mapData_ = java.util.Collections.unmodifiableList(mapData_);
@@ -634,8 +591,8 @@ private static final long serialVersionUID = 0L;
       if (other.getExp() != 0) {
         setExp(other.getExp());
       }
-      if (other.hasRect()) {
-        mergeRect(other.getRect());
+      if (other.getOpenArea() != 0L) {
+        setOpenArea(other.getOpenArea());
       }
       if (mapDataBuilder_ == null) {
         if (!other.mapData_.isEmpty()) {
@@ -831,159 +788,47 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private game.proto.data.HomeRect rect_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> rectBuilder_;
+    private long openArea_ ;
     /**
      * <pre>
-     * 当前开启区域
+     * 开启区域标记
      * </pre>
      *
-     * <code>.Message.HomeRect rect = 4;</code>
-     * @return Whether the rect field is set.
+     * <code>int64 openArea = 5;</code>
+     * @return The openArea.
      */
-    public boolean hasRect() {
-      return rectBuilder_ != null || rect_ != null;
+    @java.lang.Override
+    public long getOpenArea() {
+      return openArea_;
     }
     /**
      * <pre>
-     * 当前开启区域
+     * 开启区域标记
      * </pre>
      *
-     * <code>.Message.HomeRect rect = 4;</code>
-     * @return The rect.
+     * <code>int64 openArea = 5;</code>
+     * @param value The openArea to set.
+     * @return This builder for chaining.
      */
-    public game.proto.data.HomeRect getRect() {
-      if (rectBuilder_ == null) {
-        return rect_ == null ? game.proto.data.HomeRect.getDefaultInstance() : rect_;
-      } else {
-        return rectBuilder_.getMessage();
-      }
-    }
-    /**
-     * <pre>
-     * 当前开启区域
-     * </pre>
-     *
-     * <code>.Message.HomeRect rect = 4;</code>
-     */
-    public Builder setRect(game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        rect_ = value;
-        onChanged();
-      } else {
-        rectBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <pre>
-     * 当前开启区域
-     * </pre>
-     *
-     * <code>.Message.HomeRect rect = 4;</code>
-     */
-    public Builder setRect(
-        game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        rect_ = builderForValue.build();
-        onChanged();
-      } else {
-        rectBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <pre>
-     * 当前开启区域
-     * </pre>
-     *
-     * <code>.Message.HomeRect rect = 4;</code>
-     */
-    public Builder mergeRect(game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
-        if (rect_ != null) {
-          rect_ =
-            game.proto.data.HomeRect.newBuilder(rect_).mergeFrom(value).buildPartial();
-        } else {
-          rect_ = value;
-        }
-        onChanged();
-      } else {
-        rectBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <pre>
-     * 当前开启区域
-     * </pre>
-     *
-     * <code>.Message.HomeRect rect = 4;</code>
-     */
-    public Builder clearRect() {
-      if (rectBuilder_ == null) {
-        rect_ = null;
-        onChanged();
-      } else {
-        rect_ = null;
-        rectBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <pre>
-     * 当前开启区域
-     * </pre>
-     *
-     * <code>.Message.HomeRect rect = 4;</code>
-     */
-    public game.proto.data.HomeRect.Builder getRectBuilder() {
+    public Builder setOpenArea(long value) {
       
+      openArea_ = value;
       onChanged();
-      return getRectFieldBuilder().getBuilder();
+      return this;
     }
     /**
      * <pre>
-     * 当前开启区域
+     * 开启区域标记
      * </pre>
      *
-     * <code>.Message.HomeRect rect = 4;</code>
+     * <code>int64 openArea = 5;</code>
+     * @return This builder for chaining.
      */
-    public game.proto.data.HomeRectOrBuilder getRectOrBuilder() {
-      if (rectBuilder_ != null) {
-        return rectBuilder_.getMessageOrBuilder();
-      } else {
-        return rect_ == null ?
-            game.proto.data.HomeRect.getDefaultInstance() : rect_;
-      }
-    }
-    /**
-     * <pre>
-     * 当前开启区域
-     * </pre>
-     *
-     * <code>.Message.HomeRect rect = 4;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> 
-        getRectFieldBuilder() {
-      if (rectBuilder_ == null) {
-        rectBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder>(
-                getRect(),
-                getParentForChildren(),
-                isClean());
-        rect_ = null;
-      }
-      return rectBuilder_;
+    public Builder clearOpenArea() {
+      
+      openArea_ = 0L;
+      onChanged();
+      return this;
     }
 
     private java.util.List<game.proto.data.HomePosData> mapData_ =

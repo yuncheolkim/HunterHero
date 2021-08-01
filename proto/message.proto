@@ -463,7 +463,7 @@ message ExpressInfoRes{
 ///////////////////////////////////////////////  Home
 
 // 区域
-message HomeOpenRectReq{
+message HomeOpenAreaRqRs{
     int32 id = 1;
 }
 

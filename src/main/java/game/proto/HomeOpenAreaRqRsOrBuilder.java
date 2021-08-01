@@ -3,8 +3,8 @@
 
 package game.proto;
 
-public interface HomeOpenRectReqOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:Message.HomeOpenRectReq)
+public interface HomeOpenAreaRqRsOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:Message.HomeOpenAreaRqRs)
     com.google.protobuf.MessageOrBuilder {
 
   /**

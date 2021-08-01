@@ -75,7 +75,7 @@ message HomeData{
     int32 level = 1;
     string name = 2;
     int32 exp = 3;
-    HomeRect rect = 4;// 当前开启区域
+    int64 openArea = 5; // 开启区域标记
     repeated HomePosData mapData = 10;
 }
 
