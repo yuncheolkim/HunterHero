@@ -45,17 +45,25 @@ public enum HomeType
    * 墙
    * </pre>
    *
-   * <code>H_WALL = 5;</code>
+   * <code>H_WALL = 4;</code>
    */
-  H_WALL(5),
+  H_WALL(4),
   /**
    * <pre>
-   * 地毯，路
+   * 地毯
    * </pre>
    *
-   * <code>H_CARPET = 6;</code>
+   * <code>H_CARPET = 5;</code>
    */
-  H_CARPET(6),
+  H_CARPET(5),
+  /**
+   * <pre>
+   * 路
+   * </pre>
+   *
+   * <code>H_ROAD = 6;</code>
+   */
+  H_ROAD(6),
   UNRECOGNIZED(-1),
   ;
 
@@ -96,17 +104,25 @@ public enum HomeType
    * 墙
    * </pre>
    *
-   * <code>H_WALL = 5;</code>
+   * <code>H_WALL = 4;</code>
    */
-  public static final int H_WALL_VALUE = 5;
+  public static final int H_WALL_VALUE = 4;
   /**
    * <pre>
-   * 地毯，路
+   * 地毯
    * </pre>
    *
-   * <code>H_CARPET = 6;</code>
+   * <code>H_CARPET = 5;</code>
    */
-  public static final int H_CARPET_VALUE = 6;
+  public static final int H_CARPET_VALUE = 5;
+  /**
+   * <pre>
+   * 路
+   * </pre>
+   *
+   * <code>H_ROAD = 6;</code>
+   */
+  public static final int H_ROAD_VALUE = 6;
 
 
   public final int getNumber() {
@@ -137,8 +153,9 @@ public enum HomeType
       case 1: return H_LAND;
       case 2: return H_FARM;
       case 3: return H_BUILD;
-      case 5: return H_WALL;
-      case 6: return H_CARPET;
+      case 4: return H_WALL;
+      case 5: return H_CARPET;
+      case 6: return H_ROAD;
       default: return null;
     }
   }

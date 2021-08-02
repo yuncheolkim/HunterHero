@@ -418,6 +418,7 @@ enum HomeType{
     H_LAND = 1; // 土地
     H_FARM = 2; // 农作物
     H_BUILD = 3; // 建筑物
-    H_WALL = 5; // 墙
-    H_CARPET = 6; // 地毯，路
+    H_WALL = 4; // 墙
+    H_CARPET = 5; // 地毯
+    H_ROAD = 6; // 路
 }
