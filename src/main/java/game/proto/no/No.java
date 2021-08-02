@@ -109,6 +109,18 @@ public enum No
    */
   HomeOpenAreaRqRs(1101),
   /**
+   * <code>HomeChangeReq = 1102;</code>
+   */
+  HomeChangeReq(1102),
+  /**
+   * <code>HomeHarvestReq = 1103;</code>
+   */
+  HomeHarvestReq(1103),
+  /**
+   * <code>HomeCleanReq = 1104;</code>
+   */
+  HomeCleanReq(1104),
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -477,6 +489,18 @@ public enum No
    */
   public static final int HomeOpenAreaRqRs_VALUE = 1101;
   /**
+   * <code>HomeChangeReq = 1102;</code>
+   */
+  public static final int HomeChangeReq_VALUE = 1102;
+  /**
+   * <code>HomeHarvestReq = 1103;</code>
+   */
+  public static final int HomeHarvestReq_VALUE = 1103;
+  /**
+   * <code>HomeCleanReq = 1104;</code>
+   */
+  public static final int HomeCleanReq_VALUE = 1104;
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -785,6 +809,9 @@ public enum No
       case 1005: return TaskNpcReq;
       case 1006: return TaskAbandonReq;
       case 1101: return HomeOpenAreaRqRs;
+      case 1102: return HomeChangeReq;
+      case 1103: return HomeHarvestReq;
+      case 1104: return HomeCleanReq;
       case 2001: return FightStartReq;
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;

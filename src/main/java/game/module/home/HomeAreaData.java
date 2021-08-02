@@ -26,22 +26,40 @@ public class HomeAreaData {
         }
     }
 
+    public int maxId() {
+        return row * col - 1;
+    }
+
     /**
      * 是否可放置
      *
      * @param rect
+     * @param type
      * @return
      */
-    public boolean canPut(HomeRectInfo rect) {
+    public boolean canPut(HomeRectInfo rect, HomeType type) {
+
+        if (rect.x < 0 || rect.y < 0 || rect.x1 >= col * 7 || rect.y1 >= row * size) {
+            return false;
+        }
+
         for (int i = rect.x; i < rect.x1; i++) {
             for (int j = rect.y; j < rect.y1; j++) {
                 HomePosData homePosData = pos[i][j];
-                if (homePosData == null || homePosData.getType() != HomeType.H_NONE) {
+                if (homePosData == null) {
                     return false;
+                }
+
+                HomeType curType = homePosData.getType();
+
+                if (curType != HomeType.H_NONE) {
+
+                    if (curType == HomeType.H_LAND && type != HomeType.H_FARM) {
+                        return false;
+                    }
                 }
             }
         }
-
         return true;
     }
 

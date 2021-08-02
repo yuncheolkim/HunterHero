@@ -25,7 +25,6 @@ enum No {
     TitleChooseReq = 301;
     TitleNewPush = 302;
 
-
     // Task
     TaskAcceptReq = 1001;
     TaskCompleteReq = 1002;
@@ -36,6 +35,9 @@ enum No {
 
     // Home
     HomeOpenAreaRqRs = 1101;
+    HomeChangeReq = 1102;
+    HomeHarvestReq = 1103;
+    HomeCleanReq = 1104;
 
     // Fight
     FightStartReq = 2001;

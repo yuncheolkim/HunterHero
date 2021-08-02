@@ -92,6 +92,10 @@ private static final long serialVersionUID = 0L;
   public static final int TIME_FIELD_NUMBER = 1;
   private long time_;
   /**
+   * <pre>
+   * 种植时间
+   * </pre>
+   *
    * <code>int64 time = 1;</code>
    * @return The time.
    */
@@ -409,6 +413,10 @@ private static final long serialVersionUID = 0L;
 
     private long time_ ;
     /**
+     * <pre>
+     * 种植时间
+     * </pre>
+     *
      * <code>int64 time = 1;</code>
      * @return The time.
      */
@@ -417,6 +425,10 @@ private static final long serialVersionUID = 0L;
       return time_;
     }
     /**
+     * <pre>
+     * 种植时间
+     * </pre>
+     *
      * <code>int64 time = 1;</code>
      * @param value The time to set.
      * @return This builder for chaining.
@@ -428,6 +440,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 种植时间
+     * </pre>
+     *
      * <code>int64 time = 1;</code>
      * @return This builder for chaining.
      */

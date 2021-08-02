@@ -4,29 +4,25 @@
 package game.proto;
 
 /**
- * <pre>
- * Farm, build, wall etc.
- * </pre>
- *
- * Protobuf type {@code Message.HomeChangeReq}
+ * Protobuf type {@code Message.HomeHarvestRes}
  */
-public final class HomeChangeReq extends
+public final class HomeHarvestRes extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.HomeChangeReq)
-    HomeChangeReqOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.HomeHarvestRes)
+    HomeHarvestResOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use HomeChangeReq.newBuilder() to construct.
-  private HomeChangeReq(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use HomeHarvestRes.newBuilder() to construct.
+  private HomeHarvestRes(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private HomeChangeReq() {
+  private HomeHarvestRes() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new HomeChangeReq();
+    return new HomeHarvestRes();
   }
 
   @java.lang.Override
@@ -34,7 +30,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private HomeChangeReq(
+  private HomeHarvestRes(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -52,22 +48,9 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 32: {
+          case 24: {
 
-            areaId_ = input.readInt32();
-            break;
-          }
-          case 42: {
-            game.proto.data.HomePosData.Builder subBuilder = null;
-            if (data_ != null) {
-              subBuilder = data_.toBuilder();
-            }
-            data_ = input.readMessage(game.proto.data.HomePosData.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(data_);
-              data_ = subBuilder.buildPartial();
-            }
-
+            pos_ = input.readInt32();
             break;
           }
           default: {
@@ -91,52 +74,26 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.MessageOuterClass.internal_static_Message_HomeChangeReq_descriptor;
+    return game.proto.MessageOuterClass.internal_static_Message_HomeHarvestRes_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.MessageOuterClass.internal_static_Message_HomeChangeReq_fieldAccessorTable
+    return game.proto.MessageOuterClass.internal_static_Message_HomeHarvestRes_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.HomeChangeReq.class, game.proto.HomeChangeReq.Builder.class);
+            game.proto.HomeHarvestRes.class, game.proto.HomeHarvestRes.Builder.class);
   }
 
-  public static final int AREAID_FIELD_NUMBER = 4;
-  private int areaId_;
+  public static final int POS_FIELD_NUMBER = 3;
+  private int pos_;
   /**
-   * <code>int32 areaId = 4;</code>
-   * @return The areaId.
+   * <code>int32 pos = 3;</code>
+   * @return The pos.
    */
   @java.lang.Override
-  public int getAreaId() {
-    return areaId_;
-  }
-
-  public static final int DATA_FIELD_NUMBER = 5;
-  private game.proto.data.HomePosData data_;
-  /**
-   * <code>.Message.HomePosData data = 5;</code>
-   * @return Whether the data field is set.
-   */
-  @java.lang.Override
-  public boolean hasData() {
-    return data_ != null;
-  }
-  /**
-   * <code>.Message.HomePosData data = 5;</code>
-   * @return The data.
-   */
-  @java.lang.Override
-  public game.proto.data.HomePosData getData() {
-    return data_ == null ? game.proto.data.HomePosData.getDefaultInstance() : data_;
-  }
-  /**
-   * <code>.Message.HomePosData data = 5;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.HomePosDataOrBuilder getDataOrBuilder() {
-    return getData();
+  public int getPos() {
+    return pos_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -153,11 +110,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (areaId_ != 0) {
-      output.writeInt32(4, areaId_);
-    }
-    if (data_ != null) {
-      output.writeMessage(5, getData());
+    if (pos_ != 0) {
+      output.writeInt32(3, pos_);
     }
     unknownFields.writeTo(output);
   }
@@ -168,13 +122,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (areaId_ != 0) {
+    if (pos_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, areaId_);
-    }
-    if (data_ != null) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getData());
+        .computeInt32Size(3, pos_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -186,18 +136,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.HomeChangeReq)) {
+    if (!(obj instanceof game.proto.HomeHarvestRes)) {
       return super.equals(obj);
     }
-    game.proto.HomeChangeReq other = (game.proto.HomeChangeReq) obj;
+    game.proto.HomeHarvestRes other = (game.proto.HomeHarvestRes) obj;
 
-    if (getAreaId()
-        != other.getAreaId()) return false;
-    if (hasData() != other.hasData()) return false;
-    if (hasData()) {
-      if (!getData()
-          .equals(other.getData())) return false;
-    }
+    if (getPos()
+        != other.getPos()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -209,80 +154,76 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + AREAID_FIELD_NUMBER;
-    hash = (53 * hash) + getAreaId();
-    if (hasData()) {
-      hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
-    }
+    hash = (37 * hash) + POS_FIELD_NUMBER;
+    hash = (53 * hash) + getPos();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HomeChangeReq parseFrom(byte[] data)
+  public static game.proto.HomeHarvestRes parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.HomeChangeReq parseFrom(java.io.InputStream input)
+  public static game.proto.HomeHarvestRes parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.HomeChangeReq parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.HomeHarvestRes parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.HomeChangeReq parseDelimitedFrom(
+  public static game.proto.HomeHarvestRes parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.HomeChangeReq parseFrom(
+  public static game.proto.HomeHarvestRes parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -295,7 +236,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.HomeChangeReq prototype) {
+  public static Builder newBuilder(game.proto.HomeHarvestRes prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -311,30 +252,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Farm, build, wall etc.
-   * </pre>
-   *
-   * Protobuf type {@code Message.HomeChangeReq}
+   * Protobuf type {@code Message.HomeHarvestRes}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.HomeChangeReq)
-      game.proto.HomeChangeReqOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.HomeHarvestRes)
+      game.proto.HomeHarvestResOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.MessageOuterClass.internal_static_Message_HomeChangeReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_HomeHarvestRes_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.MessageOuterClass.internal_static_Message_HomeChangeReq_fieldAccessorTable
+      return game.proto.MessageOuterClass.internal_static_Message_HomeHarvestRes_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.HomeChangeReq.class, game.proto.HomeChangeReq.Builder.class);
+              game.proto.HomeHarvestRes.class, game.proto.HomeHarvestRes.Builder.class);
     }
 
-    // Construct using game.proto.HomeChangeReq.newBuilder()
+    // Construct using game.proto.HomeHarvestRes.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -352,31 +289,25 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      areaId_ = 0;
+      pos_ = 0;
 
-      if (dataBuilder_ == null) {
-        data_ = null;
-      } else {
-        data_ = null;
-        dataBuilder_ = null;
-      }
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.MessageOuterClass.internal_static_Message_HomeChangeReq_descriptor;
+      return game.proto.MessageOuterClass.internal_static_Message_HomeHarvestRes_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.HomeChangeReq getDefaultInstanceForType() {
-      return game.proto.HomeChangeReq.getDefaultInstance();
+    public game.proto.HomeHarvestRes getDefaultInstanceForType() {
+      return game.proto.HomeHarvestRes.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.HomeChangeReq build() {
-      game.proto.HomeChangeReq result = buildPartial();
+    public game.proto.HomeHarvestRes build() {
+      game.proto.HomeHarvestRes result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -384,14 +315,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.HomeChangeReq buildPartial() {
-      game.proto.HomeChangeReq result = new game.proto.HomeChangeReq(this);
-      result.areaId_ = areaId_;
-      if (dataBuilder_ == null) {
-        result.data_ = data_;
-      } else {
-        result.data_ = dataBuilder_.build();
-      }
+    public game.proto.HomeHarvestRes buildPartial() {
+      game.proto.HomeHarvestRes result = new game.proto.HomeHarvestRes(this);
+      result.pos_ = pos_;
       onBuilt();
       return result;
     }
@@ -430,21 +356,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.HomeChangeReq) {
-        return mergeFrom((game.proto.HomeChangeReq)other);
+      if (other instanceof game.proto.HomeHarvestRes) {
+        return mergeFrom((game.proto.HomeHarvestRes)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.HomeChangeReq other) {
-      if (other == game.proto.HomeChangeReq.getDefaultInstance()) return this;
-      if (other.getAreaId() != 0) {
-        setAreaId(other.getAreaId());
-      }
-      if (other.hasData()) {
-        mergeData(other.getData());
+    public Builder mergeFrom(game.proto.HomeHarvestRes other) {
+      if (other == game.proto.HomeHarvestRes.getDefaultInstance()) return this;
+      if (other.getPos() != 0) {
+        setPos(other.getPos());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -461,11 +384,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.HomeChangeReq parsedMessage = null;
+      game.proto.HomeHarvestRes parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.HomeChangeReq) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.HomeHarvestRes) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -475,154 +398,35 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int areaId_ ;
+    private int pos_ ;
     /**
-     * <code>int32 areaId = 4;</code>
-     * @return The areaId.
+     * <code>int32 pos = 3;</code>
+     * @return The pos.
      */
     @java.lang.Override
-    public int getAreaId() {
-      return areaId_;
+    public int getPos() {
+      return pos_;
     }
     /**
-     * <code>int32 areaId = 4;</code>
-     * @param value The areaId to set.
+     * <code>int32 pos = 3;</code>
+     * @param value The pos to set.
      * @return This builder for chaining.
      */
-    public Builder setAreaId(int value) {
+    public Builder setPos(int value) {
       
-      areaId_ = value;
+      pos_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int32 areaId = 4;</code>
+     * <code>int32 pos = 3;</code>
      * @return This builder for chaining.
      */
-    public Builder clearAreaId() {
+    public Builder clearPos() {
       
-      areaId_ = 0;
+      pos_ = 0;
       onChanged();
       return this;
-    }
-
-    private game.proto.data.HomePosData data_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> dataBuilder_;
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     * @return Whether the data field is set.
-     */
-    public boolean hasData() {
-      return dataBuilder_ != null || data_ != null;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     * @return The data.
-     */
-    public game.proto.data.HomePosData getData() {
-      if (dataBuilder_ == null) {
-        return data_ == null ? game.proto.data.HomePosData.getDefaultInstance() : data_;
-      } else {
-        return dataBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder setData(game.proto.data.HomePosData value) {
-      if (dataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        data_ = value;
-        onChanged();
-      } else {
-        dataBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder setData(
-        game.proto.data.HomePosData.Builder builderForValue) {
-      if (dataBuilder_ == null) {
-        data_ = builderForValue.build();
-        onChanged();
-      } else {
-        dataBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder mergeData(game.proto.data.HomePosData value) {
-      if (dataBuilder_ == null) {
-        if (data_ != null) {
-          data_ =
-            game.proto.data.HomePosData.newBuilder(data_).mergeFrom(value).buildPartial();
-        } else {
-          data_ = value;
-        }
-        onChanged();
-      } else {
-        dataBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder clearData() {
-      if (dataBuilder_ == null) {
-        data_ = null;
-        onChanged();
-      } else {
-        data_ = null;
-        dataBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public game.proto.data.HomePosData.Builder getDataBuilder() {
-      
-      onChanged();
-      return getDataFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public game.proto.data.HomePosDataOrBuilder getDataOrBuilder() {
-      if (dataBuilder_ != null) {
-        return dataBuilder_.getMessageOrBuilder();
-      } else {
-        return data_ == null ?
-            game.proto.data.HomePosData.getDefaultInstance() : data_;
-      }
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> 
-        getDataFieldBuilder() {
-      if (dataBuilder_ == null) {
-        dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder>(
-                getData(),
-                getParentForChildren(),
-                isClean());
-        data_ = null;
-      }
-      return dataBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(
@@ -637,41 +441,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.HomeChangeReq)
+    // @@protoc_insertion_point(builder_scope:Message.HomeHarvestRes)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.HomeChangeReq)
-  private static final game.proto.HomeChangeReq DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.HomeHarvestRes)
+  private static final game.proto.HomeHarvestRes DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.HomeChangeReq();
+    DEFAULT_INSTANCE = new game.proto.HomeHarvestRes();
   }
 
-  public static game.proto.HomeChangeReq getDefaultInstance() {
+  public static game.proto.HomeHarvestRes getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<HomeChangeReq>
-      PARSER = new com.google.protobuf.AbstractParser<HomeChangeReq>() {
+  private static final com.google.protobuf.Parser<HomeHarvestRes>
+      PARSER = new com.google.protobuf.AbstractParser<HomeHarvestRes>() {
     @java.lang.Override
-    public HomeChangeReq parsePartialFrom(
+    public HomeHarvestRes parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new HomeChangeReq(input, extensionRegistry);
+      return new HomeHarvestRes(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<HomeChangeReq> parser() {
+  public static com.google.protobuf.Parser<HomeHarvestRes> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<HomeChangeReq> getParserForType() {
+  public com.google.protobuf.Parser<HomeHarvestRes> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.HomeChangeReq getDefaultInstanceForType() {
+  public game.proto.HomeHarvestRes getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

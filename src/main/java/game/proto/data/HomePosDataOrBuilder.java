@@ -8,20 +8,20 @@ public interface HomePosDataOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>int32 id = 1;</code>
+   * @return The id.
+   */
+  int getId();
+
+  /**
    * <pre>
    * |---16:x ---|--- 16:y ---|
    * </pre>
    *
-   * <code>int32 pos = 1;</code>
+   * <code>int32 pos = 2;</code>
    * @return The pos.
    */
   int getPos();
-
-  /**
-   * <code>int32 id = 2;</code>
-   * @return The id.
-   */
-  int getId();
 
   /**
    * <code>.Message.HomeType type = 3;</code>

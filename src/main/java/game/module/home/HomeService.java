@@ -54,13 +54,14 @@ public class HomeService {
      * @param rect
      * @return
      */
-    public static boolean canPut(Player player, int areaId, HomeRectInfo rect) {
+    public static boolean canPut(Player player, int areaId, HomeRectInfo rect, HomeType type) {
+
 
         boolean result = isOpen(player, areaId);
 
         if (result) {
             HomeAreaData homeAreaData = player.homeAreaData;
-            result = homeAreaData.canPut(rect);
+            result = homeAreaData.canPut(rect, type);
         }
         return result;
     }
@@ -89,15 +90,29 @@ public class HomeService {
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         homeDataBuilder.setOpenArea(homeDataBuilder.getOpenArea() | 1L << areaId);
         HomeRectInfo r = player.homeAreaData.calcRect(areaId);
-        for (int i = r.x; i < r.x1; i++) {
-            for (int j = r.y; j < r.y1; j++) {
-                HomePosData d = HomePosData.newBuilder()
-                        .setPos(fromPos(i, j))
-                        .setType(HomeType.H_NONE)
-                        .buildPartial();
-                homeDataBuilder.addMapData(d);
-                player.homeAreaData.addPosData(i, j, d);
-            }
-        }
+
+        r.foreach((i, j) -> {
+            HomePosData d = HomePosData.newBuilder()
+                    .setPos(fromPos(i, j))
+                    .setType(HomeType.H_NONE)
+                    .buildPartial();
+            homeDataBuilder.addMapData(d);
+            player.homeAreaData.addPosData(i, j, d);
+        });
+    }
+
+    /**
+     * 放置物体
+     *
+     * @param player
+     * @param data
+     * @param rect
+     */
+    public static void put(Player player, HomePosData data, HomeRectInfo rect) {
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+        rect.foreach((i, j) -> {
+            homeDataBuilder.addMapData(data);
+            player.homeAreaData.addPosData(i, j, data);
+        });
     }
 }

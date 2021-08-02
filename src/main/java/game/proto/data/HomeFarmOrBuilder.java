@@ -8,6 +8,10 @@ public interface HomeFarmOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * 种植时间
+   * </pre>
+   *
    * <code>int64 time = 1;</code>
    * @return The time.
    */

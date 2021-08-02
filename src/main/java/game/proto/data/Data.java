@@ -248,7 +248,7 @@ public final class Data {
       "lot:\0028\001\"m\n\010HomeData\022\r\n\005level\030\001 \001(\005\022\014\n\004na" +
       "me\030\002 \001(\t\022\013\n\003exp\030\003 \001(\005\022\020\n\010openArea\030\005 \001(\003\022" +
       "%\n\007mapData\030\n \003(\0132\024.Message.HomePosData\"U" +
-      "\n\013HomePosData\022\013\n\003pos\030\001 \001(\005\022\n\n\002id\030\002 \001(\005\022\037" +
+      "\n\013HomePosData\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\037" +
       "\n\004type\030\003 \001(\0162\021.Message.HomeType\022\014\n\004body\030" +
       "\n \001(\014\"\030\n\010HomeFarm\022\014\n\004time\030\001 \001(\003\"!\n\tHomeB" +
       "uild\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"6\n\010HomeRect\022\t" +
@@ -342,10 +342,10 @@ public final class Data {
       "\020\002\022\014\n\010EXERCISE\020\003*<\n\020ManualActionType\022\013\n\007" +
       "MA_NONE\020\000\022\r\n\tMA_ATTACK\020\001\022\014\n\010MA_SKILL\020\002*," +
       "\n\tFightSide\022\013\n\007FS_NONE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS" +
-      "_B\020\002*b\n\010HomeType\022\n\n\006H_NONE\020\000\022\013\n\007H_SOLID\020" +
-      "\001\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_OWEN\020\004\022\n" +
-      "\n\006H_WALL\020\005\022\014\n\010H_CARPET\020\006B\025\n\017game.proto.d" +
-      "ataH\001P\001b\006proto3"
+      "_B\020\002*U\n\010HomeType\022\n\n\006H_NONE\020\000\022\n\n\006H_LAND\020\001" +
+      "\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_WALL\020\005\022\014\n" +
+      "\010H_CARPET\020\006B\025\n\017game.proto.dataH\001P\001b\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -386,7 +386,7 @@ public final class Data {
     internal_static_Message_HomePosData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HomePosData_descriptor,
-        new java.lang.String[] { "Pos", "Id", "Type", "Body", });
+        new java.lang.String[] { "Id", "Pos", "Type", "Body", });
     internal_static_Message_HomeFarm_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_Message_HomeFarm_fieldAccessorTable = new

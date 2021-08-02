@@ -469,18 +469,21 @@ message HomeOpenAreaRqRs{
 
 // Farm, build, wall etc.
 message HomeChangeReq{
-    int32 id = 1;
-    HomeType type = 2;
-    int32 pos = 3;
     int32 areaId = 4;
+    HomePosData data = 5;
 }
 
 // Harvest
 message HomeHarvestReq{
     int32 pos = 3;
-
 }
 
+message HomeHarvestRes{
+    int32 pos = 3;
+}
+message HomeCleanReq{
+    int32 pos = 3;
+}
 
 
 

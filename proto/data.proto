@@ -82,8 +82,8 @@ message HomeData{
 
 // 地图中位置信息
 message HomePosData{
-    int32 pos = 1;// |---16:x ---|--- 16:y ---|
-    int32 id = 2;
+    int32 id = 1;
+    int32 pos = 2;// |---16:x ---|--- 16:y ---|
     HomeType type = 3;
     bytes body = 10;// 对应不同类型不同数据结构
 }
@@ -91,8 +91,7 @@ message HomePosData{
 
 // 农作物
 message HomeFarm{
-    int64 time = 1;
-
+    int64 time = 1;// 种植时间
 }
 // 建筑物
 message HomeBuild{
@@ -416,10 +415,9 @@ enum FightSide{
 
 enum HomeType{
     H_NONE = 0; // 空地
-    H_SOLID = 1; // 固定物体
+    H_LAND = 1; // 土地
     H_FARM = 2; // 农作物
     H_BUILD = 3; // 建筑物
-    H_OWEN = 4; // 所属类型,如建筑物大范围
     H_WALL = 5; // 墙
     H_CARPET = 6; // 地毯，路
 }

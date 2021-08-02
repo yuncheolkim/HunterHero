@@ -56,12 +56,12 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            pos_ = input.readInt32();
+            id_ = input.readInt32();
             break;
           }
           case 16: {
 
-            id_ = input.readInt32();
+            pos_ = input.readInt32();
             break;
           }
           case 24: {
@@ -107,30 +107,30 @@ private static final long serialVersionUID = 0L;
             game.proto.data.HomePosData.class, game.proto.data.HomePosData.Builder.class);
   }
 
-  public static final int POS_FIELD_NUMBER = 1;
+  public static final int ID_FIELD_NUMBER = 1;
+  private int id_;
+  /**
+   * <code>int32 id = 1;</code>
+   * @return The id.
+   */
+  @java.lang.Override
+  public int getId() {
+    return id_;
+  }
+
+  public static final int POS_FIELD_NUMBER = 2;
   private int pos_;
   /**
    * <pre>
    * |---16:x ---|--- 16:y ---|
    * </pre>
    *
-   * <code>int32 pos = 1;</code>
+   * <code>int32 pos = 2;</code>
    * @return The pos.
    */
   @java.lang.Override
   public int getPos() {
     return pos_;
-  }
-
-  public static final int ID_FIELD_NUMBER = 2;
-  private int id_;
-  /**
-   * <code>int32 id = 2;</code>
-   * @return The id.
-   */
-  @java.lang.Override
-  public int getId() {
-    return id_;
   }
 
   public static final int TYPE_FIELD_NUMBER = 3;
@@ -181,11 +181,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (pos_ != 0) {
-      output.writeInt32(1, pos_);
-    }
     if (id_ != 0) {
-      output.writeInt32(2, id_);
+      output.writeInt32(1, id_);
+    }
+    if (pos_ != 0) {
+      output.writeInt32(2, pos_);
     }
     if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
       output.writeEnum(3, type_);
@@ -202,13 +202,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (pos_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, pos_);
-    }
     if (id_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(2, id_);
+        .computeInt32Size(1, id_);
+    }
+    if (pos_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, pos_);
     }
     if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
@@ -233,10 +233,10 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.data.HomePosData other = (game.proto.data.HomePosData) obj;
 
-    if (getPos()
-        != other.getPos()) return false;
     if (getId()
         != other.getId()) return false;
+    if (getPos()
+        != other.getPos()) return false;
     if (type_ != other.type_) return false;
     if (!getBody()
         .equals(other.getBody())) return false;
@@ -251,10 +251,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + POS_FIELD_NUMBER;
-    hash = (53 * hash) + getPos();
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + getId();
+    hash = (37 * hash) + POS_FIELD_NUMBER;
+    hash = (53 * hash) + getPos();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + type_;
     hash = (37 * hash) + BODY_FIELD_NUMBER;
@@ -396,9 +396,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      pos_ = 0;
-
       id_ = 0;
+
+      pos_ = 0;
 
       type_ = 0;
 
@@ -430,8 +430,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.data.HomePosData buildPartial() {
       game.proto.data.HomePosData result = new game.proto.data.HomePosData(this);
-      result.pos_ = pos_;
       result.id_ = id_;
+      result.pos_ = pos_;
       result.type_ = type_;
       result.body_ = body_;
       onBuilt();
@@ -482,11 +482,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.data.HomePosData other) {
       if (other == game.proto.data.HomePosData.getDefaultInstance()) return this;
-      if (other.getPos() != 0) {
-        setPos(other.getPos());
-      }
       if (other.getId() != 0) {
         setId(other.getId());
+      }
+      if (other.getPos() != 0) {
+        setPos(other.getPos());
       }
       if (other.type_ != 0) {
         setTypeValue(other.getTypeValue());
@@ -523,13 +523,44 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int id_ ;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
+    }
+    /**
+     * <code>int32 id = 1;</code>
+     * @param value The id to set.
+     * @return This builder for chaining.
+     */
+    public Builder setId(int value) {
+      
+      id_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 id = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearId() {
+      
+      id_ = 0;
+      onChanged();
+      return this;
+    }
+
     private int pos_ ;
     /**
      * <pre>
      * |---16:x ---|--- 16:y ---|
      * </pre>
      *
-     * <code>int32 pos = 1;</code>
+     * <code>int32 pos = 2;</code>
      * @return The pos.
      */
     @java.lang.Override
@@ -541,7 +572,7 @@ private static final long serialVersionUID = 0L;
      * |---16:x ---|--- 16:y ---|
      * </pre>
      *
-     * <code>int32 pos = 1;</code>
+     * <code>int32 pos = 2;</code>
      * @param value The pos to set.
      * @return This builder for chaining.
      */
@@ -556,43 +587,12 @@ private static final long serialVersionUID = 0L;
      * |---16:x ---|--- 16:y ---|
      * </pre>
      *
-     * <code>int32 pos = 1;</code>
+     * <code>int32 pos = 2;</code>
      * @return This builder for chaining.
      */
     public Builder clearPos() {
       
       pos_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int id_ ;
-    /**
-     * <code>int32 id = 2;</code>
-     * @return The id.
-     */
-    @java.lang.Override
-    public int getId() {
-      return id_;
-    }
-    /**
-     * <code>int32 id = 2;</code>
-     * @param value The id to set.
-     * @return This builder for chaining.
-     */
-    public Builder setId(int value) {
-      
-      id_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 id = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearId() {
-      
-      id_ = 0;
       onChanged();
       return this;
     }

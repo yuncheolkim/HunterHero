@@ -18,12 +18,12 @@ public enum HomeType
   H_NONE(0),
   /**
    * <pre>
-   * 固定物体
+   * 土地
    * </pre>
    *
-   * <code>H_SOLID = 1;</code>
+   * <code>H_LAND = 1;</code>
    */
-  H_SOLID(1),
+  H_LAND(1),
   /**
    * <pre>
    * 农作物
@@ -40,14 +40,6 @@ public enum HomeType
    * <code>H_BUILD = 3;</code>
    */
   H_BUILD(3),
-  /**
-   * <pre>
-   * 所属类型,如建筑物大范围
-   * </pre>
-   *
-   * <code>H_OWEN = 4;</code>
-   */
-  H_OWEN(4),
   /**
    * <pre>
    * 墙
@@ -77,12 +69,12 @@ public enum HomeType
   public static final int H_NONE_VALUE = 0;
   /**
    * <pre>
-   * 固定物体
+   * 土地
    * </pre>
    *
-   * <code>H_SOLID = 1;</code>
+   * <code>H_LAND = 1;</code>
    */
-  public static final int H_SOLID_VALUE = 1;
+  public static final int H_LAND_VALUE = 1;
   /**
    * <pre>
    * 农作物
@@ -99,14 +91,6 @@ public enum HomeType
    * <code>H_BUILD = 3;</code>
    */
   public static final int H_BUILD_VALUE = 3;
-  /**
-   * <pre>
-   * 所属类型,如建筑物大范围
-   * </pre>
-   *
-   * <code>H_OWEN = 4;</code>
-   */
-  public static final int H_OWEN_VALUE = 4;
   /**
    * <pre>
    * 墙
@@ -150,10 +134,9 @@ public enum HomeType
   public static HomeType forNumber(int value) {
     switch (value) {
       case 0: return H_NONE;
-      case 1: return H_SOLID;
+      case 1: return H_LAND;
       case 2: return H_FARM;
       case 3: return H_BUILD;
-      case 4: return H_OWEN;
       case 5: return H_WALL;
       case 6: return H_CARPET;
       default: return null;

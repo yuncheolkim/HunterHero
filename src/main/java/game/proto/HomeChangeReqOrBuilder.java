@@ -8,25 +8,23 @@ public interface HomeChangeReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 id = 1;</code>
-   * @return The id.
+   * <code>int32 areaId = 4;</code>
+   * @return The areaId.
    */
-  int getId();
+  int getAreaId();
 
   /**
-   * <code>.Message.HomeType type = 2;</code>
-   * @return The enum numeric value on the wire for type.
+   * <code>.Message.HomePosData data = 5;</code>
+   * @return Whether the data field is set.
    */
-  int getTypeValue();
+  boolean hasData();
   /**
-   * <code>.Message.HomeType type = 2;</code>
-   * @return The type.
+   * <code>.Message.HomePosData data = 5;</code>
+   * @return The data.
    */
-  game.proto.data.HomeType getType();
-
+  game.proto.data.HomePosData getData();
   /**
-   * <code>int32 pos = 3;</code>
-   * @return The pos.
+   * <code>.Message.HomePosData data = 5;</code>
    */
-  int getPos();
+  game.proto.data.HomePosDataOrBuilder getDataOrBuilder();
 }

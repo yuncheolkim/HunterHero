@@ -2,6 +2,8 @@ package game.module.home;
 
 import game.proto.data.HomeRect;
 
+import java.util.function.BiConsumer;
+
 /**
  * @author Yunzhe.Jin
  * 2021/8/2 14:38
@@ -31,6 +33,14 @@ public class HomeRectInfo {
 
     public HomeRect toRect() {
         return HomeRect.newBuilder().setX(x).setY(y).setW(w).setH(h).buildPartial();
+    }
+
+    public void foreach(BiConsumer<Integer, Integer> consumer) {
+        for (int i = x; i < x1; i++) {
+            for (int j = y; j < y1; j++) {
+                consumer.accept(i, j);
+            }
+        }
     }
 
 }
