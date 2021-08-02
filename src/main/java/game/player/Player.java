@@ -24,6 +24,8 @@ import game.module.event.handler.ItemAddEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceChangeEvent;
 import game.module.hero.HeroService;
+import game.module.home.HomeAreaData;
+import game.module.home.HomeService;
 import game.net.Transport;
 import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
@@ -106,6 +108,11 @@ public class Player {
      * 手动战斗
      */
     public HalfManualBattle hmBattle;
+
+    /**
+     * 房间区域信息
+     */
+    public HomeAreaData homeAreaData;
 
 
     public Player(final long pid) {
@@ -210,6 +217,9 @@ public class Player {
         }
         bank.capacity = pd.getBankCapacity();
         bank.count = pd.getBankCount();
+
+        // 房间
+        homeAreaData = HomeService.initHomeAreaData(this);
 
     }
 

@@ -1,6 +1,9 @@
 package game.module.home;
 
+import game.exception.ModuleAssert;
 import game.player.Player;
+import game.proto.HomeChangeReq;
+import game.proto.HomeHarvestReq;
 import game.proto.HomeOpenAreaRqRs;
 
 /**
@@ -17,16 +20,19 @@ public class HomeHandler {
      * @param player
      */
     public static HomeOpenAreaRqRs openArea(Player player, HomeOpenAreaRqRs req) {
+        ModuleAssert.isTrue(req.getId() >= 0 && req.getId() < 49);
+
+        HomeService.openArea(player, req.getId());
 
         return req;
     }
 
     /**
-     * 种植
+     * 改变地形，如种植，造墙等
      *
      * @param player
      */
-    public static void farm(Player player) {
+    public static void change(Player player, HomeChangeReq req) {
 
     }
 
@@ -35,16 +41,7 @@ public class HomeHandler {
      *
      * @param player
      */
-    public static void harvest(Player player) {
-
-    }
-
-    /**
-     * 放置建筑物
-     *
-     * @param player
-     */
-    public static void build(Player player) {
+    public static void harvest(Player player, HomeHarvestReq req) {
 
     }
 }

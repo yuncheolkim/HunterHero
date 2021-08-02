@@ -342,9 +342,10 @@ public final class Data {
       "\020\002\022\014\n\010EXERCISE\020\003*<\n\020ManualActionType\022\013\n\007" +
       "MA_NONE\020\000\022\r\n\tMA_ATTACK\020\001\022\014\n\010MA_SKILL\020\002*," +
       "\n\tFightSide\022\013\n\007FS_NONE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS" +
-      "_B\020\002*H\n\010HomeType\022\n\n\006H_NONE\020\000\022\013\n\007H_SOLID\020" +
-      "\001\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_OWEN\020\004B\025" +
-      "\n\017game.proto.dataH\001P\001b\006proto3"
+      "_B\020\002*b\n\010HomeType\022\n\n\006H_NONE\020\000\022\013\n\007H_SOLID\020" +
+      "\001\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_OWEN\020\004\022\n" +
+      "\n\006H_WALL\020\005\022\014\n\010H_CARPET\020\006B\025\n\017game.proto.d" +
+      "ataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

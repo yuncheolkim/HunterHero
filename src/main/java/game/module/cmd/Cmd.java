@@ -116,6 +116,40 @@ public enum Cmd {
             PlayerService.openFeature(player, i);
         }
     },
+    CMD15(15, "Home close open area") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+            int areaId = Integer.parseInt(line.get(0));
+            long opened = player.pd.getHomeDataBuilder().getOpenArea();
+
+            player.pd.getHomeDataBuilder().setOpenArea(opened ^ 1L << areaId);
+        }
+    },
+    CMD16(16, "Open Feature") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+        }
+    },
+    CMD17(17, "Open Feature") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+        }
+    },
+    CMD18(18, "Open Feature") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+        }
+    },
+    CMD19(19, "Open Feature") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+        }
+    },
+    CMD20(20, "Open Feature") {
+        @Override
+        public void run(final Player player, final List<String> line) {
+        }
+    },
     ;
 
     public final int id;

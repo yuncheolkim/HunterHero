@@ -70,6 +70,7 @@ message PlayerData {
     HomeData homeData = 801;
 
 }
+///////////////////////////////////////////  Home
 // 家园数据
 message HomeData{
     int32 level = 1;
@@ -107,6 +108,8 @@ message HomeRect{
     int32 h = 4;
 }
 
+
+///////////////////////////////////////////  Formation
 // 法阵
 message FormationEnhance{
 
@@ -416,5 +419,7 @@ enum HomeType{
     H_SOLID = 1; // 固定物体
     H_FARM = 2; // 农作物
     H_BUILD = 3; // 建筑物
-    H_OWEN = 4; // 所属类型,如建筑物
+    H_OWEN = 4; // 所属类型,如建筑物大范围
+    H_WALL = 5; // 墙
+    H_CARPET = 6; // 地毯，路
 }

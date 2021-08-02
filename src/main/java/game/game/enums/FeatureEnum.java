@@ -1,5 +1,6 @@
 package game.game.enums;
 
+import game.module.home.HomeService;
 import game.player.Player;
 import game.proto.HomeOpenAreaRqRs;
 import game.proto.data.HomeData;
@@ -16,7 +17,8 @@ public enum FeatureEnum {
     家园(3) {
         @Override
         public void openPrepare(Player player) {
-            player.pd.setHomeData(HomeData.newBuilder().setOpenArea(1 << 24));
+            player.pd.setHomeData(HomeData.newBuilder());
+            HomeService.openArea(player, 24);
 
             player.send(No.HomeOpenAreaRqRs, HomeOpenAreaRqRs.newBuilder()
                     .setId(24).buildPartial());

@@ -42,12 +42,28 @@ public enum HomeType
   H_BUILD(3),
   /**
    * <pre>
-   * 所属类型,如建筑物
+   * 所属类型,如建筑物大范围
    * </pre>
    *
    * <code>H_OWEN = 4;</code>
    */
   H_OWEN(4),
+  /**
+   * <pre>
+   * 墙
+   * </pre>
+   *
+   * <code>H_WALL = 5;</code>
+   */
+  H_WALL(5),
+  /**
+   * <pre>
+   * 地毯，路
+   * </pre>
+   *
+   * <code>H_CARPET = 6;</code>
+   */
+  H_CARPET(6),
   UNRECOGNIZED(-1),
   ;
 
@@ -85,12 +101,28 @@ public enum HomeType
   public static final int H_BUILD_VALUE = 3;
   /**
    * <pre>
-   * 所属类型,如建筑物
+   * 所属类型,如建筑物大范围
    * </pre>
    *
    * <code>H_OWEN = 4;</code>
    */
   public static final int H_OWEN_VALUE = 4;
+  /**
+   * <pre>
+   * 墙
+   * </pre>
+   *
+   * <code>H_WALL = 5;</code>
+   */
+  public static final int H_WALL_VALUE = 5;
+  /**
+   * <pre>
+   * 地毯，路
+   * </pre>
+   *
+   * <code>H_CARPET = 6;</code>
+   */
+  public static final int H_CARPET_VALUE = 6;
 
 
   public final int getNumber() {
@@ -122,6 +154,8 @@ public enum HomeType
       case 2: return H_FARM;
       case 3: return H_BUILD;
       case 4: return H_OWEN;
+      case 5: return H_WALL;
+      case 6: return H_CARPET;
       default: return null;
     }
   }

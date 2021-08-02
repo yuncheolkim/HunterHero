@@ -5,6 +5,7 @@ package game.proto.data;
 
 /**
  * <pre>
+ *&#47;////////////////////////////////////////  Home
  * 家园数据
  * </pre>
  *
@@ -438,6 +439,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
+   *&#47;////////////////////////////////////////  Home
    * 家园数据
    * </pre>
    *
