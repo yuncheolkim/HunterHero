@@ -2,6 +2,7 @@ package game.net.server;
 
 import game.base.G;
 import game.base.Lifecycle;
+import game.exception.ErrorEnum;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
@@ -50,6 +51,7 @@ public class TcpServer implements IServer {
 
         // starter
         try {
+            ErrorEnum.init();
             starter.forEach(Lifecycle::start);
         } catch (Exception e) {
             G.findException(e);

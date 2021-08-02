@@ -1,6 +1,7 @@
 package game.exception;
 
 import com.google.common.collect.ImmutableMap;
+import game.base.Logs;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,8 +34,8 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     ERR_110(110, "钓鱼中"),
     ERR_111(111, "不在钓鱼中"),
     ERR_112(112, "不在钓鱼区域中"),
+    ERR_113(113, "已经在战斗中"),
     ERR_121(121, "家园区域未开启"),
-    ERR_113(121, "已经在战斗中"),
     ERR_201(201, "回城CD中"),
     ERR_202(202, "已经在跑镖中"),
 
@@ -48,17 +49,22 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
 
         this.id = id;
         this.module = module;
+
+
     }
 
-    private static final ImmutableMap<Integer, ModuleErrorNoResolve> map;
+    private static ImmutableMap<Integer, ModuleErrorNoResolve> map;
 
-    static {
+
+    public static void init() {
         final ImmutableMap.Builder<Integer, ModuleErrorNoResolve> builder = ImmutableMap.builder();
         final HashSet<Integer> ids = new HashSet<>();
 
         for (final ErrorEnum value : ErrorEnum.values()) {
             if (!ids.add(value.id)) {
-                throw new IllegalStateException("id重复:" + value.id);
+                IllegalStateException illegalStateException = new IllegalStateException("id重复:" + value.id);
+                Logs.C.error(illegalStateException);
+                throw illegalStateException;
             }
             builder.put(value.id, value);
         }
@@ -98,5 +104,9 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
                 "id=" + id +
                 ", module='" + module + '\'' +
                 '}';
+    }
+
+    public static void main(String[] args) {
+        System.out.println(ERR_1);
     }
 }
