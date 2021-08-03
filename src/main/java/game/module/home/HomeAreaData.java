@@ -83,4 +83,12 @@ public class HomeAreaData {
         pos[x][y] = data;
     }
 
+
+    public void clean(int posIndex) {
+
+        HomePos homePos = HomeService.fromInt(posIndex);
+        pos[homePos.x][homePos.y] = HomePosData.newBuilder()
+                .setPos(posIndex)
+                .setType(HomeType.H_NONE).buildPartial();
+    }
 }

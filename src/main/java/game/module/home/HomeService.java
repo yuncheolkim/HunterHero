@@ -1,5 +1,6 @@
 package game.module.home;
 
+import com.google.protobuf.ByteString;
 import game.player.Player;
 import game.proto.data.HomeData;
 import game.proto.data.HomePosData;
@@ -114,5 +115,23 @@ public class HomeService {
             homeDataBuilder.addMapData(data);
             player.homeAreaData.addPosData(i, j, data);
         });
+    }
+
+
+    /**
+     * 清理地图上的建筑，物品
+     *
+     * @param player
+     * @param pos
+     */
+    public static void clean(Player player, int pos) {
+        player.homeAreaData.clean(pos);
+        for (HomePosData.Builder builder : player.pd.getHomeDataBuilder().getMapDataBuilderList()) {
+            if (builder.getPos() == pos) {
+                builder.setType(HomeType.H_NONE);
+                builder.setBody(ByteString.EMPTY);
+            }
+        }
+
     }
 }
