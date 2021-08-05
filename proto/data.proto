@@ -77,12 +77,12 @@ message HomeData{
     string name = 2;
     int32 exp = 3;
     int64 openArea = 5; // 开启区域标记
-    repeated HomePosData mapData = 10;
+    map<int32, HomePosData > mapData = 10;
 }
 
 // 地图中位置信息
 message HomePosData{
-    int32 id = 1;
+    int32 id = 1;// 物品id
     int32 pos = 2;// |---16:x ---|--- 16:y ---|
     HomeType type = 3;
     bytes body = 10;// 对应不同类型不同数据结构

@@ -3,6 +3,7 @@ package game.module.home;
 import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.*;
+import game.proto.data.HomeRect;
 
 /**
  * 家园系统
@@ -49,6 +50,9 @@ public class HomeHandler {
      * @param player
      */
     public static HomeHarvestRes harvest(Player player, HomeHarvestReq req) {
+
+        req.getPosList().forEach(pos -> HomeService.harvest(player, pos));
+
         return null;
     }
 
@@ -59,6 +63,9 @@ public class HomeHandler {
      * @param req
      */
     public static void clean(Player player, HomeCleanReq req) {
+        for (HomeRect homeRect : req.getRectList()) {
+            HomeService.clean(player, new HomeRectInfo(homeRect));
+        }
     }
 
 }

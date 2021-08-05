@@ -475,14 +475,17 @@ message HomeChangeReq{
 
 // Harvest
 message HomeHarvestReq{
-    int32 pos = 3;
+    repeated int32 pos = 3;
 }
 
 message HomeHarvestRes{
     int32 pos = 3;
+    repeated HomeRect rect = 4;
+
 }
 message HomeCleanReq{
     int32 pos = 3;
+    repeated HomeRect rect = 4;
 }
 
 

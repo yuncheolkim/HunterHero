@@ -22,7 +22,6 @@ private static final long serialVersionUID = 0L;
   }
   private HomeData() {
     name_ = "";
-    mapData_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -79,11 +78,15 @@ private static final long serialVersionUID = 0L;
           }
           case 82: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              mapData_ = new java.util.ArrayList<game.proto.data.HomePosData>();
+              mapData_ = com.google.protobuf.MapField.newMapField(
+                  MapDataDefaultEntryHolder.defaultEntry);
               mutable_bitField0_ |= 0x00000001;
             }
-            mapData_.add(
-                input.readMessage(game.proto.data.HomePosData.parser(), extensionRegistry));
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosData>
+            mapData__ = input.readMessage(
+                MapDataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            mapData_.getMutableMap().put(
+                mapData__.getKey(), mapData__.getValue());
             break;
           }
           default: {
@@ -101,9 +104,6 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
-      if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        mapData_ = java.util.Collections.unmodifiableList(mapData_);
-      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -113,6 +113,18 @@ private static final long serialVersionUID = 0L;
     return game.proto.data.Data.internal_static_Message_HomeData_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 10:
+        return internalGetMapData();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -197,43 +209,84 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int MAPDATA_FIELD_NUMBER = 10;
-  private java.util.List<game.proto.data.HomePosData> mapData_;
-  /**
-   * <code>repeated .Message.HomePosData mapData = 10;</code>
-   */
-  @java.lang.Override
-  public java.util.List<game.proto.data.HomePosData> getMapDataList() {
+  private static final class MapDataDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.HomePosData> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.HomePosData>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_HomeData_MapDataEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.HomePosData.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.HomePosData> mapData_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosData>
+  internalGetMapData() {
+    if (mapData_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          MapDataDefaultEntryHolder.defaultEntry);
+    }
     return mapData_;
   }
-  /**
-   * <code>repeated .Message.HomePosData mapData = 10;</code>
-   */
-  @java.lang.Override
-  public java.util.List<? extends game.proto.data.HomePosDataOrBuilder> 
-      getMapDataOrBuilderList() {
-    return mapData_;
-  }
-  /**
-   * <code>repeated .Message.HomePosData mapData = 10;</code>
-   */
-  @java.lang.Override
+
   public int getMapDataCount() {
-    return mapData_.size();
+    return internalGetMapData().getMap().size();
   }
   /**
-   * <code>repeated .Message.HomePosData mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
    */
+
   @java.lang.Override
-  public game.proto.data.HomePosData getMapData(int index) {
-    return mapData_.get(index);
+  public boolean containsMapData(
+      int key) {
+    
+    return internalGetMapData().getMap().containsKey(key);
   }
   /**
-   * <code>repeated .Message.HomePosData mapData = 10;</code>
+   * Use {@link #getMapDataMap()} instead.
    */
   @java.lang.Override
-  public game.proto.data.HomePosDataOrBuilder getMapDataOrBuilder(
-      int index) {
-    return mapData_.get(index);
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapData() {
+    return getMapDataMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapDataMap() {
+    return internalGetMapData().getMap();
+  }
+  /**
+   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.HomePosData getMapDataOrDefault(
+      int key,
+      game.proto.data.HomePosData defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+        internalGetMapData().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.HomePosData getMapDataOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+        internalGetMapData().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -262,9 +315,12 @@ private static final long serialVersionUID = 0L;
     if (openArea_ != 0L) {
       output.writeInt64(5, openArea_);
     }
-    for (int i = 0; i < mapData_.size(); i++) {
-      output.writeMessage(10, mapData_.get(i));
-    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetMapData(),
+        MapDataDefaultEntryHolder.defaultEntry,
+        10);
     unknownFields.writeTo(output);
   }
 
@@ -289,9 +345,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(5, openArea_);
     }
-    for (int i = 0; i < mapData_.size(); i++) {
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HomePosData> entry
+         : internalGetMapData().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosData>
+      mapData__ = MapDataDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(10, mapData_.get(i));
+          .computeMessageSize(10, mapData__);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -316,8 +378,8 @@ private static final long serialVersionUID = 0L;
         != other.getExp()) return false;
     if (getOpenArea()
         != other.getOpenArea()) return false;
-    if (!getMapDataList()
-        .equals(other.getMapDataList())) return false;
+    if (!internalGetMapData().equals(
+        other.internalGetMapData())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -338,9 +400,9 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + OPENAREA_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getOpenArea());
-    if (getMapDataCount() > 0) {
+    if (!internalGetMapData().getMap().isEmpty()) {
       hash = (37 * hash) + MAPDATA_FIELD_NUMBER;
-      hash = (53 * hash) + getMapDataList().hashCode();
+      hash = (53 * hash) + internalGetMapData().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -454,6 +516,28 @@ private static final long serialVersionUID = 0L;
       return game.proto.data.Data.internal_static_Message_HomeData_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 10:
+          return internalGetMapData();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 10:
+          return internalGetMutableMapData();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -475,7 +559,6 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getMapDataFieldBuilder();
       }
     }
     @java.lang.Override
@@ -489,12 +572,7 @@ private static final long serialVersionUID = 0L;
 
       openArea_ = 0L;
 
-      if (mapDataBuilder_ == null) {
-        mapData_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        mapDataBuilder_.clear();
-      }
+      internalGetMutableMapData().clear();
       return this;
     }
 
@@ -526,15 +604,8 @@ private static final long serialVersionUID = 0L;
       result.name_ = name_;
       result.exp_ = exp_;
       result.openArea_ = openArea_;
-      if (mapDataBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          mapData_ = java.util.Collections.unmodifiableList(mapData_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.mapData_ = mapData_;
-      } else {
-        result.mapData_ = mapDataBuilder_.build();
-      }
+      result.mapData_ = internalGetMapData();
+      result.mapData_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -596,32 +667,8 @@ private static final long serialVersionUID = 0L;
       if (other.getOpenArea() != 0L) {
         setOpenArea(other.getOpenArea());
       }
-      if (mapDataBuilder_ == null) {
-        if (!other.mapData_.isEmpty()) {
-          if (mapData_.isEmpty()) {
-            mapData_ = other.mapData_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureMapDataIsMutable();
-            mapData_.addAll(other.mapData_);
-          }
-          onChanged();
-        }
-      } else {
-        if (!other.mapData_.isEmpty()) {
-          if (mapDataBuilder_.isEmpty()) {
-            mapDataBuilder_.dispose();
-            mapDataBuilder_ = null;
-            mapData_ = other.mapData_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            mapDataBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getMapDataFieldBuilder() : null;
-          } else {
-            mapDataBuilder_.addAllMessages(other.mapData_);
-          }
-        }
-      }
+      internalGetMutableMapData().mergeFrom(
+          other.internalGetMapData());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -833,244 +880,132 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.util.List<game.proto.data.HomePosData> mapData_ =
-      java.util.Collections.emptyList();
-    private void ensureMapDataIsMutable() {
-      if (!((bitField0_ & 0x00000001) != 0)) {
-        mapData_ = new java.util.ArrayList<game.proto.data.HomePosData>(mapData_);
-        bitField0_ |= 0x00000001;
-       }
-    }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> mapDataBuilder_;
-
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public java.util.List<game.proto.data.HomePosData> getMapDataList() {
-      if (mapDataBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(mapData_);
-      } else {
-        return mapDataBuilder_.getMessageList();
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.HomePosData> mapData_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosData>
+    internalGetMapData() {
+      if (mapData_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            MapDataDefaultEntryHolder.defaultEntry);
       }
+      return mapData_;
     }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosData>
+    internalGetMutableMapData() {
+      onChanged();;
+      if (mapData_ == null) {
+        mapData_ = com.google.protobuf.MapField.newMapField(
+            MapDataDefaultEntryHolder.defaultEntry);
+      }
+      if (!mapData_.isMutable()) {
+        mapData_ = mapData_.copy();
+      }
+      return mapData_;
+    }
+
     public int getMapDataCount() {
-      if (mapDataBuilder_ == null) {
-        return mapData_.size();
-      } else {
-        return mapDataBuilder_.getCount();
-      }
+      return internalGetMapData().getMap().size();
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public game.proto.data.HomePosData getMapData(int index) {
-      if (mapDataBuilder_ == null) {
-        return mapData_.get(index);
-      } else {
-        return mapDataBuilder_.getMessage(index);
-      }
+
+    @java.lang.Override
+    public boolean containsMapData(
+        int key) {
+      
+      return internalGetMapData().getMap().containsKey(key);
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * Use {@link #getMapDataMap()} instead.
      */
-    public Builder setMapData(
-        int index, game.proto.data.HomePosData value) {
-      if (mapDataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureMapDataIsMutable();
-        mapData_.set(index, value);
-        onChanged();
-      } else {
-        mapDataBuilder_.setMessage(index, value);
-      }
-      return this;
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapData() {
+      return getMapDataMap();
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public Builder setMapData(
-        int index, game.proto.data.HomePosData.Builder builderForValue) {
-      if (mapDataBuilder_ == null) {
-        ensureMapDataIsMutable();
-        mapData_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        mapDataBuilder_.setMessage(index, builderForValue.build());
-      }
-      return this;
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapDataMap() {
+      return internalGetMapData().getMap();
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public Builder addMapData(game.proto.data.HomePosData value) {
-      if (mapDataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureMapDataIsMutable();
-        mapData_.add(value);
-        onChanged();
-      } else {
-        mapDataBuilder_.addMessage(value);
-      }
-      return this;
+    @java.lang.Override
+
+    public game.proto.data.HomePosData getMapDataOrDefault(
+        int key,
+        game.proto.data.HomePosData defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+          internalGetMapData().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public Builder addMapData(
-        int index, game.proto.data.HomePosData value) {
-      if (mapDataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureMapDataIsMutable();
-        mapData_.add(index, value);
-        onChanged();
-      } else {
-        mapDataBuilder_.addMessage(index, value);
+    @java.lang.Override
+
+    public game.proto.data.HomePosData getMapDataOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+          internalGetMapData().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
       }
-      return this;
+      return map.get(key);
     }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public Builder addMapData(
-        game.proto.data.HomePosData.Builder builderForValue) {
-      if (mapDataBuilder_ == null) {
-        ensureMapDataIsMutable();
-        mapData_.add(builderForValue.build());
-        onChanged();
-      } else {
-        mapDataBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public Builder addMapData(
-        int index, game.proto.data.HomePosData.Builder builderForValue) {
-      if (mapDataBuilder_ == null) {
-        ensureMapDataIsMutable();
-        mapData_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        mapDataBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public Builder addAllMapData(
-        java.lang.Iterable<? extends game.proto.data.HomePosData> values) {
-      if (mapDataBuilder_ == null) {
-        ensureMapDataIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, mapData_);
-        onChanged();
-      } else {
-        mapDataBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
+
     public Builder clearMapData() {
-      if (mapDataBuilder_ == null) {
-        mapData_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        mapDataBuilder_.clear();
-      }
+      internalGetMutableMapData().getMutableMap()
+          .clear();
       return this;
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public Builder removeMapData(int index) {
-      if (mapDataBuilder_ == null) {
-        ensureMapDataIsMutable();
-        mapData_.remove(index);
-        onChanged();
-      } else {
-        mapDataBuilder_.remove(index);
-      }
+
+    public Builder removeMapData(
+        int key) {
+      
+      internalGetMutableMapData().getMutableMap()
+          .remove(key);
       return this;
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * Use alternate mutation accessors instead.
      */
-    public game.proto.data.HomePosData.Builder getMapDataBuilder(
-        int index) {
-      return getMapDataFieldBuilder().getBuilder(index);
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.HomePosData>
+    getMutableMapData() {
+      return internalGetMutableMapData().getMutableMap();
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public game.proto.data.HomePosDataOrBuilder getMapDataOrBuilder(
-        int index) {
-      if (mapDataBuilder_ == null) {
-        return mapData_.get(index);  } else {
-        return mapDataBuilder_.getMessageOrBuilder(index);
-      }
+    public Builder putMapData(
+        int key,
+        game.proto.data.HomePosData value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableMapData().getMutableMap()
+          .put(key, value);
+      return this;
     }
     /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
      */
-    public java.util.List<? extends game.proto.data.HomePosDataOrBuilder> 
-         getMapDataOrBuilderList() {
-      if (mapDataBuilder_ != null) {
-        return mapDataBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(mapData_);
-      }
-    }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public game.proto.data.HomePosData.Builder addMapDataBuilder() {
-      return getMapDataFieldBuilder().addBuilder(
-          game.proto.data.HomePosData.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public game.proto.data.HomePosData.Builder addMapDataBuilder(
-        int index) {
-      return getMapDataFieldBuilder().addBuilder(
-          index, game.proto.data.HomePosData.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.HomePosData mapData = 10;</code>
-     */
-    public java.util.List<game.proto.data.HomePosData.Builder> 
-         getMapDataBuilderList() {
-      return getMapDataFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> 
-        getMapDataFieldBuilder() {
-      if (mapDataBuilder_ == null) {
-        mapDataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder>(
-                mapData_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        mapData_ = null;
-      }
-      return mapDataBuilder_;
+
+    public Builder putAllMapData(
+        java.util.Map<java.lang.Integer, game.proto.data.HomePosData> values) {
+      internalGetMutableMapData().getMutableMap()
+          .putAll(values);
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

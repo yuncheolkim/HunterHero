@@ -12,4 +12,28 @@ public interface HomeHarvestResOrBuilder extends
    * @return The pos.
    */
   int getPos();
+
+  /**
+   * <code>repeated .Message.HomeRect rect = 4;</code>
+   */
+  java.util.List<game.proto.data.HomeRect> 
+      getRectList();
+  /**
+   * <code>repeated .Message.HomeRect rect = 4;</code>
+   */
+  game.proto.data.HomeRect getRect(int index);
+  /**
+   * <code>repeated .Message.HomeRect rect = 4;</code>
+   */
+  int getRectCount();
+  /**
+   * <code>repeated .Message.HomeRect rect = 4;</code>
+   */
+  java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
+      getRectOrBuilderList();
+  /**
+   * <code>repeated .Message.HomeRect rect = 4;</code>
+   */
+  game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+      int index);
 }

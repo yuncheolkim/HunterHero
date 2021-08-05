@@ -8,8 +8,19 @@ public interface HomeHarvestReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 pos = 3;</code>
-   * @return The pos.
+   * <code>repeated int32 pos = 3;</code>
+   * @return A list containing the pos.
    */
-  int getPos();
+  java.util.List<java.lang.Integer> getPosList();
+  /**
+   * <code>repeated int32 pos = 3;</code>
+   * @return The count of pos.
+   */
+  int getPosCount();
+  /**
+   * <code>repeated int32 pos = 3;</code>
+   * @param index The index of the element to return.
+   * @return The pos at the given index.
+   */
+  int getPos(int index);
 }

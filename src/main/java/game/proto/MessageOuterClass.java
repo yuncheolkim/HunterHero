@@ -573,11 +573,13 @@ public final class MessageOuterClass {
       "meOpenAreaRqRs\022\n\n\002id\030\001 \001(\005\"C\n\rHomeChange" +
       "Req\022\016\n\006areaId\030\004 \001(\005\022\"\n\004data\030\005 \001(\0132\024.Mess" +
       "age.HomePosData\"\035\n\016HomeHarvestReq\022\013\n\003pos" +
-      "\030\003 \001(\005\"\035\n\016HomeHarvestRes\022\013\n\003pos\030\003 \001(\005\"\033\n" +
-      "\014HomeCleanReq\022\013\n\003pos\030\003 \001(\005*R\n\013ChatChanne" +
-      "l\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007P" +
-      "RIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.p" +
-      "rotoH\001P\001b\006proto3"
+      "\030\003 \003(\005\">\n\016HomeHarvestRes\022\013\n\003pos\030\003 \001(\005\022\037\n" +
+      "\004rect\030\004 \003(\0132\021.Message.HomeRect\"<\n\014HomeCl" +
+      "eanReq\022\013\n\003pos\030\003 \001(\005\022\037\n\004rect\030\004 \003(\0132\021.Mess" +
+      "age.HomeRect*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022" +
+      "\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SY" +
+      "STEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1105,13 +1107,13 @@ public final class MessageOuterClass {
     internal_static_Message_HomeHarvestRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HomeHarvestRes_descriptor,
-        new java.lang.String[] { "Pos", });
+        new java.lang.String[] { "Pos", "Rect", });
     internal_static_Message_HomeCleanReq_descriptor =
       getDescriptor().getMessageTypes().get(86);
     internal_static_Message_HomeCleanReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HomeCleanReq_descriptor,
-        new java.lang.String[] { "Pos", });
+        new java.lang.String[] { "Pos", "Rect", });
     game.proto.data.Data.getDescriptor();
   }
 

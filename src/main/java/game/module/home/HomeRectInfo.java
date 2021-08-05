@@ -27,8 +27,8 @@ public class HomeRectInfo {
         y = rect.getY();
         w = rect.getW();
         h = rect.getH();
-        x1 = x + w;
-        y1 = h + h;
+        x1 = x + w - 1;
+        y1 = h + h - 1;
     }
 
     public HomeRect toRect() {

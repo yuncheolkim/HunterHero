@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HomeHarvestReq() {
+    pos_ = emptyIntList();
   }
 
   @java.lang.Override
@@ -42,6 +43,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -53,8 +55,24 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 24: {
-
-            pos_ = input.readInt32();
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              pos_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            pos_.addInt(input.readInt32());
+            break;
+          }
+          case 26: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+              pos_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              pos_.addInt(input.readInt32());
+            }
+            input.popLimit(limit);
             break;
           }
           default: {
@@ -72,6 +90,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        pos_.makeImmutable(); // C
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -90,15 +111,32 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int POS_FIELD_NUMBER = 3;
-  private int pos_;
+  private com.google.protobuf.Internal.IntList pos_;
   /**
-   * <code>int32 pos = 3;</code>
-   * @return The pos.
+   * <code>repeated int32 pos = 3;</code>
+   * @return A list containing the pos.
    */
   @java.lang.Override
-  public int getPos() {
+  public java.util.List<java.lang.Integer>
+      getPosList() {
     return pos_;
   }
+  /**
+   * <code>repeated int32 pos = 3;</code>
+   * @return The count of pos.
+   */
+  public int getPosCount() {
+    return pos_.size();
+  }
+  /**
+   * <code>repeated int32 pos = 3;</code>
+   * @param index The index of the element to return.
+   * @return The pos at the given index.
+   */
+  public int getPos(int index) {
+    return pos_.getInt(index);
+  }
+  private int posMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -114,8 +152,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (pos_ != 0) {
-      output.writeInt32(3, pos_);
+    getSerializedSize();
+    if (getPosList().size() > 0) {
+      output.writeUInt32NoTag(26);
+      output.writeUInt32NoTag(posMemoizedSerializedSize);
+    }
+    for (int i = 0; i < pos_.size(); i++) {
+      output.writeInt32NoTag(pos_.getInt(i));
     }
     unknownFields.writeTo(output);
   }
@@ -126,9 +169,19 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (pos_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, pos_);
+    {
+      int dataSize = 0;
+      for (int i = 0; i < pos_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(pos_.getInt(i));
+      }
+      size += dataSize;
+      if (!getPosList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      posMemoizedSerializedSize = dataSize;
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -145,8 +198,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.HomeHarvestReq other = (game.proto.HomeHarvestReq) obj;
 
-    if (getPos()
-        != other.getPos()) return false;
+    if (!getPosList()
+        .equals(other.getPosList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -158,8 +211,10 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + POS_FIELD_NUMBER;
-    hash = (53 * hash) + getPos();
+    if (getPosCount() > 0) {
+      hash = (37 * hash) + POS_FIELD_NUMBER;
+      hash = (53 * hash) + getPosList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -297,8 +352,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      pos_ = 0;
-
+      pos_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -325,6 +380,11 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.HomeHarvestReq buildPartial() {
       game.proto.HomeHarvestReq result = new game.proto.HomeHarvestReq(this);
+      int from_bitField0_ = bitField0_;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        pos_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      }
       result.pos_ = pos_;
       onBuilt();
       return result;
@@ -374,8 +434,15 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.HomeHarvestReq other) {
       if (other == game.proto.HomeHarvestReq.getDefaultInstance()) return this;
-      if (other.getPos() != 0) {
-        setPos(other.getPos());
+      if (!other.pos_.isEmpty()) {
+        if (pos_.isEmpty()) {
+          pos_ = other.pos_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensurePosIsMutable();
+          pos_.addAll(other.pos_);
+        }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -405,34 +472,83 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
-    private int pos_ ;
-    /**
-     * <code>int32 pos = 3;</code>
-     * @return The pos.
-     */
-    @java.lang.Override
-    public int getPos() {
-      return pos_;
+    private com.google.protobuf.Internal.IntList pos_ = emptyIntList();
+    private void ensurePosIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        pos_ = mutableCopy(pos_);
+        bitField0_ |= 0x00000001;
+       }
     }
     /**
-     * <code>int32 pos = 3;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @return A list containing the pos.
+     */
+    public java.util.List<java.lang.Integer>
+        getPosList() {
+      return ((bitField0_ & 0x00000001) != 0) ?
+               java.util.Collections.unmodifiableList(pos_) : pos_;
+    }
+    /**
+     * <code>repeated int32 pos = 3;</code>
+     * @return The count of pos.
+     */
+    public int getPosCount() {
+      return pos_.size();
+    }
+    /**
+     * <code>repeated int32 pos = 3;</code>
+     * @param index The index of the element to return.
+     * @return The pos at the given index.
+     */
+    public int getPos(int index) {
+      return pos_.getInt(index);
+    }
+    /**
+     * <code>repeated int32 pos = 3;</code>
+     * @param index The index to set the value at.
      * @param value The pos to set.
      * @return This builder for chaining.
      */
-    public Builder setPos(int value) {
-      
-      pos_ = value;
+    public Builder setPos(
+        int index, int value) {
+      ensurePosIsMutable();
+      pos_.setInt(index, value);
       onChanged();
       return this;
     }
     /**
-     * <code>int32 pos = 3;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @param value The pos to add.
+     * @return This builder for chaining.
+     */
+    public Builder addPos(int value) {
+      ensurePosIsMutable();
+      pos_.addInt(value);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 pos = 3;</code>
+     * @param values The pos to add.
+     * @return This builder for chaining.
+     */
+    public Builder addAllPos(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensurePosIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, pos_);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>repeated int32 pos = 3;</code>
      * @return This builder for chaining.
      */
     public Builder clearPos() {
-      
-      pos_ = 0;
+      pos_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }

@@ -1,6 +1,5 @@
 package game.module.home;
 
-import com.google.protobuf.ByteString;
 import game.player.Player;
 import game.proto.data.HomeData;
 import game.proto.data.HomePosData;
@@ -97,7 +96,7 @@ public class HomeService {
                     .setPos(fromPos(i, j))
                     .setType(HomeType.H_NONE)
                     .buildPartial();
-            homeDataBuilder.addMapData(d);
+            homeDataBuilder.putMapData(d.getPos(), d);
             player.homeAreaData.addPosData(i, j, d);
         });
     }
@@ -112,7 +111,7 @@ public class HomeService {
     public static void put(Player player, HomePosData data, HomeRectInfo rect) {
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         rect.foreach((i, j) -> {
-            homeDataBuilder.addMapData(data);
+            homeDataBuilder.putMapData(data.getPos(), data);
             player.homeAreaData.addPosData(i, j, data);
         });
     }
@@ -122,16 +121,49 @@ public class HomeService {
      * 清理地图上的建筑，物品
      *
      * @param player
-     * @param pos
+     * @param rect
      */
-    public static void clean(Player player, int pos) {
-        player.homeAreaData.clean(pos);
-        for (HomePosData.Builder builder : player.pd.getHomeDataBuilder().getMapDataBuilderList()) {
-            if (builder.getPos() == pos) {
-                builder.setType(HomeType.H_NONE);
-                builder.setBody(ByteString.EMPTY);
+    public static void clean(Player player, HomeRectInfo rect) {
+
+        for (int i = rect.x; i <= rect.x1; i++) {
+            for (int j = rect.y; j < rect.y1; j++) {
+                clean(player, fromPos(i, j));
             }
         }
 
+    }
+
+    public static void clean(Player player, int pos) {
+        player.homeAreaData.clean(pos);
+        HomePosData.Builder mapDataOrThrow = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos).toBuilder();
+
+        clean(mapDataOrThrow);
+
+        player.pd.getHomeDataBuilder().putMapData(pos, mapDataOrThrow.buildPartial());
+    }
+
+    /**
+     * 清除格子内容
+     *
+     * @param builder
+     */
+    private static void clean(HomePosData.Builder builder) {
+        // todo 返还资源
+        builder.setType(HomeType.H_NONE);
+        builder.clearBody();
+    }
+
+    /**
+     * 收割
+     *
+     * @param player
+     * @param pos
+     */
+    public static void harvest(Player player, int pos) {
+        HomePosData d = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos);
+        HomePosData.Builder builder = d.toBuilder();
+        builder.setType(HomeType.H_LAND);
+        builder.clearBody();
+        player.homeAreaData.harvest(pos);
     }
 }

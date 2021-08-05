@@ -19,11 +19,11 @@ public class HomeAreaData {
     private HomePosData[][] pos = new HomePosData[105][105];
 
     public void init(HomeData.Builder homeData) {
-
-        for (HomePosData homePosData : homeData.getMapDataList()) {
-            HomePos homePos = HomeService.fromInt(homePosData.getPos());
-            pos[homePos.x][homePos.y] = homePosData;
+        for (HomePosData value : homeData.getMapDataMap().values()) {
+            HomePos homePos = HomeService.fromInt(value.getPos());
+            pos[homePos.x][homePos.y] = value;
         }
+
     }
 
     public int maxId() {
@@ -84,11 +84,25 @@ public class HomeAreaData {
     }
 
 
+    /**
+     * 清理
+     *
+     * @param posIndex
+     */
     public void clean(int posIndex) {
 
         HomePos homePos = HomeService.fromInt(posIndex);
         pos[homePos.x][homePos.y] = HomePosData.newBuilder()
                 .setPos(posIndex)
                 .setType(HomeType.H_NONE).buildPartial();
+    }
+
+    /**
+     * 收割
+     *
+     * @param pos
+     */
+    public void harvest(int pos) {
+
     }
 }
