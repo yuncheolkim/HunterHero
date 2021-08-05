@@ -1,5 +1,6 @@
 package game.module.home;
 
+import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.data.HomeData;
 import game.proto.data.HomePosData;
@@ -54,10 +55,10 @@ public class HomeService {
      * @param rect
      * @return
      */
-    public static boolean canPut(Player player, int areaId, HomeRectInfo rect, HomeType type) {
+    public static boolean canPut(Player player, HomeRectInfo rect, HomeType type) {
 
 
-        boolean result = isOpen(player, areaId);
+        boolean result = true;//isOpen(player, areaId);
 
         if (result) {
             HomeAreaData homeAreaData = player.homeAreaData;
@@ -109,13 +110,17 @@ public class HomeService {
      * @param rect
      */
     public static void put(Player player, HomePosData data, HomeRectInfo rect) {
+
+        for (Integer areaId : player.homeAreaData.findArea(rect)) {
+            ModuleAssert.isTrue(isOpen(player, areaId));
+        }
+
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         rect.foreach((i, j) -> {
             homeDataBuilder.putMapData(data.getPos(), data);
             player.homeAreaData.addPosData(i, j, data);
         });
     }
-
 
     /**
      * 清理地图上的建筑，物品

@@ -8,12 +8,6 @@ public interface HomeChangeReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>int32 areaId = 4;</code>
-   * @return The areaId.
-   */
-  int getAreaId();
-
-  /**
    * <code>.Message.HomePosData data = 5;</code>
    * @return Whether the data field is set.
    */
@@ -27,4 +21,28 @@ public interface HomeChangeReqOrBuilder extends
    * <code>.Message.HomePosData data = 5;</code>
    */
   game.proto.data.HomePosDataOrBuilder getDataOrBuilder();
+
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  java.util.List<game.proto.data.HomeRect> 
+      getRectList();
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  game.proto.data.HomeRect getRect(int index);
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  int getRectCount();
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
+      getRectOrBuilderList();
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+      int index);
 }

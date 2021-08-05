@@ -5,6 +5,9 @@ import game.proto.data.HomePosData;
 import game.proto.data.HomeRect;
 import game.proto.data.HomeType;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author Yunzhe.Jin
  * 2021/8/2 14:50
@@ -104,5 +107,35 @@ public class HomeAreaData {
      */
     public void harvest(int pos) {
 
+    }
+
+    /**
+     * 查询区域所在area
+     *
+     * @param rect
+     * @return
+     */
+    public Set<Integer> findArea(HomeRectInfo rect) {
+        Set<Integer> set = new HashSet<>();
+
+        set.add(posToArea(rect.x));
+        set.add(posToArea(rect.x1));
+        set.add(posToArea(rect.y));
+        set.add(posToArea(rect.y1));
+
+        return set;
+    }
+
+    /**
+     * 返回pos 位置坐在的区域id
+     *
+     * @param pos
+     * @return
+     */
+    private static int posToArea(int pos) {
+        HomePos homePos = HomeService.fromInt(pos);
+        int x = homePos.x / size;
+        int y = homePos.y / size;
+        return x + y * col;
     }
 }

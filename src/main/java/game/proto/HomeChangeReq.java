@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HomeChangeReq() {
+    rect_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -42,6 +43,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -52,11 +54,6 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 32: {
-
-            areaId_ = input.readInt32();
-            break;
-          }
           case 42: {
             game.proto.data.HomePosData.Builder subBuilder = null;
             if (data_ != null) {
@@ -68,6 +65,15 @@ private static final long serialVersionUID = 0L;
               data_ = subBuilder.buildPartial();
             }
 
+            break;
+          }
+          case 50: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              rect_ = new java.util.ArrayList<game.proto.data.HomeRect>();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            rect_.add(
+                input.readMessage(game.proto.data.HomeRect.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -85,6 +91,9 @@ private static final long serialVersionUID = 0L;
       throw new com.google.protobuf.InvalidProtocolBufferException(
           e).setUnfinishedMessage(this);
     } finally {
+      if (((mutable_bitField0_ & 0x00000001) != 0)) {
+        rect_ = java.util.Collections.unmodifiableList(rect_);
+      }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
     }
@@ -100,17 +109,6 @@ private static final long serialVersionUID = 0L;
     return game.proto.MessageOuterClass.internal_static_Message_HomeChangeReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             game.proto.HomeChangeReq.class, game.proto.HomeChangeReq.Builder.class);
-  }
-
-  public static final int AREAID_FIELD_NUMBER = 4;
-  private int areaId_;
-  /**
-   * <code>int32 areaId = 4;</code>
-   * @return The areaId.
-   */
-  @java.lang.Override
-  public int getAreaId() {
-    return areaId_;
   }
 
   public static final int DATA_FIELD_NUMBER = 5;
@@ -139,6 +137,46 @@ private static final long serialVersionUID = 0L;
     return getData();
   }
 
+  public static final int RECT_FIELD_NUMBER = 6;
+  private java.util.List<game.proto.data.HomeRect> rect_;
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  @java.lang.Override
+  public java.util.List<game.proto.data.HomeRect> getRectList() {
+    return rect_;
+  }
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
+      getRectOrBuilderList() {
+    return rect_;
+  }
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  @java.lang.Override
+  public int getRectCount() {
+    return rect_.size();
+  }
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.HomeRect getRect(int index) {
+    return rect_.get(index);
+  }
+  /**
+   * <code>repeated .Message.HomeRect rect = 6;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+      int index) {
+    return rect_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -153,11 +191,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (areaId_ != 0) {
-      output.writeInt32(4, areaId_);
-    }
     if (data_ != null) {
       output.writeMessage(5, getData());
+    }
+    for (int i = 0; i < rect_.size(); i++) {
+      output.writeMessage(6, rect_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -168,13 +206,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (areaId_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, areaId_);
-    }
     if (data_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getData());
+    }
+    for (int i = 0; i < rect_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, rect_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -191,13 +229,13 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.HomeChangeReq other = (game.proto.HomeChangeReq) obj;
 
-    if (getAreaId()
-        != other.getAreaId()) return false;
     if (hasData() != other.hasData()) return false;
     if (hasData()) {
       if (!getData()
           .equals(other.getData())) return false;
     }
+    if (!getRectList()
+        .equals(other.getRectList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -209,11 +247,13 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + AREAID_FIELD_NUMBER;
-    hash = (53 * hash) + getAreaId();
     if (hasData()) {
       hash = (37 * hash) + DATA_FIELD_NUMBER;
       hash = (53 * hash) + getData().hashCode();
+    }
+    if (getRectCount() > 0) {
+      hash = (37 * hash) + RECT_FIELD_NUMBER;
+      hash = (53 * hash) + getRectList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -347,18 +387,23 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
+        getRectFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      areaId_ = 0;
-
       if (dataBuilder_ == null) {
         data_ = null;
       } else {
         data_ = null;
         dataBuilder_ = null;
+      }
+      if (rectBuilder_ == null) {
+        rect_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+      } else {
+        rectBuilder_.clear();
       }
       return this;
     }
@@ -386,11 +431,20 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.HomeChangeReq buildPartial() {
       game.proto.HomeChangeReq result = new game.proto.HomeChangeReq(this);
-      result.areaId_ = areaId_;
+      int from_bitField0_ = bitField0_;
       if (dataBuilder_ == null) {
         result.data_ = data_;
       } else {
         result.data_ = dataBuilder_.build();
+      }
+      if (rectBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          rect_ = java.util.Collections.unmodifiableList(rect_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
+        result.rect_ = rect_;
+      } else {
+        result.rect_ = rectBuilder_.build();
       }
       onBuilt();
       return result;
@@ -440,11 +494,34 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.HomeChangeReq other) {
       if (other == game.proto.HomeChangeReq.getDefaultInstance()) return this;
-      if (other.getAreaId() != 0) {
-        setAreaId(other.getAreaId());
-      }
       if (other.hasData()) {
         mergeData(other.getData());
+      }
+      if (rectBuilder_ == null) {
+        if (!other.rect_.isEmpty()) {
+          if (rect_.isEmpty()) {
+            rect_ = other.rect_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+          } else {
+            ensureRectIsMutable();
+            rect_.addAll(other.rect_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.rect_.isEmpty()) {
+          if (rectBuilder_.isEmpty()) {
+            rectBuilder_.dispose();
+            rectBuilder_ = null;
+            rect_ = other.rect_;
+            bitField0_ = (bitField0_ & ~0x00000001);
+            rectBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getRectFieldBuilder() : null;
+          } else {
+            rectBuilder_.addAllMessages(other.rect_);
+          }
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -474,37 +551,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
-
-    private int areaId_ ;
-    /**
-     * <code>int32 areaId = 4;</code>
-     * @return The areaId.
-     */
-    @java.lang.Override
-    public int getAreaId() {
-      return areaId_;
-    }
-    /**
-     * <code>int32 areaId = 4;</code>
-     * @param value The areaId to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAreaId(int value) {
-      
-      areaId_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 areaId = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAreaId() {
-      
-      areaId_ = 0;
-      onChanged();
-      return this;
-    }
+    private int bitField0_;
 
     private game.proto.data.HomePosData data_;
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -623,6 +670,246 @@ private static final long serialVersionUID = 0L;
         data_ = null;
       }
       return dataBuilder_;
+    }
+
+    private java.util.List<game.proto.data.HomeRect> rect_ =
+      java.util.Collections.emptyList();
+    private void ensureRectIsMutable() {
+      if (!((bitField0_ & 0x00000001) != 0)) {
+        rect_ = new java.util.ArrayList<game.proto.data.HomeRect>(rect_);
+        bitField0_ |= 0x00000001;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> rectBuilder_;
+
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public java.util.List<game.proto.data.HomeRect> getRectList() {
+      if (rectBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(rect_);
+      } else {
+        return rectBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public int getRectCount() {
+      if (rectBuilder_ == null) {
+        return rect_.size();
+      } else {
+        return rectBuilder_.getCount();
+      }
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public game.proto.data.HomeRect getRect(int index) {
+      if (rectBuilder_ == null) {
+        return rect_.get(index);
+      } else {
+        return rectBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder setRect(
+        int index, game.proto.data.HomeRect value) {
+      if (rectBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRectIsMutable();
+        rect_.set(index, value);
+        onChanged();
+      } else {
+        rectBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder setRect(
+        int index, game.proto.data.HomeRect.Builder builderForValue) {
+      if (rectBuilder_ == null) {
+        ensureRectIsMutable();
+        rect_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        rectBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder addRect(game.proto.data.HomeRect value) {
+      if (rectBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRectIsMutable();
+        rect_.add(value);
+        onChanged();
+      } else {
+        rectBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder addRect(
+        int index, game.proto.data.HomeRect value) {
+      if (rectBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureRectIsMutable();
+        rect_.add(index, value);
+        onChanged();
+      } else {
+        rectBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder addRect(
+        game.proto.data.HomeRect.Builder builderForValue) {
+      if (rectBuilder_ == null) {
+        ensureRectIsMutable();
+        rect_.add(builderForValue.build());
+        onChanged();
+      } else {
+        rectBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder addRect(
+        int index, game.proto.data.HomeRect.Builder builderForValue) {
+      if (rectBuilder_ == null) {
+        ensureRectIsMutable();
+        rect_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        rectBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder addAllRect(
+        java.lang.Iterable<? extends game.proto.data.HomeRect> values) {
+      if (rectBuilder_ == null) {
+        ensureRectIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, rect_);
+        onChanged();
+      } else {
+        rectBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder clearRect() {
+      if (rectBuilder_ == null) {
+        rect_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+      } else {
+        rectBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public Builder removeRect(int index) {
+      if (rectBuilder_ == null) {
+        ensureRectIsMutable();
+        rect_.remove(index);
+        onChanged();
+      } else {
+        rectBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public game.proto.data.HomeRect.Builder getRectBuilder(
+        int index) {
+      return getRectFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+        int index) {
+      if (rectBuilder_ == null) {
+        return rect_.get(index);  } else {
+        return rectBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
+         getRectOrBuilderList() {
+      if (rectBuilder_ != null) {
+        return rectBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(rect_);
+      }
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public game.proto.data.HomeRect.Builder addRectBuilder() {
+      return getRectFieldBuilder().addBuilder(
+          game.proto.data.HomeRect.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public game.proto.data.HomeRect.Builder addRectBuilder(
+        int index) {
+      return getRectFieldBuilder().addBuilder(
+          index, game.proto.data.HomeRect.getDefaultInstance());
+    }
+    /**
+     * <code>repeated .Message.HomeRect rect = 6;</code>
+     */
+    public java.util.List<game.proto.data.HomeRect.Builder> 
+         getRectBuilderList() {
+      return getRectFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> 
+        getRectFieldBuilder() {
+      if (rectBuilder_ == null) {
+        rectBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder>(
+                rect_,
+                ((bitField0_ & 0x00000001) != 0),
+                getParentForChildren(),
+                isClean());
+        rect_ = null;
+      }
+      return rectBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

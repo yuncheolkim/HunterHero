@@ -38,10 +38,8 @@ public class HomeHandler {
         HomeRectInfo rect = null;
 
         // consume resource
-
-        ModuleAssert.isTrue(HomeService.canPut(player, req.getAreaId(), rect, req.getData().getType()));
+        ModuleAssert.isTrue(HomeService.canPut(player, rect, req.getData().getType()));
         HomeService.put(player, req.getData(), rect);
-
     }
 
     /**

@@ -8,6 +8,10 @@ public interface HomePosDataOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <pre>
+   * 物品id
+   * </pre>
+   *
    * <code>int32 id = 1;</code>
    * @return The id.
    */

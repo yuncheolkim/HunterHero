@@ -469,8 +469,9 @@ message HomeOpenAreaRqRs{
 
 // Farm, build, wall etc.
 message HomeChangeReq{
-    int32 areaId = 4;
     HomePosData data = 5;
+    repeated HomeRect rect = 6;
+
 }
 
 // Harvest
@@ -481,7 +482,6 @@ message HomeHarvestReq{
 message HomeHarvestRes{
     int32 pos = 3;
     repeated HomeRect rect = 4;
-
 }
 message HomeCleanReq{
     int32 pos = 3;

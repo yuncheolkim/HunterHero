@@ -110,6 +110,10 @@ private static final long serialVersionUID = 0L;
   public static final int ID_FIELD_NUMBER = 1;
   private int id_;
   /**
+   * <pre>
+   * 物品id
+   * </pre>
+   *
    * <code>int32 id = 1;</code>
    * @return The id.
    */
@@ -525,6 +529,10 @@ private static final long serialVersionUID = 0L;
 
     private int id_ ;
     /**
+     * <pre>
+     * 物品id
+     * </pre>
+     *
      * <code>int32 id = 1;</code>
      * @return The id.
      */
@@ -533,6 +541,10 @@ private static final long serialVersionUID = 0L;
       return id_;
     }
     /**
+     * <pre>
+     * 物品id
+     * </pre>
+     *
      * <code>int32 id = 1;</code>
      * @param value The id to set.
      * @return This builder for chaining.
@@ -544,6 +556,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 物品id
+     * </pre>
+     *
      * <code>int32 id = 1;</code>
      * @return This builder for chaining.
      */

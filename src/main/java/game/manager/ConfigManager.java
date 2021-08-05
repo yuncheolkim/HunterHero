@@ -83,11 +83,20 @@ public class ConfigManager extends AbsLifecycle {
     public static final PropertyDataBox xiulianBox = new PropertyDataBox("data/hero_修炼.json");
 
     public static final TempleHeroDataBox templeHeroDataBox = new TempleHeroDataBox();
+
     public static final ShopDataBox shopDataBox = new ShopDataBox();
+
     public static final BattleInfoDataBox battleInfoDataBox = new BattleInfoDataBox();
+
     public static final DungeonDataBox dungeonDataBox = new DungeonDataBox();
+
     public static final DungeonInfoDataBox dungeonInfoDataBox = new DungeonInfoDataBox();
+
     public static final ExpressDataBox expressDataBox = new ExpressDataBox();
+
+    public static final HomeAreaDataBox homeAreaDataBox = new HomeAreaDataBox();
+
+    public static final HomeItemDataBox homeItemDataBox = new HomeItemDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -118,6 +127,8 @@ public class ConfigManager extends AbsLifecycle {
         list.add(dungeonDataBox);
         list.add(dungeonInfoDataBox);
         list.add(expressDataBox);
+        list.add(homeItemDataBox);
+        list.add(homeAreaDataBox);
     }
 
     @Override
