@@ -21,6 +21,15 @@ public class HomeRectInfo {
 
     public final int y1;
 
+    public HomeRectInfo(int x, int y, int w, int h) {
+        this.x = x;
+        this.y = y;
+        this.w = w;
+        this.h = h;
+        x1 = x + w - 1;
+        y1 = h + h - 1;
+    }
+
     public HomeRectInfo(HomeRect rect) {
 
         x = rect.getX();

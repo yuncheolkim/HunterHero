@@ -3,21 +3,21 @@ package game.module.home;
 import game.exception.ModuleAssert;
 import game.player.Player;
 import game.proto.data.HomeData;
+import game.proto.data.HomeFarm;
 import game.proto.data.HomePosData;
 import game.proto.data.HomeType;
+import org.joda.time.DateTimeUtils;
 
 /**
  * @author Yunzhe.Jin
  * 2021/8/2 14:39
  */
 public class HomeService {
-    private final static int X_MASK = 0xffff0000;
-
-    private final static int Y_MASK = 0xffff;
+    private final static int MASK = 0xffff;
 
     public static HomePos fromInt(int pos) {
-        int y = pos & Y_MASK;
-        int x = pos >> 16 & X_MASK;
+        int y = pos & MASK;
+        int x = pos >> 16 & MASK;
         return new HomePos(x, y);
     }
 
@@ -109,17 +109,20 @@ public class HomeService {
      * @param data
      * @param rect
      */
-    public static void put(Player player, HomePosData data, HomeRectInfo rect) {
+    public static void put(Player player, HomePosData data, int pos) {
+        long time = DateTimeUtils.currentTimeMillis();
 
-        for (Integer areaId : player.homeAreaData.findArea(rect)) {
-            ModuleAssert.isTrue(isOpen(player, areaId));
+        if (data.getType() == HomeType.H_FARM) {
+            data = data.toBuilder().setBody(HomeFarm.newBuilder().setTime(time).buildPartial().toByteString()).buildPartial();
         }
 
+
+        ModuleAssert.isTrue(isOpen(player, HomeAreaData.posToArea(pos)));
+        HomePos homePos = fromInt(pos);
+
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
-        rect.foreach((i, j) -> {
-            homeDataBuilder.putMapData(data.getPos(), data);
-            player.homeAreaData.addPosData(i, j, data);
-        });
+        homeDataBuilder.putMapData(data.getPos(), data);
+        player.homeAreaData.addPosData(homePos.x, homePos.y, data);
     }
 
     /**

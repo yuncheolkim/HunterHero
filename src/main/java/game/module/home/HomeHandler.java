@@ -1,8 +1,11 @@
 package game.module.home;
 
+import game.config.data.HomeItemConfigData;
 import game.exception.ModuleAssert;
+import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.*;
+import game.proto.data.HomePosData;
 import game.proto.data.HomeRect;
 
 /**
@@ -34,12 +37,19 @@ public class HomeHandler {
      */
     public static void change(Player player, HomeChangeReq req) {
 
-        // todo
-        HomeRectInfo rect = null;
+        for (HomePosData homePosData : req.getDataList()) {
 
-        // consume resource
-        ModuleAssert.isTrue(HomeService.canPut(player, rect, req.getData().getType()));
-        HomeService.put(player, req.getData(), rect);
+            HomeItemConfigData d = ConfigManager.homeItemDataBox.findById(homePosData.getType().getNumber() * 100 + homePosData.getId());
+            HomePos homePos = HomeService.fromInt(homePosData.getPos());
+            HomeRectInfo rect = new HomeRectInfo(homePos.x, homePos.y, d.w, d.h);
+
+            // consume resource
+            ModuleAssert.isTrue(HomeService.canPut(player, rect, homePosData.getType()));
+
+            rect.foreach((x, y) -> {
+                HomeService.put(player, homePosData, HomeService.fromPos(x, y));
+            });
+        }
     }
 
     /**

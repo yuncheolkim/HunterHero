@@ -132,7 +132,7 @@ public class HomeAreaData {
      * @param pos
      * @return
      */
-    private static int posToArea(int pos) {
+    public static int posToArea(int pos) {
         HomePos homePos = HomeService.fromInt(pos);
         int x = homePos.x / size;
         int y = homePos.y / size;

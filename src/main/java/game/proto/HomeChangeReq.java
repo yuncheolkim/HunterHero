@@ -20,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HomeChangeReq() {
-    rect_ = java.util.Collections.emptyList();
+    data_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -55,25 +55,12 @@ private static final long serialVersionUID = 0L;
             done = true;
             break;
           case 42: {
-            game.proto.data.HomePosData.Builder subBuilder = null;
-            if (data_ != null) {
-              subBuilder = data_.toBuilder();
-            }
-            data_ = input.readMessage(game.proto.data.HomePosData.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(data_);
-              data_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          case 50: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              rect_ = new java.util.ArrayList<game.proto.data.HomeRect>();
+              data_ = new java.util.ArrayList<game.proto.data.HomePosData>();
               mutable_bitField0_ |= 0x00000001;
             }
-            rect_.add(
-                input.readMessage(game.proto.data.HomeRect.parser(), extensionRegistry));
+            data_.add(
+                input.readMessage(game.proto.data.HomePosData.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -92,7 +79,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        rect_ = java.util.Collections.unmodifiableList(rect_);
+        data_ = java.util.Collections.unmodifiableList(data_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -112,69 +99,43 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int DATA_FIELD_NUMBER = 5;
-  private game.proto.data.HomePosData data_;
+  private java.util.List<game.proto.data.HomePosData> data_;
   /**
-   * <code>.Message.HomePosData data = 5;</code>
-   * @return Whether the data field is set.
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
   @java.lang.Override
-  public boolean hasData() {
-    return data_ != null;
+  public java.util.List<game.proto.data.HomePosData> getDataList() {
+    return data_;
   }
   /**
-   * <code>.Message.HomePosData data = 5;</code>
-   * @return The data.
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
   @java.lang.Override
-  public game.proto.data.HomePosData getData() {
-    return data_ == null ? game.proto.data.HomePosData.getDefaultInstance() : data_;
+  public java.util.List<? extends game.proto.data.HomePosDataOrBuilder> 
+      getDataOrBuilderList() {
+    return data_;
   }
   /**
-   * <code>.Message.HomePosData data = 5;</code>
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
   @java.lang.Override
-  public game.proto.data.HomePosDataOrBuilder getDataOrBuilder() {
-    return getData();
-  }
-
-  public static final int RECT_FIELD_NUMBER = 6;
-  private java.util.List<game.proto.data.HomeRect> rect_;
-  /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
-   */
-  @java.lang.Override
-  public java.util.List<game.proto.data.HomeRect> getRectList() {
-    return rect_;
+  public int getDataCount() {
+    return data_.size();
   }
   /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
   @java.lang.Override
-  public java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
-      getRectOrBuilderList() {
-    return rect_;
+  public game.proto.data.HomePosData getData(int index) {
+    return data_.get(index);
   }
   /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
   @java.lang.Override
-  public int getRectCount() {
-    return rect_.size();
-  }
-  /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.HomeRect getRect(int index) {
-    return rect_.get(index);
-  }
-  /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+  public game.proto.data.HomePosDataOrBuilder getDataOrBuilder(
       int index) {
-    return rect_.get(index);
+    return data_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -191,11 +152,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (data_ != null) {
-      output.writeMessage(5, getData());
-    }
-    for (int i = 0; i < rect_.size(); i++) {
-      output.writeMessage(6, rect_.get(i));
+    for (int i = 0; i < data_.size(); i++) {
+      output.writeMessage(5, data_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -206,13 +164,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (data_ != null) {
+    for (int i = 0; i < data_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(5, getData());
-    }
-    for (int i = 0; i < rect_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(6, rect_.get(i));
+        .computeMessageSize(5, data_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -229,13 +183,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.HomeChangeReq other = (game.proto.HomeChangeReq) obj;
 
-    if (hasData() != other.hasData()) return false;
-    if (hasData()) {
-      if (!getData()
-          .equals(other.getData())) return false;
-    }
-    if (!getRectList()
-        .equals(other.getRectList())) return false;
+    if (!getDataList()
+        .equals(other.getDataList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -247,13 +196,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    if (hasData()) {
+    if (getDataCount() > 0) {
       hash = (37 * hash) + DATA_FIELD_NUMBER;
-      hash = (53 * hash) + getData().hashCode();
-    }
-    if (getRectCount() > 0) {
-      hash = (37 * hash) + RECT_FIELD_NUMBER;
-      hash = (53 * hash) + getRectList().hashCode();
+      hash = (53 * hash) + getDataList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -387,23 +332,17 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getRectFieldBuilder();
+        getDataFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
       if (dataBuilder_ == null) {
-        data_ = null;
-      } else {
-        data_ = null;
-        dataBuilder_ = null;
-      }
-      if (rectBuilder_ == null) {
-        rect_ = java.util.Collections.emptyList();
+        data_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
       } else {
-        rectBuilder_.clear();
+        dataBuilder_.clear();
       }
       return this;
     }
@@ -433,18 +372,13 @@ private static final long serialVersionUID = 0L;
       game.proto.HomeChangeReq result = new game.proto.HomeChangeReq(this);
       int from_bitField0_ = bitField0_;
       if (dataBuilder_ == null) {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          data_ = java.util.Collections.unmodifiableList(data_);
+          bitField0_ = (bitField0_ & ~0x00000001);
+        }
         result.data_ = data_;
       } else {
         result.data_ = dataBuilder_.build();
-      }
-      if (rectBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          rect_ = java.util.Collections.unmodifiableList(rect_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.rect_ = rect_;
-      } else {
-        result.rect_ = rectBuilder_.build();
       }
       onBuilt();
       return result;
@@ -494,32 +428,29 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.HomeChangeReq other) {
       if (other == game.proto.HomeChangeReq.getDefaultInstance()) return this;
-      if (other.hasData()) {
-        mergeData(other.getData());
-      }
-      if (rectBuilder_ == null) {
-        if (!other.rect_.isEmpty()) {
-          if (rect_.isEmpty()) {
-            rect_ = other.rect_;
+      if (dataBuilder_ == null) {
+        if (!other.data_.isEmpty()) {
+          if (data_.isEmpty()) {
+            data_ = other.data_;
             bitField0_ = (bitField0_ & ~0x00000001);
           } else {
-            ensureRectIsMutable();
-            rect_.addAll(other.rect_);
+            ensureDataIsMutable();
+            data_.addAll(other.data_);
           }
           onChanged();
         }
       } else {
-        if (!other.rect_.isEmpty()) {
-          if (rectBuilder_.isEmpty()) {
-            rectBuilder_.dispose();
-            rectBuilder_ = null;
-            rect_ = other.rect_;
+        if (!other.data_.isEmpty()) {
+          if (dataBuilder_.isEmpty()) {
+            dataBuilder_.dispose();
+            dataBuilder_ = null;
+            data_ = other.data_;
             bitField0_ = (bitField0_ & ~0x00000001);
-            rectBuilder_ = 
+            dataBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getRectFieldBuilder() : null;
+                 getDataFieldBuilder() : null;
           } else {
-            rectBuilder_.addAllMessages(other.rect_);
+            dataBuilder_.addAllMessages(other.data_);
           }
         }
       }
@@ -553,363 +484,244 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private game.proto.data.HomePosData data_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> dataBuilder_;
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     * @return Whether the data field is set.
-     */
-    public boolean hasData() {
-      return dataBuilder_ != null || data_ != null;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     * @return The data.
-     */
-    public game.proto.data.HomePosData getData() {
-      if (dataBuilder_ == null) {
-        return data_ == null ? game.proto.data.HomePosData.getDefaultInstance() : data_;
-      } else {
-        return dataBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder setData(game.proto.data.HomePosData value) {
-      if (dataBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        data_ = value;
-        onChanged();
-      } else {
-        dataBuilder_.setMessage(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder setData(
-        game.proto.data.HomePosData.Builder builderForValue) {
-      if (dataBuilder_ == null) {
-        data_ = builderForValue.build();
-        onChanged();
-      } else {
-        dataBuilder_.setMessage(builderForValue.build());
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder mergeData(game.proto.data.HomePosData value) {
-      if (dataBuilder_ == null) {
-        if (data_ != null) {
-          data_ =
-            game.proto.data.HomePosData.newBuilder(data_).mergeFrom(value).buildPartial();
-        } else {
-          data_ = value;
-        }
-        onChanged();
-      } else {
-        dataBuilder_.mergeFrom(value);
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public Builder clearData() {
-      if (dataBuilder_ == null) {
-        data_ = null;
-        onChanged();
-      } else {
-        data_ = null;
-        dataBuilder_ = null;
-      }
-
-      return this;
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public game.proto.data.HomePosData.Builder getDataBuilder() {
-      
-      onChanged();
-      return getDataFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    public game.proto.data.HomePosDataOrBuilder getDataOrBuilder() {
-      if (dataBuilder_ != null) {
-        return dataBuilder_.getMessageOrBuilder();
-      } else {
-        return data_ == null ?
-            game.proto.data.HomePosData.getDefaultInstance() : data_;
-      }
-    }
-    /**
-     * <code>.Message.HomePosData data = 5;</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> 
-        getDataFieldBuilder() {
-      if (dataBuilder_ == null) {
-        dataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder>(
-                getData(),
-                getParentForChildren(),
-                isClean());
-        data_ = null;
-      }
-      return dataBuilder_;
-    }
-
-    private java.util.List<game.proto.data.HomeRect> rect_ =
+    private java.util.List<game.proto.data.HomePosData> data_ =
       java.util.Collections.emptyList();
-    private void ensureRectIsMutable() {
+    private void ensureDataIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        rect_ = new java.util.ArrayList<game.proto.data.HomeRect>(rect_);
+        data_ = new java.util.ArrayList<game.proto.data.HomePosData>(data_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> rectBuilder_;
+        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> dataBuilder_;
 
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public java.util.List<game.proto.data.HomeRect> getRectList() {
-      if (rectBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(rect_);
+    public java.util.List<game.proto.data.HomePosData> getDataList() {
+      if (dataBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(data_);
       } else {
-        return rectBuilder_.getMessageList();
+        return dataBuilder_.getMessageList();
       }
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public int getRectCount() {
-      if (rectBuilder_ == null) {
-        return rect_.size();
+    public int getDataCount() {
+      if (dataBuilder_ == null) {
+        return data_.size();
       } else {
-        return rectBuilder_.getCount();
+        return dataBuilder_.getCount();
       }
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public game.proto.data.HomeRect getRect(int index) {
-      if (rectBuilder_ == null) {
-        return rect_.get(index);
+    public game.proto.data.HomePosData getData(int index) {
+      if (dataBuilder_ == null) {
+        return data_.get(index);
       } else {
-        return rectBuilder_.getMessage(index);
+        return dataBuilder_.getMessage(index);
       }
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder setRect(
-        int index, game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
+    public Builder setData(
+        int index, game.proto.data.HomePosData value) {
+      if (dataBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRectIsMutable();
-        rect_.set(index, value);
+        ensureDataIsMutable();
+        data_.set(index, value);
         onChanged();
       } else {
-        rectBuilder_.setMessage(index, value);
+        dataBuilder_.setMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder setRect(
-        int index, game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.set(index, builderForValue.build());
+    public Builder setData(
+        int index, game.proto.data.HomePosData.Builder builderForValue) {
+      if (dataBuilder_ == null) {
+        ensureDataIsMutable();
+        data_.set(index, builderForValue.build());
         onChanged();
       } else {
-        rectBuilder_.setMessage(index, builderForValue.build());
+        dataBuilder_.setMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder addRect(game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
+    public Builder addData(game.proto.data.HomePosData value) {
+      if (dataBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRectIsMutable();
-        rect_.add(value);
+        ensureDataIsMutable();
+        data_.add(value);
         onChanged();
       } else {
-        rectBuilder_.addMessage(value);
+        dataBuilder_.addMessage(value);
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder addRect(
-        int index, game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
+    public Builder addData(
+        int index, game.proto.data.HomePosData value) {
+      if (dataBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ensureRectIsMutable();
-        rect_.add(index, value);
+        ensureDataIsMutable();
+        data_.add(index, value);
         onChanged();
       } else {
-        rectBuilder_.addMessage(index, value);
+        dataBuilder_.addMessage(index, value);
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder addRect(
-        game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.add(builderForValue.build());
+    public Builder addData(
+        game.proto.data.HomePosData.Builder builderForValue) {
+      if (dataBuilder_ == null) {
+        ensureDataIsMutable();
+        data_.add(builderForValue.build());
         onChanged();
       } else {
-        rectBuilder_.addMessage(builderForValue.build());
+        dataBuilder_.addMessage(builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder addRect(
-        int index, game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.add(index, builderForValue.build());
+    public Builder addData(
+        int index, game.proto.data.HomePosData.Builder builderForValue) {
+      if (dataBuilder_ == null) {
+        ensureDataIsMutable();
+        data_.add(index, builderForValue.build());
         onChanged();
       } else {
-        rectBuilder_.addMessage(index, builderForValue.build());
+        dataBuilder_.addMessage(index, builderForValue.build());
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder addAllRect(
-        java.lang.Iterable<? extends game.proto.data.HomeRect> values) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
+    public Builder addAllData(
+        java.lang.Iterable<? extends game.proto.data.HomePosData> values) {
+      if (dataBuilder_ == null) {
+        ensureDataIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, rect_);
+            values, data_);
         onChanged();
       } else {
-        rectBuilder_.addAllMessages(values);
+        dataBuilder_.addAllMessages(values);
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder clearRect() {
-      if (rectBuilder_ == null) {
-        rect_ = java.util.Collections.emptyList();
+    public Builder clearData() {
+      if (dataBuilder_ == null) {
+        data_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000001);
         onChanged();
       } else {
-        rectBuilder_.clear();
+        dataBuilder_.clear();
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public Builder removeRect(int index) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.remove(index);
+    public Builder removeData(int index) {
+      if (dataBuilder_ == null) {
+        ensureDataIsMutable();
+        data_.remove(index);
         onChanged();
       } else {
-        rectBuilder_.remove(index);
+        dataBuilder_.remove(index);
       }
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public game.proto.data.HomeRect.Builder getRectBuilder(
+    public game.proto.data.HomePosData.Builder getDataBuilder(
         int index) {
-      return getRectFieldBuilder().getBuilder(index);
+      return getDataFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+    public game.proto.data.HomePosDataOrBuilder getDataOrBuilder(
         int index) {
-      if (rectBuilder_ == null) {
-        return rect_.get(index);  } else {
-        return rectBuilder_.getMessageOrBuilder(index);
+      if (dataBuilder_ == null) {
+        return data_.get(index);  } else {
+        return dataBuilder_.getMessageOrBuilder(index);
       }
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
-         getRectOrBuilderList() {
-      if (rectBuilder_ != null) {
-        return rectBuilder_.getMessageOrBuilderList();
+    public java.util.List<? extends game.proto.data.HomePosDataOrBuilder> 
+         getDataOrBuilderList() {
+      if (dataBuilder_ != null) {
+        return dataBuilder_.getMessageOrBuilderList();
       } else {
-        return java.util.Collections.unmodifiableList(rect_);
+        return java.util.Collections.unmodifiableList(data_);
       }
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public game.proto.data.HomeRect.Builder addRectBuilder() {
-      return getRectFieldBuilder().addBuilder(
-          game.proto.data.HomeRect.getDefaultInstance());
+    public game.proto.data.HomePosData.Builder addDataBuilder() {
+      return getDataFieldBuilder().addBuilder(
+          game.proto.data.HomePosData.getDefaultInstance());
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public game.proto.data.HomeRect.Builder addRectBuilder(
+    public game.proto.data.HomePosData.Builder addDataBuilder(
         int index) {
-      return getRectFieldBuilder().addBuilder(
-          index, game.proto.data.HomeRect.getDefaultInstance());
+      return getDataFieldBuilder().addBuilder(
+          index, game.proto.data.HomePosData.getDefaultInstance());
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 6;</code>
+     * <code>repeated .Message.HomePosData data = 5;</code>
      */
-    public java.util.List<game.proto.data.HomeRect.Builder> 
-         getRectBuilderList() {
-      return getRectFieldBuilder().getBuilderList();
+    public java.util.List<game.proto.data.HomePosData.Builder> 
+         getDataBuilderList() {
+      return getDataFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> 
-        getRectFieldBuilder() {
-      if (rectBuilder_ == null) {
-        rectBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder>(
-                rect_,
+        game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder> 
+        getDataFieldBuilder() {
+      if (dataBuilder_ == null) {
+        dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.HomePosData, game.proto.data.HomePosData.Builder, game.proto.data.HomePosDataOrBuilder>(
+                data_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
                 isClean());
-        rect_ = null;
+        data_ = null;
       }
-      return rectBuilder_;
+      return dataBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

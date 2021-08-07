@@ -8,41 +8,26 @@ public interface HomeChangeReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.Message.HomePosData data = 5;</code>
-   * @return Whether the data field is set.
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
-  boolean hasData();
+  java.util.List<game.proto.data.HomePosData> 
+      getDataList();
   /**
-   * <code>.Message.HomePosData data = 5;</code>
-   * @return The data.
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
-  game.proto.data.HomePosData getData();
+  game.proto.data.HomePosData getData(int index);
   /**
-   * <code>.Message.HomePosData data = 5;</code>
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
-  game.proto.data.HomePosDataOrBuilder getDataOrBuilder();
-
+  int getDataCount();
   /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
-  java.util.List<game.proto.data.HomeRect> 
-      getRectList();
+  java.util.List<? extends game.proto.data.HomePosDataOrBuilder> 
+      getDataOrBuilderList();
   /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
+   * <code>repeated .Message.HomePosData data = 5;</code>
    */
-  game.proto.data.HomeRect getRect(int index);
-  /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
-   */
-  int getRectCount();
-  /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
-   */
-  java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
-      getRectOrBuilderList();
-  /**
-   * <code>repeated .Message.HomeRect rect = 6;</code>
-   */
-  game.proto.data.HomeRectOrBuilder getRectOrBuilder(
+  game.proto.data.HomePosDataOrBuilder getDataOrBuilder(
       int index);
 }

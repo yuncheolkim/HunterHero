@@ -22,4 +22,5 @@ public class HomeItemConfigData extends BaseConfigData<HomeItemConfigData> {
         w = d.i1;
         h = d.i2;
     }
+
 }
