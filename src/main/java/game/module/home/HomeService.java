@@ -2,10 +2,7 @@ package game.module.home;
 
 import game.exception.ModuleAssert;
 import game.player.Player;
-import game.proto.data.HomeData;
-import game.proto.data.HomeFarm;
-import game.proto.data.HomePosData;
-import game.proto.data.HomeType;
+import game.proto.data.*;
 import org.joda.time.DateTimeUtils;
 
 /**
@@ -90,16 +87,6 @@ public class HomeService {
         }
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         homeDataBuilder.setOpenArea(homeDataBuilder.getOpenArea() | 1L << areaId);
-        HomeRectInfo r = player.homeAreaData.calcRect(areaId);
-
-        r.foreach((i, j) -> {
-            HomePosData d = HomePosData.newBuilder()
-                    .setPos(fromPos(i, j))
-                    .setType(HomeType.H_NONE)
-                    .buildPartial();
-            homeDataBuilder.putMapData(d.getPos(), d);
-            player.homeAreaData.addPosData(i, j, d);
-        });
     }
 
     /**
@@ -116,12 +103,18 @@ public class HomeService {
             data = data.toBuilder().setBody(HomeFarm.newBuilder().setTime(time).buildPartial().toByteString()).buildPartial();
         }
 
-
         ModuleAssert.isTrue(isOpen(player, HomeAreaData.posToArea(pos)));
         HomePos homePos = fromInt(pos);
 
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
-        homeDataBuilder.putMapData(data.getPos(), data);
+        HomePosList.Builder build = HomePosList.newBuilder();
+        if (homeDataBuilder.containsMapData(pos)) {
+            build = homeDataBuilder.getMapDataOrThrow(pos).toBuilder();
+        }
+
+        build.addData(data.toBuilder());
+        homeDataBuilder.putMapData(pos, build.buildPartial());
+
         player.homeAreaData.addPosData(homePos.x, homePos.y, data);
     }
 
@@ -131,35 +124,35 @@ public class HomeService {
      * @param player
      * @param rect
      */
-    public static void clean(Player player, HomeRectInfo rect) {
+    public static void clean(Player player, HomeRectInfo rect, HomeType type) {
 
         for (int i = rect.x; i <= rect.x1; i++) {
             for (int j = rect.y; j < rect.y1; j++) {
-                clean(player, fromPos(i, j));
+                clean(player, fromPos(i, j), type);
             }
         }
 
     }
 
-    public static void clean(Player player, int pos) {
-        player.homeAreaData.clean(pos);
-        HomePosData.Builder mapDataOrThrow = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos).toBuilder();
+    public static void clean(Player player, int pos, HomeType type) {
+        player.homeAreaData.clean(pos, type);
+        HomePosList.Builder builder = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos).toBuilder();
 
-        clean(mapDataOrThrow);
+        removeTileData(type, builder);
 
-        player.pd.getHomeDataBuilder().putMapData(pos, mapDataOrThrow.buildPartial());
+        player.pd.getHomeDataBuilder().putMapData(pos, builder.buildPartial());
     }
 
-    /**
-     * 清除格子内容
-     *
-     * @param builder
-     */
-    private static void clean(HomePosData.Builder builder) {
-        // todo 返还资源
-        builder.setType(HomeType.H_NONE);
-        builder.clearBody();
+    public static void removeTileData(HomeType type, HomePosList.Builder builder) {
+        for (int i = builder.getDataCount() - 1; i >= 0; i--) {
+            HomePosData.Builder dataBuilder = builder.getDataBuilder(i);
+            if (dataBuilder.getType() == type) {
+                builder.removeData(i);
+                break;
+            }
+        }
     }
+
 
     /**
      * 收割
@@ -168,10 +161,11 @@ public class HomeService {
      * @param pos
      */
     public static void harvest(Player player, int pos) {
-        HomePosData d = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos);
-        HomePosData.Builder builder = d.toBuilder();
-        builder.setType(HomeType.H_LAND);
-        builder.clearBody();
+        HomePosList d = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos);
+        HomePosList.Builder builder = d.toBuilder();
+
+        removeTileData(HomeType.H_FARM, builder);
+        player.pd.getHomeDataBuilder().removeMapData(pos);
         player.homeAreaData.harvest(pos);
     }
 }

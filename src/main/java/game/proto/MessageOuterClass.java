@@ -574,11 +574,12 @@ public final class MessageOuterClass {
       "Req\022\"\n\004data\030\005 \003(\0132\024.Message.HomePosData\"" +
       "\035\n\016HomeHarvestReq\022\013\n\003pos\030\003 \003(\005\">\n\016HomeHa" +
       "rvestRes\022\013\n\003pos\030\003 \001(\005\022\037\n\004rect\030\004 \003(\0132\021.Me" +
-      "ssage.HomeRect\"<\n\014HomeCleanReq\022\013\n\003pos\030\003 " +
-      "\001(\005\022\037\n\004rect\030\004 \003(\0132\021.Message.HomeRect*R\n\013" +
-      "ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GR" +
-      "OUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005" +
-      "B\020\n\ngame.protoH\001P\001b\006proto3"
+      "ssage.HomeRect\"]\n\014HomeCleanReq\022\037\n\004type\030\001" +
+      " \001(\0162\021.Message.HomeType\022\013\n\003pos\030\003 \001(\005\022\037\n\004" +
+      "rect\030\004 \003(\0132\021.Message.HomeRect*R\n\013ChatCha" +
+      "nnel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013" +
+      "\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngam" +
+      "e.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1112,7 +1113,7 @@ public final class MessageOuterClass {
     internal_static_Message_HomeCleanReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HomeCleanReq_descriptor,
-        new java.lang.String[] { "Pos", "Rect", });
+        new java.lang.String[] { "Type", "Pos", "Rect", });
     game.proto.data.Data.getDescriptor();
   }
 

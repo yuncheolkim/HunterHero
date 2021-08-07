@@ -77,7 +77,11 @@ message HomeData{
     string name = 2;
     int32 exp = 3;
     int64 openArea = 5; // 开启区域标记
-    map<int32, HomePosData > mapData = 10;
+    map<int32, HomePosList> mapData = 10;
+}
+message HomePosList{
+    int32  pos = 1;
+    repeated HomePosData data = 2;
 }
 
 // 地图中位置信息
@@ -415,7 +419,7 @@ enum FightSide{
 
 enum HomeType{
     H_NONE = 0; // 空地
-    H_LAND = 1; // 土地
+//    H_LAND = 1; // 土地
     H_FARM = 2; // 农作物
     H_BUILD = 3; // 建筑物
     H_WALL = 4; // 墙

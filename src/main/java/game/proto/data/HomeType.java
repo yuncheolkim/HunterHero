@@ -18,15 +18,7 @@ public enum HomeType
   H_NONE(0),
   /**
    * <pre>
-   * 土地
-   * </pre>
-   *
-   * <code>H_LAND = 1;</code>
-   */
-  H_LAND(1),
-  /**
-   * <pre>
-   * 农作物
+   *    H_LAND = 1; // 土地
    * </pre>
    *
    * <code>H_FARM = 2;</code>
@@ -77,15 +69,7 @@ public enum HomeType
   public static final int H_NONE_VALUE = 0;
   /**
    * <pre>
-   * 土地
-   * </pre>
-   *
-   * <code>H_LAND = 1;</code>
-   */
-  public static final int H_LAND_VALUE = 1;
-  /**
-   * <pre>
-   * 农作物
+   *    H_LAND = 1; // 土地
    * </pre>
    *
    * <code>H_FARM = 2;</code>
@@ -150,7 +134,6 @@ public enum HomeType
   public static HomeType forNumber(int value) {
     switch (value) {
       case 0: return H_NONE;
-      case 1: return H_LAND;
       case 2: return H_FARM;
       case 3: return H_BUILD;
       case 4: return H_WALL;

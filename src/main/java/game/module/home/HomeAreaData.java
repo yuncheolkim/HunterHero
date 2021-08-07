@@ -1,12 +1,10 @@
 package game.module.home;
 
-import game.proto.data.HomeData;
-import game.proto.data.HomePosData;
-import game.proto.data.HomeRect;
-import game.proto.data.HomeType;
+import game.proto.data.*;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author Yunzhe.Jin
@@ -19,14 +17,13 @@ public class HomeAreaData {
 
     private final static int size = 15;
 
-    private HomePosData[][] pos = new HomePosData[105][105];
+    private HomePosList.Builder[][] pos = new HomePosList.Builder[105][105];
 
     public void init(HomeData.Builder homeData) {
-        for (HomePosData value : homeData.getMapDataMap().values()) {
+        for (HomePosList value : homeData.getMapDataMap().values()) {
             HomePos homePos = HomeService.fromInt(value.getPos());
-            pos[homePos.x][homePos.y] = value;
+            pos[homePos.x][homePos.y] = value.toBuilder();
         }
-
     }
 
     public int maxId() {
@@ -46,24 +43,36 @@ public class HomeAreaData {
             return false;
         }
 
-        for (int i = rect.x; i < rect.x1; i++) {
-            for (int j = rect.y; j < rect.y1; j++) {
-                HomePosData homePosData = pos[i][j];
-                if (homePosData == null) {
+        for (int i = rect.x; i <= rect.x1; i++) {
+            for (int j = rect.y; j <= rect.y1; j++) {
+                HomePosList.Builder homePosData = pos[i][j];
+                if (homePosData != null && checkConfilict(homePosData, type)) {
                     return false;
-                }
-
-                HomeType curType = homePosData.getType();
-
-                if (curType != HomeType.H_NONE) {
-
-                    if (curType == HomeType.H_LAND && type != HomeType.H_FARM) {
-                        return false;
-                    }
                 }
             }
         }
         return true;
+    }
+
+    private boolean checkConfilict(HomePosList.Builder homePosData, HomeType type) {
+        Set<Integer> collect = homePosData.getDataList().stream().map(homePosData1 -> layer(homePosData1.getType())).collect(Collectors.toSet());
+        return collect.contains(layer(type));
+    }
+
+    private int layer(HomeType type) {
+
+        switch (type) {
+            case H_FARM:
+            case H_ROAD:
+            case H_CARPET:
+                return 1;
+            case H_BUILD:
+            case H_WALL:
+                return 2;
+        }
+
+        return 0;
+
     }
 
 
@@ -83,7 +92,12 @@ public class HomeAreaData {
     }
 
     public void addPosData(int x, int y, HomePosData data) {
-        pos[x][y] = data;
+        HomePosList.Builder homePosList = pos[x][y];
+        if (homePosList == null) {
+            homePosList = HomePosList.newBuilder();
+            pos[x][y] = homePosList;
+        }
+        homePosList.addData(data);
     }
 
 
@@ -91,13 +105,11 @@ public class HomeAreaData {
      * 清理
      *
      * @param posIndex
+     * @param type
      */
-    public void clean(int posIndex) {
-
+    public void clean(int posIndex, HomeType type) {
         HomePos homePos = HomeService.fromInt(posIndex);
-        pos[homePos.x][homePos.y] = HomePosData.newBuilder()
-                .setPos(posIndex)
-                .setType(HomeType.H_NONE).buildPartial();
+        HomeService.removeTileData(type, pos[homePos.x][homePos.y]);
     }
 
     /**
@@ -105,8 +117,9 @@ public class HomeAreaData {
      *
      * @param pos
      */
-    public void harvest(int pos) {
-
+    public void harvest(int index) {
+        HomePos homePos = HomeService.fromInt(index);
+        pos[homePos.x][homePos.y] = null;
     }
 
     /**

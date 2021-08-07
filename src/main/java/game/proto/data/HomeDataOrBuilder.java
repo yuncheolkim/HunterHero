@@ -42,11 +42,11 @@ public interface HomeDataOrBuilder extends
   long getOpenArea();
 
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   int getMapDataCount();
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   boolean containsMapData(
       int key);
@@ -54,24 +54,24 @@ public interface HomeDataOrBuilder extends
    * Use {@link #getMapDataMap()} instead.
    */
   @java.lang.Deprecated
-  java.util.Map<java.lang.Integer, game.proto.data.HomePosData>
+  java.util.Map<java.lang.Integer, game.proto.data.HomePosList>
   getMapData();
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
-  java.util.Map<java.lang.Integer, game.proto.data.HomePosData>
+  java.util.Map<java.lang.Integer, game.proto.data.HomePosList>
   getMapDataMap();
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
 
-  game.proto.data.HomePosData getMapDataOrDefault(
+  game.proto.data.HomePosList getMapDataOrDefault(
       int key,
-      game.proto.data.HomePosData defaultValue);
+      game.proto.data.HomePosList defaultValue);
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
 
-  game.proto.data.HomePosData getMapDataOrThrow(
+  game.proto.data.HomePosList getMapDataOrThrow(
       int key);
 }

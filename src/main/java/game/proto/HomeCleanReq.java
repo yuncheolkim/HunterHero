@@ -16,6 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HomeCleanReq() {
+    type_ = 0;
     rect_ = java.util.Collections.emptyList();
   }
 
@@ -50,6 +51,12 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 8: {
+            int rawValue = input.readEnum();
+
+            type_ = rawValue;
+            break;
+          }
           case 24: {
 
             pos_ = input.readInt32();
@@ -97,6 +104,25 @@ private static final long serialVersionUID = 0L;
     return game.proto.MessageOuterClass.internal_static_Message_HomeCleanReq_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             game.proto.HomeCleanReq.class, game.proto.HomeCleanReq.Builder.class);
+  }
+
+  public static final int TYPE_FIELD_NUMBER = 1;
+  private int type_;
+  /**
+   * <code>.Message.HomeType type = 1;</code>
+   * @return The enum numeric value on the wire for type.
+   */
+  @java.lang.Override public int getTypeValue() {
+    return type_;
+  }
+  /**
+   * <code>.Message.HomeType type = 1;</code>
+   * @return The type.
+   */
+  @java.lang.Override public game.proto.data.HomeType getType() {
+    @SuppressWarnings("deprecation")
+    game.proto.data.HomeType result = game.proto.data.HomeType.valueOf(type_);
+    return result == null ? game.proto.data.HomeType.UNRECOGNIZED : result;
   }
 
   public static final int POS_FIELD_NUMBER = 3;
@@ -164,6 +190,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
+      output.writeEnum(1, type_);
+    }
     if (pos_ != 0) {
       output.writeInt32(3, pos_);
     }
@@ -179,6 +208,10 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(1, type_);
+    }
     if (pos_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, pos_);
@@ -202,6 +235,7 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.HomeCleanReq other = (game.proto.HomeCleanReq) obj;
 
+    if (type_ != other.type_) return false;
     if (getPos()
         != other.getPos()) return false;
     if (!getRectList()
@@ -217,6 +251,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + type_;
     hash = (37 * hash) + POS_FIELD_NUMBER;
     hash = (53 * hash) + getPos();
     if (getRectCount() > 0) {
@@ -357,6 +393,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      type_ = 0;
+
       pos_ = 0;
 
       if (rectBuilder_ == null) {
@@ -392,6 +430,7 @@ private static final long serialVersionUID = 0L;
     public game.proto.HomeCleanReq buildPartial() {
       game.proto.HomeCleanReq result = new game.proto.HomeCleanReq(this);
       int from_bitField0_ = bitField0_;
+      result.type_ = type_;
       result.pos_ = pos_;
       if (rectBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
@@ -450,6 +489,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.HomeCleanReq other) {
       if (other == game.proto.HomeCleanReq.getDefaultInstance()) return this;
+      if (other.type_ != 0) {
+        setTypeValue(other.getTypeValue());
+      }
       if (other.getPos() != 0) {
         setPos(other.getPos());
       }
@@ -508,6 +550,60 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     private int bitField0_;
+
+    private int type_ = 0;
+    /**
+     * <code>.Message.HomeType type = 1;</code>
+     * @return The enum numeric value on the wire for type.
+     */
+    @java.lang.Override public int getTypeValue() {
+      return type_;
+    }
+    /**
+     * <code>.Message.HomeType type = 1;</code>
+     * @param value The enum numeric value on the wire for type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTypeValue(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.HomeType type = 1;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public game.proto.data.HomeType getType() {
+      @SuppressWarnings("deprecation")
+      game.proto.data.HomeType result = game.proto.data.HomeType.valueOf(type_);
+      return result == null ? game.proto.data.HomeType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.Message.HomeType type = 1;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(game.proto.data.HomeType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      type_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.HomeType type = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
+      return this;
+    }
 
     private int pos_ ;
     /**

@@ -72,7 +72,7 @@ public class HomeHandler {
      */
     public static void clean(Player player, HomeCleanReq req) {
         for (HomeRect homeRect : req.getRectList()) {
-            HomeService.clean(player, new HomeRectInfo(homeRect));
+            HomeService.clean(player, new HomeRectInfo(homeRect), req.getType());
         }
     }
 

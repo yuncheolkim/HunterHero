@@ -82,7 +82,7 @@ private static final long serialVersionUID = 0L;
                   MapDataDefaultEntryHolder.defaultEntry);
               mutable_bitField0_ |= 0x00000001;
             }
-            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosData>
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosList>
             mapData__ = input.readMessage(
                 MapDataDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
             mapData_.getMutableMap().put(
@@ -211,18 +211,18 @@ private static final long serialVersionUID = 0L;
   public static final int MAPDATA_FIELD_NUMBER = 10;
   private static final class MapDataDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
-        java.lang.Integer, game.proto.data.HomePosData> defaultEntry =
+        java.lang.Integer, game.proto.data.HomePosList> defaultEntry =
             com.google.protobuf.MapEntry
-            .<java.lang.Integer, game.proto.data.HomePosData>newDefaultInstance(
+            .<java.lang.Integer, game.proto.data.HomePosList>newDefaultInstance(
                 game.proto.data.Data.internal_static_Message_HomeData_MapDataEntry_descriptor, 
                 com.google.protobuf.WireFormat.FieldType.INT32,
                 0,
                 com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                game.proto.data.HomePosData.getDefaultInstance());
+                game.proto.data.HomePosList.getDefaultInstance());
   }
   private com.google.protobuf.MapField<
-      java.lang.Integer, game.proto.data.HomePosData> mapData_;
-  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosData>
+      java.lang.Integer, game.proto.data.HomePosList> mapData_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosList>
   internalGetMapData() {
     if (mapData_ == null) {
       return com.google.protobuf.MapField.emptyMapField(
@@ -235,7 +235,7 @@ private static final long serialVersionUID = 0L;
     return internalGetMapData().getMap().size();
   }
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
 
   @java.lang.Override
@@ -249,39 +249,39 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   @java.lang.Deprecated
-  public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapData() {
+  public java.util.Map<java.lang.Integer, game.proto.data.HomePosList> getMapData() {
     return getMapDataMap();
   }
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   @java.lang.Override
 
-  public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapDataMap() {
+  public java.util.Map<java.lang.Integer, game.proto.data.HomePosList> getMapDataMap() {
     return internalGetMapData().getMap();
   }
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   @java.lang.Override
 
-  public game.proto.data.HomePosData getMapDataOrDefault(
+  public game.proto.data.HomePosList getMapDataOrDefault(
       int key,
-      game.proto.data.HomePosData defaultValue) {
+      game.proto.data.HomePosList defaultValue) {
     
-    java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+    java.util.Map<java.lang.Integer, game.proto.data.HomePosList> map =
         internalGetMapData().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+   * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   @java.lang.Override
 
-  public game.proto.data.HomePosData getMapDataOrThrow(
+  public game.proto.data.HomePosList getMapDataOrThrow(
       int key) {
     
-    java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+    java.util.Map<java.lang.Integer, game.proto.data.HomePosList> map =
         internalGetMapData().getMap();
     if (!map.containsKey(key)) {
       throw new java.lang.IllegalArgumentException();
@@ -345,9 +345,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(5, openArea_);
     }
-    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HomePosData> entry
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HomePosList> entry
          : internalGetMapData().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosData>
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosList>
       mapData__ = MapDataDefaultEntryHolder.defaultEntry.newBuilderForType()
           .setKey(entry.getKey())
           .setValue(entry.getValue())
@@ -881,8 +881,8 @@ private static final long serialVersionUID = 0L;
     }
 
     private com.google.protobuf.MapField<
-        java.lang.Integer, game.proto.data.HomePosData> mapData_;
-    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosData>
+        java.lang.Integer, game.proto.data.HomePosList> mapData_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosList>
     internalGetMapData() {
       if (mapData_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
@@ -890,7 +890,7 @@ private static final long serialVersionUID = 0L;
       }
       return mapData_;
     }
-    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosData>
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.HomePosList>
     internalGetMutableMapData() {
       onChanged();;
       if (mapData_ == null) {
@@ -907,7 +907,7 @@ private static final long serialVersionUID = 0L;
       return internalGetMapData().getMap().size();
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
 
     @java.lang.Override
@@ -921,39 +921,39 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapData() {
+    public java.util.Map<java.lang.Integer, game.proto.data.HomePosList> getMapData() {
       return getMapDataMap();
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
     @java.lang.Override
 
-    public java.util.Map<java.lang.Integer, game.proto.data.HomePosData> getMapDataMap() {
+    public java.util.Map<java.lang.Integer, game.proto.data.HomePosList> getMapDataMap() {
       return internalGetMapData().getMap();
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
     @java.lang.Override
 
-    public game.proto.data.HomePosData getMapDataOrDefault(
+    public game.proto.data.HomePosList getMapDataOrDefault(
         int key,
-        game.proto.data.HomePosData defaultValue) {
+        game.proto.data.HomePosList defaultValue) {
       
-      java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+      java.util.Map<java.lang.Integer, game.proto.data.HomePosList> map =
           internalGetMapData().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
     @java.lang.Override
 
-    public game.proto.data.HomePosData getMapDataOrThrow(
+    public game.proto.data.HomePosList getMapDataOrThrow(
         int key) {
       
-      java.util.Map<java.lang.Integer, game.proto.data.HomePosData> map =
+      java.util.Map<java.lang.Integer, game.proto.data.HomePosList> map =
           internalGetMapData().getMap();
       if (!map.containsKey(key)) {
         throw new java.lang.IllegalArgumentException();
@@ -967,7 +967,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
 
     public Builder removeMapData(
@@ -981,16 +981,16 @@ private static final long serialVersionUID = 0L;
      * Use alternate mutation accessors instead.
      */
     @java.lang.Deprecated
-    public java.util.Map<java.lang.Integer, game.proto.data.HomePosData>
+    public java.util.Map<java.lang.Integer, game.proto.data.HomePosList>
     getMutableMapData() {
       return internalGetMutableMapData().getMutableMap();
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
     public Builder putMapData(
         int key,
-        game.proto.data.HomePosData value) {
+        game.proto.data.HomePosList value) {
       
       if (value == null) { throw new java.lang.NullPointerException(); }
       internalGetMutableMapData().getMutableMap()
@@ -998,11 +998,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>map&lt;int32, .Message.HomePosData&gt; mapData = 10;</code>
+     * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
      */
 
     public Builder putAllMapData(
-        java.util.Map<java.lang.Integer, game.proto.data.HomePosData> values) {
+        java.util.Map<java.lang.Integer, game.proto.data.HomePosList> values) {
       internalGetMutableMapData().getMutableMap()
           .putAll(values);
       return this;

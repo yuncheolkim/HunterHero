@@ -482,6 +482,7 @@ message HomeHarvestRes{
     repeated HomeRect rect = 4;
 }
 message HomeCleanReq{
+    HomeType type = 1;
     int32 pos = 3;
     repeated HomeRect rect = 4;
 }

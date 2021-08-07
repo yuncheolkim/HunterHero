@@ -27,7 +27,7 @@ public class HomeRectInfo {
         this.w = w;
         this.h = h;
         x1 = x + w - 1;
-        y1 = h + h - 1;
+        y1 = y + h - 1;
     }
 
     public HomeRectInfo(HomeRect rect) {
@@ -45,8 +45,8 @@ public class HomeRectInfo {
     }
 
     public void foreach(BiConsumer<Integer, Integer> consumer) {
-        for (int i = x; i < x1; i++) {
-            for (int j = y; j < y1; j++) {
+        for (int i = x; i <= x1; i++) {
+            for (int j = y; j <= y1; j++) {
                 consumer.accept(i, j);
             }
         }
