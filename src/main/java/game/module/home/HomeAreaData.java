@@ -39,7 +39,7 @@ public class HomeAreaData {
      */
     public boolean canPut(HomeRectInfo rect, HomeType type) {
 
-        if (rect.x < 0 || rect.y < 0 || rect.x1 >= col * 7 || rect.y1 >= row * size) {
+        if (rect.x < 0 || rect.y < 0 || rect.x1 >= col * size || rect.y1 >= row * size) {
             return false;
         }
 
@@ -107,9 +107,9 @@ public class HomeAreaData {
      * @param posIndex
      * @param type
      */
-    public void clean(int posIndex, HomeType type) {
+    public void clean(int posIndex) {
         HomePos homePos = HomeService.fromInt(posIndex);
-        HomeService.removeTileData(type, pos[homePos.x][homePos.y]);
+        HomeService.removeTileData(pos[homePos.x][homePos.y]);
     }
 
     /**

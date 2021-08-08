@@ -6,7 +6,6 @@ import game.manager.ConfigManager;
 import game.player.Player;
 import game.proto.*;
 import game.proto.data.HomePosData;
-import game.proto.data.HomeRect;
 
 /**
  * 家园系统
@@ -39,7 +38,7 @@ public class HomeHandler {
 
         for (HomePosData homePosData : req.getDataList()) {
 
-            HomeItemConfigData d = ConfigManager.homeItemDataBox.findById(homePosData.getType().getNumber() * 100 + homePosData.getId());
+            HomeItemConfigData d = ConfigManager.homeItemDataBox.findById(homePosData.getId());
             HomePos homePos = HomeService.fromInt(homePosData.getPos());
             HomeRectInfo rect = new HomeRectInfo(homePos.x, homePos.y, d.w, d.h);
 
@@ -71,8 +70,9 @@ public class HomeHandler {
      * @param req
      */
     public static void clean(Player player, HomeCleanReq req) {
-        for (HomeRect homeRect : req.getRectList()) {
-            HomeService.clean(player, new HomeRectInfo(homeRect), req.getType());
+        for (Integer pos : req.getPosList()) {
+
+            HomeService.clean(player, pos);
         }
     }
 

@@ -89,6 +89,7 @@ message HomePosData{
     int32 id = 1;// 物品id
     int32 pos = 2;// |---16:x ---|--- 16:y ---|
     HomeType type = 3;
+    int64 time = 4;
     bytes body = 10;// 对应不同类型不同数据结构
 }
 
@@ -144,6 +145,10 @@ message Resource {
     int32 power = 6;
     int32 maxPower = 7;
     int32 powerRecoverSecond = 8;
+
+    int32 homeExp = 15;
+    int32 homeNeedExp = 16;
+    int32 homeCoin = 17;// 家园币
 }
 
 message ScenePos {
@@ -417,12 +422,16 @@ enum FightSide{
     FS_B = 2;
 }
 
+//地图上的物品
 enum HomeType{
     H_NONE = 0; // 空地
-//    H_LAND = 1; // 土地
+    //    H_LAND = 1; // 土地
     H_FARM = 2; // 农作物
     H_BUILD = 3; // 建筑物
     H_WALL = 4; // 墙
     H_CARPET = 5; // 地毯
     H_ROAD = 6; // 路
+    H_GOODS = 7;// 可交互的物体,占用多个格子
+
+    H_ITEM = 20;// 物品, 不用瓦片制作
 }

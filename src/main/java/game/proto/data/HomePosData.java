@@ -70,6 +70,11 @@ private static final long serialVersionUID = 0L;
             type_ = rawValue;
             break;
           }
+          case 32: {
+
+            time_ = input.readInt64();
+            break;
+          }
           case 82: {
 
             body_ = input.readBytes();
@@ -156,6 +161,17 @@ private static final long serialVersionUID = 0L;
     return result == null ? game.proto.data.HomeType.UNRECOGNIZED : result;
   }
 
+  public static final int TIME_FIELD_NUMBER = 4;
+  private long time_;
+  /**
+   * <code>int64 time = 4;</code>
+   * @return The time.
+   */
+  @java.lang.Override
+  public long getTime() {
+    return time_;
+  }
+
   public static final int BODY_FIELD_NUMBER = 10;
   private com.google.protobuf.ByteString body_;
   /**
@@ -194,6 +210,9 @@ private static final long serialVersionUID = 0L;
     if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
       output.writeEnum(3, type_);
     }
+    if (time_ != 0L) {
+      output.writeInt64(4, time_);
+    }
     if (!body_.isEmpty()) {
       output.writeBytes(10, body_);
     }
@@ -217,6 +236,10 @@ private static final long serialVersionUID = 0L;
     if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(3, type_);
+    }
+    if (time_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(4, time_);
     }
     if (!body_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
@@ -242,6 +265,8 @@ private static final long serialVersionUID = 0L;
     if (getPos()
         != other.getPos()) return false;
     if (type_ != other.type_) return false;
+    if (getTime()
+        != other.getTime()) return false;
     if (!getBody()
         .equals(other.getBody())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -261,6 +286,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getPos();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + type_;
+    hash = (37 * hash) + TIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getTime());
     hash = (37 * hash) + BODY_FIELD_NUMBER;
     hash = (53 * hash) + getBody().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -406,6 +434,8 @@ private static final long serialVersionUID = 0L;
 
       type_ = 0;
 
+      time_ = 0L;
+
       body_ = com.google.protobuf.ByteString.EMPTY;
 
       return this;
@@ -437,6 +467,7 @@ private static final long serialVersionUID = 0L;
       result.id_ = id_;
       result.pos_ = pos_;
       result.type_ = type_;
+      result.time_ = time_;
       result.body_ = body_;
       onBuilt();
       return result;
@@ -494,6 +525,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.type_ != 0) {
         setTypeValue(other.getTypeValue());
+      }
+      if (other.getTime() != 0L) {
+        setTime(other.getTime());
       }
       if (other.getBody() != com.google.protobuf.ByteString.EMPTY) {
         setBody(other.getBody());
@@ -663,6 +697,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearType() {
       
       type_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private long time_ ;
+    /**
+     * <code>int64 time = 4;</code>
+     * @return The time.
+     */
+    @java.lang.Override
+    public long getTime() {
+      return time_;
+    }
+    /**
+     * <code>int64 time = 4;</code>
+     * @param value The time to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTime(long value) {
+      
+      time_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 time = 4;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTime() {
+      
+      time_ = 0L;
       onChanged();
       return this;
     }

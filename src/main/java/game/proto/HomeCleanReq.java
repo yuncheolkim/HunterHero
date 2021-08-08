@@ -16,8 +16,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private HomeCleanReq() {
-    type_ = 0;
-    rect_ = java.util.Collections.emptyList();
+    pos_ = emptyIntList();
   }
 
   @java.lang.Override
@@ -51,24 +50,25 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
-            int rawValue = input.readEnum();
-
-            type_ = rawValue;
-            break;
-          }
           case 24: {
-
-            pos_ = input.readInt32();
-            break;
-          }
-          case 34: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              rect_ = new java.util.ArrayList<game.proto.data.HomeRect>();
+              pos_ = newIntList();
               mutable_bitField0_ |= 0x00000001;
             }
-            rect_.add(
-                input.readMessage(game.proto.data.HomeRect.parser(), extensionRegistry));
+            pos_.addInt(input.readInt32());
+            break;
+          }
+          case 26: {
+            int length = input.readRawVarint32();
+            int limit = input.pushLimit(length);
+            if (!((mutable_bitField0_ & 0x00000001) != 0) && input.getBytesUntilLimit() > 0) {
+              pos_ = newIntList();
+              mutable_bitField0_ |= 0x00000001;
+            }
+            while (input.getBytesUntilLimit() > 0) {
+              pos_.addInt(input.readInt32());
+            }
+            input.popLimit(limit);
             break;
           }
           default: {
@@ -87,7 +87,7 @@ private static final long serialVersionUID = 0L;
           e).setUnfinishedMessage(this);
     } finally {
       if (((mutable_bitField0_ & 0x00000001) != 0)) {
-        rect_ = java.util.Collections.unmodifiableList(rect_);
+        pos_.makeImmutable(); // C
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -106,75 +106,33 @@ private static final long serialVersionUID = 0L;
             game.proto.HomeCleanReq.class, game.proto.HomeCleanReq.Builder.class);
   }
 
-  public static final int TYPE_FIELD_NUMBER = 1;
-  private int type_;
-  /**
-   * <code>.Message.HomeType type = 1;</code>
-   * @return The enum numeric value on the wire for type.
-   */
-  @java.lang.Override public int getTypeValue() {
-    return type_;
-  }
-  /**
-   * <code>.Message.HomeType type = 1;</code>
-   * @return The type.
-   */
-  @java.lang.Override public game.proto.data.HomeType getType() {
-    @SuppressWarnings("deprecation")
-    game.proto.data.HomeType result = game.proto.data.HomeType.valueOf(type_);
-    return result == null ? game.proto.data.HomeType.UNRECOGNIZED : result;
-  }
-
   public static final int POS_FIELD_NUMBER = 3;
-  private int pos_;
+  private com.google.protobuf.Internal.IntList pos_;
   /**
-   * <code>int32 pos = 3;</code>
-   * @return The pos.
+   * <code>repeated int32 pos = 3;</code>
+   * @return A list containing the pos.
    */
   @java.lang.Override
-  public int getPos() {
+  public java.util.List<java.lang.Integer>
+      getPosList() {
     return pos_;
   }
-
-  public static final int RECT_FIELD_NUMBER = 4;
-  private java.util.List<game.proto.data.HomeRect> rect_;
   /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
+   * <code>repeated int32 pos = 3;</code>
+   * @return The count of pos.
    */
-  @java.lang.Override
-  public java.util.List<game.proto.data.HomeRect> getRectList() {
-    return rect_;
+  public int getPosCount() {
+    return pos_.size();
   }
   /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
+   * <code>repeated int32 pos = 3;</code>
+   * @param index The index of the element to return.
+   * @return The pos at the given index.
    */
-  @java.lang.Override
-  public java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
-      getRectOrBuilderList() {
-    return rect_;
+  public int getPos(int index) {
+    return pos_.getInt(index);
   }
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  @java.lang.Override
-  public int getRectCount() {
-    return rect_.size();
-  }
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.HomeRect getRect(int index) {
-    return rect_.get(index);
-  }
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  @java.lang.Override
-  public game.proto.data.HomeRectOrBuilder getRectOrBuilder(
-      int index) {
-    return rect_.get(index);
-  }
+  private int posMemoizedSerializedSize = -1;
 
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
@@ -190,14 +148,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
-      output.writeEnum(1, type_);
+    getSerializedSize();
+    if (getPosList().size() > 0) {
+      output.writeUInt32NoTag(26);
+      output.writeUInt32NoTag(posMemoizedSerializedSize);
     }
-    if (pos_ != 0) {
-      output.writeInt32(3, pos_);
-    }
-    for (int i = 0; i < rect_.size(); i++) {
-      output.writeMessage(4, rect_.get(i));
+    for (int i = 0; i < pos_.size(); i++) {
+      output.writeInt32NoTag(pos_.getInt(i));
     }
     unknownFields.writeTo(output);
   }
@@ -208,17 +165,19 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (type_ != game.proto.data.HomeType.H_NONE.getNumber()) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeEnumSize(1, type_);
-    }
-    if (pos_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, pos_);
-    }
-    for (int i = 0; i < rect_.size(); i++) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(4, rect_.get(i));
+    {
+      int dataSize = 0;
+      for (int i = 0; i < pos_.size(); i++) {
+        dataSize += com.google.protobuf.CodedOutputStream
+          .computeInt32SizeNoTag(pos_.getInt(i));
+      }
+      size += dataSize;
+      if (!getPosList().isEmpty()) {
+        size += 1;
+        size += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(dataSize);
+      }
+      posMemoizedSerializedSize = dataSize;
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -235,11 +194,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.HomeCleanReq other = (game.proto.HomeCleanReq) obj;
 
-    if (type_ != other.type_) return false;
-    if (getPos()
-        != other.getPos()) return false;
-    if (!getRectList()
-        .equals(other.getRectList())) return false;
+    if (!getPosList()
+        .equals(other.getPosList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -251,13 +207,9 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + type_;
-    hash = (37 * hash) + POS_FIELD_NUMBER;
-    hash = (53 * hash) + getPos();
-    if (getRectCount() > 0) {
-      hash = (37 * hash) + RECT_FIELD_NUMBER;
-      hash = (53 * hash) + getRectList().hashCode();
+    if (getPosCount() > 0) {
+      hash = (37 * hash) + POS_FIELD_NUMBER;
+      hash = (53 * hash) + getPosList().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -387,22 +339,13 @@ private static final long serialVersionUID = 0L;
     private void maybeForceBuilderInitialization() {
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
-        getRectFieldBuilder();
       }
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      type_ = 0;
-
-      pos_ = 0;
-
-      if (rectBuilder_ == null) {
-        rect_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-      } else {
-        rectBuilder_.clear();
-      }
+      pos_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
       return this;
     }
 
@@ -430,17 +373,11 @@ private static final long serialVersionUID = 0L;
     public game.proto.HomeCleanReq buildPartial() {
       game.proto.HomeCleanReq result = new game.proto.HomeCleanReq(this);
       int from_bitField0_ = bitField0_;
-      result.type_ = type_;
-      result.pos_ = pos_;
-      if (rectBuilder_ == null) {
-        if (((bitField0_ & 0x00000001) != 0)) {
-          rect_ = java.util.Collections.unmodifiableList(rect_);
-          bitField0_ = (bitField0_ & ~0x00000001);
-        }
-        result.rect_ = rect_;
-      } else {
-        result.rect_ = rectBuilder_.build();
+      if (((bitField0_ & 0x00000001) != 0)) {
+        pos_.makeImmutable();
+        bitField0_ = (bitField0_ & ~0x00000001);
       }
+      result.pos_ = pos_;
       onBuilt();
       return result;
     }
@@ -489,37 +426,15 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.HomeCleanReq other) {
       if (other == game.proto.HomeCleanReq.getDefaultInstance()) return this;
-      if (other.type_ != 0) {
-        setTypeValue(other.getTypeValue());
-      }
-      if (other.getPos() != 0) {
-        setPos(other.getPos());
-      }
-      if (rectBuilder_ == null) {
-        if (!other.rect_.isEmpty()) {
-          if (rect_.isEmpty()) {
-            rect_ = other.rect_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-          } else {
-            ensureRectIsMutable();
-            rect_.addAll(other.rect_);
-          }
-          onChanged();
+      if (!other.pos_.isEmpty()) {
+        if (pos_.isEmpty()) {
+          pos_ = other.pos_;
+          bitField0_ = (bitField0_ & ~0x00000001);
+        } else {
+          ensurePosIsMutable();
+          pos_.addAll(other.pos_);
         }
-      } else {
-        if (!other.rect_.isEmpty()) {
-          if (rectBuilder_.isEmpty()) {
-            rectBuilder_.dispose();
-            rectBuilder_ = null;
-            rect_ = other.rect_;
-            bitField0_ = (bitField0_ & ~0x00000001);
-            rectBuilder_ = 
-              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
-                 getRectFieldBuilder() : null;
-          } else {
-            rectBuilder_.addAllMessages(other.rect_);
-          }
-        }
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -551,329 +466,83 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private int type_ = 0;
-    /**
-     * <code>.Message.HomeType type = 1;</code>
-     * @return The enum numeric value on the wire for type.
-     */
-    @java.lang.Override public int getTypeValue() {
-      return type_;
-    }
-    /**
-     * <code>.Message.HomeType type = 1;</code>
-     * @param value The enum numeric value on the wire for type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setTypeValue(int value) {
-      
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.Message.HomeType type = 1;</code>
-     * @return The type.
-     */
-    @java.lang.Override
-    public game.proto.data.HomeType getType() {
-      @SuppressWarnings("deprecation")
-      game.proto.data.HomeType result = game.proto.data.HomeType.valueOf(type_);
-      return result == null ? game.proto.data.HomeType.UNRECOGNIZED : result;
-    }
-    /**
-     * <code>.Message.HomeType type = 1;</code>
-     * @param value The type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setType(game.proto.data.HomeType value) {
-      if (value == null) {
-        throw new NullPointerException();
-      }
-      
-      type_ = value.getNumber();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.Message.HomeType type = 1;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearType() {
-      
-      type_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int pos_ ;
-    /**
-     * <code>int32 pos = 3;</code>
-     * @return The pos.
-     */
-    @java.lang.Override
-    public int getPos() {
-      return pos_;
-    }
-    /**
-     * <code>int32 pos = 3;</code>
-     * @param value The pos to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPos(int value) {
-      
-      pos_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 pos = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPos() {
-      
-      pos_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.util.List<game.proto.data.HomeRect> rect_ =
-      java.util.Collections.emptyList();
-    private void ensureRectIsMutable() {
+    private com.google.protobuf.Internal.IntList pos_ = emptyIntList();
+    private void ensurePosIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        rect_ = new java.util.ArrayList<game.proto.data.HomeRect>(rect_);
+        pos_ = mutableCopy(pos_);
         bitField0_ |= 0x00000001;
        }
     }
-
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> rectBuilder_;
-
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @return A list containing the pos.
      */
-    public java.util.List<game.proto.data.HomeRect> getRectList() {
-      if (rectBuilder_ == null) {
-        return java.util.Collections.unmodifiableList(rect_);
-      } else {
-        return rectBuilder_.getMessageList();
-      }
+    public java.util.List<java.lang.Integer>
+        getPosList() {
+      return ((bitField0_ & 0x00000001) != 0) ?
+               java.util.Collections.unmodifiableList(pos_) : pos_;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @return The count of pos.
      */
-    public int getRectCount() {
-      if (rectBuilder_ == null) {
-        return rect_.size();
-      } else {
-        return rectBuilder_.getCount();
-      }
+    public int getPosCount() {
+      return pos_.size();
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @param index The index of the element to return.
+     * @return The pos at the given index.
      */
-    public game.proto.data.HomeRect getRect(int index) {
-      if (rectBuilder_ == null) {
-        return rect_.get(index);
-      } else {
-        return rectBuilder_.getMessage(index);
-      }
+    public int getPos(int index) {
+      return pos_.getInt(index);
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @param index The index to set the value at.
+     * @param value The pos to set.
+     * @return This builder for chaining.
      */
-    public Builder setRect(
-        int index, game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureRectIsMutable();
-        rect_.set(index, value);
-        onChanged();
-      } else {
-        rectBuilder_.setMessage(index, value);
-      }
+    public Builder setPos(
+        int index, int value) {
+      ensurePosIsMutable();
+      pos_.setInt(index, value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @param value The pos to add.
+     * @return This builder for chaining.
      */
-    public Builder setRect(
-        int index, game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.set(index, builderForValue.build());
-        onChanged();
-      } else {
-        rectBuilder_.setMessage(index, builderForValue.build());
-      }
+    public Builder addPos(int value) {
+      ensurePosIsMutable();
+      pos_.addInt(value);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @param values The pos to add.
+     * @return This builder for chaining.
      */
-    public Builder addRect(game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureRectIsMutable();
-        rect_.add(value);
-        onChanged();
-      } else {
-        rectBuilder_.addMessage(value);
-      }
+    public Builder addAllPos(
+        java.lang.Iterable<? extends java.lang.Integer> values) {
+      ensurePosIsMutable();
+      com.google.protobuf.AbstractMessageLite.Builder.addAll(
+          values, pos_);
+      onChanged();
       return this;
     }
     /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
+     * <code>repeated int32 pos = 3;</code>
+     * @return This builder for chaining.
      */
-    public Builder addRect(
-        int index, game.proto.data.HomeRect value) {
-      if (rectBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        ensureRectIsMutable();
-        rect_.add(index, value);
-        onChanged();
-      } else {
-        rectBuilder_.addMessage(index, value);
-      }
+    public Builder clearPos() {
+      pos_ = emptyIntList();
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
       return this;
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public Builder addRect(
-        game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.add(builderForValue.build());
-        onChanged();
-      } else {
-        rectBuilder_.addMessage(builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public Builder addRect(
-        int index, game.proto.data.HomeRect.Builder builderForValue) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.add(index, builderForValue.build());
-        onChanged();
-      } else {
-        rectBuilder_.addMessage(index, builderForValue.build());
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public Builder addAllRect(
-        java.lang.Iterable<? extends game.proto.data.HomeRect> values) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        com.google.protobuf.AbstractMessageLite.Builder.addAll(
-            values, rect_);
-        onChanged();
-      } else {
-        rectBuilder_.addAllMessages(values);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public Builder clearRect() {
-      if (rectBuilder_ == null) {
-        rect_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-      } else {
-        rectBuilder_.clear();
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public Builder removeRect(int index) {
-      if (rectBuilder_ == null) {
-        ensureRectIsMutable();
-        rect_.remove(index);
-        onChanged();
-      } else {
-        rectBuilder_.remove(index);
-      }
-      return this;
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public game.proto.data.HomeRect.Builder getRectBuilder(
-        int index) {
-      return getRectFieldBuilder().getBuilder(index);
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public game.proto.data.HomeRectOrBuilder getRectOrBuilder(
-        int index) {
-      if (rectBuilder_ == null) {
-        return rect_.get(index);  } else {
-        return rectBuilder_.getMessageOrBuilder(index);
-      }
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
-         getRectOrBuilderList() {
-      if (rectBuilder_ != null) {
-        return rectBuilder_.getMessageOrBuilderList();
-      } else {
-        return java.util.Collections.unmodifiableList(rect_);
-      }
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public game.proto.data.HomeRect.Builder addRectBuilder() {
-      return getRectFieldBuilder().addBuilder(
-          game.proto.data.HomeRect.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public game.proto.data.HomeRect.Builder addRectBuilder(
-        int index) {
-      return getRectFieldBuilder().addBuilder(
-          index, game.proto.data.HomeRect.getDefaultInstance());
-    }
-    /**
-     * <code>repeated .Message.HomeRect rect = 4;</code>
-     */
-    public java.util.List<game.proto.data.HomeRect.Builder> 
-         getRectBuilderList() {
-      return getRectFieldBuilder().getBuilderList();
-    }
-    private com.google.protobuf.RepeatedFieldBuilderV3<
-        game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder> 
-        getRectFieldBuilder() {
-      if (rectBuilder_ == null) {
-        rectBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            game.proto.data.HomeRect, game.proto.data.HomeRect.Builder, game.proto.data.HomeRectOrBuilder>(
-                rect_,
-                ((bitField0_ & 0x00000001) != 0),
-                getParentForChildren(),
-                isClean());
-        rect_ = null;
-      }
-      return rectBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

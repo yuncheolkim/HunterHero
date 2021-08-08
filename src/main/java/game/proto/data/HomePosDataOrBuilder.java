@@ -39,6 +39,12 @@ public interface HomePosDataOrBuilder extends
   game.proto.data.HomeType getType();
 
   /**
+   * <code>int64 time = 4;</code>
+   * @return The time.
+   */
+  long getTime();
+
+  /**
    * <pre>
    * 对应不同类型不同数据结构
    * </pre>

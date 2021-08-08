@@ -8,43 +8,19 @@ public interface HomeCleanReqOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>.Message.HomeType type = 1;</code>
-   * @return The enum numeric value on the wire for type.
+   * <code>repeated int32 pos = 3;</code>
+   * @return A list containing the pos.
    */
-  int getTypeValue();
+  java.util.List<java.lang.Integer> getPosList();
   /**
-   * <code>.Message.HomeType type = 1;</code>
-   * @return The type.
+   * <code>repeated int32 pos = 3;</code>
+   * @return The count of pos.
    */
-  game.proto.data.HomeType getType();
-
+  int getPosCount();
   /**
-   * <code>int32 pos = 3;</code>
-   * @return The pos.
+   * <code>repeated int32 pos = 3;</code>
+   * @param index The index of the element to return.
+   * @return The pos at the given index.
    */
-  int getPos();
-
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  java.util.List<game.proto.data.HomeRect> 
-      getRectList();
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  game.proto.data.HomeRect getRect(int index);
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  int getRectCount();
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  java.util.List<? extends game.proto.data.HomeRectOrBuilder> 
-      getRectOrBuilderList();
-  /**
-   * <code>repeated .Message.HomeRect rect = 4;</code>
-   */
-  game.proto.data.HomeRectOrBuilder getRectOrBuilder(
-      int index);
+  int getPos(int index);
 }

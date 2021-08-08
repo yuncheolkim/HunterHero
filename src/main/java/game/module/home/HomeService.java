@@ -1,8 +1,13 @@
 package game.module.home;
 
+import game.config.data.HomeItemConfigData;
 import game.exception.ModuleAssert;
+import game.manager.ConfigManager;
 import game.player.Player;
-import game.proto.data.*;
+import game.proto.data.HomeData;
+import game.proto.data.HomePosData;
+import game.proto.data.HomePosList;
+import game.proto.data.HomeType;
 import org.joda.time.DateTimeUtils;
 
 /**
@@ -99,8 +104,10 @@ public class HomeService {
     public static void put(Player player, HomePosData data, int pos) {
         long time = DateTimeUtils.currentTimeMillis();
 
+        HomeItemConfigData d = ConfigManager.homeItemDataBox.findById(data.getId());
+
         if (data.getType() == HomeType.H_FARM) {
-            data = data.toBuilder().setBody(HomeFarm.newBuilder().setTime(time).buildPartial().toByteString()).buildPartial();
+            data = data.toBuilder().setTime(time + d.time).buildPartial();
         }
 
         ModuleAssert.isTrue(isOpen(player, HomeAreaData.posToArea(pos)));
@@ -112,45 +119,40 @@ public class HomeService {
             build = homeDataBuilder.getMapDataOrThrow(pos).toBuilder();
         }
 
+        build.setPos(pos);
         build.addData(data.toBuilder());
         homeDataBuilder.putMapData(pos, build.buildPartial());
 
         player.homeAreaData.addPosData(homePos.x, homePos.y, data);
     }
 
-    /**
+    /*d
      * 清理地图上的建筑，物品
      *
      * @param player
      * @param rect
      */
-    public static void clean(Player player, HomeRectInfo rect, HomeType type) {
+    public static void clean(Player player, HomeRectInfo rect) {
 
         for (int i = rect.x; i <= rect.x1; i++) {
             for (int j = rect.y; j < rect.y1; j++) {
-                clean(player, fromPos(i, j), type);
+                clean(player, fromPos(i, j));
             }
         }
 
     }
 
-    public static void clean(Player player, int pos, HomeType type) {
-        player.homeAreaData.clean(pos, type);
+    public static void clean(Player player, int pos) {
+        player.homeAreaData.clean(pos);
         HomePosList.Builder builder = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos).toBuilder();
 
-        removeTileData(type, builder);
+        removeTileData(builder);
 
         player.pd.getHomeDataBuilder().putMapData(pos, builder.buildPartial());
     }
 
-    public static void removeTileData(HomeType type, HomePosList.Builder builder) {
-        for (int i = builder.getDataCount() - 1; i >= 0; i--) {
-            HomePosData.Builder dataBuilder = builder.getDataBuilder(i);
-            if (dataBuilder.getType() == type) {
-                builder.removeData(i);
-                break;
-            }
-        }
+    public static void removeTileData(HomePosList.Builder builder) {
+        builder.removeData(0);
     }
 
 
@@ -164,7 +166,7 @@ public class HomeService {
         HomePosList d = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos);
         HomePosList.Builder builder = d.toBuilder();
 
-        removeTileData(HomeType.H_FARM, builder);
+        removeTileData(builder);
         player.pd.getHomeDataBuilder().removeMapData(pos);
         player.homeAreaData.harvest(pos);
     }

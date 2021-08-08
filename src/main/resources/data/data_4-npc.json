@@ -33,17 +33,23 @@
     "103": {
         "areaId": "5",
         "id": 103,
-        "speakId": 1001
+        "name": "云木",
+        "speakId": 1001,
+        "title": "木工"
     },
     "104": {
         "areaId": "5",
         "id": 104,
-        "speakId": 1001
+        "name": "费依",
+        "speakId": 1001,
+        "title": "铁匠"
     },
     "105": {
         "areaId": "5",
         "id": 105,
-        "speakId": 1001
+        "name": "时辰",
+        "speakId": 1001,
+        "title": "管家"
     },
     "106": {
         "areaId": "5",
@@ -204,6 +210,34 @@
         "speakId": 1001,
         "title": "英雄",
         "type": 1
+    },
+    "151": {
+        "areaId": "100",
+        "id": 151,
+        "name": "云木",
+        "speakId": 1001,
+        "title": "木工"
+    },
+    "152": {
+        "areaId": "100",
+        "id": 152,
+        "name": "费依",
+        "speakId": 1001,
+        "title": "铁匠"
+    },
+    "153": {
+        "areaId": "100",
+        "id": 153,
+        "name": "时辰",
+        "speakId": 1001,
+        "title": "管家"
+    },
+    "154": {
+        "areaId": "100",
+        "id": 154,
+        "name": "诺米",
+        "speakId": 1001,
+        "title": "厨师"
     },
     "2": {
         "areaId": "2",

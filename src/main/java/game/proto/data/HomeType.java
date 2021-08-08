@@ -4,6 +4,10 @@
 package game.proto.data;
 
 /**
+ * <pre>
+ *地图上的物品
+ * </pre>
+ *
  * Protobuf enum {@code Message.HomeType}
  */
 public enum HomeType
@@ -56,6 +60,22 @@ public enum HomeType
    * <code>H_ROAD = 6;</code>
    */
   H_ROAD(6),
+  /**
+   * <pre>
+   * 可交互的物体,占用多个格子
+   * </pre>
+   *
+   * <code>H_GOODS = 7;</code>
+   */
+  H_GOODS(7),
+  /**
+   * <pre>
+   * 物品, 不用瓦片制作
+   * </pre>
+   *
+   * <code>H_ITEM = 20;</code>
+   */
+  H_ITEM(20),
   UNRECOGNIZED(-1),
   ;
 
@@ -107,6 +127,22 @@ public enum HomeType
    * <code>H_ROAD = 6;</code>
    */
   public static final int H_ROAD_VALUE = 6;
+  /**
+   * <pre>
+   * 可交互的物体,占用多个格子
+   * </pre>
+   *
+   * <code>H_GOODS = 7;</code>
+   */
+  public static final int H_GOODS_VALUE = 7;
+  /**
+   * <pre>
+   * 物品, 不用瓦片制作
+   * </pre>
+   *
+   * <code>H_ITEM = 20;</code>
+   */
+  public static final int H_ITEM_VALUE = 20;
 
 
   public final int getNumber() {
@@ -139,6 +175,8 @@ public enum HomeType
       case 4: return H_WALL;
       case 5: return H_CARPET;
       case 6: return H_ROAD;
+      case 7: return H_GOODS;
+      case 20: return H_ITEM;
       default: return null;
     }
   }

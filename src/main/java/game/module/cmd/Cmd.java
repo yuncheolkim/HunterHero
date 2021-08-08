@@ -125,9 +125,12 @@ public enum Cmd {
             player.pd.getHomeDataBuilder().setOpenArea(opened ^ 1L << areaId);
         }
     },
-    CMD16(16, "Open Feature") {
+    CMD16(16, "清理房屋") {
         @Override
         public void run(final Player player, final List<String> line) {
+            player.pd.getHomeDataBuilder().clear();
+            long opened = player.pd.getHomeDataBuilder().getOpenArea();
+            player.pd.getHomeDataBuilder().setOpenArea(opened ^ 1L << 24);
         }
     },
     CMD17(17, "Open Feature") {
