@@ -97,6 +97,10 @@ public class ConfigManager extends AbsLifecycle {
     public static final HomeAreaDataBox homeAreaDataBox = new HomeAreaDataBox();
 
     public static final HomeItemDataBox homeItemDataBox = new HomeItemDataBox();
+    public static final HomeResourceDataBox homeResourceDataBox = new HomeResourceDataBox();
+    public static final HomeRecipeDataBox homeRecipeDataBox = new HomeRecipeDataBox();
+    public static final HomeLevelDataBox homeLevelDataBox = new HomeLevelDataBox();
+    public static final HomeBuildDataBox homeBuildDataBox = new HomeBuildDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 

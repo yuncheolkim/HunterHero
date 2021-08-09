@@ -48,26 +48,4 @@ public interface ResourceOrBuilder extends
    * @return The powerRecoverSecond.
    */
   int getPowerRecoverSecond();
-
-  /**
-   * <code>int32 homeExp = 15;</code>
-   * @return The homeExp.
-   */
-  int getHomeExp();
-
-  /**
-   * <code>int32 homeNeedExp = 16;</code>
-   * @return The homeNeedExp.
-   */
-  int getHomeNeedExp();
-
-  /**
-   * <pre>
-   * 家园币
-   * </pre>
-   *
-   * <code>int32 homeCoin = 17;</code>
-   * @return The homeCoin.
-   */
-  int getHomeCoin();
 }

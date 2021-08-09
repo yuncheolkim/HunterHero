@@ -77,6 +77,8 @@ message HomeData{
     string name = 2;
     int32 exp = 3;
     int64 openArea = 5; // 开启区域标记
+    int32 needExp = 16;
+    int32 coin = 17;// 家园币
     map<int32, HomePosList> mapData = 10;
 }
 message HomePosList{
@@ -146,9 +148,6 @@ message Resource {
     int32 maxPower = 7;
     int32 powerRecoverSecond = 8;
 
-    int32 homeExp = 15;
-    int32 homeNeedExp = 16;
-    int32 homeCoin = 17;// 家园币
 }
 
 message ScenePos {

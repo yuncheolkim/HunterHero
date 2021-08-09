@@ -89,6 +89,16 @@ private static final long serialVersionUID = 0L;
                 mapData__.getKey(), mapData__.getValue());
             break;
           }
+          case 128: {
+
+            needExp_ = input.readInt32();
+            break;
+          }
+          case 136: {
+
+            coin_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -208,6 +218,32 @@ private static final long serialVersionUID = 0L;
     return openArea_;
   }
 
+  public static final int NEEDEXP_FIELD_NUMBER = 16;
+  private int needExp_;
+  /**
+   * <code>int32 needExp = 16;</code>
+   * @return The needExp.
+   */
+  @java.lang.Override
+  public int getNeedExp() {
+    return needExp_;
+  }
+
+  public static final int COIN_FIELD_NUMBER = 17;
+  private int coin_;
+  /**
+   * <pre>
+   * 家园币
+   * </pre>
+   *
+   * <code>int32 coin = 17;</code>
+   * @return The coin.
+   */
+  @java.lang.Override
+  public int getCoin() {
+    return coin_;
+  }
+
   public static final int MAPDATA_FIELD_NUMBER = 10;
   private static final class MapDataDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -321,6 +357,12 @@ private static final long serialVersionUID = 0L;
         internalGetMapData(),
         MapDataDefaultEntryHolder.defaultEntry,
         10);
+    if (needExp_ != 0) {
+      output.writeInt32(16, needExp_);
+    }
+    if (coin_ != 0) {
+      output.writeInt32(17, coin_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -355,6 +397,14 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, mapData__);
     }
+    if (needExp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(16, needExp_);
+    }
+    if (coin_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(17, coin_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -378,6 +428,10 @@ private static final long serialVersionUID = 0L;
         != other.getExp()) return false;
     if (getOpenArea()
         != other.getOpenArea()) return false;
+    if (getNeedExp()
+        != other.getNeedExp()) return false;
+    if (getCoin()
+        != other.getCoin()) return false;
     if (!internalGetMapData().equals(
         other.internalGetMapData())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
@@ -400,6 +454,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + OPENAREA_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getOpenArea());
+    hash = (37 * hash) + NEEDEXP_FIELD_NUMBER;
+    hash = (53 * hash) + getNeedExp();
+    hash = (37 * hash) + COIN_FIELD_NUMBER;
+    hash = (53 * hash) + getCoin();
     if (!internalGetMapData().getMap().isEmpty()) {
       hash = (37 * hash) + MAPDATA_FIELD_NUMBER;
       hash = (53 * hash) + internalGetMapData().hashCode();
@@ -572,6 +630,10 @@ private static final long serialVersionUID = 0L;
 
       openArea_ = 0L;
 
+      needExp_ = 0;
+
+      coin_ = 0;
+
       internalGetMutableMapData().clear();
       return this;
     }
@@ -604,6 +666,8 @@ private static final long serialVersionUID = 0L;
       result.name_ = name_;
       result.exp_ = exp_;
       result.openArea_ = openArea_;
+      result.needExp_ = needExp_;
+      result.coin_ = coin_;
       result.mapData_ = internalGetMapData();
       result.mapData_.makeImmutable();
       onBuilt();
@@ -666,6 +730,12 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getOpenArea() != 0L) {
         setOpenArea(other.getOpenArea());
+      }
+      if (other.getNeedExp() != 0) {
+        setNeedExp(other.getNeedExp());
+      }
+      if (other.getCoin() != 0) {
+        setCoin(other.getCoin());
       }
       internalGetMutableMapData().mergeFrom(
           other.internalGetMapData());
@@ -876,6 +946,80 @@ private static final long serialVersionUID = 0L;
     public Builder clearOpenArea() {
       
       openArea_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int needExp_ ;
+    /**
+     * <code>int32 needExp = 16;</code>
+     * @return The needExp.
+     */
+    @java.lang.Override
+    public int getNeedExp() {
+      return needExp_;
+    }
+    /**
+     * <code>int32 needExp = 16;</code>
+     * @param value The needExp to set.
+     * @return This builder for chaining.
+     */
+    public Builder setNeedExp(int value) {
+      
+      needExp_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 needExp = 16;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearNeedExp() {
+      
+      needExp_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int coin_ ;
+    /**
+     * <pre>
+     * 家园币
+     * </pre>
+     *
+     * <code>int32 coin = 17;</code>
+     * @return The coin.
+     */
+    @java.lang.Override
+    public int getCoin() {
+      return coin_;
+    }
+    /**
+     * <pre>
+     * 家园币
+     * </pre>
+     *
+     * <code>int32 coin = 17;</code>
+     * @param value The coin to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCoin(int value) {
+      
+      coin_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 家园币
+     * </pre>
+     *
+     * <code>int32 coin = 17;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCoin() {
+      
+      coin_ = 0;
       onChanged();
       return this;
     }

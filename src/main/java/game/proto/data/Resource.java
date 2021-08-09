@@ -87,21 +87,6 @@ private static final long serialVersionUID = 0L;
             lei_ = input.readInt32();
             break;
           }
-          case 120: {
-
-            homeExp_ = input.readInt32();
-            break;
-          }
-          case 128: {
-
-            homeNeedExp_ = input.readInt32();
-            break;
-          }
-          case 136: {
-
-            homeCoin_ = input.readInt32();
-            break;
-          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -211,43 +196,6 @@ private static final long serialVersionUID = 0L;
     return powerRecoverSecond_;
   }
 
-  public static final int HOMEEXP_FIELD_NUMBER = 15;
-  private int homeExp_;
-  /**
-   * <code>int32 homeExp = 15;</code>
-   * @return The homeExp.
-   */
-  @java.lang.Override
-  public int getHomeExp() {
-    return homeExp_;
-  }
-
-  public static final int HOMENEEDEXP_FIELD_NUMBER = 16;
-  private int homeNeedExp_;
-  /**
-   * <code>int32 homeNeedExp = 16;</code>
-   * @return The homeNeedExp.
-   */
-  @java.lang.Override
-  public int getHomeNeedExp() {
-    return homeNeedExp_;
-  }
-
-  public static final int HOMECOIN_FIELD_NUMBER = 17;
-  private int homeCoin_;
-  /**
-   * <pre>
-   * 家园币
-   * </pre>
-   *
-   * <code>int32 homeCoin = 17;</code>
-   * @return The homeCoin.
-   */
-  @java.lang.Override
-  public int getHomeCoin() {
-    return homeCoin_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -282,15 +230,6 @@ private static final long serialVersionUID = 0L;
     }
     if (lei_ != 0) {
       output.writeInt32(13, lei_);
-    }
-    if (homeExp_ != 0) {
-      output.writeInt32(15, homeExp_);
-    }
-    if (homeNeedExp_ != 0) {
-      output.writeInt32(16, homeNeedExp_);
-    }
-    if (homeCoin_ != 0) {
-      output.writeInt32(17, homeCoin_);
     }
     unknownFields.writeTo(output);
   }
@@ -329,18 +268,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(13, lei_);
     }
-    if (homeExp_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(15, homeExp_);
-    }
-    if (homeNeedExp_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(16, homeNeedExp_);
-    }
-    if (homeCoin_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(17, homeCoin_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -370,12 +297,6 @@ private static final long serialVersionUID = 0L;
         != other.getMaxPower()) return false;
     if (getPowerRecoverSecond()
         != other.getPowerRecoverSecond()) return false;
-    if (getHomeExp()
-        != other.getHomeExp()) return false;
-    if (getHomeNeedExp()
-        != other.getHomeNeedExp()) return false;
-    if (getHomeCoin()
-        != other.getHomeCoin()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -402,12 +323,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getMaxPower();
     hash = (37 * hash) + POWERRECOVERSECOND_FIELD_NUMBER;
     hash = (53 * hash) + getPowerRecoverSecond();
-    hash = (37 * hash) + HOMEEXP_FIELD_NUMBER;
-    hash = (53 * hash) + getHomeExp();
-    hash = (37 * hash) + HOMENEEDEXP_FIELD_NUMBER;
-    hash = (53 * hash) + getHomeNeedExp();
-    hash = (37 * hash) + HOMECOIN_FIELD_NUMBER;
-    hash = (53 * hash) + getHomeCoin();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -559,12 +474,6 @@ private static final long serialVersionUID = 0L;
 
       powerRecoverSecond_ = 0;
 
-      homeExp_ = 0;
-
-      homeNeedExp_ = 0;
-
-      homeCoin_ = 0;
-
       return this;
     }
 
@@ -598,9 +507,6 @@ private static final long serialVersionUID = 0L;
       result.power_ = power_;
       result.maxPower_ = maxPower_;
       result.powerRecoverSecond_ = powerRecoverSecond_;
-      result.homeExp_ = homeExp_;
-      result.homeNeedExp_ = homeNeedExp_;
-      result.homeCoin_ = homeCoin_;
       onBuilt();
       return result;
     }
@@ -669,15 +575,6 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getPowerRecoverSecond() != 0) {
         setPowerRecoverSecond(other.getPowerRecoverSecond());
-      }
-      if (other.getHomeExp() != 0) {
-        setHomeExp(other.getHomeExp());
-      }
-      if (other.getHomeNeedExp() != 0) {
-        setHomeNeedExp(other.getHomeNeedExp());
-      }
-      if (other.getHomeCoin() != 0) {
-        setHomeCoin(other.getHomeCoin());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -921,111 +818,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearPowerRecoverSecond() {
       
       powerRecoverSecond_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int homeExp_ ;
-    /**
-     * <code>int32 homeExp = 15;</code>
-     * @return The homeExp.
-     */
-    @java.lang.Override
-    public int getHomeExp() {
-      return homeExp_;
-    }
-    /**
-     * <code>int32 homeExp = 15;</code>
-     * @param value The homeExp to set.
-     * @return This builder for chaining.
-     */
-    public Builder setHomeExp(int value) {
-      
-      homeExp_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 homeExp = 15;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearHomeExp() {
-      
-      homeExp_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int homeNeedExp_ ;
-    /**
-     * <code>int32 homeNeedExp = 16;</code>
-     * @return The homeNeedExp.
-     */
-    @java.lang.Override
-    public int getHomeNeedExp() {
-      return homeNeedExp_;
-    }
-    /**
-     * <code>int32 homeNeedExp = 16;</code>
-     * @param value The homeNeedExp to set.
-     * @return This builder for chaining.
-     */
-    public Builder setHomeNeedExp(int value) {
-      
-      homeNeedExp_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 homeNeedExp = 16;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearHomeNeedExp() {
-      
-      homeNeedExp_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int homeCoin_ ;
-    /**
-     * <pre>
-     * 家园币
-     * </pre>
-     *
-     * <code>int32 homeCoin = 17;</code>
-     * @return The homeCoin.
-     */
-    @java.lang.Override
-    public int getHomeCoin() {
-      return homeCoin_;
-    }
-    /**
-     * <pre>
-     * 家园币
-     * </pre>
-     *
-     * <code>int32 homeCoin = 17;</code>
-     * @param value The homeCoin to set.
-     * @return This builder for chaining.
-     */
-    public Builder setHomeCoin(int value) {
-      
-      homeCoin_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 家园币
-     * </pre>
-     *
-     * <code>int32 homeCoin = 17;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearHomeCoin() {
-      
-      homeCoin_ = 0;
       onChanged();
       return this;
     }

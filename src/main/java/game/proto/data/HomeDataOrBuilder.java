@@ -42,6 +42,22 @@ public interface HomeDataOrBuilder extends
   long getOpenArea();
 
   /**
+   * <code>int32 needExp = 16;</code>
+   * @return The needExp.
+   */
+  int getNeedExp();
+
+  /**
+   * <pre>
+   * 家园币
+   * </pre>
+   *
+   * <code>int32 coin = 17;</code>
+   * @return The coin.
+   */
+  int getCoin();
+
+  /**
    * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   int getMapDataCount();
