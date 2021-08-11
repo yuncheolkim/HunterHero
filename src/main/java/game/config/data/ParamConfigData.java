@@ -65,6 +65,7 @@ public class ParamConfigData {
      */
     public int expressCount;
 
+    public int homeResourceLimit;
 
     public void Init(final DataConfigData d) {
         final int count = d.count;
@@ -101,6 +102,9 @@ public class ParamConfigData {
                 break;
             case 11:
                 expressCount = count;
+                break;
+            case 12:
+                homeResourceLimit = count;
                 break;
         }
     }

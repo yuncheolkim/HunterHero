@@ -219,7 +219,11 @@ public class Player {
         bank.count = pd.getBankCount();
 
         // 房间
-        homeAreaData = HomeService.initHomeAreaData(this);
+        HomeData.Builder homeDataBuilder = pd.getHomeDataBuilder();
+        if (homeDataBuilder != null) {
+            homeDataBuilder.setResourceLimit(ConfigManager.paramConfigData.homeResourceLimit);
+            homeAreaData = HomeService.initHomeAreaData(this);
+        }
 
     }
 
@@ -386,7 +390,7 @@ public class Player {
         final PlayerHero.Builder builder = playerHero.toBuilder();
         int exp = builder.getExp() + count;
         final int oldLevel = playerHero.getLevel();
-        int level = playerHero.getLevel();
+        int level = oldLevel;
         int maxExp = ConfigManager.needExp(level);
 
         while (exp >= maxExp) {
@@ -622,13 +626,6 @@ public class Player {
         EventManager.firePlayerEvent(this, new ItemAddEvent(data));
 
     }
-
-//    private BagUpdateService findBagUpdateService(final int type) {
-//        if (type == 1) {
-//            return BagUpdateService.updatePlayerBag;
-//        }
-//        return updatePlayerBank;
-//    }
 
     /**
      * 整理背包

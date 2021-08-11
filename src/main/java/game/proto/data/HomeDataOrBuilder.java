@@ -42,7 +42,13 @@ public interface HomeDataOrBuilder extends
   long getOpenArea();
 
   /**
-   * <code>int32 needExp = 16;</code>
+   * <code>int32 resourceLimit = 6;</code>
+   * @return The resourceLimit.
+   */
+  int getResourceLimit();
+
+  /**
+   * <code>int32 needExp = 7;</code>
    * @return The needExp.
    */
   int getNeedExp();
@@ -52,7 +58,7 @@ public interface HomeDataOrBuilder extends
    * 家园币
    * </pre>
    *
-   * <code>int32 coin = 17;</code>
+   * <code>int32 coin = 8;</code>
    * @return The coin.
    */
   int getCoin();
@@ -89,5 +95,39 @@ public interface HomeDataOrBuilder extends
    */
 
   game.proto.data.HomePosList getMapDataOrThrow(
+      int key);
+
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+  int getResourceCountCount();
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+  boolean containsResourceCount(
+      int key);
+  /**
+   * Use {@link #getResourceCountMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getResourceCount();
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getResourceCountMap();
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+
+  int getResourceCountOrDefault(
+      int key,
+      int defaultValue);
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+
+  int getResourceCountOrThrow(
       int key);
 }

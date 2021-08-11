@@ -76,6 +76,21 @@ private static final long serialVersionUID = 0L;
             openArea_ = input.readInt64();
             break;
           }
+          case 48: {
+
+            resourceLimit_ = input.readInt32();
+            break;
+          }
+          case 56: {
+
+            needExp_ = input.readInt32();
+            break;
+          }
+          case 64: {
+
+            coin_ = input.readInt32();
+            break;
+          }
           case 82: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               mapData_ = com.google.protobuf.MapField.newMapField(
@@ -89,14 +104,17 @@ private static final long serialVersionUID = 0L;
                 mapData__.getKey(), mapData__.getValue());
             break;
           }
-          case 128: {
-
-            needExp_ = input.readInt32();
-            break;
-          }
-          case 136: {
-
-            coin_ = input.readInt32();
+          case 90: {
+            if (!((mutable_bitField0_ & 0x00000002) != 0)) {
+              resourceCount_ = com.google.protobuf.MapField.newMapField(
+                  ResourceCountDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000002;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+            resourceCount__ = input.readMessage(
+                ResourceCountDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            resourceCount_.getMutableMap().put(
+                resourceCount__.getKey(), resourceCount__.getValue());
             break;
           }
           default: {
@@ -130,6 +148,8 @@ private static final long serialVersionUID = 0L;
     switch (number) {
       case 10:
         return internalGetMapData();
+      case 11:
+        return internalGetResourceCount();
       default:
         throw new RuntimeException(
             "Invalid map field number: " + number);
@@ -218,10 +238,21 @@ private static final long serialVersionUID = 0L;
     return openArea_;
   }
 
-  public static final int NEEDEXP_FIELD_NUMBER = 16;
+  public static final int RESOURCELIMIT_FIELD_NUMBER = 6;
+  private int resourceLimit_;
+  /**
+   * <code>int32 resourceLimit = 6;</code>
+   * @return The resourceLimit.
+   */
+  @java.lang.Override
+  public int getResourceLimit() {
+    return resourceLimit_;
+  }
+
+  public static final int NEEDEXP_FIELD_NUMBER = 7;
   private int needExp_;
   /**
-   * <code>int32 needExp = 16;</code>
+   * <code>int32 needExp = 7;</code>
    * @return The needExp.
    */
   @java.lang.Override
@@ -229,14 +260,14 @@ private static final long serialVersionUID = 0L;
     return needExp_;
   }
 
-  public static final int COIN_FIELD_NUMBER = 17;
+  public static final int COIN_FIELD_NUMBER = 8;
   private int coin_;
   /**
    * <pre>
    * 家园币
    * </pre>
    *
-   * <code>int32 coin = 17;</code>
+   * <code>int32 coin = 8;</code>
    * @return The coin.
    */
   @java.lang.Override
@@ -325,6 +356,87 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int RESOURCECOUNT_FIELD_NUMBER = 11;
+  private static final class ResourceCountDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, java.lang.Integer> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_HomeData_ResourceCountEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0);
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, java.lang.Integer> resourceCount_;
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+  internalGetResourceCount() {
+    if (resourceCount_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          ResourceCountDefaultEntryHolder.defaultEntry);
+    }
+    return resourceCount_;
+  }
+
+  public int getResourceCountCount() {
+    return internalGetResourceCount().getMap().size();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsResourceCount(
+      int key) {
+    
+    return internalGetResourceCount().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getResourceCountMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getResourceCount() {
+    return getResourceCountMap();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getResourceCountMap() {
+    return internalGetResourceCount().getMap();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+  @java.lang.Override
+
+  public int getResourceCountOrDefault(
+      int key,
+      int defaultValue) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetResourceCount().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+   */
+  @java.lang.Override
+
+  public int getResourceCountOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetResourceCount().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -351,18 +463,27 @@ private static final long serialVersionUID = 0L;
     if (openArea_ != 0L) {
       output.writeInt64(5, openArea_);
     }
+    if (resourceLimit_ != 0) {
+      output.writeInt32(6, resourceLimit_);
+    }
+    if (needExp_ != 0) {
+      output.writeInt32(7, needExp_);
+    }
+    if (coin_ != 0) {
+      output.writeInt32(8, coin_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
         internalGetMapData(),
         MapDataDefaultEntryHolder.defaultEntry,
         10);
-    if (needExp_ != 0) {
-      output.writeInt32(16, needExp_);
-    }
-    if (coin_ != 0) {
-      output.writeInt32(17, coin_);
-    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetResourceCount(),
+        ResourceCountDefaultEntryHolder.defaultEntry,
+        11);
     unknownFields.writeTo(output);
   }
 
@@ -387,6 +508,18 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(5, openArea_);
     }
+    if (resourceLimit_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(6, resourceLimit_);
+    }
+    if (needExp_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(7, needExp_);
+    }
+    if (coin_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(8, coin_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HomePosList> entry
          : internalGetMapData().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.HomePosList>
@@ -397,13 +530,15 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(10, mapData__);
     }
-    if (needExp_ != 0) {
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
+         : internalGetResourceCount().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+      resourceCount__ = ResourceCountDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(16, needExp_);
-    }
-    if (coin_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(17, coin_);
+          .computeMessageSize(11, resourceCount__);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -428,12 +563,16 @@ private static final long serialVersionUID = 0L;
         != other.getExp()) return false;
     if (getOpenArea()
         != other.getOpenArea()) return false;
+    if (getResourceLimit()
+        != other.getResourceLimit()) return false;
     if (getNeedExp()
         != other.getNeedExp()) return false;
     if (getCoin()
         != other.getCoin()) return false;
     if (!internalGetMapData().equals(
         other.internalGetMapData())) return false;
+    if (!internalGetResourceCount().equals(
+        other.internalGetResourceCount())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -454,6 +593,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + OPENAREA_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getOpenArea());
+    hash = (37 * hash) + RESOURCELIMIT_FIELD_NUMBER;
+    hash = (53 * hash) + getResourceLimit();
     hash = (37 * hash) + NEEDEXP_FIELD_NUMBER;
     hash = (53 * hash) + getNeedExp();
     hash = (37 * hash) + COIN_FIELD_NUMBER;
@@ -461,6 +602,10 @@ private static final long serialVersionUID = 0L;
     if (!internalGetMapData().getMap().isEmpty()) {
       hash = (37 * hash) + MAPDATA_FIELD_NUMBER;
       hash = (53 * hash) + internalGetMapData().hashCode();
+    }
+    if (!internalGetResourceCount().getMap().isEmpty()) {
+      hash = (37 * hash) + RESOURCECOUNT_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetResourceCount().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -580,6 +725,8 @@ private static final long serialVersionUID = 0L;
       switch (number) {
         case 10:
           return internalGetMapData();
+        case 11:
+          return internalGetResourceCount();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -591,6 +738,8 @@ private static final long serialVersionUID = 0L;
       switch (number) {
         case 10:
           return internalGetMutableMapData();
+        case 11:
+          return internalGetMutableResourceCount();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -630,11 +779,14 @@ private static final long serialVersionUID = 0L;
 
       openArea_ = 0L;
 
+      resourceLimit_ = 0;
+
       needExp_ = 0;
 
       coin_ = 0;
 
       internalGetMutableMapData().clear();
+      internalGetMutableResourceCount().clear();
       return this;
     }
 
@@ -666,10 +818,13 @@ private static final long serialVersionUID = 0L;
       result.name_ = name_;
       result.exp_ = exp_;
       result.openArea_ = openArea_;
+      result.resourceLimit_ = resourceLimit_;
       result.needExp_ = needExp_;
       result.coin_ = coin_;
       result.mapData_ = internalGetMapData();
       result.mapData_.makeImmutable();
+      result.resourceCount_ = internalGetResourceCount();
+      result.resourceCount_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -731,6 +886,9 @@ private static final long serialVersionUID = 0L;
       if (other.getOpenArea() != 0L) {
         setOpenArea(other.getOpenArea());
       }
+      if (other.getResourceLimit() != 0) {
+        setResourceLimit(other.getResourceLimit());
+      }
       if (other.getNeedExp() != 0) {
         setNeedExp(other.getNeedExp());
       }
@@ -739,6 +897,8 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableMapData().mergeFrom(
           other.internalGetMapData());
+      internalGetMutableResourceCount().mergeFrom(
+          other.internalGetResourceCount());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -950,9 +1110,40 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int resourceLimit_ ;
+    /**
+     * <code>int32 resourceLimit = 6;</code>
+     * @return The resourceLimit.
+     */
+    @java.lang.Override
+    public int getResourceLimit() {
+      return resourceLimit_;
+    }
+    /**
+     * <code>int32 resourceLimit = 6;</code>
+     * @param value The resourceLimit to set.
+     * @return This builder for chaining.
+     */
+    public Builder setResourceLimit(int value) {
+      
+      resourceLimit_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 resourceLimit = 6;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearResourceLimit() {
+      
+      resourceLimit_ = 0;
+      onChanged();
+      return this;
+    }
+
     private int needExp_ ;
     /**
-     * <code>int32 needExp = 16;</code>
+     * <code>int32 needExp = 7;</code>
      * @return The needExp.
      */
     @java.lang.Override
@@ -960,7 +1151,7 @@ private static final long serialVersionUID = 0L;
       return needExp_;
     }
     /**
-     * <code>int32 needExp = 16;</code>
+     * <code>int32 needExp = 7;</code>
      * @param value The needExp to set.
      * @return This builder for chaining.
      */
@@ -971,7 +1162,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int32 needExp = 16;</code>
+     * <code>int32 needExp = 7;</code>
      * @return This builder for chaining.
      */
     public Builder clearNeedExp() {
@@ -987,7 +1178,7 @@ private static final long serialVersionUID = 0L;
      * 家园币
      * </pre>
      *
-     * <code>int32 coin = 17;</code>
+     * <code>int32 coin = 8;</code>
      * @return The coin.
      */
     @java.lang.Override
@@ -999,7 +1190,7 @@ private static final long serialVersionUID = 0L;
      * 家园币
      * </pre>
      *
-     * <code>int32 coin = 17;</code>
+     * <code>int32 coin = 8;</code>
      * @param value The coin to set.
      * @return This builder for chaining.
      */
@@ -1014,7 +1205,7 @@ private static final long serialVersionUID = 0L;
      * 家园币
      * </pre>
      *
-     * <code>int32 coin = 17;</code>
+     * <code>int32 coin = 8;</code>
      * @return This builder for chaining.
      */
     public Builder clearCoin() {
@@ -1148,6 +1339,134 @@ private static final long serialVersionUID = 0L;
     public Builder putAllMapData(
         java.util.Map<java.lang.Integer, game.proto.data.HomePosList> values) {
       internalGetMutableMapData().getMutableMap()
+          .putAll(values);
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Integer> resourceCount_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetResourceCount() {
+      if (resourceCount_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            ResourceCountDefaultEntryHolder.defaultEntry);
+      }
+      return resourceCount_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetMutableResourceCount() {
+      onChanged();;
+      if (resourceCount_ == null) {
+        resourceCount_ = com.google.protobuf.MapField.newMapField(
+            ResourceCountDefaultEntryHolder.defaultEntry);
+      }
+      if (!resourceCount_.isMutable()) {
+        resourceCount_ = resourceCount_.copy();
+      }
+      return resourceCount_;
+    }
+
+    public int getResourceCountCount() {
+      return internalGetResourceCount().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsResourceCount(
+        int key) {
+      
+      return internalGetResourceCount().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getResourceCountMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getResourceCount() {
+      return getResourceCountMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getResourceCountMap() {
+      return internalGetResourceCount().getMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+    @java.lang.Override
+
+    public int getResourceCountOrDefault(
+        int key,
+        int defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetResourceCount().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+    @java.lang.Override
+
+    public int getResourceCountOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetResourceCount().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearResourceCount() {
+      internalGetMutableResourceCount().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+
+    public Builder removeResourceCount(
+        int key) {
+      
+      internalGetMutableResourceCount().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer>
+    getMutableResourceCount() {
+      return internalGetMutableResourceCount().getMutableMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+    public Builder putResourceCount(
+        int key,
+        int value) {
+      
+      
+      internalGetMutableResourceCount().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; resourceCount = 11;</code>
+     */
+
+    public Builder putAllResourceCount(
+        java.util.Map<java.lang.Integer, java.lang.Integer> values) {
+      internalGetMutableResourceCount().getMutableMap()
           .putAll(values);
       return this;
     }

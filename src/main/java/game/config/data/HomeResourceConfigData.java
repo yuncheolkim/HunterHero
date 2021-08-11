@@ -8,12 +8,16 @@ import game.config.base.DataConfigData;
  * 2021/6/8 14:22
  */
 public class HomeResourceConfigData extends BaseConfigData<HomeResourceConfigData> {
+    public boolean inBag;
 
-    public String content;
+    public int coin;
+    public int exp;
 
     @Override
     protected void fill(DataConfigData d) {
 
-        content = d.s1;
+        inBag = d.i2 == 1;
+        coin = d.i3;
+        exp = d.i4;
     }
 }

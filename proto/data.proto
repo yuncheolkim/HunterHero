@@ -77,9 +77,11 @@ message HomeData{
     string name = 2;
     int32 exp = 3;
     int64 openArea = 5; // 开启区域标记
-    int32 needExp = 16;
-    int32 coin = 17;// 家园币
+    int32 resourceLimit = 6;
+    int32 needExp = 7;
+    int32 coin = 8;// 家园币
     map<int32, HomePosList> mapData = 10;
+    map<int32, int32> resourceCount = 11;
 }
 message HomePosList{
     int32  pos = 1;

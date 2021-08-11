@@ -9,11 +9,9 @@ import game.config.base.DataConfigData;
  */
 public class HomeBuildConfigData extends BaseConfigData<HomeBuildConfigData> {
 
-    public String content;
 
     @Override
     protected void fill(DataConfigData d) {
 
-        content = d.s1;
     }
 }

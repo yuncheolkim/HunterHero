@@ -9,11 +9,11 @@ import game.config.base.DataConfigData;
  */
 public class HomeLevelConfigData extends BaseConfigData<HomeLevelConfigData> {
 
-    public String content;
+    public int exp;
 
     @Override
     protected void fill(DataConfigData d) {
 
-        content = d.s1;
+        exp = d.i1;
     }
 }

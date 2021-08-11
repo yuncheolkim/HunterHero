@@ -1,13 +1,17 @@
 package game.module.home;
 
+import com.google.common.primitives.Ints;
 import game.config.data.HomeItemConfigData;
+import game.config.data.HomeLevelConfigData;
+import game.config.data.HomeResourceConfigData;
 import game.exception.ModuleAssert;
+import game.game.enums.ResourceEnum;
 import game.manager.ConfigManager;
 import game.player.Player;
-import game.proto.data.HomeData;
-import game.proto.data.HomePosData;
-import game.proto.data.HomePosList;
-import game.proto.data.HomeType;
+import game.proto.ResourceChangePush;
+import game.proto.ValueChange;
+import game.proto.data.*;
+import game.proto.no.No;
 import org.joda.time.DateTimeUtils;
 
 /**
@@ -165,9 +169,95 @@ public class HomeService {
     public static void harvest(Player player, int pos) {
         HomePosList d = player.pd.getHomeDataBuilder().getMapDataOrThrow(pos);
         HomePosList.Builder builder = d.toBuilder();
+        HomePosData data = builder.getData(0);
 
         removeTileData(builder);
         player.pd.getHomeDataBuilder().removeMapData(pos);
         player.homeAreaData.harvest(pos);
+
+        produceItem(player, data.getId(), 1);
+
+    }
+
+    /**
+     * 收获物品
+     *
+     * @param player
+     * @param id
+     * @param count
+     */
+    private static void produceItem(Player player, int id, int count) {
+        HomeResourceConfigData data = ConfigManager.homeResourceDataBox.findById(id);
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+
+        // 物品
+        if (data.inBag) {
+            player.addItemToBag(ItemData.newBuilder().setItemId(id).setCount(count).build());
+        } else {
+            int cur = homeDataBuilder.getResourceCountOrDefault(id, 0);
+            ModuleAssert.isTrue(cur + count <= homeDataBuilder.getResourceLimit());
+            homeDataBuilder.putResourceCount(id, cur + count);
+
+            player.send(No.HomeItemAddPush, ValueChange.newBuilder()
+                    .setV1(id)
+                    .setV2(count)
+                    .buildPartial());
+        }
+        // 圆币
+        final int old = homeDataBuilder.getCoin();
+        long l = (long) data.coin * count;
+        homeDataBuilder.setCoin(Ints.saturatedCast(old + l));
+        if (old != homeDataBuilder.getCoin()) {
+            player.send(No.MaxPowerChangePush, ResourceChangePush.newBuilder()
+                    .setResourceId(ResourceEnum.HOME_COIN.id)
+                    .setCurCount(homeDataBuilder.getCoin())
+                    .setCount((int) l)
+                    .buildPartial());
+        }
+
+        // 经验
+        addHomeExp(player, count * data.exp);
+
+    }
+
+    private static void addHomeExp(Player player, int count) {
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+
+        final int oldLevel = homeDataBuilder.getLevel();
+        HomeLevelConfigData data = ConfigManager.homeLevelDataBox.findById(oldLevel);
+        if (data == null) {
+            return;
+        }
+
+        int exp = homeDataBuilder.getExp() + count;
+        int level = oldLevel;
+        int needExp = data.exp;
+
+        while (exp >= needExp) {
+            level++;
+            // 升级
+            exp -= needExp;
+            data = ConfigManager.homeLevelDataBox.findById(level);
+            if (data == null) {
+                break;
+            }
+            needExp = ConfigManager.needExp(level);
+        }
+
+        player.send(No.ResourceChangePush, ResourceChangePush.newBuilder()
+                .setResourceId(ResourceEnum.HOME_EXP.id)
+                .setCurCount(homeDataBuilder.getExp())
+                .setCount(count)
+                .buildPartial());
+
+        if (oldLevel != level) {
+            player.send(No.HomeLevelChange, ValueChange.newBuilder()
+                    .setV1(oldLevel)
+                    .setV2(level)
+                    .buildPartial());
+            // todo 开启新功能
+            homeDataBuilder.setLevel(level);
+
+        }
     }
 }

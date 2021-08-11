@@ -21,6 +21,12 @@ message CmdReq {
     string params = 1;
 }
 
+message ValueChange{
+    int32 v1 = 1;
+    int32 v2 = 2;
+}
+
+
 // 登录
 // 1
 message LoginReq {

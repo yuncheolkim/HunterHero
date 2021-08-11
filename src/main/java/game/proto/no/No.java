@@ -121,6 +121,14 @@ public enum No
    */
   HomeCleanReq(1104),
   /**
+   * <code>HomeLevelChange = 1105;</code>
+   */
+  HomeLevelChange(1105),
+  /**
+   * <code>HomeItemAddPush = 1106;</code>
+   */
+  HomeItemAddPush(1106),
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -501,6 +509,14 @@ public enum No
    */
   public static final int HomeCleanReq_VALUE = 1104;
   /**
+   * <code>HomeLevelChange = 1105;</code>
+   */
+  public static final int HomeLevelChange_VALUE = 1105;
+  /**
+   * <code>HomeItemAddPush = 1106;</code>
+   */
+  public static final int HomeItemAddPush_VALUE = 1106;
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -812,6 +828,8 @@ public enum No
       case 1102: return HomeChangeReq;
       case 1103: return HomeHarvestReq;
       case 1104: return HomeCleanReq;
+      case 1105: return HomeLevelChange;
+      case 1106: return HomeItemAddPush;
       case 2001: return FightStartReq;
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;

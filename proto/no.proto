@@ -38,6 +38,8 @@ enum No {
     HomeChangeReq = 1102;
     HomeHarvestReq = 1103;
     HomeCleanReq = 1104;
+    HomeLevelChange = 1105;
+    HomeItemAddPush = 1106;
 
     // Fight
     FightStartReq = 2001;
