@@ -208,7 +208,7 @@ public class HomeService {
         long l = (long) data.coin * count;
         homeDataBuilder.setCoin(Ints.saturatedCast(old + l));
         if (old != homeDataBuilder.getCoin()) {
-            player.send(No.MaxPowerChangePush, ResourceChangePush.newBuilder()
+            player.send(No.ResourceChangePush, ResourceChangePush.newBuilder()
                     .setResourceId(ResourceEnum.HOME_COIN.id)
                     .setCurCount(homeDataBuilder.getCoin())
                     .setCount((int) l)

@@ -223,6 +223,9 @@ public class Player {
         if (homeDataBuilder != null) {
             homeDataBuilder.setResourceLimit(ConfigManager.paramConfigData.homeResourceLimit);
             homeAreaData = HomeService.initHomeAreaData(this);
+            if (homeDataBuilder.getLevel() == 0) {
+                homeDataBuilder.setLevel(1);
+            }
         }
 
     }
