@@ -95,7 +95,6 @@ public class ConfigManager extends AbsLifecycle {
     public static final ExpressDataBox expressDataBox = new ExpressDataBox();
 
     public static final HomeAreaDataBox homeAreaDataBox = new HomeAreaDataBox();
-
     public static final HomeItemDataBox homeItemDataBox = new HomeItemDataBox();
     public static final HomeResourceDataBox homeResourceDataBox = new HomeResourceDataBox();
     public static final HomeRecipeDataBox homeRecipeDataBox = new HomeRecipeDataBox();
@@ -131,8 +130,12 @@ public class ConfigManager extends AbsLifecycle {
         list.add(dungeonDataBox);
         list.add(dungeonInfoDataBox);
         list.add(expressDataBox);
-        list.add(homeItemDataBox);
         list.add(homeAreaDataBox);
+        list.add(homeItemDataBox);
+        list.add(homeResourceDataBox);
+        list.add(homeRecipeDataBox);
+        list.add(homeLevelDataBox);
+        list.add(homeBuildDataBox);
     }
 
     @Override
