@@ -216,28 +216,32 @@
         "id": 151,
         "name": "云木",
         "speakId": 1001,
-        "title": "木工"
+        "title": "木工",
+        "type": 8
     },
     "152": {
         "areaId": "100",
         "id": 152,
         "name": "费依",
         "speakId": 1001,
-        "title": "铁匠"
+        "title": "铁匠",
+        "type": 9
     },
     "153": {
         "areaId": "100",
         "id": 153,
         "name": "时辰",
         "speakId": 1001,
-        "title": "管家"
+        "title": "管家",
+        "type": 10
     },
     "154": {
         "areaId": "100",
         "id": 154,
         "name": "诺米",
         "speakId": 1001,
-        "title": "厨师"
+        "title": "厨师",
+        "type": 11
     },
     "2": {
         "areaId": "2",

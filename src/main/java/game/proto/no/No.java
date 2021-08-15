@@ -129,6 +129,14 @@ public enum No
    */
   HomeItemAddPush(1106),
   /**
+   * <code>HomeUpgradeCookReq = 1107;</code>
+   */
+  HomeUpgradeCookReq(1107),
+  /**
+   * <code>HomeProductReq = 1108;</code>
+   */
+  HomeProductReq(1108),
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -517,6 +525,14 @@ public enum No
    */
   public static final int HomeItemAddPush_VALUE = 1106;
   /**
+   * <code>HomeUpgradeCookReq = 1107;</code>
+   */
+  public static final int HomeUpgradeCookReq_VALUE = 1107;
+  /**
+   * <code>HomeProductReq = 1108;</code>
+   */
+  public static final int HomeProductReq_VALUE = 1108;
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -830,6 +846,8 @@ public enum No
       case 1104: return HomeCleanReq;
       case 1105: return HomeLevelChange;
       case 1106: return HomeItemAddPush;
+      case 1107: return HomeUpgradeCookReq;
+      case 1108: return HomeProductReq;
       case 2001: return FightStartReq;
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;

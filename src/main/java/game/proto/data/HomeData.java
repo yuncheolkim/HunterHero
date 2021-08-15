@@ -91,6 +91,11 @@ private static final long serialVersionUID = 0L;
             coin_ = input.readInt32();
             break;
           }
+          case 72: {
+
+            cookLevel_ = input.readInt32();
+            break;
+          }
           case 82: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               mapData_ = com.google.protobuf.MapField.newMapField(
@@ -273,6 +278,21 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getCoin() {
     return coin_;
+  }
+
+  public static final int COOKLEVEL_FIELD_NUMBER = 9;
+  private int cookLevel_;
+  /**
+   * <pre>
+   * 厨房等级
+   * </pre>
+   *
+   * <code>int32 cookLevel = 9;</code>
+   * @return The cookLevel.
+   */
+  @java.lang.Override
+  public int getCookLevel() {
+    return cookLevel_;
   }
 
   public static final int MAPDATA_FIELD_NUMBER = 10;
@@ -472,6 +492,9 @@ private static final long serialVersionUID = 0L;
     if (coin_ != 0) {
       output.writeInt32(8, coin_);
     }
+    if (cookLevel_ != 0) {
+      output.writeInt32(9, cookLevel_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -519,6 +542,10 @@ private static final long serialVersionUID = 0L;
     if (coin_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(8, coin_);
+    }
+    if (cookLevel_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(9, cookLevel_);
     }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.HomePosList> entry
          : internalGetMapData().getMap().entrySet()) {
@@ -569,6 +596,8 @@ private static final long serialVersionUID = 0L;
         != other.getNeedExp()) return false;
     if (getCoin()
         != other.getCoin()) return false;
+    if (getCookLevel()
+        != other.getCookLevel()) return false;
     if (!internalGetMapData().equals(
         other.internalGetMapData())) return false;
     if (!internalGetResourceCount().equals(
@@ -599,6 +628,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getNeedExp();
     hash = (37 * hash) + COIN_FIELD_NUMBER;
     hash = (53 * hash) + getCoin();
+    hash = (37 * hash) + COOKLEVEL_FIELD_NUMBER;
+    hash = (53 * hash) + getCookLevel();
     if (!internalGetMapData().getMap().isEmpty()) {
       hash = (37 * hash) + MAPDATA_FIELD_NUMBER;
       hash = (53 * hash) + internalGetMapData().hashCode();
@@ -785,6 +816,8 @@ private static final long serialVersionUID = 0L;
 
       coin_ = 0;
 
+      cookLevel_ = 0;
+
       internalGetMutableMapData().clear();
       internalGetMutableResourceCount().clear();
       return this;
@@ -821,6 +854,7 @@ private static final long serialVersionUID = 0L;
       result.resourceLimit_ = resourceLimit_;
       result.needExp_ = needExp_;
       result.coin_ = coin_;
+      result.cookLevel_ = cookLevel_;
       result.mapData_ = internalGetMapData();
       result.mapData_.makeImmutable();
       result.resourceCount_ = internalGetResourceCount();
@@ -894,6 +928,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getCoin() != 0) {
         setCoin(other.getCoin());
+      }
+      if (other.getCookLevel() != 0) {
+        setCookLevel(other.getCookLevel());
       }
       internalGetMutableMapData().mergeFrom(
           other.internalGetMapData());
@@ -1211,6 +1248,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearCoin() {
       
       coin_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int cookLevel_ ;
+    /**
+     * <pre>
+     * 厨房等级
+     * </pre>
+     *
+     * <code>int32 cookLevel = 9;</code>
+     * @return The cookLevel.
+     */
+    @java.lang.Override
+    public int getCookLevel() {
+      return cookLevel_;
+    }
+    /**
+     * <pre>
+     * 厨房等级
+     * </pre>
+     *
+     * <code>int32 cookLevel = 9;</code>
+     * @param value The cookLevel to set.
+     * @return This builder for chaining.
+     */
+    public Builder setCookLevel(int value) {
+      
+      cookLevel_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 厨房等级
+     * </pre>
+     *
+     * <code>int32 cookLevel = 9;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearCookLevel() {
+      
+      cookLevel_ = 0;
       onChanged();
       return this;
     }

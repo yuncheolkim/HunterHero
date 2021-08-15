@@ -1,5 +1,6 @@
 package game.module.home;
 
+import game.base.Logs;
 import game.proto.data.HomeRect;
 
 import java.util.function.BiConsumer;
@@ -47,7 +48,11 @@ public class HomeRectInfo {
     public void foreach(BiConsumer<Integer, Integer> consumer) {
         for (int i = x; i <= x1; i++) {
             for (int j = y; j <= y1; j++) {
-                consumer.accept(i, j);
+                try {
+                    consumer.accept(i, j);
+                } catch (Exception e) {
+                    Logs.C.error(e);
+                }
             }
         }
     }

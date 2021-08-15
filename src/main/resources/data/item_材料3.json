@@ -36,5 +36,41 @@
         "type1": 3,
         "type2": 3,
         "value": 5
+    },
+    "304001": {
+        "desc": "铁矿",
+        "id": 304001,
+        "name": "铁矿",
+        "num": 1,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 200,
+        "type1": 3,
+        "type2": 4,
+        "value": 0
+    },
+    "304002": {
+        "desc": "铜矿",
+        "id": 304002,
+        "name": "铜矿",
+        "num": 2,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 200,
+        "type1": 3,
+        "type2": 4,
+        "value": 0
+    },
+    "304003": {
+        "desc": "银矿",
+        "id": 304003,
+        "name": "银矿",
+        "num": 3,
+        "resourceId": 1,
+        "sell": 1,
+        "stack": 200,
+        "type1": 3,
+        "type2": 4,
+        "value": 0
     }
 }

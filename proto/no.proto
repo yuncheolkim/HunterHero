@@ -40,6 +40,8 @@ enum No {
     HomeCleanReq = 1104;
     HomeLevelChange = 1105;
     HomeItemAddPush = 1106;
+    HomeUpgradeCookReq = 1107;
+    HomeProductReq = 1108;
 
     // Fight
     FightStartReq = 2001;

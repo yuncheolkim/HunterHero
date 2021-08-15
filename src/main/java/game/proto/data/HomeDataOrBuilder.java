@@ -64,6 +64,16 @@ public interface HomeDataOrBuilder extends
   int getCoin();
 
   /**
+   * <pre>
+   * 厨房等级
+   * </pre>
+   *
+   * <code>int32 cookLevel = 9;</code>
+   * @return The cookLevel.
+   */
+  int getCookLevel();
+
+  /**
    * <code>map&lt;int32, .Message.HomePosList&gt; mapData = 10;</code>
    */
   int getMapDataCount();

@@ -18,6 +18,7 @@ public enum ResourceEnum implements IIdDisplay {
     GEM(2, "雷石"),
     EXP(3, "经验"),
     POWER(4, "能量"),
+    LUCK(5, "幸运"),
     HOME_COIN(10, "园币"),
     HOME_EXP(11, "家园经验"),
     ;

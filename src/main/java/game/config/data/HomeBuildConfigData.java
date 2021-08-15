@@ -9,9 +9,12 @@ import game.config.base.DataConfigData;
  */
 public class HomeBuildConfigData extends BaseConfigData<HomeBuildConfigData> {
 
+    public int needCoin;
+    public int level;
 
     @Override
     protected void fill(DataConfigData d) {
-
+        needCoin = d.i2;
+        level = d.i1;
     }
 }

@@ -29,8 +29,12 @@ public class BagService {
         if (items.isEmpty()) {
             return true;
         }
-
         return player.bag.remain() >= items.size();
+    }
+
+    public static boolean hasOne(Player player) {
+
+        return player.bag.remain() > 0;
     }
 
 
@@ -60,6 +64,26 @@ public class BagService {
         return count;
     }
 
+
+    /**
+     * 获取item 背包内总数量
+     *
+     * @param itemId
+     * @return
+     */
+    public static int itemBagCount(Player player, int itemId) {
+        int count = 0;
+
+        Collection<BagSlot> bagSlots = player.bag.bagSlotMap.get(itemId);
+        if (!bagSlots.isEmpty()) {
+            for (BagSlot bagSlot : bagSlots) {
+                count += bagSlot.getData().getCount();
+            }
+        }
+
+        return count;
+    }
+
     /**
      * 从背包移除物品
      *
@@ -70,7 +94,6 @@ public class BagService {
      */
     public static boolean removeItemFromBag(Player player, int itemId, int count) {
         List<BagSlot> bagSlots = findBagUpdateService(1).removeItem(player, itemId, count);
-
 
         for (BagSlot bagSlot : bagSlots) {
 

@@ -80,6 +80,7 @@ message HomeData{
     int32 resourceLimit = 6;
     int32 needExp = 7;
     int32 coin = 8;// 家园币
+    int32 cookLevel = 9;// 厨房等级
     map<int32, HomePosList> mapData = 10;
     map<int32, int32> resourceCount = 11;
 }

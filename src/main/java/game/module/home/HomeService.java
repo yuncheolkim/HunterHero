@@ -1,12 +1,15 @@
 package game.module.home;
 
 import com.google.common.primitives.Ints;
+import game.base.util.Tuple2;
 import game.config.data.HomeItemConfigData;
 import game.config.data.HomeLevelConfigData;
+import game.config.data.HomeRecipeConfigData;
 import game.config.data.HomeResourceConfigData;
 import game.exception.ModuleAssert;
 import game.game.enums.ResourceEnum;
 import game.manager.ConfigManager;
+import game.module.bag.BagService;
 import game.player.Player;
 import game.proto.ResourceChangePush;
 import game.proto.ValueChange;
@@ -101,14 +104,19 @@ public class HomeService {
     /**
      * 放置物体
      *
+     * @param rect
      * @param player
      * @param data
-     * @param rect
+     * @return
      */
-    public static void put(Player player, HomePosData data, int pos) {
+    public static int put(Player player, HomePosData data, int pos) {
         long time = DateTimeUtils.currentTimeMillis();
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
 
         HomeItemConfigData d = ConfigManager.homeItemDataBox.findById(data.getId());
+
+        ModuleAssert.isTrue(d.needCoin <= homeDataBuilder.getCoin());
+
 
         if (data.getType() == HomeType.H_FARM) {
             data = data.toBuilder().setTime(time + d.time).buildPartial();
@@ -117,7 +125,6 @@ public class HomeService {
         ModuleAssert.isTrue(isOpen(player, HomeAreaData.posToArea(pos)));
         HomePos homePos = fromInt(pos);
 
-        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         HomePosList.Builder build = HomePosList.newBuilder();
         if (homeDataBuilder.containsMapData(pos)) {
             build = homeDataBuilder.getMapDataOrThrow(pos).toBuilder();
@@ -127,7 +134,9 @@ public class HomeService {
         build.addData(data.toBuilder());
         homeDataBuilder.putMapData(pos, build.buildPartial());
 
+        homeDataBuilder.setCoin(homeDataBuilder.getCoin() - d.needCoin);
         player.homeAreaData.addPosData(homePos.x, homePos.y, data);
+        return d.needCoin;
     }
 
     /*d
@@ -203,6 +212,7 @@ public class HomeService {
                     .setV2(count)
                     .buildPartial());
         }
+
         // 圆币
         final int old = homeDataBuilder.getCoin();
         long l = (long) data.coin * count;
@@ -243,6 +253,7 @@ public class HomeService {
             }
             needExp = ConfigManager.needExp(level);
         }
+        homeDataBuilder.setExp(exp);
 
         player.send(No.ResourceChangePush, ResourceChangePush.newBuilder()
                 .setResourceId(ResourceEnum.HOME_EXP.id)
@@ -259,5 +270,77 @@ public class HomeService {
             homeDataBuilder.setLevel(level);
 
         }
+    }
+
+
+    public static void consumeCoin(Player player, int count) {
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+        ModuleAssert.isTrue(homeDataBuilder.getCoin() >= count);
+        homeDataBuilder.setCoin(homeDataBuilder.getCoin() - count);
+        player.send(No.ResourceChangePush, ResourceChangePush.newBuilder()
+                .setResourceId(ResourceEnum.HOME_COIN.id)
+                .setCurCount(homeDataBuilder.getCoin())
+                .setCount(count)
+                .buildPartial());
+    }
+
+    /**
+     * 厨房生产
+     *
+     * @param player
+     * @param productId
+     */
+    public static void productCook(Player player, int productId) {
+        HomeRecipeConfigData data = ConfigManager.homeRecipeDataBox.findById(productId);
+        HomeResourceConfigData resourceData = ConfigManager.homeResourceDataBox.findById(productId);
+
+        // 检查是否有空间
+        if (resourceData.inBag) {
+            ModuleAssert.isTrue(BagService.hasOne(player));
+        } else {
+            int has = player.pd.getHomeDataBuilder().getResourceCountOrDefault(productId, 0);
+            ModuleAssert.isTrue(has + data.count <= player.pd.getHomeDataBuilder().getResourceLimit());
+        }
+
+        // 检查是否足够
+        // 需要检查房屋,背包的物品
+        for (Tuple2<Integer, Integer> d : data.recipe) {
+            Integer id = d.first;
+            Integer count = d.second;
+
+            if (resourceData.inBag) {
+                int i = BagService.itemBagCount(player, id);
+                if (i < count) {
+                    return;
+                }
+            } else {
+                int has = player.pd.getHomeDataBuilder().getResourceCountOrDefault(id, 0);
+                if (has < count) {
+                    return;
+                }
+            }
+            // 先检查home
+        }
+
+        // 消耗
+        for (Tuple2<Integer, Integer> d : data.recipe) {
+            Integer id = d.first;
+            Integer count = d.second;
+
+            int has = player.pd.getHomeDataBuilder().getResourceCountOrDefault(id, 0);
+            if (has >= count) {
+                player.pd.getHomeDataBuilder().putResourceCount(id, has - count);
+                player.send(No.HomeItemAddPush, ValueChange.newBuilder()
+                        .setV1(id)
+                        .setV2(count * -1)
+                        .buildPartial());
+            } else {
+
+                BagService.removeItemFromBag(player, id, count);
+            }
+        }
+
+        // 增加物品
+        produceItem(player, productId, data.count);
     }
 }

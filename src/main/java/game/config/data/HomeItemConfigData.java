@@ -18,14 +18,15 @@ public class HomeItemConfigData extends BaseConfigData<HomeItemConfigData> {
 
     public int h;
     public long time;
+    public int needCoin;
 
     @Override
     protected void fill(DataConfigData d) {
         type = HomeType.forNumber(d.type);
         w = d.i1;
         h = d.i2;
-
         time = TimeUnit.MILLISECONDS.convert(d.i7, TimeUnit.MINUTES);
+        needCoin = d.i8;
     }
 
 }

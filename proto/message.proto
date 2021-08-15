@@ -491,6 +491,12 @@ message HomeCleanReq{
     repeated int32 pos = 3;
 }
 
+// 生产
+message HomeProductReq{
+    int32 productId = 1;
+    int32 type = 2;// 1:cook
+}
+
 
 
 
