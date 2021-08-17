@@ -5,6 +5,7 @@ import game.base.constants.GameConstants;
 import game.game.enums.FeatureEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.module.hero.HeroService;
+import game.module.home.HomeService;
 import game.module.player.PlayerService;
 import game.player.Player;
 import game.proto.TitleNewPush;
@@ -129,8 +130,7 @@ public enum Cmd {
         @Override
         public void run(final Player player, final List<String> line) {
             player.pd.getHomeDataBuilder().clear();
-            long opened = player.pd.getHomeDataBuilder().getOpenArea();
-            player.pd.getHomeDataBuilder().setOpenArea(opened ^ 1L << 24);
+            HomeService.initHome(player);
         }
     },
     CMD17(17, "Open Feature") {

@@ -343,4 +343,11 @@ public class HomeService {
         // 增加物品
         produceItem(player, productId, data.count);
     }
+
+    public static void initHome(Player player) {
+
+        openArea(player, 24);
+        player.pd.getHomeDataBuilder().setLevel(1);
+        player.pd.getHomeDataBuilder().setCoin(1000);
+    }
 }

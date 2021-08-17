@@ -18,8 +18,7 @@ public enum FeatureEnum {
         @Override
         public void openPrepare(Player player) {
             player.pd.setHomeData(HomeData.newBuilder());
-            HomeService.openArea(player, 24);
-
+            HomeService.initHome(player);
             player.send(No.HomeOpenAreaRqRs, HomeOpenAreaRqRs.newBuilder()
                     .setId(24).buildPartial());
         }
