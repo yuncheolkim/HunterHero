@@ -2,10 +2,7 @@ package game.module.home;
 
 import com.google.common.primitives.Ints;
 import game.base.util.Tuple2;
-import game.config.data.HomeItemConfigData;
-import game.config.data.HomeLevelConfigData;
-import game.config.data.HomeRecipeConfigData;
-import game.config.data.HomeResourceConfigData;
+import game.config.data.*;
 import game.exception.ModuleAssert;
 import game.game.enums.ResourceEnum;
 import game.manager.ConfigManager;
@@ -16,6 +13,9 @@ import game.proto.ValueChange;
 import game.proto.data.*;
 import game.proto.no.No;
 import org.joda.time.DateTimeUtils;
+
+import static game.exception.ErrorEnum.ERR_105;
+import static game.exception.ErrorEnum.ERR_12;
 
 /**
  * @author Yunzhe.Jin
@@ -84,7 +84,7 @@ public class HomeService {
      * @return
      */
     public static boolean isOpen(Player player, int areaId) {
-        return (player.pd.getHomeData().getOpenArea() & 1L << areaId) != 0;
+        return (player.pd.getHomeDataBuilder().getOpenArea() & 1L << areaId) != 0;
     }
 
     /**
@@ -97,7 +97,15 @@ public class HomeService {
         if (isOpen(player, areaId)) {
             return;
         }
+        // 消耗资源
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+        int count = Long.bitCount(homeDataBuilder.getOpenArea());
+        if (count > 0) {
+            HomeAreaConfigData data = ConfigManager.homeAreaDataBox.findById(count);
+            ModuleAssert.isTrue(data.level <= homeDataBuilder.getLevel(), ERR_12);
+            ModuleAssert.isTrue(data.coin <= homeDataBuilder.getCoin(), ERR_105);
+            consumeCoin(player, data.coin);
+        }
         homeDataBuilder.setOpenArea(homeDataBuilder.getOpenArea() | 1L << areaId);
     }
 
@@ -227,7 +235,6 @@ public class HomeService {
 
         // 经验
         addHomeExp(player, count * data.exp);
-
     }
 
     private static void addHomeExp(Player player, int count) {
@@ -272,7 +279,30 @@ public class HomeService {
         }
     }
 
+    /**
+     * 增加园币
+     *
+     * @param player
+     * @param count
+     */
+    private static void addCoin(Player player, int count) {
 
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+        homeDataBuilder.setCoin(homeDataBuilder.getCoin() + count);
+        player.send(No.ResourceChangePush, ResourceChangePush.newBuilder()
+                .setResourceId(ResourceEnum.HOME_COIN.id)
+                .setCurCount(homeDataBuilder.getCoin())
+                .setCount(count)
+                .buildPartial());
+    }
+
+
+    /**
+     * 减少园币
+     *
+     * @param player
+     * @param count
+     */
     public static void consumeCoin(Player player, int count) {
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         ModuleAssert.isTrue(homeDataBuilder.getCoin() >= count);
@@ -349,5 +379,6 @@ public class HomeService {
         openArea(player, 24);
         player.pd.getHomeDataBuilder().setLevel(1);
         player.pd.getHomeDataBuilder().setCoin(1000);
+        player.pd.getHomeDataBuilder().setResourceLimit(ConfigManager.paramConfigData.homeResourceLimit);
     }
 }

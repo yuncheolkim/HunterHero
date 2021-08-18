@@ -9,11 +9,11 @@ import game.config.base.DataConfigData;
  */
 public class HomeAreaConfigData extends BaseConfigData<HomeAreaConfigData> {
 
-    public String content;
+    public int coin;
 
     @Override
     protected void fill(DataConfigData d) {
 
-        content = d.s1;
+        coin = d.i1;
     }
 }

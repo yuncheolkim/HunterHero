@@ -28,6 +28,7 @@ public enum ErrorEnum implements ModuleErrorNoResolve {
     ERR_9(9, "次数不足"),
     ERR_10(10, "体力不足"),
     ERR_11(11, "物品不足"),
+    ERR_12(12, "等级不足"),
     ERR_103(103, "数字不能小于等于0"),
     ERR_104(104, "背包空间不足"),
     ERR_105(105, "资源不足"),
