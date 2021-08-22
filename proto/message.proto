@@ -497,9 +497,14 @@ message HomeProductReq{
     int32 type = 2;// 1:cook
 }
 
+message HomeTaskCompleteReq{
+    int32 id = 1;
+}
 
-
-
+// 新的任务
+message HomeNewTaskDayPush{
+    int32 day = 1;
+}
 
 
 

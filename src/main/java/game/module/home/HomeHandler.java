@@ -1,15 +1,21 @@
 package game.module.home;
 
+import game.base.Logs;
 import game.config.data.HomeBuildConfigData;
 import game.config.data.HomeItemConfigData;
+import game.config.data.HomeResourceConfigData;
+import game.config.data.HomeTaskConfigData;
 import game.exception.ModuleAssert;
 import game.game.enums.ResourceEnum;
 import game.manager.ConfigManager;
+import game.module.bag.BagService;
 import game.player.Player;
 import game.proto.*;
 import game.proto.data.HomeData;
 import game.proto.data.HomePosData;
 import game.proto.no.No;
+
+import java.util.List;
 
 /**
  * 家园系统
@@ -115,5 +121,53 @@ public class HomeHandler {
 
             HomeService.productCook(player, req.getProductId());
         }
+    }
+
+    /**
+     * 完成任务
+     *
+     * @param player
+     * @param req
+     */
+    public static void taskComplete(Player player, HomeTaskCompleteReq req) {
+        final int id = req.getId();
+        HomeTaskConfigData data = ConfigManager.homeTaskDataBox.findById(id);
+
+        HomeData.Builder builder = player.pd.getHomeDataBuilder();
+
+        if (builder.containsCompleteTask(id)) {
+            // 已经完成
+            return;
+        }
+        int taskDay = builder.getTaskDay();
+        List<HomeTaskConfigData> dayTaskList = ConfigManager.homeTaskDataBox.findByCollectId(taskDay);
+        if (dayTaskList.stream().noneMatch(homeTaskConfigData -> homeTaskConfigData.id == id)) {
+            Logs.C.warn("不是今天的任务:{}", id);
+            // 没有任务
+            return;
+        }
+
+        HomeResourceConfigData item = ConfigManager.homeResourceDataBox.findById(data.itemId);
+
+
+        if (item.inBag) {
+            BagService.removeItemFromBag(player, item.id, data.count);
+        } else {
+            HomeService.reduceItem(player, item.id, data.count);
+        }
+        // 经验
+        HomeService.addHomeExp(player, data.exp);
+        // 园币
+        HomeService.addCoin(player, data.coin);
+
+        builder.putCompleteTask(id, 1);
+
+        if (builder.getCompleteTaskCount() == dayTaskList.size()) {
+            // 下一天任务
+            builder.clearCompleteTask();
+            builder.setTaskDay(builder.getTaskDay() + 1);
+            player.send(No.HomeNewTaskDayPush, HomeNewTaskDayPush.newBuilder().setDay(builder.getTaskDay()));
+        }
+
     }
 }

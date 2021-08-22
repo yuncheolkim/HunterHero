@@ -83,6 +83,8 @@ message HomeData{
     int32 cookLevel = 9;// 厨房等级
     map<int32, HomePosList> mapData = 10;
     map<int32, int32> resourceCount = 11;
+    int32 taskDay = 12;
+    map<int32, int32> completeTask = 13;
 }
 message HomePosList{
     int32  pos = 1;

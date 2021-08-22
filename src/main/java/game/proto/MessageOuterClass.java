@@ -464,6 +464,16 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_HomeProductReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HomeTaskCompleteReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HomeTaskCompleteReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_HomeNewTaskDayPush_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_HomeNewTaskDayPush_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -587,10 +597,11 @@ public final class MessageOuterClass {
       "vestRes\022\013\n\003pos\030\003 \001(\005\022\037\n\004rect\030\004 \003(\0132\021.Mes" +
       "sage.HomeRect\"\033\n\014HomeCleanReq\022\013\n\003pos\030\003 \003" +
       "(\005\"1\n\016HomeProductReq\022\021\n\tproductId\030\001 \001(\005\022" +
-      "\014\n\004type\030\002 \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000" +
-      "\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006S" +
-      "YSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006pro" +
-      "to3"
+      "\014\n\004type\030\002 \001(\005\"!\n\023HomeTaskCompleteReq\022\n\n\002" +
+      "id\030\001 \001(\005\"!\n\022HomeNewTaskDayPush\022\013\n\003day\030\001 " +
+      "\001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020" +
+      "\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n" +
+      "\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1137,6 +1148,18 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HomeProductReq_descriptor,
         new java.lang.String[] { "ProductId", "Type", });
+    internal_static_Message_HomeTaskCompleteReq_descriptor =
+      getDescriptor().getMessageTypes().get(89);
+    internal_static_Message_HomeTaskCompleteReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HomeTaskCompleteReq_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_HomeNewTaskDayPush_descriptor =
+      getDescriptor().getMessageTypes().get(90);
+    internal_static_Message_HomeNewTaskDayPush_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_HomeNewTaskDayPush_descriptor,
+        new java.lang.String[] { "Day", });
     game.proto.data.Data.getDescriptor();
   }
 

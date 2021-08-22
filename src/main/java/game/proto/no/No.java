@@ -137,6 +137,14 @@ public enum No
    */
   HomeProductReq(1108),
   /**
+   * <code>HomeTaskCompleteReq = 1109;</code>
+   */
+  HomeTaskCompleteReq(1109),
+  /**
+   * <code>HomeNewTaskDayPush = 1110;</code>
+   */
+  HomeNewTaskDayPush(1110),
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -533,6 +541,14 @@ public enum No
    */
   public static final int HomeProductReq_VALUE = 1108;
   /**
+   * <code>HomeTaskCompleteReq = 1109;</code>
+   */
+  public static final int HomeTaskCompleteReq_VALUE = 1109;
+  /**
+   * <code>HomeNewTaskDayPush = 1110;</code>
+   */
+  public static final int HomeNewTaskDayPush_VALUE = 1110;
+  /**
    * <pre>
    * Fight
    * </pre>
@@ -848,6 +864,8 @@ public enum No
       case 1106: return HomeItemAddPush;
       case 1107: return HomeUpgradeCookReq;
       case 1108: return HomeProductReq;
+      case 1109: return HomeTaskCompleteReq;
+      case 1110: return HomeNewTaskDayPush;
       case 2001: return FightStartReq;
       case 2002: return FightStartPush;
       case 2004: return FightEndReq;

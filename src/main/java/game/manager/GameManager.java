@@ -162,6 +162,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.HomeCleanReq, HomeHandler::clean, HomeCleanReq::parser));
         addHandler(new InvokerNoParam(No.HomeUpgradeCookReq, HomeHandler::upgradeCook));
         addHandler(new Invoker<>(No.HomeProductReq, HomeHandler::product, HomeProductReq::parser));
+        addHandler(new Invoker<>(No.HomeTaskCompleteReq, HomeHandler::taskComplete, HomeTaskCompleteReq::parser));
 
     }
 

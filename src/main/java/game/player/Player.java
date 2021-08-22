@@ -771,6 +771,10 @@ public class Player {
         transport.send(msgNo.getNumber(), msg);
     }
 
+    public void send(final No msgNo, final MessageLite.Builder msg) {
+        transport.send(msgNo.getNumber(), msg.buildPartial());
+    }
+
     public Transport getTransport() {
         return transport;
     }

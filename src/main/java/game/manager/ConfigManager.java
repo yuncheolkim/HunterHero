@@ -100,6 +100,7 @@ public class ConfigManager extends AbsLifecycle {
     public static final HomeRecipeDataBox homeRecipeDataBox = new HomeRecipeDataBox();
     public static final HomeLevelDataBox homeLevelDataBox = new HomeLevelDataBox();
     public static final HomeBuildDataBox homeBuildDataBox = new HomeBuildDataBox();
+    public static final HomeTaskDataBox homeTaskDataBox = new HomeTaskDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -136,6 +137,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(homeRecipeDataBox);
         list.add(homeLevelDataBox);
         list.add(homeBuildDataBox);
+        list.add(homeTaskDataBox);
     }
 
     @Override

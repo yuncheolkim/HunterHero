@@ -122,6 +122,24 @@ private static final long serialVersionUID = 0L;
                 resourceCount__.getKey(), resourceCount__.getValue());
             break;
           }
+          case 96: {
+
+            taskDay_ = input.readInt32();
+            break;
+          }
+          case 106: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              completeTask_ = com.google.protobuf.MapField.newMapField(
+                  CompleteTaskDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000004;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+            completeTask__ = input.readMessage(
+                CompleteTaskDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            completeTask_.getMutableMap().put(
+                completeTask__.getKey(), completeTask__.getValue());
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -155,6 +173,8 @@ private static final long serialVersionUID = 0L;
         return internalGetMapData();
       case 11:
         return internalGetResourceCount();
+      case 13:
+        return internalGetCompleteTask();
       default:
         throw new RuntimeException(
             "Invalid map field number: " + number);
@@ -457,6 +477,98 @@ private static final long serialVersionUID = 0L;
     return map.get(key);
   }
 
+  public static final int TASKDAY_FIELD_NUMBER = 12;
+  private int taskDay_;
+  /**
+   * <code>int32 taskDay = 12;</code>
+   * @return The taskDay.
+   */
+  @java.lang.Override
+  public int getTaskDay() {
+    return taskDay_;
+  }
+
+  public static final int COMPLETETASK_FIELD_NUMBER = 13;
+  private static final class CompleteTaskDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, java.lang.Integer> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_HomeData_CompleteTaskEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0);
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, java.lang.Integer> completeTask_;
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+  internalGetCompleteTask() {
+    if (completeTask_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          CompleteTaskDefaultEntryHolder.defaultEntry);
+    }
+    return completeTask_;
+  }
+
+  public int getCompleteTaskCount() {
+    return internalGetCompleteTask().getMap().size();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsCompleteTask(
+      int key) {
+    
+    return internalGetCompleteTask().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getCompleteTaskMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getCompleteTask() {
+    return getCompleteTaskMap();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getCompleteTaskMap() {
+    return internalGetCompleteTask().getMap();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+  @java.lang.Override
+
+  public int getCompleteTaskOrDefault(
+      int key,
+      int defaultValue) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetCompleteTask().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+  @java.lang.Override
+
+  public int getCompleteTaskOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetCompleteTask().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -507,6 +619,15 @@ private static final long serialVersionUID = 0L;
         internalGetResourceCount(),
         ResourceCountDefaultEntryHolder.defaultEntry,
         11);
+    if (taskDay_ != 0) {
+      output.writeInt32(12, taskDay_);
+    }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetCompleteTask(),
+        CompleteTaskDefaultEntryHolder.defaultEntry,
+        13);
     unknownFields.writeTo(output);
   }
 
@@ -567,6 +688,20 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(11, resourceCount__);
     }
+    if (taskDay_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(12, taskDay_);
+    }
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
+         : internalGetCompleteTask().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+      completeTask__ = CompleteTaskDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, completeTask__);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -602,6 +737,10 @@ private static final long serialVersionUID = 0L;
         other.internalGetMapData())) return false;
     if (!internalGetResourceCount().equals(
         other.internalGetResourceCount())) return false;
+    if (getTaskDay()
+        != other.getTaskDay()) return false;
+    if (!internalGetCompleteTask().equals(
+        other.internalGetCompleteTask())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -637,6 +776,12 @@ private static final long serialVersionUID = 0L;
     if (!internalGetResourceCount().getMap().isEmpty()) {
       hash = (37 * hash) + RESOURCECOUNT_FIELD_NUMBER;
       hash = (53 * hash) + internalGetResourceCount().hashCode();
+    }
+    hash = (37 * hash) + TASKDAY_FIELD_NUMBER;
+    hash = (53 * hash) + getTaskDay();
+    if (!internalGetCompleteTask().getMap().isEmpty()) {
+      hash = (37 * hash) + COMPLETETASK_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetCompleteTask().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -758,6 +903,8 @@ private static final long serialVersionUID = 0L;
           return internalGetMapData();
         case 11:
           return internalGetResourceCount();
+        case 13:
+          return internalGetCompleteTask();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -771,6 +918,8 @@ private static final long serialVersionUID = 0L;
           return internalGetMutableMapData();
         case 11:
           return internalGetMutableResourceCount();
+        case 13:
+          return internalGetMutableCompleteTask();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -820,6 +969,9 @@ private static final long serialVersionUID = 0L;
 
       internalGetMutableMapData().clear();
       internalGetMutableResourceCount().clear();
+      taskDay_ = 0;
+
+      internalGetMutableCompleteTask().clear();
       return this;
     }
 
@@ -859,6 +1011,9 @@ private static final long serialVersionUID = 0L;
       result.mapData_.makeImmutable();
       result.resourceCount_ = internalGetResourceCount();
       result.resourceCount_.makeImmutable();
+      result.taskDay_ = taskDay_;
+      result.completeTask_ = internalGetCompleteTask();
+      result.completeTask_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -936,6 +1091,11 @@ private static final long serialVersionUID = 0L;
           other.internalGetMapData());
       internalGetMutableResourceCount().mergeFrom(
           other.internalGetResourceCount());
+      if (other.getTaskDay() != 0) {
+        setTaskDay(other.getTaskDay());
+      }
+      internalGetMutableCompleteTask().mergeFrom(
+          other.internalGetCompleteTask());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -1547,6 +1707,165 @@ private static final long serialVersionUID = 0L;
     public Builder putAllResourceCount(
         java.util.Map<java.lang.Integer, java.lang.Integer> values) {
       internalGetMutableResourceCount().getMutableMap()
+          .putAll(values);
+      return this;
+    }
+
+    private int taskDay_ ;
+    /**
+     * <code>int32 taskDay = 12;</code>
+     * @return The taskDay.
+     */
+    @java.lang.Override
+    public int getTaskDay() {
+      return taskDay_;
+    }
+    /**
+     * <code>int32 taskDay = 12;</code>
+     * @param value The taskDay to set.
+     * @return This builder for chaining.
+     */
+    public Builder setTaskDay(int value) {
+      
+      taskDay_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 taskDay = 12;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearTaskDay() {
+      
+      taskDay_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Integer> completeTask_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetCompleteTask() {
+      if (completeTask_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            CompleteTaskDefaultEntryHolder.defaultEntry);
+      }
+      return completeTask_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetMutableCompleteTask() {
+      onChanged();;
+      if (completeTask_ == null) {
+        completeTask_ = com.google.protobuf.MapField.newMapField(
+            CompleteTaskDefaultEntryHolder.defaultEntry);
+      }
+      if (!completeTask_.isMutable()) {
+        completeTask_ = completeTask_.copy();
+      }
+      return completeTask_;
+    }
+
+    public int getCompleteTaskCount() {
+      return internalGetCompleteTask().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsCompleteTask(
+        int key) {
+      
+      return internalGetCompleteTask().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getCompleteTaskMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getCompleteTask() {
+      return getCompleteTaskMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getCompleteTaskMap() {
+      return internalGetCompleteTask().getMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+    @java.lang.Override
+
+    public int getCompleteTaskOrDefault(
+        int key,
+        int defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetCompleteTask().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+    @java.lang.Override
+
+    public int getCompleteTaskOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetCompleteTask().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearCompleteTask() {
+      internalGetMutableCompleteTask().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+
+    public Builder removeCompleteTask(
+        int key) {
+      
+      internalGetMutableCompleteTask().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer>
+    getMutableCompleteTask() {
+      return internalGetMutableCompleteTask().getMutableMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+    public Builder putCompleteTask(
+        int key,
+        int value) {
+      
+      
+      internalGetMutableCompleteTask().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+     */
+
+    public Builder putAllCompleteTask(
+        java.util.Map<java.lang.Integer, java.lang.Integer> values) {
+      internalGetMutableCompleteTask().getMutableMap()
           .putAll(values);
       return this;
     }

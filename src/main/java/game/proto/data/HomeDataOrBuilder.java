@@ -140,4 +140,44 @@ public interface HomeDataOrBuilder extends
 
   int getResourceCountOrThrow(
       int key);
+
+  /**
+   * <code>int32 taskDay = 12;</code>
+   * @return The taskDay.
+   */
+  int getTaskDay();
+
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+  int getCompleteTaskCount();
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+  boolean containsCompleteTask(
+      int key);
+  /**
+   * Use {@link #getCompleteTaskMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getCompleteTask();
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getCompleteTaskMap();
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+
+  int getCompleteTaskOrDefault(
+      int key,
+      int defaultValue);
+  /**
+   * <code>map&lt;int32, int32&gt; completeTask = 13;</code>
+   */
+
+  int getCompleteTaskOrThrow(
+      int key);
 }

@@ -237,7 +237,7 @@ public class HomeService {
         addHomeExp(player, count * data.exp);
     }
 
-    private static void addHomeExp(Player player, int count) {
+    public static void addHomeExp(Player player, int count) {
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
 
         final int oldLevel = homeDataBuilder.getLevel();
@@ -280,12 +280,33 @@ public class HomeService {
     }
 
     /**
+     * 减少物品
+     *
+     * @param player
+     * @param id
+     * @param cout
+     */
+    public static void reduceItem(Player player, int id, int count) {
+        HomeData.Builder builder = player.pd.getHomeDataBuilder();
+
+        int has = builder.getResourceCountOrDefault(id, 0);
+
+        ModuleAssert.isTrue(has >= count);
+        builder.putResourceCount(id, has - count);
+
+        player.send(No.HomeItemAddPush, ValueChange.newBuilder()
+                .setV1(id)
+                .setV2(count * -1)
+                .buildPartial());
+    }
+
+    /**
      * 增加园币
      *
      * @param player
      * @param count
      */
-    private static void addCoin(Player player, int count) {
+    public static void addCoin(Player player, int count) {
 
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
         homeDataBuilder.setCoin(homeDataBuilder.getCoin() + count);
@@ -310,7 +331,7 @@ public class HomeService {
         player.send(No.ResourceChangePush, ResourceChangePush.newBuilder()
                 .setResourceId(ResourceEnum.HOME_COIN.id)
                 .setCurCount(homeDataBuilder.getCoin())
-                .setCount(count)
+                .setCount(Math.abs(count) * -1)
                 .buildPartial());
     }
 
@@ -377,8 +398,10 @@ public class HomeService {
     public static void initHome(Player player) {
 
         openArea(player, 24);
-        player.pd.getHomeDataBuilder().setLevel(1);
-        player.pd.getHomeDataBuilder().setCoin(1000);
-        player.pd.getHomeDataBuilder().setResourceLimit(ConfigManager.paramConfigData.homeResourceLimit);
+        HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
+        homeDataBuilder.setTaskDay(1);
+        homeDataBuilder.setLevel(1);
+        homeDataBuilder.setCoin(1000);
+        homeDataBuilder.setResourceLimit(ConfigManager.paramConfigData.homeResourceLimit);
     }
 }
