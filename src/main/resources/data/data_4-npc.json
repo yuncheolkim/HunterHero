@@ -33,23 +33,17 @@
     "103": {
         "areaId": "5",
         "id": 103,
-        "name": "云木",
-        "speakId": 1001,
-        "title": "木工"
+        "speakId": 1001
     },
     "104": {
         "areaId": "5",
         "id": 104,
-        "name": "费依",
-        "speakId": 1001,
-        "title": "铁匠"
+        "speakId": 1001
     },
     "105": {
         "areaId": "5",
         "id": 105,
-        "name": "时辰",
-        "speakId": 1001,
-        "title": "管家"
+        "speakId": 1001
     },
     "106": {
         "areaId": "5",
@@ -249,6 +243,126 @@
         "name": "青宁",
         "speakId": 1001,
         "type": 1
+    },
+    "201": {
+        "areaId": "6",
+        "id": 201,
+        "name": "潘苗",
+        "speakId": 1001
+    },
+    "202": {
+        "areaId": "6",
+        "id": 202,
+        "name": "壬念",
+        "speakId": 1001
+    },
+    "203": {
+        "areaId": "6",
+        "id": 203,
+        "name": "琴月",
+        "speakId": 1001
+    },
+    "204": {
+        "areaId": "6",
+        "id": 204,
+        "name": "碧雀",
+        "speakId": 1001
+    },
+    "205": {
+        "areaId": "6",
+        "id": 205,
+        "name": "贝水",
+        "speakId": 1001
+    },
+    "206": {
+        "areaId": "6",
+        "id": 206,
+        "name": "洛香",
+        "speakId": 1001
+    },
+    "207": {
+        "areaId": "6",
+        "id": 207,
+        "name": "郁丁",
+        "speakId": 1001
+    },
+    "208": {
+        "areaId": "6",
+        "id": 208,
+        "name": "忌风",
+        "speakId": 1001
+    },
+    "209": {
+        "areaId": "6",
+        "id": 209,
+        "name": "阳风",
+        "speakId": 1001
+    },
+    "210": {
+        "areaId": "6",
+        "id": 210,
+        "name": "烟怡",
+        "speakId": 1001
+    },
+    "211": {
+        "areaId": "6",
+        "id": 211,
+        "name": "望雨",
+        "speakId": 1001
+    },
+    "212": {
+        "areaId": "6",
+        "id": 212,
+        "name": "校绍博",
+        "speakId": 1001
+    },
+    "213": {
+        "areaId": "6",
+        "id": 213,
+        "name": "鲜于东",
+        "speakId": 1001
+    },
+    "214": {
+        "areaId": "6",
+        "id": 214,
+        "name": "仍欣胜",
+        "speakId": 1001
+    },
+    "215": {
+        "areaId": "6",
+        "id": 215,
+        "name": "蒲晓",
+        "speakId": 1001
+    },
+    "216": {
+        "areaId": "6",
+        "id": 216,
+        "name": "邸海",
+        "speakId": 1001
+    },
+    "217": {
+        "areaId": "6",
+        "id": 217,
+        "name": "干墨",
+        "speakId": 1001
+    },
+    "218": {
+        "areaId": "6",
+        "id": 218,
+        "name": "校诗语",
+        "speakId": 1001
+    },
+    "219": {
+        "areaId": "6",
+        "id": 219,
+        "name": "百里格",
+        "speakId": 1001
+    },
+    "220": {
+        "areaId": "6",
+        "id": 220,
+        "name": "席子",
+        "speakId": 1001
     },
     "3": {
         "areaId": "1",

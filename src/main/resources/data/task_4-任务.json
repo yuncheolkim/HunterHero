@@ -332,6 +332,7 @@
             18
         ],
         "npcId": 14,
+        "reward": "1=100",
         "s1": "跟苏离交谈",
         "speakType": 1,
         "taskType": 1,
