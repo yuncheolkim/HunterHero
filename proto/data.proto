@@ -338,6 +338,20 @@ message Dungeon{
 message ExpressInfo{
     int32 id = 1;
 }
+///////////////////////////////////////////////  排位
+
+// 比赛信息
+message LadderSingleReport{
+    int64 winId = 1;
+    int64 first = 2; // 先出手的玩家
+    LadderSinglePlayer p1 = 5;
+    LadderSinglePlayer p2 = 6;
+}
+message LadderSinglePlayer{
+    int64 uid = 1;
+    int32 heroId = 2;
+    string name = 5;
+}
 
 ///////////////////////////////////////////////  Enum
 
