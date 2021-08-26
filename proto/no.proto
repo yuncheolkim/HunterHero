@@ -56,6 +56,8 @@ enum No {
     FightHmActionReq = 2013;
     FightHmEndPush = 2014;
 
+    LadderSetFormationReq = 2021;
+
     // Battle
     BattleEnterReq = 2030;
     BattleEndPush = 2031;

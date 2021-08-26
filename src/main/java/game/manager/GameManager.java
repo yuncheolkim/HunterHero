@@ -14,6 +14,7 @@ import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.home.HomeHandler;
+import game.module.ladder.match.LadderMatchGameScene;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
@@ -65,6 +66,7 @@ public class GameManager extends AbsLifecycle {
 
     // scene
     private final ChatScene chatScene = new ChatScene();
+    private final LadderMatchGameScene ladderScene = new LadderMatchGameScene();
 
 
     @Override
@@ -168,6 +170,7 @@ public class GameManager extends AbsLifecycle {
 
     private void initScene() {
         chatScene.setWork(G.W.getSceneWork());
+        ladderScene.setWork(G.W.getMatchWork());
     }
 
     public int getVersion() {
@@ -184,5 +187,9 @@ public class GameManager extends AbsLifecycle {
 
     public ChatScene getChatScene() {
         return chatScene;
+    }
+
+    public LadderMatchGameScene getLadderScene() {
+        return ladderScene;
     }
 }

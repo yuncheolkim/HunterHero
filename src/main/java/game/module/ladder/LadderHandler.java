@@ -1,7 +1,9 @@
 package game.module.ladder;
 
+import game.exception.ModuleAssert;
 import game.player.Player;
-import game.proto.TitleChooseReq;
+import game.proto.LadderSetFormationReq;
+import game.proto.data.PlayerHero;
 
 /**
  * 排位赛
@@ -18,8 +20,10 @@ public class LadderHandler {
      * @param player
      * @param req
      */
-    public static void formation(final Player player, final TitleChooseReq req) {
-
+    public static void formation(final Player player, final LadderSetFormationReq req) {
+        PlayerHero heroOrDefault = player.pd.getHeroOrDefault(req.getHeroId(), null);
+        ModuleAssert.notNull(heroOrDefault);
+        player.pd.getLadderInfoBuilder().setHeroId(req.getHeroId());
     }
 
     /**
@@ -31,4 +35,5 @@ public class LadderHandler {
     public static void match(final Player player) {
 
     }
+
 }

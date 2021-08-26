@@ -3,6 +3,8 @@ package utils;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
 import game.base.DefaultLog;
+import javafx.scene.text.Text;
+import org.apache.lucene.util.RamUsageEstimator;
 import org.junit.Test;
 
 /**
@@ -17,6 +19,13 @@ public class LogTest {
         l.info("okc:{}", "123");
         l.info(new NullPointerException());
         l.info(new NullPointerException(), "okc:{}", "123");
+    }
+
+    @Test
+    public void t1() {
+        long hello = RamUsageEstimator.sizeOf(new Text("hello"));
+        System.out.println(hello);
+
     }
 }
 

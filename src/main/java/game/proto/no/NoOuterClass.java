@@ -23,7 +23,7 @@ public final class NoOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\010no.proto\022\tMessageNo*\334\014\n\002No\022\010\n\004NONE\020\000\022\014" +
+      "\n\010no.proto\022\tMessageNo*\370\014\n\002No\022\010\n\004NONE\020\000\022\014" +
       "\n\010LoginReq\020\001\022\014\n\010KickPush\020\002\022\027\n\023PlayerCrea" +
       "teNameReq\020\003\022\020\n\014HeartbeatReq\020e\022\022\n\rPlayerM" +
       "oveReq\020\311\001\022\025\n\020PlayerGoHotelReq\020\312\001\022\031\n\024Play" +
@@ -41,31 +41,31 @@ public final class NoOuterClass {
       "tartReq\020\321\017\022\023\n\016FightStartPush\020\322\017\022\020\n\013Fight" +
       "EndReq\020\324\017\022\021\n\014FightTestReq\020\325\017\022\024\n\017FightHmS" +
       "tartReq\020\333\017\022\024\n\017FightHmStartRes\020\334\017\022\025\n\020Figh" +
-      "tHmActionReq\020\335\017\022\023\n\016FightHmEndPush\020\336\017\022\023\n\016" +
-      "BattleEnterReq\020\356\017\022\022\n\rBattleEndPush\020\357\017\022\024\n" +
-      "\017DungeonEnterReq\020\265\020\022\024\n\017DungeonFightReq\020\266" +
-      "\020\022\023\n\016DungeonExitReq\020\267\020\022\022\n\rEnterSceneReq\020" +
-      "\271\027\022\026\n\021EnterFightAreaReq\020\272\027\022\025\n\020ExitFightA" +
-      "reaReq\020\273\027\022\026\n\021NpcShowChangePush\020\235\030\022\016\n\tHer" +
-      "oUpReq\020\241\037\022\030\n\023HeroTalentChangeReq\020\242\037\022\023\n\016H" +
-      "eroChangePush\020\243\037\022\025\n\020HeroEquipmentReq\020\244\037\022" +
-      "\020\n\013NewHeroPush\020\245\037\022\027\n\022FormationCreateReq\020" +
-      "\205 \022\025\n\020FormationListReq\020\206 \022\027\n\022FormationUp" +
-      "dateReq\020\207 \022\027\n\022FormationDeleteReq\020\210 \022\030\n\023F" +
-      "ormationSettingReq\020\211 \022\027\n\022ResourceChangeP" +
-      "ush\020\211\'\022\032\n\025PlayerLevelChangePush\020\212\'\022\022\n\rEx" +
-      "pChangePush\020\213\'\022\027\n\022MaxPowerChangePush\020\214\'\022" +
-      "\024\n\017RecoverPowerReq\020\215\'\022\025\n\020ExpressStartRqR" +
-      "s\020\355\'\022\027\n\022ExpressCompleteReq\020\356\'\022\023\n\016Express" +
-      "OpenReq\020\357\'\022\026\n\021BagInfoChangePush\020\361.\022\020\n\013Ba" +
-      "gCleanReq\020\362.\022\023\n\016ItemDiscardReq\020\3316\022\017\n\nIte" +
-      "mBuyReq\020\3326\022\024\n\017ItemExchangeReq\020\3336\022\020\n\013Item" +
-      "SellReq\020\3346\022\025\n\020TempleHeroBuyReq\020\2757\022\014\n\007Fis" +
-      "hReq\020\301>\022\020\n\013FishHookReq\020\302>\022\025\n\020FishEnterAr" +
-      "eaReq\020\303>\022\024\n\017FishExitAreaReq\020\304>\022\021\n\014FishHo" +
-      "okPush\020\305>\022\023\n\016ChatMessageReq\020\251F\022\024\n\017ChatMe" +
-      "ssagePush\020\252FB\023\n\rgame.proto.noH\001P\001b\006proto" +
-      "3"
+      "tHmActionReq\020\335\017\022\023\n\016FightHmEndPush\020\336\017\022\032\n\025" +
+      "LadderSetFormationReq\020\345\017\022\023\n\016BattleEnterR" +
+      "eq\020\356\017\022\022\n\rBattleEndPush\020\357\017\022\024\n\017DungeonEnte" +
+      "rReq\020\265\020\022\024\n\017DungeonFightReq\020\266\020\022\023\n\016Dungeon" +
+      "ExitReq\020\267\020\022\022\n\rEnterSceneReq\020\271\027\022\026\n\021EnterF" +
+      "ightAreaReq\020\272\027\022\025\n\020ExitFightAreaReq\020\273\027\022\026\n" +
+      "\021NpcShowChangePush\020\235\030\022\016\n\tHeroUpReq\020\241\037\022\030\n" +
+      "\023HeroTalentChangeReq\020\242\037\022\023\n\016HeroChangePus" +
+      "h\020\243\037\022\025\n\020HeroEquipmentReq\020\244\037\022\020\n\013NewHeroPu" +
+      "sh\020\245\037\022\027\n\022FormationCreateReq\020\205 \022\025\n\020Format" +
+      "ionListReq\020\206 \022\027\n\022FormationUpdateReq\020\207 \022\027" +
+      "\n\022FormationDeleteReq\020\210 \022\030\n\023FormationSett" +
+      "ingReq\020\211 \022\027\n\022ResourceChangePush\020\211\'\022\032\n\025Pl" +
+      "ayerLevelChangePush\020\212\'\022\022\n\rExpChangePush\020" +
+      "\213\'\022\027\n\022MaxPowerChangePush\020\214\'\022\024\n\017RecoverPo" +
+      "werReq\020\215\'\022\025\n\020ExpressStartRqRs\020\355\'\022\027\n\022Expr" +
+      "essCompleteReq\020\356\'\022\023\n\016ExpressOpenReq\020\357\'\022\026" +
+      "\n\021BagInfoChangePush\020\361.\022\020\n\013BagCleanReq\020\362." +
+      "\022\023\n\016ItemDiscardReq\020\3316\022\017\n\nItemBuyReq\020\3326\022\024" +
+      "\n\017ItemExchangeReq\020\3336\022\020\n\013ItemSellReq\020\3346\022\025" +
+      "\n\020TempleHeroBuyReq\020\2757\022\014\n\007FishReq\020\301>\022\020\n\013F" +
+      "ishHookReq\020\302>\022\025\n\020FishEnterAreaReq\020\303>\022\024\n\017" +
+      "FishExitAreaReq\020\304>\022\021\n\014FishHookPush\020\305>\022\023\n" +
+      "\016ChatMessageReq\020\251F\022\024\n\017ChatMessagePush\020\252F" +
+      "B\023\n\rgame.proto.noH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

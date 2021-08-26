@@ -30,20 +30,23 @@ public class WorkManager extends AbsLifecycle {
 
     private final LongIdGenerator workIdGen = new DefaultLongIdGenerator();
 
+    private final Work matchWork = new SingleWork();
+
     public WorkManager() {
-        initSingleWork(playerWork);
-        initSingleWork(heroCalcWork);
-        initSingleWork(dataPersistenceWork);
-        initSingleWork(sceneWork);
+        initSingleWorks(playerWork);
+        initSingleWorks(heroCalcWork);
+        initSingleWorks(dataPersistenceWork);
+        initSingleWorks(sceneWork);
 
         addAllWork(loginWork);
+        addAllWork(matchWork);
     }
 
     private void addAllWork(final Work work) {
         allWorks.add(work);
     }
 
-    private void initSingleWork(final Work[] w) {
+    private void initSingleWorks(final Work[] w) {
         for (int i = 0; i < w.length; i++) {
             w[i] = new SingleWork();
             addAllWork(w[i]);
@@ -103,5 +106,9 @@ public class WorkManager extends AbsLifecycle {
         for (final Work allWork : allWorks) {
             allWork.stop();
         }
+    }
+
+    public Work getMatchWork() {
+        return matchWork;
     }
 }

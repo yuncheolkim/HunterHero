@@ -63,6 +63,7 @@ dependencies {
     compile group: 'io.netty', name: 'netty-all', version: '4.1.47.Final'
     implementation group: 'joda-time', name: 'joda-time', version: '2.10.10'
     implementation group: 'com.thoughtworks.qdox', name: 'qdox', version: '2.0.0'
+    implementation group: 'org.apache.lucene', name: 'lucene-core', version: '4.0.0'
 
     compile "ch.qos.logback:logback-core:${lib.logback}"
     compile "ch.qos.logback:logback-classic:${lib.logback}"

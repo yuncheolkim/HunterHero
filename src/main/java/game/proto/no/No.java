@@ -181,6 +181,10 @@ public enum No
    */
   FightHmEndPush(2014),
   /**
+   * <code>LadderSetFormationReq = 2021;</code>
+   */
+  LadderSetFormationReq(2021),
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -585,6 +589,10 @@ public enum No
    */
   public static final int FightHmEndPush_VALUE = 2014;
   /**
+   * <code>LadderSetFormationReq = 2021;</code>
+   */
+  public static final int LadderSetFormationReq_VALUE = 2021;
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -874,6 +882,7 @@ public enum No
       case 2012: return FightHmStartRes;
       case 2013: return FightHmActionReq;
       case 2014: return FightHmEndPush;
+      case 2021: return LadderSetFormationReq;
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
       case 2101: return DungeonEnterReq;

@@ -457,6 +457,33 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 排位信息
+   * </pre>
+   *
+   * <code>.Message.LadderInfo ladderInfo = 520;</code>
+   * @return Whether the ladderInfo field is set.
+   */
+  boolean hasLadderInfo();
+  /**
+   * <pre>
+   * 排位信息
+   * </pre>
+   *
+   * <code>.Message.LadderInfo ladderInfo = 520;</code>
+   * @return The ladderInfo.
+   */
+  game.proto.data.LadderInfo getLadderInfo();
+  /**
+   * <pre>
+   * 排位信息
+   * </pre>
+   *
+   * <code>.Message.LadderInfo ladderInfo = 520;</code>
+   */
+  game.proto.data.LadderInfoOrBuilder getLadderInfoOrBuilder();
+
+  /**
+   * <pre>
    * 背包
    * </pre>
    *

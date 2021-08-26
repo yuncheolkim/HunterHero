@@ -13,6 +13,8 @@ message PlayerBackData {
     int64 powerRecoverTime = 3;
     int64 loginTime = 5;
     int64 updateTime = 6;
+    int32 ladderSingleScore = 7;// 单挑分数查找对手基线
+    int32 ladderMultiScore = 8; // 多人分数查找对手基线
     int32 localId = 10;
     GameCount count = 11; // 计数器
     FightType fightType = 21;// 战斗类型

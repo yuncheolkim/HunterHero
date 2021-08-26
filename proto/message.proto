@@ -506,10 +506,9 @@ message HomeNewTaskDayPush{
     int32 day = 1;
 }
 
-
-
-
-
-
+///////////////////////////////////////////////  ladder
+message LadderSetFormationReq{
+    int32 heroId = 1;
+}
 
 
