@@ -132,6 +132,16 @@ public class PlayerHandler {
 
     }
 
+    /**
+     * 准备排位战斗信息
+     * 英雄信息计算
+     *
+     * @param player
+     */
+    public static void prepareLadder(final Player player) {
+
+    }
+
 
     /**
      * 恢复体力
@@ -159,7 +169,7 @@ public class PlayerHandler {
      * @return
      */
     public static void dataFlush(final Player player, final Empty o) {
-//        Logs.C.info("保存玩家数据:{}", player.getPid());
         player.saveData();
     }
+
 }

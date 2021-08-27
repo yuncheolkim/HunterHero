@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * 工作线程管理
@@ -17,20 +19,19 @@ import java.util.concurrent.Executors;
 public class WorkManager extends AbsLifecycle {
 
     private final Work[] playerWork = new SingleWork[GameConstants.CORE_PROCESS_COUNT];
-
     private final Work[] heroCalcWork = new SingleWork[GameConstants.CORE_PROCESS_COUNT];
-
-    private final Work[] dataPersistenceWork = new SingleWork[GameConstants.CORE_PROCESS_COUNT * 3];
-
-    private final Work loginWork = new Work(Executors.newFixedThreadPool(GameConstants.CORE_PROCESS_COUNT * 2));
-
-    private final List<Work> allWorks = new ArrayList<>();
-
     private final Work[] sceneWork = new SingleWork[GameConstants.CORE_PROCESS_COUNT];
-
+    private final Work loginWork = new Work(Executors.newFixedThreadPool(GameConstants.CORE_PROCESS_COUNT * 2));
+    private final Work[] dataPersistenceWork = new SingleWork[GameConstants.CORE_PROCESS_COUNT * 3];
+    private final Work matchWork = new SingleWork();
+    private final List<Work> allWorks = new ArrayList<>();
     private final LongIdGenerator workIdGen = new DefaultLongIdGenerator();
 
-    private final Work matchWork = new SingleWork();
+    /**
+     * 匹配排位定时器
+     */
+    private ScheduledExecutorService matchSchedule = Executors.newSingleThreadScheduledExecutor();
+    private ScheduledExecutorService defaultSchedule = Executors.newScheduledThreadPool(GameConstants.CORE_PROCESS_COUNT);
 
     public WorkManager() {
         initSingleWorks(playerWork);
@@ -97,6 +98,7 @@ public class WorkManager extends AbsLifecycle {
             allWork.start();
         }
 
+
         super.start();
     }
 
@@ -106,9 +108,23 @@ public class WorkManager extends AbsLifecycle {
         for (final Work allWork : allWorks) {
             allWork.stop();
         }
+        matchSchedule.shutdownNow();
+        try {
+            matchSchedule.awaitTermination(5, TimeUnit.MINUTES);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public Work getMatchWork() {
         return matchWork;
+    }
+
+    public ScheduledExecutorService getMatchSchedule() {
+        return matchSchedule;
+    }
+
+    public ScheduledExecutorService getDefaultSchedule() {
+        return defaultSchedule;
     }
 }
