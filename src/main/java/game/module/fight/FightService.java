@@ -14,7 +14,9 @@ import game.game.enums.ResourceEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
+import game.module.battle.Hero;
 import game.module.battle.Round;
+import game.module.battle.Side;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.HeroRecordData;
 import game.module.event.handler.KillEvent;
@@ -374,5 +376,26 @@ public class FightService {
         player.pd.clearFightInfo();
         player.pd.setBattleId(0);
         player.hmBattle = null;
+    }
+
+    /**
+     * 构建玩家战斗英雄数据
+     * <p>
+     * 还需要设置
+     * side
+     * pos
+     * speed
+     * battle
+     */
+    public static Hero createFightHero(Player player, int heroId) {
+        final PlayerHero playerHero = player.getPd().getHeroMap().get(heroId);
+        if (playerHero == null) {
+            return null;
+        }
+        final Hero hero = HeroFactory.createPlayerHero(player, playerHero);
+        hero.setSide(Side.A);
+        hero.setType(1);
+        hero.init();
+        return hero;
     }
 }

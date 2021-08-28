@@ -54,6 +54,11 @@ public final class Back {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_LadderPrepare_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_LadderResult_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_LadderResult_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -81,9 +86,10 @@ public final class Back {
       "\027.Message.PlayerBackData\022\037\n\002pd\030\002 \001(\0132\023.M" +
       "essage.PlayerData\"\026\n\010FishData\022\n\n\002id\030\001 \001(" +
       "\005\"\t\n\007VipData\"7\n\rLadderPrepare\022\n\n\002id\030\001 \001(" +
-      "\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004type\030\003 \001(\005*%\n\tFightTy" +
-      "pe\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017game.pro" +
-      "to.backH\001P\001b\006proto3"
+      "\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004type\030\003 \001(\005\"\034\n\014LadderR" +
+      "esult\022\014\n\004type\030\003 \001(\005*%\n\tFightType\022\n\n\006F_NO" +
+      "NE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017game.proto.backH\001P" +
+      "\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -138,6 +144,12 @@ public final class Back {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderPrepare_descriptor,
         new java.lang.String[] { "Id", "Auto", "Type", });
+    internal_static_Message_LadderResult_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_Message_LadderResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_LadderResult_descriptor,
+        new java.lang.String[] { "Type", });
     game.proto.data.Data.getDescriptor();
   }
 

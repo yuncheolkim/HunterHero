@@ -12,6 +12,13 @@ enum No {
     KickPush = 2;
 
     PlayerCreateNameReq = 3;
+    B_TICK = 10;
+    B_DATA_PUSH = 11;
+    B_HERO_DATA = 12;
+    B_FISH_HOOK = 13;
+    B_FISH_HOOK_EXPIRE = 14;
+    B_LADDER_START = 15;
+    LadderResult = 16;
 
     // Heartbeat
     HeartbeatReq = 101;

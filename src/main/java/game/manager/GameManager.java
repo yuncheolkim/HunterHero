@@ -9,7 +9,7 @@ import game.module.cmd.CmdHandler;
 import game.module.dungeon.DungeonHandler;
 import game.module.escort.ExpressHandler;
 import game.module.fight.FightHandler;
-import game.module.fight.FightScene;
+import game.module.fight.LadderFightScene;
 import game.module.fish.FishHandler;
 import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
@@ -27,7 +27,7 @@ import game.msg.*;
 import game.proto.*;
 import game.proto.back.FishData;
 import game.proto.back.LadderPrepare;
-import game.proto.back.MsgNoBackInner;
+import game.proto.back.LadderResult;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
 
@@ -69,7 +69,7 @@ public class GameManager extends AbsLifecycle {
     // scene
     private final ChatScene chatScene = new ChatScene();
     private final LadderMatchGameScene ladderScene = new LadderMatchGameScene();
-    private final FightScene fightScene = new FightScene();
+    private final LadderFightScene fightScene = new LadderFightScene();
 
 
     @Override
@@ -88,12 +88,13 @@ public class GameManager extends AbsLifecycle {
         // relogin
         addHandler(new InvokerNoParam(-2, loginHandler::relogin));
         // inner
-        addHandler(new InvokerNoParam(MsgNoBackInner.B_TICK_VALUE, PlayerHandler::tick));
-        addHandler(new Invoker<>(MsgNoBackInner.B_DATA_PUSH_VALUE, PlayerHandler::dataFlush, Empty::parser));
-        addHandler(new Invoker<>(MsgNoBackInner.B_HERO_DATA_VALUE, HeroHandler::updateHero, PlayerHero::parser));
-        addHandler(new Invoker<>(MsgNoBackInner.B_FISH_HOOK_VALUE, FishHandler::fishHook, FishData::parser));
-        addHandler(new Invoker<>(MsgNoBackInner.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
-        addHandler(new Invoker<>(MsgNoBackInner.B_LADDER_START_VALUE, PlayerHandler::prepareLadder, LadderPrepare::parser));
+        addHandler(new InvokerNoParam(No.B_TICK_VALUE, PlayerHandler::tick));
+        addHandler(new Invoker<>(No.B_DATA_PUSH_VALUE, PlayerHandler::dataFlush, Empty::parser));
+        addHandler(new Invoker<>(No.B_HERO_DATA_VALUE, HeroHandler::updateHero, PlayerHero::parser));
+        addHandler(new Invoker<>(No.B_FISH_HOOK_VALUE, FishHandler::fishHook, FishData::parser));
+        addHandler(new Invoker<>(No.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
+        addHandler(new Invoker<>(No.B_LADDER_START_VALUE, PlayerHandler::prepareLadder, LadderPrepare::parser));
+        addHandler(new Invoker<>(No.LadderResult, PlayerHandler::ladderResult, LadderResult::parser));
 
         // heart
         addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
@@ -198,7 +199,7 @@ public class GameManager extends AbsLifecycle {
         return ladderScene;
     }
 
-    public FightScene getFightScene() {
+    public LadderFightScene getFightScene() {
         return fightScene;
     }
 }

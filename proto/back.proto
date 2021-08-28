@@ -55,3 +55,8 @@ message LadderPrepare{
     bool auto = 2;
     int32 type = 3;// 单挑
 }
+// 战斗结果
+message LadderResult{
+    int32 type = 3;// 单挑
+
+}

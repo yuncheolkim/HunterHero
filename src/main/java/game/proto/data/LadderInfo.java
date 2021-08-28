@@ -228,7 +228,7 @@ private static final long serialVersionUID = 0L;
   private int lose1_;
   /**
    * <pre>
-   *先手
+   * 先手
    * </pre>
    *
    * <code>int32 lose1 = 5;</code>
@@ -243,7 +243,7 @@ private static final long serialVersionUID = 0L;
   private int lose2_;
   /**
    * <pre>
-   *后手
+   * 后手
    * </pre>
    *
    * <code>int32 lose2 = 6;</code>
@@ -272,6 +272,10 @@ private static final long serialVersionUID = 0L;
   public static final int INMATCH_FIELD_NUMBER = 8;
   private boolean inMatch_;
   /**
+   * <pre>
+   * 是否正在查找对手
+   * </pre>
+   *
    * <code>bool inMatch = 8;</code>
    * @return The inMatch.
    */
@@ -1129,7 +1133,7 @@ private static final long serialVersionUID = 0L;
     private int lose1_ ;
     /**
      * <pre>
-     *先手
+     * 先手
      * </pre>
      *
      * <code>int32 lose1 = 5;</code>
@@ -1141,7 +1145,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *先手
+     * 先手
      * </pre>
      *
      * <code>int32 lose1 = 5;</code>
@@ -1156,7 +1160,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *先手
+     * 先手
      * </pre>
      *
      * <code>int32 lose1 = 5;</code>
@@ -1172,7 +1176,7 @@ private static final long serialVersionUID = 0L;
     private int lose2_ ;
     /**
      * <pre>
-     *后手
+     * 后手
      * </pre>
      *
      * <code>int32 lose2 = 6;</code>
@@ -1184,7 +1188,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *后手
+     * 后手
      * </pre>
      *
      * <code>int32 lose2 = 6;</code>
@@ -1199,7 +1203,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *后手
+     * 后手
      * </pre>
      *
      * <code>int32 lose2 = 6;</code>
@@ -1257,6 +1261,10 @@ private static final long serialVersionUID = 0L;
 
     private boolean inMatch_ ;
     /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
      * <code>bool inMatch = 8;</code>
      * @return The inMatch.
      */
@@ -1265,6 +1273,10 @@ private static final long serialVersionUID = 0L;
       return inMatch_;
     }
     /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
      * <code>bool inMatch = 8;</code>
      * @param value The inMatch to set.
      * @return This builder for chaining.
@@ -1276,6 +1288,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
      * <code>bool inMatch = 8;</code>
      * @return This builder for chaining.
      */

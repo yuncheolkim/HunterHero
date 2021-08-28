@@ -49,7 +49,7 @@ public interface LadderInfoOrBuilder extends
 
   /**
    * <pre>
-   *先手
+   * 先手
    * </pre>
    *
    * <code>int32 lose1 = 5;</code>
@@ -59,7 +59,7 @@ public interface LadderInfoOrBuilder extends
 
   /**
    * <pre>
-   *后手
+   * 后手
    * </pre>
    *
    * <code>int32 lose2 = 6;</code>
@@ -78,6 +78,10 @@ public interface LadderInfoOrBuilder extends
   int getHeroId();
 
   /**
+   * <pre>
+   * 是否正在查找对手
+   * </pre>
+   *
    * <code>bool inMatch = 8;</code>
    * @return The inMatch.
    */

@@ -9,7 +9,6 @@ import game.player.FishAction;
 import game.player.Player;
 import game.proto.*;
 import game.proto.back.FishData;
-import game.proto.back.MsgNoBackInner;
 import game.proto.data.Reward;
 import game.proto.data.RewardType;
 import game.proto.no.No;
@@ -51,7 +50,7 @@ public class FishHandler {
 
         player.scheduleAfter(
                 CalcUtil.random(3000, 8000)
-                , MsgNoBackInner.B_FISH_HOOK_VALUE
+                , No.B_FISH_HOOK_VALUE
                 , FishData.newBuilder().setId(fishAction.getId()).buildPartial());
 
     }
@@ -75,7 +74,7 @@ public class FishHandler {
             // 提竿
             player.scheduleAfter(
                     G.C.getParamConfigData().fishSuccessTime,
-                    MsgNoBackInner.B_FISH_HOOK_EXPIRE_VALUE,
+                    No.B_FISH_HOOK_EXPIRE_VALUE,
                     fishData
             );
         }

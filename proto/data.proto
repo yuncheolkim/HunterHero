@@ -344,17 +344,16 @@ message ExpressInfo{
 ///////////////////////////////////////////////  Ladder
 // 排位信息
 message LadderInfo{
-    int32 order = 1;// 单挑是否先手, 1:先手 2:后手
-    int32 score = 2;// 分数
-    int32 win1 = 3;// 先手
-    int32 win2 = 4;// 后手
-    int32 lose1 = 5; //先手
-    int32 lose2 = 6; //后手
+    int32 order = 1; // 单挑是否先手, 1:先手 2:后手
+    int32 score = 2; // 分数
+    int32 win1 = 3; // 先手
+    int32 win2 = 4; // 后手
+    int32 lose1 = 5; // 先手
+    int32 lose2 = 6; // 后手
     int32 heroId = 7; // 出战英雄
-    bool inMatch = 8;
+    bool inMatch = 8; // 是否正在查找对手
     map<int32, LadderHeroScore> heroScore = 9;
     repeated LadderSingleReport report = 10;// 最近20次
-
 }
 // 英雄战斗记录
 message LadderHeroScore{

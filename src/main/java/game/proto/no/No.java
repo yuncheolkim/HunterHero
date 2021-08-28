@@ -33,6 +33,34 @@ public enum No
    */
   PlayerCreateNameReq(3),
   /**
+   * <code>B_TICK = 10;</code>
+   */
+  B_TICK(10),
+  /**
+   * <code>B_DATA_PUSH = 11;</code>
+   */
+  B_DATA_PUSH(11),
+  /**
+   * <code>B_HERO_DATA = 12;</code>
+   */
+  B_HERO_DATA(12),
+  /**
+   * <code>B_FISH_HOOK = 13;</code>
+   */
+  B_FISH_HOOK(13),
+  /**
+   * <code>B_FISH_HOOK_EXPIRE = 14;</code>
+   */
+  B_FISH_HOOK_EXPIRE(14),
+  /**
+   * <code>B_LADDER_START = 15;</code>
+   */
+  B_LADDER_START(15),
+  /**
+   * <code>LadderResult = 16;</code>
+   */
+  LadderResult(16),
+  /**
    * <pre>
    * Heartbeat
    * </pre>
@@ -440,6 +468,34 @@ public enum No
    * <code>PlayerCreateNameReq = 3;</code>
    */
   public static final int PlayerCreateNameReq_VALUE = 3;
+  /**
+   * <code>B_TICK = 10;</code>
+   */
+  public static final int B_TICK_VALUE = 10;
+  /**
+   * <code>B_DATA_PUSH = 11;</code>
+   */
+  public static final int B_DATA_PUSH_VALUE = 11;
+  /**
+   * <code>B_HERO_DATA = 12;</code>
+   */
+  public static final int B_HERO_DATA_VALUE = 12;
+  /**
+   * <code>B_FISH_HOOK = 13;</code>
+   */
+  public static final int B_FISH_HOOK_VALUE = 13;
+  /**
+   * <code>B_FISH_HOOK_EXPIRE = 14;</code>
+   */
+  public static final int B_FISH_HOOK_EXPIRE_VALUE = 14;
+  /**
+   * <code>B_LADDER_START = 15;</code>
+   */
+  public static final int B_LADDER_START_VALUE = 15;
+  /**
+   * <code>LadderResult = 16;</code>
+   */
+  public static final int LadderResult_VALUE = 16;
   /**
    * <pre>
    * Heartbeat
@@ -851,6 +907,13 @@ public enum No
       case 1: return LoginReq;
       case 2: return KickPush;
       case 3: return PlayerCreateNameReq;
+      case 10: return B_TICK;
+      case 11: return B_DATA_PUSH;
+      case 12: return B_HERO_DATA;
+      case 13: return B_FISH_HOOK;
+      case 14: return B_FISH_HOOK_EXPIRE;
+      case 15: return B_LADDER_START;
+      case 16: return LadderResult;
       case 101: return HeartbeatReq;
       case 201: return PlayerMoveReq;
       case 202: return PlayerGoHotelReq;
