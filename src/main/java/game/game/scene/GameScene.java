@@ -60,4 +60,7 @@ public class GameScene {
         schedule.schedule(() -> tell(msg), second, TimeUnit.SECONDS);
     }
 
+    public long getId() {
+        return id;
+    }
 }

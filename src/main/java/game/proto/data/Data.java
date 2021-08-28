@@ -378,46 +378,47 @@ public final class Data {
       "perty\":\n\007BagSlot\022\016\n\006slotId\030\001 \001(\005\022\037\n\004data" +
       "\030\002 \001(\0132\021.Message.ItemData\"7\n\007Dungeon\022\n\n\002" +
       "id\030\001 \001(\005\022\016\n\006bossId\030\002 \001(\005\022\020\n\010defeated\030\003 \003" +
-      "(\005\"\031\n\013ExpressInfo\022\n\n\002id\030\001 \001(\005\"\246\002\n\nLadder" +
-      "Info\022\017\n\007sinSide\030\001 \001(\005\022\r\n\005score\030\002 \001(\005\022\014\n\004" +
-      "win1\030\003 \001(\005\022\014\n\004win2\030\004 \001(\005\022\r\n\005lose1\030\005 \001(\005\022" +
-      "\r\n\005lose2\030\006 \001(\005\022\016\n\006heroId\030\007 \001(\005\0225\n\theroSc" +
-      "ore\030\t \003(\0132\".Message.LadderInfo.HeroScore" +
-      "Entry\022+\n\006report\030\n \003(\0132\033.Message.LadderSi" +
-      "ngleReport\032J\n\016HeroScoreEntry\022\013\n\003key\030\001 \001(" +
-      "\005\022\'\n\005value\030\002 \001(\0132\030.Message.LadderHeroSco" +
-      "re:\0028\001\"K\n\017LadderHeroScore\022\014\n\004win1\030\001 \001(\005\022" +
-      "\014\n\004win2\030\002 \001(\005\022\r\n\005lose1\030\003 \001(\005\022\r\n\005lose2\030\004 " +
-      "\001(\005\"\204\001\n\022LadderSingleReport\022\r\n\005winId\030\001 \001(" +
-      "\003\022\r\n\005first\030\002 \001(\003\022\'\n\002p1\030\005 \001(\0132\033.Message.L" +
-      "adderSinglePlayer\022\'\n\002p2\030\006 \001(\0132\033.Message." +
-      "LadderSinglePlayer\"?\n\022LadderSinglePlayer" +
-      "\022\013\n\003uid\030\001 \001(\003\022\016\n\006heroId\030\002 \001(\005\022\014\n\004name\030\005 " +
-      "\001(\t*+\n\013NpcShowEnum\022\014\n\010NPC_NONE\020\000\022\016\n\nNPC_" +
-      "SHOW_1\020\001*S\n\017EnumItemQuality\022\n\n\006Q_NONE\020\000\022" +
-      "\007\n\003Q_W\020\001\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003Q_P\020\004\022\007\n\003Q" +
-      "_O\020\005\022\007\n\003Q_R\020\006*5\n\016EnumDamageType\022\n\n\006D_NON" +
-      "E\020\000\022\n\n\006D_FIRE\020\001\022\013\n\007D_LIGHT\020\002*O\n\rFormatio" +
-      "nType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FORMATION_D" +
-      "EFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002*E\n\nRewardT" +
-      "ype\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017REWARD_RESOURC" +
-      "E\020\001\022\017\n\013REWARD_ITEM\020\002*\245\001\n\nRecordType\022\n\n\006A" +
-      "CTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t" +
-      "\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005" +
-      "\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSK" +
-      "ILL_USE\020\010\022\021\n\rSHIELD_CHANGE\020\t*h\n\nDamageTy" +
-      "pe\022\017\n\013DAMAGE_NONE\020\000\022\021\n\rDAMAGE_NORMAL\020\001\022\023" +
-      "\n\017DAMAGE_CRITICAL\020\002\022\020\n\014DAMAGE_SKILL\020\003\022\017\n" +
-      "\013DAMAGE_BUFF\020\004*F\n\014DisplayPoint\022\014\n\010DP_ATT" +
-      "_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_D" +
-      "EF_1\020\003*<\n\tEnemyType\022\014\n\010CREATURE\020\000\022\n\n\006PLA" +
-      "YER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCISE\020\003*<\n\020ManualAc" +
-      "tionType\022\013\n\007MA_NONE\020\000\022\r\n\tMA_ATTACK\020\001\022\014\n\010" +
-      "MA_SKILL\020\002*,\n\tFightSide\022\013\n\007FS_NONE\020\000\022\010\n\004" +
-      "FS_A\020\001\022\010\n\004FS_B\020\002*n\n\010HomeType\022\n\n\006H_NONE\020\000" +
-      "\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_WALL\020\004\022\014\n" +
-      "\010H_CARPET\020\005\022\n\n\006H_ROAD\020\006\022\013\n\007H_GOODS\020\007\022\n\n\006" +
-      "H_ITEM\020\024B\025\n\017game.proto.dataH\001P\001b\006proto3"
+      "(\005\"\031\n\013ExpressInfo\022\n\n\002id\030\001 \001(\005\"\265\002\n\nLadder" +
+      "Info\022\r\n\005order\030\001 \001(\005\022\r\n\005score\030\002 \001(\005\022\014\n\004wi" +
+      "n1\030\003 \001(\005\022\014\n\004win2\030\004 \001(\005\022\r\n\005lose1\030\005 \001(\005\022\r\n" +
+      "\005lose2\030\006 \001(\005\022\016\n\006heroId\030\007 \001(\005\022\017\n\007inMatch\030" +
+      "\010 \001(\010\0225\n\theroScore\030\t \003(\0132\".Message.Ladde" +
+      "rInfo.HeroScoreEntry\022+\n\006report\030\n \003(\0132\033.M" +
+      "essage.LadderSingleReport\032J\n\016HeroScoreEn" +
+      "try\022\013\n\003key\030\001 \001(\005\022\'\n\005value\030\002 \001(\0132\030.Messag" +
+      "e.LadderHeroScore:\0028\001\"K\n\017LadderHeroScore" +
+      "\022\014\n\004win1\030\001 \001(\005\022\014\n\004win2\030\002 \001(\005\022\r\n\005lose1\030\003 " +
+      "\001(\005\022\r\n\005lose2\030\004 \001(\005\"\204\001\n\022LadderSingleRepor" +
+      "t\022\r\n\005winId\030\001 \001(\003\022\r\n\005first\030\002 \001(\003\022\'\n\002p1\030\005 " +
+      "\001(\0132\033.Message.LadderSinglePlayer\022\'\n\002p2\030\006" +
+      " \001(\0132\033.Message.LadderSinglePlayer\"?\n\022Lad" +
+      "derSinglePlayer\022\013\n\003uid\030\001 \001(\003\022\016\n\006heroId\030\002" +
+      " \001(\005\022\014\n\004name\030\005 \001(\t*+\n\013NpcShowEnum\022\014\n\010NPC" +
+      "_NONE\020\000\022\016\n\nNPC_SHOW_1\020\001*S\n\017EnumItemQuali" +
+      "ty\022\n\n\006Q_NONE\020\000\022\007\n\003Q_W\020\001\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020" +
+      "\003\022\007\n\003Q_P\020\004\022\007\n\003Q_O\020\005\022\007\n\003Q_R\020\006*5\n\016EnumDama" +
+      "geType\022\n\n\006D_NONE\020\000\022\n\n\006D_FIRE\020\001\022\013\n\007D_LIGH" +
+      "T\020\002*O\n\rFormationType\022\022\n\016FORMATION_NONE\020\000" +
+      "\022\025\n\021FORMATION_DEFAULT\020\001\022\023\n\017FORMATION_ARE" +
+      "NA\020\002*E\n\nRewardType\022\021\n\rREWARD_NORMAL\020\000\022\023\n" +
+      "\017REWARD_RESOURCE\020\001\022\017\n\013REWARD_ITEM\020\002*\245\001\n\n" +
+      "RecordType\022\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHE" +
+      "ALTH_CHANGE\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017" +
+      "\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO" +
+      "_ACTION\020\007\022\r\n\tSKILL_USE\020\010\022\021\n\rSHIELD_CHANG" +
+      "E\020\t*h\n\nDamageType\022\017\n\013DAMAGE_NONE\020\000\022\021\n\rDA" +
+      "MAGE_NORMAL\020\001\022\023\n\017DAMAGE_CRITICAL\020\002\022\020\n\014DA" +
+      "MAGE_SKILL\020\003\022\017\n\013DAMAGE_BUFF\020\004*F\n\014Display" +
+      "Point\022\014\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_" +
+      "ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*<\n\tEnemyType\022\014\n\010CR" +
+      "EATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCIS" +
+      "E\020\003*<\n\020ManualActionType\022\013\n\007MA_NONE\020\000\022\r\n\t" +
+      "MA_ATTACK\020\001\022\014\n\010MA_SKILL\020\002*,\n\tFightSide\022\013" +
+      "\n\007FS_NONE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS_B\020\002*n\n\010HomeT" +
+      "ype\022\n\n\006H_NONE\020\000\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003" +
+      "\022\n\n\006H_WALL\020\004\022\014\n\010H_CARPET\020\005\022\n\n\006H_ROAD\020\006\022\013" +
+      "\n\007H_GOODS\020\007\022\n\n\006H_ITEM\020\024B\025\n\017game.proto.da" +
+      "taH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -686,7 +687,7 @@ public final class Data {
     internal_static_Message_LadderInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderInfo_descriptor,
-        new java.lang.String[] { "SinSide", "Score", "Win1", "Win2", "Lose1", "Lose2", "HeroId", "HeroScore", "Report", });
+        new java.lang.String[] { "Order", "Score", "Win1", "Win2", "Lose1", "Lose2", "HeroId", "InMatch", "HeroScore", "Report", });
     internal_static_Message_LadderInfo_HeroScoreEntry_descriptor =
       internal_static_Message_LadderInfo_descriptor.getNestedTypes().get(0);
     internal_static_Message_LadderInfo_HeroScoreEntry_fieldAccessorTable = new

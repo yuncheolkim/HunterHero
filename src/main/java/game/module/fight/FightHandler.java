@@ -15,7 +15,6 @@ import game.module.event.handler.BattleEndEvent;
 import game.module.player.ResourceService;
 import game.player.Player;
 import game.proto.*;
-import game.proto.back.MsgNo;
 import game.proto.data.FightEnemyInfo;
 import game.proto.data.FightHeroPos;
 import game.proto.data.PlayerHero;
@@ -93,7 +92,7 @@ public class FightHandler {
             List<Reward> rewardList = fightReward(player, record);
             result.addAllReward(rewardList);
         }
-        player.getTransport().send(MsgNo.fight_start_VALUE, result.build());
+        player.getTransport().send(No.FightStartReq, result.build());
 
         if (player.pd.getBattleId() != 0) {
             BattleEndEvent event = new BattleEndEvent();

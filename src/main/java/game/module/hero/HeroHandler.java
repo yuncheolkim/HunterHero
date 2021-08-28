@@ -13,8 +13,8 @@ import game.manager.EventManager;
 import game.module.event.handler.HeroPowerUpEvent;
 import game.player.Player;
 import game.proto.*;
-import game.proto.back.MsgNo;
 import game.proto.data.*;
+import game.proto.no.No;
 
 /**
  * @author Yunzhe.Jin
@@ -102,7 +102,7 @@ public class HeroHandler {
     public static void updateHero(final Player player, final PlayerHero hero) {
         player.getPd().putHero(hero.getId(), hero);
         // Push
-        player.getTransport().send(MsgNo.hero_change_VALUE, HeroChangePush.newBuilder().setHero(hero).build());
+        player.getTransport().send(No.HeroChangePush, HeroChangePush.newBuilder().setHero(hero).build());
     }
 
     /**

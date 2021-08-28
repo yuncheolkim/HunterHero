@@ -57,6 +57,26 @@ public interface PlayerBackDataOrBuilder extends
   long getUpdateTime();
 
   /**
+   * <pre>
+   * 单挑分数查找对手基线
+   * </pre>
+   *
+   * <code>int32 ladderSingleScore = 7;</code>
+   * @return The ladderSingleScore.
+   */
+  int getLadderSingleScore();
+
+  /**
+   * <pre>
+   * 多人分数查找对手基线
+   * </pre>
+   *
+   * <code>int32 ladderMultiScore = 8;</code>
+   * @return The ladderMultiScore.
+   */
+  int getLadderMultiScore();
+
+  /**
    * <code>int32 localId = 10;</code>
    * @return The localId.
    */

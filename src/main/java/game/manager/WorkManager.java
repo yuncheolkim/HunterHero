@@ -73,12 +73,9 @@ public class WorkManager extends AbsLifecycle {
 
     /**
      * 英雄属性计算线程
-     *
-     * @param pid
-     * @return
      */
-    public Work getHeroCalcWork(final long pid) {
-        return heroCalcWork[(int) (pid % heroCalcWork.length)];
+    public Work getHeroCalcWork(final long id) {
+        return heroCalcWork[(int) (id % heroCalcWork.length)];
     }
 
 

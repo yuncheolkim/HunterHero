@@ -9,7 +9,7 @@ import game.module.task.TaskService;
 import game.player.Player;
 import game.proto.PlayerLevelChangePush;
 import game.proto.TaskNewPush;
-import game.proto.back.MsgNo;
+import game.proto.no.No;
 import org.apache.commons.collections4.CollectionUtils;
 
 import java.util.List;
@@ -29,7 +29,7 @@ public class LevelUpEventHandler implements IPlayerEventHandler<LevelUpEvent> {
             EventManager.firePlayerEvent(player, new HeroPowerUpEvent(data.heroId));
         } else {
             // push
-            player.getTransport().send(MsgNo.PlayerLevelChangePushNo_VALUE, PlayerLevelChangePush.newBuilder().setValue(data.level).build());
+            player.getTransport().send(No.PlayerLevelChangePush, PlayerLevelChangePush.newBuilder().setValue(data.level).build());
 
             // 计算体力
             player.setMaxPower(ConfigManager.GetInitPower() + data.level);
@@ -54,7 +54,7 @@ public class LevelUpEventHandler implements IPlayerEventHandler<LevelUpEvent> {
                 if (!levelTask.isEmpty()) {
                     // 新任务
                     player.getTransport()
-                            .send(MsgNo.TaskNewPushNo_VALUE,
+                            .send(No.TaskNewPush,
                                     TaskNewPush.newBuilder().addAllTaskId(levelTask).buildPartial());
                 }
             }

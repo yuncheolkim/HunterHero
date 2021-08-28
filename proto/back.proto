@@ -48,3 +48,10 @@ enum FightType{
     F_NONE = 0;
     F_BATTLE = 1;// 野外战斗
 }
+
+// 准备战斗
+message LadderPrepare{
+    int64 id = 1;
+    bool auto = 2;
+    int32 type = 3;// 单挑
+}

@@ -96,6 +96,16 @@ private static final long serialVersionUID = 0L;
             updateTime_ = input.readInt64();
             break;
           }
+          case 56: {
+
+            ladderSingleScore_ = input.readInt32();
+            break;
+          }
+          case 64: {
+
+            ladderMultiScore_ = input.readInt32();
+            break;
+          }
           case 80: {
 
             localId_ = input.readInt32();
@@ -258,6 +268,36 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public long getUpdateTime() {
     return updateTime_;
+  }
+
+  public static final int LADDERSINGLESCORE_FIELD_NUMBER = 7;
+  private int ladderSingleScore_;
+  /**
+   * <pre>
+   * 单挑分数查找对手基线
+   * </pre>
+   *
+   * <code>int32 ladderSingleScore = 7;</code>
+   * @return The ladderSingleScore.
+   */
+  @java.lang.Override
+  public int getLadderSingleScore() {
+    return ladderSingleScore_;
+  }
+
+  public static final int LADDERMULTISCORE_FIELD_NUMBER = 8;
+  private int ladderMultiScore_;
+  /**
+   * <pre>
+   * 多人分数查找对手基线
+   * </pre>
+   *
+   * <code>int32 ladderMultiScore = 8;</code>
+   * @return The ladderMultiScore.
+   */
+  @java.lang.Override
+  public int getLadderMultiScore() {
+    return ladderMultiScore_;
   }
 
   public static final int LOCALID_FIELD_NUMBER = 10;
@@ -451,6 +491,12 @@ private static final long serialVersionUID = 0L;
     if (updateTime_ != 0L) {
       output.writeInt64(6, updateTime_);
     }
+    if (ladderSingleScore_ != 0) {
+      output.writeInt32(7, ladderSingleScore_);
+    }
+    if (ladderMultiScore_ != 0) {
+      output.writeInt32(8, ladderMultiScore_);
+    }
     if (localId_ != 0) {
       output.writeInt32(10, localId_);
     }
@@ -505,6 +551,14 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(6, updateTime_);
     }
+    if (ladderSingleScore_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(7, ladderSingleScore_);
+    }
+    if (ladderMultiScore_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(8, ladderMultiScore_);
+    }
     if (localId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(10, localId_);
@@ -552,6 +606,10 @@ private static final long serialVersionUID = 0L;
         != other.getLoginTime()) return false;
     if (getUpdateTime()
         != other.getUpdateTime()) return false;
+    if (getLadderSingleScore()
+        != other.getLadderSingleScore()) return false;
+    if (getLadderMultiScore()
+        != other.getLadderMultiScore()) return false;
     if (getLocalId()
         != other.getLocalId()) return false;
     if (hasCount() != other.hasCount()) return false;
@@ -589,6 +647,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + UPDATETIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getUpdateTime());
+    hash = (37 * hash) + LADDERSINGLESCORE_FIELD_NUMBER;
+    hash = (53 * hash) + getLadderSingleScore();
+    hash = (37 * hash) + LADDERMULTISCORE_FIELD_NUMBER;
+    hash = (53 * hash) + getLadderMultiScore();
     hash = (37 * hash) + LOCALID_FIELD_NUMBER;
     hash = (53 * hash) + getLocalId();
     if (hasCount()) {
@@ -770,6 +832,10 @@ private static final long serialVersionUID = 0L;
 
       updateTime_ = 0L;
 
+      ladderSingleScore_ = 0;
+
+      ladderMultiScore_ = 0;
+
       localId_ = 0;
 
       if (countBuilder_ == null) {
@@ -817,6 +883,8 @@ private static final long serialVersionUID = 0L;
       result.powerRecoverTime_ = powerRecoverTime_;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
+      result.ladderSingleScore_ = ladderSingleScore_;
+      result.ladderMultiScore_ = ladderMultiScore_;
       result.localId_ = localId_;
       if (countBuilder_ == null) {
         result.count_ = count_;
@@ -895,6 +963,12 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getUpdateTime() != 0L) {
         setUpdateTime(other.getUpdateTime());
+      }
+      if (other.getLadderSingleScore() != 0) {
+        setLadderSingleScore(other.getLadderSingleScore());
+      }
+      if (other.getLadderMultiScore() != 0) {
+        setLadderMultiScore(other.getLadderMultiScore());
       }
       if (other.getLocalId() != 0) {
         setLocalId(other.getLocalId());
@@ -1160,6 +1234,92 @@ private static final long serialVersionUID = 0L;
     public Builder clearUpdateTime() {
       
       updateTime_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int ladderSingleScore_ ;
+    /**
+     * <pre>
+     * 单挑分数查找对手基线
+     * </pre>
+     *
+     * <code>int32 ladderSingleScore = 7;</code>
+     * @return The ladderSingleScore.
+     */
+    @java.lang.Override
+    public int getLadderSingleScore() {
+      return ladderSingleScore_;
+    }
+    /**
+     * <pre>
+     * 单挑分数查找对手基线
+     * </pre>
+     *
+     * <code>int32 ladderSingleScore = 7;</code>
+     * @param value The ladderSingleScore to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLadderSingleScore(int value) {
+      
+      ladderSingleScore_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 单挑分数查找对手基线
+     * </pre>
+     *
+     * <code>int32 ladderSingleScore = 7;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLadderSingleScore() {
+      
+      ladderSingleScore_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int ladderMultiScore_ ;
+    /**
+     * <pre>
+     * 多人分数查找对手基线
+     * </pre>
+     *
+     * <code>int32 ladderMultiScore = 8;</code>
+     * @return The ladderMultiScore.
+     */
+    @java.lang.Override
+    public int getLadderMultiScore() {
+      return ladderMultiScore_;
+    }
+    /**
+     * <pre>
+     * 多人分数查找对手基线
+     * </pre>
+     *
+     * <code>int32 ladderMultiScore = 8;</code>
+     * @param value The ladderMultiScore to set.
+     * @return This builder for chaining.
+     */
+    public Builder setLadderMultiScore(int value) {
+      
+      ladderMultiScore_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 多人分数查找对手基线
+     * </pre>
+     *
+     * <code>int32 ladderMultiScore = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearLadderMultiScore() {
+      
+      ladderMultiScore_ = 0;
       onChanged();
       return this;
     }

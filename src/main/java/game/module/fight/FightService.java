@@ -229,13 +229,11 @@ public class FightService {
             List<Reward> itemRewardList = ItemDropService.dropEnemyItem(enemyId);
             if (!itemRewardList.isEmpty()) {
                 rewardList.addAll(itemRewardList);
-//                result.addAllReward(itemRewardList);
             }
             // task item
             itemRewardList = TaskService.dropEnemyItem(player, enemyId);
             if (!itemRewardList.isEmpty()) {
                 rewardList.addAll(itemRewardList);
-//                result.addAllReward(itemRewardList);
             }
         }
 

@@ -57,7 +57,7 @@ private static final long serialVersionUID = 0L;
             break;
           case 8: {
 
-            sinSide_ = input.readInt32();
+            order_ = input.readInt32();
             break;
           }
           case 16: {
@@ -88,6 +88,11 @@ private static final long serialVersionUID = 0L;
           case 56: {
 
             heroId_ = input.readInt32();
+            break;
+          }
+          case 64: {
+
+            inMatch_ = input.readBool();
             break;
           }
           case 74: {
@@ -159,19 +164,19 @@ private static final long serialVersionUID = 0L;
             game.proto.data.LadderInfo.class, game.proto.data.LadderInfo.Builder.class);
   }
 
-  public static final int SINSIDE_FIELD_NUMBER = 1;
-  private int sinSide_;
+  public static final int ORDER_FIELD_NUMBER = 1;
+  private int order_;
   /**
    * <pre>
    * 单挑是否先手, 1:先手 2:后手
    * </pre>
    *
-   * <code>int32 sinSide = 1;</code>
-   * @return The sinSide.
+   * <code>int32 order = 1;</code>
+   * @return The order.
    */
   @java.lang.Override
-  public int getSinSide() {
-    return sinSide_;
+  public int getOrder() {
+    return order_;
   }
 
   public static final int SCORE_FIELD_NUMBER = 2;
@@ -262,6 +267,17 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getHeroId() {
     return heroId_;
+  }
+
+  public static final int INMATCH_FIELD_NUMBER = 8;
+  private boolean inMatch_;
+  /**
+   * <code>bool inMatch = 8;</code>
+   * @return The inMatch.
+   */
+  @java.lang.Override
+  public boolean getInMatch() {
+    return inMatch_;
   }
 
   public static final int HEROSCORE_FIELD_NUMBER = 9;
@@ -419,8 +435,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (sinSide_ != 0) {
-      output.writeInt32(1, sinSide_);
+    if (order_ != 0) {
+      output.writeInt32(1, order_);
     }
     if (score_ != 0) {
       output.writeInt32(2, score_);
@@ -440,6 +456,9 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       output.writeInt32(7, heroId_);
     }
+    if (inMatch_ != false) {
+      output.writeBool(8, inMatch_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -458,9 +477,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (sinSide_ != 0) {
+    if (order_ != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(1, sinSide_);
+        .computeInt32Size(1, order_);
     }
     if (score_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -485,6 +504,10 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, heroId_);
+    }
+    if (inMatch_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(8, inMatch_);
     }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.LadderHeroScore> entry
          : internalGetHeroScore().getMap().entrySet()) {
@@ -515,8 +538,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.data.LadderInfo other = (game.proto.data.LadderInfo) obj;
 
-    if (getSinSide()
-        != other.getSinSide()) return false;
+    if (getOrder()
+        != other.getOrder()) return false;
     if (getScore()
         != other.getScore()) return false;
     if (getWin1()
@@ -529,6 +552,8 @@ private static final long serialVersionUID = 0L;
         != other.getLose2()) return false;
     if (getHeroId()
         != other.getHeroId()) return false;
+    if (getInMatch()
+        != other.getInMatch()) return false;
     if (!internalGetHeroScore().equals(
         other.internalGetHeroScore())) return false;
     if (!getReportList()
@@ -544,8 +569,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + SINSIDE_FIELD_NUMBER;
-    hash = (53 * hash) + getSinSide();
+    hash = (37 * hash) + ORDER_FIELD_NUMBER;
+    hash = (53 * hash) + getOrder();
     hash = (37 * hash) + SCORE_FIELD_NUMBER;
     hash = (53 * hash) + getScore();
     hash = (37 * hash) + WIN1_FIELD_NUMBER;
@@ -558,6 +583,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getLose2();
     hash = (37 * hash) + HEROID_FIELD_NUMBER;
     hash = (53 * hash) + getHeroId();
+    hash = (37 * hash) + INMATCH_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getInMatch());
     if (!internalGetHeroScore().getMap().isEmpty()) {
       hash = (37 * hash) + HEROSCORE_FIELD_NUMBER;
       hash = (53 * hash) + internalGetHeroScore().hashCode();
@@ -727,7 +755,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      sinSide_ = 0;
+      order_ = 0;
 
       score_ = 0;
 
@@ -740,6 +768,8 @@ private static final long serialVersionUID = 0L;
       lose2_ = 0;
 
       heroId_ = 0;
+
+      inMatch_ = false;
 
       internalGetMutableHeroScore().clear();
       if (reportBuilder_ == null) {
@@ -775,13 +805,14 @@ private static final long serialVersionUID = 0L;
     public game.proto.data.LadderInfo buildPartial() {
       game.proto.data.LadderInfo result = new game.proto.data.LadderInfo(this);
       int from_bitField0_ = bitField0_;
-      result.sinSide_ = sinSide_;
+      result.order_ = order_;
       result.score_ = score_;
       result.win1_ = win1_;
       result.win2_ = win2_;
       result.lose1_ = lose1_;
       result.lose2_ = lose2_;
       result.heroId_ = heroId_;
+      result.inMatch_ = inMatch_;
       result.heroScore_ = internalGetHeroScore();
       result.heroScore_.makeImmutable();
       if (reportBuilder_ == null) {
@@ -841,8 +872,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.data.LadderInfo other) {
       if (other == game.proto.data.LadderInfo.getDefaultInstance()) return this;
-      if (other.getSinSide() != 0) {
-        setSinSide(other.getSinSide());
+      if (other.getOrder() != 0) {
+        setOrder(other.getOrder());
       }
       if (other.getScore() != 0) {
         setScore(other.getScore());
@@ -861,6 +892,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getHeroId() != 0) {
         setHeroId(other.getHeroId());
+      }
+      if (other.getInMatch() != false) {
+        setInMatch(other.getInMatch());
       }
       internalGetMutableHeroScore().mergeFrom(
           other.internalGetHeroScore());
@@ -920,31 +954,31 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private int sinSide_ ;
+    private int order_ ;
     /**
      * <pre>
      * 单挑是否先手, 1:先手 2:后手
      * </pre>
      *
-     * <code>int32 sinSide = 1;</code>
-     * @return The sinSide.
+     * <code>int32 order = 1;</code>
+     * @return The order.
      */
     @java.lang.Override
-    public int getSinSide() {
-      return sinSide_;
+    public int getOrder() {
+      return order_;
     }
     /**
      * <pre>
      * 单挑是否先手, 1:先手 2:后手
      * </pre>
      *
-     * <code>int32 sinSide = 1;</code>
-     * @param value The sinSide to set.
+     * <code>int32 order = 1;</code>
+     * @param value The order to set.
      * @return This builder for chaining.
      */
-    public Builder setSinSide(int value) {
+    public Builder setOrder(int value) {
       
-      sinSide_ = value;
+      order_ = value;
       onChanged();
       return this;
     }
@@ -953,12 +987,12 @@ private static final long serialVersionUID = 0L;
      * 单挑是否先手, 1:先手 2:后手
      * </pre>
      *
-     * <code>int32 sinSide = 1;</code>
+     * <code>int32 order = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearSinSide() {
+    public Builder clearOrder() {
       
-      sinSide_ = 0;
+      order_ = 0;
       onChanged();
       return this;
     }
@@ -1217,6 +1251,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearHeroId() {
       
       heroId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private boolean inMatch_ ;
+    /**
+     * <code>bool inMatch = 8;</code>
+     * @return The inMatch.
+     */
+    @java.lang.Override
+    public boolean getInMatch() {
+      return inMatch_;
+    }
+    /**
+     * <code>bool inMatch = 8;</code>
+     * @param value The inMatch to set.
+     * @return This builder for chaining.
+     */
+    public Builder setInMatch(boolean value) {
+      
+      inMatch_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>bool inMatch = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearInMatch() {
+      
+      inMatch_ = false;
       onChanged();
       return this;
     }

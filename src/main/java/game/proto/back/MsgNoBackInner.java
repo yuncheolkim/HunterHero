@@ -32,6 +32,10 @@ public enum MsgNoBackInner
    * <code>B_FISH_HOOK_EXPIRE = 14;</code>
    */
   B_FISH_HOOK_EXPIRE(14),
+  /**
+   * <code>B_LADDER_START = 15;</code>
+   */
+  B_LADDER_START(15),
   UNRECOGNIZED(-1),
   ;
 
@@ -59,6 +63,10 @@ public enum MsgNoBackInner
    * <code>B_FISH_HOOK_EXPIRE = 14;</code>
    */
   public static final int B_FISH_HOOK_EXPIRE_VALUE = 14;
+  /**
+   * <code>B_LADDER_START = 15;</code>
+   */
+  public static final int B_LADDER_START_VALUE = 15;
 
 
   public final int getNumber() {
@@ -91,6 +99,7 @@ public enum MsgNoBackInner
       case 12: return B_HERO_DATA;
       case 13: return B_FISH_HOOK;
       case 14: return B_FISH_HOOK_EXPIRE;
+      case 15: return B_LADDER_START;
       default: return null;
     }
   }
@@ -121,7 +130,7 @@ public enum MsgNoBackInner
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return game.proto.back.MsgNoOuterClass.getDescriptor().getEnumTypes().get(0);
+    return game.proto.back.MsgNo.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final MsgNoBackInner[] VALUES = values();

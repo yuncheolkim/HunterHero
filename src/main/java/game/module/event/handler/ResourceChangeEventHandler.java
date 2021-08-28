@@ -3,7 +3,7 @@ package game.module.event.handler;
 import game.module.event.IPlayerEventHandler;
 import game.player.Player;
 import game.proto.ResourceChangePush;
-import game.proto.back.MsgNo;
+import game.proto.no.No;
 
 /**
  * 资源变化后统一处理
@@ -23,6 +23,6 @@ public class ResourceChangeEventHandler implements IPlayerEventHandler<ResourceC
                 .setHeroId(data.heroId)
                 .setResourceId(data.resource.id).build();
 
-        player.getTransport().send(MsgNo.resource_change_push_VALUE, push);
+        player.getTransport().send(No.ResourceChangePush, push);
     }
 }

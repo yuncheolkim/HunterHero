@@ -32,7 +32,6 @@ import game.proto.LoginRes;
 import game.proto.Message;
 import game.proto.ResourceChangePush;
 import game.proto.back.GameCount;
-import game.proto.back.MsgNo;
 import game.proto.back.PlayerBackData;
 import game.proto.data.*;
 import game.proto.no.No;
@@ -139,7 +138,7 @@ public class Player {
             builder.setFirst(true);
         }
 
-        transport.send(Message.newBuilder().setMsgNo(MsgNo.login_req_VALUE).setBody(builder.build().toByteString()).build());
+        transport.send(Message.newBuilder().setMsgNo(No.LoginReq.getNumber()).setBody(builder.build().toByteString()).build());
     }
 
     public void relogin() {
@@ -149,7 +148,7 @@ public class Player {
             builder.setFirst(true);
         }
 
-        transport.send(Message.newBuilder().setMsgNo(MsgNo.login_req_VALUE).setBody(builder.build().toByteString()).build());
+        transport.send(Message.newBuilder().setMsgNo(No.LoginReq.getNumber()).setBody(builder.build().toByteString()).build());
 
         prepareData();
 
@@ -536,7 +535,7 @@ public class Player {
         EventManager.firePlayerEvent(this, new ItemAddEvent(data));
 
         // push
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
+        transport.send(No.BagInfoChangePush, bagPushBuilder.setType(type).build());
 
     }
 
@@ -622,7 +621,7 @@ public class Player {
             }
 
             // push
-            transport.send(MsgNo.BagInfoChangePushNo_VALUE, bagPushBuilder.setType(type).build());
+            transport.send(No.BagInfoChangePush, bagPushBuilder.setType(type).build());
         }
 
         // event
@@ -689,7 +688,7 @@ public class Player {
         }
 
         // push
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, BagInfoChangePush.newBuilder()
+        transport.send(No.BagInfoChangePush, BagInfoChangePush.newBuilder()
                 .setType(type)
                 .setClean(true).addAllSlot(bagUpdateService.findAll(this).values()).build());
     }
@@ -716,7 +715,7 @@ public class Player {
 
         final BagInfoChangePush.Builder builder = BagInfoChangePush.newBuilder().setType(type);
         builder.addSlot(bagSlot.toBuilder().setData(bagSlot.getData().toBuilder().setCount(remain).build()).build());
-        transport.send(MsgNo.BagInfoChangePushNo_VALUE, builder.build());
+        transport.send(No.BagInfoChangePush, builder.build());
     }
 
 

@@ -12,10 +12,10 @@ public interface LadderInfoOrBuilder extends
    * 单挑是否先手, 1:先手 2:后手
    * </pre>
    *
-   * <code>int32 sinSide = 1;</code>
-   * @return The sinSide.
+   * <code>int32 order = 1;</code>
+   * @return The order.
    */
-  int getSinSide();
+  int getOrder();
 
   /**
    * <pre>
@@ -76,6 +76,12 @@ public interface LadderInfoOrBuilder extends
    * @return The heroId.
    */
   int getHeroId();
+
+  /**
+   * <code>bool inMatch = 8;</code>
+   * @return The inMatch.
+   */
+  boolean getInMatch();
 
   /**
    * <code>map&lt;int32, .Message.LadderHeroScore&gt; heroScore = 9;</code>

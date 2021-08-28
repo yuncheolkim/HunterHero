@@ -3,7 +3,7 @@ package game.module.event.handler;
 import game.module.event.IPlayerEventHandler;
 import game.player.Player;
 import game.proto.ExpChangePush;
-import game.proto.back.MsgNo;
+import game.proto.no.No;
 
 /**
  * 玩家或者英雄增加经验
@@ -18,7 +18,7 @@ public class ExpAddEventHandler implements IPlayerEventHandler<ExpAddEvent> {
     public void handler(Player player, ExpAddEvent data) {
 
         // Push
-        player.getTransport().send(MsgNo.ExpChangePushNo_VALUE, ExpChangePush.newBuilder()
+        player.getTransport().send(No.ExpChangePush, ExpChangePush.newBuilder()
                 .setHeroId(data.heroId)
                 .setAddExp(data.addExp)
                 .setCurExp(data.curExp)

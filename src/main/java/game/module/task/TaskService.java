@@ -7,8 +7,8 @@ import game.manager.ConfigManager;
 import game.module.bag.BagService;
 import game.player.Player;
 import game.proto.TaskStatusChangePush;
-import game.proto.back.MsgNo;
 import game.proto.data.*;
+import game.proto.no.No;
 import game.utils.CalcUtil;
 
 import java.util.ArrayList;
@@ -125,7 +125,7 @@ public class TaskService {
                         if (taskData.completeNpcId != taskData.npcId) {
                             // 交任务的npc跟 接任务的npc不同
                             // 前一个npc完成任务
-                            player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, TaskStatusChangePush.newBuilder()
+                            player.getTransport().send(No.TaskStatusChangePush, TaskStatusChangePush.newBuilder()
                                     .setNpcId(taskData.npcId)
                                     .setStatus(TaskStatusEnum.提交任务.id)
                                     .setTaskId(taskData.id)
@@ -139,7 +139,7 @@ public class TaskService {
                         msgBuilder.setStatus(TaskStatusEnum.进度更新.id);
                     }
                     msgBuilder.setNpcId(taskData.completeNpcId);
-                    player.getTransport().send(MsgNo.TaskStatusChangePushNo_VALUE, msgBuilder
+                    player.getTransport().send(No.TaskStatusChangePush, msgBuilder
                             .build()
                     );
                     taskResult = null;
