@@ -1,5 +1,7 @@
 package game.anno;
 
+import game.proto.no.No;
+
 import java.lang.annotation.*;
 
 /**
@@ -17,7 +19,9 @@ public @interface GameHandler {
      *
      * @return
      */
-    int no();
+    No no();
+
+    boolean inner() default false;
 
     /**
      * 消息体

@@ -23,6 +23,7 @@ public class RetInvoker<T extends MessageLite> implements IInvoke {
     private final int msgNo;
 
     private final Supplier<Parser<T>> supplier;
+    private Parser<T> parser;
 
 
     public RetInvoker(final int msgNo, final IMsgRetHandler<T> handler, final Supplier<Parser<T>> supplier) {
@@ -41,7 +42,10 @@ public class RetInvoker<T extends MessageLite> implements IInvoke {
     public void invoke(final Player player, final Message msg) {
         T req = null;
         try {
-            req = supplier.get().parseFrom(msg.getBody());
+            if (parser == null) {
+                parser = supplier.get();
+            }
+            req = parser.parseFrom(msg.getBody());
             final MessageLite ret = this.handler.handler(player, req);
             if (ret != null) {
                 player.getTransport().send(Message.newBuilder(msg).setBody(ret.toByteString()).build());

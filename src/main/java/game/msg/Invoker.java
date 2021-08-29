@@ -22,8 +22,9 @@ public class Invoker<T extends MessageLite> implements IInvoke {
 
     private final int msgNo;
 
-    private final Supplier<Parser<T>> supplier;
+    private Supplier<Parser<T>> supplier;
 
+    private Parser<T> parser;
 
     public Invoker(final int msgNo, final IMsgHandler<T> handler, final Supplier<Parser<T>> supplier) {
         this.handler = handler;
@@ -37,13 +38,21 @@ public class Invoker<T extends MessageLite> implements IInvoke {
         this.supplier = supplier;
     }
 
+    public Invoker(No msgNo, final IMsgHandler<T> handler, final Parser<T> parser) {
+        this.handler = handler;
+        this.msgNo = msgNo.getNumber();
+        this.parser = parser;
+    }
 
     @Override
     public void invoke(final Player player, final Message msg) {
 
         T req = null;
         try {
-            req = supplier.get().parseFrom(msg.getBody());
+            if (parser == null) {
+                parser = supplier.get();
+            }
+            req = parser.parseFrom(msg.getBody());
             handler.handler(player, req);
         } catch (final ModuleException e) {
             Logs.M.error("", e);

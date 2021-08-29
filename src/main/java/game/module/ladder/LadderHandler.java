@@ -1,5 +1,6 @@
 package game.module.ladder;
 
+import game.anno.GameHandler;
 import game.anno.InsideMsgHandler;
 import game.base.G;
 import game.exception.ModuleAssert;
@@ -18,6 +19,8 @@ import game.proto.data.PlayerHero;
 import game.proto.no.No;
 import game.utils.DateUtils;
 
+import java.util.HashMap;
+
 /**
  * 排位赛
  * 单挑
@@ -33,7 +36,7 @@ public class LadderHandler {
      * @param player
      * @param req
      */
-    
+
     public static void formation(final Player player, final LadderSetFormationReq req) {
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(req.getHeroId(), null);
         ModuleAssert.notNull(heroOrDefault);
@@ -98,7 +101,7 @@ public class LadderHandler {
      *
      * @param player
      */
-    @InsideMsgHandler
+    @GameHandler(no = No.LadderCancel, inner = true)
     public static void ladderCancel(final Player player) {
         LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
         if (ladderInfoBuilder.getInMatch()) {
@@ -118,7 +121,7 @@ public class LadderHandler {
      * @param player
      * @param req
      */
-    @InsideMsgHandler
+    @GameHandler(no = No.LadderResult, inner = true)
     public static void ladderResult(final Player player, LadderResult req) {
         LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
 
@@ -126,8 +129,17 @@ public class LadderHandler {
 
             ladderInfoBuilder.setInMatch(false);
             // push
-
         }
+    }
+
+    public static LadderResult test1(Player p, LadderResult req) {
+        HashMap<String, String> s = new HashMap<>();
+        System.out.println("t1");
+        return LadderResult.newBuilder().setType(11).build();
+    }
+
+    public static void test2(Player p) {
+        System.out.println("t2");
     }
 
 }

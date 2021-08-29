@@ -1,7 +1,11 @@
 package game.manager;
 
+import com.google.common.collect.ImmutableSet;
+import com.google.common.reflect.ClassPath;
+import game.anno.GameHandler;
 import game.base.AbsLifecycle;
 import game.base.G;
+import game.base.Logs;
 import game.module.bag.BagHandler;
 import game.module.chat.ChatHandler;
 import game.module.chat.ChatScene;
@@ -25,13 +29,18 @@ import game.module.task.TaskHandler;
 import game.module.temple.TempleHandler;
 import game.module.title.TitleHandler;
 import game.msg.*;
+import game.player.Player;
 import game.proto.*;
 import game.proto.back.FishData;
 import game.proto.back.LadderPrepare;
 import game.proto.back.LadderResult;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
 
+import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -50,6 +59,8 @@ public class GameManager extends AbsLifecycle {
     private int version = 1;
 
     private final DefaultHeroCalcProcess heroCalcProcess = new DefaultHeroCalcProcess();
+
+    private ClassPool pool = ClassPool.getDefault();
 
     public GameManager() {
     }
@@ -76,10 +87,65 @@ public class GameManager extends AbsLifecycle {
     @Override
     public void start() {
         // 初始化 业务逻辑处理
+        initHandler1();
         initHandler();
         // 初始化 场景
         initScene();
         super.start();
+    }
+
+    private void initHandler1() {
+
+        try {
+            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive("game.module");
+            topLevelClasses.stream().filter(classInfo -> {
+                return classInfo.getPackageName().startsWith("game.module");
+            }).filter(classInfo -> classInfo.getName().endsWith("Handler")).forEach(classInfo -> {
+
+                Class<?> clazz = classInfo.load();
+                for (Method m : clazz.getDeclaredMethods()) {
+                    if (m.isAnnotationPresent(GameHandler.class)) {
+                        Logs.C.info("[Handler] ==========> {}:{}", classInfo.getName(), m.getName());
+
+                        if (m.getParameters().length == 1) {
+                            addHandler(createHandler(clazz, m));
+                        }
+                    }
+                }
+
+            });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        pool = null;
+    }
+
+    /**
+     * javaassit 包装
+     *
+     * @param clazz
+     * @param m
+     * @return
+     */
+    private IInvoke createHandler(Class<?> clazz, Method m) {
+
+        try {
+            CtClass cc = pool.get(clazz.getName());
+            CtMethod declaredMethod = cc.getDeclaredMethod(m.getName());
+            GameHandler annotation = m.getAnnotation(GameHandler.class);
+
+            CtClass newClass = pool.makeClass("Handler_" + annotation.no());
+            CtMethod ctMethod = new CtMethod(CtClass.voidType, "handler", new CtClass[]{
+                    pool.get(Player.class.getName())
+            }, newClass);
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+
+        return null;
     }
 
 
@@ -95,8 +161,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.B_FISH_HOOK_VALUE, FishHandler::fishHook, FishData::parser));
         addHandler(new Invoker<>(No.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
         addHandler(new Invoker<>(No.LadderPrepare, LadderHandler::prepareLadder, LadderPrepare::parser));
-        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult::parser));
+//        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult::parser));
         addHandler(new InvokerNoParam(No.LadderCancel, LadderHandler::ladderCancel));
+        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult.parser()));
 
         // heart
         addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
@@ -128,7 +195,7 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.FightHmActionReq, FightHandler::manualFightAction, FightHmActionReq::parser));
 
         // Ladder
-        
+
         // battle
         addHandler(new Invoker<>(No.BattleEnterReq, FightHandler::battleEnter, BattleEnterReq::parser));
         // hero
