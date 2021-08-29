@@ -9,13 +9,8 @@ import game.game.enums.ConsumeTypeEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.module.fight.FightService;
-import game.module.fight.data.FightCancel;
-import game.module.fight.data.FightFormation;
 import game.player.Player;
 import game.proto.*;
-import game.proto.back.LadderPrepare;
-import game.proto.back.LadderResult;
-import game.proto.data.LadderInfo;
 import game.proto.data.Resource;
 import game.proto.data.ScenePos;
 import game.proto.no.No;
@@ -134,39 +129,6 @@ public class PlayerHandler {
 
         // 检查战斗
         FightService.checkFight(player);
-
-    }
-
-    /**
-     * 准备排位战斗信息
-     * 英雄信息计算
-     *
-     * @param player
-     */
-    public static void prepareLadder(final Player player, LadderPrepare req) {
-        if (req.getType() == 1) {//单挑
-            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
-            if (ladderInfoBuilder.getInMatch()) {
-
-                int heroId = ladderInfoBuilder.getHeroId();
-                FightFormation formation = new FightFormation();
-                formation.id = req.getId();
-                formation.uid = player.getPid();
-                formation.heroList.add(FightService.createFightHero(player, heroId));
-                G.G.getFightScene().tell(formation);
-            } else {
-                G.G.getFightScene().tell(new FightCancel(req.getId()));
-            }
-        }
-    }
-
-    /**
-     * 战斗结果
-     *
-     * @param player
-     * @param req
-     */
-    public static void ladderResult(final Player player, LadderResult req) {
 
     }
 

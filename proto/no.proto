@@ -19,6 +19,8 @@ enum No {
     B_FISH_HOOK_EXPIRE = 14;
     B_LADDER_START = 15;
     LadderResult = 16;
+    LadderPrepare = 17;
+    LadderCancel = 18;
 
     // Heartbeat
     HeartbeatReq = 101;
@@ -63,7 +65,9 @@ enum No {
     FightHmActionReq = 2013;
     FightHmEndPush = 2014;
 
+    // Ladder
     LadderSetFormationReq = 2021;
+    LadderCancelPush = 2022;
 
     // Battle
     BattleEnterReq = 2030;

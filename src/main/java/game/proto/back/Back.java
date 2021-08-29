@@ -25,6 +25,11 @@ public final class Back {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_PlayerBackData_CompleteTaskEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_LadderData_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_LadderData_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_GameCount_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -68,28 +73,29 @@ public final class Back {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nback.proto\022\007Message\032\ndata.proto\"\375\002\n\016Pl" +
+      "\n\nback.proto\022\007Message\032\ndata.proto\"\361\002\n\016Pl" +
       "ayerBackData\022\021\n\tfightTime\030\001 \001(\003\022\021\n\tfight" +
       "Area\030\002 \003(\005\022\030\n\020powerRecoverTime\030\003 \001(\003\022\021\n\t" +
-      "loginTime\030\005 \001(\003\022\022\n\nupdateTime\030\006 \001(\003\022\031\n\021l" +
-      "adderSingleScore\030\007 \001(\005\022\030\n\020ladderMultiSco" +
-      "re\030\010 \001(\005\022\017\n\007localId\030\n \001(\005\022!\n\005count\030\013 \001(\013" +
-      "2\022.Message.GameCount\022%\n\tfightType\030\025 \001(\0162" +
-      "\022.Message.FightType\022?\n\014completeTask\030d \003(" +
-      "\0132).Message.PlayerBackData.CompleteTaskE" +
-      "ntry\0323\n\021CompleteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r" +
-      "\n\005value\030\002 \001(\010:\0028\001\"b\n\tGameCount\022\'\n\007expres" +
-      "s\030\001 \001(\0132\026.Message.GameCountInfo\022,\n\014expre" +
-      "ssCount\030\002 \001(\0132\026.Message.GameCountInfo\"2\n" +
-      "\rGameCountInfo\022\r\n\005count\030\001 \001(\r\022\022\n\nupdateT" +
-      "ime\030\002 \001(\004\"V\n\010SaveData\022)\n\010backData\030\001 \001(\0132" +
-      "\027.Message.PlayerBackData\022\037\n\002pd\030\002 \001(\0132\023.M" +
-      "essage.PlayerData\"\026\n\010FishData\022\n\n\002id\030\001 \001(" +
-      "\005\"\t\n\007VipData\"7\n\rLadderPrepare\022\n\n\002id\030\001 \001(" +
-      "\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004type\030\003 \001(\005\"\034\n\014LadderR" +
-      "esult\022\014\n\004type\030\003 \001(\005*%\n\tFightType\022\n\n\006F_NO" +
-      "NE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017game.proto.backH\001P" +
-      "\001b\006proto3"
+      "loginTime\030\005 \001(\003\022\022\n\nupdateTime\030\006 \001(\003\022\'\n\nl" +
+      "adderData\030\007 \001(\0132\023.Message.LadderData\022\017\n\007" +
+      "localId\030\n \001(\005\022!\n\005count\030\013 \001(\0132\022.Message.G" +
+      "ameCount\022%\n\tfightType\030\025 \001(\0162\022.Message.Fi" +
+      "ghtType\022?\n\014completeTask\030d \003(\0132).Message." +
+      "PlayerBackData.CompleteTaskEntry\0323\n\021Comp" +
+      "leteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(" +
+      "\010:\0028\001\"A\n\nLadderData\022\031\n\021ladderSingleScore" +
+      "\030\007 \001(\005\022\030\n\020ladderMultiScore\030\010 \001(\005\"b\n\tGame" +
+      "Count\022\'\n\007express\030\001 \001(\0132\026.Message.GameCou" +
+      "ntInfo\022,\n\014expressCount\030\002 \001(\0132\026.Message.G" +
+      "ameCountInfo\"2\n\rGameCountInfo\022\r\n\005count\030\001" +
+      " \001(\r\022\022\n\nupdateTime\030\002 \001(\004\"V\n\010SaveData\022)\n\010" +
+      "backData\030\001 \001(\0132\027.Message.PlayerBackData\022" +
+      "\037\n\002pd\030\002 \001(\0132\023.Message.PlayerData\"\026\n\010Fish" +
+      "Data\022\n\n\002id\030\001 \001(\005\"\t\n\007VipData\"7\n\rLadderPre" +
+      "pare\022\n\n\002id\030\001 \001(\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004type\030\003" +
+      " \001(\005\"\034\n\014LadderResult\022\014\n\004type\030\003 \001(\005*%\n\tFi" +
+      "ghtType\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017gam" +
+      "e.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -101,51 +107,57 @@ public final class Back {
     internal_static_Message_PlayerBackData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerBackData_descriptor,
-        new java.lang.String[] { "FightTime", "FightArea", "PowerRecoverTime", "LoginTime", "UpdateTime", "LadderSingleScore", "LadderMultiScore", "LocalId", "Count", "FightType", "CompleteTask", });
+        new java.lang.String[] { "FightTime", "FightArea", "PowerRecoverTime", "LoginTime", "UpdateTime", "LadderData", "LocalId", "Count", "FightType", "CompleteTask", });
     internal_static_Message_PlayerBackData_CompleteTaskEntry_descriptor =
       internal_static_Message_PlayerBackData_descriptor.getNestedTypes().get(0);
     internal_static_Message_PlayerBackData_CompleteTaskEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerBackData_CompleteTaskEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_Message_GameCount_descriptor =
+    internal_static_Message_LadderData_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_Message_LadderData_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_LadderData_descriptor,
+        new java.lang.String[] { "LadderSingleScore", "LadderMultiScore", });
+    internal_static_Message_GameCount_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_Message_GameCount_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_GameCount_descriptor,
         new java.lang.String[] { "Express", "ExpressCount", });
     internal_static_Message_GameCountInfo_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_Message_GameCountInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_GameCountInfo_descriptor,
         new java.lang.String[] { "Count", "UpdateTime", });
     internal_static_Message_SaveData_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_Message_SaveData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_SaveData_descriptor,
         new java.lang.String[] { "BackData", "Pd", });
     internal_static_Message_FishData_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_Message_FishData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FishData_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_Message_VipData_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_Message_VipData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_VipData_descriptor,
         new java.lang.String[] { });
     internal_static_Message_LadderPrepare_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_Message_LadderPrepare_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderPrepare_descriptor,
         new java.lang.String[] { "Id", "Auto", "Type", });
     internal_static_Message_LadderResult_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_Message_LadderResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResult_descriptor,

@@ -11,7 +11,9 @@ import java.lang.annotation.Target;
  * @author Yunzhe.Jin
  * 2020/5/9 18:20
  */
-@Retention(RetentionPolicy.SOURCE)
+@Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})
 public @interface InsideMsgHandler {
+    int no() default 0;
+
 }

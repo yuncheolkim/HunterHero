@@ -511,4 +511,8 @@ message LadderSetFormationReq{
     int32 heroId = 1;
 }
 
+message LadderCancelPush{
+
+}
+
 

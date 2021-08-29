@@ -13,12 +13,16 @@ message PlayerBackData {
     int64 powerRecoverTime = 3;
     int64 loginTime = 5;
     int64 updateTime = 6;
-    int32 ladderSingleScore = 7;// 单挑分数查找对手基线
-    int32 ladderMultiScore = 8; // 多人分数查找对手基线
+    LadderData ladderData = 7;
     int32 localId = 10;
     GameCount count = 11; // 计数器
     FightType fightType = 21;// 战斗类型
     map<int32, bool> completeTask = 100;
+}
+
+message LadderData{
+    int32 ladderSingleScore = 7;// 单挑分数查找对手基线
+    int32 ladderMultiScore = 8; // 多人分数查找对手基线
 }
 
 message GameCount{
@@ -53,8 +57,10 @@ enum FightType{
 message LadderPrepare{
     int64 id = 1;
     bool auto = 2;
-    int32 type = 3;// 单挑
+    int32 type = 3;// 1:单挑
 }
+
+
 // 战斗结果
 message LadderResult{
     int32 type = 3;// 单挑

@@ -1,9 +1,12 @@
 package game.game.scene;
 
 import game.base.G;
+import game.base.Logs;
 import game.base.Work;
 import game.base.constants.GameConstants;
+import game.utils.DateUtils;
 
+import java.util.LinkedList;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
@@ -22,6 +25,8 @@ public class GameScene {
 
     protected ScheduledExecutorService schedule;
 
+    protected LinkedList<TimerTask> task = new LinkedList<>();
+
     public GameScene() {
         id = GameConstants.ID_GENERATOR.next();
         schedule = getSchedule();
@@ -30,8 +35,25 @@ public class GameScene {
     public void tell(final Object msg) {
         final GameScene that = this;
         work.addTask(() -> {
+            that.beforeProcess();
             that.process(msg);
         });
+    }
+
+    private void beforeProcess() {
+
+        if (!task.isEmpty()) {
+            final long now = DateUtils.now();
+            for (TimerTask timerTask : task) {
+                if (timerTask.endTime <= now) {
+                    try {
+                        timerTask.runnable.run();
+                    } catch (Exception e) {
+                        Logs.C.error(e);
+                    }
+                }
+            }
+        }
     }
 
     protected void process(final Object msg) {
@@ -56,8 +78,20 @@ public class GameScene {
         return G.W.getDefaultSchedule();
     }
 
+    protected void doScheduleMillisecond(long time, Object msg) {
+        schedule.schedule(() -> tell(msg), time, TimeUnit.MILLISECONDS);
+    }
+
     protected void doScheduleSecond(long second, Object msg) {
         schedule.schedule(() -> tell(msg), second, TimeUnit.SECONDS);
+    }
+
+    protected void doScheduleSecond(long second, Runnable runnable) {
+        schedule.schedule(runnable, second, TimeUnit.SECONDS);
+    }
+
+    public void addTimer(long afterMillesecond, Runnable runnable) {
+        task.add(new TimerTask(DateUtils.now() + afterMillesecond, runnable));
     }
 
     public long getId() {

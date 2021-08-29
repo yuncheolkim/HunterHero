@@ -21,7 +21,7 @@ public interface LadderPrepareOrBuilder extends
 
   /**
    * <pre>
-   * 单挑
+   * 1:单挑
    * </pre>
    *
    * <code>int32 type = 3;</code>

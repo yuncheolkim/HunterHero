@@ -15,7 +15,8 @@ import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.home.HomeHandler;
-import game.module.ladder.match.LadderMatchGameScene;
+import game.module.ladder.LadderHandler;
+import game.module.ladder.match.LadderMatchSingleGameScene;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
@@ -68,7 +69,7 @@ public class GameManager extends AbsLifecycle {
 
     // scene
     private final ChatScene chatScene = new ChatScene();
-    private final LadderMatchGameScene ladderScene = new LadderMatchGameScene();
+    private final LadderMatchSingleGameScene ladderScene = new LadderMatchSingleGameScene();
     private final LadderFightScene fightScene = new LadderFightScene();
 
 
@@ -93,8 +94,9 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.B_HERO_DATA_VALUE, HeroHandler::updateHero, PlayerHero::parser));
         addHandler(new Invoker<>(No.B_FISH_HOOK_VALUE, FishHandler::fishHook, FishData::parser));
         addHandler(new Invoker<>(No.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
-        addHandler(new Invoker<>(No.B_LADDER_START_VALUE, PlayerHandler::prepareLadder, LadderPrepare::parser));
-        addHandler(new Invoker<>(No.LadderResult, PlayerHandler::ladderResult, LadderResult::parser));
+        addHandler(new Invoker<>(No.LadderPrepare, LadderHandler::prepareLadder, LadderPrepare::parser));
+        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult::parser));
+        addHandler(new InvokerNoParam(No.LadderCancel, LadderHandler::ladderCancel));
 
         // heart
         addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
@@ -124,6 +126,9 @@ public class GameManager extends AbsLifecycle {
         // fight hm
         addHandler(new Invoker<>(No.FightHmStartReq, FightHandler::manualFight, FightStartReq::parser));
         addHandler(new Invoker<>(No.FightHmActionReq, FightHandler::manualFightAction, FightHmActionReq::parser));
+
+        // Ladder
+        
         // battle
         addHandler(new Invoker<>(No.BattleEnterReq, FightHandler::battleEnter, BattleEnterReq::parser));
         // hero
@@ -195,7 +200,7 @@ public class GameManager extends AbsLifecycle {
         return chatScene;
     }
 
-    public LadderMatchGameScene getLadderScene() {
+    public LadderMatchSingleGameScene getLadderMatchScene() {
         return ladderScene;
     }
 

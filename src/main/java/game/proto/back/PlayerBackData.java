@@ -96,14 +96,17 @@ private static final long serialVersionUID = 0L;
             updateTime_ = input.readInt64();
             break;
           }
-          case 56: {
+          case 58: {
+            game.proto.back.LadderData.Builder subBuilder = null;
+            if (ladderData_ != null) {
+              subBuilder = ladderData_.toBuilder();
+            }
+            ladderData_ = input.readMessage(game.proto.back.LadderData.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(ladderData_);
+              ladderData_ = subBuilder.buildPartial();
+            }
 
-            ladderSingleScore_ = input.readInt32();
-            break;
-          }
-          case 64: {
-
-            ladderMultiScore_ = input.readInt32();
             break;
           }
           case 80: {
@@ -270,34 +273,30 @@ private static final long serialVersionUID = 0L;
     return updateTime_;
   }
 
-  public static final int LADDERSINGLESCORE_FIELD_NUMBER = 7;
-  private int ladderSingleScore_;
+  public static final int LADDERDATA_FIELD_NUMBER = 7;
+  private game.proto.back.LadderData ladderData_;
   /**
-   * <pre>
-   * 单挑分数查找对手基线
-   * </pre>
-   *
-   * <code>int32 ladderSingleScore = 7;</code>
-   * @return The ladderSingleScore.
+   * <code>.Message.LadderData ladderData = 7;</code>
+   * @return Whether the ladderData field is set.
    */
   @java.lang.Override
-  public int getLadderSingleScore() {
-    return ladderSingleScore_;
+  public boolean hasLadderData() {
+    return ladderData_ != null;
   }
-
-  public static final int LADDERMULTISCORE_FIELD_NUMBER = 8;
-  private int ladderMultiScore_;
   /**
-   * <pre>
-   * 多人分数查找对手基线
-   * </pre>
-   *
-   * <code>int32 ladderMultiScore = 8;</code>
-   * @return The ladderMultiScore.
+   * <code>.Message.LadderData ladderData = 7;</code>
+   * @return The ladderData.
    */
   @java.lang.Override
-  public int getLadderMultiScore() {
-    return ladderMultiScore_;
+  public game.proto.back.LadderData getLadderData() {
+    return ladderData_ == null ? game.proto.back.LadderData.getDefaultInstance() : ladderData_;
+  }
+  /**
+   * <code>.Message.LadderData ladderData = 7;</code>
+   */
+  @java.lang.Override
+  public game.proto.back.LadderDataOrBuilder getLadderDataOrBuilder() {
+    return getLadderData();
   }
 
   public static final int LOCALID_FIELD_NUMBER = 10;
@@ -491,11 +490,8 @@ private static final long serialVersionUID = 0L;
     if (updateTime_ != 0L) {
       output.writeInt64(6, updateTime_);
     }
-    if (ladderSingleScore_ != 0) {
-      output.writeInt32(7, ladderSingleScore_);
-    }
-    if (ladderMultiScore_ != 0) {
-      output.writeInt32(8, ladderMultiScore_);
+    if (ladderData_ != null) {
+      output.writeMessage(7, getLadderData());
     }
     if (localId_ != 0) {
       output.writeInt32(10, localId_);
@@ -551,13 +547,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(6, updateTime_);
     }
-    if (ladderSingleScore_ != 0) {
+    if (ladderData_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(7, ladderSingleScore_);
-    }
-    if (ladderMultiScore_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(8, ladderMultiScore_);
+        .computeMessageSize(7, getLadderData());
     }
     if (localId_ != 0) {
       size += com.google.protobuf.CodedOutputStream
@@ -606,10 +598,11 @@ private static final long serialVersionUID = 0L;
         != other.getLoginTime()) return false;
     if (getUpdateTime()
         != other.getUpdateTime()) return false;
-    if (getLadderSingleScore()
-        != other.getLadderSingleScore()) return false;
-    if (getLadderMultiScore()
-        != other.getLadderMultiScore()) return false;
+    if (hasLadderData() != other.hasLadderData()) return false;
+    if (hasLadderData()) {
+      if (!getLadderData()
+          .equals(other.getLadderData())) return false;
+    }
     if (getLocalId()
         != other.getLocalId()) return false;
     if (hasCount() != other.hasCount()) return false;
@@ -647,10 +640,10 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + UPDATETIME_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getUpdateTime());
-    hash = (37 * hash) + LADDERSINGLESCORE_FIELD_NUMBER;
-    hash = (53 * hash) + getLadderSingleScore();
-    hash = (37 * hash) + LADDERMULTISCORE_FIELD_NUMBER;
-    hash = (53 * hash) + getLadderMultiScore();
+    if (hasLadderData()) {
+      hash = (37 * hash) + LADDERDATA_FIELD_NUMBER;
+      hash = (53 * hash) + getLadderData().hashCode();
+    }
     hash = (37 * hash) + LOCALID_FIELD_NUMBER;
     hash = (53 * hash) + getLocalId();
     if (hasCount()) {
@@ -832,10 +825,12 @@ private static final long serialVersionUID = 0L;
 
       updateTime_ = 0L;
 
-      ladderSingleScore_ = 0;
-
-      ladderMultiScore_ = 0;
-
+      if (ladderDataBuilder_ == null) {
+        ladderData_ = null;
+      } else {
+        ladderData_ = null;
+        ladderDataBuilder_ = null;
+      }
       localId_ = 0;
 
       if (countBuilder_ == null) {
@@ -883,8 +878,11 @@ private static final long serialVersionUID = 0L;
       result.powerRecoverTime_ = powerRecoverTime_;
       result.loginTime_ = loginTime_;
       result.updateTime_ = updateTime_;
-      result.ladderSingleScore_ = ladderSingleScore_;
-      result.ladderMultiScore_ = ladderMultiScore_;
+      if (ladderDataBuilder_ == null) {
+        result.ladderData_ = ladderData_;
+      } else {
+        result.ladderData_ = ladderDataBuilder_.build();
+      }
       result.localId_ = localId_;
       if (countBuilder_ == null) {
         result.count_ = count_;
@@ -964,11 +962,8 @@ private static final long serialVersionUID = 0L;
       if (other.getUpdateTime() != 0L) {
         setUpdateTime(other.getUpdateTime());
       }
-      if (other.getLadderSingleScore() != 0) {
-        setLadderSingleScore(other.getLadderSingleScore());
-      }
-      if (other.getLadderMultiScore() != 0) {
-        setLadderMultiScore(other.getLadderMultiScore());
+      if (other.hasLadderData()) {
+        mergeLadderData(other.getLadderData());
       }
       if (other.getLocalId() != 0) {
         setLocalId(other.getLocalId());
@@ -1238,90 +1233,123 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private int ladderSingleScore_ ;
+    private game.proto.back.LadderData ladderData_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.back.LadderData, game.proto.back.LadderData.Builder, game.proto.back.LadderDataOrBuilder> ladderDataBuilder_;
     /**
-     * <pre>
-     * 单挑分数查找对手基线
-     * </pre>
-     *
-     * <code>int32 ladderSingleScore = 7;</code>
-     * @return The ladderSingleScore.
+     * <code>.Message.LadderData ladderData = 7;</code>
+     * @return Whether the ladderData field is set.
      */
-    @java.lang.Override
-    public int getLadderSingleScore() {
-      return ladderSingleScore_;
+    public boolean hasLadderData() {
+      return ladderDataBuilder_ != null || ladderData_ != null;
     }
     /**
-     * <pre>
-     * 单挑分数查找对手基线
-     * </pre>
-     *
-     * <code>int32 ladderSingleScore = 7;</code>
-     * @param value The ladderSingleScore to set.
-     * @return This builder for chaining.
+     * <code>.Message.LadderData ladderData = 7;</code>
+     * @return The ladderData.
      */
-    public Builder setLadderSingleScore(int value) {
-      
-      ladderSingleScore_ = value;
-      onChanged();
-      return this;
+    public game.proto.back.LadderData getLadderData() {
+      if (ladderDataBuilder_ == null) {
+        return ladderData_ == null ? game.proto.back.LadderData.getDefaultInstance() : ladderData_;
+      } else {
+        return ladderDataBuilder_.getMessage();
+      }
     }
     /**
-     * <pre>
-     * 单挑分数查找对手基线
-     * </pre>
-     *
-     * <code>int32 ladderSingleScore = 7;</code>
-     * @return This builder for chaining.
+     * <code>.Message.LadderData ladderData = 7;</code>
      */
-    public Builder clearLadderSingleScore() {
-      
-      ladderSingleScore_ = 0;
-      onChanged();
-      return this;
-    }
+    public Builder setLadderData(game.proto.back.LadderData value) {
+      if (ladderDataBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ladderData_ = value;
+        onChanged();
+      } else {
+        ladderDataBuilder_.setMessage(value);
+      }
 
-    private int ladderMultiScore_ ;
-    /**
-     * <pre>
-     * 多人分数查找对手基线
-     * </pre>
-     *
-     * <code>int32 ladderMultiScore = 8;</code>
-     * @return The ladderMultiScore.
-     */
-    @java.lang.Override
-    public int getLadderMultiScore() {
-      return ladderMultiScore_;
-    }
-    /**
-     * <pre>
-     * 多人分数查找对手基线
-     * </pre>
-     *
-     * <code>int32 ladderMultiScore = 8;</code>
-     * @param value The ladderMultiScore to set.
-     * @return This builder for chaining.
-     */
-    public Builder setLadderMultiScore(int value) {
-      
-      ladderMultiScore_ = value;
-      onChanged();
       return this;
     }
     /**
-     * <pre>
-     * 多人分数查找对手基线
-     * </pre>
-     *
-     * <code>int32 ladderMultiScore = 8;</code>
-     * @return This builder for chaining.
+     * <code>.Message.LadderData ladderData = 7;</code>
      */
-    public Builder clearLadderMultiScore() {
-      
-      ladderMultiScore_ = 0;
-      onChanged();
+    public Builder setLadderData(
+        game.proto.back.LadderData.Builder builderForValue) {
+      if (ladderDataBuilder_ == null) {
+        ladderData_ = builderForValue.build();
+        onChanged();
+      } else {
+        ladderDataBuilder_.setMessage(builderForValue.build());
+      }
+
       return this;
+    }
+    /**
+     * <code>.Message.LadderData ladderData = 7;</code>
+     */
+    public Builder mergeLadderData(game.proto.back.LadderData value) {
+      if (ladderDataBuilder_ == null) {
+        if (ladderData_ != null) {
+          ladderData_ =
+            game.proto.back.LadderData.newBuilder(ladderData_).mergeFrom(value).buildPartial();
+        } else {
+          ladderData_ = value;
+        }
+        onChanged();
+      } else {
+        ladderDataBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderData ladderData = 7;</code>
+     */
+    public Builder clearLadderData() {
+      if (ladderDataBuilder_ == null) {
+        ladderData_ = null;
+        onChanged();
+      } else {
+        ladderData_ = null;
+        ladderDataBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderData ladderData = 7;</code>
+     */
+    public game.proto.back.LadderData.Builder getLadderDataBuilder() {
+      
+      onChanged();
+      return getLadderDataFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.LadderData ladderData = 7;</code>
+     */
+    public game.proto.back.LadderDataOrBuilder getLadderDataOrBuilder() {
+      if (ladderDataBuilder_ != null) {
+        return ladderDataBuilder_.getMessageOrBuilder();
+      } else {
+        return ladderData_ == null ?
+            game.proto.back.LadderData.getDefaultInstance() : ladderData_;
+      }
+    }
+    /**
+     * <code>.Message.LadderData ladderData = 7;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.back.LadderData, game.proto.back.LadderData.Builder, game.proto.back.LadderDataOrBuilder> 
+        getLadderDataFieldBuilder() {
+      if (ladderDataBuilder_ == null) {
+        ladderDataBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.back.LadderData, game.proto.back.LadderData.Builder, game.proto.back.LadderDataOrBuilder>(
+                getLadderData(),
+                getParentForChildren(),
+                isClean());
+        ladderData_ = null;
+      }
+      return ladderDataBuilder_;
     }
 
     private int localId_ ;

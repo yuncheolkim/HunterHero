@@ -6,11 +6,13 @@ package game.module.fight.data;
  * @author Yunzhe.Jin
  * 2021/8/28 22:51
  */
-public class FightCancel {
+public class FightCancelAtPrepare {
 
     public final long id;
+    public final long uid;
 
-    public FightCancel(long id) {
+    public FightCancelAtPrepare(long id, long uid) {
+        this.uid = uid;
         this.id = id;
     }
 }

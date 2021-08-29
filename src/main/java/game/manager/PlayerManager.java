@@ -23,7 +23,6 @@ public class PlayerManager {
     }
 
     public Set<Map.Entry<Long, Player>> allPlayer() {
-
         return playerMap.entrySet();
     }
 
@@ -39,5 +38,9 @@ public class PlayerManager {
     public String getPlayerName(long pid) {
         Optional<Player> player = findPlayer(pid);
         return player.map(value -> value.pd.getName()).orElse(null);
+    }
+
+    public boolean hasPlayer(Long pid) {
+        return playerMap.containsKey(pid);
     }
 }

@@ -4,6 +4,7 @@ import game.manager.*;
 import game.msg.MsgProcess;
 import game.player.Player;
 import game.proto.Message;
+import game.proto.no.No;
 
 import java.util.Map;
 
@@ -62,6 +63,10 @@ public class G {
     public static void sendToPlayer(long pid, int msgNo) {
         W.getPlayerWork(pid).addTask(new MsgProcess(Message.newBuilder()
                 .setMsgNo(msgNo).build(), pid));
+    }
+
+    public static void pushToPlayer(long pid, No no, com.google.protobuf.MessageLite message) {
+        pushToPlayer(pid, no.getNumber(), message);
     }
 
     /**
