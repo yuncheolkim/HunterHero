@@ -49,6 +49,7 @@ public class LadderHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.LadderMatchReq)
     public static void match(final Player player) {
         LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
         LadderData.Builder ladderData = player.D.getLadderDataBuilder();

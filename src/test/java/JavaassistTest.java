@@ -134,7 +134,13 @@ public class JavaassistTest {
 
     @Test
     public void test5() throws Exception {
-        DefaultInvoke handlerClass = createHandler(LadderHandler.class, LadderHandler.class.getDeclaredMethod("ladderCancel", Player.class));
+        createHandler(LadderHandler.class, LadderHandler.class.getDeclaredMethod("ladderCancel", Player.class));
+    }
+
+    @Test
+    public void test6() throws Exception {
+        createHandler(LadderHandler.class, LadderHandler.class.getDeclaredMethod("match", Player.class));
+
     }
 
 

@@ -1,5 +1,6 @@
 package game.module.home;
 
+import game.anno.GameHandler;
 import game.base.Logs;
 import game.config.data.HomeBuildConfigData;
 import game.config.data.HomeItemConfigData;
@@ -30,6 +31,7 @@ public class HomeHandler {
      *
      * @param player
      */
+    @GameHandler(No.HomeOpenAreaRqRs)
     public static HomeOpenAreaRqRs openArea(Player player, HomeOpenAreaRqRs req) {
         ModuleAssert.isTrue(req.getId() >= 0 && req.getId() <= player.homeAreaData.maxId());
 
@@ -44,6 +46,7 @@ public class HomeHandler {
      *
      * @param player
      */
+    @GameHandler(No.HomeChangeReq)
     public static void change(Player player, HomeChangeReq req) {
 
         int[] count = new int[]{0};

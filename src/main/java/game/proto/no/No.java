@@ -229,6 +229,10 @@ public enum No
    */
   LadderCancelPush(2022),
   /**
+   * <code>LadderMatchReq = 2023;</code>
+   */
+  LadderMatchReq(2023),
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -681,6 +685,10 @@ public enum No
    */
   public static final int LadderCancelPush_VALUE = 2022;
   /**
+   * <code>LadderMatchReq = 2023;</code>
+   */
+  public static final int LadderMatchReq_VALUE = 2023;
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -981,6 +989,7 @@ public enum No
       case 2014: return FightHmEndPush;
       case 2021: return LadderSetFormationReq;
       case 2022: return LadderCancelPush;
+      case 2023: return LadderMatchReq;
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
       case 2101: return DungeonEnterReq;

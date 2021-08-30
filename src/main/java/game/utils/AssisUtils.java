@@ -23,8 +23,9 @@ import java.util.stream.Collectors;
 public class AssisUtils {
 
     public static DefaultInvoke createHandler(Class<?> cls, Method method) throws Exception {
+        int number = method.getAnnotation(GameHandler.class).value().getNumber();
         ClassPool pool = ClassPool.getDefault();
-        CtClass handlerClass = pool.makeClass("Handler");
+        CtClass handlerClass = pool.makeClass("Handler_" + number);
         handlerClass.setInterfaces(new CtClass[]{
                 pool.get(IHandler.class.getName())
         });
@@ -69,7 +70,7 @@ public class AssisUtils {
         IHandler handler = (IHandler) handlerClass.toClass().newInstance();
         defaultInvoke.setHandler(handler);
         defaultInvoke.setParser(parse);
-        defaultInvoke.setMsgNo(method.getAnnotation(GameHandler.class).value().getNumber());
+        defaultInvoke.setMsgNo(number);
 
         return defaultInvoke;
     }
