@@ -1,9 +1,11 @@
 package game.module.login;
 
+import game.anno.GameHandler;
 import game.base.G;
 import game.base.Logs;
 import game.player.Player;
 import game.proto.LoginReq;
+import game.proto.no.No;
 import game.repo.PlayerRepo;
 import io.netty.channel.Channel;
 
@@ -18,6 +20,7 @@ public class LoginHandler {
      * @param ch
      * @param request
      */
+    @GameHandler(No.LoginReq)
     public void login(Channel ch, LoginReq request) {
         long playerId = request.getPlayerId();
         PlayerRepo playerRepo = G.R.getPlayerRepo();

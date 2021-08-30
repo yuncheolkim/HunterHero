@@ -1,5 +1,6 @@
 package game.module.player;
 
+import game.anno.GameHandler;
 import game.base.G;
 import game.config.data.ParamConfigData;
 import game.config.data.TransformConfigData;
@@ -22,6 +23,8 @@ import java.util.concurrent.TimeUnit;
  * 2021/2/22 16:00
  */
 public class PlayerHandler {
+
+    @GameHandler(No.HeartbeatReq)
     public static HeartbeatRes heartbeat(final Player player, final HeartbeatReq o) {
         return HeartbeatRes.newBuilder().setTime(o.getTime()).buildPartial();
     }

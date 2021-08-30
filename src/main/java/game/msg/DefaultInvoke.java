@@ -20,6 +20,8 @@ public class DefaultInvoke implements IInvoke {
 
     IHandler handler;
 
+    int msgNo;
+
     @Override
     public void invoke(Player player, Message msg) {
 
@@ -44,7 +46,7 @@ public class DefaultInvoke implements IInvoke {
 
     @Override
     public int getMsgNo() {
-        return 0;
+        return msgNo;
     }
 
     public void setParser(Parser parser) {
@@ -53,5 +55,9 @@ public class DefaultInvoke implements IInvoke {
 
     public void setHandler(IHandler handler) {
         this.handler = handler;
+    }
+
+    public void setMsgNo(int msgNo) {
+        this.msgNo = msgNo;
     }
 }

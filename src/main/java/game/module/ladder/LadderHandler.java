@@ -101,7 +101,7 @@ public class LadderHandler {
      *
      * @param player
      */
-    @GameHandler(no = No.LadderCancel, inner = true)
+    @GameHandler(value = No.LadderCancel, inner = true)
     public static void ladderCancel(final Player player) {
         LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
         if (ladderInfoBuilder.getInMatch()) {
@@ -121,7 +121,7 @@ public class LadderHandler {
      * @param player
      * @param req
      */
-    @GameHandler(no = No.LadderResult, inner = true)
+    @GameHandler(value = No.LadderResult, inner = true)
     public static void ladderResult(final Player player, LadderResult req) {
         LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
 
@@ -135,6 +135,7 @@ public class LadderHandler {
     public static LadderResult test1(Player p, LadderResult req) {
         HashMap<String, String> s = new HashMap<>();
         System.out.println("t1");
+        System.out.println(req);
         return LadderResult.newBuilder().setType(11).build();
     }
 

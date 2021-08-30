@@ -29,7 +29,6 @@ import game.module.task.TaskHandler;
 import game.module.temple.TempleHandler;
 import game.module.title.TitleHandler;
 import game.msg.*;
-import game.player.Player;
 import game.proto.*;
 import game.proto.back.FishData;
 import game.proto.back.LadderPrepare;
@@ -37,11 +36,11 @@ import game.proto.back.LadderResult;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
 import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
+
+import static game.utils.AssisUtils.createHandler;
 
 /**
  * 游戏管理
@@ -87,8 +86,8 @@ public class GameManager extends AbsLifecycle {
     @Override
     public void start() {
         // 初始化 业务逻辑处理
-        initHandler1();
         initHandler();
+        initHandler1();
         // 初始化 场景
         initScene();
         super.start();
@@ -108,7 +107,12 @@ public class GameManager extends AbsLifecycle {
                         Logs.C.info("[Handler] ==========> {}:{}", classInfo.getName(), m.getName());
 
                         if (m.getParameters().length == 1) {
-                            addHandler(createHandler(clazz, m));
+                            try {
+                                addHandler(createHandler(clazz, m));
+                            } catch (Exception e) {
+                                Logs.C.error("解析失败:{},{}", clazz.getName(), m.getName());
+                                throw new RuntimeException(e);
+                            }
                         }
                     }
                 }
@@ -118,34 +122,6 @@ public class GameManager extends AbsLifecycle {
             throw new RuntimeException(e);
         }
         pool = null;
-    }
-
-    /**
-     * javaassit 包装
-     *
-     * @param clazz
-     * @param m
-     * @return
-     */
-    private IInvoke createHandler(Class<?> clazz, Method m) {
-
-        try {
-            CtClass cc = pool.get(clazz.getName());
-            CtMethod declaredMethod = cc.getDeclaredMethod(m.getName());
-            GameHandler annotation = m.getAnnotation(GameHandler.class);
-
-            CtClass newClass = pool.makeClass("Handler_" + annotation.no());
-            CtMethod ctMethod = new CtMethod(CtClass.voidType, "handler", new CtClass[]{
-                    pool.get(Player.class.getName())
-            }, newClass);
-
-
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-
-        return null;
     }
 
 

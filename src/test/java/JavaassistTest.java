@@ -15,6 +15,8 @@ import org.junit.Test;
 
 import java.lang.reflect.Method;
 
+import static game.utils.AssisUtils.createHandler;
+
 /**
  * @author Yunzhe.Jin
  * 2021/8/29 22:01
@@ -81,7 +83,8 @@ public class JavaassistTest {
     public void test3() throws Exception {
         Parser<LadderResult> p = LadderResult.parser();
         ClassPool pool = ClassPool.getDefault();
-        CtClass cc = pool.get(LadderHandler.class.getName());
+        Class<LadderHandler> ladderHandlerClass = LadderHandler.class;
+        CtClass cc = pool.get(ladderHandlerClass.getName());
 
         CtMethod test1 = cc.getDeclaredMethod("test1");
 
@@ -91,27 +94,48 @@ public class JavaassistTest {
                 pool.get(IHandler.class.getName())
         });
         //新增一个方法
+        CtClass ctClass = pool.get(LadderResult.class.getName());
         CtMethod ctMethod = new CtMethod(pool.get(MessageLite.class.getName()), "handler", new CtClass[]{
                 pool.get(Player.class.getName()),
-                pool.get(MessageLite.class.getName())
+                ctClass
         }, handlerClass);
         ctMethod.setModifiers(Modifier.PUBLIC);
+
+        ctMethod.setBody("{" +
+                "return " + ladderHandlerClass.getName() + ".test1($1,$2);" +
+                "}");
         ctMethod.setBody(test1, null);
         handlerClass.addMethod(ctMethod);
 
         Parser parse = null;
 
+        System.out.println(handlerClass.toString());
         if (test1.getParameterTypes().length > 1) {
             CtClass aClass = test1.getParameterTypes()[1];
-            Method parser1 = LadderHandler.class.getMethod("test1", Player.class, LadderResult.class).getParameterTypes()[1].getDeclaredMethod("parser");
+
+            Method parser1 = ladderHandlerClass.getMethod("test1", Player.class, LadderResult.class).getParameterTypes()[1].getDeclaredMethod("parser");
             parse = (Parser) parser1.invoke(null);
         }
 
 
         DefaultInvoke defaultInvoke = new DefaultInvoke();
-        defaultInvoke.setHandler((IHandler) handlerClass.toClass().newInstance());
+        IHandler handler = (IHandler) handlerClass.toClass().newInstance();
+        handler.handler(null, LadderResult.newBuilder().build());
+        defaultInvoke.setHandler(handler);
         defaultInvoke.setParser(parse);
         defaultInvoke.invoke(null, Message.newBuilder()
                 .setBody(LadderResult.newBuilder().setType(111).build().toByteString()).build());
     }
+
+    @Test
+    public void test4() throws Exception {
+        DefaultInvoke handlerClass = createHandler(LadderHandler.class, LadderHandler.class.getDeclaredMethod("test1", Player.class, LadderResult.class));
+    }
+
+    @Test
+    public void test5() throws Exception {
+        DefaultInvoke handlerClass = createHandler(LadderHandler.class, LadderHandler.class.getDeclaredMethod("ladderCancel", Player.class));
+    }
+
+
 }

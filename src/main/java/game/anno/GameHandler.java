@@ -19,7 +19,7 @@ public @interface GameHandler {
      *
      * @return
      */
-    No no();
+    No value();
 
     boolean inner() default false;
 
