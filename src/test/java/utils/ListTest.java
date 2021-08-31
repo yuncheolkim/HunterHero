@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * @author Yunzhe.Jin
@@ -25,5 +26,17 @@ public class ListTest {
         integers.sort(Comparator.comparingInt(o -> o));
         System.out.println(integers);
         System.out.println(skillMap.get(1));
+    }
+
+    @Test
+    public void test2() {
+
+        TreeMap<Integer, Integer> treeMap = new TreeMap<>();
+        treeMap.put(1, 1);
+        treeMap.put(2, 2);
+        treeMap.put(3, 3);
+        treeMap.put(4, 4);
+
+        System.out.println(treeMap.subMap(1, Integer.MAX_VALUE));
     }
 }

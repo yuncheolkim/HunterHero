@@ -20,4 +20,18 @@ public class MatchTempData {
             lowScore = topScore - 20;
         }
     }
+
+
+    /**
+     * 是否满足条件
+     *
+     * @param check
+     * @return
+     */
+    public boolean check(MatchTempData other) {
+
+        return other.lowScore <= this.topScore && other.topScore >= this.lowScore;
+
+    }
+
 }

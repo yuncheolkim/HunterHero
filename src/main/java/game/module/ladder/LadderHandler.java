@@ -1,7 +1,6 @@
 package game.module.ladder;
 
 import game.anno.GameHandler;
-import game.anno.InsideMsgHandler;
 import game.base.G;
 import game.exception.ModuleAssert;
 import game.module.fight.FightService;
@@ -19,8 +18,6 @@ import game.proto.data.PlayerHero;
 import game.proto.no.No;
 import game.utils.DateUtils;
 
-import java.util.HashMap;
-
 /**
  * 排位赛
  * 单挑
@@ -37,6 +34,7 @@ public class LadderHandler {
      * @param req
      */
 
+    @GameHandler(No.LadderSetFormationReq)
     public static void formation(final Player player, final LadderSetFormationReq req) {
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(req.getHeroId(), null);
         ModuleAssert.notNull(heroOrDefault);
@@ -79,7 +77,7 @@ public class LadderHandler {
      *
      * @param player
      */
-    @InsideMsgHandler
+    @GameHandler(value = No.LadderPrepare, inner = true)
     public static void prepareLadder(final Player player, LadderPrepare req) {
         if (req.getType() == 1) {//单挑
             LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
@@ -115,7 +113,6 @@ public class LadderHandler {
 
     }
 
-
     /**
      * 排位战斗结果
      *
@@ -132,16 +129,4 @@ public class LadderHandler {
             // push
         }
     }
-
-    public static LadderResult test1(Player p, LadderResult req) {
-        HashMap<String, String> s = new HashMap<>();
-        System.out.println("t1");
-        System.out.println(req);
-        return LadderResult.newBuilder().setType(11).build();
-    }
-
-    public static void test2(Player p) {
-        System.out.println("t2");
-    }
-
 }

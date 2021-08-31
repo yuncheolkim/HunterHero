@@ -41,8 +41,7 @@ public class FileUtilsTest {
         b.getResourceBuilder().setPower(1);
         System.out.println(b.build());
         System.out.println(b.build());
-
-
     }
+
 
 }
