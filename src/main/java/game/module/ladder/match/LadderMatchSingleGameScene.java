@@ -2,11 +2,13 @@ package game.module.ladder.match;
 
 import com.google.common.collect.TreeMultimap;
 import game.base.G;
+import game.base.Logs;
 import game.base.constants.GameConstants;
 import game.game.scene.GameScene;
 import game.proto.back.LadderPrepare;
 import game.proto.no.No;
 import game.utils.DateUtils;
+import game.utils.MathUtils;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -68,8 +70,7 @@ public class LadderMatchSingleGameScene extends GameScene {
                 if (pass > 5 * 60 * 1000) {
                     cancelMatch(matchTempData);
                 } else {
-                    // 最少10秒
-                    doScheduleMillisecond(Math.min(pass, 10000), msg);
+                    putToPool(matchTempData);
                 }
             }
         }
@@ -77,13 +78,11 @@ public class LadderMatchSingleGameScene extends GameScene {
 
     /**
      * 找到对手
-     *
-     * @param uid
-     * @param uid1
      */
     private void findTarget(Long uid1, long uid2) {
+        Logs.C.info("找到对手:{},{}", uid1, uid2);
         long id = GameConstants.ID_GENERATOR.next();
-        LadderPrepare pre1 = LadderPrepare.newBuilder()
+        LadderPrepare prepare = LadderPrepare.newBuilder()
                 .setAuto(true)
                 .setId(id)
                 .setType(1)
@@ -92,8 +91,8 @@ public class LadderMatchSingleGameScene extends GameScene {
         cleanData(uid1);
         cleanData(uid2);
 
-        G.sendToPlayer(uid1, No.LadderPrepare.getNumber(), pre1);
-        G.sendToPlayer(uid2, No.LadderPrepare.getNumber(), pre1);
+        G.sendToPlayer(uid1, No.LadderPrepare.getNumber(), prepare);
+        G.sendToPlayer(uid2, No.LadderPrepare.getNumber(), prepare);
     }
 
     /**
@@ -154,32 +153,22 @@ public class LadderMatchSingleGameScene extends GameScene {
         } else if (low == null) {
             low = Integer.MIN_VALUE;
         }
-        NavigableMap<Integer, Collection<MatchInfo>> integerCollectionNavigableMap = scoreMap.subMap(low, true, top, true);
+        NavigableMap<Integer, Collection<MatchInfo>> findMap = scoreMap.subMap(low, true, top, true);
 
         MatchInfo info = null;
-        Integer score = null;
         out:
-        for (Map.Entry<Integer, Collection<MatchInfo>> en : integerCollectionNavigableMap.entrySet()) {
+        for (Map.Entry<Integer, Collection<MatchInfo>> en : findMap.entrySet()) {
             Collection<MatchInfo> value1 = en.getValue();
-            score = en.getKey();
             for (MatchInfo matchInfo : value1) {
                 MatchTempData matchTempData = pmap.get(matchInfo.uid);
-                if (matchTempData.check(value)) {
+                if (matchTempData.info.uid != matchInfo.uid && matchTempData.check(value)) {
                     info = matchInfo;
-
                     break out;
                 }
-
             }
         }
 
-        if (info != null) {
-
-            find.remove(score, info);
-
-            return info;
-        }
-        return null;
+        return info;
     }
 
     /**
@@ -190,19 +179,22 @@ public class LadderMatchSingleGameScene extends GameScene {
     private void match(MatchInfo msg) {
         MatchTempData value = new MatchTempData(msg);
 
-        MatchInfo matchInfo1 = targetScore(value);
+        MatchInfo info = targetScore(value);
 
-        final long uid = msg.uid;
-        if (matchInfo1 == null) {
+        final Long uid = msg.uid;
+        if (info == null) {
             // 没有找到对手,放到匹配池
             pmap.put(uid, value);
             putToPool(value);
-            doScheduleSecond(2, new StartWaitMsg(uid));
             return;
         }
 
         //找到对手
-        findTarget(uid, matchInfo1.uid);
+        findTarget(uid, info.uid);
+    }
+
+    public LadderMatchSingleGameScene() {
+        super();
     }
 
     /**
@@ -216,9 +208,37 @@ public class LadderMatchSingleGameScene extends GameScene {
         if (data.info.order == 1) {
             put = order1Map;
         }
+        // 先移除
+        put.remove(data.lowScore, data.info);
+        put.remove(data.topScore, data.info);
 
+        // 计算
+        if (data.info.lastWin) {
+            if (data.topCount < 12) {
+                data.topCount++;
+                if (data.topCount % 4 == 0) {
+                    data.lowCount++;
+                }
+            }
+        } else {
+            if (data.lowCount > -12) {
+                data.lowCount--;
+                if (data.lowCount % 4 == 0) {
+                    data.topCount--;
+                }
+            }
+        }
+        data.topScore = data.info.scoreBase + 20 * data.topCount;
+        data.lowScore = data.info.scoreBase + 20 * data.lowScore;
+
+
+        // 放入匹配池
         put.put(data.topScore, data.info);
         put.put(data.lowScore, data.info);
+
+        long pass = DateUtils.now() - data.info.matchTime;
+
+        doScheduleMillisecond(MathUtils.clamp(2000, 10000, pass), new StartWaitMsg(data.info.uid));
     }
 
 

@@ -9,6 +9,9 @@ public class MatchTempData {
     public int lowScore;
     public int topScore;
 
+    public int topCount;
+    public int lowCount;
+
     public MatchTempData(MatchInfo info) {
         this.info = info;
 

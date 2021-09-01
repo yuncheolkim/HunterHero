@@ -27,6 +27,12 @@ public class LogTest {
         System.out.println(hello);
 
     }
+
+    @Test
+    public void t2() {
+        System.out.println(-8 % 4);
+        System.out.println(-4 % 4);
+    }
 }
 
 
