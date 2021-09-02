@@ -5,14 +5,14 @@ package game.module.ladder.match;
  * 2021/8/27 21:16
  */
 public class MatchTempData {
-    public MatchInfo info;
+    public MatchInfoMsg info;
     public int lowScore;
     public int topScore;
 
     public int topCount;
     public int lowCount;
 
-    public MatchTempData(MatchInfo info) {
+    public MatchTempData(MatchInfoMsg info) {
         this.info = info;
 
         if (info.lastWin) {

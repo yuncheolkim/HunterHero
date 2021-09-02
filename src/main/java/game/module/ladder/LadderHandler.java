@@ -6,7 +6,7 @@ import game.exception.ModuleAssert;
 import game.module.fight.FightService;
 import game.module.fight.data.FightCancelAtPrepare;
 import game.module.fight.data.FightFormation;
-import game.module.ladder.match.MatchInfo;
+import game.module.ladder.match.MatchInfoMsg;
 import game.player.Player;
 import game.proto.Empty;
 import game.proto.LadderSetFormationReq;
@@ -56,15 +56,15 @@ public class LadderHandler {
         ModuleAssert.isFalse(ladderInfoBuilder.getInMatch());
 
         // 开始匹配
-        MatchInfo matchInfo = new MatchInfo();
-        matchInfo.uid = player.getPid();
-        matchInfo.order = ladderInfoBuilder.getOrder();
-        matchInfo.score = ladderInfoBuilder.getScore();
-        matchInfo.matchTime = DateUtils.now();
-        matchInfo.lastWin = ladderInfoBuilder.getReportCount() != 0 && ladderInfoBuilder.getReport(0).getWinId() == player.getPid();
-        matchInfo.scoreBase = ladderData.getLadderSingleScore();
+        MatchInfoMsg matchInfoMsg = new MatchInfoMsg();
+        matchInfoMsg.uid = player.getPid();
+        matchInfoMsg.order = ladderInfoBuilder.getOrder();
+        matchInfoMsg.score = ladderInfoBuilder.getScore();
+        matchInfoMsg.matchTime = DateUtils.now();
+        matchInfoMsg.lastWin = ladderInfoBuilder.getReportCount() != 0 && ladderInfoBuilder.getReport(0).getWinId() == player.getPid();
+        matchInfoMsg.scoreBase = ladderData.getLadderSingleScore();
 
-        G.G.getLadderMatchScene().tell(matchInfo);
+        G.G.getLadderMatchScene().tell(matchInfoMsg);
 
         ladderInfoBuilder.setInMatch(true);
     }

@@ -2,9 +2,11 @@ package ladder;
 
 import game.base.SingleWork;
 import game.module.ladder.match.LadderMatchSingleGameScene;
-import game.module.ladder.match.MatchInfo;
+import game.module.ladder.match.MatchInfoMsg;
 import game.utils.DateUtils;
 import org.junit.Test;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Yunzhe.Jin
@@ -13,11 +15,13 @@ import org.junit.Test;
 public class MatchTest {
 
     @Test
-    public void test1() {
+    public void test1() throws InterruptedException {
         LadderMatchSingleGameScene scene = new LadderMatchSingleGameScene();
-        scene.setWork(new SingleWork());
+        SingleWork work = new SingleWork();
+        scene.setWork(work);
+        work.start();
 
-        MatchInfo p1 = new MatchInfo();
+        MatchInfoMsg p1 = new MatchInfoMsg();
         p1.uid = 1;
         p1.order = 1;
         p1.score = 1000;
@@ -26,12 +30,19 @@ public class MatchTest {
         p1.scoreBase = 1000;
 
 
-        MatchInfo p2 = new MatchInfo();
-        p2.uid = 1;
-        p2.order = 1;
+        MatchInfoMsg p2 = new MatchInfoMsg();
+        p2.uid = 2;
+        p2.order = 2;
         p2.score = 1000;
         p2.matchTime = DateUtils.now();
         p2.lastWin = false;
         p2.scoreBase = 1000;
+
+        scene.tell(p1);
+
+        scene.tell(p2);
+
+        TimeUnit.HOURS.sleep(1);
     }
+
 }

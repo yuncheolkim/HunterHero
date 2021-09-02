@@ -26,12 +26,12 @@ public class LadderMatchSingleGameScene extends GameScene {
     /**
      * 先手
      */
-    TreeMultimap<Integer, MatchInfo> order1Map = TreeMultimap.create();
+    TreeMultimap<Integer, MatchInfoMsg> order1Map = TreeMultimap.create();
 
     /**
      * 后手
      */
-    TreeMultimap<Integer, MatchInfo> order2Map = TreeMultimap.create();
+    TreeMultimap<Integer, MatchInfoMsg> order2Map = TreeMultimap.create();
 
     /**
      * 玩家map
@@ -40,11 +40,11 @@ public class LadderMatchSingleGameScene extends GameScene {
 
     @Override
     protected void process(Object msg) {
-        if (msg instanceof MatchInfo) {
-            if (pmap.containsKey(((MatchInfo) msg).uid)) {
+        if (msg instanceof MatchInfoMsg) {
+            if (pmap.containsKey(((MatchInfoMsg) msg).uid)) {
                 return;
             }
-            match((MatchInfo) msg);
+            match((MatchInfoMsg) msg);
         } else if (msg instanceof StartWaitMsg) {
             startWaitMsg((StartWaitMsg) msg);
         }
@@ -59,7 +59,7 @@ public class LadderMatchSingleGameScene extends GameScene {
     private void startWaitMsg(StartWaitMsg msg) {
         MatchTempData matchTempData = pmap.get(msg.uid);
         if (matchTempData != null) {
-            MatchInfo score = targetScore(matchTempData);
+            MatchInfoMsg score = targetScore(matchTempData);
             if (score != null) {
                 // 找到对手 todo
                 findTarget(msg.uid, score.uid);
@@ -105,8 +105,6 @@ public class LadderMatchSingleGameScene extends GameScene {
         if (matchTempData != null) {
             order1Map.remove(matchTempData.lowScore, matchTempData.info);
             order2Map.remove(matchTempData.lowScore, matchTempData.info);
-            order1Map.remove(matchTempData.topScore, matchTempData.info);
-            order2Map.remove(matchTempData.topScore, matchTempData.info);
             pmap.remove(uid);
         }
     }
@@ -121,8 +119,8 @@ public class LadderMatchSingleGameScene extends GameScene {
         long uid = data.info.uid;
         G.sendToPlayer(uid, No.LadderCancel.getNumber());
         pmap.remove(uid);
-        order1Map.remove(data.info.score, data.info);
-        order2Map.remove(data.info.score, data.info);
+        order1Map.remove(data.lowScore, data.info);
+        order2Map.remove(data.lowScore, data.info);
 
     }
 
@@ -132,40 +130,34 @@ public class LadderMatchSingleGameScene extends GameScene {
      * @param value
      * @return
      */
-    private MatchInfo targetScore(MatchTempData value) {
+    private MatchInfoMsg targetScore(MatchTempData value) {
 
         int order = value.info.order;
 
-        TreeMultimap<Integer, MatchInfo> find = order1Map;
+        TreeMultimap<Integer, MatchInfoMsg> find = order1Map;
 
         if (order == 1) {
             find = order2Map;
         }
 
-        NavigableMap<Integer, Collection<MatchInfo>> scoreMap = find.asMap();
-        Integer top = scoreMap.floorKey(value.topScore);
-        Integer low = scoreMap.ceilingKey(value.lowScore);
+        NavigableMap<Integer, Collection<MatchInfoMsg>> scoreMap = find.asMap();
+        NavigableMap<Integer, Collection<MatchInfoMsg>> findMap = scoreMap.subMap(value.lowScore - 300, true, value.topScore + 300, true);
 
-        if (top == null && low == null) {
-            return null;
-        } else if (top == null) {
-            top = Integer.MAX_VALUE;
-        } else if (low == null) {
-            low = Integer.MIN_VALUE;
-        }
-        NavigableMap<Integer, Collection<MatchInfo>> findMap = scoreMap.subMap(low, true, top, true);
-
-        MatchInfo info = null;
+        MatchInfoMsg info = null;
         out:
-        for (Map.Entry<Integer, Collection<MatchInfo>> en : findMap.entrySet()) {
-            Collection<MatchInfo> value1 = en.getValue();
-            for (MatchInfo matchInfo : value1) {
-                MatchTempData matchTempData = pmap.get(matchInfo.uid);
-                if (matchTempData.info.uid != matchInfo.uid && matchTempData.check(value)) {
-                    info = matchInfo;
+        for (Map.Entry<Integer, Collection<MatchInfoMsg>> en : findMap.entrySet()) {
+            Collection<MatchInfoMsg> value1 = en.getValue();
+            for (MatchInfoMsg matchInfoMsg : value1) {
+                MatchTempData matchTempData = pmap.get(matchInfoMsg.uid);
+                if (value.info.uid != matchInfoMsg.uid && matchTempData.check(value)) {
+                    info = matchInfoMsg;
                     break out;
                 }
             }
+        }
+        if (info == null) {
+            Logs.C.info("not found:{}", value.info);
+
         }
 
         return info;
@@ -176,10 +168,10 @@ public class LadderMatchSingleGameScene extends GameScene {
      *
      * @param msg
      */
-    private void match(MatchInfo msg) {
+    private void match(MatchInfoMsg msg) {
         MatchTempData value = new MatchTempData(msg);
 
-        MatchInfo info = targetScore(value);
+        MatchInfoMsg info = targetScore(value);
 
         final Long uid = msg.uid;
         if (info == null) {
@@ -203,7 +195,7 @@ public class LadderMatchSingleGameScene extends GameScene {
      * @param data
      */
     private void putToPool(MatchTempData data) {
-        TreeMultimap<Integer, MatchInfo> put = order2Map;
+        TreeMultimap<Integer, MatchInfoMsg> put = order2Map;
 
         if (data.info.order == 1) {
             put = order1Map;
@@ -217,23 +209,22 @@ public class LadderMatchSingleGameScene extends GameScene {
             if (data.topCount < 12) {
                 data.topCount++;
                 if (data.topCount % 4 == 0) {
-                    data.lowCount++;
+                    data.lowCount--;
                 }
             }
         } else {
             if (data.lowCount > -12) {
                 data.lowCount--;
                 if (data.lowCount % 4 == 0) {
-                    data.topCount--;
+                    data.topCount++;
                 }
             }
         }
         data.topScore = data.info.scoreBase + 20 * data.topCount;
-        data.lowScore = data.info.scoreBase + 20 * data.lowScore;
+        data.lowScore = data.info.scoreBase + 20 * data.lowCount;
 
 
         // 放入匹配池
-        put.put(data.topScore, data.info);
         put.put(data.lowScore, data.info);
 
         long pass = DateUtils.now() - data.info.matchTime;

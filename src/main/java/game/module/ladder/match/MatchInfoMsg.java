@@ -8,7 +8,7 @@ import java.util.Objects;
  * @author Yunzhe.Jin
  * 2021/8/26 22:58
  */
-public class MatchInfo implements Comparable<MatchInfo> {
+public class MatchInfoMsg implements Comparable<MatchInfoMsg> {
 
     public long uid;
 
@@ -39,7 +39,7 @@ public class MatchInfo implements Comparable<MatchInfo> {
     public int scoreBase;
 
     @Override
-    public int compareTo(MatchInfo o) {
+    public int compareTo(MatchInfoMsg o) {
 
         int i = (int) (matchTime - o.matchTime);
         if (i == 0) {
@@ -52,8 +52,8 @@ public class MatchInfo implements Comparable<MatchInfo> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MatchInfo matchInfo = (MatchInfo) o;
-        return uid == matchInfo.uid;
+        MatchInfoMsg matchInfoMsg = (MatchInfoMsg) o;
+        return uid == matchInfoMsg.uid;
     }
 
     @Override
