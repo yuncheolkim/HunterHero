@@ -54,11 +54,11 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 34: {
-            game.proto.FightRecord.Builder subBuilder = null;
+            game.proto.data.FightRecord.Builder subBuilder = null;
             if (record_ != null) {
               subBuilder = record_.toBuilder();
             }
-            record_ = input.readMessage(game.proto.FightRecord.parser(), extensionRegistry);
+            record_ = input.readMessage(game.proto.data.FightRecord.parser(), extensionRegistry);
             if (subBuilder != null) {
               subBuilder.mergeFrom(record_);
               record_ = subBuilder.buildPartial();
@@ -110,7 +110,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int RECORD_FIELD_NUMBER = 4;
-  private game.proto.FightRecord record_;
+  private game.proto.data.FightRecord record_;
   /**
    * <code>.Message.FightRecord record = 4;</code>
    * @return Whether the record field is set.
@@ -124,14 +124,14 @@ private static final long serialVersionUID = 0L;
    * @return The record.
    */
   @java.lang.Override
-  public game.proto.FightRecord getRecord() {
-    return record_ == null ? game.proto.FightRecord.getDefaultInstance() : record_;
+  public game.proto.data.FightRecord getRecord() {
+    return record_ == null ? game.proto.data.FightRecord.getDefaultInstance() : record_;
   }
   /**
    * <code>.Message.FightRecord record = 4;</code>
    */
   @java.lang.Override
-  public game.proto.FightRecordOrBuilder getRecordOrBuilder() {
+  public game.proto.data.FightRecordOrBuilder getRecordOrBuilder() {
     return getRecord();
   }
 
@@ -499,9 +499,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private game.proto.FightRecord record_;
+    private game.proto.data.FightRecord record_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.FightRecord, game.proto.FightRecord.Builder, game.proto.FightRecordOrBuilder> recordBuilder_;
+        game.proto.data.FightRecord, game.proto.data.FightRecord.Builder, game.proto.data.FightRecordOrBuilder> recordBuilder_;
     /**
      * <code>.Message.FightRecord record = 4;</code>
      * @return Whether the record field is set.
@@ -513,9 +513,9 @@ private static final long serialVersionUID = 0L;
      * <code>.Message.FightRecord record = 4;</code>
      * @return The record.
      */
-    public game.proto.FightRecord getRecord() {
+    public game.proto.data.FightRecord getRecord() {
       if (recordBuilder_ == null) {
-        return record_ == null ? game.proto.FightRecord.getDefaultInstance() : record_;
+        return record_ == null ? game.proto.data.FightRecord.getDefaultInstance() : record_;
       } else {
         return recordBuilder_.getMessage();
       }
@@ -523,7 +523,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Message.FightRecord record = 4;</code>
      */
-    public Builder setRecord(game.proto.FightRecord value) {
+    public Builder setRecord(game.proto.data.FightRecord value) {
       if (recordBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -540,7 +540,7 @@ private static final long serialVersionUID = 0L;
      * <code>.Message.FightRecord record = 4;</code>
      */
     public Builder setRecord(
-        game.proto.FightRecord.Builder builderForValue) {
+        game.proto.data.FightRecord.Builder builderForValue) {
       if (recordBuilder_ == null) {
         record_ = builderForValue.build();
         onChanged();
@@ -553,11 +553,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Message.FightRecord record = 4;</code>
      */
-    public Builder mergeRecord(game.proto.FightRecord value) {
+    public Builder mergeRecord(game.proto.data.FightRecord value) {
       if (recordBuilder_ == null) {
         if (record_ != null) {
           record_ =
-            game.proto.FightRecord.newBuilder(record_).mergeFrom(value).buildPartial();
+            game.proto.data.FightRecord.newBuilder(record_).mergeFrom(value).buildPartial();
         } else {
           record_ = value;
         }
@@ -585,7 +585,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Message.FightRecord record = 4;</code>
      */
-    public game.proto.FightRecord.Builder getRecordBuilder() {
+    public game.proto.data.FightRecord.Builder getRecordBuilder() {
       
       onChanged();
       return getRecordFieldBuilder().getBuilder();
@@ -593,23 +593,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.Message.FightRecord record = 4;</code>
      */
-    public game.proto.FightRecordOrBuilder getRecordOrBuilder() {
+    public game.proto.data.FightRecordOrBuilder getRecordOrBuilder() {
       if (recordBuilder_ != null) {
         return recordBuilder_.getMessageOrBuilder();
       } else {
         return record_ == null ?
-            game.proto.FightRecord.getDefaultInstance() : record_;
+            game.proto.data.FightRecord.getDefaultInstance() : record_;
       }
     }
     /**
      * <code>.Message.FightRecord record = 4;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.FightRecord, game.proto.FightRecord.Builder, game.proto.FightRecordOrBuilder> 
+        game.proto.data.FightRecord, game.proto.data.FightRecord.Builder, game.proto.data.FightRecordOrBuilder> 
         getRecordFieldBuilder() {
       if (recordBuilder_ == null) {
         recordBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            game.proto.FightRecord, game.proto.FightRecord.Builder, game.proto.FightRecordOrBuilder>(
+            game.proto.data.FightRecord, game.proto.data.FightRecord.Builder, game.proto.data.FightRecordOrBuilder>(
                 getRecord(),
                 getParentForChildren(),
                 isClean());

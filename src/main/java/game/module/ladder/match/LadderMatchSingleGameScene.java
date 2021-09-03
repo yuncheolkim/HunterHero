@@ -82,17 +82,27 @@ public class LadderMatchSingleGameScene extends GameScene {
     private void findTarget(Long uid1, long uid2) {
         Logs.C.info("找到对手:{},{}", uid1, uid2);
         long id = GameConstants.ID_GENERATOR.next();
-        LadderPrepare prepare = LadderPrepare.newBuilder()
+        MatchTempData d1 = pmap.get(uid1);
+        MatchTempData d2 = pmap.get(uid2);
+        LadderPrepare prepare1 = LadderPrepare.newBuilder()
                 .setAuto(true)
                 .setId(id)
                 .setType(1)
+                .setOrder(d1.info.order)
                 .build();
+        LadderPrepare prepare2 = LadderPrepare.newBuilder()
+                .setAuto(true)
+                .setId(id)
+                .setType(1)
+                .setOrder(d2.info.order)
+                .build();
+
         // 移除数据
         cleanData(uid1);
         cleanData(uid2);
 
-        G.sendToPlayer(uid1, No.LadderPrepare.getNumber(), prepare);
-        G.sendToPlayer(uid2, No.LadderPrepare.getNumber(), prepare);
+        G.sendToPlayer(uid1, No.LadderPrepare.getNumber(), prepare1);
+        G.sendToPlayer(uid2, No.LadderPrepare.getNumber(), prepare2);
     }
 
     /**
@@ -141,7 +151,7 @@ public class LadderMatchSingleGameScene extends GameScene {
         }
 
         NavigableMap<Integer, Collection<MatchInfoMsg>> scoreMap = find.asMap();
-        NavigableMap<Integer, Collection<MatchInfoMsg>> findMap = scoreMap.subMap(value.lowScore - 300, true, value.topScore + 300, true);
+        NavigableMap<Integer, Collection<MatchInfoMsg>> findMap = scoreMap.subMap(value.lowScore - 200, true, value.topScore + 200, true);
 
         MatchInfoMsg info = null;
         out:

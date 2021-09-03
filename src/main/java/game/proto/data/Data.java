@@ -254,6 +254,11 @@ public final class Data {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_LadderSinglePlayer_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FightRecord_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FightRecord_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -393,32 +398,39 @@ public final class Data {
       "\001(\0132\033.Message.LadderSinglePlayer\022\'\n\002p2\030\006" +
       " \001(\0132\033.Message.LadderSinglePlayer\"?\n\022Lad" +
       "derSinglePlayer\022\013\n\003uid\030\001 \001(\003\022\016\n\006heroId\030\002" +
-      " \001(\005\022\014\n\004name\030\005 \001(\t*+\n\013NpcShowEnum\022\014\n\010NPC" +
-      "_NONE\020\000\022\016\n\nNPC_SHOW_1\020\001*S\n\017EnumItemQuali" +
-      "ty\022\n\n\006Q_NONE\020\000\022\007\n\003Q_W\020\001\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020" +
-      "\003\022\007\n\003Q_P\020\004\022\007\n\003Q_O\020\005\022\007\n\003Q_R\020\006*5\n\016EnumDama" +
-      "geType\022\n\n\006D_NONE\020\000\022\n\n\006D_FIRE\020\001\022\013\n\007D_LIGH" +
-      "T\020\002*O\n\rFormationType\022\022\n\016FORMATION_NONE\020\000" +
-      "\022\025\n\021FORMATION_DEFAULT\020\001\022\023\n\017FORMATION_ARE" +
-      "NA\020\002*E\n\nRewardType\022\021\n\rREWARD_NORMAL\020\000\022\023\n" +
-      "\017REWARD_RESOURCE\020\001\022\017\n\013REWARD_ITEM\020\002*\245\001\n\n" +
-      "RecordType\022\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHE" +
-      "ALTH_CHANGE\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017" +
-      "\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO" +
-      "_ACTION\020\007\022\r\n\tSKILL_USE\020\010\022\021\n\rSHIELD_CHANG" +
-      "E\020\t*h\n\nDamageType\022\017\n\013DAMAGE_NONE\020\000\022\021\n\rDA" +
-      "MAGE_NORMAL\020\001\022\023\n\017DAMAGE_CRITICAL\020\002\022\020\n\014DA" +
-      "MAGE_SKILL\020\003\022\017\n\013DAMAGE_BUFF\020\004*F\n\014Display" +
-      "Point\022\014\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_" +
-      "ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*<\n\tEnemyType\022\014\n\010CR" +
-      "EATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCIS" +
-      "E\020\003*<\n\020ManualActionType\022\013\n\007MA_NONE\020\000\022\r\n\t" +
-      "MA_ATTACK\020\001\022\014\n\010MA_SKILL\020\002*,\n\tFightSide\022\013" +
-      "\n\007FS_NONE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS_B\020\002*n\n\010HomeT" +
-      "ype\022\n\n\006H_NONE\020\000\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003" +
-      "\022\n\n\006H_WALL\020\004\022\014\n\010H_CARPET\020\005\022\n\n\006H_ROAD\020\006\022\013" +
-      "\n\007H_GOODS\020\007\022\n\n\006H_ITEM\020\024B\025\n\017game.proto.da" +
-      "taH\001P\001b\006proto3"
+      " \001(\005\022\014\n\004name\030\005 \001(\t\"\342\001\n\013FightRecord\022#\n\005ro" +
+      "und\030\001 \003(\0132\024.Message.RoundRecord\022&\n\005sideA" +
+      "\030\002 \003(\0132\027.Message.HeroDataRecord\022&\n\005sideB" +
+      "\030\003 \003(\0132\027.Message.HeroDataRecord\022\013\n\003win\030\004" +
+      " \001(\010\022\037\n\006reward\030\005 \003(\0132\017.Message.Reward\022\016\n" +
+      "\006winUid\030\006 \001(\003\022 \n\004type\030\007 \001(\0162\022.Message.Fi" +
+      "ghtType*+\n\013NpcShowEnum\022\014\n\010NPC_NONE\020\000\022\016\n\n" +
+      "NPC_SHOW_1\020\001*S\n\017EnumItemQuality\022\n\n\006Q_NON" +
+      "E\020\000\022\007\n\003Q_W\020\001\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003Q_P\020\004\022" +
+      "\007\n\003Q_O\020\005\022\007\n\003Q_R\020\006*5\n\016EnumDamageType\022\n\n\006D" +
+      "_NONE\020\000\022\n\n\006D_FIRE\020\001\022\013\n\007D_LIGHT\020\002*O\n\rForm" +
+      "ationType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021FORMATI" +
+      "ON_DEFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002*E\n\nRew" +
+      "ardType\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017REWARD_RES" +
+      "OURCE\020\001\022\017\n\013REWARD_ITEM\020\002*\245\001\n\nRecordType\022" +
+      "\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE" +
+      "\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMO" +
+      "VE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r" +
+      "\n\tSKILL_USE\020\010\022\021\n\rSHIELD_CHANGE\020\t*h\n\nDama" +
+      "geType\022\017\n\013DAMAGE_NONE\020\000\022\021\n\rDAMAGE_NORMAL" +
+      "\020\001\022\023\n\017DAMAGE_CRITICAL\020\002\022\020\n\014DAMAGE_SKILL\020" +
+      "\003\022\017\n\013DAMAGE_BUFF\020\004*F\n\014DisplayPoint\022\014\n\010DP" +
+      "_ATT_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010" +
+      "DP_DEF_1\020\003*<\n\tEnemyType\022\014\n\010CREATURE\020\000\022\n\n" +
+      "\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCISE\020\003*<\n\020Manu" +
+      "alActionType\022\013\n\007MA_NONE\020\000\022\r\n\tMA_ATTACK\020\001" +
+      "\022\014\n\010MA_SKILL\020\002*,\n\tFightSide\022\013\n\007FS_NONE\020\000" +
+      "\022\010\n\004FS_A\020\001\022\010\n\004FS_B\020\002*n\n\010HomeType\022\n\n\006H_NO" +
+      "NE\020\000\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_WALL\020" +
+      "\004\022\014\n\010H_CARPET\020\005\022\n\n\006H_ROAD\020\006\022\013\n\007H_GOODS\020\007" +
+      "\022\n\n\006H_ITEM\020\024*:\n\tFightType\022\n\n\006F_NONE\020\000\022\014\n" +
+      "\010F_BATTLE\020\001\022\023\n\017F_LADDER_SINGLE\020\002B\025\n\017game" +
+      ".proto.dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -712,6 +724,12 @@ public final class Data {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderSinglePlayer_descriptor,
         new java.lang.String[] { "Uid", "HeroId", "Name", });
+    internal_static_Message_FightRecord_descriptor =
+      getDescriptor().getMessageTypes().get(38);
+    internal_static_Message_FightRecord_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FightRecord_descriptor,
+        new java.lang.String[] { "Round", "SideA", "SideB", "Win", "Reward", "WinUid", "Type", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

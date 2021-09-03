@@ -48,21 +48,18 @@ message VipData{
 
 }
 
-enum FightType{
-    F_NONE = 0;
-    F_BATTLE = 1;// 野外战斗
-}
 
 // 准备战斗
 message LadderPrepare{
     int64 id = 1;
     bool auto = 2;
     int32 type = 3;// 1:单挑
+    int32 order = 4;// 1:先手 2:后手
 }
 
 
 // 战斗结果
 message LadderResult{
-    int32 type = 3;// 单挑
-
+    int32 type = 3;//  1:单挑
+    FightRecord record = 4;
 }

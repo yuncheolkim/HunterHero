@@ -57,6 +57,19 @@ private static final long serialVersionUID = 0L;
             type_ = input.readInt32();
             break;
           }
+          case 34: {
+            game.proto.data.FightRecord.Builder subBuilder = null;
+            if (record_ != null) {
+              subBuilder = record_.toBuilder();
+            }
+            record_ = input.readMessage(game.proto.data.FightRecord.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(record_);
+              record_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -93,7 +106,7 @@ private static final long serialVersionUID = 0L;
   private int type_;
   /**
    * <pre>
-   * 单挑
+   *  1:单挑
    * </pre>
    *
    * <code>int32 type = 3;</code>
@@ -102,6 +115,32 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getType() {
     return type_;
+  }
+
+  public static final int RECORD_FIELD_NUMBER = 4;
+  private game.proto.data.FightRecord record_;
+  /**
+   * <code>.Message.FightRecord record = 4;</code>
+   * @return Whether the record field is set.
+   */
+  @java.lang.Override
+  public boolean hasRecord() {
+    return record_ != null;
+  }
+  /**
+   * <code>.Message.FightRecord record = 4;</code>
+   * @return The record.
+   */
+  @java.lang.Override
+  public game.proto.data.FightRecord getRecord() {
+    return record_ == null ? game.proto.data.FightRecord.getDefaultInstance() : record_;
+  }
+  /**
+   * <code>.Message.FightRecord record = 4;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.FightRecordOrBuilder getRecordOrBuilder() {
+    return getRecord();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -121,6 +160,9 @@ private static final long serialVersionUID = 0L;
     if (type_ != 0) {
       output.writeInt32(3, type_);
     }
+    if (record_ != null) {
+      output.writeMessage(4, getRecord());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -133,6 +175,10 @@ private static final long serialVersionUID = 0L;
     if (type_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, type_);
+    }
+    if (record_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getRecord());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -151,6 +197,11 @@ private static final long serialVersionUID = 0L;
 
     if (getType()
         != other.getType()) return false;
+    if (hasRecord() != other.hasRecord()) return false;
+    if (hasRecord()) {
+      if (!getRecord()
+          .equals(other.getRecord())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -164,6 +215,10 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType();
+    if (hasRecord()) {
+      hash = (37 * hash) + RECORD_FIELD_NUMBER;
+      hash = (53 * hash) + getRecord().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -303,6 +358,12 @@ private static final long serialVersionUID = 0L;
       super.clear();
       type_ = 0;
 
+      if (recordBuilder_ == null) {
+        record_ = null;
+      } else {
+        record_ = null;
+        recordBuilder_ = null;
+      }
       return this;
     }
 
@@ -330,6 +391,11 @@ private static final long serialVersionUID = 0L;
     public game.proto.back.LadderResult buildPartial() {
       game.proto.back.LadderResult result = new game.proto.back.LadderResult(this);
       result.type_ = type_;
+      if (recordBuilder_ == null) {
+        result.record_ = record_;
+      } else {
+        result.record_ = recordBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -381,6 +447,9 @@ private static final long serialVersionUID = 0L;
       if (other.getType() != 0) {
         setType(other.getType());
       }
+      if (other.hasRecord()) {
+        mergeRecord(other.getRecord());
+      }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -413,7 +482,7 @@ private static final long serialVersionUID = 0L;
     private int type_ ;
     /**
      * <pre>
-     * 单挑
+     *  1:单挑
      * </pre>
      *
      * <code>int32 type = 3;</code>
@@ -425,7 +494,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 单挑
+     *  1:单挑
      * </pre>
      *
      * <code>int32 type = 3;</code>
@@ -440,7 +509,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     * 单挑
+     *  1:单挑
      * </pre>
      *
      * <code>int32 type = 3;</code>
@@ -451,6 +520,125 @@ private static final long serialVersionUID = 0L;
       type_ = 0;
       onChanged();
       return this;
+    }
+
+    private game.proto.data.FightRecord record_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.FightRecord, game.proto.data.FightRecord.Builder, game.proto.data.FightRecordOrBuilder> recordBuilder_;
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     * @return Whether the record field is set.
+     */
+    public boolean hasRecord() {
+      return recordBuilder_ != null || record_ != null;
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     * @return The record.
+     */
+    public game.proto.data.FightRecord getRecord() {
+      if (recordBuilder_ == null) {
+        return record_ == null ? game.proto.data.FightRecord.getDefaultInstance() : record_;
+      } else {
+        return recordBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    public Builder setRecord(game.proto.data.FightRecord value) {
+      if (recordBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        record_ = value;
+        onChanged();
+      } else {
+        recordBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    public Builder setRecord(
+        game.proto.data.FightRecord.Builder builderForValue) {
+      if (recordBuilder_ == null) {
+        record_ = builderForValue.build();
+        onChanged();
+      } else {
+        recordBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    public Builder mergeRecord(game.proto.data.FightRecord value) {
+      if (recordBuilder_ == null) {
+        if (record_ != null) {
+          record_ =
+            game.proto.data.FightRecord.newBuilder(record_).mergeFrom(value).buildPartial();
+        } else {
+          record_ = value;
+        }
+        onChanged();
+      } else {
+        recordBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    public Builder clearRecord() {
+      if (recordBuilder_ == null) {
+        record_ = null;
+        onChanged();
+      } else {
+        record_ = null;
+        recordBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    public game.proto.data.FightRecord.Builder getRecordBuilder() {
+      
+      onChanged();
+      return getRecordFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    public game.proto.data.FightRecordOrBuilder getRecordOrBuilder() {
+      if (recordBuilder_ != null) {
+        return recordBuilder_.getMessageOrBuilder();
+      } else {
+        return record_ == null ?
+            game.proto.data.FightRecord.getDefaultInstance() : record_;
+      }
+    }
+    /**
+     * <code>.Message.FightRecord record = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.FightRecord, game.proto.data.FightRecord.Builder, game.proto.data.FightRecordOrBuilder> 
+        getRecordFieldBuilder() {
+      if (recordBuilder_ == null) {
+        recordBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.FightRecord, game.proto.data.FightRecord.Builder, game.proto.data.FightRecordOrBuilder>(
+                getRecord(),
+                getParentForChildren(),
+                isClean());
+        record_ = null;
+      }
+      return recordBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

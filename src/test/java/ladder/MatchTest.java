@@ -39,9 +39,7 @@ public class MatchTest {
         p2.scoreBase = 1000;
 
         scene.tell(p1);
-
         scene.tell(p2);
-
         TimeUnit.HOURS.sleep(1);
     }
 

@@ -2,12 +2,21 @@ package game.module.fight;
 
 import game.base.G;
 import game.game.scene.GameScene;
+import game.module.battle.Battle;
+import game.module.battle.Side;
+import game.module.battle.battle.AutoBattle;
+import game.module.battle.record.BattleRecord;
 import game.module.fight.data.FightCancelAtPrepare;
 import game.module.fight.data.FightFormation;
+import game.proto.back.LadderResult;
+import game.proto.data.FightRecord;
+import game.proto.data.FightType;
 import game.proto.no.No;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import static game.module.fight.FightService.buildFightRecord;
 
 /**
  * 玩家之间的战斗执行
@@ -18,14 +27,19 @@ import java.util.Map;
 public class LadderFightScene extends GameScene {
     /**
      * 已准备的玩家
+     * key: match id
      */
     private Map<Long, Long> prepareMap = new HashMap<>();
 
     /**
      * 取消的玩家
+     * key: match id
      */
     private Map<Long, Long> cancelMap = new HashMap<>();
 
+    /**
+     * key : uid
+     */
     private Map<Long, FightFormation> formationMap = new HashMap<>();
 
     @Override
@@ -94,9 +108,47 @@ public class LadderFightScene extends GameScene {
     private void fight(FightFormation a, FightFormation b) {
 
         prepareMap.remove(a.id);
-        formationMap.get(a.uid);
-        formationMap.get(b.uid);
-        // todo fight
+        prepareMap.remove(b.id);
 
+        final Battle battle = new AutoBattle();
+        battle.setFightType(FightType.F_LADDER_SINGLE);
+
+        a.heroList.forEach(hero -> {
+            hero.setSide(a.side);
+            hero.setBattle(battle);
+            if (hero.getSide() == Side.A) {
+                hero.setSpeed(1);
+            } else {
+                hero.setSpeed(2);
+            }
+            battle.addHero(hero);
+        });
+        b.heroList.forEach(hero -> {
+            hero.setSide(b.side);
+            hero.setBattle(battle);
+            if (hero.getSide() == Side.A) {
+                hero.setSpeed(1);
+            } else {
+                hero.setSpeed(2);
+            }
+            battle.addHero(hero);
+        });
+
+        final BattleRecord record = battle.start();
+
+        final FightRecord.Builder result = buildFightRecord(record);
+
+        if (a.side == record.getWinSide()) {
+            result.setWinUid(a.uid);
+        } else {
+            result.setWinUid(b.uid);
+        }
+        LadderResult r = LadderResult.newBuilder().setType(1)
+                .setRecord(result)
+                .build();
+
+
+        G.sendToPlayer(a.uid, No.LadderResult.getNumber(), r);
+        G.sendToPlayer(b.uid, No.LadderResult.getNumber(), r);
     }
 }

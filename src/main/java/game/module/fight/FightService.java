@@ -23,9 +23,7 @@ import game.module.event.handler.KillEvent;
 import game.module.item.ItemDropService;
 import game.module.task.TaskService;
 import game.player.Player;
-import game.proto.FightRecord;
 import game.proto.FightStartPush;
-import game.proto.back.FightType;
 import game.proto.data.*;
 import game.proto.no.No;
 import game.utils.CalcUtil;
@@ -308,6 +306,7 @@ public class FightService {
 
     public static FightRecord.Builder buildFightRecord(final BattleRecord record) {
         final FightRecord.Builder builder = FightRecord.newBuilder();
+        builder.setType(record.getFightType());
         for (final HeroRecordData hero : record.getSideAhero()) {
             builder.addSideA(HeroDataRecord.newBuilder()
                     .setId(hero.simple.id)

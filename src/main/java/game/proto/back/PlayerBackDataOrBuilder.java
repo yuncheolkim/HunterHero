@@ -121,7 +121,7 @@ public interface PlayerBackDataOrBuilder extends
    * <code>.Message.FightType fightType = 21;</code>
    * @return The fightType.
    */
-  game.proto.back.FightType getFightType();
+  game.proto.data.FightType getFightType();
 
   /**
    * <code>map&lt;int32, bool&gt; completeTask = 100;</code>

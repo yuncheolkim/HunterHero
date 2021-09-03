@@ -91,11 +91,11 @@ public final class Back {
       " \001(\r\022\022\n\nupdateTime\030\002 \001(\004\"V\n\010SaveData\022)\n\010" +
       "backData\030\001 \001(\0132\027.Message.PlayerBackData\022" +
       "\037\n\002pd\030\002 \001(\0132\023.Message.PlayerData\"\026\n\010Fish" +
-      "Data\022\n\n\002id\030\001 \001(\005\"\t\n\007VipData\"7\n\rLadderPre" +
+      "Data\022\n\n\002id\030\001 \001(\005\"\t\n\007VipData\"F\n\rLadderPre" +
       "pare\022\n\n\002id\030\001 \001(\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004type\030\003" +
-      " \001(\005\"\034\n\014LadderResult\022\014\n\004type\030\003 \001(\005*%\n\tFi" +
-      "ghtType\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001B\025\n\017gam" +
-      "e.proto.backH\001P\001b\006proto3"
+      " \001(\005\022\r\n\005order\030\004 \001(\005\"B\n\014LadderResult\022\014\n\004t" +
+      "ype\030\003 \001(\005\022$\n\006record\030\004 \001(\0132\024.Message.Figh" +
+      "tRecordB\025\n\017game.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -155,13 +155,13 @@ public final class Back {
     internal_static_Message_LadderPrepare_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderPrepare_descriptor,
-        new java.lang.String[] { "Id", "Auto", "Type", });
+        new java.lang.String[] { "Id", "Auto", "Type", "Order", });
     internal_static_Message_LadderResult_descriptor =
       getDescriptor().getMessageTypes().get(8);
     internal_static_Message_LadderResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResult_descriptor,
-        new java.lang.String[] { "Type", });
+        new java.lang.String[] { "Type", "Record", });
     game.proto.data.Data.getDescriptor();
   }
 

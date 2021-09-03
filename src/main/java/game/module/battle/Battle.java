@@ -6,6 +6,7 @@ import game.module.battle.action.ActionPoint;
 import game.module.battle.damage.*;
 import game.module.battle.record.BattleRecord;
 import game.module.battle.record.Record;
+import game.proto.data.FightType;
 import game.utils.JacksonUtil;
 
 import java.util.*;
@@ -72,6 +73,8 @@ public class Battle {
     private DamageInfo damageInfo;
 
     protected BattleRecord battleRecord;
+
+    private FightType fightType;
 
     public Battle() {
         fightId = ID_GEN.addAndGet(1);
@@ -166,6 +169,7 @@ public class Battle {
         Logs.trace("游戏结束", "胜利：", winSide);
         battleRecord.setRoundList(roundList);
         battleRecord.setWinSide(winSide);
+        battleRecord.setFightType(fightType);
         Logs.C.info("end:\n{}", JacksonUtil.toStr(battleRecord));
     }
 
@@ -373,6 +377,11 @@ public class Battle {
     public BattleRecord getBattleRecord() {
         return battleRecord;
     }
+
+    public void setFightType(FightType fightType) {
+        this.fightType = fightType;
+    }
 }
+
 
 

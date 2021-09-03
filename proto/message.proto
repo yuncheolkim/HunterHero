@@ -121,13 +121,7 @@ message FightStartPush {
 }
 
 // 2003 战斗结果res
-message FightRecord {
-    repeated RoundRecord round = 1;
-    repeated HeroDataRecord sideA = 2;
-    repeated HeroDataRecord sideB = 3;
-    bool win = 4; // 是否胜利
-    repeated Reward reward = 5; // 奖励
-}
+
 message FightTestReq{
     repeated FightHeroPos a = 1;
     repeated FightEnemyInfo b = 2;
@@ -515,4 +509,9 @@ message LadderCancelPush{
 
 }
 
+message LadderResultPush{
+    FightRecord record = 1;
+    int32 score = 2;
+    int32 add = 3;
+}
 

@@ -3,12 +3,14 @@ package game.module.ladder;
 import game.anno.GameHandler;
 import game.base.G;
 import game.exception.ModuleAssert;
+import game.module.battle.Side;
 import game.module.fight.FightService;
 import game.module.fight.data.FightCancelAtPrepare;
 import game.module.fight.data.FightFormation;
 import game.module.ladder.match.MatchInfoMsg;
 import game.player.Player;
 import game.proto.Empty;
+import game.proto.LadderResultPush;
 import game.proto.LadderSetFormationReq;
 import game.proto.back.LadderData;
 import game.proto.back.LadderPrepare;
@@ -85,6 +87,7 @@ public class LadderHandler {
 
                 int heroId = ladderInfoBuilder.getHeroId();
                 FightFormation formation = new FightFormation();
+                formation.side = req.getOrder() == 1 ? Side.A : Side.B;
                 formation.id = req.getId();
                 formation.uid = player.getPid();
                 formation.heroList.add(FightService.createFightHero(player, heroId));
@@ -96,7 +99,7 @@ public class LadderHandler {
     }
 
     /**
-     * 排位取消匹配
+     * 内部发生 排位取消匹配
      *
      * @param player
      */
@@ -126,7 +129,14 @@ public class LadderHandler {
         if (ladderInfoBuilder.getInMatch()) {
 
             ladderInfoBuilder.setInMatch(false);
-            // push
+
+            LadderResultPush result = LadderResultPush.newBuilder()
+                    .setRecord(req.getRecord())
+                    .buildPartial();
+
+            // todo 计算结果
+            player.getTransport().send(No.LadderResultPush, result);
+
         }
     }
 }

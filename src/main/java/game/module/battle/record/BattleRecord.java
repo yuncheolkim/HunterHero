@@ -4,6 +4,7 @@ import game.module.battle.Battle;
 import game.module.battle.Hero;
 import game.module.battle.Round;
 import game.module.battle.Side;
+import game.proto.data.FightType;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,6 +21,8 @@ public class BattleRecord {
     private List<HeroRecordData> sideAhero;
 
     private List<HeroRecordData> sideBhero;
+
+    private FightType fightType;
 
     public BattleRecord() {
     }
@@ -59,5 +62,13 @@ public class BattleRecord {
 
     public void setWinSide(Side winSide) {
         this.winSide = winSide;
+    }
+
+    public FightType getFightType() {
+        return fightType;
+    }
+
+    public void setFightType(FightType fightType) {
+        this.fightType = fightType;
     }
 }

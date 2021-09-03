@@ -1,6 +1,7 @@
 package game.module.fight.data;
 
 import game.module.battle.Hero;
+import game.module.battle.Side;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +14,7 @@ public class FightFormation {
 
     public long id;
     public long uid;
+    public Side side;
     public List<Hero> heroList = new ArrayList<>();
 
 }

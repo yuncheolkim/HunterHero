@@ -1,6 +1,7 @@
 package game.module.player;
 
-import game.proto.back.FightType;
+
+import game.proto.data.FightType;
 
 /**
  * @author Yunzhe.Jin

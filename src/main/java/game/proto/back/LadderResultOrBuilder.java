@@ -9,11 +9,26 @@ public interface LadderResultOrBuilder extends
 
   /**
    * <pre>
-   * 单挑
+   *  1:单挑
    * </pre>
    *
    * <code>int32 type = 3;</code>
    * @return The type.
    */
   int getType();
+
+  /**
+   * <code>.Message.FightRecord record = 4;</code>
+   * @return Whether the record field is set.
+   */
+  boolean hasRecord();
+  /**
+   * <code>.Message.FightRecord record = 4;</code>
+   * @return The record.
+   */
+  game.proto.data.FightRecord getRecord();
+  /**
+   * <code>.Message.FightRecord record = 4;</code>
+   */
+  game.proto.data.FightRecordOrBuilder getRecordOrBuilder();
 }

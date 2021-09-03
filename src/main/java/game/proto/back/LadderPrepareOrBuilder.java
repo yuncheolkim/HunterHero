@@ -28,4 +28,14 @@ public interface LadderPrepareOrBuilder extends
    * @return The type.
    */
   int getType();
+
+  /**
+   * <pre>
+   * 1:先手 2:后手
+   * </pre>
+   *
+   * <code>int32 order = 4;</code>
+   * @return The order.
+   */
+  int getOrder();
 }

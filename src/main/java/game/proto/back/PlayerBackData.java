@@ -369,10 +369,10 @@ private static final long serialVersionUID = 0L;
    * <code>.Message.FightType fightType = 21;</code>
    * @return The fightType.
    */
-  @java.lang.Override public game.proto.back.FightType getFightType() {
+  @java.lang.Override public game.proto.data.FightType getFightType() {
     @SuppressWarnings("deprecation")
-    game.proto.back.FightType result = game.proto.back.FightType.valueOf(fightType_);
-    return result == null ? game.proto.back.FightType.UNRECOGNIZED : result;
+    game.proto.data.FightType result = game.proto.data.FightType.valueOf(fightType_);
+    return result == null ? game.proto.data.FightType.UNRECOGNIZED : result;
   }
 
   public static final int COMPLETETASK_FIELD_NUMBER = 100;
@@ -499,7 +499,7 @@ private static final long serialVersionUID = 0L;
     if (count_ != null) {
       output.writeMessage(11, getCount());
     }
-    if (fightType_ != game.proto.back.FightType.F_NONE.getNumber()) {
+    if (fightType_ != game.proto.data.FightType.F_NONE.getNumber()) {
       output.writeEnum(21, fightType_);
     }
     com.google.protobuf.GeneratedMessageV3
@@ -559,7 +559,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, getCount());
     }
-    if (fightType_ != game.proto.back.FightType.F_NONE.getNumber()) {
+    if (fightType_ != game.proto.data.FightType.F_NONE.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(21, fightType_);
     }
@@ -1574,10 +1574,10 @@ private static final long serialVersionUID = 0L;
      * @return The fightType.
      */
     @java.lang.Override
-    public game.proto.back.FightType getFightType() {
+    public game.proto.data.FightType getFightType() {
       @SuppressWarnings("deprecation")
-      game.proto.back.FightType result = game.proto.back.FightType.valueOf(fightType_);
-      return result == null ? game.proto.back.FightType.UNRECOGNIZED : result;
+      game.proto.data.FightType result = game.proto.data.FightType.valueOf(fightType_);
+      return result == null ? game.proto.data.FightType.UNRECOGNIZED : result;
     }
     /**
      * <pre>
@@ -1588,7 +1588,7 @@ private static final long serialVersionUID = 0L;
      * @param value The fightType to set.
      * @return This builder for chaining.
      */
-    public Builder setFightType(game.proto.back.FightType value) {
+    public Builder setFightType(game.proto.data.FightType value) {
       if (value == null) {
         throw new NullPointerException();
       }

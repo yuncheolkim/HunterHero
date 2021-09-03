@@ -22,9 +22,9 @@ public interface FightTestResOrBuilder extends
    * <code>.Message.FightRecord record = 4;</code>
    * @return The record.
    */
-  game.proto.FightRecord getRecord();
+  game.proto.data.FightRecord getRecord();
   /**
    * <code>.Message.FightRecord record = 4;</code>
    */
-  game.proto.FightRecordOrBuilder getRecordOrBuilder();
+  game.proto.data.FightRecordOrBuilder getRecordOrBuilder();
 }
