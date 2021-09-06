@@ -19,7 +19,6 @@ import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.home.HomeHandler;
-import game.module.ladder.LadderHandler;
 import game.module.ladder.match.LadderMatchSingleGameScene;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
@@ -31,8 +30,6 @@ import game.module.title.TitleHandler;
 import game.msg.*;
 import game.proto.*;
 import game.proto.back.FishData;
-import game.proto.back.LadderPrepare;
-import game.proto.back.LadderResult;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
 import javassist.ClassPool;
@@ -136,10 +133,10 @@ public class GameManager extends AbsLifecycle {
         addHandler(new Invoker<>(No.B_HERO_DATA_VALUE, HeroHandler::updateHero, PlayerHero::parser));
         addHandler(new Invoker<>(No.B_FISH_HOOK_VALUE, FishHandler::fishHook, FishData::parser));
         addHandler(new Invoker<>(No.B_FISH_HOOK_EXPIRE_VALUE, FishHandler::waitHook, FishData::parser));
-        addHandler(new Invoker<>(No.LadderPrepare, LadderHandler::prepareLadder, LadderPrepare::parser));
+//        addHandler(new Invoker<>(No.LadderPrepare, LadderHandler::prepareLadder, LadderPrepare::parser));
 //        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult::parser));
-        addHandler(new InvokerNoParam(No.LadderCancel, LadderHandler::ladderCancel));
-        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult.parser()));
+//        addHandler(new InvokerNoParam(No.LadderCancelin, LadderHandler::ladderCancel));
+//        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult.parser()));
 
         // heart
         addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));

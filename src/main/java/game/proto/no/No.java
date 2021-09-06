@@ -57,17 +57,17 @@ public enum No
    */
   B_LADDER_START(15),
   /**
-   * <code>LadderResult = 16;</code>
+   * <code>LadderResultInner = 16;</code>
    */
-  LadderResult(16),
+  LadderResultInner(16),
   /**
-   * <code>LadderPrepare = 17;</code>
+   * <code>LadderPrepareInner = 17;</code>
    */
-  LadderPrepare(17),
+  LadderPrepareInner(17),
   /**
-   * <code>LadderCancel = 18;</code>
+   * <code>LadderCancelInner = 18;</code>
    */
-  LadderCancel(18),
+  LadderCancelInner(18),
   /**
    * <pre>
    * Heartbeat
@@ -236,6 +236,10 @@ public enum No
    * <code>LadderResultPush = 2024;</code>
    */
   LadderResultPush(2024),
+  /**
+   * <code>LadderCancelReq = 2025;</code>
+   */
+  LadderCancelReq(2025),
   /**
    * <pre>
    * Battle
@@ -517,17 +521,17 @@ public enum No
    */
   public static final int B_LADDER_START_VALUE = 15;
   /**
-   * <code>LadderResult = 16;</code>
+   * <code>LadderResultInner = 16;</code>
    */
-  public static final int LadderResult_VALUE = 16;
+  public static final int LadderResultInner_VALUE = 16;
   /**
-   * <code>LadderPrepare = 17;</code>
+   * <code>LadderPrepareInner = 17;</code>
    */
-  public static final int LadderPrepare_VALUE = 17;
+  public static final int LadderPrepareInner_VALUE = 17;
   /**
-   * <code>LadderCancel = 18;</code>
+   * <code>LadderCancelInner = 18;</code>
    */
-  public static final int LadderCancel_VALUE = 18;
+  public static final int LadderCancelInner_VALUE = 18;
   /**
    * <pre>
    * Heartbeat
@@ -696,6 +700,10 @@ public enum No
    * <code>LadderResultPush = 2024;</code>
    */
   public static final int LadderResultPush_VALUE = 2024;
+  /**
+   * <code>LadderCancelReq = 2025;</code>
+   */
+  public static final int LadderCancelReq_VALUE = 2025;
   /**
    * <pre>
    * Battle
@@ -961,9 +969,9 @@ public enum No
       case 13: return B_FISH_HOOK;
       case 14: return B_FISH_HOOK_EXPIRE;
       case 15: return B_LADDER_START;
-      case 16: return LadderResult;
-      case 17: return LadderPrepare;
-      case 18: return LadderCancel;
+      case 16: return LadderResultInner;
+      case 17: return LadderPrepareInner;
+      case 18: return LadderCancelInner;
       case 101: return HeartbeatReq;
       case 201: return PlayerMoveReq;
       case 202: return PlayerGoHotelReq;
@@ -999,6 +1007,7 @@ public enum No
       case 2022: return LadderCancelPush;
       case 2023: return LadderMatchReq;
       case 2024: return LadderResultPush;
+      case 2025: return LadderCancelReq;
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
       case 2101: return DungeonEnterReq;

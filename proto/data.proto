@@ -54,7 +54,7 @@ message PlayerData {
     // 地下城
     Dungeon dungeon = 510;
     // 排位信息
-    LadderInfo ladderInfo = 520;
+    LadderInfo ladderSingleInfo = 520;
     // 背包
     map<int32, BagSlot> bag = 601;
     // 背包容量

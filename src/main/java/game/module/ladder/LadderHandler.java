@@ -7,9 +7,11 @@ import game.module.battle.Side;
 import game.module.fight.FightService;
 import game.module.fight.data.FightCancelAtPrepare;
 import game.module.fight.data.FightFormation;
+import game.module.ladder.match.MatchCancel;
 import game.module.ladder.match.MatchInfoMsg;
 import game.player.Player;
 import game.proto.Empty;
+import game.proto.LadderCancelReq;
 import game.proto.LadderResultPush;
 import game.proto.LadderSetFormationReq;
 import game.proto.back.LadderData;
@@ -40,7 +42,7 @@ public class LadderHandler {
     public static void formation(final Player player, final LadderSetFormationReq req) {
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(req.getHeroId(), null);
         ModuleAssert.notNull(heroOrDefault);
-        player.pd.getLadderInfoBuilder().setHeroId(req.getHeroId());
+        player.pd.getLadderSingleInfoBuilder().setHeroId(req.getHeroId());
     }
 
     /**
@@ -51,7 +53,7 @@ public class LadderHandler {
      */
     @GameHandler(No.LadderMatchReq)
     public static void match(final Player player) {
-        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
+        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
         LadderData.Builder ladderData = player.D.getLadderDataBuilder();
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(ladderInfoBuilder.getHeroId(), null);
         ModuleAssert.notNull(heroOrDefault);
@@ -79,10 +81,10 @@ public class LadderHandler {
      *
      * @param player
      */
-    @GameHandler(value = No.LadderPrepare, inner = true)
+    @GameHandler(value = No.LadderPrepareInner, inner = true)
     public static void prepareLadder(final Player player, LadderPrepare req) {
         if (req.getType() == 1) {//单挑
-            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
+            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
             if (ladderInfoBuilder.getInMatch()) {
 
                 int heroId = ladderInfoBuilder.getHeroId();
@@ -99,13 +101,34 @@ public class LadderHandler {
     }
 
     /**
+     * 玩家取消匹配
+     *
+     * @param player
+     */
+    @GameHandler(No.LadderCancelReq)
+    public static void ladderCanceled(final Player player, LadderCancelReq req) {
+        if (req.getType() == 1) {
+            // 单挑
+            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
+            if (ladderInfoBuilder.getInMatch()) {
+
+                G.G.getLadderMatchScene().tell(new MatchCancel(player.getPid()));
+            }
+        }
+
+    }
+
+
+///////////////////////////////////////////////  inner
+
+    /**
      * 内部发生 排位取消匹配
      *
      * @param player
      */
-    @GameHandler(value = No.LadderCancel, inner = true)
+    @GameHandler(value = No.LadderCancelInner, inner = true)
     public static void ladderCancel(final Player player) {
-        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
+        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
         if (ladderInfoBuilder.getInMatch()) {
 
             ladderInfoBuilder.setInMatch(false);
@@ -122,9 +145,9 @@ public class LadderHandler {
      * @param player
      * @param req
      */
-    @GameHandler(value = No.LadderResult, inner = true)
+    @GameHandler(value = No.LadderResultInner, inner = true)
     public static void ladderResult(final Player player, LadderResult req) {
-        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderInfoBuilder();
+        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
 
         if (ladderInfoBuilder.getInMatch()) {
 

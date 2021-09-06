@@ -101,8 +101,8 @@ public class LadderMatchSingleGameScene extends GameScene {
         cleanData(uid1);
         cleanData(uid2);
 
-        G.sendToPlayer(uid1, No.LadderPrepare.getNumber(), prepare1);
-        G.sendToPlayer(uid2, No.LadderPrepare.getNumber(), prepare2);
+        G.sendToPlayer(uid1, No.LadderPrepareInner.getNumber(), prepare1);
+        G.sendToPlayer(uid2, No.LadderPrepareInner.getNumber(), prepare2);
     }
 
     /**
@@ -127,7 +127,7 @@ public class LadderMatchSingleGameScene extends GameScene {
     private void cancelMatch(MatchTempData data) {
         // 超过5分钟取消匹配
         long uid = data.info.uid;
-        G.sendToPlayer(uid, No.LadderCancel.getNumber());
+        G.sendToPlayer(uid, No.LadderCancelInner.getNumber());
         pmap.remove(uid);
         order1Map.remove(data.lowScore, data.info);
         order2Map.remove(data.lowScore, data.info);
