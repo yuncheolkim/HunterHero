@@ -259,6 +259,11 @@ public class Player {
         addHero(1002);
         // Counter
         D.setCount(GameCount.newBuilder());
+
+        // Ladder
+        if (pd.getLadderSingleInfoBuilder() == null) {
+            pd.setLadderSingleInfo(LadderInfo.newBuilder().build());
+        }
     }
 
     /**

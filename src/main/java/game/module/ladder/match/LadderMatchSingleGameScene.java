@@ -47,6 +47,20 @@ public class LadderMatchSingleGameScene extends GameScene {
             match((MatchInfoMsg) msg);
         } else if (msg instanceof StartWaitMsg) {
             startWaitMsg((StartWaitMsg) msg);
+        } else if (msg instanceof MatchCancel) {
+            manualCancelMatch((MatchCancel) msg);
+        }
+    }
+
+    /**
+     * 主动取消匹配
+     *
+     * @param msg
+     */
+    private void manualCancelMatch(MatchCancel msg) {
+        MatchTempData matchTempData = pmap.get(msg);
+        if (matchTempData != null) {
+            cancelMatch(matchTempData, false);
         }
     }
 
@@ -68,7 +82,7 @@ public class LadderMatchSingleGameScene extends GameScene {
                 long pass = now - matchTempData.info.matchTime;
 
                 if (pass > 5 * 60 * 1000) {
-                    cancelMatch(matchTempData);
+                    cancelMatch(matchTempData, true);
                 } else {
                     putToPool(matchTempData);
                 }
@@ -124,10 +138,13 @@ public class LadderMatchSingleGameScene extends GameScene {
      *
      * @param data
      */
-    private void cancelMatch(MatchTempData data) {
+    private void cancelMatch(MatchTempData data, boolean inner) {
         // 超过5分钟取消匹配
         long uid = data.info.uid;
-        G.sendToPlayer(uid, No.LadderCancelInner.getNumber());
+        if (inner) {
+
+            G.sendToPlayer(uid, No.LadderCancelInner.getNumber());
+        }
         pmap.remove(uid);
         order1Map.remove(data.lowScore, data.info);
         order2Map.remove(data.lowScore, data.info);

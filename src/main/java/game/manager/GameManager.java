@@ -76,6 +76,9 @@ public class GameManager extends AbsLifecycle {
 
     // scene
     private final ChatScene chatScene = new ChatScene();
+    /**
+     * 单线程处理
+     */
     private final LadderMatchSingleGameScene ladderScene = new LadderMatchSingleGameScene();
     private final LadderFightScene fightScene = new LadderFightScene();
 
@@ -103,13 +106,15 @@ public class GameManager extends AbsLifecycle {
                     if (m.isAnnotationPresent(GameHandler.class)) {
                         Logs.C.info("[Handler] ==========> {}:{}", classInfo.getName(), m.getName());
 
-                        if (m.getParameters().length == 1) {
-                            try {
-                                addHandler(createHandler(clazz, m));
-                            } catch (Exception e) {
-                                Logs.C.error("解析失败:{},{}", clazz.getName(), m.getName());
-                                throw new RuntimeException(e);
+                        try {
+                            addHandler(createHandler(clazz, m));
+                            if (m.getParameters().length == 1) {
+                            } else {
+
                             }
+                        } catch (Exception e) {
+                            Logs.C.error("解析失败:{},{}", clazz.getName(), m.getName());
+                            throw new RuntimeException(e);
                         }
                     }
                 }

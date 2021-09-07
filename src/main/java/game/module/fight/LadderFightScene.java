@@ -65,7 +65,7 @@ public class LadderFightScene extends GameScene {
         final long id = msg.id;
         if (prepareMap.containsKey(id)) {
             // 对方已经准备 通知对方结束匹配
-            G.sendToPlayer(prepareMap.get(id), No.LadderCancel.getNumber());
+            G.sendToPlayer(prepareMap.get(id), No.LadderCancelInner.getNumber());
         } else if (!cancelMap.containsKey(id)) {
             // 对方没有准备
             cancelMap.put(id, msg.uid);
@@ -90,7 +90,7 @@ public class LadderFightScene extends GameScene {
         } else if (cancelMap.get(id) != null) {
             cancelMap.remove(id);
             // Cancel
-            G.sendToPlayer(msg.uid, No.LadderCancel.getNumber());
+            G.sendToPlayer(msg.uid, No.LadderCancelInner.getNumber());
 
         } else {
             prepareMap.put(id, msg.uid);
@@ -148,7 +148,7 @@ public class LadderFightScene extends GameScene {
                 .build();
 
 
-        G.sendToPlayer(a.uid, No.LadderResult.getNumber(), r);
-        G.sendToPlayer(b.uid, No.LadderResult.getNumber(), r);
+        G.sendToPlayer(a.uid, No.LadderResultInner.getNumber(), r);
+        G.sendToPlayer(b.uid, No.LadderResultInner.getNumber(), r);
     }
 }

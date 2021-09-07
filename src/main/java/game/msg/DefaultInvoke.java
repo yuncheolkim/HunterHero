@@ -25,10 +25,13 @@ public class DefaultInvoke implements IInvoke {
     @Override
     public void invoke(Player player, Message msg) {
 
-        MessageLite req;
+        MessageLite req = null;
         try {
 
-            req = (MessageLite) parser.parseFrom(msg.getBody());
+            if (parser != null) {
+
+                req = (MessageLite) parser.parseFrom(msg.getBody());
+            }
             MessageLite result = this.handler.handler(player, req);
             if (result != null) {
                 player.getTransport().send(msg.toBuilder().setBody(result.toByteString()).build());

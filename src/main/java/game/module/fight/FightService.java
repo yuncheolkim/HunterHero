@@ -306,7 +306,11 @@ public class FightService {
 
     public static FightRecord.Builder buildFightRecord(final BattleRecord record) {
         final FightRecord.Builder builder = FightRecord.newBuilder();
-        builder.setType(record.getFightType());
+        FightType fightType = record.getFightType();
+        if (fightType != null) {
+            // todo
+            builder.setType(fightType);
+        }
         for (final HeroRecordData hero : record.getSideAhero()) {
             builder.addSideA(HeroDataRecord.newBuilder()
                     .setId(hero.simple.id)

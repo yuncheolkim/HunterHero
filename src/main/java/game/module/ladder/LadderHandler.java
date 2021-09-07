@@ -111,13 +111,11 @@ public class LadderHandler {
             // 单挑
             LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
             if (ladderInfoBuilder.getInMatch()) {
-
                 G.G.getLadderMatchScene().tell(new MatchCancel(player.getPid()));
+                ladderInfoBuilder.setInMatch(false);
             }
         }
-
     }
-
 
 ///////////////////////////////////////////////  inner
 
