@@ -6,9 +6,11 @@ import game.game.enums.FeatureEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.module.hero.HeroService;
 import game.module.home.HomeService;
+import game.module.ladder.LadderHandler;
 import game.module.player.PlayerService;
 import game.player.Player;
 import game.proto.TitleNewPush;
+import game.proto.back.LadderPrepare;
 import game.proto.data.ItemData;
 import game.proto.data.RunTask;
 import game.proto.no.No;
@@ -133,9 +135,21 @@ public enum Cmd {
             HomeService.initHome(player);
         }
     },
-    CMD17(17, "Open Feature") {
+    CMD17(17, "单人匹配") {
         @Override
         public void run(final Player player, final List<String> line) {
+            LadderPrepare req = LadderPrepare.newBuilder()
+                    .setType(1)
+                    .setOrder(1)
+                    .setId(1)
+                    .build();
+            LadderHandler.prepareLadder(player, req);
+            req = LadderPrepare.newBuilder()
+                    .setType(1)
+                    .setOrder(16)
+                    .setId(1)
+                    .build();
+            LadderHandler.prepareLadder(player, req);
         }
     },
     CMD18(18, "Open Feature") {

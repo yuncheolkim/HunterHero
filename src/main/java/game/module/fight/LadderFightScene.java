@@ -91,7 +91,6 @@ public class LadderFightScene extends GameScene {
             cancelMap.remove(id);
             // Cancel
             G.sendToPlayer(msg.uid, No.LadderCancelInner.getNumber());
-
         } else {
             prepareMap.put(id, msg.uid);
             formationMap.put(msg.uid, msg);

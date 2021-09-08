@@ -3,6 +3,8 @@ package game.module.ladder;
 import game.anno.GameHandler;
 import game.base.G;
 import game.exception.ModuleAssert;
+import game.module.battle.Hero;
+import game.module.battle.Pos;
 import game.module.battle.Side;
 import game.module.fight.FightService;
 import game.module.fight.data.FightCancelAtPrepare;
@@ -73,33 +75,6 @@ public class LadderHandler {
         ladderInfoBuilder.setInMatch(true);
     }
 
-    /// inner msg
-
-    /**
-     * 准备排位战斗信息
-     * 英雄信息计算
-     *
-     * @param player
-     */
-    @GameHandler(value = No.LadderPrepareInner, inner = true)
-    public static void prepareLadder(final Player player, LadderPrepare req) {
-        if (req.getType() == 1) {//单挑
-            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
-            if (ladderInfoBuilder.getInMatch()) {
-
-                int heroId = ladderInfoBuilder.getHeroId();
-                FightFormation formation = new FightFormation();
-                formation.side = req.getOrder() == 1 ? Side.A : Side.B;
-                formation.id = req.getId();
-                formation.uid = player.getPid();
-                formation.heroList.add(FightService.createFightHero(player, heroId));
-                G.G.getFightScene().tell(formation);
-            } else {
-                G.G.getFightScene().tell(new FightCancelAtPrepare(req.getId(), player.getPid()));
-            }
-        }
-    }
-
     /**
      * 玩家取消匹配
      *
@@ -118,6 +93,33 @@ public class LadderHandler {
     }
 
 ///////////////////////////////////////////////  inner
+
+    /**
+     * 准备排位战斗信息
+     * 英雄信息计算
+     *
+     * @param player
+     */
+    @GameHandler(value = No.LadderPrepareInner, inner = true)
+    public static void prepareLadder(final Player player, LadderPrepare req) {
+        if (req.getType() == 1) {//单挑
+            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
+            if (ladderInfoBuilder.getInMatch()) {
+
+                int heroId = ladderInfoBuilder.getHeroId();
+                FightFormation formation = new FightFormation();
+                formation.side = req.getOrder() == 1 ? Side.A : Side.B;
+                formation.id = req.getId();
+                formation.uid = player.getPid();
+                Hero fightHero = FightService.createFightHero(player, heroId);
+                fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
+                formation.heroList.add(fightHero);
+                G.G.getFightScene().tell(formation);
+            } else {
+                G.G.getFightScene().tell(new FightCancelAtPrepare(req.getId(), player.getPid()));
+            }
+        }
+    }
 
     /**
      * 内部发生 排位取消匹配
@@ -148,16 +150,13 @@ public class LadderHandler {
         LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
 
         if (ladderInfoBuilder.getInMatch()) {
-
             ladderInfoBuilder.setInMatch(false);
-
-            LadderResultPush result = LadderResultPush.newBuilder()
-                    .setRecord(req.getRecord())
-                    .buildPartial();
-
-            // todo 计算结果
-            player.getTransport().send(No.LadderResultPush, result);
-
         }
+        LadderResultPush result = LadderResultPush.newBuilder()
+                .setRecord(req.getRecord())
+                .buildPartial();
+
+        // todo 计算结果
+        player.getTransport().send(No.LadderResultPush, result);
     }
 }
