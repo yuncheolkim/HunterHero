@@ -10,6 +10,11 @@ import java.util.Objects;
  */
 public class MatchInfoMsg implements Comparable<MatchInfoMsg> {
 
+    public long id;
+
+    /**
+     *
+     */
     public long uid;
 
     /**

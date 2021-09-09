@@ -3,7 +3,6 @@ package game.module.ladder.match;
 import com.google.common.collect.TreeMultimap;
 import game.base.G;
 import game.base.Logs;
-import game.base.constants.GameConstants;
 import game.game.scene.GameScene;
 import game.proto.back.LadderPrepare;
 import game.proto.no.No;
@@ -58,7 +57,7 @@ public class LadderMatchSingleGameScene extends GameScene {
      * @param msg
      */
     private void manualCancelMatch(MatchCancel msg) {
-        MatchTempData matchTempData = pmap.get(msg);
+        MatchTempData matchTempData = pmap.get(msg.uid);
         if (matchTempData != null) {
             cancelMatch(matchTempData, false);
         }
@@ -95,18 +94,17 @@ public class LadderMatchSingleGameScene extends GameScene {
      */
     private void findTarget(Long uid1, long uid2) {
         Logs.C.info("找到对手:{},{}", uid1, uid2);
-        long id = GameConstants.ID_GENERATOR.next();
         MatchTempData d1 = pmap.get(uid1);
         MatchTempData d2 = pmap.get(uid2);
         LadderPrepare prepare1 = LadderPrepare.newBuilder()
                 .setAuto(true)
-                .setId(id)
+                .setMatchId(uid1 + "-" + d1.info.id)
                 .setType(1)
                 .setOrder(d1.info.order)
                 .build();
         LadderPrepare prepare2 = LadderPrepare.newBuilder()
                 .setAuto(true)
-                .setId(id)
+                .setMatchId(uid2 + "-" + d2.info.id)
                 .setType(1)
                 .setOrder(d2.info.order)
                 .build();

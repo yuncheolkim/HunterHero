@@ -501,12 +501,16 @@ message HomeNewTaskDayPush{
 }
 
 ///////////////////////////////////////////////  ladder
+message LadderMatchReq{
+    int64 id = 1;;
+}
 message LadderSetFormationReq{
     int32 heroId = 1;
 }
 
 message LadderCancelReq{
     int32 type = 1;
+    int64 id = 2;
 }
 message LadderCancelPush{
 

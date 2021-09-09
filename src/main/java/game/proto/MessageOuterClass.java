@@ -470,6 +470,11 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_HomeNewTaskDayPush_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_LadderMatchReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_LadderMatchReq_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_LadderSetFormationReq_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -609,14 +614,15 @@ public final class MessageOuterClass {
       "meCleanReq\022\013\n\003pos\030\003 \003(\005\"1\n\016HomeProductRe" +
       "q\022\021\n\tproductId\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\"!\n\023Ho" +
       "meTaskCompleteReq\022\n\n\002id\030\001 \001(\005\"!\n\022HomeNew" +
-      "TaskDayPush\022\013\n\003day\030\001 \001(\005\"\'\n\025LadderSetFor" +
-      "mationReq\022\016\n\006heroId\030\001 \001(\005\"\037\n\017LadderCance" +
-      "lReq\022\014\n\004type\030\001 \001(\005\"\022\n\020LadderCancelPush\"T" +
-      "\n\020LadderResultPush\022$\n\006record\030\001 \001(\0132\024.Mes" +
-      "sage.FightRecord\022\r\n\005score\030\002 \001(\005\022\013\n\003add\030\003" +
-      " \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD" +
-      "\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010" +
-      "\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "TaskDayPush\022\013\n\003day\030\001 \001(\005\"\034\n\016LadderMatchR" +
+      "eq\022\n\n\002id\030\001 \001(\003\"\'\n\025LadderSetFormationReq\022" +
+      "\016\n\006heroId\030\001 \001(\005\"+\n\017LadderCancelReq\022\014\n\004ty" +
+      "pe\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\"\022\n\020LadderCancelPush" +
+      "\"T\n\020LadderResultPush\022$\n\006record\030\001 \001(\0132\024.M" +
+      "essage.FightRecord\022\r\n\005score\030\002 \001(\005\022\013\n\003add" +
+      "\030\003 \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WOR" +
+      "LD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004" +
+      "\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1169,26 +1175,32 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_HomeNewTaskDayPush_descriptor,
         new java.lang.String[] { "Day", });
-    internal_static_Message_LadderSetFormationReq_descriptor =
+    internal_static_Message_LadderMatchReq_descriptor =
       getDescriptor().getMessageTypes().get(90);
+    internal_static_Message_LadderMatchReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_LadderMatchReq_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_LadderSetFormationReq_descriptor =
+      getDescriptor().getMessageTypes().get(91);
     internal_static_Message_LadderSetFormationReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderSetFormationReq_descriptor,
         new java.lang.String[] { "HeroId", });
     internal_static_Message_LadderCancelReq_descriptor =
-      getDescriptor().getMessageTypes().get(91);
+      getDescriptor().getMessageTypes().get(92);
     internal_static_Message_LadderCancelReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderCancelReq_descriptor,
-        new java.lang.String[] { "Type", });
+        new java.lang.String[] { "Type", "Id", });
     internal_static_Message_LadderCancelPush_descriptor =
-      getDescriptor().getMessageTypes().get(92);
+      getDescriptor().getMessageTypes().get(93);
     internal_static_Message_LadderCancelPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderCancelPush_descriptor,
         new java.lang.String[] { });
     internal_static_Message_LadderResultPush_descriptor =
-      getDescriptor().getMessageTypes().get(93);
+      getDescriptor().getMessageTypes().get(94);
     internal_static_Message_LadderResultPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResultPush_descriptor,

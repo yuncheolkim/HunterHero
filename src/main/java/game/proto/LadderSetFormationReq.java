@@ -4,10 +4,6 @@
 package game.proto;
 
 /**
- * <pre>
- *&#47;////////////////////////////////////////////  ladder
- * </pre>
- *
  * Protobuf type {@code Message.LadderSetFormationReq}
  */
 public final class LadderSetFormationReq extends
@@ -256,10 +252,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *&#47;////////////////////////////////////////////  ladder
-   * </pre>
-   *
    * Protobuf type {@code Message.LadderSetFormationReq}
    */
   public static final class Builder extends

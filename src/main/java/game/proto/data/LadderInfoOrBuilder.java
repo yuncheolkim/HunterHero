@@ -164,4 +164,10 @@ public interface LadderInfoOrBuilder extends
    */
   game.proto.data.LadderSingleReportOrBuilder getReportOrBuilder(
       int index);
+
+  /**
+   * <code>int64 matchId = 11;</code>
+   * @return The matchId.
+   */
+  long getMatchId();
 }

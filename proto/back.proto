@@ -51,7 +51,7 @@ message VipData{
 
 // 准备战斗
 message LadderPrepare{
-    int64 id = 1;
+    string matchId = 1;
     bool auto = 2;
     int32 type = 3;// 1:单挑
     int32 order = 4;// 1:先手 2:后手

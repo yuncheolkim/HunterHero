@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LadderPrepare() {
+    matchId_ = "";
   }
 
   @java.lang.Override
@@ -52,9 +53,10 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
-          case 8: {
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
 
-            id_ = input.readInt64();
+            matchId_ = s;
             break;
           }
           case 16: {
@@ -104,15 +106,42 @@ private static final long serialVersionUID = 0L;
             game.proto.back.LadderPrepare.class, game.proto.back.LadderPrepare.Builder.class);
   }
 
-  public static final int ID_FIELD_NUMBER = 1;
-  private long id_;
+  public static final int MATCHID_FIELD_NUMBER = 1;
+  private volatile java.lang.Object matchId_;
   /**
-   * <code>int64 id = 1;</code>
-   * @return The id.
+   * <code>string matchId = 1;</code>
+   * @return The matchId.
    */
   @java.lang.Override
-  public long getId() {
-    return id_;
+  public java.lang.String getMatchId() {
+    java.lang.Object ref = matchId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      matchId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string matchId = 1;</code>
+   * @return The bytes for matchId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getMatchIdBytes() {
+    java.lang.Object ref = matchId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      matchId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
   }
 
   public static final int AUTO_FIELD_NUMBER = 2;
@@ -170,8 +199,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (id_ != 0L) {
-      output.writeInt64(1, id_);
+    if (!getMatchIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, matchId_);
     }
     if (auto_ != false) {
       output.writeBool(2, auto_);
@@ -191,9 +220,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (id_ != 0L) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(1, id_);
+    if (!getMatchIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, matchId_);
     }
     if (auto_ != false) {
       size += com.google.protobuf.CodedOutputStream
@@ -222,8 +250,8 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.back.LadderPrepare other = (game.proto.back.LadderPrepare) obj;
 
-    if (getId()
-        != other.getId()) return false;
+    if (!getMatchId()
+        .equals(other.getMatchId())) return false;
     if (getAuto()
         != other.getAuto()) return false;
     if (getType()
@@ -241,9 +269,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getId());
+    hash = (37 * hash) + MATCHID_FIELD_NUMBER;
+    hash = (53 * hash) + getMatchId().hashCode();
     hash = (37 * hash) + AUTO_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getAuto());
@@ -388,7 +415,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      id_ = 0L;
+      matchId_ = "";
 
       auto_ = false;
 
@@ -422,7 +449,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.back.LadderPrepare buildPartial() {
       game.proto.back.LadderPrepare result = new game.proto.back.LadderPrepare(this);
-      result.id_ = id_;
+      result.matchId_ = matchId_;
       result.auto_ = auto_;
       result.type_ = type_;
       result.order_ = order_;
@@ -474,8 +501,9 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.back.LadderPrepare other) {
       if (other == game.proto.back.LadderPrepare.getDefaultInstance()) return this;
-      if (other.getId() != 0L) {
-        setId(other.getId());
+      if (!other.getMatchId().isEmpty()) {
+        matchId_ = other.matchId_;
+        onChanged();
       }
       if (other.getAuto() != false) {
         setAuto(other.getAuto());
@@ -515,33 +543,78 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long id_ ;
+    private java.lang.Object matchId_ = "";
     /**
-     * <code>int64 id = 1;</code>
-     * @return The id.
+     * <code>string matchId = 1;</code>
+     * @return The matchId.
      */
-    @java.lang.Override
-    public long getId() {
-      return id_;
+    public java.lang.String getMatchId() {
+      java.lang.Object ref = matchId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        matchId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
     }
     /**
-     * <code>int64 id = 1;</code>
-     * @param value The id to set.
+     * <code>string matchId = 1;</code>
+     * @return The bytes for matchId.
+     */
+    public com.google.protobuf.ByteString
+        getMatchIdBytes() {
+      java.lang.Object ref = matchId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        matchId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string matchId = 1;</code>
+     * @param value The matchId to set.
      * @return This builder for chaining.
      */
-    public Builder setId(long value) {
-      
-      id_ = value;
+    public Builder setMatchId(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      matchId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>int64 id = 1;</code>
+     * <code>string matchId = 1;</code>
      * @return This builder for chaining.
      */
-    public Builder clearId() {
+    public Builder clearMatchId() {
       
-      id_ = 0L;
+      matchId_ = getDefaultInstance().getMatchId();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string matchId = 1;</code>
+     * @param value The bytes for matchId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMatchIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      matchId_ = value;
       onChanged();
       return this;
     }

@@ -51,8 +51,12 @@ public class FightService {
      * @param player
      */
     public static void checkFight(final Player player) {
+        // 已经在战斗中
         if (player.pd.getFightInfoCount() > 0) {
-            // 已经在战斗中
+            return;
+        }
+        // 在匹配中
+        if (player.pd.getLadderSingleInfoBuilder().getInMatch()) {
             return;
         }
 

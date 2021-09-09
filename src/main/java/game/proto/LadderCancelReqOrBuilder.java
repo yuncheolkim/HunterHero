@@ -12,4 +12,10 @@ public interface LadderCancelReqOrBuilder extends
    * @return The type.
    */
   int getType();
+
+  /**
+   * <code>int64 id = 2;</code>
+   * @return The id.
+   */
+  long getId();
 }
