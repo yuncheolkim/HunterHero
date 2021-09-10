@@ -90,6 +90,11 @@ private static final long serialVersionUID = 0L;
             heroId_ = input.readInt32();
             break;
           }
+          case 64: {
+
+            inMatch_ = input.readBool();
+            break;
+          }
           case 74: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               heroScore_ = com.google.protobuf.MapField.newMapField(
@@ -110,6 +115,11 @@ private static final long serialVersionUID = 0L;
             }
             report_.add(
                 input.readMessage(game.proto.data.LadderSingleReport.parser(), extensionRegistry));
+            break;
+          }
+          case 88: {
+
+            matchId_ = input.readInt64();
             break;
           }
           default: {
@@ -264,6 +274,21 @@ private static final long serialVersionUID = 0L;
     return heroId_;
   }
 
+  public static final int INMATCH_FIELD_NUMBER = 8;
+  private boolean inMatch_;
+  /**
+   * <pre>
+   * 是否正在查找对手
+   * </pre>
+   *
+   * <code>bool inMatch = 8;</code>
+   * @return The inMatch.
+   */
+  @java.lang.Override
+  public boolean getInMatch() {
+    return inMatch_;
+  }
+
   public static final int HEROSCORE_FIELD_NUMBER = 9;
   private static final class HeroScoreDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -405,6 +430,17 @@ private static final long serialVersionUID = 0L;
     return report_.get(index);
   }
 
+  public static final int MATCHID_FIELD_NUMBER = 11;
+  private long matchId_;
+  /**
+   * <code>int64 matchId = 11;</code>
+   * @return The matchId.
+   */
+  @java.lang.Override
+  public long getMatchId() {
+    return matchId_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -440,6 +476,9 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       output.writeInt32(7, heroId_);
     }
+    if (inMatch_ != false) {
+      output.writeBool(8, inMatch_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -448,6 +487,9 @@ private static final long serialVersionUID = 0L;
         9);
     for (int i = 0; i < report_.size(); i++) {
       output.writeMessage(10, report_.get(i));
+    }
+    if (matchId_ != 0L) {
+      output.writeInt64(11, matchId_);
     }
     unknownFields.writeTo(output);
   }
@@ -486,6 +528,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, heroId_);
     }
+    if (inMatch_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(8, inMatch_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.LadderHeroScore> entry
          : internalGetHeroScore().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.LadderHeroScore>
@@ -499,6 +545,10 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < report_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(10, report_.get(i));
+    }
+    if (matchId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(11, matchId_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -529,10 +579,14 @@ private static final long serialVersionUID = 0L;
         != other.getLose2()) return false;
     if (getHeroId()
         != other.getHeroId()) return false;
+    if (getInMatch()
+        != other.getInMatch()) return false;
     if (!internalGetHeroScore().equals(
         other.internalGetHeroScore())) return false;
     if (!getReportList()
         .equals(other.getReportList())) return false;
+    if (getMatchId()
+        != other.getMatchId()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -558,6 +612,9 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getLose2();
     hash = (37 * hash) + HEROID_FIELD_NUMBER;
     hash = (53 * hash) + getHeroId();
+    hash = (37 * hash) + INMATCH_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getInMatch());
     if (!internalGetHeroScore().getMap().isEmpty()) {
       hash = (37 * hash) + HEROSCORE_FIELD_NUMBER;
       hash = (53 * hash) + internalGetHeroScore().hashCode();
@@ -566,6 +623,9 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + REPORT_FIELD_NUMBER;
       hash = (53 * hash) + getReportList().hashCode();
     }
+    hash = (37 * hash) + MATCHID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getMatchId());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -741,6 +801,8 @@ private static final long serialVersionUID = 0L;
 
       heroId_ = 0;
 
+      inMatch_ = false;
+
       internalGetMutableHeroScore().clear();
       if (reportBuilder_ == null) {
         report_ = java.util.Collections.emptyList();
@@ -748,6 +810,8 @@ private static final long serialVersionUID = 0L;
       } else {
         reportBuilder_.clear();
       }
+      matchId_ = 0L;
+
       return this;
     }
 
@@ -782,6 +846,7 @@ private static final long serialVersionUID = 0L;
       result.lose1_ = lose1_;
       result.lose2_ = lose2_;
       result.heroId_ = heroId_;
+      result.inMatch_ = inMatch_;
       result.heroScore_ = internalGetHeroScore();
       result.heroScore_.makeImmutable();
       if (reportBuilder_ == null) {
@@ -793,6 +858,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.report_ = reportBuilder_.build();
       }
+      result.matchId_ = matchId_;
       onBuilt();
       return result;
     }
@@ -862,6 +928,9 @@ private static final long serialVersionUID = 0L;
       if (other.getHeroId() != 0) {
         setHeroId(other.getHeroId());
       }
+      if (other.getInMatch() != false) {
+        setInMatch(other.getInMatch());
+      }
       internalGetMutableHeroScore().mergeFrom(
           other.internalGetHeroScore());
       if (reportBuilder_ == null) {
@@ -889,6 +958,9 @@ private static final long serialVersionUID = 0L;
             reportBuilder_.addAllMessages(other.report_);
           }
         }
+      }
+      if (other.getMatchId() != 0L) {
+        setMatchId(other.getMatchId());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1217,6 +1289,49 @@ private static final long serialVersionUID = 0L;
     public Builder clearHeroId() {
       
       heroId_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private boolean inMatch_ ;
+    /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
+     * <code>bool inMatch = 8;</code>
+     * @return The inMatch.
+     */
+    @java.lang.Override
+    public boolean getInMatch() {
+      return inMatch_;
+    }
+    /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
+     * <code>bool inMatch = 8;</code>
+     * @param value The inMatch to set.
+     * @return This builder for chaining.
+     */
+    public Builder setInMatch(boolean value) {
+      
+      inMatch_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
+     * <code>bool inMatch = 8;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearInMatch() {
+      
+      inMatch_ = false;
       onChanged();
       return this;
     }
@@ -1659,6 +1774,37 @@ private static final long serialVersionUID = 0L;
         report_ = null;
       }
       return reportBuilder_;
+    }
+
+    private long matchId_ ;
+    /**
+     * <code>int64 matchId = 11;</code>
+     * @return The matchId.
+     */
+    @java.lang.Override
+    public long getMatchId() {
+      return matchId_;
+    }
+    /**
+     * <code>int64 matchId = 11;</code>
+     * @param value The matchId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMatchId(long value) {
+      
+      matchId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 matchId = 11;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMatchId() {
+      
+      matchId_ = 0L;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

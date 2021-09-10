@@ -26,7 +26,6 @@ import game.module.event.handler.ResourceChangeEvent;
 import game.module.hero.HeroService;
 import game.module.home.HomeAreaData;
 import game.module.home.HomeService;
-import game.module.ladder.LadderTempData;
 import game.net.Transport;
 import game.proto.BagInfoChangePush;
 import game.proto.LoginRes;
@@ -114,8 +113,6 @@ public class Player {
      */
     public HomeAreaData homeAreaData;
 
-    public LadderTempData ladderData = new LadderTempData();
-
     public Player(final long pid) {
         this.pid = pid;
         createTime = LocalDateTime.now();
@@ -153,7 +150,6 @@ public class Player {
         transport.send(Message.newBuilder().setMsgNo(No.LoginReq.getNumber()).setBody(builder.build().toByteString()).build());
 
         prepareData();
-
     }
 
     /**
@@ -228,6 +224,8 @@ public class Player {
                 homeDataBuilder.setLevel(1);
             }
         }
+        // Ladder
+
 
     }
 

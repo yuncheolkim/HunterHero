@@ -351,8 +351,10 @@ message LadderInfo{
     int32 lose1 = 5; // 先手
     int32 lose2 = 6; // 后手
     int32 heroId = 7; // 出战英雄
+    bool inMatch = 8; // 是否正在查找对手
     map<int32, LadderHeroScore> heroScore = 9;
     repeated LadderSingleReport report = 10;// 最近20次
+    int64 matchId = 11;
 }
 // 英雄战斗记录
 message LadderHeroScore{
