@@ -29,18 +29,18 @@ public class LadderFightScene extends GameScene {
      * 已准备的玩家
      * key: match id
      */
-    private Map<String, Long> prepareMap = new HashMap<>();
+    private final Map<String, Long> prepareMap = new HashMap<>();
 
     /**
      * 取消的玩家
      * key: match id
      */
-    private Map<String, Long> cancelMap = new HashMap<>();
+    private final Map<String, Long> cancelMap = new HashMap<>();
 
     /**
      * key : uid
      */
-    private Map<Long, FightFormation> formationMap = new HashMap<>();
+    private final Map<Long, FightFormation> formationMap = new HashMap<>();
 
     @Override
     protected void process(Object msg) {
@@ -62,7 +62,7 @@ public class LadderFightScene extends GameScene {
      * @param msg
      */
     private void cancel(FightCancelAtPrepare msg) {
-        final String id = msg.matchId;
+        String id = msg.uid + "-" + msg.matchId;
         if (prepareMap.containsKey(id)) {
             // 对方已经准备 通知对方结束匹配
             G.sendToPlayer(prepareMap.get(id), No.LadderCancelInner.getNumber());
@@ -83,7 +83,7 @@ public class LadderFightScene extends GameScene {
      */
     private void prepare(FightFormation msg) {
 
-        final String id = msg.matchId;
+        String id = msg.uid + "-" + msg.matchId;
         if (prepareMap.get(id) != null) {
             // fight
             fight(formationMap.get(prepareMap.get(id)), msg);
@@ -105,9 +105,11 @@ public class LadderFightScene extends GameScene {
      * @param msg
      */
     private void fight(FightFormation a, FightFormation b) {
+        String aid = a.uid + "-" + a.matchId;
+        String bid = b.uid + "-" + b.matchId;
 
-        prepareMap.remove(a.matchId);
-        prepareMap.remove(b.matchId);
+        prepareMap.remove(aid);
+        prepareMap.remove(bid);
 
         final Battle battle = new AutoBattle();
         battle.setFightType(FightType.F_LADDER_SINGLE);
@@ -145,7 +147,6 @@ public class LadderFightScene extends GameScene {
         LadderResult r = LadderResult.newBuilder().setType(1)
                 .setRecord(result)
                 .build();
-
 
         G.sendToPlayer(a.uid, No.LadderResultInner.getNumber(), r);
         G.sendToPlayer(b.uid, No.LadderResultInner.getNumber(), r);

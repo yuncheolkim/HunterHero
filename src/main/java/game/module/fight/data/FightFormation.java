@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class FightFormation {
 
-    public String matchId;
+    public long matchId;
     public long uid;
     public Side side;
     public List<Hero> heroList = new ArrayList<>();

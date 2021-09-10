@@ -71,6 +71,8 @@ enum No {
     LadderMatchReq = 2023;
     LadderResultPush = 2024;
     LadderCancelReq = 2025;
+    LadderFightEndReq = 2026;
+    LadderFightAutoEndInner = 2027;
 
     // Battle
     BattleEnterReq = 2030;

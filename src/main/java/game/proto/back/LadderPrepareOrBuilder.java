@@ -8,16 +8,10 @@ public interface LadderPrepareOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string matchId = 1;</code>
+   * <code>int64 matchId = 1;</code>
    * @return The matchId.
    */
-  java.lang.String getMatchId();
-  /**
-   * <code>string matchId = 1;</code>
-   * @return The bytes for matchId.
-   */
-  com.google.protobuf.ByteString
-      getMatchIdBytes();
+  long getMatchId();
 
   /**
    * <code>bool auto = 2;</code>

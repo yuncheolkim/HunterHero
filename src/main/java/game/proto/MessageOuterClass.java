@@ -494,6 +494,11 @@ public final class MessageOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_LadderResultPush_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_LadderFightEndReq_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_LadderFightEndReq_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -620,9 +625,10 @@ public final class MessageOuterClass {
       "pe\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\"\022\n\020LadderCancelPush" +
       "\"T\n\020LadderResultPush\022$\n\006record\030\001 \001(\0132\024.M" +
       "essage.FightRecord\022\r\n\005score\030\002 \001(\005\022\013\n\003add" +
-      "\030\003 \001(\005*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WOR" +
-      "LD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004" +
-      "\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
+      "\030\003 \001(\005\"$\n\021LadderFightEndReq\022\017\n\007matchId\030\001" +
+      " \001(\003*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD" +
+      "\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010" +
+      "\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1205,6 +1211,12 @@ public final class MessageOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResultPush_descriptor,
         new java.lang.String[] { "Record", "Score", "Add", });
+    internal_static_Message_LadderFightEndReq_descriptor =
+      getDescriptor().getMessageTypes().get(95);
+    internal_static_Message_LadderFightEndReq_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_LadderFightEndReq_descriptor,
+        new java.lang.String[] { "MatchId", });
     game.proto.data.Data.getDescriptor();
   }
 

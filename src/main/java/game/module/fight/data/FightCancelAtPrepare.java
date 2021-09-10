@@ -8,10 +8,10 @@ package game.module.fight.data;
  */
 public class FightCancelAtPrepare {
 
-    public final String matchId;
+    public final long matchId;
     public final long uid;
 
-    public FightCancelAtPrepare(String matchId, long uid) {
+    public FightCancelAtPrepare(long matchId, long uid) {
         this.uid = uid;
         this.matchId = matchId;
     }

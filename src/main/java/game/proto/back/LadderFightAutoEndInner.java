@@ -5,28 +5,28 @@ package game.proto.back;
 
 /**
  * <pre>
- * 准备战斗
+ * 战斗自动结束保险
  * </pre>
  *
- * Protobuf type {@code Message.LadderPrepare}
+ * Protobuf type {@code Message.LadderFightAutoEndInner}
  */
-public final class LadderPrepare extends
+public final class LadderFightAutoEndInner extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:Message.LadderPrepare)
-    LadderPrepareOrBuilder {
+    // @@protoc_insertion_point(message_implements:Message.LadderFightAutoEndInner)
+    LadderFightAutoEndInnerOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use LadderPrepare.newBuilder() to construct.
-  private LadderPrepare(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use LadderFightAutoEndInner.newBuilder() to construct.
+  private LadderFightAutoEndInner(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private LadderPrepare() {
+  private LadderFightAutoEndInner() {
   }
 
   @java.lang.Override
   @SuppressWarnings({"unused"})
   protected java.lang.Object newInstance(
       UnusedPrivateParameter unused) {
-    return new LadderPrepare();
+    return new LadderFightAutoEndInner();
   }
 
   @java.lang.Override
@@ -34,7 +34,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LadderPrepare(
+  private LadderFightAutoEndInner(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -55,21 +55,6 @@ private static final long serialVersionUID = 0L;
           case 8: {
 
             matchId_ = input.readInt64();
-            break;
-          }
-          case 16: {
-
-            auto_ = input.readBool();
-            break;
-          }
-          case 24: {
-
-            type_ = input.readInt32();
-            break;
-          }
-          case 32: {
-
-            order_ = input.readInt32();
             break;
           }
           default: {
@@ -93,15 +78,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return game.proto.back.Back.internal_static_Message_LadderPrepare_descriptor;
+    return game.proto.back.Back.internal_static_Message_LadderFightAutoEndInner_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return game.proto.back.Back.internal_static_Message_LadderPrepare_fieldAccessorTable
+    return game.proto.back.Back.internal_static_Message_LadderFightAutoEndInner_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            game.proto.back.LadderPrepare.class, game.proto.back.LadderPrepare.Builder.class);
+            game.proto.back.LadderFightAutoEndInner.class, game.proto.back.LadderFightAutoEndInner.Builder.class);
   }
 
   public static final int MATCHID_FIELD_NUMBER = 1;
@@ -113,47 +98,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public long getMatchId() {
     return matchId_;
-  }
-
-  public static final int AUTO_FIELD_NUMBER = 2;
-  private boolean auto_;
-  /**
-   * <code>bool auto = 2;</code>
-   * @return The auto.
-   */
-  @java.lang.Override
-  public boolean getAuto() {
-    return auto_;
-  }
-
-  public static final int TYPE_FIELD_NUMBER = 3;
-  private int type_;
-  /**
-   * <pre>
-   * 1:单挑
-   * </pre>
-   *
-   * <code>int32 type = 3;</code>
-   * @return The type.
-   */
-  @java.lang.Override
-  public int getType() {
-    return type_;
-  }
-
-  public static final int ORDER_FIELD_NUMBER = 4;
-  private int order_;
-  /**
-   * <pre>
-   * 1:先手 2:后手
-   * </pre>
-   *
-   * <code>int32 order = 4;</code>
-   * @return The order.
-   */
-  @java.lang.Override
-  public int getOrder() {
-    return order_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -173,15 +117,6 @@ private static final long serialVersionUID = 0L;
     if (matchId_ != 0L) {
       output.writeInt64(1, matchId_);
     }
-    if (auto_ != false) {
-      output.writeBool(2, auto_);
-    }
-    if (type_ != 0) {
-      output.writeInt32(3, type_);
-    }
-    if (order_ != 0) {
-      output.writeInt32(4, order_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -195,18 +130,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(1, matchId_);
     }
-    if (auto_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(2, auto_);
-    }
-    if (type_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(3, type_);
-    }
-    if (order_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(4, order_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -217,19 +140,13 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof game.proto.back.LadderPrepare)) {
+    if (!(obj instanceof game.proto.back.LadderFightAutoEndInner)) {
       return super.equals(obj);
     }
-    game.proto.back.LadderPrepare other = (game.proto.back.LadderPrepare) obj;
+    game.proto.back.LadderFightAutoEndInner other = (game.proto.back.LadderFightAutoEndInner) obj;
 
     if (getMatchId()
         != other.getMatchId()) return false;
-    if (getAuto()
-        != other.getAuto()) return false;
-    if (getType()
-        != other.getType()) return false;
-    if (getOrder()
-        != other.getOrder()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -244,81 +161,74 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + MATCHID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getMatchId());
-    hash = (37 * hash) + AUTO_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getAuto());
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getType();
-    hash = (37 * hash) + ORDER_FIELD_NUMBER;
-    hash = (53 * hash) + getOrder();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.back.LadderPrepare parseFrom(byte[] data)
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static game.proto.back.LadderPrepare parseFrom(java.io.InputStream input)
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.back.LadderPrepare parseDelimitedFrom(java.io.InputStream input)
+  public static game.proto.back.LadderFightAutoEndInner parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static game.proto.back.LadderPrepare parseDelimitedFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static game.proto.back.LadderPrepare parseFrom(
+  public static game.proto.back.LadderFightAutoEndInner parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -331,7 +241,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(game.proto.back.LadderPrepare prototype) {
+  public static Builder newBuilder(game.proto.back.LadderFightAutoEndInner prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -348,29 +258,29 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * 准备战斗
+   * 战斗自动结束保险
    * </pre>
    *
-   * Protobuf type {@code Message.LadderPrepare}
+   * Protobuf type {@code Message.LadderFightAutoEndInner}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:Message.LadderPrepare)
-      game.proto.back.LadderPrepareOrBuilder {
+      // @@protoc_insertion_point(builder_implements:Message.LadderFightAutoEndInner)
+      game.proto.back.LadderFightAutoEndInnerOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return game.proto.back.Back.internal_static_Message_LadderPrepare_descriptor;
+      return game.proto.back.Back.internal_static_Message_LadderFightAutoEndInner_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return game.proto.back.Back.internal_static_Message_LadderPrepare_fieldAccessorTable
+      return game.proto.back.Back.internal_static_Message_LadderFightAutoEndInner_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              game.proto.back.LadderPrepare.class, game.proto.back.LadderPrepare.Builder.class);
+              game.proto.back.LadderFightAutoEndInner.class, game.proto.back.LadderFightAutoEndInner.Builder.class);
     }
 
-    // Construct using game.proto.back.LadderPrepare.newBuilder()
+    // Construct using game.proto.back.LadderFightAutoEndInner.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -390,29 +300,23 @@ private static final long serialVersionUID = 0L;
       super.clear();
       matchId_ = 0L;
 
-      auto_ = false;
-
-      type_ = 0;
-
-      order_ = 0;
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return game.proto.back.Back.internal_static_Message_LadderPrepare_descriptor;
+      return game.proto.back.Back.internal_static_Message_LadderFightAutoEndInner_descriptor;
     }
 
     @java.lang.Override
-    public game.proto.back.LadderPrepare getDefaultInstanceForType() {
-      return game.proto.back.LadderPrepare.getDefaultInstance();
+    public game.proto.back.LadderFightAutoEndInner getDefaultInstanceForType() {
+      return game.proto.back.LadderFightAutoEndInner.getDefaultInstance();
     }
 
     @java.lang.Override
-    public game.proto.back.LadderPrepare build() {
-      game.proto.back.LadderPrepare result = buildPartial();
+    public game.proto.back.LadderFightAutoEndInner build() {
+      game.proto.back.LadderFightAutoEndInner result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -420,12 +324,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public game.proto.back.LadderPrepare buildPartial() {
-      game.proto.back.LadderPrepare result = new game.proto.back.LadderPrepare(this);
+    public game.proto.back.LadderFightAutoEndInner buildPartial() {
+      game.proto.back.LadderFightAutoEndInner result = new game.proto.back.LadderFightAutoEndInner(this);
       result.matchId_ = matchId_;
-      result.auto_ = auto_;
-      result.type_ = type_;
-      result.order_ = order_;
       onBuilt();
       return result;
     }
@@ -464,27 +365,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof game.proto.back.LadderPrepare) {
-        return mergeFrom((game.proto.back.LadderPrepare)other);
+      if (other instanceof game.proto.back.LadderFightAutoEndInner) {
+        return mergeFrom((game.proto.back.LadderFightAutoEndInner)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(game.proto.back.LadderPrepare other) {
-      if (other == game.proto.back.LadderPrepare.getDefaultInstance()) return this;
+    public Builder mergeFrom(game.proto.back.LadderFightAutoEndInner other) {
+      if (other == game.proto.back.LadderFightAutoEndInner.getDefaultInstance()) return this;
       if (other.getMatchId() != 0L) {
         setMatchId(other.getMatchId());
-      }
-      if (other.getAuto() != false) {
-        setAuto(other.getAuto());
-      }
-      if (other.getType() != 0) {
-        setType(other.getType());
-      }
-      if (other.getOrder() != 0) {
-        setOrder(other.getOrder());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -501,11 +393,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      game.proto.back.LadderPrepare parsedMessage = null;
+      game.proto.back.LadderFightAutoEndInner parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (game.proto.back.LadderPrepare) e.getUnfinishedMessage();
+        parsedMessage = (game.proto.back.LadderFightAutoEndInner) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -545,123 +437,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private boolean auto_ ;
-    /**
-     * <code>bool auto = 2;</code>
-     * @return The auto.
-     */
-    @java.lang.Override
-    public boolean getAuto() {
-      return auto_;
-    }
-    /**
-     * <code>bool auto = 2;</code>
-     * @param value The auto to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAuto(boolean value) {
-      
-      auto_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>bool auto = 2;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAuto() {
-      
-      auto_ = false;
-      onChanged();
-      return this;
-    }
-
-    private int type_ ;
-    /**
-     * <pre>
-     * 1:单挑
-     * </pre>
-     *
-     * <code>int32 type = 3;</code>
-     * @return The type.
-     */
-    @java.lang.Override
-    public int getType() {
-      return type_;
-    }
-    /**
-     * <pre>
-     * 1:单挑
-     * </pre>
-     *
-     * <code>int32 type = 3;</code>
-     * @param value The type to set.
-     * @return This builder for chaining.
-     */
-    public Builder setType(int value) {
-      
-      type_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 1:单挑
-     * </pre>
-     *
-     * <code>int32 type = 3;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearType() {
-      
-      type_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int order_ ;
-    /**
-     * <pre>
-     * 1:先手 2:后手
-     * </pre>
-     *
-     * <code>int32 order = 4;</code>
-     * @return The order.
-     */
-    @java.lang.Override
-    public int getOrder() {
-      return order_;
-    }
-    /**
-     * <pre>
-     * 1:先手 2:后手
-     * </pre>
-     *
-     * <code>int32 order = 4;</code>
-     * @param value The order to set.
-     * @return This builder for chaining.
-     */
-    public Builder setOrder(int value) {
-      
-      order_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 1:先手 2:后手
-     * </pre>
-     *
-     * <code>int32 order = 4;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearOrder() {
-      
-      order_ = 0;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -675,41 +450,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:Message.LadderPrepare)
+    // @@protoc_insertion_point(builder_scope:Message.LadderFightAutoEndInner)
   }
 
-  // @@protoc_insertion_point(class_scope:Message.LadderPrepare)
-  private static final game.proto.back.LadderPrepare DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:Message.LadderFightAutoEndInner)
+  private static final game.proto.back.LadderFightAutoEndInner DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new game.proto.back.LadderPrepare();
+    DEFAULT_INSTANCE = new game.proto.back.LadderFightAutoEndInner();
   }
 
-  public static game.proto.back.LadderPrepare getDefaultInstance() {
+  public static game.proto.back.LadderFightAutoEndInner getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<LadderPrepare>
-      PARSER = new com.google.protobuf.AbstractParser<LadderPrepare>() {
+  private static final com.google.protobuf.Parser<LadderFightAutoEndInner>
+      PARSER = new com.google.protobuf.AbstractParser<LadderFightAutoEndInner>() {
     @java.lang.Override
-    public LadderPrepare parsePartialFrom(
+    public LadderFightAutoEndInner parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LadderPrepare(input, extensionRegistry);
+      return new LadderFightAutoEndInner(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<LadderPrepare> parser() {
+  public static com.google.protobuf.Parser<LadderFightAutoEndInner> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<LadderPrepare> getParserForType() {
+  public com.google.protobuf.Parser<LadderFightAutoEndInner> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public game.proto.back.LadderPrepare getDefaultInstanceForType() {
+  public game.proto.back.LadderFightAutoEndInner getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

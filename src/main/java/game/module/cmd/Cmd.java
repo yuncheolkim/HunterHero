@@ -138,16 +138,18 @@ public enum Cmd {
     CMD17(17, "单人匹配") {
         @Override
         public void run(final Player player, final List<String> line) {
+            int matchId = Integer.parseInt(line.get(0));
+
             LadderPrepare req = LadderPrepare.newBuilder()
                     .setType(1)
                     .setOrder(1)
-                    .setId(1)
+                    .setMatchId(matchId)
                     .build();
             LadderHandler.prepareLadder(player, req);
             req = LadderPrepare.newBuilder()
                     .setType(1)
                     .setOrder(16)
-                    .setId(1)
+                    .setMatchId(matchId)
                     .build();
             LadderHandler.prepareLadder(player, req);
         }

@@ -4,6 +4,7 @@ import com.google.common.collect.TreeMultimap;
 import game.base.G;
 import game.base.Logs;
 import game.game.scene.GameScene;
+import game.proto.back.LadderCancelInner;
 import game.proto.back.LadderPrepare;
 import game.proto.no.No;
 import game.utils.DateUtils;
@@ -98,13 +99,13 @@ public class LadderMatchSingleGameScene extends GameScene {
         MatchTempData d2 = pmap.get(uid2);
         LadderPrepare prepare1 = LadderPrepare.newBuilder()
                 .setAuto(true)
-                .setMatchId(uid1 + "-" + d1.info.id)
+                .setMatchId(d1.info.id)
                 .setType(1)
                 .setOrder(d1.info.order)
                 .build();
         LadderPrepare prepare2 = LadderPrepare.newBuilder()
                 .setAuto(true)
-                .setMatchId(uid2 + "-" + d2.info.id)
+                .setMatchId(d2.info.id)
                 .setType(1)
                 .setOrder(d2.info.order)
                 .build();
@@ -137,11 +138,11 @@ public class LadderMatchSingleGameScene extends GameScene {
      * @param data
      */
     private void cancelMatch(MatchTempData data, boolean inner) {
-        // 超过5分钟取消匹配
         long uid = data.info.uid;
         if (inner) {
-
-            G.sendToPlayer(uid, No.LadderCancelInner.getNumber());
+            G.sendToPlayer(uid
+                    , No.LadderCancelInner.getNumber()
+                    , LadderCancelInner.newBuilder().setId(data.info.id).buildPartial());
         }
         pmap.remove(uid);
         order1Map.remove(data.lowScore, data.info);

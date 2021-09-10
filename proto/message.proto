@@ -522,3 +522,6 @@ message LadderResultPush{
     int32 add = 3;
 }
 
+message LadderFightEndReq{
+    int64 matchId = 1;
+}

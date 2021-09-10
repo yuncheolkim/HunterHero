@@ -241,6 +241,14 @@ public enum No
    */
   LadderCancelReq(2025),
   /**
+   * <code>LadderFightEndReq = 2026;</code>
+   */
+  LadderFightEndReq(2026),
+  /**
+   * <code>LadderFightAutoEndInner = 2027;</code>
+   */
+  LadderFightAutoEndInner(2027),
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -705,6 +713,14 @@ public enum No
    */
   public static final int LadderCancelReq_VALUE = 2025;
   /**
+   * <code>LadderFightEndReq = 2026;</code>
+   */
+  public static final int LadderFightEndReq_VALUE = 2026;
+  /**
+   * <code>LadderFightAutoEndInner = 2027;</code>
+   */
+  public static final int LadderFightAutoEndInner_VALUE = 2027;
+  /**
    * <pre>
    * Battle
    * </pre>
@@ -1008,6 +1024,8 @@ public enum No
       case 2023: return LadderMatchReq;
       case 2024: return LadderResultPush;
       case 2025: return LadderCancelReq;
+      case 2026: return LadderFightEndReq;
+      case 2027: return LadderFightAutoEndInner;
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
       case 2101: return DungeonEnterReq;

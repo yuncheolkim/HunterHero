@@ -78,16 +78,6 @@ public interface LadderInfoOrBuilder extends
   int getHeroId();
 
   /**
-   * <pre>
-   * 是否正在查找对手
-   * </pre>
-   *
-   * <code>bool inMatch = 8;</code>
-   * @return The inMatch.
-   */
-  boolean getInMatch();
-
-  /**
    * <code>map&lt;int32, .Message.LadderHeroScore&gt; heroScore = 9;</code>
    */
   int getHeroScoreCount();
@@ -164,10 +154,4 @@ public interface LadderInfoOrBuilder extends
    */
   game.proto.data.LadderSingleReportOrBuilder getReportOrBuilder(
       int index);
-
-  /**
-   * <code>int64 matchId = 11;</code>
-   * @return The matchId.
-   */
-  long getMatchId();
 }

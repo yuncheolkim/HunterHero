@@ -64,6 +64,16 @@ public final class Back {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_LadderResult_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_LadderCancelInner_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_LadderCancelInner_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_LadderFightAutoEndInner_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_LadderFightAutoEndInner_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -92,11 +102,12 @@ public final class Back {
       "backData\030\001 \001(\0132\027.Message.PlayerBackData\022" +
       "\037\n\002pd\030\002 \001(\0132\023.Message.PlayerData\"\026\n\010Fish" +
       "Data\022\n\n\002id\030\001 \001(\005\"\t\n\007VipData\"K\n\rLadderPre" +
-      "pare\022\017\n\007matchId\030\001 \001(\t\022\014\n\004auto\030\002 \001(\010\022\014\n\004t" +
+      "pare\022\017\n\007matchId\030\001 \001(\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004t" +
       "ype\030\003 \001(\005\022\r\n\005order\030\004 \001(\005\"B\n\014LadderResult" +
       "\022\014\n\004type\030\003 \001(\005\022$\n\006record\030\004 \001(\0132\024.Message" +
-      ".FightRecordB\025\n\017game.proto.backH\001P\001b\006pro" +
-      "to3"
+      ".FightRecord\"\037\n\021LadderCancelInner\022\n\n\002id\030" +
+      "\001 \001(\003\"*\n\027LadderFightAutoEndInner\022\017\n\007matc" +
+      "hId\030\001 \001(\003B\025\n\017game.proto.backH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -163,6 +174,18 @@ public final class Back {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResult_descriptor,
         new java.lang.String[] { "Type", "Record", });
+    internal_static_Message_LadderCancelInner_descriptor =
+      getDescriptor().getMessageTypes().get(9);
+    internal_static_Message_LadderCancelInner_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_LadderCancelInner_descriptor,
+        new java.lang.String[] { "Id", });
+    internal_static_Message_LadderFightAutoEndInner_descriptor =
+      getDescriptor().getMessageTypes().get(10);
+    internal_static_Message_LadderFightAutoEndInner_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_LadderFightAutoEndInner_descriptor,
+        new java.lang.String[] { "MatchId", });
     game.proto.data.Data.getDescriptor();
   }
 
