@@ -60,8 +60,13 @@ message LadderPrepare{
 
 // 战斗结果
 message LadderResult{
+    string userName = 1;
+    int32 score = 2;// 分数变化
     int32 type = 3;//  1:单挑
     FightRecord record = 4;
+    int64 firstUid = 5;// 先出手用户
+    LadderSinglePlayer p1 = 6;
+    LadderSinglePlayer p2 = 7;
 }
 
 // 取消战斗

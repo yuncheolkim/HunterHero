@@ -23,6 +23,7 @@ public class MapConfigDataBox<T extends BaseConfigData<T>> extends ConfigDataBox
     protected void parse(final Map<Integer, DataConfigData> dataMap) {
         final ImmutableMap.Builder<Integer, T> temp = ImmutableMap.builder();
         dataMap.forEach((integer, dataConfigData) -> temp.put(integer, supplier(dataConfigData)));
+
         map = temp.build();
     }
 

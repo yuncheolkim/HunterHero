@@ -27,7 +27,10 @@ import game.module.shop.ShopHandler;
 import game.module.task.TaskHandler;
 import game.module.temple.TempleHandler;
 import game.module.title.TitleHandler;
-import game.msg.*;
+import game.msg.IInvoke;
+import game.msg.Invoker;
+import game.msg.InvokerNoParam;
+import game.msg.RetInvoker;
 import game.proto.*;
 import game.proto.back.FishData;
 import game.proto.data.PlayerHero;
@@ -144,7 +147,7 @@ public class GameManager extends AbsLifecycle {
 //        addHandler(new Invoker<>(No.LadderResult, LadderHandler::ladderResult, LadderResult.parser()));
 
         // heart
-        addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
+//        addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
         addHandler(new Invoker<>(No.PlayerCreateNameReq, PlayerHandler::createName, PlayerCreateNameReq::parser));
         addHandler(new Invoker<>(No.PlayerMoveReq, PlayerHandler::move, PlayerMoveReq::parser));

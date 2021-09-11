@@ -103,11 +103,15 @@ public final class Back {
       "\037\n\002pd\030\002 \001(\0132\023.Message.PlayerData\"\026\n\010Fish" +
       "Data\022\n\n\002id\030\001 \001(\005\"\t\n\007VipData\"K\n\rLadderPre" +
       "pare\022\017\n\007matchId\030\001 \001(\003\022\014\n\004auto\030\002 \001(\010\022\014\n\004t" +
-      "ype\030\003 \001(\005\022\r\n\005order\030\004 \001(\005\"B\n\014LadderResult" +
-      "\022\014\n\004type\030\003 \001(\005\022$\n\006record\030\004 \001(\0132\024.Message" +
-      ".FightRecord\"\037\n\021LadderCancelInner\022\n\n\002id\030" +
-      "\001 \001(\003\"*\n\027LadderFightAutoEndInner\022\017\n\007matc" +
-      "hId\030\001 \001(\003B\025\n\017game.proto.backH\001P\001b\006proto3"
+      "ype\030\003 \001(\005\022\r\n\005order\030\004 \001(\005\"\307\001\n\014LadderResul" +
+      "t\022\020\n\010userName\030\001 \001(\t\022\r\n\005score\030\002 \001(\005\022\014\n\004ty" +
+      "pe\030\003 \001(\005\022$\n\006record\030\004 \001(\0132\024.Message.Fight" +
+      "Record\022\020\n\010firstUid\030\005 \001(\003\022\'\n\002p1\030\006 \001(\0132\033.M" +
+      "essage.LadderSinglePlayer\022\'\n\002p2\030\007 \001(\0132\033." +
+      "Message.LadderSinglePlayer\"\037\n\021LadderCanc" +
+      "elInner\022\n\n\002id\030\001 \001(\003\"*\n\027LadderFightAutoEn" +
+      "dInner\022\017\n\007matchId\030\001 \001(\003B\025\n\017game.proto.ba" +
+      "ckH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -173,7 +177,7 @@ public final class Back {
     internal_static_Message_LadderResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResult_descriptor,
-        new java.lang.String[] { "Type", "Record", });
+        new java.lang.String[] { "UserName", "Score", "Type", "Record", "FirstUid", "P1", "P2", });
     internal_static_Message_LadderCancelInner_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_Message_LadderCancelInner_fieldAccessorTable = new

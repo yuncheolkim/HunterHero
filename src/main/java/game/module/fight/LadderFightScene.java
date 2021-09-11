@@ -1,16 +1,20 @@
 package game.module.fight;
 
 import game.base.G;
+import game.config.data.LadderSingleConfigData;
 import game.game.scene.GameScene;
+import game.manager.ConfigManager;
 import game.module.battle.Battle;
 import game.module.battle.Side;
 import game.module.battle.battle.AutoBattle;
 import game.module.battle.record.BattleRecord;
 import game.module.fight.data.FightCancelAtPrepare;
 import game.module.fight.data.FightFormation;
+import game.module.ladder.LadderService;
 import game.proto.back.LadderResult;
 import game.proto.data.FightRecord;
 import game.proto.data.FightType;
+import game.proto.data.LadderSinglePlayer;
 import game.proto.no.No;
 
 import java.util.HashMap;
@@ -139,16 +143,47 @@ public class LadderFightScene extends GameScene {
 
         final FightRecord.Builder result = buildFightRecord(record);
 
-        if (a.side == record.getWinSide()) {
-            result.setWinUid(a.uid);
-        } else {
-            result.setWinUid(b.uid);
-        }
-        LadderResult r = LadderResult.newBuilder().setType(1)
-                .setRecord(result)
-                .build();
+        LadderSingleConfigData scoreA = ConfigManager.ladderSingleDataBox.findScore(a.score);
+        LadderSingleConfigData scoreB = ConfigManager.ladderSingleDataBox.findScore(b.score);
 
-        G.sendToPlayer(a.uid, No.LadderResultInner.getNumber(), r);
-        G.sendToPlayer(b.uid, No.LadderResultInner.getNumber(), r);
+        int k = (scoreA.k + scoreB.k) / 2;
+
+        int addedScore;
+        LadderResult.Builder ra = LadderResult.newBuilder().setType(1)
+                .setRecord(result);
+        LadderResult.Builder rb = LadderResult.newBuilder().setType(1)
+                .setRecord(result);
+
+        if (a.side == record.getWinSide()) {
+            addedScore = LadderService.calcScoreWinA(a.score, b.score, k);
+            result.setWinUid(a.uid);
+            ra.setScore(addedScore);
+            rb.setScore(-addedScore);
+        } else {
+            addedScore = LadderService.calcScoreWinB(a.score, b.score, k);
+            result.setWinUid(b.uid);
+            ra.setScore(-addedScore);
+            rb.setScore(addedScore);
+        }
+
+        // todo
+        long firstUid = a.side == Side.A ? a.uid : b.uid;
+        ra.setFirstUid(firstUid);
+        rb.setFirstUid(firstUid);
+
+        ra.setP1(LadderSinglePlayer.newBuilder()
+                .setUid(a.uid)
+                .setHeroId(a.heroList.get(0).getId()).setName(a.userName).build());
+        ra.setP2(LadderSinglePlayer.newBuilder()
+                .setUid(b.uid)
+                .setHeroId(b.heroList.get(0).getId()).setName(b.userName).build());
+
+        rb.setP1(ra.getP1());
+        rb.setP2(ra.getP2());
+
+        G.sendToPlayer(a.uid, No.LadderResultInner.getNumber(), ra.buildPartial());
+        if (a.uid != b.uid) {// todo 用于测试
+            G.sendToPlayer(b.uid, No.LadderResultInner.getNumber(), rb.buildPartial());
+        }
     }
 }

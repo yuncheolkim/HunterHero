@@ -518,8 +518,9 @@ message LadderCancelPush{
 
 message LadderResultPush{
     FightRecord record = 1;
-    int32 score = 2;
-    int32 add = 3;
+    int32 score = 2;// 最终分数
+    int32 add = 3;// 增加分数
+    LadderSingleReport report = 4;
 }
 
 message LadderFightEndReq{

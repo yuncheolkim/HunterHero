@@ -20,6 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private LadderResult() {
+    userName_ = "";
   }
 
   @java.lang.Override
@@ -52,6 +53,17 @@ private static final long serialVersionUID = 0L;
           case 0:
             done = true;
             break;
+          case 10: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            userName_ = s;
+            break;
+          }
+          case 16: {
+
+            score_ = input.readInt32();
+            break;
+          }
           case 24: {
 
             type_ = input.readInt32();
@@ -66,6 +78,37 @@ private static final long serialVersionUID = 0L;
             if (subBuilder != null) {
               subBuilder.mergeFrom(record_);
               record_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          case 40: {
+
+            firstUid_ = input.readInt64();
+            break;
+          }
+          case 50: {
+            game.proto.data.LadderSinglePlayer.Builder subBuilder = null;
+            if (p1_ != null) {
+              subBuilder = p1_.toBuilder();
+            }
+            p1_ = input.readMessage(game.proto.data.LadderSinglePlayer.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(p1_);
+              p1_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
+          case 58: {
+            game.proto.data.LadderSinglePlayer.Builder subBuilder = null;
+            if (p2_ != null) {
+              subBuilder = p2_.toBuilder();
+            }
+            p2_ = input.readMessage(game.proto.data.LadderSinglePlayer.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(p2_);
+              p2_ = subBuilder.buildPartial();
             }
 
             break;
@@ -100,6 +143,59 @@ private static final long serialVersionUID = 0L;
     return game.proto.back.Back.internal_static_Message_LadderResult_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
             game.proto.back.LadderResult.class, game.proto.back.LadderResult.Builder.class);
+  }
+
+  public static final int USERNAME_FIELD_NUMBER = 1;
+  private volatile java.lang.Object userName_;
+  /**
+   * <code>string userName = 1;</code>
+   * @return The userName.
+   */
+  @java.lang.Override
+  public java.lang.String getUserName() {
+    java.lang.Object ref = userName_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      userName_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string userName = 1;</code>
+   * @return The bytes for userName.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getUserNameBytes() {
+    java.lang.Object ref = userName_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      userName_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
+  public static final int SCORE_FIELD_NUMBER = 2;
+  private int score_;
+  /**
+   * <pre>
+   * 分数变化
+   * </pre>
+   *
+   * <code>int32 score = 2;</code>
+   * @return The score.
+   */
+  @java.lang.Override
+  public int getScore() {
+    return score_;
   }
 
   public static final int TYPE_FIELD_NUMBER = 3;
@@ -143,6 +239,73 @@ private static final long serialVersionUID = 0L;
     return getRecord();
   }
 
+  public static final int FIRSTUID_FIELD_NUMBER = 5;
+  private long firstUid_;
+  /**
+   * <pre>
+   * 先出手用户
+   * </pre>
+   *
+   * <code>int64 firstUid = 5;</code>
+   * @return The firstUid.
+   */
+  @java.lang.Override
+  public long getFirstUid() {
+    return firstUid_;
+  }
+
+  public static final int P1_FIELD_NUMBER = 6;
+  private game.proto.data.LadderSinglePlayer p1_;
+  /**
+   * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+   * @return Whether the p1 field is set.
+   */
+  @java.lang.Override
+  public boolean hasP1() {
+    return p1_ != null;
+  }
+  /**
+   * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+   * @return The p1.
+   */
+  @java.lang.Override
+  public game.proto.data.LadderSinglePlayer getP1() {
+    return p1_ == null ? game.proto.data.LadderSinglePlayer.getDefaultInstance() : p1_;
+  }
+  /**
+   * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.LadderSinglePlayerOrBuilder getP1OrBuilder() {
+    return getP1();
+  }
+
+  public static final int P2_FIELD_NUMBER = 7;
+  private game.proto.data.LadderSinglePlayer p2_;
+  /**
+   * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+   * @return Whether the p2 field is set.
+   */
+  @java.lang.Override
+  public boolean hasP2() {
+    return p2_ != null;
+  }
+  /**
+   * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+   * @return The p2.
+   */
+  @java.lang.Override
+  public game.proto.data.LadderSinglePlayer getP2() {
+    return p2_ == null ? game.proto.data.LadderSinglePlayer.getDefaultInstance() : p2_;
+  }
+  /**
+   * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.LadderSinglePlayerOrBuilder getP2OrBuilder() {
+    return getP2();
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -157,11 +320,26 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!getUserNameBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userName_);
+    }
+    if (score_ != 0) {
+      output.writeInt32(2, score_);
+    }
     if (type_ != 0) {
       output.writeInt32(3, type_);
     }
     if (record_ != null) {
       output.writeMessage(4, getRecord());
+    }
+    if (firstUid_ != 0L) {
+      output.writeInt64(5, firstUid_);
+    }
+    if (p1_ != null) {
+      output.writeMessage(6, getP1());
+    }
+    if (p2_ != null) {
+      output.writeMessage(7, getP2());
     }
     unknownFields.writeTo(output);
   }
@@ -172,6 +350,13 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!getUserNameBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userName_);
+    }
+    if (score_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, score_);
+    }
     if (type_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, type_);
@@ -179,6 +364,18 @@ private static final long serialVersionUID = 0L;
     if (record_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getRecord());
+    }
+    if (firstUid_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(5, firstUid_);
+    }
+    if (p1_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(6, getP1());
+    }
+    if (p2_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(7, getP2());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -195,12 +392,28 @@ private static final long serialVersionUID = 0L;
     }
     game.proto.back.LadderResult other = (game.proto.back.LadderResult) obj;
 
+    if (!getUserName()
+        .equals(other.getUserName())) return false;
+    if (getScore()
+        != other.getScore()) return false;
     if (getType()
         != other.getType()) return false;
     if (hasRecord() != other.hasRecord()) return false;
     if (hasRecord()) {
       if (!getRecord()
           .equals(other.getRecord())) return false;
+    }
+    if (getFirstUid()
+        != other.getFirstUid()) return false;
+    if (hasP1() != other.hasP1()) return false;
+    if (hasP1()) {
+      if (!getP1()
+          .equals(other.getP1())) return false;
+    }
+    if (hasP2() != other.hasP2()) return false;
+    if (hasP2()) {
+      if (!getP2()
+          .equals(other.getP2())) return false;
     }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -213,11 +426,26 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + USERNAME_FIELD_NUMBER;
+    hash = (53 * hash) + getUserName().hashCode();
+    hash = (37 * hash) + SCORE_FIELD_NUMBER;
+    hash = (53 * hash) + getScore();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType();
     if (hasRecord()) {
       hash = (37 * hash) + RECORD_FIELD_NUMBER;
       hash = (53 * hash) + getRecord().hashCode();
+    }
+    hash = (37 * hash) + FIRSTUID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getFirstUid());
+    if (hasP1()) {
+      hash = (37 * hash) + P1_FIELD_NUMBER;
+      hash = (53 * hash) + getP1().hashCode();
+    }
+    if (hasP2()) {
+      hash = (37 * hash) + P2_FIELD_NUMBER;
+      hash = (53 * hash) + getP2().hashCode();
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -356,6 +584,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      userName_ = "";
+
+      score_ = 0;
+
       type_ = 0;
 
       if (recordBuilder_ == null) {
@@ -363,6 +595,20 @@ private static final long serialVersionUID = 0L;
       } else {
         record_ = null;
         recordBuilder_ = null;
+      }
+      firstUid_ = 0L;
+
+      if (p1Builder_ == null) {
+        p1_ = null;
+      } else {
+        p1_ = null;
+        p1Builder_ = null;
+      }
+      if (p2Builder_ == null) {
+        p2_ = null;
+      } else {
+        p2_ = null;
+        p2Builder_ = null;
       }
       return this;
     }
@@ -390,11 +636,24 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.back.LadderResult buildPartial() {
       game.proto.back.LadderResult result = new game.proto.back.LadderResult(this);
+      result.userName_ = userName_;
+      result.score_ = score_;
       result.type_ = type_;
       if (recordBuilder_ == null) {
         result.record_ = record_;
       } else {
         result.record_ = recordBuilder_.build();
+      }
+      result.firstUid_ = firstUid_;
+      if (p1Builder_ == null) {
+        result.p1_ = p1_;
+      } else {
+        result.p1_ = p1Builder_.build();
+      }
+      if (p2Builder_ == null) {
+        result.p2_ = p2_;
+      } else {
+        result.p2_ = p2Builder_.build();
       }
       onBuilt();
       return result;
@@ -444,11 +703,27 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(game.proto.back.LadderResult other) {
       if (other == game.proto.back.LadderResult.getDefaultInstance()) return this;
+      if (!other.getUserName().isEmpty()) {
+        userName_ = other.userName_;
+        onChanged();
+      }
+      if (other.getScore() != 0) {
+        setScore(other.getScore());
+      }
       if (other.getType() != 0) {
         setType(other.getType());
       }
       if (other.hasRecord()) {
         mergeRecord(other.getRecord());
+      }
+      if (other.getFirstUid() != 0L) {
+        setFirstUid(other.getFirstUid());
+      }
+      if (other.hasP1()) {
+        mergeP1(other.getP1());
+      }
+      if (other.hasP2()) {
+        mergeP2(other.getP2());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -476,6 +751,125 @@ private static final long serialVersionUID = 0L;
           mergeFrom(parsedMessage);
         }
       }
+      return this;
+    }
+
+    private java.lang.Object userName_ = "";
+    /**
+     * <code>string userName = 1;</code>
+     * @return The userName.
+     */
+    public java.lang.String getUserName() {
+      java.lang.Object ref = userName_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        userName_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string userName = 1;</code>
+     * @return The bytes for userName.
+     */
+    public com.google.protobuf.ByteString
+        getUserNameBytes() {
+      java.lang.Object ref = userName_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        userName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string userName = 1;</code>
+     * @param value The userName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserName(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      userName_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userName = 1;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearUserName() {
+      
+      userName_ = getDefaultInstance().getUserName();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string userName = 1;</code>
+     * @param value The bytes for userName to set.
+     * @return This builder for chaining.
+     */
+    public Builder setUserNameBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      userName_ = value;
+      onChanged();
+      return this;
+    }
+
+    private int score_ ;
+    /**
+     * <pre>
+     * 分数变化
+     * </pre>
+     *
+     * <code>int32 score = 2;</code>
+     * @return The score.
+     */
+    @java.lang.Override
+    public int getScore() {
+      return score_;
+    }
+    /**
+     * <pre>
+     * 分数变化
+     * </pre>
+     *
+     * <code>int32 score = 2;</code>
+     * @param value The score to set.
+     * @return This builder for chaining.
+     */
+    public Builder setScore(int value) {
+      
+      score_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 分数变化
+     * </pre>
+     *
+     * <code>int32 score = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearScore() {
+      
+      score_ = 0;
+      onChanged();
       return this;
     }
 
@@ -639,6 +1033,287 @@ private static final long serialVersionUID = 0L;
         record_ = null;
       }
       return recordBuilder_;
+    }
+
+    private long firstUid_ ;
+    /**
+     * <pre>
+     * 先出手用户
+     * </pre>
+     *
+     * <code>int64 firstUid = 5;</code>
+     * @return The firstUid.
+     */
+    @java.lang.Override
+    public long getFirstUid() {
+      return firstUid_;
+    }
+    /**
+     * <pre>
+     * 先出手用户
+     * </pre>
+     *
+     * <code>int64 firstUid = 5;</code>
+     * @param value The firstUid to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFirstUid(long value) {
+      
+      firstUid_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 先出手用户
+     * </pre>
+     *
+     * <code>int64 firstUid = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFirstUid() {
+      
+      firstUid_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private game.proto.data.LadderSinglePlayer p1_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderSinglePlayer, game.proto.data.LadderSinglePlayer.Builder, game.proto.data.LadderSinglePlayerOrBuilder> p1Builder_;
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     * @return Whether the p1 field is set.
+     */
+    public boolean hasP1() {
+      return p1Builder_ != null || p1_ != null;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     * @return The p1.
+     */
+    public game.proto.data.LadderSinglePlayer getP1() {
+      if (p1Builder_ == null) {
+        return p1_ == null ? game.proto.data.LadderSinglePlayer.getDefaultInstance() : p1_;
+      } else {
+        return p1Builder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    public Builder setP1(game.proto.data.LadderSinglePlayer value) {
+      if (p1Builder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        p1_ = value;
+        onChanged();
+      } else {
+        p1Builder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    public Builder setP1(
+        game.proto.data.LadderSinglePlayer.Builder builderForValue) {
+      if (p1Builder_ == null) {
+        p1_ = builderForValue.build();
+        onChanged();
+      } else {
+        p1Builder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    public Builder mergeP1(game.proto.data.LadderSinglePlayer value) {
+      if (p1Builder_ == null) {
+        if (p1_ != null) {
+          p1_ =
+            game.proto.data.LadderSinglePlayer.newBuilder(p1_).mergeFrom(value).buildPartial();
+        } else {
+          p1_ = value;
+        }
+        onChanged();
+      } else {
+        p1Builder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    public Builder clearP1() {
+      if (p1Builder_ == null) {
+        p1_ = null;
+        onChanged();
+      } else {
+        p1_ = null;
+        p1Builder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    public game.proto.data.LadderSinglePlayer.Builder getP1Builder() {
+      
+      onChanged();
+      return getP1FieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    public game.proto.data.LadderSinglePlayerOrBuilder getP1OrBuilder() {
+      if (p1Builder_ != null) {
+        return p1Builder_.getMessageOrBuilder();
+      } else {
+        return p1_ == null ?
+            game.proto.data.LadderSinglePlayer.getDefaultInstance() : p1_;
+      }
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderSinglePlayer, game.proto.data.LadderSinglePlayer.Builder, game.proto.data.LadderSinglePlayerOrBuilder> 
+        getP1FieldBuilder() {
+      if (p1Builder_ == null) {
+        p1Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.LadderSinglePlayer, game.proto.data.LadderSinglePlayer.Builder, game.proto.data.LadderSinglePlayerOrBuilder>(
+                getP1(),
+                getParentForChildren(),
+                isClean());
+        p1_ = null;
+      }
+      return p1Builder_;
+    }
+
+    private game.proto.data.LadderSinglePlayer p2_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderSinglePlayer, game.proto.data.LadderSinglePlayer.Builder, game.proto.data.LadderSinglePlayerOrBuilder> p2Builder_;
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     * @return Whether the p2 field is set.
+     */
+    public boolean hasP2() {
+      return p2Builder_ != null || p2_ != null;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     * @return The p2.
+     */
+    public game.proto.data.LadderSinglePlayer getP2() {
+      if (p2Builder_ == null) {
+        return p2_ == null ? game.proto.data.LadderSinglePlayer.getDefaultInstance() : p2_;
+      } else {
+        return p2Builder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    public Builder setP2(game.proto.data.LadderSinglePlayer value) {
+      if (p2Builder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        p2_ = value;
+        onChanged();
+      } else {
+        p2Builder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    public Builder setP2(
+        game.proto.data.LadderSinglePlayer.Builder builderForValue) {
+      if (p2Builder_ == null) {
+        p2_ = builderForValue.build();
+        onChanged();
+      } else {
+        p2Builder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    public Builder mergeP2(game.proto.data.LadderSinglePlayer value) {
+      if (p2Builder_ == null) {
+        if (p2_ != null) {
+          p2_ =
+            game.proto.data.LadderSinglePlayer.newBuilder(p2_).mergeFrom(value).buildPartial();
+        } else {
+          p2_ = value;
+        }
+        onChanged();
+      } else {
+        p2Builder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    public Builder clearP2() {
+      if (p2Builder_ == null) {
+        p2_ = null;
+        onChanged();
+      } else {
+        p2_ = null;
+        p2Builder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    public game.proto.data.LadderSinglePlayer.Builder getP2Builder() {
+      
+      onChanged();
+      return getP2FieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    public game.proto.data.LadderSinglePlayerOrBuilder getP2OrBuilder() {
+      if (p2Builder_ != null) {
+        return p2Builder_.getMessageOrBuilder();
+      } else {
+        return p2_ == null ?
+            game.proto.data.LadderSinglePlayer.getDefaultInstance() : p2_;
+      }
+    }
+    /**
+     * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderSinglePlayer, game.proto.data.LadderSinglePlayer.Builder, game.proto.data.LadderSinglePlayerOrBuilder> 
+        getP2FieldBuilder() {
+      if (p2Builder_ == null) {
+        p2Builder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.LadderSinglePlayer, game.proto.data.LadderSinglePlayer.Builder, game.proto.data.LadderSinglePlayerOrBuilder>(
+                getP2(),
+                getParentForChildren(),
+                isClean());
+        p2_ = null;
+      }
+      return p2Builder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

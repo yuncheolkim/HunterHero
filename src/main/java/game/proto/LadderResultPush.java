@@ -71,6 +71,19 @@ private static final long serialVersionUID = 0L;
             add_ = input.readInt32();
             break;
           }
+          case 34: {
+            game.proto.data.LadderSingleReport.Builder subBuilder = null;
+            if (report_ != null) {
+              subBuilder = report_.toBuilder();
+            }
+            report_ = input.readMessage(game.proto.data.LadderSingleReport.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(report_);
+              report_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -132,6 +145,10 @@ private static final long serialVersionUID = 0L;
   public static final int SCORE_FIELD_NUMBER = 2;
   private int score_;
   /**
+   * <pre>
+   * 最终分数
+   * </pre>
+   *
    * <code>int32 score = 2;</code>
    * @return The score.
    */
@@ -143,12 +160,42 @@ private static final long serialVersionUID = 0L;
   public static final int ADD_FIELD_NUMBER = 3;
   private int add_;
   /**
+   * <pre>
+   * 增加分数
+   * </pre>
+   *
    * <code>int32 add = 3;</code>
    * @return The add.
    */
   @java.lang.Override
   public int getAdd() {
     return add_;
+  }
+
+  public static final int REPORT_FIELD_NUMBER = 4;
+  private game.proto.data.LadderSingleReport report_;
+  /**
+   * <code>.Message.LadderSingleReport report = 4;</code>
+   * @return Whether the report field is set.
+   */
+  @java.lang.Override
+  public boolean hasReport() {
+    return report_ != null;
+  }
+  /**
+   * <code>.Message.LadderSingleReport report = 4;</code>
+   * @return The report.
+   */
+  @java.lang.Override
+  public game.proto.data.LadderSingleReport getReport() {
+    return report_ == null ? game.proto.data.LadderSingleReport.getDefaultInstance() : report_;
+  }
+  /**
+   * <code>.Message.LadderSingleReport report = 4;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.LadderSingleReportOrBuilder getReportOrBuilder() {
+    return getReport();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -174,6 +221,9 @@ private static final long serialVersionUID = 0L;
     if (add_ != 0) {
       output.writeInt32(3, add_);
     }
+    if (report_ != null) {
+      output.writeMessage(4, getReport());
+    }
     unknownFields.writeTo(output);
   }
 
@@ -194,6 +244,10 @@ private static final long serialVersionUID = 0L;
     if (add_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(3, add_);
+    }
+    if (report_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(4, getReport());
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -219,6 +273,11 @@ private static final long serialVersionUID = 0L;
         != other.getScore()) return false;
     if (getAdd()
         != other.getAdd()) return false;
+    if (hasReport() != other.hasReport()) return false;
+    if (hasReport()) {
+      if (!getReport()
+          .equals(other.getReport())) return false;
+    }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -238,6 +297,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getScore();
     hash = (37 * hash) + ADD_FIELD_NUMBER;
     hash = (53 * hash) + getAdd();
+    if (hasReport()) {
+      hash = (37 * hash) + REPORT_FIELD_NUMBER;
+      hash = (53 * hash) + getReport().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -381,6 +444,12 @@ private static final long serialVersionUID = 0L;
 
       add_ = 0;
 
+      if (reportBuilder_ == null) {
+        report_ = null;
+      } else {
+        report_ = null;
+        reportBuilder_ = null;
+      }
       return this;
     }
 
@@ -414,6 +483,11 @@ private static final long serialVersionUID = 0L;
       }
       result.score_ = score_;
       result.add_ = add_;
+      if (reportBuilder_ == null) {
+        result.report_ = report_;
+      } else {
+        result.report_ = reportBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -470,6 +544,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getAdd() != 0) {
         setAdd(other.getAdd());
+      }
+      if (other.hasReport()) {
+        mergeReport(other.getReport());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -621,6 +698,10 @@ private static final long serialVersionUID = 0L;
 
     private int score_ ;
     /**
+     * <pre>
+     * 最终分数
+     * </pre>
+     *
      * <code>int32 score = 2;</code>
      * @return The score.
      */
@@ -629,6 +710,10 @@ private static final long serialVersionUID = 0L;
       return score_;
     }
     /**
+     * <pre>
+     * 最终分数
+     * </pre>
+     *
      * <code>int32 score = 2;</code>
      * @param value The score to set.
      * @return This builder for chaining.
@@ -640,6 +725,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 最终分数
+     * </pre>
+     *
      * <code>int32 score = 2;</code>
      * @return This builder for chaining.
      */
@@ -652,6 +741,10 @@ private static final long serialVersionUID = 0L;
 
     private int add_ ;
     /**
+     * <pre>
+     * 增加分数
+     * </pre>
+     *
      * <code>int32 add = 3;</code>
      * @return The add.
      */
@@ -660,6 +753,10 @@ private static final long serialVersionUID = 0L;
       return add_;
     }
     /**
+     * <pre>
+     * 增加分数
+     * </pre>
+     *
      * <code>int32 add = 3;</code>
      * @param value The add to set.
      * @return This builder for chaining.
@@ -671,6 +768,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 增加分数
+     * </pre>
+     *
      * <code>int32 add = 3;</code>
      * @return This builder for chaining.
      */
@@ -679,6 +780,125 @@ private static final long serialVersionUID = 0L;
       add_ = 0;
       onChanged();
       return this;
+    }
+
+    private game.proto.data.LadderSingleReport report_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderSingleReport, game.proto.data.LadderSingleReport.Builder, game.proto.data.LadderSingleReportOrBuilder> reportBuilder_;
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     * @return Whether the report field is set.
+     */
+    public boolean hasReport() {
+      return reportBuilder_ != null || report_ != null;
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     * @return The report.
+     */
+    public game.proto.data.LadderSingleReport getReport() {
+      if (reportBuilder_ == null) {
+        return report_ == null ? game.proto.data.LadderSingleReport.getDefaultInstance() : report_;
+      } else {
+        return reportBuilder_.getMessage();
+      }
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    public Builder setReport(game.proto.data.LadderSingleReport value) {
+      if (reportBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        report_ = value;
+        onChanged();
+      } else {
+        reportBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    public Builder setReport(
+        game.proto.data.LadderSingleReport.Builder builderForValue) {
+      if (reportBuilder_ == null) {
+        report_ = builderForValue.build();
+        onChanged();
+      } else {
+        reportBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    public Builder mergeReport(game.proto.data.LadderSingleReport value) {
+      if (reportBuilder_ == null) {
+        if (report_ != null) {
+          report_ =
+            game.proto.data.LadderSingleReport.newBuilder(report_).mergeFrom(value).buildPartial();
+        } else {
+          report_ = value;
+        }
+        onChanged();
+      } else {
+        reportBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    public Builder clearReport() {
+      if (reportBuilder_ == null) {
+        report_ = null;
+        onChanged();
+      } else {
+        report_ = null;
+        reportBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    public game.proto.data.LadderSingleReport.Builder getReportBuilder() {
+      
+      onChanged();
+      return getReportFieldBuilder().getBuilder();
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    public game.proto.data.LadderSingleReportOrBuilder getReportOrBuilder() {
+      if (reportBuilder_ != null) {
+        return reportBuilder_.getMessageOrBuilder();
+      } else {
+        return report_ == null ?
+            game.proto.data.LadderSingleReport.getDefaultInstance() : report_;
+      }
+    }
+    /**
+     * <code>.Message.LadderSingleReport report = 4;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderSingleReport, game.proto.data.LadderSingleReport.Builder, game.proto.data.LadderSingleReportOrBuilder> 
+        getReportFieldBuilder() {
+      if (reportBuilder_ == null) {
+        reportBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.LadderSingleReport, game.proto.data.LadderSingleReport.Builder, game.proto.data.LadderSingleReportOrBuilder>(
+                getReport(),
+                getParentForChildren(),
+                isClean());
+        report_ = null;
+      }
+      return reportBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

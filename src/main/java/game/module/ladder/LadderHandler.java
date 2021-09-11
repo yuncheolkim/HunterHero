@@ -2,6 +2,7 @@ package game.module.ladder;
 
 import game.anno.GameHandler;
 import game.base.G;
+import game.base.Logs;
 import game.exception.ModuleAssert;
 import game.module.battle.Hero;
 import game.module.battle.Pos;
@@ -14,7 +15,9 @@ import game.module.ladder.match.MatchInfoMsg;
 import game.player.Player;
 import game.proto.*;
 import game.proto.back.*;
+import game.proto.data.LadderHeroScore;
 import game.proto.data.LadderInfo;
+import game.proto.data.LadderSingleReport;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
 import game.utils.DateUtils;
@@ -37,6 +40,8 @@ public class LadderHandler {
     @GameHandler(No.LadderSetFormationReq)
     public static void formation(final Player player, final LadderSetFormationReq req) {
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(req.getHeroId(), null);
+        LadderInfo.Builder build = player.pd.getLadderSingleInfoBuilder();
+        ModuleAssert.isFalse(build.getInMatch());
         ModuleAssert.notNull(heroOrDefault);
         player.pd.getLadderSingleInfoBuilder().setHeroId(req.getHeroId());
     }
@@ -123,9 +128,11 @@ public class LadderHandler {
 
                 int heroId = ladderInfoBuilder.getHeroId();
                 FightFormation formation = new FightFormation();
+                formation.userName = player.pd.getName();
                 formation.side = req.getOrder() == 1 ? Side.A : Side.B;
                 formation.matchId = req.getMatchId();
                 formation.uid = player.getPid();
+                formation.score = ladderInfoBuilder.getScore();
                 Hero fightHero = FightService.createFightHero(player, heroId);
                 fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
                 formation.heroList.add(fightHero);
@@ -161,18 +168,62 @@ public class LadderHandler {
      */
     @GameHandler(value = No.LadderResultInner, inner = true)
     public static void ladderResult(final Player player, LadderResult req) {
-        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
+        LadderInfo.Builder ladder = player.pd.getLadderSingleInfoBuilder();
 
         // 这里不能马上变为非匹配
         // 不然会立刻进入野外战斗
         // 需要一个战斗结束消息来结束, 但这里进行保底, 1分钟后设置为false
         player.scheduleAfter(60 * 1000, No.LadderFightAutoEndInner.getNumber(), LadderFightAutoEndInner.newBuilder()
-                .setMatchId(ladderInfoBuilder.getMatchId()).buildPartial());
+                .setMatchId(ladder.getMatchId()).buildPartial());
+
+        Logs.C.debug("单挑结果:{}", req.getScore());
+        boolean win = player.getPid() == req.getRecord().getWinUid();
+
+        LadderHeroScore.Builder heroScoreOrDefault = ladder.getHeroScoreOrDefault(ladder.getHeroId(), LadderHeroScore.newBuilder().build()).toBuilder();
+
+        // Calc score
+        if (ladder.getOrder() == 1) {
+            //先手
+            ladder.setOrder(2);
+            if (win) {
+                ladder.setWin1(ladder.getWin1() + 1);
+                heroScoreOrDefault.setWin1(heroScoreOrDefault.getWin1() + 1);
+            } else {
+                ladder.setLose1(ladder.getLose1() + 1);
+                heroScoreOrDefault.setLose1(heroScoreOrDefault.getLose1() + 1);
+            }
+        } else {
+            ladder.setOrder(1);
+            if (win) {
+                ladder.setWin2(ladder.getWin2() + 1);
+                heroScoreOrDefault.setWin2(heroScoreOrDefault.getWin2() + 1);
+            } else {
+                ladder.setLose2(ladder.getLose2() + 1);
+                heroScoreOrDefault.setLose2(heroScoreOrDefault.getLose2() + 1);
+            }
+        }
+
+        ladder.putHeroScore(ladder.getHeroId(), heroScoreOrDefault.build());
+        ladder.setScore(ladder.getScore() + req.getScore());
+        // 战报
+        LadderSingleReport report = LadderSingleReport.newBuilder()
+                .setWinId(req.getRecord().getWinUid())
+                .setFirst(req.getFirstUid())
+                .setP1(req.getP1())
+                .setP2(req.getP2())
+                .build();
+        ladder.addReport(0, report);
+
+        if (ladder.getReportCount() > 20) {
+            ladder.removeReport(20);
+        }
+
         LadderResultPush result = LadderResultPush.newBuilder()
                 .setRecord(req.getRecord())
+                .setScore(ladder.getScore())
+                .setAdd(req.getScore())
+                .setReport(report)
                 .buildPartial();
-
-        // todo 计算结果
         player.getTransport().send(No.LadderResultPush, result);
     }
 

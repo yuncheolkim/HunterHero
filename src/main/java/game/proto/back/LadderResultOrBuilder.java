@@ -8,6 +8,28 @@ public interface LadderResultOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
+   * <code>string userName = 1;</code>
+   * @return The userName.
+   */
+  java.lang.String getUserName();
+  /**
+   * <code>string userName = 1;</code>
+   * @return The bytes for userName.
+   */
+  com.google.protobuf.ByteString
+      getUserNameBytes();
+
+  /**
+   * <pre>
+   * 分数变化
+   * </pre>
+   *
+   * <code>int32 score = 2;</code>
+   * @return The score.
+   */
+  int getScore();
+
+  /**
    * <pre>
    *  1:单挑
    * </pre>
@@ -31,4 +53,44 @@ public interface LadderResultOrBuilder extends
    * <code>.Message.FightRecord record = 4;</code>
    */
   game.proto.data.FightRecordOrBuilder getRecordOrBuilder();
+
+  /**
+   * <pre>
+   * 先出手用户
+   * </pre>
+   *
+   * <code>int64 firstUid = 5;</code>
+   * @return The firstUid.
+   */
+  long getFirstUid();
+
+  /**
+   * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+   * @return Whether the p1 field is set.
+   */
+  boolean hasP1();
+  /**
+   * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+   * @return The p1.
+   */
+  game.proto.data.LadderSinglePlayer getP1();
+  /**
+   * <code>.Message.LadderSinglePlayer p1 = 6;</code>
+   */
+  game.proto.data.LadderSinglePlayerOrBuilder getP1OrBuilder();
+
+  /**
+   * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+   * @return Whether the p2 field is set.
+   */
+  boolean hasP2();
+  /**
+   * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+   * @return The p2.
+   */
+  game.proto.data.LadderSinglePlayer getP2();
+  /**
+   * <code>.Message.LadderSinglePlayer p2 = 7;</code>
+   */
+  game.proto.data.LadderSinglePlayerOrBuilder getP2OrBuilder();
 }

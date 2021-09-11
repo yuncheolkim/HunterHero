@@ -14,7 +14,9 @@ public class FightFormation {
 
     public long matchId;
     public long uid;
+    public String userName;
     public Side side;
     public List<Hero> heroList = new ArrayList<>();
+    public int score;
 
 }
