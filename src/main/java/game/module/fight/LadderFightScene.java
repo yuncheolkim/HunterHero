@@ -149,10 +149,8 @@ public class LadderFightScene extends GameScene {
         int k = (scoreA.k + scoreB.k) / 2;
 
         int addedScore;
-        LadderResult.Builder ra = LadderResult.newBuilder().setType(1)
-                .setRecord(result);
-        LadderResult.Builder rb = LadderResult.newBuilder().setType(1)
-                .setRecord(result);
+        LadderResult.Builder ra = LadderResult.newBuilder().setType(1);
+        LadderResult.Builder rb = LadderResult.newBuilder().setType(1);
 
         if (a.side == record.getWinSide()) {
             addedScore = LadderService.calcScoreWinA(a.score, b.score, k);
@@ -165,6 +163,9 @@ public class LadderFightScene extends GameScene {
             ra.setScore(-addedScore);
             rb.setScore(addedScore);
         }
+
+        ra.setRecord(result);
+        rb.setRecord(result);
 
         // todo
         long firstUid = a.side == Side.A ? a.uid : b.uid;

@@ -149,9 +149,9 @@ public class GameManager extends AbsLifecycle {
         // heart
 //        addHandler(new InvokerReturn<>(No.HeartbeatReq, PlayerHandler::heartbeat, HeartbeatReq::parser));
         // player
-        addHandler(new Invoker<>(No.PlayerCreateNameReq, PlayerHandler::createName, PlayerCreateNameReq::parser));
-        addHandler(new Invoker<>(No.PlayerMoveReq, PlayerHandler::move, PlayerMoveReq::parser));
-        addHandler(new InvokerNoParam(No.PlayerGoHotelReq, PlayerHandler::hotel));
+//        addHandler(new Invoker<>(No.PlayerCreateNameReq, PlayerHandler::createName, PlayerCreateNameReq::parser));
+//        addHandler(new Invoker<>(No.PlayerMoveReq, PlayerHandler::move, PlayerMoveReq::parser));
+//        addHandler(new InvokerNoParam(No.PlayerGoHotelReq, PlayerHandler::hotel));
         addHandler(new RetInvoker<>(No.PlayerChooseHotelReq, PlayerHandler::chooseHotel, PlayerChooseHotelReq::parser));
         // title
         addHandler(new RetInvoker<>(No.TitleChooseReq, TitleHandler::TitleChooseReq, TitleChooseReq::parser));

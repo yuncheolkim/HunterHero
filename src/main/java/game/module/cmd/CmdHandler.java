@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
  */
 public class CmdHandler {
 
-
     public static void cmd(Player player, CmdReq req) {
         List<String> s = Arrays.stream(StringUtils.split(req.getParams(), " ")).map(s1 -> s1.trim()).collect(Collectors.toList());
         Cmd cmd = Cmd.findById(Integer.parseInt(s.remove(0)));

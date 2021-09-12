@@ -36,6 +36,7 @@ public class PlayerHandler {
      * @param o
      * @return
      */
+    @GameHandler(No.PlayerCreateNameReq)
     public static void createName(final Player player, final PlayerCreateNameReq o) {
 
         player.getPd().setName(o.getName());
@@ -49,6 +50,7 @@ public class PlayerHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.PlayerMoveReq)
     public static void move(final Player player, final PlayerMoveReq req) {
         final ScenePos.Builder posBuilder = player.pd.getSceneDataBuilder().getPosBuilder();
         posBuilder.setX(req.getX()).setY(req.getY());
@@ -59,6 +61,7 @@ public class PlayerHandler {
      *
      * @param player
      */
+    @GameHandler(No.PlayerGoHotelReq)
     public static void hotel(final Player player) {
         final long now = System.currentTimeMillis();
 
