@@ -57,18 +57,19 @@ public class LadderHandler {
      * @param req
      */
     @GameHandler(No.LadderMatchReq)
-    public static void match(final Player player, LadderMatchReq req) {
+    public static void matchSingle(final Player player, LadderMatchReq req) {
+
+        if (req.getType() == 2) {
+            match(player, req);
+            return;
+        }
         LadderInfo.Builder build = player.pd.getLadderSingleInfoBuilder();
         LadderData.Builder ladderData = player.D.getLadderDataBuilder();
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(build.getHeroId(), null);
         ModuleAssert.notNull(heroOrDefault);
         ModuleAssert.isFalse(build.getInMatch());
 
-        if (req.getType() == 1) {
-            ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderSingleFight), ErrorEnum.ERR_10);
-        } else {
-            ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderFight), ErrorEnum.ERR_10);
-        }
+        ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderSingleFight), ErrorEnum.ERR_10);
 
         build.setInMatch(true);
         build.setMatchId(req.getId());
@@ -86,6 +87,11 @@ public class LadderHandler {
         G.G.getLadderMatchScene().tell(matchInfoMsg);
 
         build.setInMatch(true);
+    }
+
+    private static void match(final Player player, LadderMatchReq req) {
+        ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderFight), ErrorEnum.ERR_10);
+
     }
 
     /**

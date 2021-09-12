@@ -80,6 +80,7 @@ public class FightHandler {
             battle.addHero(hero);
         }
 
+        battle.setFightType(FightType.F_BATTLE);
         // 开始战斗
         final BattleRecord record = battle.start();
 

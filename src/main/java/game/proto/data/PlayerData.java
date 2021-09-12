@@ -281,6 +281,19 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 4170: {
+            game.proto.data.LadderInfo.Builder subBuilder = null;
+            if (ladderInfo_ != null) {
+              subBuilder = ladderInfo_.toBuilder();
+            }
+            ladderInfo_ = input.readMessage(game.proto.data.LadderInfo.parser(), extensionRegistry);
+            if (subBuilder != null) {
+              subBuilder.mergeFrom(ladderInfo_);
+              ladderInfo_ = subBuilder.buildPartial();
+            }
+
+            break;
+          }
           case 4810: {
             if (!((mutable_bitField0_ & 0x00000010) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
@@ -1169,6 +1182,44 @@ private static final long serialVersionUID = 0L;
     return getLadderSingleInfo();
   }
 
+  public static final int LADDERINFO_FIELD_NUMBER = 521;
+  private game.proto.data.LadderInfo ladderInfo_;
+  /**
+   * <pre>
+   * 排位满英雄
+   * </pre>
+   *
+   * <code>.Message.LadderInfo ladderInfo = 521;</code>
+   * @return Whether the ladderInfo field is set.
+   */
+  @java.lang.Override
+  public boolean hasLadderInfo() {
+    return ladderInfo_ != null;
+  }
+  /**
+   * <pre>
+   * 排位满英雄
+   * </pre>
+   *
+   * <code>.Message.LadderInfo ladderInfo = 521;</code>
+   * @return The ladderInfo.
+   */
+  @java.lang.Override
+  public game.proto.data.LadderInfo getLadderInfo() {
+    return ladderInfo_ == null ? game.proto.data.LadderInfo.getDefaultInstance() : ladderInfo_;
+  }
+  /**
+   * <pre>
+   * 排位满英雄
+   * </pre>
+   *
+   * <code>.Message.LadderInfo ladderInfo = 521;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.LadderInfoOrBuilder getLadderInfoOrBuilder() {
+    return getLadderInfo();
+  }
+
   public static final int BAG_FIELD_NUMBER = 601;
   private static final class BagDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -1622,6 +1673,9 @@ private static final long serialVersionUID = 0L;
     if (ladderSingleInfo_ != null) {
       output.writeMessage(520, getLadderSingleInfo());
     }
+    if (ladderInfo_ != null) {
+      output.writeMessage(521, getLadderInfo());
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -1784,6 +1838,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(520, getLadderSingleInfo());
     }
+    if (ladderInfo_ != null) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(521, getLadderInfo());
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
          : internalGetBag().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
@@ -1911,6 +1969,11 @@ private static final long serialVersionUID = 0L;
       if (!getLadderSingleInfo()
           .equals(other.getLadderSingleInfo())) return false;
     }
+    if (hasLadderInfo() != other.hasLadderInfo()) return false;
+    if (hasLadderInfo()) {
+      if (!getLadderInfo()
+          .equals(other.getLadderInfo())) return false;
+    }
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
     if (getBagCapacity()
@@ -2013,6 +2076,10 @@ private static final long serialVersionUID = 0L;
     if (hasLadderSingleInfo()) {
       hash = (37 * hash) + LADDERSINGLEINFO_FIELD_NUMBER;
       hash = (53 * hash) + getLadderSingleInfo().hashCode();
+    }
+    if (hasLadderInfo()) {
+      hash = (37 * hash) + LADDERINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getLadderInfo().hashCode();
     }
     if (!internalGetBag().getMap().isEmpty()) {
       hash = (37 * hash) + BAG_FIELD_NUMBER;
@@ -2285,6 +2352,12 @@ private static final long serialVersionUID = 0L;
         ladderSingleInfo_ = null;
         ladderSingleInfoBuilder_ = null;
       }
+      if (ladderInfoBuilder_ == null) {
+        ladderInfo_ = null;
+      } else {
+        ladderInfo_ = null;
+        ladderInfoBuilder_ = null;
+      }
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
@@ -2399,6 +2472,11 @@ private static final long serialVersionUID = 0L;
         result.ladderSingleInfo_ = ladderSingleInfo_;
       } else {
         result.ladderSingleInfo_ = ladderSingleInfoBuilder_.build();
+      }
+      if (ladderInfoBuilder_ == null) {
+        result.ladderInfo_ = ladderInfo_;
+      } else {
+        result.ladderInfo_ = ladderInfoBuilder_.build();
       }
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
@@ -2583,6 +2661,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasLadderSingleInfo()) {
         mergeLadderSingleInfo(other.getLadderSingleInfo());
+      }
+      if (other.hasLadderInfo()) {
+        mergeLadderInfo(other.getLadderInfo());
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
@@ -5012,6 +5093,161 @@ private static final long serialVersionUID = 0L;
         ladderSingleInfo_ = null;
       }
       return ladderSingleInfoBuilder_;
+    }
+
+    private game.proto.data.LadderInfo ladderInfo_;
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder> ladderInfoBuilder_;
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * @return Whether the ladderInfo field is set.
+     */
+    public boolean hasLadderInfo() {
+      return ladderInfoBuilder_ != null || ladderInfo_ != null;
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * @return The ladderInfo.
+     */
+    public game.proto.data.LadderInfo getLadderInfo() {
+      if (ladderInfoBuilder_ == null) {
+        return ladderInfo_ == null ? game.proto.data.LadderInfo.getDefaultInstance() : ladderInfo_;
+      } else {
+        return ladderInfoBuilder_.getMessage();
+      }
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    public Builder setLadderInfo(game.proto.data.LadderInfo value) {
+      if (ladderInfoBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ladderInfo_ = value;
+        onChanged();
+      } else {
+        ladderInfoBuilder_.setMessage(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    public Builder setLadderInfo(
+        game.proto.data.LadderInfo.Builder builderForValue) {
+      if (ladderInfoBuilder_ == null) {
+        ladderInfo_ = builderForValue.build();
+        onChanged();
+      } else {
+        ladderInfoBuilder_.setMessage(builderForValue.build());
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    public Builder mergeLadderInfo(game.proto.data.LadderInfo value) {
+      if (ladderInfoBuilder_ == null) {
+        if (ladderInfo_ != null) {
+          ladderInfo_ =
+            game.proto.data.LadderInfo.newBuilder(ladderInfo_).mergeFrom(value).buildPartial();
+        } else {
+          ladderInfo_ = value;
+        }
+        onChanged();
+      } else {
+        ladderInfoBuilder_.mergeFrom(value);
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    public Builder clearLadderInfo() {
+      if (ladderInfoBuilder_ == null) {
+        ladderInfo_ = null;
+        onChanged();
+      } else {
+        ladderInfo_ = null;
+        ladderInfoBuilder_ = null;
+      }
+
+      return this;
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    public game.proto.data.LadderInfo.Builder getLadderInfoBuilder() {
+      
+      onChanged();
+      return getLadderInfoFieldBuilder().getBuilder();
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    public game.proto.data.LadderInfoOrBuilder getLadderInfoOrBuilder() {
+      if (ladderInfoBuilder_ != null) {
+        return ladderInfoBuilder_.getMessageOrBuilder();
+      } else {
+        return ladderInfo_ == null ?
+            game.proto.data.LadderInfo.getDefaultInstance() : ladderInfo_;
+      }
+    }
+    /**
+     * <pre>
+     * 排位满英雄
+     * </pre>
+     *
+     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     */
+    private com.google.protobuf.SingleFieldBuilderV3<
+        game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder> 
+        getLadderInfoFieldBuilder() {
+      if (ladderInfoBuilder_ == null) {
+        ladderInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+            game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder>(
+                getLadderInfo(),
+                getParentForChildren(),
+                isClean());
+        ladderInfo_ = null;
+      }
+      return ladderInfoBuilder_;
     }
 
     private com.google.protobuf.MapField<

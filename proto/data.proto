@@ -55,6 +55,11 @@ message PlayerData {
     Dungeon dungeon = 510;
     // 排位信息
     LadderInfo ladderSingleInfo = 520;
+    // 排位满英雄
+    LadderInfo ladderInfo = 521;
+    bool inMatch = 522; // 是否正在查找对手
+    int64 matchId = 523;
+
     // 背包
     map<int32, BagSlot> bag = 601;
     // 背包容量
@@ -354,14 +359,22 @@ message LadderInfo{
     bool inMatch = 8; // 是否正在查找对手
     map<int32, LadderHeroScore> heroScore = 9;
     repeated LadderSingleReport report = 10;// 最近20次
-    int64 matchId = 11;
+    repeated LadderReport ladderReport = 11;// 最近20次
 }
+
 // 英雄战斗记录
 message LadderHeroScore{
     int32 win1 = 1;// 先手
     int32 win2 = 2;// 后手
     int32 lose1 = 3; //先手
     int32 lose2 = 4; //后手
+}
+
+// 6英雄比赛记录
+message  LadderReport{
+    int64 uid = 1;
+    FormationPos formation = 2;
+    string name = 5;
 }
 // 比赛记录
 message LadderSingleReport{
@@ -416,6 +429,7 @@ enum FormationType {
     FORMATION_NONE = 0;
     FORMATION_DEFAULT = 1; //默认阵型
     FORMATION_ARENA = 2; // 竞技场防守
+    FORMATION_LADDER = 3; // 排位阵型
 }
 
 enum RewardType {
@@ -487,10 +501,11 @@ enum HomeType{
     H_ITEM = 20;// 物品, 不用瓦片制作
 }
 
-
-
 enum FightType{
     F_NONE = 0;
     F_BATTLE = 1;// 野外战斗
     F_LADDER_SINGLE = 2;// 排位-单挑
+    F_LADDER = 3;// 排位-英雄 33-33
+    F_BATTLE_DOUBLE = 4 ;// 双人副本 33-44-33
+
 }
