@@ -12,4 +12,10 @@ public interface LadderMatchReqOrBuilder extends
    * @return The id.
    */
   long getId();
+
+  /**
+   * <code>int32 type = 2;</code>
+   * @return The type.
+   */
+  int getType();
 }

@@ -67,6 +67,16 @@ public class ParamConfigData {
 
     public int homeResourceLimit;
 
+    /**
+     * 单挑排位消耗体力
+     */
+    public int ladderSingleFight;
+
+    /**
+     * 6人排位消耗体力
+     */
+    public int ladderFight;
+
     public void Init(final DataConfigData d) {
         final int count = d.count;
         switch (d.id) {
@@ -105,6 +115,12 @@ public class ParamConfigData {
                 break;
             case 12:
                 homeResourceLimit = count;
+                break;
+            case 13:
+                ladderSingleFight = count;
+                break;
+            case 14:
+                ladderFight = count;
                 break;
         }
     }

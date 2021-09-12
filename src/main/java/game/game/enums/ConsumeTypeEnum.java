@@ -13,4 +13,6 @@ public enum ConsumeTypeEnum {
     购买体力,
     神殿购买英雄,
     跑镖,
+    单挑排位,
+    排位,
 }

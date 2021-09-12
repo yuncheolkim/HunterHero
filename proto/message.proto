@@ -502,7 +502,8 @@ message HomeNewTaskDayPush{
 
 ///////////////////////////////////////////////  ladder
 message LadderMatchReq{
-    int64 id = 1;;
+    int64 id = 1;
+    int32 type = 2;
 }
 message LadderSetFormationReq{
     int32 heroId = 1;

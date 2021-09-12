@@ -79,6 +79,7 @@ public class HomeHandler {
      *
      * @param player
      */
+    @GameHandler(No.HomeHarvestReq)
     public static HomeHarvestRes harvest(Player player, HomeHarvestReq req) {
 
         req.getPosList().forEach(pos -> HomeService.harvest(player, pos));
@@ -92,6 +93,7 @@ public class HomeHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.HomeCleanReq)
     public static void clean(Player player, HomeCleanReq req) {
         for (Integer pos : req.getPosList()) {
             HomeService.clean(player, pos);
@@ -101,6 +103,7 @@ public class HomeHandler {
     /**
      * 升级厨房
      */
+    @GameHandler(No.HomeUpgradeCookReq)
     public static void upgradeCook(Player player) {
 
         HomeData.Builder homeDataBuilder = player.pd.getHomeDataBuilder();
@@ -118,6 +121,7 @@ public class HomeHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.HomeProductReq)
     public static void product(Player player, HomeProductReq req) {
 
         if (req.getType() == 1) {
@@ -132,6 +136,7 @@ public class HomeHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.HomeTaskCompleteReq)
     public static void taskComplete(Player player, HomeTaskCompleteReq req) {
         final int id = req.getId();
         HomeTaskConfigData data = ConfigManager.homeTaskDataBox.findById(id);

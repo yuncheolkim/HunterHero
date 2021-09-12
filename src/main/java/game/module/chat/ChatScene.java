@@ -1,7 +1,7 @@
 package game.module.chat;
 
 import game.base.G;
-import game.game.scene.GameScene;
+import game.game.scene.Scene;
 import game.proto.ChatMessagePush;
 import game.proto.ChatMessageReq;
 import game.proto.no.No;
@@ -12,7 +12,7 @@ import game.proto.no.No;
  * @author Yunzhe.Jin
  * 2021/4/2 16:57
  */
-public class ChatScene extends GameScene {
+public class ChatScene extends Scene {
 
     //    private Map<Long, ChatData> playerMap = new HashMap<>();
     private long id;

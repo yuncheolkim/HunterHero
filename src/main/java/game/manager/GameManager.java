@@ -6,6 +6,7 @@ import game.anno.GameHandler;
 import game.base.AbsLifecycle;
 import game.base.G;
 import game.base.Logs;
+import game.base.Work;
 import game.module.bag.BagHandler;
 import game.module.chat.ChatHandler;
 import game.module.chat.ChatScene;
@@ -18,8 +19,7 @@ import game.module.fish.FishHandler;
 import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
-import game.module.home.HomeHandler;
-import game.module.ladder.match.LadderMatchSingleGameScene;
+import game.module.ladder.match.LadderMatchScene;
 import game.module.login.LoginHandler;
 import game.module.player.PlayerHandler;
 import game.module.scene.SceneHandler;
@@ -82,7 +82,8 @@ public class GameManager extends AbsLifecycle {
     /**
      * 单线程处理
      */
-    private final LadderMatchSingleGameScene ladderScene = new LadderMatchSingleGameScene();
+    private final LadderMatchScene ladderSingleMatch = new LadderMatchScene();
+    private final LadderMatchScene ladderMatch = new LadderMatchScene();
     private final LadderFightScene fightScene = new LadderFightScene();
 
 
@@ -216,19 +217,21 @@ public class GameManager extends AbsLifecycle {
         addHandler(new RetInvoker<>(No.ExpressStartRqRs, ExpressHandler::start, ExpressStartRqRs::parser));
         addHandler(new RetInvoker<>(No.ExpressCompleteReq, ExpressHandler::complete, ExpressCompleteReq::parser));
         // Home
-        addHandler(new RetInvoker<>(No.HomeOpenAreaRqRs, HomeHandler::openArea, HomeOpenAreaRqRs::parser));
-        addHandler(new Invoker<>(No.HomeChangeReq, HomeHandler::change, HomeChangeReq::parser));
-        addHandler(new RetInvoker<>(No.HomeHarvestReq, HomeHandler::harvest, HomeHarvestReq::parser));
-        addHandler(new Invoker<>(No.HomeCleanReq, HomeHandler::clean, HomeCleanReq::parser));
-        addHandler(new InvokerNoParam(No.HomeUpgradeCookReq, HomeHandler::upgradeCook));
-        addHandler(new Invoker<>(No.HomeProductReq, HomeHandler::product, HomeProductReq::parser));
-        addHandler(new Invoker<>(No.HomeTaskCompleteReq, HomeHandler::taskComplete, HomeTaskCompleteReq::parser));
+//        addHandler(new RetInvoker<>(No.HomeOpenAreaRqRs, HomeHandler::openArea, HomeOpenAreaRqRs::parser));
+//        addHandler(new Invoker<>(No.HomeChangeReq, HomeHandler::change, HomeChangeReq::parser));
+//        addHandler(new RetInvoker<>(No.HomeHarvestReq, HomeHandler::harvest, HomeHarvestReq::parser));
+//        addHandler(new Invoker<>(No.HomeCleanReq, HomeHandler::clean, HomeCleanReq::parser));
+//        addHandler(new InvokerNoParam(No.HomeUpgradeCookReq, HomeHandler::upgradeCook));
+//        addHandler(new Invoker<>(No.HomeProductReq, HomeHandler::product, HomeProductReq::parser));
+//        addHandler(new Invoker<>(No.HomeTaskCompleteReq, HomeHandler::taskComplete, HomeTaskCompleteReq::parser));
 
     }
 
     private void initScene() {
         chatScene.setWork(G.W.getSceneWork());
-        ladderScene.setWork(G.W.getMatchWork());
+        Work matchWork = G.W.getMatchWork();
+        ladderSingleMatch.setWork(matchWork);
+        ladderMatch.setWork(matchWork);
         fightScene.setWork(G.W.getHeroCalcWork(fightScene.getId()));
     }
 
@@ -248,8 +251,12 @@ public class GameManager extends AbsLifecycle {
         return chatScene;
     }
 
-    public LadderMatchSingleGameScene getLadderMatchScene() {
-        return ladderScene;
+    public LadderMatchScene getLadderMatchScene() {
+        return ladderSingleMatch;
+    }
+
+    public LadderMatchScene getLadderMatch() {
+        return ladderMatch;
     }
 
     public LadderFightScene getFightScene() {

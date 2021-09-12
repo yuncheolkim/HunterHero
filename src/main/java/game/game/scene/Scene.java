@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
  * @author Yunzhe.Jin
  * 2021/4/2 15:36
  */
-public class GameScene {
+public class Scene {
     private int sceneId;
 
     protected long id;
@@ -27,13 +27,13 @@ public class GameScene {
 
     protected LinkedList<TimerTask> task = new LinkedList<>();
 
-    public GameScene() {
+    public Scene() {
         id = GameConstants.ID_GENERATOR.next();
         schedule = getSchedule();
     }
 
     public void tell(final Object msg) {
-        final GameScene that = this;
+        final Scene that = this;
         work.addTask(() -> {
             that.beforeProcess();
             that.process(msg);

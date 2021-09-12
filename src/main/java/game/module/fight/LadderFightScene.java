@@ -2,7 +2,7 @@ package game.module.fight;
 
 import game.base.G;
 import game.config.data.LadderSingleConfigData;
-import game.game.scene.GameScene;
+import game.game.scene.Scene;
 import game.manager.ConfigManager;
 import game.module.battle.Battle;
 import game.module.battle.Side;
@@ -28,7 +28,7 @@ import static game.module.fight.FightService.buildFightRecord;
  * @author Yunzhe.Jin
  * 2021/8/28 21:25
  */
-public class LadderFightScene extends GameScene {
+public class LadderFightScene extends Scene {
     /**
      * 已准备的玩家
      * key: match id

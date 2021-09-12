@@ -3,7 +3,9 @@ package game.module.ladder;
 import game.anno.GameHandler;
 import game.base.G;
 import game.base.Logs;
+import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
+import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Pos;
 import game.module.battle.Side;
@@ -21,6 +23,8 @@ import game.proto.data.LadderSingleReport;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
 import game.utils.DateUtils;
+
+import static game.game.enums.ConsumeTypeEnum.单挑排位;
 
 /**
  * 排位赛
@@ -59,6 +63,12 @@ public class LadderHandler {
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(build.getHeroId(), null);
         ModuleAssert.notNull(heroOrDefault);
         ModuleAssert.isFalse(build.getInMatch());
+
+        if (req.getType() == 1) {
+            ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderSingleFight), ErrorEnum.ERR_10);
+        } else {
+            ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderFight), ErrorEnum.ERR_10);
+        }
 
         build.setInMatch(true);
         build.setMatchId(req.getId());
@@ -217,6 +227,8 @@ public class LadderHandler {
         if (ladder.getReportCount() > 20) {
             ladder.removeReport(20);
         }
+        // 消耗体力
+        player.consumePower(单挑排位, ConfigManager.paramConfigData.ladderSingleFight);
 
         LadderResultPush result = LadderResultPush.newBuilder()
                 .setRecord(req.getRecord())

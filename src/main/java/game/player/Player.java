@@ -435,6 +435,11 @@ public class Player {
         }
     }
 
+    public boolean hasPower(int count) {
+        return pd.getResourceBuilder().getPower() >= count;
+
+    }
+
     /**
      * 消耗体力
      *

@@ -57,6 +57,11 @@ private static final long serialVersionUID = 0L;
             id_ = input.readInt64();
             break;
           }
+          case 16: {
+
+            type_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -100,6 +105,17 @@ private static final long serialVersionUID = 0L;
     return id_;
   }
 
+  public static final int TYPE_FIELD_NUMBER = 2;
+  private int type_;
+  /**
+   * <code>int32 type = 2;</code>
+   * @return The type.
+   */
+  @java.lang.Override
+  public int getType() {
+    return type_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -117,6 +133,9 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0L) {
       output.writeInt64(1, id_);
     }
+    if (type_ != 0) {
+      output.writeInt32(2, type_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -129,6 +148,10 @@ private static final long serialVersionUID = 0L;
     if (id_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(1, id_);
+    }
+    if (type_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(2, type_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -147,6 +170,8 @@ private static final long serialVersionUID = 0L;
 
     if (getId()
         != other.getId()) return false;
+    if (getType()
+        != other.getType()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -161,6 +186,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getId());
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getType();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -300,6 +327,8 @@ private static final long serialVersionUID = 0L;
       super.clear();
       id_ = 0L;
 
+      type_ = 0;
+
       return this;
     }
 
@@ -327,6 +356,7 @@ private static final long serialVersionUID = 0L;
     public game.proto.LadderMatchReq buildPartial() {
       game.proto.LadderMatchReq result = new game.proto.LadderMatchReq(this);
       result.id_ = id_;
+      result.type_ = type_;
       onBuilt();
       return result;
     }
@@ -377,6 +407,9 @@ private static final long serialVersionUID = 0L;
       if (other == game.proto.LadderMatchReq.getDefaultInstance()) return this;
       if (other.getId() != 0L) {
         setId(other.getId());
+      }
+      if (other.getType() != 0) {
+        setType(other.getType());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -434,6 +467,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearId() {
       
       id_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int type_ ;
+    /**
+     * <code>int32 type = 2;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public int getType() {
+      return type_;
+    }
+    /**
+     * <code>int32 type = 2;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 type = 2;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
       onChanged();
       return this;
     }

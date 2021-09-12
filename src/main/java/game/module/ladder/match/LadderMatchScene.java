@@ -3,7 +3,7 @@ package game.module.ladder.match;
 import com.google.common.collect.TreeMultimap;
 import game.base.G;
 import game.base.Logs;
-import game.game.scene.GameScene;
+import game.game.scene.Scene;
 import game.proto.back.LadderCancelInner;
 import game.proto.back.LadderPrepare;
 import game.proto.no.No;
@@ -22,7 +22,7 @@ import java.util.concurrent.ScheduledExecutorService;
  * @author Yunzhe.Jin
  * 2021/8/26 22:32
  */
-public class LadderMatchSingleGameScene extends GameScene {
+public class LadderMatchScene extends Scene {
     /**
      * 先手
      */
@@ -211,7 +211,7 @@ public class LadderMatchSingleGameScene extends GameScene {
         findTarget(uid, info.uid);
     }
 
-    public LadderMatchSingleGameScene() {
+    public LadderMatchScene() {
         super();
     }
 

@@ -1,7 +1,7 @@
 package ladder;
 
 import game.base.SingleWork;
-import game.module.ladder.match.LadderMatchSingleGameScene;
+import game.module.ladder.match.LadderMatchScene;
 import game.module.ladder.match.MatchInfoMsg;
 import game.utils.DateUtils;
 import org.junit.Test;
@@ -16,7 +16,7 @@ public class MatchTest {
 
     @Test
     public void test1() throws InterruptedException {
-        LadderMatchSingleGameScene scene = new LadderMatchSingleGameScene();
+        LadderMatchScene scene = new LadderMatchScene();
         SingleWork work = new SingleWork();
         scene.setWork(work);
         work.start();
