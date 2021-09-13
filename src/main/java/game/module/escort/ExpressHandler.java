@@ -1,5 +1,6 @@
 package game.module.escort;
 
+import game.anno.GameHandler;
 import game.base.Logs;
 import game.config.data.ExpressConfigData;
 import game.exception.ErrorEnum;
@@ -37,6 +38,7 @@ public class ExpressHandler {
      * @param player
      * @return
      */
+    @GameHandler(No.ExpressOpenReq)
     public static void open(final Player player) {
 
         // 跑镖数据生成
@@ -69,6 +71,7 @@ public class ExpressHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.ExpressStartRqRs)
     public static ExpressStartRqRs start(final Player player, final ExpressStartRqRs req) {
         ModuleAssert.isFalse(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
         int id = req.getId();
@@ -89,6 +92,7 @@ public class ExpressHandler {
      * @param req
      * @return
      */
+    @GameHandler(No.ExpressCompleteReq)
     public static ExpressCompleteRes complete(final Player player, final ExpressCompleteReq req) {
         ModuleAssert.isTrue(player.pd.hasExpressInfo(), ErrorEnum.ERR_202);
 

@@ -37,6 +37,7 @@ public class LadderMatchScene extends Scene {
      * 玩家map
      */
     Map<Long, MatchTempData> pmap = new HashMap<>();
+    private final int type;
 
     @Override
     protected void process(Object msg) {
@@ -100,13 +101,13 @@ public class LadderMatchScene extends Scene {
         LadderPrepare prepare1 = LadderPrepare.newBuilder()
                 .setAuto(true)
                 .setMatchId(d1.info.id)
-                .setType(1)
+                .setType(type)
                 .setOrder(d1.info.order)
                 .build();
         LadderPrepare prepare2 = LadderPrepare.newBuilder()
                 .setAuto(true)
                 .setMatchId(d2.info.id)
-                .setType(1)
+                .setType(type)
                 .setOrder(d2.info.order)
                 .build();
 
@@ -211,8 +212,9 @@ public class LadderMatchScene extends Scene {
         findTarget(uid, info.uid);
     }
 
-    public LadderMatchScene() {
+    public LadderMatchScene(int type) {
         super();
+        this.type = type;
     }
 
     /**

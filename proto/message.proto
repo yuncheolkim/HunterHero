@@ -236,6 +236,7 @@ message FormationSettingReq {
     string name = 2;
     int32 defaultFormationIndex = 3;
     int32 arenaFormationIndex = 4;
+    map<int32, int32> changedIndex = 5;
 }
 
 message FormationSettingRes {
@@ -243,6 +244,7 @@ message FormationSettingRes {
     string name = 2;
     int32 defaultFormationIndex = 3;
     int32 arenaFormationIndex = 4;
+    map<int32, int32> changedIndex = 5;
 }
 
 // 5001 资源变化

@@ -78,16 +78,6 @@ public interface LadderInfoOrBuilder extends
   int getHeroId();
 
   /**
-   * <pre>
-   * 是否正在查找对手
-   * </pre>
-   *
-   * <code>bool inMatch = 8;</code>
-   * @return The inMatch.
-   */
-  boolean getInMatch();
-
-  /**
    * <code>map&lt;int32, .Message.LadderHeroScore&gt; heroScore = 9;</code>
    */
   int getHeroScoreCount();
@@ -166,8 +156,46 @@ public interface LadderInfoOrBuilder extends
       int index);
 
   /**
-   * <code>int64 matchId = 11;</code>
-   * @return The matchId.
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
    */
-  long getMatchId();
+  java.util.List<game.proto.data.LadderReport> 
+      getLadderReportList();
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  game.proto.data.LadderReport getLadderReport(int index);
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  int getLadderReportCount();
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  java.util.List<? extends game.proto.data.LadderReportOrBuilder> 
+      getLadderReportOrBuilderList();
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  game.proto.data.LadderReportOrBuilder getLadderReportOrBuilder(
+      int index);
 }

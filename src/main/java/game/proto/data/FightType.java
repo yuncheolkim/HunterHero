@@ -28,6 +28,22 @@ public enum FightType
    * <code>F_LADDER_SINGLE = 2;</code>
    */
   F_LADDER_SINGLE(2),
+  /**
+   * <pre>
+   * 排位-英雄 33-33
+   * </pre>
+   *
+   * <code>F_LADDER = 3;</code>
+   */
+  F_LADDER(3),
+  /**
+   * <pre>
+   * 双人副本 33-44-33
+   * </pre>
+   *
+   * <code>F_BATTLE_DOUBLE = 4;</code>
+   */
+  F_BATTLE_DOUBLE(4),
   UNRECOGNIZED(-1),
   ;
 
@@ -51,6 +67,22 @@ public enum FightType
    * <code>F_LADDER_SINGLE = 2;</code>
    */
   public static final int F_LADDER_SINGLE_VALUE = 2;
+  /**
+   * <pre>
+   * 排位-英雄 33-33
+   * </pre>
+   *
+   * <code>F_LADDER = 3;</code>
+   */
+  public static final int F_LADDER_VALUE = 3;
+  /**
+   * <pre>
+   * 双人副本 33-44-33
+   * </pre>
+   *
+   * <code>F_BATTLE_DOUBLE = 4;</code>
+   */
+  public static final int F_BATTLE_DOUBLE_VALUE = 4;
 
 
   public final int getNumber() {
@@ -80,6 +112,8 @@ public enum FightType
       case 0: return F_NONE;
       case 1: return F_BATTLE;
       case 2: return F_LADDER_SINGLE;
+      case 3: return F_LADDER;
+      case 4: return F_BATTLE_DOUBLE;
       default: return null;
     }
   }

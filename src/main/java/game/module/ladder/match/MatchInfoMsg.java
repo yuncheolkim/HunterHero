@@ -43,6 +43,11 @@ public class MatchInfoMsg implements Comparable<MatchInfoMsg> {
      */
     public int scoreBase;
 
+    /**
+     * 类型
+     */
+    public int type;
+
     @Override
     public int compareTo(MatchInfoMsg o) {
 

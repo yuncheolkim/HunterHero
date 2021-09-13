@@ -44,6 +44,7 @@ private static final long serialVersionUID = 0L;
     if (extensionRegistry == null) {
       throw new java.lang.NullPointerException();
     }
+    int mutable_bitField0_ = 0;
     com.google.protobuf.UnknownFieldSet.Builder unknownFields =
         com.google.protobuf.UnknownFieldSet.newBuilder();
     try {
@@ -75,6 +76,19 @@ private static final long serialVersionUID = 0L;
             arenaFormationIndex_ = input.readInt32();
             break;
           }
+          case 42: {
+            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
+              changedIndex_ = com.google.protobuf.MapField.newMapField(
+                  ChangedIndexDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000001;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+            changedIndex__ = input.readMessage(
+                ChangedIndexDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            changedIndex_.getMutableMap().put(
+                changedIndex__.getKey(), changedIndex__.getValue());
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -99,6 +113,18 @@ private static final long serialVersionUID = 0L;
     return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_descriptor;
   }
 
+  @SuppressWarnings({"rawtypes"})
+  @java.lang.Override
+  protected com.google.protobuf.MapField internalGetMapField(
+      int number) {
+    switch (number) {
+      case 5:
+        return internalGetChangedIndex();
+      default:
+        throw new RuntimeException(
+            "Invalid map field number: " + number);
+    }
+  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -178,6 +204,87 @@ private static final long serialVersionUID = 0L;
     return arenaFormationIndex_;
   }
 
+  public static final int CHANGEDINDEX_FIELD_NUMBER = 5;
+  private static final class ChangedIndexDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, java.lang.Integer> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
+                game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_ChangedIndexEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0);
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, java.lang.Integer> changedIndex_;
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+  internalGetChangedIndex() {
+    if (changedIndex_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          ChangedIndexDefaultEntryHolder.defaultEntry);
+    }
+    return changedIndex_;
+  }
+
+  public int getChangedIndexCount() {
+    return internalGetChangedIndex().getMap().size();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsChangedIndex(
+      int key) {
+    
+    return internalGetChangedIndex().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getChangedIndexMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getChangedIndex() {
+    return getChangedIndexMap();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getChangedIndexMap() {
+    return internalGetChangedIndex().getMap();
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+  @java.lang.Override
+
+  public int getChangedIndexOrDefault(
+      int key,
+      int defaultValue) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetChangedIndex().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+  @java.lang.Override
+
+  public int getChangedIndexOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetChangedIndex().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -204,6 +311,12 @@ private static final long serialVersionUID = 0L;
     if (arenaFormationIndex_ != 0) {
       output.writeInt32(4, arenaFormationIndex_);
     }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetChangedIndex(),
+        ChangedIndexDefaultEntryHolder.defaultEntry,
+        5);
     unknownFields.writeTo(output);
   }
 
@@ -228,6 +341,16 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(4, arenaFormationIndex_);
     }
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
+         : internalGetChangedIndex().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+      changedIndex__ = ChangedIndexDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, changedIndex__);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -251,6 +374,8 @@ private static final long serialVersionUID = 0L;
         != other.getDefaultFormationIndex()) return false;
     if (getArenaFormationIndex()
         != other.getArenaFormationIndex()) return false;
+    if (!internalGetChangedIndex().equals(
+        other.internalGetChangedIndex())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -270,6 +395,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDefaultFormationIndex();
     hash = (37 * hash) + ARENAFORMATIONINDEX_FIELD_NUMBER;
     hash = (53 * hash) + getArenaFormationIndex();
+    if (!internalGetChangedIndex().getMap().isEmpty()) {
+      hash = (37 * hash) + CHANGEDINDEX_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetChangedIndex().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -382,6 +511,28 @@ private static final long serialVersionUID = 0L;
       return game.proto.MessageOuterClass.internal_static_Message_FormationSettingReq_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMapField(
+        int number) {
+      switch (number) {
+        case 5:
+          return internalGetChangedIndex();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @SuppressWarnings({"rawtypes"})
+    protected com.google.protobuf.MapField internalGetMutableMapField(
+        int number) {
+      switch (number) {
+        case 5:
+          return internalGetMutableChangedIndex();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -416,6 +567,7 @@ private static final long serialVersionUID = 0L;
 
       arenaFormationIndex_ = 0;
 
+      internalGetMutableChangedIndex().clear();
       return this;
     }
 
@@ -442,10 +594,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public game.proto.FormationSettingReq buildPartial() {
       game.proto.FormationSettingReq result = new game.proto.FormationSettingReq(this);
+      int from_bitField0_ = bitField0_;
       result.index_ = index_;
       result.name_ = name_;
       result.defaultFormationIndex_ = defaultFormationIndex_;
       result.arenaFormationIndex_ = arenaFormationIndex_;
+      result.changedIndex_ = internalGetChangedIndex();
+      result.changedIndex_.makeImmutable();
       onBuilt();
       return result;
     }
@@ -507,6 +662,8 @@ private static final long serialVersionUID = 0L;
       if (other.getArenaFormationIndex() != 0) {
         setArenaFormationIndex(other.getArenaFormationIndex());
       }
+      internalGetMutableChangedIndex().mergeFrom(
+          other.internalGetChangedIndex());
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
       return this;
@@ -535,6 +692,7 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int bitField0_;
 
     private int index_ ;
     /**
@@ -702,6 +860,134 @@ private static final long serialVersionUID = 0L;
       
       arenaFormationIndex_ = 0;
       onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Integer> changedIndex_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetChangedIndex() {
+      if (changedIndex_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            ChangedIndexDefaultEntryHolder.defaultEntry);
+      }
+      return changedIndex_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetMutableChangedIndex() {
+      onChanged();;
+      if (changedIndex_ == null) {
+        changedIndex_ = com.google.protobuf.MapField.newMapField(
+            ChangedIndexDefaultEntryHolder.defaultEntry);
+      }
+      if (!changedIndex_.isMutable()) {
+        changedIndex_ = changedIndex_.copy();
+      }
+      return changedIndex_;
+    }
+
+    public int getChangedIndexCount() {
+      return internalGetChangedIndex().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsChangedIndex(
+        int key) {
+      
+      return internalGetChangedIndex().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getChangedIndexMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getChangedIndex() {
+      return getChangedIndexMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getChangedIndexMap() {
+      return internalGetChangedIndex().getMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+    @java.lang.Override
+
+    public int getChangedIndexOrDefault(
+        int key,
+        int defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetChangedIndex().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+    @java.lang.Override
+
+    public int getChangedIndexOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetChangedIndex().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearChangedIndex() {
+      internalGetMutableChangedIndex().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+
+    public Builder removeChangedIndex(
+        int key) {
+      
+      internalGetMutableChangedIndex().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer>
+    getMutableChangedIndex() {
+      return internalGetMutableChangedIndex().getMutableMap();
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+    public Builder putChangedIndex(
+        int key,
+        int value) {
+      
+      
+      internalGetMutableChangedIndex().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+     */
+
+    public Builder putAllChangedIndex(
+        java.util.Map<java.lang.Integer, java.lang.Integer> values) {
+      internalGetMutableChangedIndex().getMutableMap()
+          .putAll(values);
       return this;
     }
     @java.lang.Override

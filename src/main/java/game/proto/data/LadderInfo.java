@@ -22,6 +22,7 @@ private static final long serialVersionUID = 0L;
   }
   private LadderInfo() {
     report_ = java.util.Collections.emptyList();
+    ladderReport_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -90,11 +91,6 @@ private static final long serialVersionUID = 0L;
             heroId_ = input.readInt32();
             break;
           }
-          case 64: {
-
-            inMatch_ = input.readBool();
-            break;
-          }
           case 74: {
             if (!((mutable_bitField0_ & 0x00000001) != 0)) {
               heroScore_ = com.google.protobuf.MapField.newMapField(
@@ -117,9 +113,13 @@ private static final long serialVersionUID = 0L;
                 input.readMessage(game.proto.data.LadderSingleReport.parser(), extensionRegistry));
             break;
           }
-          case 88: {
-
-            matchId_ = input.readInt64();
+          case 90: {
+            if (!((mutable_bitField0_ & 0x00000004) != 0)) {
+              ladderReport_ = new java.util.ArrayList<game.proto.data.LadderReport>();
+              mutable_bitField0_ |= 0x00000004;
+            }
+            ladderReport_.add(
+                input.readMessage(game.proto.data.LadderReport.parser(), extensionRegistry));
             break;
           }
           default: {
@@ -139,6 +139,9 @@ private static final long serialVersionUID = 0L;
     } finally {
       if (((mutable_bitField0_ & 0x00000002) != 0)) {
         report_ = java.util.Collections.unmodifiableList(report_);
+      }
+      if (((mutable_bitField0_ & 0x00000004) != 0)) {
+        ladderReport_ = java.util.Collections.unmodifiableList(ladderReport_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -272,21 +275,6 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public int getHeroId() {
     return heroId_;
-  }
-
-  public static final int INMATCH_FIELD_NUMBER = 8;
-  private boolean inMatch_;
-  /**
-   * <pre>
-   * 是否正在查找对手
-   * </pre>
-   *
-   * <code>bool inMatch = 8;</code>
-   * @return The inMatch.
-   */
-  @java.lang.Override
-  public boolean getInMatch() {
-    return inMatch_;
   }
 
   public static final int HEROSCORE_FIELD_NUMBER = 9;
@@ -430,15 +418,64 @@ private static final long serialVersionUID = 0L;
     return report_.get(index);
   }
 
-  public static final int MATCHID_FIELD_NUMBER = 11;
-  private long matchId_;
+  public static final int LADDERREPORT_FIELD_NUMBER = 11;
+  private java.util.List<game.proto.data.LadderReport> ladderReport_;
   /**
-   * <code>int64 matchId = 11;</code>
-   * @return The matchId.
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
    */
   @java.lang.Override
-  public long getMatchId() {
-    return matchId_;
+  public java.util.List<game.proto.data.LadderReport> getLadderReportList() {
+    return ladderReport_;
+  }
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  @java.lang.Override
+  public java.util.List<? extends game.proto.data.LadderReportOrBuilder> 
+      getLadderReportOrBuilderList() {
+    return ladderReport_;
+  }
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  @java.lang.Override
+  public int getLadderReportCount() {
+    return ladderReport_.size();
+  }
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.LadderReport getLadderReport(int index) {
+    return ladderReport_.get(index);
+  }
+  /**
+   * <pre>
+   * 最近20次
+   * </pre>
+   *
+   * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+   */
+  @java.lang.Override
+  public game.proto.data.LadderReportOrBuilder getLadderReportOrBuilder(
+      int index) {
+    return ladderReport_.get(index);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -476,9 +513,6 @@ private static final long serialVersionUID = 0L;
     if (heroId_ != 0) {
       output.writeInt32(7, heroId_);
     }
-    if (inMatch_ != false) {
-      output.writeBool(8, inMatch_);
-    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -488,8 +522,8 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < report_.size(); i++) {
       output.writeMessage(10, report_.get(i));
     }
-    if (matchId_ != 0L) {
-      output.writeInt64(11, matchId_);
+    for (int i = 0; i < ladderReport_.size(); i++) {
+      output.writeMessage(11, ladderReport_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -528,10 +562,6 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(7, heroId_);
     }
-    if (inMatch_ != false) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeBoolSize(8, inMatch_);
-    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.LadderHeroScore> entry
          : internalGetHeroScore().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.LadderHeroScore>
@@ -546,9 +576,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(10, report_.get(i));
     }
-    if (matchId_ != 0L) {
+    for (int i = 0; i < ladderReport_.size(); i++) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt64Size(11, matchId_);
+        .computeMessageSize(11, ladderReport_.get(i));
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -579,14 +609,12 @@ private static final long serialVersionUID = 0L;
         != other.getLose2()) return false;
     if (getHeroId()
         != other.getHeroId()) return false;
-    if (getInMatch()
-        != other.getInMatch()) return false;
     if (!internalGetHeroScore().equals(
         other.internalGetHeroScore())) return false;
     if (!getReportList()
         .equals(other.getReportList())) return false;
-    if (getMatchId()
-        != other.getMatchId()) return false;
+    if (!getLadderReportList()
+        .equals(other.getLadderReportList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -612,9 +640,6 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getLose2();
     hash = (37 * hash) + HEROID_FIELD_NUMBER;
     hash = (53 * hash) + getHeroId();
-    hash = (37 * hash) + INMATCH_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
-        getInMatch());
     if (!internalGetHeroScore().getMap().isEmpty()) {
       hash = (37 * hash) + HEROSCORE_FIELD_NUMBER;
       hash = (53 * hash) + internalGetHeroScore().hashCode();
@@ -623,9 +648,10 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + REPORT_FIELD_NUMBER;
       hash = (53 * hash) + getReportList().hashCode();
     }
-    hash = (37 * hash) + MATCHID_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getMatchId());
+    if (getLadderReportCount() > 0) {
+      hash = (37 * hash) + LADDERREPORT_FIELD_NUMBER;
+      hash = (53 * hash) + getLadderReportList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -782,6 +808,7 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
         getReportFieldBuilder();
+        getLadderReportFieldBuilder();
       }
     }
     @java.lang.Override
@@ -801,8 +828,6 @@ private static final long serialVersionUID = 0L;
 
       heroId_ = 0;
 
-      inMatch_ = false;
-
       internalGetMutableHeroScore().clear();
       if (reportBuilder_ == null) {
         report_ = java.util.Collections.emptyList();
@@ -810,8 +835,12 @@ private static final long serialVersionUID = 0L;
       } else {
         reportBuilder_.clear();
       }
-      matchId_ = 0L;
-
+      if (ladderReportBuilder_ == null) {
+        ladderReport_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+      } else {
+        ladderReportBuilder_.clear();
+      }
       return this;
     }
 
@@ -846,7 +875,6 @@ private static final long serialVersionUID = 0L;
       result.lose1_ = lose1_;
       result.lose2_ = lose2_;
       result.heroId_ = heroId_;
-      result.inMatch_ = inMatch_;
       result.heroScore_ = internalGetHeroScore();
       result.heroScore_.makeImmutable();
       if (reportBuilder_ == null) {
@@ -858,7 +886,15 @@ private static final long serialVersionUID = 0L;
       } else {
         result.report_ = reportBuilder_.build();
       }
-      result.matchId_ = matchId_;
+      if (ladderReportBuilder_ == null) {
+        if (((bitField0_ & 0x00000004) != 0)) {
+          ladderReport_ = java.util.Collections.unmodifiableList(ladderReport_);
+          bitField0_ = (bitField0_ & ~0x00000004);
+        }
+        result.ladderReport_ = ladderReport_;
+      } else {
+        result.ladderReport_ = ladderReportBuilder_.build();
+      }
       onBuilt();
       return result;
     }
@@ -928,9 +964,6 @@ private static final long serialVersionUID = 0L;
       if (other.getHeroId() != 0) {
         setHeroId(other.getHeroId());
       }
-      if (other.getInMatch() != false) {
-        setInMatch(other.getInMatch());
-      }
       internalGetMutableHeroScore().mergeFrom(
           other.internalGetHeroScore());
       if (reportBuilder_ == null) {
@@ -959,8 +992,31 @@ private static final long serialVersionUID = 0L;
           }
         }
       }
-      if (other.getMatchId() != 0L) {
-        setMatchId(other.getMatchId());
+      if (ladderReportBuilder_ == null) {
+        if (!other.ladderReport_.isEmpty()) {
+          if (ladderReport_.isEmpty()) {
+            ladderReport_ = other.ladderReport_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+          } else {
+            ensureLadderReportIsMutable();
+            ladderReport_.addAll(other.ladderReport_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.ladderReport_.isEmpty()) {
+          if (ladderReportBuilder_.isEmpty()) {
+            ladderReportBuilder_.dispose();
+            ladderReportBuilder_ = null;
+            ladderReport_ = other.ladderReport_;
+            bitField0_ = (bitField0_ & ~0x00000004);
+            ladderReportBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getLadderReportFieldBuilder() : null;
+          } else {
+            ladderReportBuilder_.addAllMessages(other.ladderReport_);
+          }
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1289,49 +1345,6 @@ private static final long serialVersionUID = 0L;
     public Builder clearHeroId() {
       
       heroId_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private boolean inMatch_ ;
-    /**
-     * <pre>
-     * 是否正在查找对手
-     * </pre>
-     *
-     * <code>bool inMatch = 8;</code>
-     * @return The inMatch.
-     */
-    @java.lang.Override
-    public boolean getInMatch() {
-      return inMatch_;
-    }
-    /**
-     * <pre>
-     * 是否正在查找对手
-     * </pre>
-     *
-     * <code>bool inMatch = 8;</code>
-     * @param value The inMatch to set.
-     * @return This builder for chaining.
-     */
-    public Builder setInMatch(boolean value) {
-      
-      inMatch_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * 是否正在查找对手
-     * </pre>
-     *
-     * <code>bool inMatch = 8;</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearInMatch() {
-      
-      inMatch_ = false;
       onChanged();
       return this;
     }
@@ -1776,35 +1789,316 @@ private static final long serialVersionUID = 0L;
       return reportBuilder_;
     }
 
-    private long matchId_ ;
+    private java.util.List<game.proto.data.LadderReport> ladderReport_ =
+      java.util.Collections.emptyList();
+    private void ensureLadderReportIsMutable() {
+      if (!((bitField0_ & 0x00000004) != 0)) {
+        ladderReport_ = new java.util.ArrayList<game.proto.data.LadderReport>(ladderReport_);
+        bitField0_ |= 0x00000004;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.LadderReport, game.proto.data.LadderReport.Builder, game.proto.data.LadderReportOrBuilder> ladderReportBuilder_;
+
     /**
-     * <code>int64 matchId = 11;</code>
-     * @return The matchId.
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
      */
-    @java.lang.Override
-    public long getMatchId() {
-      return matchId_;
+    public java.util.List<game.proto.data.LadderReport> getLadderReportList() {
+      if (ladderReportBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(ladderReport_);
+      } else {
+        return ladderReportBuilder_.getMessageList();
+      }
     }
     /**
-     * <code>int64 matchId = 11;</code>
-     * @param value The matchId to set.
-     * @return This builder for chaining.
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
      */
-    public Builder setMatchId(long value) {
-      
-      matchId_ = value;
-      onChanged();
+    public int getLadderReportCount() {
+      if (ladderReportBuilder_ == null) {
+        return ladderReport_.size();
+      } else {
+        return ladderReportBuilder_.getCount();
+      }
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public game.proto.data.LadderReport getLadderReport(int index) {
+      if (ladderReportBuilder_ == null) {
+        return ladderReport_.get(index);
+      } else {
+        return ladderReportBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder setLadderReport(
+        int index, game.proto.data.LadderReport value) {
+      if (ladderReportBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureLadderReportIsMutable();
+        ladderReport_.set(index, value);
+        onChanged();
+      } else {
+        ladderReportBuilder_.setMessage(index, value);
+      }
       return this;
     }
     /**
-     * <code>int64 matchId = 11;</code>
-     * @return This builder for chaining.
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
      */
-    public Builder clearMatchId() {
-      
-      matchId_ = 0L;
-      onChanged();
+    public Builder setLadderReport(
+        int index, game.proto.data.LadderReport.Builder builderForValue) {
+      if (ladderReportBuilder_ == null) {
+        ensureLadderReportIsMutable();
+        ladderReport_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        ladderReportBuilder_.setMessage(index, builderForValue.build());
+      }
       return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder addLadderReport(game.proto.data.LadderReport value) {
+      if (ladderReportBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureLadderReportIsMutable();
+        ladderReport_.add(value);
+        onChanged();
+      } else {
+        ladderReportBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder addLadderReport(
+        int index, game.proto.data.LadderReport value) {
+      if (ladderReportBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureLadderReportIsMutable();
+        ladderReport_.add(index, value);
+        onChanged();
+      } else {
+        ladderReportBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder addLadderReport(
+        game.proto.data.LadderReport.Builder builderForValue) {
+      if (ladderReportBuilder_ == null) {
+        ensureLadderReportIsMutable();
+        ladderReport_.add(builderForValue.build());
+        onChanged();
+      } else {
+        ladderReportBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder addLadderReport(
+        int index, game.proto.data.LadderReport.Builder builderForValue) {
+      if (ladderReportBuilder_ == null) {
+        ensureLadderReportIsMutable();
+        ladderReport_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        ladderReportBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder addAllLadderReport(
+        java.lang.Iterable<? extends game.proto.data.LadderReport> values) {
+      if (ladderReportBuilder_ == null) {
+        ensureLadderReportIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, ladderReport_);
+        onChanged();
+      } else {
+        ladderReportBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder clearLadderReport() {
+      if (ladderReportBuilder_ == null) {
+        ladderReport_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+      } else {
+        ladderReportBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public Builder removeLadderReport(int index) {
+      if (ladderReportBuilder_ == null) {
+        ensureLadderReportIsMutable();
+        ladderReport_.remove(index);
+        onChanged();
+      } else {
+        ladderReportBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public game.proto.data.LadderReport.Builder getLadderReportBuilder(
+        int index) {
+      return getLadderReportFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public game.proto.data.LadderReportOrBuilder getLadderReportOrBuilder(
+        int index) {
+      if (ladderReportBuilder_ == null) {
+        return ladderReport_.get(index);  } else {
+        return ladderReportBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public java.util.List<? extends game.proto.data.LadderReportOrBuilder> 
+         getLadderReportOrBuilderList() {
+      if (ladderReportBuilder_ != null) {
+        return ladderReportBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(ladderReport_);
+      }
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public game.proto.data.LadderReport.Builder addLadderReportBuilder() {
+      return getLadderReportFieldBuilder().addBuilder(
+          game.proto.data.LadderReport.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public game.proto.data.LadderReport.Builder addLadderReportBuilder(
+        int index) {
+      return getLadderReportFieldBuilder().addBuilder(
+          index, game.proto.data.LadderReport.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * 最近20次
+     * </pre>
+     *
+     * <code>repeated .Message.LadderReport ladderReport = 11;</code>
+     */
+    public java.util.List<game.proto.data.LadderReport.Builder> 
+         getLadderReportBuilderList() {
+      return getLadderReportFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        game.proto.data.LadderReport, game.proto.data.LadderReport.Builder, game.proto.data.LadderReportOrBuilder> 
+        getLadderReportFieldBuilder() {
+      if (ladderReportBuilder_ == null) {
+        ladderReportBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            game.proto.data.LadderReport, game.proto.data.LadderReport.Builder, game.proto.data.LadderReportOrBuilder>(
+                ladderReport_,
+                ((bitField0_ & 0x00000004) != 0),
+                getParentForChildren(),
+                isClean());
+        ladderReport_ = null;
+      }
+      return ladderReportBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

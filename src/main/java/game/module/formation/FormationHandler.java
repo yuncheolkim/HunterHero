@@ -1,6 +1,7 @@
 package game.module.formation;
 
 import com.google.protobuf.MessageLite;
+import game.anno.GameHandler;
 import game.exception.ModuleAssert;
 import game.module.hero.HeroService;
 import game.player.Player;
@@ -8,10 +9,9 @@ import game.proto.*;
 import game.proto.data.Formation;
 import game.proto.data.FormationPos;
 import game.proto.data.FormationPosUpdate;
+import game.proto.no.No;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * 阵型
@@ -27,6 +27,7 @@ public class FormationHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FormationCreateReq)
     public static MessageLite create(Player player, FormationCreateReq req) {
         ModuleAssert.isTrue(player.pd.getFormationCount() <= 10);
 
@@ -58,13 +59,25 @@ public class FormationHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FormationDeleteReq)
     public static void delete(Player player, FormationDeleteReq req) {
 
+        Set<Integer> removeKey = new HashSet<>();
         for (int i = 0; i < player.pd.getFormationBuilderList().size(); i++) {
             if (player.pd.getFormation(i).getIndex() == req.getIndex()) {
                 player.pd.removeFormation(i);
+
+                for (Map.Entry<Integer, Integer> entry : player.pd.getFormationIndexMap().entrySet()) {
+                    if (entry.getValue().equals(req.getIndex())) {
+                        removeKey.add(entry.getKey());
+                    }
+                }
                 break;
             }
+        }
+
+        for (Integer key : removeKey) {
+            player.pd.removeFormationIndex(key);
         }
     }
 
@@ -74,6 +87,7 @@ public class FormationHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FormationUpdateReq)
     public static FormationUpdateRes update(Player player, FormationUpdateReq req) {
 
         final FormationPos pos = req.getPos();
@@ -136,6 +150,7 @@ public class FormationHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FormationSettingReq)
     public static FormationSettingRes setting(Player player, FormationSettingReq req) {
 
         // todo check name
@@ -152,11 +167,16 @@ public class FormationHandler {
             player.pd.setArenaFormationIndex(req.getArenaFormationIndex());
         }
 
+        req.getChangedIndexMap().forEach((key, val) -> {
+            player.pd.putFormationIndex(key, val);
+        });
+
         return FormationSettingRes.newBuilder()
                 .setIndex(req.getIndex())
                 .setName(req.getName())
                 .setDefaultFormationIndex(req.getDefaultFormationIndex())
                 .setArenaFormationIndex(req.getArenaFormationIndex())
+                .putAllChangedIndex(req.getChangedIndexMap())
                 .build();
     }
 }

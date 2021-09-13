@@ -56,7 +56,7 @@ public class FightService {
             return;
         }
         // 在匹配中
-        if (player.pd.getLadderSingleInfoBuilder().getInMatch()) {
+        if (player.pd.getInMatch()) {
             return;
         }
 

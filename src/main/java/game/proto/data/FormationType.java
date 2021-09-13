@@ -28,6 +28,14 @@ public enum FormationType
    * <code>FORMATION_ARENA = 2;</code>
    */
   FORMATION_ARENA(2),
+  /**
+   * <pre>
+   * 排位阵型
+   * </pre>
+   *
+   * <code>FORMATION_LADDER = 3;</code>
+   */
+  FORMATION_LADDER(3),
   UNRECOGNIZED(-1),
   ;
 
@@ -51,6 +59,14 @@ public enum FormationType
    * <code>FORMATION_ARENA = 2;</code>
    */
   public static final int FORMATION_ARENA_VALUE = 2;
+  /**
+   * <pre>
+   * 排位阵型
+   * </pre>
+   *
+   * <code>FORMATION_LADDER = 3;</code>
+   */
+  public static final int FORMATION_LADDER_VALUE = 3;
 
 
   public final int getNumber() {
@@ -80,6 +96,7 @@ public enum FormationType
       case 0: return FORMATION_NONE;
       case 1: return FORMATION_DEFAULT;
       case 2: return FORMATION_ARENA;
+      case 3: return FORMATION_LADDER;
       default: return null;
     }
   }

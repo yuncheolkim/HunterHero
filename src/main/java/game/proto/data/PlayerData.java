@@ -283,15 +283,25 @@ private static final long serialVersionUID = 0L;
           }
           case 4170: {
             game.proto.data.LadderInfo.Builder subBuilder = null;
-            if (ladderInfo_ != null) {
-              subBuilder = ladderInfo_.toBuilder();
+            if (ladderMultiInfo_ != null) {
+              subBuilder = ladderMultiInfo_.toBuilder();
             }
-            ladderInfo_ = input.readMessage(game.proto.data.LadderInfo.parser(), extensionRegistry);
+            ladderMultiInfo_ = input.readMessage(game.proto.data.LadderInfo.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom(ladderInfo_);
-              ladderInfo_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom(ladderMultiInfo_);
+              ladderMultiInfo_ = subBuilder.buildPartial();
             }
 
+            break;
+          }
+          case 4176: {
+
+            inMatch_ = input.readBool();
+            break;
+          }
+          case 4184: {
+
+            matchId_ = input.readInt64();
             break;
           }
           case 4810: {
@@ -347,6 +357,19 @@ private static final long serialVersionUID = 0L;
           case 5624: {
 
             arenaFormationIndex_ = input.readInt32();
+            break;
+          }
+          case 5634: {
+            if (!((mutable_bitField0_ & 0x00000080) != 0)) {
+              formationIndex_ = com.google.protobuf.MapField.newMapField(
+                  FormationIndexDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000080;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+            formationIndex__ = input.readMessage(
+                FormationIndexDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            formationIndex_.getMutableMap().put(
+                formationIndex__.getKey(), formationIndex__.getValue());
             break;
           }
           case 6410: {
@@ -409,6 +432,8 @@ private static final long serialVersionUID = 0L;
         return internalGetBag();
       case 604:
         return internalGetBank();
+      case 704:
+        return internalGetFormationIndex();
       default:
         throw new RuntimeException(
             "Invalid map field number: " + number);
@@ -1182,42 +1207,72 @@ private static final long serialVersionUID = 0L;
     return getLadderSingleInfo();
   }
 
-  public static final int LADDERINFO_FIELD_NUMBER = 521;
-  private game.proto.data.LadderInfo ladderInfo_;
+  public static final int LADDERMULTIINFO_FIELD_NUMBER = 521;
+  private game.proto.data.LadderInfo ladderMultiInfo_;
   /**
    * <pre>
    * 排位满英雄
    * </pre>
    *
-   * <code>.Message.LadderInfo ladderInfo = 521;</code>
-   * @return Whether the ladderInfo field is set.
+   * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
+   * @return Whether the ladderMultiInfo field is set.
    */
   @java.lang.Override
-  public boolean hasLadderInfo() {
-    return ladderInfo_ != null;
+  public boolean hasLadderMultiInfo() {
+    return ladderMultiInfo_ != null;
   }
   /**
    * <pre>
    * 排位满英雄
    * </pre>
    *
-   * <code>.Message.LadderInfo ladderInfo = 521;</code>
-   * @return The ladderInfo.
+   * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
+   * @return The ladderMultiInfo.
    */
   @java.lang.Override
-  public game.proto.data.LadderInfo getLadderInfo() {
-    return ladderInfo_ == null ? game.proto.data.LadderInfo.getDefaultInstance() : ladderInfo_;
+  public game.proto.data.LadderInfo getLadderMultiInfo() {
+    return ladderMultiInfo_ == null ? game.proto.data.LadderInfo.getDefaultInstance() : ladderMultiInfo_;
   }
   /**
    * <pre>
    * 排位满英雄
    * </pre>
    *
-   * <code>.Message.LadderInfo ladderInfo = 521;</code>
+   * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
    */
   @java.lang.Override
-  public game.proto.data.LadderInfoOrBuilder getLadderInfoOrBuilder() {
-    return getLadderInfo();
+  public game.proto.data.LadderInfoOrBuilder getLadderMultiInfoOrBuilder() {
+    return getLadderMultiInfo();
+  }
+
+  public static final int INMATCH_FIELD_NUMBER = 522;
+  private boolean inMatch_;
+  /**
+   * <pre>
+   * 是否正在查找对手
+   * </pre>
+   *
+   * <code>bool inMatch = 522;</code>
+   * @return The inMatch.
+   */
+  @java.lang.Override
+  public boolean getInMatch() {
+    return inMatch_;
+  }
+
+  public static final int MATCHID_FIELD_NUMBER = 523;
+  private long matchId_;
+  /**
+   * <pre>
+   * 排位id
+   * </pre>
+   *
+   * <code>int64 matchId = 523;</code>
+   * @return The matchId.
+   */
+  @java.lang.Override
+  public long getMatchId() {
+    return matchId_;
   }
 
   public static final int BAG_FIELD_NUMBER = 601;
@@ -1534,6 +1589,103 @@ private static final long serialVersionUID = 0L;
     return arenaFormationIndex_;
   }
 
+  public static final int FORMATIONINDEX_FIELD_NUMBER = 704;
+  private static final class FormationIndexDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, java.lang.Integer> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, java.lang.Integer>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerData_FormationIndexEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0);
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, java.lang.Integer> formationIndex_;
+  private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+  internalGetFormationIndex() {
+    if (formationIndex_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          FormationIndexDefaultEntryHolder.defaultEntry);
+    }
+    return formationIndex_;
+  }
+
+  public int getFormationIndexCount() {
+    return internalGetFormationIndex().getMap().size();
+  }
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsFormationIndex(
+      int key) {
+    
+    return internalGetFormationIndex().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getFormationIndexMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getFormationIndex() {
+    return getFormationIndexMap();
+  }
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, java.lang.Integer> getFormationIndexMap() {
+    return internalGetFormationIndex().getMap();
+  }
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+  @java.lang.Override
+
+  public int getFormationIndexOrDefault(
+      int key,
+      int defaultValue) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetFormationIndex().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+  @java.lang.Override
+
+  public int getFormationIndexOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, java.lang.Integer> map =
+        internalGetFormationIndex().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
   public static final int HOMEDATA_FIELD_NUMBER = 801;
   private game.proto.data.HomeData homeData_;
   /**
@@ -1673,8 +1825,14 @@ private static final long serialVersionUID = 0L;
     if (ladderSingleInfo_ != null) {
       output.writeMessage(520, getLadderSingleInfo());
     }
-    if (ladderInfo_ != null) {
-      output.writeMessage(521, getLadderInfo());
+    if (ladderMultiInfo_ != null) {
+      output.writeMessage(521, getLadderMultiInfo());
+    }
+    if (inMatch_ != false) {
+      output.writeBool(522, inMatch_);
+    }
+    if (matchId_ != 0L) {
+      output.writeInt64(523, matchId_);
     }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
@@ -1703,6 +1861,12 @@ private static final long serialVersionUID = 0L;
     if (arenaFormationIndex_ != 0) {
       output.writeInt32(703, arenaFormationIndex_);
     }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetFormationIndex(),
+        FormationIndexDefaultEntryHolder.defaultEntry,
+        704);
     if (homeData_ != null) {
       output.writeMessage(801, getHomeData());
     }
@@ -1838,9 +2002,17 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(520, getLadderSingleInfo());
     }
-    if (ladderInfo_ != null) {
+    if (ladderMultiInfo_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(521, getLadderInfo());
+        .computeMessageSize(521, getLadderMultiInfo());
+    }
+    if (inMatch_ != false) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeBoolSize(522, inMatch_);
+    }
+    if (matchId_ != 0L) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt64Size(523, matchId_);
     }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
          : internalGetBag().getMap().entrySet()) {
@@ -1881,6 +2053,16 @@ private static final long serialVersionUID = 0L;
     if (arenaFormationIndex_ != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(703, arenaFormationIndex_);
+    }
+    for (java.util.Map.Entry<java.lang.Integer, java.lang.Integer> entry
+         : internalGetFormationIndex().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
+      formationIndex__ = FormationIndexDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(704, formationIndex__);
     }
     if (homeData_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -1969,11 +2151,15 @@ private static final long serialVersionUID = 0L;
       if (!getLadderSingleInfo()
           .equals(other.getLadderSingleInfo())) return false;
     }
-    if (hasLadderInfo() != other.hasLadderInfo()) return false;
-    if (hasLadderInfo()) {
-      if (!getLadderInfo()
-          .equals(other.getLadderInfo())) return false;
+    if (hasLadderMultiInfo() != other.hasLadderMultiInfo()) return false;
+    if (hasLadderMultiInfo()) {
+      if (!getLadderMultiInfo()
+          .equals(other.getLadderMultiInfo())) return false;
     }
+    if (getInMatch()
+        != other.getInMatch()) return false;
+    if (getMatchId()
+        != other.getMatchId()) return false;
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
     if (getBagCapacity()
@@ -1988,6 +2174,8 @@ private static final long serialVersionUID = 0L;
         != other.getDefaultFormationIndex()) return false;
     if (getArenaFormationIndex()
         != other.getArenaFormationIndex()) return false;
+    if (!internalGetFormationIndex().equals(
+        other.internalGetFormationIndex())) return false;
     if (hasHomeData() != other.hasHomeData()) return false;
     if (hasHomeData()) {
       if (!getHomeData()
@@ -2077,10 +2265,16 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + LADDERSINGLEINFO_FIELD_NUMBER;
       hash = (53 * hash) + getLadderSingleInfo().hashCode();
     }
-    if (hasLadderInfo()) {
-      hash = (37 * hash) + LADDERINFO_FIELD_NUMBER;
-      hash = (53 * hash) + getLadderInfo().hashCode();
+    if (hasLadderMultiInfo()) {
+      hash = (37 * hash) + LADDERMULTIINFO_FIELD_NUMBER;
+      hash = (53 * hash) + getLadderMultiInfo().hashCode();
     }
+    hash = (37 * hash) + INMATCH_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+        getInMatch());
+    hash = (37 * hash) + MATCHID_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getMatchId());
     if (!internalGetBag().getMap().isEmpty()) {
       hash = (37 * hash) + BAG_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBag().hashCode();
@@ -2101,6 +2295,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getDefaultFormationIndex();
     hash = (37 * hash) + ARENAFORMATIONINDEX_FIELD_NUMBER;
     hash = (53 * hash) + getArenaFormationIndex();
+    if (!internalGetFormationIndex().getMap().isEmpty()) {
+      hash = (37 * hash) + FORMATIONINDEX_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetFormationIndex().hashCode();
+    }
     if (hasHomeData()) {
       hash = (37 * hash) + HOMEDATA_FIELD_NUMBER;
       hash = (53 * hash) + getHomeData().hashCode();
@@ -2227,6 +2425,8 @@ private static final long serialVersionUID = 0L;
           return internalGetBag();
         case 604:
           return internalGetBank();
+        case 704:
+          return internalGetFormationIndex();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -2242,6 +2442,8 @@ private static final long serialVersionUID = 0L;
           return internalGetMutableBag();
         case 604:
           return internalGetMutableBank();
+        case 704:
+          return internalGetMutableFormationIndex();
         default:
           throw new RuntimeException(
               "Invalid map field number: " + number);
@@ -2352,12 +2554,16 @@ private static final long serialVersionUID = 0L;
         ladderSingleInfo_ = null;
         ladderSingleInfoBuilder_ = null;
       }
-      if (ladderInfoBuilder_ == null) {
-        ladderInfo_ = null;
+      if (ladderMultiInfoBuilder_ == null) {
+        ladderMultiInfo_ = null;
       } else {
-        ladderInfo_ = null;
-        ladderInfoBuilder_ = null;
+        ladderMultiInfo_ = null;
+        ladderMultiInfoBuilder_ = null;
       }
+      inMatch_ = false;
+
+      matchId_ = 0L;
+
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
@@ -2374,6 +2580,7 @@ private static final long serialVersionUID = 0L;
 
       arenaFormationIndex_ = 0;
 
+      internalGetMutableFormationIndex().clear();
       if (homeDataBuilder_ == null) {
         homeData_ = null;
       } else {
@@ -2473,11 +2680,13 @@ private static final long serialVersionUID = 0L;
       } else {
         result.ladderSingleInfo_ = ladderSingleInfoBuilder_.build();
       }
-      if (ladderInfoBuilder_ == null) {
-        result.ladderInfo_ = ladderInfo_;
+      if (ladderMultiInfoBuilder_ == null) {
+        result.ladderMultiInfo_ = ladderMultiInfo_;
       } else {
-        result.ladderInfo_ = ladderInfoBuilder_.build();
+        result.ladderMultiInfo_ = ladderMultiInfoBuilder_.build();
       }
+      result.inMatch_ = inMatch_;
+      result.matchId_ = matchId_;
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
       result.bagCapacity_ = bagCapacity_;
@@ -2495,6 +2704,8 @@ private static final long serialVersionUID = 0L;
       }
       result.defaultFormationIndex_ = defaultFormationIndex_;
       result.arenaFormationIndex_ = arenaFormationIndex_;
+      result.formationIndex_ = internalGetFormationIndex();
+      result.formationIndex_.makeImmutable();
       if (homeDataBuilder_ == null) {
         result.homeData_ = homeData_;
       } else {
@@ -2662,8 +2873,14 @@ private static final long serialVersionUID = 0L;
       if (other.hasLadderSingleInfo()) {
         mergeLadderSingleInfo(other.getLadderSingleInfo());
       }
-      if (other.hasLadderInfo()) {
-        mergeLadderInfo(other.getLadderInfo());
+      if (other.hasLadderMultiInfo()) {
+        mergeLadderMultiInfo(other.getLadderMultiInfo());
+      }
+      if (other.getInMatch() != false) {
+        setInMatch(other.getInMatch());
+      }
+      if (other.getMatchId() != 0L) {
+        setMatchId(other.getMatchId());
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
@@ -2707,6 +2924,8 @@ private static final long serialVersionUID = 0L;
       if (other.getArenaFormationIndex() != 0) {
         setArenaFormationIndex(other.getArenaFormationIndex());
       }
+      internalGetMutableFormationIndex().mergeFrom(
+          other.internalGetFormationIndex());
       if (other.hasHomeData()) {
         mergeHomeData(other.getHomeData());
       }
@@ -5095,33 +5314,33 @@ private static final long serialVersionUID = 0L;
       return ladderSingleInfoBuilder_;
     }
 
-    private game.proto.data.LadderInfo ladderInfo_;
+    private game.proto.data.LadderInfo ladderMultiInfo_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder> ladderInfoBuilder_;
+        game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder> ladderMultiInfoBuilder_;
     /**
      * <pre>
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
-     * @return Whether the ladderInfo field is set.
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
+     * @return Whether the ladderMultiInfo field is set.
      */
-    public boolean hasLadderInfo() {
-      return ladderInfoBuilder_ != null || ladderInfo_ != null;
+    public boolean hasLadderMultiInfo() {
+      return ladderMultiInfoBuilder_ != null || ladderMultiInfo_ != null;
     }
     /**
      * <pre>
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
-     * @return The ladderInfo.
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
+     * @return The ladderMultiInfo.
      */
-    public game.proto.data.LadderInfo getLadderInfo() {
-      if (ladderInfoBuilder_ == null) {
-        return ladderInfo_ == null ? game.proto.data.LadderInfo.getDefaultInstance() : ladderInfo_;
+    public game.proto.data.LadderInfo getLadderMultiInfo() {
+      if (ladderMultiInfoBuilder_ == null) {
+        return ladderMultiInfo_ == null ? game.proto.data.LadderInfo.getDefaultInstance() : ladderMultiInfo_;
       } else {
-        return ladderInfoBuilder_.getMessage();
+        return ladderMultiInfoBuilder_.getMessage();
       }
     }
     /**
@@ -5129,17 +5348,17 @@ private static final long serialVersionUID = 0L;
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
-    public Builder setLadderInfo(game.proto.data.LadderInfo value) {
-      if (ladderInfoBuilder_ == null) {
+    public Builder setLadderMultiInfo(game.proto.data.LadderInfo value) {
+      if (ladderMultiInfoBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        ladderInfo_ = value;
+        ladderMultiInfo_ = value;
         onChanged();
       } else {
-        ladderInfoBuilder_.setMessage(value);
+        ladderMultiInfoBuilder_.setMessage(value);
       }
 
       return this;
@@ -5149,15 +5368,15 @@ private static final long serialVersionUID = 0L;
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
-    public Builder setLadderInfo(
+    public Builder setLadderMultiInfo(
         game.proto.data.LadderInfo.Builder builderForValue) {
-      if (ladderInfoBuilder_ == null) {
-        ladderInfo_ = builderForValue.build();
+      if (ladderMultiInfoBuilder_ == null) {
+        ladderMultiInfo_ = builderForValue.build();
         onChanged();
       } else {
-        ladderInfoBuilder_.setMessage(builderForValue.build());
+        ladderMultiInfoBuilder_.setMessage(builderForValue.build());
       }
 
       return this;
@@ -5167,19 +5386,19 @@ private static final long serialVersionUID = 0L;
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
-    public Builder mergeLadderInfo(game.proto.data.LadderInfo value) {
-      if (ladderInfoBuilder_ == null) {
-        if (ladderInfo_ != null) {
-          ladderInfo_ =
-            game.proto.data.LadderInfo.newBuilder(ladderInfo_).mergeFrom(value).buildPartial();
+    public Builder mergeLadderMultiInfo(game.proto.data.LadderInfo value) {
+      if (ladderMultiInfoBuilder_ == null) {
+        if (ladderMultiInfo_ != null) {
+          ladderMultiInfo_ =
+            game.proto.data.LadderInfo.newBuilder(ladderMultiInfo_).mergeFrom(value).buildPartial();
         } else {
-          ladderInfo_ = value;
+          ladderMultiInfo_ = value;
         }
         onChanged();
       } else {
-        ladderInfoBuilder_.mergeFrom(value);
+        ladderMultiInfoBuilder_.mergeFrom(value);
       }
 
       return this;
@@ -5189,15 +5408,15 @@ private static final long serialVersionUID = 0L;
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
-    public Builder clearLadderInfo() {
-      if (ladderInfoBuilder_ == null) {
-        ladderInfo_ = null;
+    public Builder clearLadderMultiInfo() {
+      if (ladderMultiInfoBuilder_ == null) {
+        ladderMultiInfo_ = null;
         onChanged();
       } else {
-        ladderInfo_ = null;
-        ladderInfoBuilder_ = null;
+        ladderMultiInfo_ = null;
+        ladderMultiInfoBuilder_ = null;
       }
 
       return this;
@@ -5207,26 +5426,26 @@ private static final long serialVersionUID = 0L;
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
-    public game.proto.data.LadderInfo.Builder getLadderInfoBuilder() {
+    public game.proto.data.LadderInfo.Builder getLadderMultiInfoBuilder() {
       
       onChanged();
-      return getLadderInfoFieldBuilder().getBuilder();
+      return getLadderMultiInfoFieldBuilder().getBuilder();
     }
     /**
      * <pre>
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
-    public game.proto.data.LadderInfoOrBuilder getLadderInfoOrBuilder() {
-      if (ladderInfoBuilder_ != null) {
-        return ladderInfoBuilder_.getMessageOrBuilder();
+    public game.proto.data.LadderInfoOrBuilder getLadderMultiInfoOrBuilder() {
+      if (ladderMultiInfoBuilder_ != null) {
+        return ladderMultiInfoBuilder_.getMessageOrBuilder();
       } else {
-        return ladderInfo_ == null ?
-            game.proto.data.LadderInfo.getDefaultInstance() : ladderInfo_;
+        return ladderMultiInfo_ == null ?
+            game.proto.data.LadderInfo.getDefaultInstance() : ladderMultiInfo_;
       }
     }
     /**
@@ -5234,20 +5453,106 @@ private static final long serialVersionUID = 0L;
      * 排位满英雄
      * </pre>
      *
-     * <code>.Message.LadderInfo ladderInfo = 521;</code>
+     * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder> 
-        getLadderInfoFieldBuilder() {
-      if (ladderInfoBuilder_ == null) {
-        ladderInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        getLadderMultiInfoFieldBuilder() {
+      if (ladderMultiInfoBuilder_ == null) {
+        ladderMultiInfoBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             game.proto.data.LadderInfo, game.proto.data.LadderInfo.Builder, game.proto.data.LadderInfoOrBuilder>(
-                getLadderInfo(),
+                getLadderMultiInfo(),
                 getParentForChildren(),
                 isClean());
-        ladderInfo_ = null;
+        ladderMultiInfo_ = null;
       }
-      return ladderInfoBuilder_;
+      return ladderMultiInfoBuilder_;
+    }
+
+    private boolean inMatch_ ;
+    /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
+     * <code>bool inMatch = 522;</code>
+     * @return The inMatch.
+     */
+    @java.lang.Override
+    public boolean getInMatch() {
+      return inMatch_;
+    }
+    /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
+     * <code>bool inMatch = 522;</code>
+     * @param value The inMatch to set.
+     * @return This builder for chaining.
+     */
+    public Builder setInMatch(boolean value) {
+      
+      inMatch_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 是否正在查找对手
+     * </pre>
+     *
+     * <code>bool inMatch = 522;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearInMatch() {
+      
+      inMatch_ = false;
+      onChanged();
+      return this;
+    }
+
+    private long matchId_ ;
+    /**
+     * <pre>
+     * 排位id
+     * </pre>
+     *
+     * <code>int64 matchId = 523;</code>
+     * @return The matchId.
+     */
+    @java.lang.Override
+    public long getMatchId() {
+      return matchId_;
+    }
+    /**
+     * <pre>
+     * 排位id
+     * </pre>
+     *
+     * <code>int64 matchId = 523;</code>
+     * @param value The matchId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMatchId(long value) {
+      
+      matchId_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * 排位id
+     * </pre>
+     *
+     * <code>int64 matchId = 523;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMatchId() {
+      
+      matchId_ = 0L;
+      onChanged();
+      return this;
     }
 
     private com.google.protobuf.MapField<
@@ -6043,6 +6348,162 @@ private static final long serialVersionUID = 0L;
       
       arenaFormationIndex_ = 0;
       onChanged();
+      return this;
+    }
+
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Integer> formationIndex_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetFormationIndex() {
+      if (formationIndex_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            FormationIndexDefaultEntryHolder.defaultEntry);
+      }
+      return formationIndex_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Integer>
+    internalGetMutableFormationIndex() {
+      onChanged();;
+      if (formationIndex_ == null) {
+        formationIndex_ = com.google.protobuf.MapField.newMapField(
+            FormationIndexDefaultEntryHolder.defaultEntry);
+      }
+      if (!formationIndex_.isMutable()) {
+        formationIndex_ = formationIndex_.copy();
+      }
+      return formationIndex_;
+    }
+
+    public int getFormationIndexCount() {
+      return internalGetFormationIndex().getMap().size();
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsFormationIndex(
+        int key) {
+      
+      return internalGetFormationIndex().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getFormationIndexMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getFormationIndex() {
+      return getFormationIndexMap();
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, java.lang.Integer> getFormationIndexMap() {
+      return internalGetFormationIndex().getMap();
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+    @java.lang.Override
+
+    public int getFormationIndexOrDefault(
+        int key,
+        int defaultValue) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetFormationIndex().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+    @java.lang.Override
+
+    public int getFormationIndexOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, java.lang.Integer> map =
+          internalGetFormationIndex().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearFormationIndex() {
+      internalGetMutableFormationIndex().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+
+    public Builder removeFormationIndex(
+        int key) {
+      
+      internalGetMutableFormationIndex().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Integer>
+    getMutableFormationIndex() {
+      return internalGetMutableFormationIndex().getMutableMap();
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+    public Builder putFormationIndex(
+        int key,
+        int value) {
+      
+      
+      internalGetMutableFormationIndex().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <pre>
+     * 阵型map
+     * </pre>
+     *
+     * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+     */
+
+    public Builder putAllFormationIndex(
+        java.util.Map<java.lang.Integer, java.lang.Integer> values) {
+      internalGetMutableFormationIndex().getMutableMap()
+          .putAll(values);
       return this;
     }
 

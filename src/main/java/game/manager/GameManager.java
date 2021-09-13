@@ -11,12 +11,9 @@ import game.module.bag.BagHandler;
 import game.module.chat.ChatHandler;
 import game.module.chat.ChatScene;
 import game.module.cmd.CmdHandler;
-import game.module.dungeon.DungeonHandler;
-import game.module.escort.ExpressHandler;
 import game.module.fight.FightHandler;
 import game.module.fight.LadderFightScene;
 import game.module.fish.FishHandler;
-import game.module.formation.FormationHandler;
 import game.module.hero.DefaultHeroCalcProcess;
 import game.module.hero.HeroHandler;
 import game.module.ladder.match.LadderMatchScene;
@@ -82,8 +79,8 @@ public class GameManager extends AbsLifecycle {
     /**
      * 单线程处理
      */
-    private final LadderMatchScene ladderSingleMatch = new LadderMatchScene();
-    private final LadderMatchScene ladderMatch = new LadderMatchScene();
+    private final LadderMatchScene ladderSingleMatch = new LadderMatchScene(1);
+    private final LadderMatchScene ladderMatch = new LadderMatchScene(2);
     private final LadderFightScene fightScene = new LadderFightScene();
 
 
@@ -194,10 +191,10 @@ public class GameManager extends AbsLifecycle {
         // 装备物品
         addHandler(new Invoker<>(No.HeroEquipmentReq, HeroHandler::equip, HeroEquipmentReq::parser));
         // 阵型
-        addHandler(new RetInvoker<>(No.FormationCreateReq, FormationHandler::create, FormationCreateReq::parser));
-        addHandler(new Invoker<>(No.FormationDeleteReq, FormationHandler::delete, FormationDeleteReq::parser));
-        addHandler(new RetInvoker<>(No.FormationUpdateReq, FormationHandler::update, FormationUpdateReq::parser));
-        addHandler(new RetInvoker<>(No.FormationSettingReq, FormationHandler::setting, FormationSettingReq::parser));
+//        addHandler(new RetInvoker<>(No.FormationCreateReq, FormationHandler::create, FormationCreateReq::parser));
+//        addHandler(new Invoker<>(No.FormationDeleteReq, FormationHandler::delete, FormationDeleteReq::parser));
+//        addHandler(new RetInvoker<>(No.FormationUpdateReq, FormationHandler::update, FormationUpdateReq::parser));
+//        addHandler(new RetInvoker<>(No.FormationSettingReq, FormationHandler::setting, FormationSettingReq::parser));
 
         // 钓鱼
         addHandler(new Invoker<>(No.FishReq, FishHandler::fish, FishReq::parser));
@@ -209,13 +206,13 @@ public class GameManager extends AbsLifecycle {
         // Temple
         addHandler(new RetInvoker<>(No.TempleHeroBuyReq, TempleHandler::TempleHeroBuyReq, TempleHeroBuyReq::parser));
         // Dungeon
-        addHandler(new RetInvoker<>(No.DungeonEnterReq, DungeonHandler::enter, DungeonEnterReq::parser));
-        addHandler(new Invoker<>(No.DungeonFightReq, DungeonHandler::fight, DungeonFightReq::parser));
-        addHandler(new RetInvoker<>(No.DungeonExitReq, DungeonHandler::exit, DungeonExitReq::parser));
+//        addHandler(new RetInvoker<>(No.DungeonEnterReq, DungeonHandler::enter, DungeonEnterReq::parser));
+//        addHandler(new Invoker<>(No.DungeonFightReq, DungeonHandler::fight, DungeonFightReq::parser));
+//        addHandler(new RetInvoker<>(No.DungeonExitReq, DungeonHandler::exit, DungeonExitReq::parser));
         // Express
-        addHandler(new InvokerNoParam(No.ExpressOpenReq, ExpressHandler::open));
-        addHandler(new RetInvoker<>(No.ExpressStartRqRs, ExpressHandler::start, ExpressStartRqRs::parser));
-        addHandler(new RetInvoker<>(No.ExpressCompleteReq, ExpressHandler::complete, ExpressCompleteReq::parser));
+//        addHandler(new InvokerNoParam(No.ExpressOpenReq, ExpressHandler::open));
+//        addHandler(new RetInvoker<>(No.ExpressStartRqRs, ExpressHandler::start, ExpressStartRqRs::parser));
+//        addHandler(new RetInvoker<>(No.ExpressCompleteReq, ExpressHandler::complete, ExpressCompleteReq::parser));
         // Home
 //        addHandler(new RetInvoker<>(No.HomeOpenAreaRqRs, HomeHandler::openArea, HomeOpenAreaRqRs::parser));
 //        addHandler(new Invoker<>(No.HomeChangeReq, HomeHandler::change, HomeChangeReq::parser));
@@ -251,11 +248,11 @@ public class GameManager extends AbsLifecycle {
         return chatScene;
     }
 
-    public LadderMatchScene getLadderMatchScene() {
+    public LadderMatchScene getLadderSingleMatchScene() {
         return ladderSingleMatch;
     }
 
-    public LadderMatchScene getLadderMatch() {
+    public LadderMatchScene getLadderMultiMatch() {
         return ladderMatch;
     }
 

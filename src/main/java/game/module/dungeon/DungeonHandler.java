@@ -1,5 +1,6 @@
 package game.module.dungeon;
 
+import game.anno.GameHandler;
 import game.config.data.DungeonConfigData;
 import game.config.data.DungeonInfoConfigData;
 import game.exception.EvilAssert;
@@ -9,6 +10,7 @@ import game.module.fight.FightService;
 import game.player.Player;
 import game.proto.*;
 import game.proto.data.Dungeon;
+import game.proto.no.No;
 
 /**
  * 副本
@@ -24,6 +26,7 @@ public class DungeonHandler {
      *
      * @param player
      */
+    @GameHandler(No.DungeonEnterReq)
     public static DungeonEnterRes enter(Player player, DungeonEnterReq req) {
         ModuleAssert.isFalse(player.pd.hasDungeon());
         DungeonInfoConfigData d = ConfigManager.dungeonInfoDataBox.findById(req.getId());
@@ -39,6 +42,7 @@ public class DungeonHandler {
      *
      * @param player
      */
+    @GameHandler(No.DungeonFightReq)
     public static void fight(Player player, DungeonFightReq req) {
         DungeonConfigData data = ConfigManager.dungeonDataBox.findById(req.getTargetId());
         player.pd.getDungeonBuilder().setBossId(req.getTargetId());
@@ -51,6 +55,7 @@ public class DungeonHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.DungeonExitReq)
     public static DungeonExitRes exit(Player player, DungeonExitReq req) {
         player.pd.clearDungeon();
 

@@ -17,10 +17,7 @@ import game.module.ladder.match.MatchInfoMsg;
 import game.player.Player;
 import game.proto.*;
 import game.proto.back.*;
-import game.proto.data.LadderHeroScore;
-import game.proto.data.LadderInfo;
-import game.proto.data.LadderSingleReport;
-import game.proto.data.PlayerHero;
+import game.proto.data.*;
 import game.proto.no.No;
 import game.utils.DateUtils;
 
@@ -44,8 +41,7 @@ public class LadderHandler {
     @GameHandler(No.LadderSetFormationReq)
     public static void formation(final Player player, final LadderSetFormationReq req) {
         PlayerHero heroOrDefault = player.pd.getHeroOrDefault(req.getHeroId(), null);
-        LadderInfo.Builder build = player.pd.getLadderSingleInfoBuilder();
-        ModuleAssert.isFalse(build.getInMatch());
+        ModuleAssert.isFalse(player.pd.getInMatch());
         ModuleAssert.notNull(heroOrDefault);
         player.pd.getLadderSingleInfoBuilder().setHeroId(req.getHeroId());
     }
@@ -59,20 +55,52 @@ public class LadderHandler {
     @GameHandler(No.LadderMatchReq)
     public static void matchSingle(final Player player, LadderMatchReq req) {
 
+        ModuleAssert.isFalse(player.pd.getInMatch());
+
         if (req.getType() == 2) {
-            match(player, req);
-            return;
+            matchMulti(player, req);
+        } else if (req.getType() == 1) {
+
+            LadderInfo.Builder build = player.pd.getLadderSingleInfoBuilder();
+            LadderData.Builder ladderData = player.D.getLadderDataBuilder();
+            PlayerHero heroOrDefault = player.pd.getHeroOrDefault(build.getHeroId(), null);
+            ModuleAssert.notNull(heroOrDefault);
+
+            ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderSingleFight), ErrorEnum.ERR_10);
+
+            player.pd.setInMatch(true);
+            player.pd.setMatchId(req.getId());
+
+            // 开始匹配
+            MatchInfoMsg matchInfoMsg = new MatchInfoMsg();
+            matchInfoMsg.id = req.getId();
+            matchInfoMsg.uid = player.getPid();
+            matchInfoMsg.order = build.getOrder();
+            matchInfoMsg.score = build.getScore();
+            matchInfoMsg.matchTime = DateUtils.now();
+            matchInfoMsg.lastWin = build.getReportCount() != 0 && build.getReport(0).getWinId() == player.getPid();
+            matchInfoMsg.scoreBase = ladderData.getLadderSingleScore();
+
+            G.G.getLadderSingleMatchScene().tell(matchInfoMsg);
         }
-        LadderInfo.Builder build = player.pd.getLadderSingleInfoBuilder();
+
+        player.pd.setInMatch(true);
+    }
+
+    /**
+     * Normal match
+     *
+     * @param player
+     * @param req
+     */
+    private static void matchMulti(final Player player, LadderMatchReq req) {
+
+        LadderInfo.Builder build = player.pd.getLadderMultiInfoBuilder();
         LadderData.Builder ladderData = player.D.getLadderDataBuilder();
-        PlayerHero heroOrDefault = player.pd.getHeroOrDefault(build.getHeroId(), null);
-        ModuleAssert.notNull(heroOrDefault);
-        ModuleAssert.isFalse(build.getInMatch());
+        ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderFight), ErrorEnum.ERR_10);
 
-        ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderSingleFight), ErrorEnum.ERR_10);
-
-        build.setInMatch(true);
-        build.setMatchId(req.getId());
+        player.pd.setInMatch(true);
+        player.pd.setMatchId(req.getId());
 
         // 开始匹配
         MatchInfoMsg matchInfoMsg = new MatchInfoMsg();
@@ -82,16 +110,9 @@ public class LadderHandler {
         matchInfoMsg.score = build.getScore();
         matchInfoMsg.matchTime = DateUtils.now();
         matchInfoMsg.lastWin = build.getReportCount() != 0 && build.getReport(0).getWinId() == player.getPid();
-        matchInfoMsg.scoreBase = ladderData.getLadderSingleScore();
+        matchInfoMsg.scoreBase = ladderData.getLadderMultiScore();
 
-        G.G.getLadderMatchScene().tell(matchInfoMsg);
-
-        build.setInMatch(true);
-    }
-
-    private static void match(final Player player, LadderMatchReq req) {
-        ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderFight), ErrorEnum.ERR_10);
-
+        G.G.getLadderMultiMatch().tell(matchInfoMsg);
     }
 
     /**
@@ -103,13 +124,17 @@ public class LadderHandler {
     public static void ladderCanceled(final Player player, LadderCancelReq req) {
         if (req.getType() == 1) {
             // 单挑
-            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
-            if (ladderInfoBuilder.getInMatch()) {
-                G.G.getLadderMatchScene().tell(new MatchCancel(player.getPid(),
-                        player.getPid() + "-" + player.pd.getLadderSingleInfoBuilder().getMatchId()));
-                ladderInfoBuilder.setInMatch(false);
+            if (player.pd.getInMatch()) {
+                G.G.getLadderSingleMatchScene().tell(new MatchCancel(player.getPid(),
+                        player.getPid() + "-" + player.pd.getMatchId()));
+            }
+        } else if (req.getType() == 2) {
+            if (player.pd.getInMatch()) {
+                G.G.getLadderMultiMatch().tell(new MatchCancel(player.getPid(),
+                        player.getPid() + "-" + player.pd.getMatchId()));
             }
         }
+        player.pd.setInMatch(false);
     }
 
     /**
@@ -120,7 +145,7 @@ public class LadderHandler {
      */
     @GameHandler(No.LadderFightEndReq)
     public static void ladderFightEndReq(final Player player, LadderFightEndReq req) {
-        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
+        PlayerData.Builder ladderInfoBuilder = player.pd;
 
         if (ladderInfoBuilder.getInMatch() && req.getMatchId() == ladderInfoBuilder.getMatchId()) {
             ladderInfoBuilder.setMatchId(0);
@@ -138,25 +163,34 @@ public class LadderHandler {
      */
     @GameHandler(value = No.LadderPrepareInner, inner = true)
     public static void prepareLadder(final Player player, LadderPrepare req) {
-        if (req.getType() == 1) {//单挑
-            LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
-            if (ladderInfoBuilder.getInMatch()) {
 
-                int heroId = ladderInfoBuilder.getHeroId();
-                FightFormation formation = new FightFormation();
-                formation.userName = player.pd.getName();
-                formation.side = req.getOrder() == 1 ? Side.A : Side.B;
-                formation.matchId = req.getMatchId();
-                formation.uid = player.getPid();
-                formation.score = ladderInfoBuilder.getScore();
-                Hero fightHero = FightService.createFightHero(player, heroId);
-                fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
-                formation.heroList.add(fightHero);
-                G.G.getFightScene().tell(formation);
-            } else {
-                G.G.getFightScene().tell(new FightCancelAtPrepare(req.getMatchId(), player.getPid()));
-            }
+        if (!player.pd.getInMatch()) {
+
+            G.G.getFightScene().tell(new FightCancelAtPrepare(req.getMatchId(), player.getPid()));
+            return;
         }
+        LadderInfo.Builder ladderInfoBuilder = null;
+        FightFormation formation = new FightFormation();
+        if (req.getType() == 1) {//单挑
+            ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
+            Hero fightHero = FightService.createFightHero(player, ladderInfoBuilder.getHeroId());
+            fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
+            formation.heroList.add(fightHero);
+        } else if (req.getType() == 2) {// 6人
+            ladderInfoBuilder = player.pd.getLadderMultiInfoBuilder();
+
+
+            // todo
+//            fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
+//            formation.heroList.add(fightHero);
+        }
+
+        formation.userName = player.pd.getName();
+        formation.side = req.getOrder() == 1 ? Side.A : Side.B;
+        formation.matchId = req.getMatchId();
+        formation.uid = player.getPid();
+        formation.score = ladderInfoBuilder.getScore();
+        G.G.getFightScene().tell(formation);
     }
 
     /**
@@ -166,7 +200,7 @@ public class LadderHandler {
      */
     @GameHandler(value = No.LadderCancelInner, inner = true)
     public static void ladderCancel(final Player player, LadderCancelInner inner) {
-        LadderInfo.Builder ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
+        PlayerData.Builder ladderInfoBuilder = player.pd;
 
         if (ladderInfoBuilder.getInMatch() && inner.getId() == ladderInfoBuilder.getMatchId()) {
             ladderInfoBuilder.setMatchId(0);
@@ -188,14 +222,20 @@ public class LadderHandler {
 
         // 这里不能马上变为非匹配
         // 不然会立刻进入野外战斗
-        // 需要一个战斗结束消息来结束, 但这里进行保底, 1分钟后设置为false
-        player.scheduleAfter(60 * 1000, No.LadderFightAutoEndInner.getNumber(), LadderFightAutoEndInner.newBuilder()
-                .setMatchId(ladder.getMatchId()).buildPartial());
+        // 需要一个战斗结束消息来结束, 但这里进行保底, 2分钟后设置为false
+        player.scheduleAfter(120 * 1000, No.LadderFightAutoEndInner.getNumber(), LadderFightAutoEndInner.newBuilder()
+                .setMatchId(player.pd.getMatchId()).buildPartial());
 
         Logs.C.debug("单挑结果:{}", req.getScore());
         boolean win = player.getPid() == req.getRecord().getWinUid();
 
         LadderHeroScore.Builder heroScoreOrDefault = ladder.getHeroScoreOrDefault(ladder.getHeroId(), LadderHeroScore.newBuilder().build()).toBuilder();
+        LadderData.Builder ladderDataBuilder = player.D.getLadderDataBuilder();
+        if (win) {
+            ladderDataBuilder.setLadderSingleScore(ladderDataBuilder.getLadderSingleScore() + 20);
+        } else {
+            ladderDataBuilder.setLadderSingleScore(Math.min(0, ladderDataBuilder.getLadderSingleScore() - 20));
+        }
 
         // Calc score
         if (ladder.getOrder() == 1) {
@@ -253,7 +293,7 @@ public class LadderHandler {
      */
     @GameHandler(value = No.LadderFightAutoEndInner, inner = true)
     public static void ladderFightAutoEndInner(final Player player, LadderFightAutoEndInner req) {
-        LadderInfo.Builder builder = player.pd.getLadderSingleInfoBuilder();
+        PlayerData.Builder builder = player.pd;
         if (builder.getMatchId() == req.getMatchId()) {
             builder.setInMatch(false);
             builder.setMatchId(0);

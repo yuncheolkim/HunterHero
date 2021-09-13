@@ -36,4 +36,38 @@ public interface FormationSettingReqOrBuilder extends
    * @return The arenaFormationIndex.
    */
   int getArenaFormationIndex();
+
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+  int getChangedIndexCount();
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+  boolean containsChangedIndex(
+      int key);
+  /**
+   * Use {@link #getChangedIndexMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getChangedIndex();
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getChangedIndexMap();
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+
+  int getChangedIndexOrDefault(
+      int key,
+      int defaultValue);
+  /**
+   * <code>map&lt;int32, int32&gt; changedIndex = 5;</code>
+   */
+
+  int getChangedIndexOrThrow(
+      int key);
 }

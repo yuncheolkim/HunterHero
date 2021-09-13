@@ -56,8 +56,10 @@ message PlayerData {
     // 排位信息
     LadderInfo ladderSingleInfo = 520;
     // 排位满英雄
-    LadderInfo ladderInfo = 521;
-    bool inMatch = 522; // 是否正在查找对手
+    LadderInfo ladderMultiInfo = 521;
+    // 是否正在查找对手
+    bool inMatch = 522;
+    // 排位id
     int64 matchId = 523;
 
     // 背包
@@ -74,6 +76,8 @@ message PlayerData {
     int32 defaultFormationIndex = 702;
     // 竞技场防守阵型id
     int32 arenaFormationIndex = 703;
+    // 阵型map
+    map<int32,int32> formationIndex = 704;
     // 家园
     HomeData homeData = 801;
 
@@ -356,7 +360,6 @@ message LadderInfo{
     int32 lose1 = 5; // 先手
     int32 lose2 = 6; // 后手
     int32 heroId = 7; // 出战英雄
-    bool inMatch = 8; // 是否正在查找对手
     map<int32, LadderHeroScore> heroScore = 9;
     repeated LadderSingleReport report = 10;// 最近20次
     repeated LadderReport ladderReport = 11;// 最近20次

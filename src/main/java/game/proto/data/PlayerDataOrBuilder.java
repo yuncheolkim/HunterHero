@@ -487,27 +487,47 @@ public interface PlayerDataOrBuilder extends
    * 排位满英雄
    * </pre>
    *
-   * <code>.Message.LadderInfo ladderInfo = 521;</code>
-   * @return Whether the ladderInfo field is set.
+   * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
+   * @return Whether the ladderMultiInfo field is set.
    */
-  boolean hasLadderInfo();
+  boolean hasLadderMultiInfo();
   /**
    * <pre>
    * 排位满英雄
    * </pre>
    *
-   * <code>.Message.LadderInfo ladderInfo = 521;</code>
-   * @return The ladderInfo.
+   * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
+   * @return The ladderMultiInfo.
    */
-  game.proto.data.LadderInfo getLadderInfo();
+  game.proto.data.LadderInfo getLadderMultiInfo();
   /**
    * <pre>
    * 排位满英雄
    * </pre>
    *
-   * <code>.Message.LadderInfo ladderInfo = 521;</code>
+   * <code>.Message.LadderInfo ladderMultiInfo = 521;</code>
    */
-  game.proto.data.LadderInfoOrBuilder getLadderInfoOrBuilder();
+  game.proto.data.LadderInfoOrBuilder getLadderMultiInfoOrBuilder();
+
+  /**
+   * <pre>
+   * 是否正在查找对手
+   * </pre>
+   *
+   * <code>bool inMatch = 522;</code>
+   * @return The inMatch.
+   */
+  boolean getInMatch();
+
+  /**
+   * <pre>
+   * 排位id
+   * </pre>
+   *
+   * <code>int64 matchId = 523;</code>
+   * @return The matchId.
+   */
+  long getMatchId();
 
   /**
    * <pre>
@@ -700,6 +720,60 @@ public interface PlayerDataOrBuilder extends
    * @return The arenaFormationIndex.
    */
   int getArenaFormationIndex();
+
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+  int getFormationIndexCount();
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+  boolean containsFormationIndex(
+      int key);
+  /**
+   * Use {@link #getFormationIndexMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getFormationIndex();
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+  java.util.Map<java.lang.Integer, java.lang.Integer>
+  getFormationIndexMap();
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+
+  int getFormationIndexOrDefault(
+      int key,
+      int defaultValue);
+  /**
+   * <pre>
+   * 阵型map
+   * </pre>
+   *
+   * <code>map&lt;int32, int32&gt; formationIndex = 704;</code>
+   */
+
+  int getFormationIndexOrThrow(
+      int key);
 
   /**
    * <pre>

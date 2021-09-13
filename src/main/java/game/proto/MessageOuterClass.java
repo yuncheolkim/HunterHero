@@ -235,10 +235,20 @@ public final class MessageOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FormationSettingReq_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FormationSettingReq_ChangedIndexEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FormationSettingReq_ChangedIndexEntry_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_FormationSettingRes_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_Message_FormationSettingRes_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_Message_FormationSettingRes_ChangedIndexEntry_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_Message_FormationSettingRes_ChangedIndexEntry_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Message_ResourceChangePush_descriptor;
   static final 
@@ -563,74 +573,80 @@ public final class MessageOuterClass {
       "tionPos\"T\n\022FormationUpdateRes\022\023\n\013formati" +
       "onId\030\001 \001(\005\022)\n\004data\030\002 \003(\0132\033.Message.Forma" +
       "tionPosUpdate\"#\n\022FormationDeleteReq\022\r\n\005i" +
-      "ndex\030\001 \001(\005\"n\n\023FormationSettingReq\022\r\n\005ind" +
-      "ex\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025defaultFormati" +
-      "onIndex\030\003 \001(\005\022\033\n\023arenaFormationIndex\030\004 \001" +
-      "(\005\"n\n\023FormationSettingRes\022\r\n\005index\030\001 \001(\005" +
-      "\022\014\n\004name\030\002 \001(\t\022\035\n\025defaultFormationIndex\030" +
-      "\003 \001(\005\022\033\n\023arenaFormationIndex\030\004 \001(\005\"Y\n\022Re" +
-      "sourceChangePush\022\022\n\nresourceId\030\001 \001(\005\022\016\n\006" +
-      "heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\020\n\010curCount\030" +
-      "\004 \001(\005\"&\n\025PlayerLevelChangePush\022\r\n\005value\030" +
-      "\001 \001(\005\"?\n\rExpChangePush\022\016\n\006heroId\030\001 \001(\005\022\016" +
-      "\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\":\n\017Recove" +
-      "rPowerReq\022\014\n\004type\030\001 \001(\005\022\013\n\003gem\030\002 \001(\005\022\014\n\004" +
-      "gold\030\003 \001(\005\"b\n\021BagInfoChangePush\022\r\n\005clean" +
-      "\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capacity\030\024 \001(\005\022\036" +
-      "\n\004slot\030\036 \003(\0132\020.Message.BagSlot\"\033\n\013BagCle" +
-      "anReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemDiscardReq\022\016\n" +
-      "\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006slotId\030\003" +
-      " \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBuyReq\022\016\n\006item" +
-      "Id\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006shopId\030\003 \001(\005\"" +
-      ">\n\017ItemExchangeReq\022\014\n\004type\030\001 \001(\005\022\016\n\006slot" +
-      "Id\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013ItemSellReq\022\016" +
-      "\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2\n\020HeroEqu" +
-      "ipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006heroId\030\002 \001(" +
-      "\005\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002" +
-      "\" \n\020PlayerGoHotelRes\022\014\n\004time\030\001 \001(\003\"\"\n\024Pl" +
-      "ayerChooseHotelReq\022\n\n\002id\030\001 \001(\005\"\"\n\024Player" +
-      "ChooseHotelRes\022\n\n\002id\030\001 \001(\005\"\t\n\007FishReq\"\016\n" +
-      "\014FishHookPush\"<\n\010FishPush\022\017\n\007success\030\001 \001" +
-      "(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Reward\"\r\n\013F" +
-      "ishHookReq\"\036\n\020FishEnterAreaReq\022\n\n\002id\030\001 \001" +
-      "(\005\"\035\n\017FishExitAreaReq\022\n\n\002id\030\001 \001(\005\"X\n\016Cha" +
-      "tMessageReq\022%\n\007channel\030\001 \001(\0162\024.Message.C" +
-      "hatChannel\022\016\n\006toUser\030\002 \001(\003\022\017\n\007content\030\n " +
-      "\001(\t\"\203\001\n\017ChatMessagePush\022%\n\007channel\030\001 \001(\016" +
-      "2\024.Message.ChatChannel\022\020\n\010fromUser\030\002 \001(\003" +
-      "\022\014\n\004time\030\003 \001(\003\022\n\n\002id\030\004 \001(\003\022\017\n\007content\030\n " +
-      "\001(\t\022\014\n\004name\030\013 \001(\t\"\034\n\016TitleChooseReq\022\n\n\002i" +
-      "d\030\001 \001(\005\"\034\n\016TitleChooseRes\022\n\n\002id\030\001 \001(\005\"\032\n" +
-      "\014TitleNewPush\022\n\n\002id\030\001 \001(\005\"2\n\021NpcShowChan" +
-      "gePush\022\016\n\006showNo\030\001 \001(\005\022\r\n\005npcId\030\002 \001(\005\",\n" +
-      "\020TempleHeroBuyReq\022\n\n\002id\030\001 \001(\005\022\014\n\004type\030\002 " +
-      "\001(\005\"\036\n\020TempleHeroBuyRes\022\n\n\002id\030\001 \001(\005\"\035\n\017D" +
-      "ungeonEnterReq\022\n\n\002id\030\001 \001(\005\"\021\n\017DungeonEnt" +
-      "erRes\"#\n\017DungeonFightReq\022\020\n\010targetId\030\001 \001" +
-      "(\005\"\020\n\016DungeonExitReq\"\020\n\016DungeonExitRes\"\036" +
-      "\n\020ExpressStartRqRs\022\n\n\002id\030\001 \001(\005\"\024\n\022Expres" +
-      "sCompleteReq\" \n\022ExpressCompleteRes\022\n\n\002id" +
-      "\030\001 \001(\005\".\n\016ExpressInfoRes\022\016\n\006update\030\001 \001(\010" +
-      "\022\014\n\004info\030\002 \003(\005\"\036\n\020HomeOpenAreaRqRs\022\n\n\002id" +
-      "\030\001 \001(\005\"3\n\rHomeChangeReq\022\"\n\004data\030\005 \003(\0132\024." +
-      "Message.HomePosData\"\035\n\016HomeHarvestReq\022\013\n" +
-      "\003pos\030\003 \003(\005\">\n\016HomeHarvestRes\022\013\n\003pos\030\003 \001(" +
-      "\005\022\037\n\004rect\030\004 \003(\0132\021.Message.HomeRect\"\033\n\014Ho" +
-      "meCleanReq\022\013\n\003pos\030\003 \003(\005\"1\n\016HomeProductRe" +
-      "q\022\021\n\tproductId\030\001 \001(\005\022\014\n\004type\030\002 \001(\005\"!\n\023Ho" +
-      "meTaskCompleteReq\022\n\n\002id\030\001 \001(\005\"!\n\022HomeNew" +
-      "TaskDayPush\022\013\n\003day\030\001 \001(\005\"*\n\016LadderMatchR" +
-      "eq\022\n\n\002id\030\001 \001(\003\022\014\n\004type\030\002 \001(\005\"\'\n\025LadderSe" +
-      "tFormationReq\022\016\n\006heroId\030\001 \001(\005\"+\n\017LadderC" +
-      "ancelReq\022\014\n\004type\030\001 \001(\005\022\n\n\002id\030\002 \001(\003\"\022\n\020La" +
-      "dderCancelPush\"\201\001\n\020LadderResultPush\022$\n\006r" +
-      "ecord\030\001 \001(\0132\024.Message.FightRecord\022\r\n\005sco" +
-      "re\030\002 \001(\005\022\013\n\003add\030\003 \001(\005\022+\n\006report\030\004 \001(\0132\033." +
-      "Message.LadderSingleReport\"$\n\021LadderFigh" +
-      "tEndReq\022\017\n\007matchId\030\001 \001(\003*R\n\013ChatChannel\022" +
-      "\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRI" +
-      "VACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\ngame.pro" +
-      "toH\001P\001b\006proto3"
+      "ndex\030\001 \001(\005\"\351\001\n\023FormationSettingReq\022\r\n\005in" +
+      "dex\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025defaultFormat" +
+      "ionIndex\030\003 \001(\005\022\033\n\023arenaFormationIndex\030\004 " +
+      "\001(\005\022D\n\014changedIndex\030\005 \003(\0132..Message.Form" +
+      "ationSettingReq.ChangedIndexEntry\0323\n\021Cha" +
+      "ngedIndexEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001" +
+      "(\005:\0028\001\"\351\001\n\023FormationSettingRes\022\r\n\005index\030" +
+      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\035\n\025defaultFormationI" +
+      "ndex\030\003 \001(\005\022\033\n\023arenaFormationIndex\030\004 \001(\005\022" +
+      "D\n\014changedIndex\030\005 \003(\0132..Message.Formatio" +
+      "nSettingRes.ChangedIndexEntry\0323\n\021Changed" +
+      "IndexEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\002" +
+      "8\001\"Y\n\022ResourceChangePush\022\022\n\nresourceId\030\001" +
+      " \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\022\020\n\010c" +
+      "urCount\030\004 \001(\005\"&\n\025PlayerLevelChangePush\022\r" +
+      "\n\005value\030\001 \001(\005\"?\n\rExpChangePush\022\016\n\006heroId" +
+      "\030\001 \001(\005\022\016\n\006addExp\030\002 \001(\005\022\016\n\006curExp\030\003 \001(\005\":" +
+      "\n\017RecoverPowerReq\022\014\n\004type\030\001 \001(\005\022\013\n\003gem\030\002" +
+      " \001(\005\022\014\n\004gold\030\003 \001(\005\"b\n\021BagInfoChangePush\022" +
+      "\r\n\005clean\030\t \001(\010\022\014\n\004type\030\n \001(\005\022\020\n\010capacity" +
+      "\030\024 \001(\005\022\036\n\004slot\030\036 \003(\0132\020.Message.BagSlot\"\033" +
+      "\n\013BagCleanReq\022\014\n\004type\030\001 \001(\005\"M\n\016ItemDisca" +
+      "rdReq\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006" +
+      "slotId\030\003 \001(\005\022\014\n\004type\030\004 \001(\005\";\n\nItemBuyReq" +
+      "\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006shopI" +
+      "d\030\003 \001(\005\">\n\017ItemExchangeReq\022\014\n\004type\030\001 \001(\005" +
+      "\022\016\n\006slotId\030\002 \001(\005\022\r\n\005count\030\003 \001(\005\",\n\013ItemS" +
+      "ellReq\022\016\n\006slotId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\"2\n" +
+      "\020HeroEquipmentReq\022\016\n\006slotId\030\001 \001(\005\022\016\n\006her" +
+      "oId\030\002 \001(\005\"%\n\rPlayerMoveReq\022\t\n\001x\030\001 \001(\002\022\t\n" +
+      "\001y\030\002 \001(\002\" \n\020PlayerGoHotelRes\022\014\n\004time\030\001 \001" +
+      "(\003\"\"\n\024PlayerChooseHotelReq\022\n\n\002id\030\001 \001(\005\"\"" +
+      "\n\024PlayerChooseHotelRes\022\n\n\002id\030\001 \001(\005\"\t\n\007Fi" +
+      "shReq\"\016\n\014FishHookPush\"<\n\010FishPush\022\017\n\007suc" +
+      "cess\030\001 \001(\010\022\037\n\006reward\030\002 \003(\0132\017.Message.Rew" +
+      "ard\"\r\n\013FishHookReq\"\036\n\020FishEnterAreaReq\022\n" +
+      "\n\002id\030\001 \001(\005\"\035\n\017FishExitAreaReq\022\n\n\002id\030\001 \001(" +
+      "\005\"X\n\016ChatMessageReq\022%\n\007channel\030\001 \001(\0162\024.M" +
+      "essage.ChatChannel\022\016\n\006toUser\030\002 \001(\003\022\017\n\007co" +
+      "ntent\030\n \001(\t\"\203\001\n\017ChatMessagePush\022%\n\007chann" +
+      "el\030\001 \001(\0162\024.Message.ChatChannel\022\020\n\010fromUs" +
+      "er\030\002 \001(\003\022\014\n\004time\030\003 \001(\003\022\n\n\002id\030\004 \001(\003\022\017\n\007co" +
+      "ntent\030\n \001(\t\022\014\n\004name\030\013 \001(\t\"\034\n\016TitleChoose" +
+      "Req\022\n\n\002id\030\001 \001(\005\"\034\n\016TitleChooseRes\022\n\n\002id\030" +
+      "\001 \001(\005\"\032\n\014TitleNewPush\022\n\n\002id\030\001 \001(\005\"2\n\021Npc" +
+      "ShowChangePush\022\016\n\006showNo\030\001 \001(\005\022\r\n\005npcId\030" +
+      "\002 \001(\005\",\n\020TempleHeroBuyReq\022\n\n\002id\030\001 \001(\005\022\014\n" +
+      "\004type\030\002 \001(\005\"\036\n\020TempleHeroBuyRes\022\n\n\002id\030\001 " +
+      "\001(\005\"\035\n\017DungeonEnterReq\022\n\n\002id\030\001 \001(\005\"\021\n\017Du" +
+      "ngeonEnterRes\"#\n\017DungeonFightReq\022\020\n\010targ" +
+      "etId\030\001 \001(\005\"\020\n\016DungeonExitReq\"\020\n\016DungeonE" +
+      "xitRes\"\036\n\020ExpressStartRqRs\022\n\n\002id\030\001 \001(\005\"\024" +
+      "\n\022ExpressCompleteReq\" \n\022ExpressCompleteR" +
+      "es\022\n\n\002id\030\001 \001(\005\".\n\016ExpressInfoRes\022\016\n\006upda" +
+      "te\030\001 \001(\010\022\014\n\004info\030\002 \003(\005\"\036\n\020HomeOpenAreaRq" +
+      "Rs\022\n\n\002id\030\001 \001(\005\"3\n\rHomeChangeReq\022\"\n\004data\030" +
+      "\005 \003(\0132\024.Message.HomePosData\"\035\n\016HomeHarve" +
+      "stReq\022\013\n\003pos\030\003 \003(\005\">\n\016HomeHarvestRes\022\013\n\003" +
+      "pos\030\003 \001(\005\022\037\n\004rect\030\004 \003(\0132\021.Message.HomeRe" +
+      "ct\"\033\n\014HomeCleanReq\022\013\n\003pos\030\003 \003(\005\"1\n\016HomeP" +
+      "roductReq\022\021\n\tproductId\030\001 \001(\005\022\014\n\004type\030\002 \001" +
+      "(\005\"!\n\023HomeTaskCompleteReq\022\n\n\002id\030\001 \001(\005\"!\n" +
+      "\022HomeNewTaskDayPush\022\013\n\003day\030\001 \001(\005\"*\n\016Ladd" +
+      "erMatchReq\022\n\n\002id\030\001 \001(\003\022\014\n\004type\030\002 \001(\005\"\'\n\025" +
+      "LadderSetFormationReq\022\016\n\006heroId\030\001 \001(\005\"+\n" +
+      "\017LadderCancelReq\022\014\n\004type\030\001 \001(\005\022\n\n\002id\030\002 \001" +
+      "(\003\"\022\n\020LadderCancelPush\"\201\001\n\020LadderResultP" +
+      "ush\022$\n\006record\030\001 \001(\0132\024.Message.FightRecor" +
+      "d\022\r\n\005score\030\002 \001(\005\022\013\n\003add\030\003 \001(\005\022+\n\006report\030" +
+      "\004 \001(\0132\033.Message.LadderSingleReport\"$\n\021La" +
+      "dderFightEndReq\022\017\n\007matchId\030\001 \001(\003*R\n\013Chat" +
+      "Channel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020" +
+      "\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\n" +
+      "game.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -900,13 +916,25 @@ public final class MessageOuterClass {
     internal_static_Message_FormationSettingReq_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationSettingReq_descriptor,
-        new java.lang.String[] { "Index", "Name", "DefaultFormationIndex", "ArenaFormationIndex", });
+        new java.lang.String[] { "Index", "Name", "DefaultFormationIndex", "ArenaFormationIndex", "ChangedIndex", });
+    internal_static_Message_FormationSettingReq_ChangedIndexEntry_descriptor =
+      internal_static_Message_FormationSettingReq_descriptor.getNestedTypes().get(0);
+    internal_static_Message_FormationSettingReq_ChangedIndexEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FormationSettingReq_ChangedIndexEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_Message_FormationSettingRes_descriptor =
       getDescriptor().getMessageTypes().get(43);
     internal_static_Message_FormationSettingRes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_FormationSettingRes_descriptor,
-        new java.lang.String[] { "Index", "Name", "DefaultFormationIndex", "ArenaFormationIndex", });
+        new java.lang.String[] { "Index", "Name", "DefaultFormationIndex", "ArenaFormationIndex", "ChangedIndex", });
+    internal_static_Message_FormationSettingRes_ChangedIndexEntry_descriptor =
+      internal_static_Message_FormationSettingRes_descriptor.getNestedTypes().get(0);
+    internal_static_Message_FormationSettingRes_ChangedIndexEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_Message_FormationSettingRes_ChangedIndexEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     internal_static_Message_ResourceChangePush_descriptor =
       getDescriptor().getMessageTypes().get(44);
     internal_static_Message_ResourceChangePush_fieldAccessorTable = new
