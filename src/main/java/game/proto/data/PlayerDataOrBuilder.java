@@ -530,6 +530,12 @@ public interface PlayerDataOrBuilder extends
   long getMatchId();
 
   /**
+   * <code>int32 matchType = 524;</code>
+   * @return The matchType.
+   */
+  int getMatchType();
+
+  /**
    * <pre>
    * 背包
    * </pre>

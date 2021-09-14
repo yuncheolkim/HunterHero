@@ -2,6 +2,7 @@ package game.module.fight.data;
 
 import game.module.battle.Hero;
 import game.module.battle.Side;
+import game.proto.data.FightType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,4 +20,5 @@ public class FightFormation {
     public List<Hero> heroList = new ArrayList<>();
     public int score;
 
+    public FightType battleType;
 }

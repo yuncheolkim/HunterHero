@@ -396,9 +396,6 @@ public class FightService {
      */
     public static Hero createFightHero(Player player, int heroId) {
         final PlayerHero playerHero = player.getPd().getHeroMap().get(heroId);
-        if (playerHero == null) {
-            return null;
-        }
         final Hero hero = HeroFactory.createPlayerHero(player, playerHero);
         hero.setSide(Side.A);
         hero.setType(1);

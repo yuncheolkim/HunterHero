@@ -304,6 +304,11 @@ private static final long serialVersionUID = 0L;
             matchId_ = input.readInt64();
             break;
           }
+          case 4192: {
+
+            matchType_ = input.readInt32();
+            break;
+          }
           case 4810: {
             if (!((mutable_bitField0_ & 0x00000010) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
@@ -1275,6 +1280,17 @@ private static final long serialVersionUID = 0L;
     return matchId_;
   }
 
+  public static final int MATCHTYPE_FIELD_NUMBER = 524;
+  private int matchType_;
+  /**
+   * <code>int32 matchType = 524;</code>
+   * @return The matchType.
+   */
+  @java.lang.Override
+  public int getMatchType() {
+    return matchType_;
+  }
+
   public static final int BAG_FIELD_NUMBER = 601;
   private static final class BagDefaultEntryHolder {
     static final com.google.protobuf.MapEntry<
@@ -1834,6 +1850,9 @@ private static final long serialVersionUID = 0L;
     if (matchId_ != 0L) {
       output.writeInt64(523, matchId_);
     }
+    if (matchType_ != 0) {
+      output.writeInt32(524, matchType_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -2014,6 +2033,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt64Size(523, matchId_);
     }
+    if (matchType_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(524, matchType_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
          : internalGetBag().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
@@ -2160,6 +2183,8 @@ private static final long serialVersionUID = 0L;
         != other.getInMatch()) return false;
     if (getMatchId()
         != other.getMatchId()) return false;
+    if (getMatchType()
+        != other.getMatchType()) return false;
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
     if (getBagCapacity()
@@ -2275,6 +2300,8 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + MATCHID_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getMatchId());
+    hash = (37 * hash) + MATCHTYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getMatchType();
     if (!internalGetBag().getMap().isEmpty()) {
       hash = (37 * hash) + BAG_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBag().hashCode();
@@ -2564,6 +2591,8 @@ private static final long serialVersionUID = 0L;
 
       matchId_ = 0L;
 
+      matchType_ = 0;
+
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
@@ -2687,6 +2716,7 @@ private static final long serialVersionUID = 0L;
       }
       result.inMatch_ = inMatch_;
       result.matchId_ = matchId_;
+      result.matchType_ = matchType_;
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
       result.bagCapacity_ = bagCapacity_;
@@ -2881,6 +2911,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getMatchId() != 0L) {
         setMatchId(other.getMatchId());
+      }
+      if (other.getMatchType() != 0) {
+        setMatchType(other.getMatchType());
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
@@ -5551,6 +5584,37 @@ private static final long serialVersionUID = 0L;
     public Builder clearMatchId() {
       
       matchId_ = 0L;
+      onChanged();
+      return this;
+    }
+
+    private int matchType_ ;
+    /**
+     * <code>int32 matchType = 524;</code>
+     * @return The matchType.
+     */
+    @java.lang.Override
+    public int getMatchType() {
+      return matchType_;
+    }
+    /**
+     * <code>int32 matchType = 524;</code>
+     * @param value The matchType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMatchType(int value) {
+      
+      matchType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 matchType = 524;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMatchType() {
+      
+      matchType_ = 0;
       onChanged();
       return this;
     }

@@ -21,7 +21,10 @@ import game.proto.data.*;
 import game.proto.no.No;
 import game.utils.DateUtils;
 
+import java.util.Optional;
+
 import static game.game.enums.ConsumeTypeEnum.单挑排位;
+import static game.module.fight.FightService.createFightHero;
 
 /**
  * 排位赛
@@ -68,8 +71,6 @@ public class LadderHandler {
 
             ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderSingleFight), ErrorEnum.ERR_10);
 
-            player.pd.setInMatch(true);
-            player.pd.setMatchId(req.getId());
 
             // 开始匹配
             MatchInfoMsg matchInfoMsg = new MatchInfoMsg();
@@ -82,9 +83,13 @@ public class LadderHandler {
             matchInfoMsg.scoreBase = ladderData.getLadderSingleScore();
 
             G.G.getLadderSingleMatchScene().tell(matchInfoMsg);
+        } else {
+            return;
         }
 
+        player.pd.setMatchId(req.getId());
         player.pd.setInMatch(true);
+        player.pd.setMatchType(req.getType());
     }
 
     /**
@@ -99,8 +104,7 @@ public class LadderHandler {
         LadderData.Builder ladderData = player.D.getLadderDataBuilder();
         ModuleAssert.isTrue(player.hasPower(ConfigManager.paramConfigData.ladderFight), ErrorEnum.ERR_10);
 
-        player.pd.setInMatch(true);
-        player.pd.setMatchId(req.getId());
+        ModuleAssert.isTrue(player.pd.getFormationIndexOrDefault(FormationType.FORMATION_LADDER_VALUE, -1) >= 0);
 
         // 开始匹配
         MatchInfoMsg matchInfoMsg = new MatchInfoMsg();
@@ -171,22 +175,41 @@ public class LadderHandler {
         }
         LadderInfo.Builder ladderInfoBuilder = null;
         FightFormation formation = new FightFormation();
+        Side side = req.getOrder() == 1 ? Side.A : Side.B;
         if (req.getType() == 1) {//单挑
             ladderInfoBuilder = player.pd.getLadderSingleInfoBuilder();
             Hero fightHero = FightService.createFightHero(player, ladderInfoBuilder.getHeroId());
-            fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
+            fightHero.setPos(Pos.from(0));
+            fightHero.setSide(side);
+            fightHero.setSpeed(1);
+            formation.battleType = FightType.F_LADDER_SINGLE;
             formation.heroList.add(fightHero);
-        } else if (req.getType() == 2) {// 6人
+        } else if (req.getType() == 2) {// multi
             ladderInfoBuilder = player.pd.getLadderMultiInfoBuilder();
-
-
-            // todo
-//            fightHero.setPos(Pos.from(formation.side == Side.A ? 0 : 16));
-//            formation.heroList.add(fightHero);
+            final int formationIndex = player.pd.getFormationIndexOrDefault(FormationType.FORMATION_LADDER_VALUE, -1);
+            Optional<Formation.Builder> fightFormation = player.pd.getFormationBuilderList()
+                    .stream().filter(builder -> builder.getIndex() == formationIndex).findFirst();
+            if (!fightFormation.isPresent()) {
+                G.G.getFightScene().tell(new FightCancelAtPrepare(req.getMatchId(), player.getPid()));
+                return;
+            }
+            for (final FormationPos fightHeroPos : fightFormation.get().getPosList()) {
+                if (fightHeroPos.getHeroId() == 0) {
+                    continue;
+                }
+                Hero hero = createFightHero(player, fightHeroPos.getHeroId());
+                hero.setSide(side);
+                hero.setPos(Pos.from(fightHeroPos.getIndex()));
+                hero.setSpeed(fightHeroPos.getOrder());
+                hero.setType(1);
+                hero.init();
+                formation.heroList.add(hero);
+            }
+            formation.battleType = FightType.F_LADDER_MULTI;
         }
 
         formation.userName = player.pd.getName();
-        formation.side = req.getOrder() == 1 ? Side.A : Side.B;
+        formation.side = side;
         formation.matchId = req.getMatchId();
         formation.uid = player.getPid();
         formation.score = ladderInfoBuilder.getScore();

@@ -61,6 +61,7 @@ message PlayerData {
     bool inMatch = 522;
     // 排位id
     int64 matchId = 523;
+    int32 matchType = 524;
 
     // 背包
     map<int32, BagSlot> bag = 601;
@@ -77,7 +78,7 @@ message PlayerData {
     // 竞技场防守阵型id
     int32 arenaFormationIndex = 703;
     // 阵型map
-    map<int32,int32> formationIndex = 704;
+    map<int32, int32> formationIndex = 704;
     // 家园
     HomeData homeData = 801;
 
@@ -508,7 +509,7 @@ enum FightType{
     F_NONE = 0;
     F_BATTLE = 1;// 野外战斗
     F_LADDER_SINGLE = 2;// 排位-单挑
-    F_LADDER = 3;// 排位-英雄 33-33
+    F_LADDER_MULTI = 3;// 排位-英雄 33-33
     F_BATTLE_DOUBLE = 4 ;// 双人副本 33-44-33
 
 }

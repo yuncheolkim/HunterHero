@@ -148,15 +148,29 @@ public enum Cmd {
             LadderHandler.prepareLadder(player, req);
             req = LadderPrepare.newBuilder()
                     .setType(1)
-                    .setOrder(16)
+                    .setOrder(2)
                     .setMatchId(matchId)
                     .build();
             LadderHandler.prepareLadder(player, req);
         }
     },
-    CMD18(18, "Open Feature") {
+    CMD18(18, "多人匹配") {
         @Override
         public void run(final Player player, final List<String> line) {
+            int matchId = Integer.parseInt(line.get(0));
+
+            LadderPrepare req = LadderPrepare.newBuilder()
+                    .setType(2)
+                    .setOrder(1)
+                    .setMatchId(matchId)
+                    .build();
+            LadderHandler.prepareLadder(player, req);
+            req = LadderPrepare.newBuilder()
+                    .setType(2)
+                    .setOrder(2)
+                    .setMatchId(matchId)
+                    .build();
+            LadderHandler.prepareLadder(player, req);
         }
     },
     CMD19(19, "Open Feature") {

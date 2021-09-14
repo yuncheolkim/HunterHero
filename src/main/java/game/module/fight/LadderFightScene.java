@@ -5,6 +5,7 @@ import game.config.data.LadderSingleConfigData;
 import game.game.scene.Scene;
 import game.manager.ConfigManager;
 import game.module.battle.Battle;
+import game.module.battle.Pos;
 import game.module.battle.Side;
 import game.module.battle.battle.AutoBattle;
 import game.module.battle.record.BattleRecord;
@@ -13,7 +14,6 @@ import game.module.fight.data.FightFormation;
 import game.module.ladder.LadderService;
 import game.proto.back.LadderResult;
 import game.proto.data.FightRecord;
-import game.proto.data.FightType;
 import game.proto.data.LadderSinglePlayer;
 import game.proto.no.No;
 
@@ -116,25 +116,25 @@ public class LadderFightScene extends Scene {
         prepareMap.remove(bid);
 
         final Battle battle = new AutoBattle();
-        battle.setFightType(FightType.F_LADDER_SINGLE);
+        battle.setFightType(a.battleType);
 
         a.heroList.forEach(hero -> {
-            hero.setSide(a.side);
             hero.setBattle(battle);
-            if (hero.getSide() == Side.A) {
-                hero.setSpeed(1);
+            if (hero.getSide() == Side.A) {// 先手
+                hero.setSpeed(hero.getSpeed() * 2 - 1);
             } else {
-                hero.setSpeed(2);
+                hero.setSpeed(hero.getSpeed() * 2);
+                hero.setPos(Pos.from(hero.getPos().getIndex() + 16));
             }
             battle.addHero(hero);
         });
         b.heroList.forEach(hero -> {
-            hero.setSide(b.side);
             hero.setBattle(battle);
             if (hero.getSide() == Side.A) {
-                hero.setSpeed(1);
+                hero.setSpeed(hero.getSpeed() * 2 - 1);
             } else {
-                hero.setSpeed(2);
+                hero.setSpeed(hero.getSpeed() * 2);
+                hero.setPos(Pos.from(hero.getPos().getIndex() + 16));
             }
             battle.addHero(hero);
         });
