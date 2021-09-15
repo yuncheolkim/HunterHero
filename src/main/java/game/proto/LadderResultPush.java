@@ -84,6 +84,11 @@ private static final long serialVersionUID = 0L;
 
             break;
           }
+          case 40: {
+
+            type_ = input.readInt32();
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -198,6 +203,17 @@ private static final long serialVersionUID = 0L;
     return getReport();
   }
 
+  public static final int TYPE_FIELD_NUMBER = 5;
+  private int type_;
+  /**
+   * <code>int32 type = 5;</code>
+   * @return The type.
+   */
+  @java.lang.Override
+  public int getType() {
+    return type_;
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -224,6 +240,9 @@ private static final long serialVersionUID = 0L;
     if (report_ != null) {
       output.writeMessage(4, getReport());
     }
+    if (type_ != 0) {
+      output.writeInt32(5, type_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -248,6 +267,10 @@ private static final long serialVersionUID = 0L;
     if (report_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(4, getReport());
+    }
+    if (type_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(5, type_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -278,6 +301,8 @@ private static final long serialVersionUID = 0L;
       if (!getReport()
           .equals(other.getReport())) return false;
     }
+    if (getType()
+        != other.getType()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -301,6 +326,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + REPORT_FIELD_NUMBER;
       hash = (53 * hash) + getReport().hashCode();
     }
+    hash = (37 * hash) + TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getType();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -450,6 +477,8 @@ private static final long serialVersionUID = 0L;
         report_ = null;
         reportBuilder_ = null;
       }
+      type_ = 0;
+
       return this;
     }
 
@@ -488,6 +517,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.report_ = reportBuilder_.build();
       }
+      result.type_ = type_;
       onBuilt();
       return result;
     }
@@ -547,6 +577,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.hasReport()) {
         mergeReport(other.getReport());
+      }
+      if (other.getType() != 0) {
+        setType(other.getType());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -899,6 +932,37 @@ private static final long serialVersionUID = 0L;
         report_ = null;
       }
       return reportBuilder_;
+    }
+
+    private int type_ ;
+    /**
+     * <code>int32 type = 5;</code>
+     * @return The type.
+     */
+    @java.lang.Override
+    public int getType() {
+      return type_;
+    }
+    /**
+     * <code>int32 type = 5;</code>
+     * @param value The type to set.
+     * @return This builder for chaining.
+     */
+    public Builder setType(int value) {
+      
+      type_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 type = 5;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearType() {
+      
+      type_ = 0;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

@@ -14,5 +14,5 @@ public enum ConsumeTypeEnum {
     神殿购买英雄,
     跑镖,
     单挑排位,
-    排位,
+    多人排位,
 }

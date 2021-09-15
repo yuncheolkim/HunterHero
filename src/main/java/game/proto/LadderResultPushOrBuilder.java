@@ -56,4 +56,10 @@ public interface LadderResultPushOrBuilder extends
    * <code>.Message.LadderSingleReport report = 4;</code>
    */
   game.proto.data.LadderSingleReportOrBuilder getReportOrBuilder();
+
+  /**
+   * <code>int32 type = 5;</code>
+   * @return The type.
+   */
+  int getType();
 }

@@ -202,7 +202,7 @@ private static final long serialVersionUID = 0L;
   private int type_;
   /**
    * <pre>
-   *  1:单挑
+   *  1:单挑,2:多人
    * </pre>
    *
    * <code>int32 type = 3;</code>
@@ -876,7 +876,7 @@ private static final long serialVersionUID = 0L;
     private int type_ ;
     /**
      * <pre>
-     *  1:单挑
+     *  1:单挑,2:多人
      * </pre>
      *
      * <code>int32 type = 3;</code>
@@ -888,7 +888,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *  1:单挑
+     *  1:单挑,2:多人
      * </pre>
      *
      * <code>int32 type = 3;</code>
@@ -903,7 +903,7 @@ private static final long serialVersionUID = 0L;
     }
     /**
      * <pre>
-     *  1:单挑
+     *  1:单挑,2:多人
      * </pre>
      *
      * <code>int32 type = 3;</code>

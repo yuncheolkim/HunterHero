@@ -639,14 +639,14 @@ public final class MessageOuterClass {
       "erMatchReq\022\n\n\002id\030\001 \001(\003\022\014\n\004type\030\002 \001(\005\"\'\n\025" +
       "LadderSetFormationReq\022\016\n\006heroId\030\001 \001(\005\"+\n" +
       "\017LadderCancelReq\022\014\n\004type\030\001 \001(\005\022\n\n\002id\030\002 \001" +
-      "(\003\"\022\n\020LadderCancelPush\"\201\001\n\020LadderResultP" +
+      "(\003\"\022\n\020LadderCancelPush\"\217\001\n\020LadderResultP" +
       "ush\022$\n\006record\030\001 \001(\0132\024.Message.FightRecor" +
       "d\022\r\n\005score\030\002 \001(\005\022\013\n\003add\030\003 \001(\005\022+\n\006report\030" +
-      "\004 \001(\0132\033.Message.LadderSingleReport\"$\n\021La" +
-      "dderFightEndReq\022\017\n\007matchId\030\001 \001(\003*R\n\013Chat" +
-      "Channel\022\n\n\006C_NONE\020\000\022\t\n\005WORLD\020\001\022\t\n\005GROUP\020" +
-      "\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004\022\010\n\004NEAR\020\005B\020\n\n" +
-      "game.protoH\001P\001b\006proto3"
+      "\004 \001(\0132\033.Message.LadderSingleReport\022\014\n\004ty" +
+      "pe\030\005 \001(\005\"$\n\021LadderFightEndReq\022\017\n\007matchId" +
+      "\030\001 \001(\003*R\n\013ChatChannel\022\n\n\006C_NONE\020\000\022\t\n\005WOR" +
+      "LD\020\001\022\t\n\005GROUP\020\002\022\013\n\007PRIVACY\020\003\022\n\n\006SYSTEM\020\004" +
+      "\022\010\n\004NEAR\020\005B\020\n\ngame.protoH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1240,7 +1240,7 @@ public final class MessageOuterClass {
     internal_static_Message_LadderResultPush_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_LadderResultPush_descriptor,
-        new java.lang.String[] { "Record", "Score", "Add", "Report", });
+        new java.lang.String[] { "Record", "Score", "Add", "Report", "Type", });
     internal_static_Message_LadderFightEndReq_descriptor =
       getDescriptor().getMessageTypes().get(95);
     internal_static_Message_LadderFightEndReq_fieldAccessorTable = new

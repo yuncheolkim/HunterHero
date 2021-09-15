@@ -14,6 +14,7 @@ import game.module.fight.data.FightFormation;
 import game.module.ladder.LadderService;
 import game.proto.back.LadderResult;
 import game.proto.data.FightRecord;
+import game.proto.data.FightType;
 import game.proto.data.LadderSinglePlayer;
 import game.proto.no.No;
 
@@ -117,6 +118,7 @@ public class LadderFightScene extends Scene {
 
         final Battle battle = new AutoBattle();
         battle.setFightType(a.battleType);
+        int ladderType = a.battleType == FightType.F_LADDER_SINGLE ? 1 : 2;
 
         a.heroList.forEach(hero -> {
             hero.setBattle(battle);
@@ -149,8 +151,8 @@ public class LadderFightScene extends Scene {
         int k = (scoreA.k + scoreB.k) / 2;
 
         int addedScore;
-        LadderResult.Builder ra = LadderResult.newBuilder().setType(1);
-        LadderResult.Builder rb = LadderResult.newBuilder().setType(1);
+        LadderResult.Builder ra = LadderResult.newBuilder().setType(ladderType);
+        LadderResult.Builder rb = LadderResult.newBuilder().setType(ladderType);
 
         if (a.side == record.getWinSide()) {
             addedScore = LadderService.calcScoreWinA(a.score, b.score, k);

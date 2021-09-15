@@ -31,7 +31,7 @@ public interface LadderResultOrBuilder extends
 
   /**
    * <pre>
-   *  1:单挑
+   *  1:单挑,2:多人
    * </pre>
    *
    * <code>int32 type = 3;</code>

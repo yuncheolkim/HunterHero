@@ -24,6 +24,7 @@ import game.utils.DateUtils;
 import java.util.Optional;
 
 import static game.game.enums.ConsumeTypeEnum.单挑排位;
+import static game.game.enums.ConsumeTypeEnum.多人排位;
 import static game.module.fight.FightService.createFightHero;
 
 /**
@@ -241,7 +242,6 @@ public class LadderHandler {
      */
     @GameHandler(value = No.LadderResultInner, inner = true)
     public static void ladderResult(final Player player, LadderResult req) {
-        LadderInfo.Builder ladder = player.pd.getLadderSingleInfoBuilder();
 
         // 这里不能马上变为非匹配
         // 不然会立刻进入野外战斗
@@ -249,63 +249,129 @@ public class LadderHandler {
         player.scheduleAfter(120 * 1000, No.LadderFightAutoEndInner.getNumber(), LadderFightAutoEndInner.newBuilder()
                 .setMatchId(player.pd.getMatchId()).buildPartial());
 
-        Logs.C.debug("单挑结果:{}", req.getScore());
-        boolean win = player.getPid() == req.getRecord().getWinUid();
+        if (req.getType() == 1) {
+            LadderInfo.Builder ladder = player.pd.getLadderSingleInfoBuilder();
 
-        LadderHeroScore.Builder heroScoreOrDefault = ladder.getHeroScoreOrDefault(ladder.getHeroId(), LadderHeroScore.newBuilder().build()).toBuilder();
-        LadderData.Builder ladderDataBuilder = player.D.getLadderDataBuilder();
-        if (win) {
-            ladderDataBuilder.setLadderSingleScore(ladderDataBuilder.getLadderSingleScore() + 20);
-        } else {
-            ladderDataBuilder.setLadderSingleScore(Math.min(0, ladderDataBuilder.getLadderSingleScore() - 20));
-        }
+            Logs.C.debug("单挑结果:{}", req.getScore());
+            boolean win = player.getPid() == req.getRecord().getWinUid();
 
-        // Calc score
-        if (ladder.getOrder() == 1) {
-            //先手
-            ladder.setOrder(2);
+            LadderHeroScore.Builder heroScoreOrDefault = ladder.getHeroScoreOrDefault(ladder.getHeroId(), LadderHeroScore.newBuilder().build()).toBuilder();
+            LadderData.Builder ladderDataBuilder = player.D.getLadderDataBuilder();
             if (win) {
-                ladder.setWin1(ladder.getWin1() + 1);
-                heroScoreOrDefault.setWin1(heroScoreOrDefault.getWin1() + 1);
+                ladderDataBuilder.setLadderSingleScore(ladderDataBuilder.getLadderSingleScore() + 20);
             } else {
-                ladder.setLose1(ladder.getLose1() + 1);
-                heroScoreOrDefault.setLose1(heroScoreOrDefault.getLose1() + 1);
+                ladderDataBuilder.setLadderSingleScore(Math.min(0, ladderDataBuilder.getLadderSingleScore() - 20));
             }
+
+            // Calc score
+            if (ladder.getOrder() == 1) {
+                //先手
+                ladder.setOrder(2);
+                if (win) {
+                    ladder.setWin1(ladder.getWin1() + 1);
+                    heroScoreOrDefault.setWin1(heroScoreOrDefault.getWin1() + 1);
+                } else {
+                    ladder.setLose1(ladder.getLose1() + 1);
+                    heroScoreOrDefault.setLose1(heroScoreOrDefault.getLose1() + 1);
+                }
+            } else {
+                ladder.setOrder(1);
+                if (win) {
+                    ladder.setWin2(ladder.getWin2() + 1);
+                    heroScoreOrDefault.setWin2(heroScoreOrDefault.getWin2() + 1);
+                } else {
+                    ladder.setLose2(ladder.getLose2() + 1);
+                    heroScoreOrDefault.setLose2(heroScoreOrDefault.getLose2() + 1);
+                }
+            }
+
+            ladder.putHeroScore(ladder.getHeroId(), heroScoreOrDefault.build());
+            ladder.setScore(ladder.getScore() + req.getScore());
+            // 战报
+            LadderSingleReport report = LadderSingleReport.newBuilder()
+                    .setWinId(req.getRecord().getWinUid())
+                    .setFirst(req.getFirstUid())
+                    .setP1(req.getP1())
+                    .setP2(req.getP2())
+                    .build();
+            ladder.addReport(0, report);
+
+            if (ladder.getReportCount() > 20) {
+                ladder.removeReport(20);
+            }
+            // 消耗体力
+            player.consumePower(单挑排位, ConfigManager.paramConfigData.ladderSingleFight);
+
+            LadderResultPush result = LadderResultPush.newBuilder()
+                    .setRecord(req.getRecord())
+                    .setScore(ladder.getScore())
+                    .setAdd(req.getScore())
+                    .setReport(report)
+                    .setType(1)
+                    .buildPartial();
+            player.getTransport().send(No.LadderResultPush, result);
         } else {
-            ladder.setOrder(1);
+            LadderInfo.Builder ladder = player.pd.getLadderMultiInfoBuilder();
+
+            Logs.C.debug("Multi结果:{}", req.getScore());
+            boolean win = player.getPid() == req.getRecord().getWinUid();
+
+            LadderHeroScore.Builder heroScore = ladder.getHeroScoreOrDefault(ladder.getHeroId(), LadderHeroScore.newBuilder().build()).toBuilder();
+            LadderData.Builder ladderDataBuilder = player.D.getLadderDataBuilder();
             if (win) {
-                ladder.setWin2(ladder.getWin2() + 1);
-                heroScoreOrDefault.setWin2(heroScoreOrDefault.getWin2() + 1);
+                ladderDataBuilder.setLadderMultiScore(ladderDataBuilder.getLadderMultiScore() + 20);
             } else {
-                ladder.setLose2(ladder.getLose2() + 1);
-                heroScoreOrDefault.setLose2(heroScoreOrDefault.getLose2() + 1);
+                ladderDataBuilder.setLadderMultiScore(Math.min(0, ladderDataBuilder.getLadderMultiScore() - 20));
             }
+
+            // Calc score
+            if (ladder.getOrder() == 1) {
+                //先手
+                ladder.setOrder(2);
+                if (win) {
+                    ladder.setWin1(ladder.getWin1() + 1);
+                    heroScore.setWin1(heroScore.getWin1() + 1);
+                } else {
+                    ladder.setLose1(ladder.getLose1() + 1);
+                    heroScore.setLose1(heroScore.getLose1() + 1);
+                }
+            } else {
+                ladder.setOrder(1);
+                if (win) {
+                    ladder.setWin2(ladder.getWin2() + 1);
+                    heroScore.setWin2(heroScore.getWin2() + 1);
+                } else {
+                    ladder.setLose2(ladder.getLose2() + 1);
+                    heroScore.setLose2(heroScore.getLose2() + 1);
+                }
+            }
+
+            ladder.putHeroScore(ladder.getHeroId(), heroScore.build());
+            ladder.setScore(ladder.getScore() + req.getScore());
+            // 战报
+            LadderSingleReport report = LadderSingleReport.newBuilder()
+                    .setWinId(req.getRecord().getWinUid())
+                    .setFirst(req.getFirstUid())
+                    .setP1(req.getP1())
+                    .setP2(req.getP2())
+                    .build();
+            ladder.addReport(0, report);
+
+            if (ladder.getReportCount() > 20) {
+                ladder.removeReport(20);
+            }
+            // 消耗体力
+            player.consumePower(多人排位, ConfigManager.paramConfigData.ladderFight);
+
+            LadderResultPush result = LadderResultPush.newBuilder()
+                    .setRecord(req.getRecord())
+                    .setScore(ladder.getScore())
+                    .setAdd(req.getScore())
+                    .setReport(report)
+                    .setType(2)
+                    .buildPartial();
+            player.getTransport().send(No.LadderResultPush, result);
         }
-
-        ladder.putHeroScore(ladder.getHeroId(), heroScoreOrDefault.build());
-        ladder.setScore(ladder.getScore() + req.getScore());
-        // 战报
-        LadderSingleReport report = LadderSingleReport.newBuilder()
-                .setWinId(req.getRecord().getWinUid())
-                .setFirst(req.getFirstUid())
-                .setP1(req.getP1())
-                .setP2(req.getP2())
-                .build();
-        ladder.addReport(0, report);
-
-        if (ladder.getReportCount() > 20) {
-            ladder.removeReport(20);
-        }
-        // 消耗体力
-        player.consumePower(单挑排位, ConfigManager.paramConfigData.ladderSingleFight);
-
-        LadderResultPush result = LadderResultPush.newBuilder()
-                .setRecord(req.getRecord())
-                .setScore(ladder.getScore())
-                .setAdd(req.getScore())
-                .setReport(report)
-                .buildPartial();
-        player.getTransport().send(No.LadderResultPush, result);
     }
 
     /**
