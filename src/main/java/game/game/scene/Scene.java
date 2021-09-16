@@ -28,7 +28,7 @@ public class Scene {
     protected LinkedList<TimerTask> task = new LinkedList<>();
 
     public Scene() {
-        id = GameConstants.ID_GENERATOR.next();
+        id = GameConstants.TEMP_ID_GENERATOR.next();
         schedule = getSchedule();
     }
 

@@ -3,6 +3,7 @@ package game.module.ladder.match;
 import com.google.common.collect.TreeMultimap;
 import game.base.G;
 import game.base.Logs;
+import game.base.constants.GameConstants;
 import game.game.scene.Scene;
 import game.proto.back.LadderCancelInner;
 import game.proto.back.LadderPrepare;
@@ -94,19 +95,20 @@ public class LadderMatchScene extends Scene {
     /**
      * 找到对手
      */
-    private void findTarget(Long uid1, long uid2) {
+    private void findTarget(long uid1, long uid2) {
         Logs.C.info("找到对手:{},{}", uid1, uid2);
         MatchTempData d1 = pmap.get(uid1);
         MatchTempData d2 = pmap.get(uid2);
+        long matchId = GameConstants.TEMP_ID_GENERATOR.next();
         LadderPrepare prepare1 = LadderPrepare.newBuilder()
                 .setAuto(true)
-                .setMatchId(d1.info.id)
+                .setMatchId(matchId)
                 .setType(type)
                 .setOrder(d1.info.order)
                 .build();
         LadderPrepare prepare2 = LadderPrepare.newBuilder()
                 .setAuto(true)
-                .setMatchId(d2.info.id)
+                .setMatchId(matchId)
                 .setType(type)
                 .setOrder(d2.info.order)
                 .build();
@@ -138,13 +140,11 @@ public class LadderMatchScene extends Scene {
      *
      * @param data
      */
-    private void cancelMatch(MatchTempData data, boolean inner) {
+    private void cancelMatch(MatchTempData data, boolean _a) {
         long uid = data.info.uid;
-        if (inner) {
-            G.sendToPlayer(uid
-                    , No.LadderCancelInner.getNumber()
-                    , LadderCancelInner.newBuilder().setId(data.info.id).buildPartial());
-        }
+        G.sendToPlayer(uid
+                , No.LadderCancelInner.getNumber()
+                , LadderCancelInner.newBuilder().setId(data.info.id).buildPartial());
         pmap.remove(uid);
         order1Map.remove(data.lowScore, data.info);
         order2Map.remove(data.lowScore, data.info);
@@ -184,7 +184,6 @@ public class LadderMatchScene extends Scene {
         }
         if (info == null) {
             Logs.C.info("not found:{}", value.info);
-
         }
 
         return info;
@@ -200,7 +199,7 @@ public class LadderMatchScene extends Scene {
 
         MatchInfoMsg info = targetScore(value);
 
-        final Long uid = msg.uid;
+        final long uid = msg.uid;
         if (info == null) {
             // 没有找到对手,放到匹配池
             pmap.put(uid, value);

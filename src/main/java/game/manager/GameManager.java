@@ -32,7 +32,6 @@ import game.proto.*;
 import game.proto.back.FishData;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
-import javassist.ClassPool;
 
 import java.lang.reflect.Method;
 import java.util.concurrent.ConcurrentHashMap;
@@ -56,8 +55,6 @@ public class GameManager extends AbsLifecycle {
 
     private final DefaultHeroCalcProcess heroCalcProcess = new DefaultHeroCalcProcess();
 
-    private ClassPool pool = ClassPool.getDefault();
-
     public GameManager() {
     }
 
@@ -79,7 +76,7 @@ public class GameManager extends AbsLifecycle {
     /**
      * 单线程处理
      */
-    private final LadderMatchScene ladderSingleMatch = new LadderMatchScene(1);
+    private final LadderMatchScene ladderMatchScene = new LadderMatchScene(1);
     private final LadderMatchScene ladderMatch = new LadderMatchScene(2);
     private final LadderFightScene fightScene = new LadderFightScene();
 
@@ -124,7 +121,6 @@ public class GameManager extends AbsLifecycle {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        pool = null;
     }
 
 
@@ -227,7 +223,7 @@ public class GameManager extends AbsLifecycle {
     private void initScene() {
         chatScene.setWork(G.W.getSceneWork());
         Work matchWork = G.W.getMatchWork();
-        ladderSingleMatch.setWork(matchWork);
+        ladderMatchScene.setWork(matchWork);
         ladderMatch.setWork(matchWork);
         fightScene.setWork(G.W.getHeroCalcWork(fightScene.getId()));
     }
@@ -248,8 +244,8 @@ public class GameManager extends AbsLifecycle {
         return chatScene;
     }
 
-    public LadderMatchScene getLadderSingleMatchScene() {
-        return ladderSingleMatch;
+    public LadderMatchScene getLadderMatchScene() {
+        return ladderMatchScene;
     }
 
     public LadderMatchScene getLadderMultiMatch() {

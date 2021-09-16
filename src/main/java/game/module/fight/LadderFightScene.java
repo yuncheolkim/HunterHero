@@ -34,13 +34,13 @@ public class LadderFightScene extends Scene {
      * 已准备的玩家
      * key: match id
      */
-    private final Map<String, Long> prepareMap = new HashMap<>();
+    private final Map<Long, Long> prepareMap = new HashMap<>();
 
     /**
      * 取消的玩家
      * key: match id
      */
-    private final Map<String, Long> cancelMap = new HashMap<>();
+    private final Map<Long, Long> cancelMap = new HashMap<>();
 
     /**
      * key : uid
@@ -49,15 +49,11 @@ public class LadderFightScene extends Scene {
 
     @Override
     protected void process(Object msg) {
-
         if (msg instanceof FightCancelAtPrepare) {
-
+            // 如果正好使用阵型的时候把排位阵型删除,则会出现取消的情况
             cancel((FightCancelAtPrepare) msg);
-
         } else if (msg instanceof FightFormation) {
-
             prepare((FightFormation) msg);
-
         }
     }
 
@@ -67,12 +63,14 @@ public class LadderFightScene extends Scene {
      * @param msg
      */
     private void cancel(FightCancelAtPrepare msg) {
-        String id = msg.uid + "-" + msg.matchId;
+        Long id = msg.matchId;
         if (prepareMap.containsKey(id)) {
             // 对方已经准备 通知对方结束匹配
             G.sendToPlayer(prepareMap.get(id), No.LadderCancelInner.getNumber());
+            prepareMap.remove(id);
         } else if (!cancelMap.containsKey(id)) {
             // 对方没有准备
+            // 等对方来会发现已经被取消
             cancelMap.put(id, msg.uid);
         } else {
             // 对方先取消
@@ -88,13 +86,13 @@ public class LadderFightScene extends Scene {
      */
     private void prepare(FightFormation msg) {
 
-        String id = msg.uid + "-" + msg.matchId;
+        final Long id = msg.matchId;
         if (prepareMap.get(id) != null) {
             // fight
             fight(formationMap.get(prepareMap.get(id)), msg);
         } else if (cancelMap.get(id) != null) {
             cancelMap.remove(id);
-            // Cancel
+            // Cancel, 对方已取消
             G.sendToPlayer(msg.uid, No.LadderCancelInner.getNumber());
         } else {
             prepareMap.put(id, msg.uid);
@@ -105,13 +103,10 @@ public class LadderFightScene extends Scene {
 
     /**
      * 战斗
-     *
-     * @param fightFormation
-     * @param msg
      */
     private void fight(FightFormation a, FightFormation b) {
-        String aid = a.uid + "-" + a.matchId;
-        String bid = b.uid + "-" + b.matchId;
+        Long aid = a.matchId;
+        Long bid = b.matchId;
 
         prepareMap.remove(aid);
         prepareMap.remove(bid);
