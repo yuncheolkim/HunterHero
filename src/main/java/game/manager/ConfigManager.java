@@ -103,6 +103,7 @@ public class ConfigManager extends AbsLifecycle {
     public static final HomeTaskDataBox homeTaskDataBox = new HomeTaskDataBox();
     public static final EnemyBaseDataBox enemyBaseDataBox = new EnemyBaseDataBox();
     public static final LadderSingleDataBox ladderSingleDataBox = new LadderSingleDataBox();
+    public static final EndlessRateDataBox endlessRateDataBox = new EndlessRateDataBox();
 
     private static final List<IConfigParse> list = new ArrayList<>(32);
 
@@ -142,6 +143,7 @@ public class ConfigManager extends AbsLifecycle {
         list.add(homeTaskDataBox);
         list.add(enemyBaseDataBox);
         list.add(ladderSingleDataBox);
+        list.add(endlessRateDataBox);
     }
 
     @Override
@@ -182,7 +184,7 @@ public class ConfigManager extends AbsLifecycle {
 
     /**
      * @param v
-     * @param factory
+     * @param f 属性加成
      * @return
      */
     public static Property makeProperty(final Property v, final DataConfigData f) {
@@ -199,6 +201,31 @@ public class ConfigManager extends AbsLifecycle {
                 .build();
     }
 
+    /**
+     * @param v
+     * @param f 增强比例, 2为2倍,也就是200%
+     * @return
+     */
+    public static Property makeProperty(final Property v, final float f) {
+        return Property.newBuilder()
+                .setHp(CalcUtil.change100(v.getHp(), f))
+                .setDamage(CalcUtil.change100(v.getDamage(), f))
+                .setDef(CalcUtil.change100(v.getDef(), f))
+                .setDefBase(CalcUtil.change100(v.getDefBase(), f))
+                .setAvoid(CalcUtil.change100(v.getAvoid(), f))
+                .setAvoidBase(CalcUtil.change100(v.getAvoidBase(), f))
+                .setCritical(CalcUtil.change100(v.getCritical(), f))
+                .setCriticalBase(CalcUtil.change100(v.getCriticalBase(), f))
+                .setCriticalDamage(CalcUtil.change100(v.getCriticalDamage(), f))
+                .build();
+    }
+
+    /**
+     * 属性
+     *
+     * @param v
+     * @return
+     */
     public static Property makeProperty(final DataConfigData v) {
         return Property.newBuilder()
                 .setHp(v.hp)

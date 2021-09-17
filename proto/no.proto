@@ -77,6 +77,8 @@ enum No {
     // Battle
     BattleEnterReq = 2030;
     BattleEndPush = 2031;
+    // Endless
+    EndlessStart = 2051;
 
     // Dungeon
     DungeonEnterReq = 2101;

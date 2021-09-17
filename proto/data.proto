@@ -61,8 +61,10 @@ message PlayerData {
     bool inMatch = 522;
     // 排位id
     int64 matchId = 523;
+    // 排位类型
     int32 matchType = 524;
 
+    int32 endlessLayer = 530;
     // 背包
     map<int32, BagSlot> bag = 601;
     // 背包容量
@@ -511,5 +513,6 @@ enum FightType{
     F_LADDER_SINGLE = 2;// 排位-单挑
     F_LADDER_MULTI = 3;// 排位-英雄 33-33
     F_BATTLE_DOUBLE = 4 ;// 双人副本 33-44-33
+    F_ENDLESS = 5 ;// 无尽模式 33-44
 
 }

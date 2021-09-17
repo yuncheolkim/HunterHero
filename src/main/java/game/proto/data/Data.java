@@ -447,10 +447,11 @@ public final class Data {
       "ONE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS_B\020\002*n\n\010HomeType\022\n\n" +
       "\006H_NONE\020\000\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_" +
       "WALL\020\004\022\014\n\010H_CARPET\020\005\022\n\n\006H_ROAD\020\006\022\013\n\007H_GO" +
-      "ODS\020\007\022\n\n\006H_ITEM\020\024*c\n\tFightType\022\n\n\006F_NONE" +
+      "ODS\020\007\022\n\n\006H_ITEM\020\024*r\n\tFightType\022\n\n\006F_NONE" +
       "\020\000\022\014\n\010F_BATTLE\020\001\022\023\n\017F_LADDER_SINGLE\020\002\022\022\n" +
-      "\016F_LADDER_MULTI\020\003\022\023\n\017F_BATTLE_DOUBLE\020\004B\025" +
-      "\n\017game.proto.dataH\001P\001b\006proto3"
+      "\016F_LADDER_MULTI\020\003\022\023\n\017F_BATTLE_DOUBLE\020\004\022\r" +
+      "\n\tF_ENDLESS\020\005B\025\n\017game.proto.dataH\001P\001b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -402,4 +402,29 @@ public class FightService {
         hero.init();
         return hero;
     }
+
+    /**
+     * 开始无尽模式战斗
+     *
+     * @param player
+     * @param battleId
+     */
+    public static void startEndless(final Player player, final int layer, int battleId) {
+        final BattleFormationDataBox formationDataBox = ConfigManager.battleFormationDataBox;
+        EvilAssert.notNull(formationDataBox.findByCollectId(battleId), "战役不存在");
+        ModuleAssert.isFalse(player.getPd().getFightInfoCount() > 0, ErrorEnum.ERR_113);
+
+        final FightStartPush.Builder fightStartPush = genBattleEnemy(battleId);
+        fightStartPush.setManual(ConfigManager.battleInfoDataBox.findById(battleId).manual);
+        List<FightEnemyInfo.Builder> infoList = fightStartPush.getInfoBuilderList();
+        EndlessRateConfigData byId = ConfigManager.endlessRateDataBox.findById(layer);
+
+        for (FightEnemyInfo.Builder info : infoList) {
+            info.setProperty(ConfigManager.makeProperty(info.getProperty(), byId.rate));
+        }
+        player.pd.addAllFightInfo(fightStartPush.getInfoList());
+        player.pd.setBattleId(battleId);
+        player.pd.setManual(fightStartPush.getManual());
+        player.send(No.FightStartPush, fightStartPush.buildPartial());
+    }
 }

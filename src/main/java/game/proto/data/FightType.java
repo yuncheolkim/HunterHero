@@ -44,6 +44,14 @@ public enum FightType
    * <code>F_BATTLE_DOUBLE = 4;</code>
    */
   F_BATTLE_DOUBLE(4),
+  /**
+   * <pre>
+   * 无尽模式 33-44
+   * </pre>
+   *
+   * <code>F_ENDLESS = 5;</code>
+   */
+  F_ENDLESS(5),
   UNRECOGNIZED(-1),
   ;
 
@@ -83,6 +91,14 @@ public enum FightType
    * <code>F_BATTLE_DOUBLE = 4;</code>
    */
   public static final int F_BATTLE_DOUBLE_VALUE = 4;
+  /**
+   * <pre>
+   * 无尽模式 33-44
+   * </pre>
+   *
+   * <code>F_ENDLESS = 5;</code>
+   */
+  public static final int F_ENDLESS_VALUE = 5;
 
 
   public final int getNumber() {
@@ -114,6 +130,7 @@ public enum FightType
       case 2: return F_LADDER_SINGLE;
       case 3: return F_LADDER_MULTI;
       case 4: return F_BATTLE_DOUBLE;
+      case 5: return F_ENDLESS;
       default: return null;
     }
   }

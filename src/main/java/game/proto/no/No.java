@@ -262,6 +262,14 @@ public enum No
   BattleEndPush(2031),
   /**
    * <pre>
+   * Endless
+   * </pre>
+   *
+   * <code>EndlessStart = 2051;</code>
+   */
+  EndlessStart(2051),
+  /**
+   * <pre>
    * Dungeon
    * </pre>
    *
@@ -734,6 +742,14 @@ public enum No
   public static final int BattleEndPush_VALUE = 2031;
   /**
    * <pre>
+   * Endless
+   * </pre>
+   *
+   * <code>EndlessStart = 2051;</code>
+   */
+  public static final int EndlessStart_VALUE = 2051;
+  /**
+   * <pre>
    * Dungeon
    * </pre>
    *
@@ -1028,6 +1044,7 @@ public enum No
       case 2027: return LadderFightAutoEndInner;
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
+      case 2051: return EndlessStart;
       case 2101: return DungeonEnterReq;
       case 2102: return DungeonFightReq;
       case 2103: return DungeonExitReq;
