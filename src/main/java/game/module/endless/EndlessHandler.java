@@ -1,5 +1,11 @@
 package game.module.endless;
 
+import game.anno.GameHandler;
+import game.module.fight.FightService;
+import game.player.Player;
+import game.proto.EndlessStartReq;
+import game.proto.no.No;
+
 /**
  * 无尽模式
  *
@@ -8,8 +14,10 @@ package game.module.endless;
  */
 public class EndlessHandler {
 
-    
-    public static void start() {
 
+    @GameHandler(value = No.EndlessStartReq, desc = "开始无尽模式挑战")
+    public static void start(Player player, EndlessStartReq req) {
+
+        FightService.startEndless(player, req.getLayer(), req.getBattleId());
     }
 }

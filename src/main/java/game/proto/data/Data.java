@@ -278,7 +278,7 @@ public final class Data {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ndata.proto\022\007Message\"\267\n\n\nPlayerData\022\013\n\003" +
+      "\n\ndata.proto\022\007Message\"\316\n\n\nPlayerData\022\013\n\003" +
       "pid\030\001 \001(\003\022\014\n\004name\030\002 \001(\t\022\017\n\007account\030\003 \001(\t" +
       "\022\r\n\005title\030\004 \001(\t\022\r\n\005level\030\t \001(\005\022\017\n\007hotelC" +
       "d\030\n \001(\003\022\017\n\007hotelId\030\013 \001(\005\022\024\n\014collectTitle" +
@@ -297,161 +297,161 @@ public final class Data {
       "o\030\210\004 \001(\0132\023.Message.LadderInfo\022-\n\017ladderM" +
       "ultiInfo\030\211\004 \001(\0132\023.Message.LadderInfo\022\020\n\007" +
       "inMatch\030\212\004 \001(\010\022\020\n\007matchId\030\213\004 \001(\003\022\022\n\tmatc" +
-      "hType\030\214\004 \001(\005\022*\n\003bag\030\331\004 \003(\0132\034.Message.Pla" +
-      "yerData.BagEntry\022\024\n\013bagCapacity\030\332\004 \001(\005\022\025" +
-      "\n\014bankCapacity\030\333\004 \001(\005\022,\n\004bank\030\334\004 \003(\0132\035.M" +
-      "essage.PlayerData.BankEntry\022&\n\tformation" +
-      "\030\275\005 \003(\0132\022.Message.Formation\022\036\n\025defaultFo" +
-      "rmationIndex\030\276\005 \001(\005\022\034\n\023arenaFormationInd" +
-      "ex\030\277\005 \001(\005\022@\n\016formationIndex\030\300\005 \003(\0132\'.Mes" +
-      "sage.PlayerData.FormationIndexEntry\022$\n\010h" +
-      "omeData\030\241\006 \001(\0132\021.Message.HomeData\032@\n\tHer" +
-      "oEntry\022\013\n\003key\030\001 \001(\005\022\"\n\005value\030\002 \001(\0132\023.Mes" +
-      "sage.PlayerHero:\0028\001\032<\n\010BagEntry\022\013\n\003key\030\001" +
-      " \001(\005\022\037\n\005value\030\002 \001(\0132\020.Message.BagSlot:\0028" +
-      "\001\032=\n\tBankEntry\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001" +
-      "(\0132\020.Message.BagSlot:\0028\001\0325\n\023FormationInd" +
-      "exEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"" +
-      "\372\003\n\010HomeData\022\r\n\005level\030\001 \001(\005\022\014\n\004name\030\002 \001(" +
-      "\t\022\013\n\003exp\030\003 \001(\005\022\020\n\010openArea\030\005 \001(\003\022\025\n\rreso" +
-      "urceLimit\030\006 \001(\005\022\017\n\007needExp\030\007 \001(\005\022\014\n\004coin" +
-      "\030\010 \001(\005\022\021\n\tcookLevel\030\t \001(\005\022/\n\007mapData\030\n \003" +
-      "(\0132\036.Message.HomeData.MapDataEntry\022;\n\rre" +
-      "sourceCount\030\013 \003(\0132$.Message.HomeData.Res" +
-      "ourceCountEntry\022\017\n\007taskDay\030\014 \001(\005\0229\n\014comp" +
-      "leteTask\030\r \003(\0132#.Message.HomeData.Comple" +
-      "teTaskEntry\032D\n\014MapDataEntry\022\013\n\003key\030\001 \001(\005" +
-      "\022#\n\005value\030\002 \001(\0132\024.Message.HomePosList:\0028" +
-      "\001\0324\n\022ResourceCountEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005" +
-      "value\030\002 \001(\005:\0028\001\0323\n\021CompleteTaskEntry\022\013\n\003" +
-      "key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\">\n\013HomePosL" +
-      "ist\022\013\n\003pos\030\001 \001(\005\022\"\n\004data\030\002 \003(\0132\024.Message" +
-      ".HomePosData\"c\n\013HomePosData\022\n\n\002id\030\001 \001(\005\022" +
-      "\013\n\003pos\030\002 \001(\005\022\037\n\004type\030\003 \001(\0162\021.Message.Hom" +
-      "eType\022\014\n\004time\030\004 \001(\003\022\014\n\004body\030\n \001(\014\"\030\n\010Hom" +
-      "eFarm\022\014\n\004time\030\001 \001(\003\"!\n\tHomeBuild\022\t\n\001x\030\001 " +
-      "\001(\005\022\t\n\001y\030\002 \001(\005\"6\n\010HomeRect\022\t\n\001x\030\001 \001(\005\022\t\n" +
-      "\001y\030\002 \001(\005\022\t\n\001w\030\003 \001(\005\022\t\n\001h\030\004 \001(\005\"\022\n\020Format" +
-      "ionEnhance\"L\n\tFormation\022\014\n\004name\030\001 \001(\t\022\"\n" +
-      "\003pos\030\003 \003(\0132\025.Message.FormationPos\022\r\n\005ind" +
-      "ex\030\004 \001(\005\"M\n\014FormationPos\022\r\n\005index\030\001 \001(\005\022" +
-      "\016\n\006heroId\030\002 \001(\005\022\r\n\005order\030\003 \001(\005\022\017\n\007enhanc" +
-      "e\030\004 \001(\005\"8\n\022FormationPosUpdate\022\"\n\003pos\030\002 \001" +
-      "(\0132\025.Message.FormationPos\"\200\001\n\010Resource\022\013" +
-      "\n\003exp\030\n \001(\005\022\017\n\007needExp\030\013 \001(\005\022\014\n\004gold\030\014 \001" +
-      "(\003\022\013\n\003lei\030\r \001(\005\022\r\n\005power\030\006 \001(\005\022\020\n\010maxPow" +
-      "er\030\007 \001(\005\022\032\n\022powerRecoverSecond\030\010 \001(\005\" \n\010" +
-      "ScenePos\022\t\n\001x\030\001 \001(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneD" +
-      "ata\022\n\n\002id\030\001 \001(\005\022\036\n\003pos\030\002 \001(\0132\021.Message.S" +
-      "cenePos\"\201\001\n\nPlayerTask\0221\n\007runTask\030\003 \003(\0132" +
-      " .Message.PlayerTask.RunTaskEntry\032@\n\014Run" +
-      "TaskEntry\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020." +
-      "Message.RunTask:\0028\001\"P\n\007RunTask\022\016\n\006taskId" +
-      "\030\001 \001(\005\022\020\n\010complete\030\002 \001(\010\022#\n\006target\030\003 \003(\013" +
-      "2\023.Message.TaskTarget\"9\n\nTaskTarget\022\n\n\002i" +
-      "d\030\001 \001(\005\022\r\n\005value\030\002 \001(\005\022\020\n\010complete\030\003 \001(\010" +
-      "\"\216\003\n\nPlayerHero\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001" +
-      "(\005\022\013\n\003exp\030\003 \001(\005\022#\n\010property\030\005 \001(\0132\021.Mess" +
-      "age.Property\022/\n\016propertyEffect\030\006 \001(\0132\027.M" +
-      "essage.PropertyEffect\022\016\n\006talent\030\007 \001(\005\0225\n" +
-      "\tequipment\030\010 \003(\0132\".Message.PlayerHero.Eq" +
-      "uipmentEntry\0221\n\007powerUp\030\t \003(\0132 .Message." +
-      "PlayerHero.PowerUpEntry\032D\n\016EquipmentEntr" +
-      "y\022\013\n\003key\030\001 \001(\005\022!\n\005value\030\002 \001(\0132\022.Message." +
-      "Equipment:\0028\001\032B\n\014PowerUpEntry\022\013\n\003key\030\001 \001" +
-      "(\005\022!\n\005value\030\002 \001(\0132\022.Message.HeroRealm:\0028" +
-      "\001\"&\n\tHeroRealm\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(" +
-      "\005\"K\n\tEquipment\022\n\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(" +
-      "\005\022#\n\010property\030\004 \001(\0132\021.Message.Property\"\265" +
-      "\001\n\010Property\022\n\n\002hp\030\001 \001(\005\022\016\n\006damage\030\002 \001(\005\022" +
-      "\013\n\003def\030\003 \001(\005\022\r\n\005avoid\030\004 \001(\005\022\020\n\010critical\030" +
-      "\005 \001(\005\022\026\n\016criticalDamage\030\006 \001(\005\022\r\n\005speed\030\007" +
-      " \001(\005\022\021\n\tavoidBase\030\010 \001(\005\022\024\n\014criticalBase\030" +
-      "\t \001(\005\022\017\n\007defBase\030\n \001(\005\"J\n\016PropertyEffect" +
-      "\022\017\n\007defRate\030\001 \001(\005\022\021\n\tavoidRate\030\002 \001(\005\022\024\n\014" +
-      "criticalRate\030\003 \001(\005\"K\n\014FightHeroPos\022\016\n\006he" +
-      "roId\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\017\n\007enhance\030\003 \001(\005" +
-      "\022\r\n\005order\030\004 \001(\005\"\215\001\n\016FightEnemyInfo\022\n\n\002id" +
-      "\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\r\n\005level\030\003 \001(\005\022#\n\010pr" +
-      "operty\030\004 \001(\0132\021.Message.Property\022 \n\004type\030" +
-      "\005 \001(\0162\022.Message.EnemyType\022\014\n\004name\030\006 \001(\t\"" +
-      "O\n\016FightHmHeroPos\022\016\n\006heroId\030\001 \001(\005\022\017\n\007fro" +
-      "mPos\030\002 \001(\005\022\r\n\005toPos\030\003 \001(\005\022\r\n\005order\030\004 \001(\005" +
-      "\"`\n\016HeroDataRecord\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 " +
-      "\001(\005\022\n\n\002hp\030\003 \001(\005\022\r\n\005level\030\004 \001(\005\022\014\n\004type\030\005" +
-      " \001(\005\022\014\n\004name\030\n \001(\t\"=\n\013RoundRecord\022\r\n\005rou" +
-      "nd\030\001 \001(\005\022\037\n\006record\030\002 \003(\0132\017.Message.Recor" +
-      "d\"\375\001\n\006Record\022!\n\004type\030\001 \001(\0162\023.Message.Rec" +
-      "ordType\022\016\n\006heroId\030\002 \001(\005\022\n\n\002id\030\003 \001(\005\022\013\n\003p" +
-      "os\030\004 \001(\005\022!\n\002dp\030\005 \001(\0162\025.Message.DisplayPo" +
-      "int\022\016\n\006target\030\013 \003(\005\022\'\n\ndamageType\030\025 \001(\0162" +
-      "\023.Message.DamageType\022\r\n\005value\030\026 \001(\005\022\023\n\013a" +
-      "ctionPoint\030  \001(\t\022\'\n\nbuffRecord\030) \001(\0132\023.M" +
-      "essage.BuffRecord\"|\n\nBuffRecord\022\016\n\006buffI" +
-      "d\030\001 \001(\005\022\r\n\005round\030\002 \001(\005\022\023\n\013remainRound\030\003 " +
-      "\001(\005\022\n\n\002i1\030\004 \001(\005\022\n\n\002i2\030\005 \001(\005\022\n\n\002i3\030\006 \001(\005\022" +
-      "\n\n\002f1\030\025 \001(\002\022\n\n\002f2\030\026 \001(\002\"\201\001\n\006Reward\022!\n\004ty" +
-      "pe\030d \001(\0162\023.Message.RewardType\022\020\n\010rewardI" +
-      "d\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022\016\n\006heroId\030\003 \001(\005\022#" +
-      "\n\010property\030\n \001(\0132\021.Message.Property\"N\n\010I" +
-      "temData\022\016\n\006itemId\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022#" +
-      "\n\010property\030\003 \001(\0132\021.Message.Property\":\n\007B" +
-      "agSlot\022\016\n\006slotId\030\001 \001(\005\022\037\n\004data\030\002 \001(\0132\021.M" +
-      "essage.ItemData\"7\n\007Dungeon\022\n\n\002id\030\001 \001(\005\022\016" +
-      "\n\006bossId\030\002 \001(\005\022\020\n\010defeated\030\003 \003(\005\"\031\n\013Expr" +
-      "essInfo\022\n\n\002id\030\001 \001(\005\"\321\002\n\nLadderInfo\022\r\n\005or" +
-      "der\030\001 \001(\005\022\r\n\005score\030\002 \001(\005\022\014\n\004win1\030\003 \001(\005\022\014" +
-      "\n\004win2\030\004 \001(\005\022\r\n\005lose1\030\005 \001(\005\022\r\n\005lose2\030\006 \001" +
-      "(\005\022\016\n\006heroId\030\007 \001(\005\0225\n\theroScore\030\t \003(\0132\"." +
-      "Message.LadderInfo.HeroScoreEntry\022+\n\006rep" +
-      "ort\030\n \003(\0132\033.Message.LadderSingleReport\022+" +
-      "\n\014ladderReport\030\013 \003(\0132\025.Message.LadderRep" +
-      "ort\032J\n\016HeroScoreEntry\022\013\n\003key\030\001 \001(\005\022\'\n\005va" +
-      "lue\030\002 \001(\0132\030.Message.LadderHeroScore:\0028\001\"" +
-      "K\n\017LadderHeroScore\022\014\n\004win1\030\001 \001(\005\022\014\n\004win2" +
-      "\030\002 \001(\005\022\r\n\005lose1\030\003 \001(\005\022\r\n\005lose2\030\004 \001(\005\"S\n\014" +
-      "LadderReport\022\013\n\003uid\030\001 \001(\003\022(\n\tformation\030\002" +
-      " \001(\0132\025.Message.FormationPos\022\014\n\004name\030\005 \001(" +
-      "\t\"\204\001\n\022LadderSingleReport\022\r\n\005winId\030\001 \001(\003\022" +
-      "\r\n\005first\030\002 \001(\003\022\'\n\002p1\030\005 \001(\0132\033.Message.Lad" +
-      "derSinglePlayer\022\'\n\002p2\030\006 \001(\0132\033.Message.La" +
-      "dderSinglePlayer\"?\n\022LadderSinglePlayer\022\013" +
-      "\n\003uid\030\001 \001(\003\022\016\n\006heroId\030\002 \001(\005\022\014\n\004name\030\005 \001(" +
-      "\t\"\342\001\n\013FightRecord\022#\n\005round\030\001 \003(\0132\024.Messa" +
-      "ge.RoundRecord\022&\n\005sideA\030\002 \003(\0132\027.Message." +
-      "HeroDataRecord\022&\n\005sideB\030\003 \003(\0132\027.Message." +
-      "HeroDataRecord\022\013\n\003win\030\004 \001(\010\022\037\n\006reward\030\005 " +
-      "\003(\0132\017.Message.Reward\022\016\n\006winUid\030\006 \001(\003\022 \n\004" +
-      "type\030\007 \001(\0162\022.Message.FightType*+\n\013NpcSho" +
-      "wEnum\022\014\n\010NPC_NONE\020\000\022\016\n\nNPC_SHOW_1\020\001*S\n\017E" +
-      "numItemQuality\022\n\n\006Q_NONE\020\000\022\007\n\003Q_W\020\001\022\007\n\003Q" +
-      "_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003Q_P\020\004\022\007\n\003Q_O\020\005\022\007\n\003Q_R\020\006" +
-      "*5\n\016EnumDamageType\022\n\n\006D_NONE\020\000\022\n\n\006D_FIRE" +
-      "\020\001\022\013\n\007D_LIGHT\020\002*e\n\rFormationType\022\022\n\016FORM" +
-      "ATION_NONE\020\000\022\025\n\021FORMATION_DEFAULT\020\001\022\023\n\017F" +
-      "ORMATION_ARENA\020\002\022\024\n\020FORMATION_LADDER\020\003*E" +
-      "\n\nRewardType\022\021\n\rREWARD_NORMAL\020\000\022\023\n\017REWAR" +
-      "D_RESOURCE\020\001\022\017\n\013REWARD_ITEM\020\002*\245\001\n\nRecord" +
-      "Type\022\n\n\006ACTION\020\000\022\n\n\006ATTACK\020\001\022\021\n\rHEALTH_C" +
-      "HANGE\020\002\022\t\n\005AVOID\020\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF" +
-      "_REMOVE\020\005\022\017\n\013BUFF_UPDATE\020\006\022\017\n\013HERO_ACTIO" +
-      "N\020\007\022\r\n\tSKILL_USE\020\010\022\021\n\rSHIELD_CHANGE\020\t*h\n" +
-      "\nDamageType\022\017\n\013DAMAGE_NONE\020\000\022\021\n\rDAMAGE_N" +
-      "ORMAL\020\001\022\023\n\017DAMAGE_CRITICAL\020\002\022\020\n\014DAMAGE_S" +
-      "KILL\020\003\022\017\n\013DAMAGE_BUFF\020\004*F\n\014DisplayPoint\022" +
-      "\014\n\010DP_ATT_1\020\000\022\014\n\010DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020" +
-      "\002\022\014\n\010DP_DEF_1\020\003*<\n\tEnemyType\022\014\n\010CREATURE" +
-      "\020\000\022\n\n\006PLAYER\020\001\022\007\n\003NPC\020\002\022\014\n\010EXERCISE\020\003*<\n" +
-      "\020ManualActionType\022\013\n\007MA_NONE\020\000\022\r\n\tMA_ATT" +
-      "ACK\020\001\022\014\n\010MA_SKILL\020\002*,\n\tFightSide\022\013\n\007FS_N" +
-      "ONE\020\000\022\010\n\004FS_A\020\001\022\010\n\004FS_B\020\002*n\n\010HomeType\022\n\n" +
-      "\006H_NONE\020\000\022\n\n\006H_FARM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_" +
-      "WALL\020\004\022\014\n\010H_CARPET\020\005\022\n\n\006H_ROAD\020\006\022\013\n\007H_GO" +
-      "ODS\020\007\022\n\n\006H_ITEM\020\024*r\n\tFightType\022\n\n\006F_NONE" +
-      "\020\000\022\014\n\010F_BATTLE\020\001\022\023\n\017F_LADDER_SINGLE\020\002\022\022\n" +
-      "\016F_LADDER_MULTI\020\003\022\023\n\017F_BATTLE_DOUBLE\020\004\022\r" +
-      "\n\tF_ENDLESS\020\005B\025\n\017game.proto.dataH\001P\001b\006pr" +
-      "oto3"
+      "hType\030\214\004 \001(\005\022\025\n\014endlessLayer\030\222\004 \001(\005\022*\n\003b" +
+      "ag\030\331\004 \003(\0132\034.Message.PlayerData.BagEntry\022" +
+      "\024\n\013bagCapacity\030\332\004 \001(\005\022\025\n\014bankCapacity\030\333\004" +
+      " \001(\005\022,\n\004bank\030\334\004 \003(\0132\035.Message.PlayerData" +
+      ".BankEntry\022&\n\tformation\030\275\005 \003(\0132\022.Message" +
+      ".Formation\022\036\n\025defaultFormationIndex\030\276\005 \001" +
+      "(\005\022\034\n\023arenaFormationIndex\030\277\005 \001(\005\022@\n\016form" +
+      "ationIndex\030\300\005 \003(\0132\'.Message.PlayerData.F" +
+      "ormationIndexEntry\022$\n\010homeData\030\241\006 \001(\0132\021." +
+      "Message.HomeData\032@\n\tHeroEntry\022\013\n\003key\030\001 \001" +
+      "(\005\022\"\n\005value\030\002 \001(\0132\023.Message.PlayerHero:\002" +
+      "8\001\032<\n\010BagEntry\022\013\n\003key\030\001 \001(\005\022\037\n\005value\030\002 \001" +
+      "(\0132\020.Message.BagSlot:\0028\001\032=\n\tBankEntry\022\013\n" +
+      "\003key\030\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020.Message.BagS" +
+      "lot:\0028\001\0325\n\023FormationIndexEntry\022\013\n\003key\030\001 " +
+      "\001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\"\372\003\n\010HomeData\022\r\n\005l" +
+      "evel\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\022\013\n\003exp\030\003 \001(\005\022\020\n" +
+      "\010openArea\030\005 \001(\003\022\025\n\rresourceLimit\030\006 \001(\005\022\017" +
+      "\n\007needExp\030\007 \001(\005\022\014\n\004coin\030\010 \001(\005\022\021\n\tcookLev" +
+      "el\030\t \001(\005\022/\n\007mapData\030\n \003(\0132\036.Message.Home" +
+      "Data.MapDataEntry\022;\n\rresourceCount\030\013 \003(\013" +
+      "2$.Message.HomeData.ResourceCountEntry\022\017" +
+      "\n\007taskDay\030\014 \001(\005\0229\n\014completeTask\030\r \003(\0132#." +
+      "Message.HomeData.CompleteTaskEntry\032D\n\014Ma" +
+      "pDataEntry\022\013\n\003key\030\001 \001(\005\022#\n\005value\030\002 \001(\0132\024" +
+      ".Message.HomePosList:\0028\001\0324\n\022ResourceCoun" +
+      "tEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\005:\0028\001\0323" +
+      "\n\021CompleteTaskEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005valu" +
+      "e\030\002 \001(\005:\0028\001\">\n\013HomePosList\022\013\n\003pos\030\001 \001(\005\022" +
+      "\"\n\004data\030\002 \003(\0132\024.Message.HomePosData\"c\n\013H" +
+      "omePosData\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\037\n\004t" +
+      "ype\030\003 \001(\0162\021.Message.HomeType\022\014\n\004time\030\004 \001" +
+      "(\003\022\014\n\004body\030\n \001(\014\"\030\n\010HomeFarm\022\014\n\004time\030\001 \001" +
+      "(\003\"!\n\tHomeBuild\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\"6\n" +
+      "\010HomeRect\022\t\n\001x\030\001 \001(\005\022\t\n\001y\030\002 \001(\005\022\t\n\001w\030\003 \001" +
+      "(\005\022\t\n\001h\030\004 \001(\005\"\022\n\020FormationEnhance\"L\n\tFor" +
+      "mation\022\014\n\004name\030\001 \001(\t\022\"\n\003pos\030\003 \003(\0132\025.Mess" +
+      "age.FormationPos\022\r\n\005index\030\004 \001(\005\"M\n\014Forma" +
+      "tionPos\022\r\n\005index\030\001 \001(\005\022\016\n\006heroId\030\002 \001(\005\022\r" +
+      "\n\005order\030\003 \001(\005\022\017\n\007enhance\030\004 \001(\005\"8\n\022Format" +
+      "ionPosUpdate\022\"\n\003pos\030\002 \001(\0132\025.Message.Form" +
+      "ationPos\"\200\001\n\010Resource\022\013\n\003exp\030\n \001(\005\022\017\n\007ne" +
+      "edExp\030\013 \001(\005\022\014\n\004gold\030\014 \001(\003\022\013\n\003lei\030\r \001(\005\022\r" +
+      "\n\005power\030\006 \001(\005\022\020\n\010maxPower\030\007 \001(\005\022\032\n\022power" +
+      "RecoverSecond\030\010 \001(\005\" \n\010ScenePos\022\t\n\001x\030\001 \001" +
+      "(\002\022\t\n\001y\030\002 \001(\002\"7\n\tSceneData\022\n\n\002id\030\001 \001(\005\022\036" +
+      "\n\003pos\030\002 \001(\0132\021.Message.ScenePos\"\201\001\n\nPlaye" +
+      "rTask\0221\n\007runTask\030\003 \003(\0132 .Message.PlayerT" +
+      "ask.RunTaskEntry\032@\n\014RunTaskEntry\022\013\n\003key\030" +
+      "\001 \001(\005\022\037\n\005value\030\002 \001(\0132\020.Message.RunTask:\002" +
+      "8\001\"P\n\007RunTask\022\016\n\006taskId\030\001 \001(\005\022\020\n\010complet" +
+      "e\030\002 \001(\010\022#\n\006target\030\003 \003(\0132\023.Message.TaskTa" +
+      "rget\"9\n\nTaskTarget\022\n\n\002id\030\001 \001(\005\022\r\n\005value\030" +
+      "\002 \001(\005\022\020\n\010complete\030\003 \001(\010\"\216\003\n\nPlayerHero\022\n" +
+      "\n\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022\013\n\003exp\030\003 \001(\005\022#" +
+      "\n\010property\030\005 \001(\0132\021.Message.Property\022/\n\016p" +
+      "ropertyEffect\030\006 \001(\0132\027.Message.PropertyEf" +
+      "fect\022\016\n\006talent\030\007 \001(\005\0225\n\tequipment\030\010 \003(\0132" +
+      "\".Message.PlayerHero.EquipmentEntry\0221\n\007p" +
+      "owerUp\030\t \003(\0132 .Message.PlayerHero.PowerU" +
+      "pEntry\032D\n\016EquipmentEntry\022\013\n\003key\030\001 \001(\005\022!\n" +
+      "\005value\030\002 \001(\0132\022.Message.Equipment:\0028\001\032B\n\014" +
+      "PowerUpEntry\022\013\n\003key\030\001 \001(\005\022!\n\005value\030\002 \001(\013" +
+      "2\022.Message.HeroRealm:\0028\001\"&\n\tHeroRealm\022\n\n" +
+      "\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\"K\n\tEquipment\022\n\n" +
+      "\002id\030\001 \001(\005\022\r\n\005level\030\002 \001(\005\022#\n\010property\030\004 \001" +
+      "(\0132\021.Message.Property\"\265\001\n\010Property\022\n\n\002hp" +
+      "\030\001 \001(\005\022\016\n\006damage\030\002 \001(\005\022\013\n\003def\030\003 \001(\005\022\r\n\005a" +
+      "void\030\004 \001(\005\022\020\n\010critical\030\005 \001(\005\022\026\n\016critical" +
+      "Damage\030\006 \001(\005\022\r\n\005speed\030\007 \001(\005\022\021\n\tavoidBase" +
+      "\030\010 \001(\005\022\024\n\014criticalBase\030\t \001(\005\022\017\n\007defBase\030" +
+      "\n \001(\005\"J\n\016PropertyEffect\022\017\n\007defRate\030\001 \001(\005" +
+      "\022\021\n\tavoidRate\030\002 \001(\005\022\024\n\014criticalRate\030\003 \001(" +
+      "\005\"K\n\014FightHeroPos\022\016\n\006heroId\030\001 \001(\005\022\013\n\003pos" +
+      "\030\002 \001(\005\022\017\n\007enhance\030\003 \001(\005\022\r\n\005order\030\004 \001(\005\"\215" +
+      "\001\n\016FightEnemyInfo\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 \001" +
+      "(\005\022\r\n\005level\030\003 \001(\005\022#\n\010property\030\004 \001(\0132\021.Me" +
+      "ssage.Property\022 \n\004type\030\005 \001(\0162\022.Message.E" +
+      "nemyType\022\014\n\004name\030\006 \001(\t\"O\n\016FightHmHeroPos" +
+      "\022\016\n\006heroId\030\001 \001(\005\022\017\n\007fromPos\030\002 \001(\005\022\r\n\005toP" +
+      "os\030\003 \001(\005\022\r\n\005order\030\004 \001(\005\"`\n\016HeroDataRecor" +
+      "d\022\n\n\002id\030\001 \001(\005\022\013\n\003pos\030\002 \001(\005\022\n\n\002hp\030\003 \001(\005\022\r" +
+      "\n\005level\030\004 \001(\005\022\014\n\004type\030\005 \001(\005\022\014\n\004name\030\n \001(" +
+      "\t\"=\n\013RoundRecord\022\r\n\005round\030\001 \001(\005\022\037\n\006recor" +
+      "d\030\002 \003(\0132\017.Message.Record\"\375\001\n\006Record\022!\n\004t" +
+      "ype\030\001 \001(\0162\023.Message.RecordType\022\016\n\006heroId" +
+      "\030\002 \001(\005\022\n\n\002id\030\003 \001(\005\022\013\n\003pos\030\004 \001(\005\022!\n\002dp\030\005 " +
+      "\001(\0162\025.Message.DisplayPoint\022\016\n\006target\030\013 \003" +
+      "(\005\022\'\n\ndamageType\030\025 \001(\0162\023.Message.DamageT" +
+      "ype\022\r\n\005value\030\026 \001(\005\022\023\n\013actionPoint\030  \001(\t\022" +
+      "\'\n\nbuffRecord\030) \001(\0132\023.Message.BuffRecord" +
+      "\"|\n\nBuffRecord\022\016\n\006buffId\030\001 \001(\005\022\r\n\005round\030" +
+      "\002 \001(\005\022\023\n\013remainRound\030\003 \001(\005\022\n\n\002i1\030\004 \001(\005\022\n" +
+      "\n\002i2\030\005 \001(\005\022\n\n\002i3\030\006 \001(\005\022\n\n\002f1\030\025 \001(\002\022\n\n\002f2" +
+      "\030\026 \001(\002\"\201\001\n\006Reward\022!\n\004type\030d \001(\0162\023.Messag" +
+      "e.RewardType\022\020\n\010rewardId\030\001 \001(\005\022\r\n\005count\030" +
+      "\002 \001(\005\022\016\n\006heroId\030\003 \001(\005\022#\n\010property\030\n \001(\0132" +
+      "\021.Message.Property\"N\n\010ItemData\022\016\n\006itemId" +
+      "\030\001 \001(\005\022\r\n\005count\030\002 \001(\005\022#\n\010property\030\003 \001(\0132" +
+      "\021.Message.Property\":\n\007BagSlot\022\016\n\006slotId\030" +
+      "\001 \001(\005\022\037\n\004data\030\002 \001(\0132\021.Message.ItemData\"7" +
+      "\n\007Dungeon\022\n\n\002id\030\001 \001(\005\022\016\n\006bossId\030\002 \001(\005\022\020\n" +
+      "\010defeated\030\003 \003(\005\"\031\n\013ExpressInfo\022\n\n\002id\030\001 \001" +
+      "(\005\"\321\002\n\nLadderInfo\022\r\n\005order\030\001 \001(\005\022\r\n\005scor" +
+      "e\030\002 \001(\005\022\014\n\004win1\030\003 \001(\005\022\014\n\004win2\030\004 \001(\005\022\r\n\005l" +
+      "ose1\030\005 \001(\005\022\r\n\005lose2\030\006 \001(\005\022\016\n\006heroId\030\007 \001(" +
+      "\005\0225\n\theroScore\030\t \003(\0132\".Message.LadderInf" +
+      "o.HeroScoreEntry\022+\n\006report\030\n \003(\0132\033.Messa" +
+      "ge.LadderSingleReport\022+\n\014ladderReport\030\013 " +
+      "\003(\0132\025.Message.LadderReport\032J\n\016HeroScoreE" +
+      "ntry\022\013\n\003key\030\001 \001(\005\022\'\n\005value\030\002 \001(\0132\030.Messa" +
+      "ge.LadderHeroScore:\0028\001\"K\n\017LadderHeroScor" +
+      "e\022\014\n\004win1\030\001 \001(\005\022\014\n\004win2\030\002 \001(\005\022\r\n\005lose1\030\003" +
+      " \001(\005\022\r\n\005lose2\030\004 \001(\005\"S\n\014LadderReport\022\013\n\003u" +
+      "id\030\001 \001(\003\022(\n\tformation\030\002 \001(\0132\025.Message.Fo" +
+      "rmationPos\022\014\n\004name\030\005 \001(\t\"\204\001\n\022LadderSingl" +
+      "eReport\022\r\n\005winId\030\001 \001(\003\022\r\n\005first\030\002 \001(\003\022\'\n" +
+      "\002p1\030\005 \001(\0132\033.Message.LadderSinglePlayer\022\'" +
+      "\n\002p2\030\006 \001(\0132\033.Message.LadderSinglePlayer\"" +
+      "?\n\022LadderSinglePlayer\022\013\n\003uid\030\001 \001(\003\022\016\n\006he" +
+      "roId\030\002 \001(\005\022\014\n\004name\030\005 \001(\t\"\342\001\n\013FightRecord" +
+      "\022#\n\005round\030\001 \003(\0132\024.Message.RoundRecord\022&\n" +
+      "\005sideA\030\002 \003(\0132\027.Message.HeroDataRecord\022&\n" +
+      "\005sideB\030\003 \003(\0132\027.Message.HeroDataRecord\022\013\n" +
+      "\003win\030\004 \001(\010\022\037\n\006reward\030\005 \003(\0132\017.Message.Rew" +
+      "ard\022\016\n\006winUid\030\006 \001(\003\022 \n\004type\030\007 \001(\0162\022.Mess" +
+      "age.FightType*+\n\013NpcShowEnum\022\014\n\010NPC_NONE" +
+      "\020\000\022\016\n\nNPC_SHOW_1\020\001*S\n\017EnumItemQuality\022\n\n" +
+      "\006Q_NONE\020\000\022\007\n\003Q_W\020\001\022\007\n\003Q_G\020\002\022\007\n\003Q_B\020\003\022\007\n\003" +
+      "Q_P\020\004\022\007\n\003Q_O\020\005\022\007\n\003Q_R\020\006*5\n\016EnumDamageTyp" +
+      "e\022\n\n\006D_NONE\020\000\022\n\n\006D_FIRE\020\001\022\013\n\007D_LIGHT\020\002*e" +
+      "\n\rFormationType\022\022\n\016FORMATION_NONE\020\000\022\025\n\021F" +
+      "ORMATION_DEFAULT\020\001\022\023\n\017FORMATION_ARENA\020\002\022" +
+      "\024\n\020FORMATION_LADDER\020\003*E\n\nRewardType\022\021\n\rR" +
+      "EWARD_NORMAL\020\000\022\023\n\017REWARD_RESOURCE\020\001\022\017\n\013R" +
+      "EWARD_ITEM\020\002*\245\001\n\nRecordType\022\n\n\006ACTION\020\000\022" +
+      "\n\n\006ATTACK\020\001\022\021\n\rHEALTH_CHANGE\020\002\022\t\n\005AVOID\020" +
+      "\003\022\014\n\010BUFF_ADD\020\004\022\017\n\013BUFF_REMOVE\020\005\022\017\n\013BUFF" +
+      "_UPDATE\020\006\022\017\n\013HERO_ACTION\020\007\022\r\n\tSKILL_USE\020" +
+      "\010\022\021\n\rSHIELD_CHANGE\020\t*h\n\nDamageType\022\017\n\013DA" +
+      "MAGE_NONE\020\000\022\021\n\rDAMAGE_NORMAL\020\001\022\023\n\017DAMAGE" +
+      "_CRITICAL\020\002\022\020\n\014DAMAGE_SKILL\020\003\022\017\n\013DAMAGE_" +
+      "BUFF\020\004*F\n\014DisplayPoint\022\014\n\010DP_ATT_1\020\000\022\014\n\010" +
+      "DP_ATT_2\020\001\022\014\n\010DP_ATT_3\020\002\022\014\n\010DP_DEF_1\020\003*<" +
+      "\n\tEnemyType\022\014\n\010CREATURE\020\000\022\n\n\006PLAYER\020\001\022\007\n" +
+      "\003NPC\020\002\022\014\n\010EXERCISE\020\003*<\n\020ManualActionType" +
+      "\022\013\n\007MA_NONE\020\000\022\r\n\tMA_ATTACK\020\001\022\014\n\010MA_SKILL" +
+      "\020\002*,\n\tFightSide\022\013\n\007FS_NONE\020\000\022\010\n\004FS_A\020\001\022\010" +
+      "\n\004FS_B\020\002*n\n\010HomeType\022\n\n\006H_NONE\020\000\022\n\n\006H_FA" +
+      "RM\020\002\022\013\n\007H_BUILD\020\003\022\n\n\006H_WALL\020\004\022\014\n\010H_CARPE" +
+      "T\020\005\022\n\n\006H_ROAD\020\006\022\013\n\007H_GOODS\020\007\022\n\n\006H_ITEM\020\024" +
+      "*r\n\tFightType\022\n\n\006F_NONE\020\000\022\014\n\010F_BATTLE\020\001\022" +
+      "\023\n\017F_LADDER_SINGLE\020\002\022\022\n\016F_LADDER_MULTI\020\003" +
+      "\022\023\n\017F_BATTLE_DOUBLE\020\004\022\r\n\tF_ENDLESS\020\005B\025\n\017" +
+      "game.proto.dataH\001P\001b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -462,7 +462,7 @@ public final class Data {
     internal_static_Message_PlayerData_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Message_PlayerData_descriptor,
-        new java.lang.String[] { "Pid", "Name", "Account", "Title", "Level", "HotelCd", "HotelId", "CollectTitle", "FishAreaId", "SkillFishLevel", "BattleId", "ShowNpc", "VipLevel", "VipExp", "OpenFeature", "Task", "SceneData", "Resource", "ExpressInfo", "ExpressId", "Hero", "FightInfo", "Manual", "Dungeon", "LadderSingleInfo", "LadderMultiInfo", "InMatch", "MatchId", "MatchType", "Bag", "BagCapacity", "BankCapacity", "Bank", "Formation", "DefaultFormationIndex", "ArenaFormationIndex", "FormationIndex", "HomeData", });
+        new java.lang.String[] { "Pid", "Name", "Account", "Title", "Level", "HotelCd", "HotelId", "CollectTitle", "FishAreaId", "SkillFishLevel", "BattleId", "ShowNpc", "VipLevel", "VipExp", "OpenFeature", "Task", "SceneData", "Resource", "ExpressInfo", "ExpressId", "Hero", "FightInfo", "Manual", "Dungeon", "LadderSingleInfo", "LadderMultiInfo", "InMatch", "MatchId", "MatchType", "EndlessLayer", "Bag", "BagCapacity", "BankCapacity", "Bank", "Formation", "DefaultFormationIndex", "ArenaFormationIndex", "FormationIndex", "HomeData", });
     internal_static_Message_PlayerData_HeroEntry_descriptor =
       internal_static_Message_PlayerData_descriptor.getNestedTypes().get(0);
     internal_static_Message_PlayerData_HeroEntry_fieldAccessorTable = new

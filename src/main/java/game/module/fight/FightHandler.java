@@ -244,6 +244,7 @@ public class FightHandler {
         action.pid = player.getPid();
         action.actions = req.getPosList();
         Round ready = hmBattle.ready(action);
+        
         Logs.trace(JsonUtil.toJsonString(ready));
 
         player.getTransport().send(No.FightHmActionReq, FightHmActionRes.newBuilder().setRound(roundReport(ready)).build());
@@ -259,12 +260,12 @@ public class FightHandler {
             }
 
             player.getTransport().send(No.FightHmEndPush, result.buildPartial());
-            if (player.pd.getBattleId() != 0) {
-                BattleEndEvent event = new BattleEndEvent();
-                event.battleId = player.pd.getBattleId();
-                event.success = result.getWin();
-                EventManager.firePlayerEvent(player, event);
-            }
+            // Event
+            BattleEndEvent event = new BattleEndEvent();
+            event.battleId = player.pd.getBattleId();
+            event.success = result.getWin();
+            event.fightType = hmBattle.getFightType();
+            EventManager.firePlayerEvent(player, event);
 
             FightService.endFight(player);
 

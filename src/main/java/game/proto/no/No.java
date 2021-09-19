@@ -265,9 +265,9 @@ public enum No
    * Endless
    * </pre>
    *
-   * <code>EndlessStart = 2051;</code>
+   * <code>EndlessStartReq = 2041;</code>
    */
-  EndlessStart(2051),
+  EndlessStartReq(2041),
   /**
    * <pre>
    * Dungeon
@@ -745,9 +745,9 @@ public enum No
    * Endless
    * </pre>
    *
-   * <code>EndlessStart = 2051;</code>
+   * <code>EndlessStartReq = 2041;</code>
    */
-  public static final int EndlessStart_VALUE = 2051;
+  public static final int EndlessStartReq_VALUE = 2041;
   /**
    * <pre>
    * Dungeon
@@ -1044,7 +1044,7 @@ public enum No
       case 2027: return LadderFightAutoEndInner;
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
-      case 2051: return EndlessStart;
+      case 2041: return EndlessStartReq;
       case 2101: return DungeonEnterReq;
       case 2102: return DungeonFightReq;
       case 2103: return DungeonExitReq;

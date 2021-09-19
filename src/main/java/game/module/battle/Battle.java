@@ -381,6 +381,10 @@ public class Battle {
     public void setFightType(FightType fightType) {
         this.fightType = fightType;
     }
+
+    public FightType getFightType() {
+        return fightType;
+    }
 }
 
 

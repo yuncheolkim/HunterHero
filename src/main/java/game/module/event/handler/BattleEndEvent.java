@@ -2,6 +2,7 @@ package game.module.event.handler;
 
 import game.module.event.EventType;
 import game.module.event.IEvent;
+import game.proto.data.FightType;
 
 /**
  * @author Yunzhe.Jin
@@ -11,6 +12,7 @@ public class BattleEndEvent implements IEvent {
 
     public boolean success;
     public int battleId;
+    public FightType fightType;
 
     @Override
     public EventType type() {

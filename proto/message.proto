@@ -530,3 +530,9 @@ message LadderResultPush{
 message LadderFightEndReq{
     int64 matchId = 1;
 }
+///////////////////////////////////////////////  Endless
+
+message EndlessStartReq{
+    int32  battleId = 1;
+    int32 layer = 2;
+}

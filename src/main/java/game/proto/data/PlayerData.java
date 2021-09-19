@@ -309,6 +309,11 @@ private static final long serialVersionUID = 0L;
             matchType_ = input.readInt32();
             break;
           }
+          case 4240: {
+
+            endlessLayer_ = input.readInt32();
+            break;
+          }
           case 4810: {
             if (!((mutable_bitField0_ & 0x00000010) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
@@ -1283,12 +1288,27 @@ private static final long serialVersionUID = 0L;
   public static final int MATCHTYPE_FIELD_NUMBER = 524;
   private int matchType_;
   /**
+   * <pre>
+   * 排位类型
+   * </pre>
+   *
    * <code>int32 matchType = 524;</code>
    * @return The matchType.
    */
   @java.lang.Override
   public int getMatchType() {
     return matchType_;
+  }
+
+  public static final int ENDLESSLAYER_FIELD_NUMBER = 530;
+  private int endlessLayer_;
+  /**
+   * <code>int32 endlessLayer = 530;</code>
+   * @return The endlessLayer.
+   */
+  @java.lang.Override
+  public int getEndlessLayer() {
+    return endlessLayer_;
   }
 
   public static final int BAG_FIELD_NUMBER = 601;
@@ -1853,6 +1873,9 @@ private static final long serialVersionUID = 0L;
     if (matchType_ != 0) {
       output.writeInt32(524, matchType_);
     }
+    if (endlessLayer_ != 0) {
+      output.writeInt32(530, endlessLayer_);
+    }
     com.google.protobuf.GeneratedMessageV3
       .serializeIntegerMapTo(
         output,
@@ -2037,6 +2060,10 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeInt32Size(524, matchType_);
     }
+    if (endlessLayer_ != 0) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeInt32Size(530, endlessLayer_);
+    }
     for (java.util.Map.Entry<java.lang.Integer, game.proto.data.BagSlot> entry
          : internalGetBag().getMap().entrySet()) {
       com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
@@ -2185,6 +2212,8 @@ private static final long serialVersionUID = 0L;
         != other.getMatchId()) return false;
     if (getMatchType()
         != other.getMatchType()) return false;
+    if (getEndlessLayer()
+        != other.getEndlessLayer()) return false;
     if (!internalGetBag().equals(
         other.internalGetBag())) return false;
     if (getBagCapacity()
@@ -2302,6 +2331,8 @@ private static final long serialVersionUID = 0L;
         getMatchId());
     hash = (37 * hash) + MATCHTYPE_FIELD_NUMBER;
     hash = (53 * hash) + getMatchType();
+    hash = (37 * hash) + ENDLESSLAYER_FIELD_NUMBER;
+    hash = (53 * hash) + getEndlessLayer();
     if (!internalGetBag().getMap().isEmpty()) {
       hash = (37 * hash) + BAG_FIELD_NUMBER;
       hash = (53 * hash) + internalGetBag().hashCode();
@@ -2593,6 +2624,8 @@ private static final long serialVersionUID = 0L;
 
       matchType_ = 0;
 
+      endlessLayer_ = 0;
+
       internalGetMutableBag().clear();
       bagCapacity_ = 0;
 
@@ -2717,6 +2750,7 @@ private static final long serialVersionUID = 0L;
       result.inMatch_ = inMatch_;
       result.matchId_ = matchId_;
       result.matchType_ = matchType_;
+      result.endlessLayer_ = endlessLayer_;
       result.bag_ = internalGetBag();
       result.bag_.makeImmutable();
       result.bagCapacity_ = bagCapacity_;
@@ -2914,6 +2948,9 @@ private static final long serialVersionUID = 0L;
       }
       if (other.getMatchType() != 0) {
         setMatchType(other.getMatchType());
+      }
+      if (other.getEndlessLayer() != 0) {
+        setEndlessLayer(other.getEndlessLayer());
       }
       internalGetMutableBag().mergeFrom(
           other.internalGetBag());
@@ -5590,6 +5627,10 @@ private static final long serialVersionUID = 0L;
 
     private int matchType_ ;
     /**
+     * <pre>
+     * 排位类型
+     * </pre>
+     *
      * <code>int32 matchType = 524;</code>
      * @return The matchType.
      */
@@ -5598,6 +5639,10 @@ private static final long serialVersionUID = 0L;
       return matchType_;
     }
     /**
+     * <pre>
+     * 排位类型
+     * </pre>
+     *
      * <code>int32 matchType = 524;</code>
      * @param value The matchType to set.
      * @return This builder for chaining.
@@ -5609,12 +5654,47 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 排位类型
+     * </pre>
+     *
      * <code>int32 matchType = 524;</code>
      * @return This builder for chaining.
      */
     public Builder clearMatchType() {
       
       matchType_ = 0;
+      onChanged();
+      return this;
+    }
+
+    private int endlessLayer_ ;
+    /**
+     * <code>int32 endlessLayer = 530;</code>
+     * @return The endlessLayer.
+     */
+    @java.lang.Override
+    public int getEndlessLayer() {
+      return endlessLayer_;
+    }
+    /**
+     * <code>int32 endlessLayer = 530;</code>
+     * @param value The endlessLayer to set.
+     * @return This builder for chaining.
+     */
+    public Builder setEndlessLayer(int value) {
+      
+      endlessLayer_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int32 endlessLayer = 530;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearEndlessLayer() {
+      
+      endlessLayer_ = 0;
       onChanged();
       return this;
     }

@@ -530,10 +530,20 @@ public interface PlayerDataOrBuilder extends
   long getMatchId();
 
   /**
+   * <pre>
+   * 排位类型
+   * </pre>
+   *
    * <code>int32 matchType = 524;</code>
    * @return The matchType.
    */
   int getMatchType();
+
+  /**
+   * <code>int32 endlessLayer = 530;</code>
+   * @return The endlessLayer.
+   */
+  int getEndlessLayer();
 
   /**
    * <pre>
