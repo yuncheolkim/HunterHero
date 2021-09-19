@@ -1,5 +1,8 @@
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.Parser;
+import game.module.endless.EndlessHandler;
+import game.module.event.IPlayerEventHandler;
+import game.module.event.handler.BattleEndEvent;
 import game.module.ladder.LadderHandler;
 import game.msg.DefaultInvoke;
 import game.msg.IHandler;
@@ -7,6 +10,7 @@ import game.msg.IPlayerHandler;
 import game.player.Player;
 import game.proto.Message;
 import game.proto.back.LadderResult;
+import game.utils.AssisUtils;
 import javassist.ClassPool;
 import javassist.CtClass;
 import javassist.CtMethod;
@@ -143,5 +147,12 @@ public class JavaassistTest {
 
     }
 
+
+    @Test
+    public void eventHandlerTest() throws Exception {
+        IPlayerEventHandler endBattleEventHandler = AssisUtils.createEvent(EndlessHandler.class, EndlessHandler.class.getDeclaredMethod("endBattleEventHandler", Player.class, BattleEndEvent.class));
+        endBattleEventHandler.handler(null, new BattleEndEvent());
+
+    }
 
 }

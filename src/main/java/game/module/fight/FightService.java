@@ -68,6 +68,8 @@ public class FightService {
                 // fight
                 final FightStartPush.Builder fightStartPush = genEnemy(player);
                 fightStartPush.setManual(false);
+
+                player.pd.setFightType(FightType.F_BATTLE);
                 player.getPd().addAllFightInfo(fightStartPush.getInfoList());
 
                 player.send(No.FightStartPush, fightStartPush.buildPartial());
@@ -190,11 +192,11 @@ public class FightService {
     }
 
     /**
-     * 进入战役
+     * 副本战斗
      *
      * @param player
      */
-    public static void battleEnter(final Player player, final int battleId) {
+    public static void battleDungeon(final Player player, final int battleId) {
         final BattleFormationDataBox formationDataBox = ConfigManager.battleFormationDataBox;
         EvilAssert.notNull(formationDataBox.findByCollectId(battleId), "战役不存在");
         ModuleAssert.isFalse(player.getPd().getFightInfoCount() > 0, ErrorEnum.ERR_113);
@@ -202,6 +204,7 @@ public class FightService {
         final FightStartPush.Builder fightStartPush = FightService.genBattleEnemy(battleId);
         fightStartPush.setManual(ConfigManager.battleInfoDataBox.findById(battleId).manual);
 
+        player.pd.setFightType(FightType.F_DUNGEON);
         player.pd.addAllFightInfo(fightStartPush.getInfoList());
         player.pd.setBattleId(battleId);
         player.pd.setManual(fightStartPush.getManual());
@@ -422,6 +425,7 @@ public class FightService {
         for (FightEnemyInfo.Builder info : infoList) {
             info.setProperty(ConfigManager.makeProperty(info.getProperty(), byId.rate));
         }
+        player.pd.setFightType(FightType.F_ENDLESS);
         player.pd.addAllFightInfo(fightStartPush.getInfoList());
         player.pd.setBattleId(battleId);
         player.pd.setManual(fightStartPush.getManual());

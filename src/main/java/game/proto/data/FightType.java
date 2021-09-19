@@ -52,6 +52,14 @@ public enum FightType
    * <code>F_ENDLESS = 5;</code>
    */
   F_ENDLESS(5),
+  /**
+   * <pre>
+   * 副本
+   * </pre>
+   *
+   * <code>F_DUNGEON = 6;</code>
+   */
+  F_DUNGEON(6),
   UNRECOGNIZED(-1),
   ;
 
@@ -99,6 +107,14 @@ public enum FightType
    * <code>F_ENDLESS = 5;</code>
    */
   public static final int F_ENDLESS_VALUE = 5;
+  /**
+   * <pre>
+   * 副本
+   * </pre>
+   *
+   * <code>F_DUNGEON = 6;</code>
+   */
+  public static final int F_DUNGEON_VALUE = 6;
 
 
   public final int getNumber() {
@@ -131,6 +147,7 @@ public enum FightType
       case 3: return F_LADDER_MULTI;
       case 4: return F_BATTLE_DOUBLE;
       case 5: return F_ENDLESS;
+      case 6: return F_DUNGEON;
       default: return null;
     }
   }

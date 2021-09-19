@@ -1,7 +1,11 @@
 package game.manager;
 
 import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Multimap;
+import com.google.common.reflect.ClassPath;
+import game.anno.EventHandler;
+import game.base.AbsLifecycle;
 import game.base.G;
 import game.base.Logs;
 import game.base.Work;
@@ -15,6 +19,8 @@ import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Optional;
 
+import static game.utils.AssisUtils.createEvent;
+
 /**
  * 事件集中管理注册
  * 玩家事件，只在玩家线程处理
@@ -22,7 +28,7 @@ import java.util.Optional;
  * @author Yunzhe.Jin
  * 2021/2/25 10:56
  */
-public class EventManager {
+public class EventManager extends AbsLifecycle {
     private static final Multimap<EventType, IPlayerEventHandler<? extends IEvent>> playerEventMap = ArrayListMultimap.create();
 
     public EventManager() {
@@ -99,6 +105,36 @@ public class EventManager {
                     }
                 }
             });
+        }
+    }
+
+    @Override
+    public void start() {
+        super.start();
+
+        try {
+            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive("game.module");
+            topLevelClasses.stream().filter(classInfo -> {
+                return classInfo.getPackageName().startsWith("game.module");
+            }).forEach(classInfo -> {
+
+                Class<?> clazz = classInfo.load();
+                for (Method m : clazz.getDeclaredMethods()) {
+                    if (m.isAnnotationPresent(EventHandler.class)) {
+                        Logs.C.info("[Event] ==========> {}:{}", classInfo.getName(), m.getName());
+
+                        try {
+                            IPlayerEventHandler event = createEvent(clazz, m);
+                            playerEventMap.put(m.getAnnotation(EventHandler.class).value(), event);
+                        } catch (Exception e) {
+                            Logs.C.error("解析失败:{},{}", clazz.getName(), m.getName());
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+            });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

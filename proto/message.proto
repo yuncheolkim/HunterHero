@@ -534,5 +534,4 @@ message LadderFightEndReq{
 
 message EndlessStartReq{
     int32  battleId = 1;
-    int32 layer = 2;
 }

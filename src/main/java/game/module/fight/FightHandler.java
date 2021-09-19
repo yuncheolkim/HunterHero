@@ -121,7 +121,7 @@ public class FightHandler {
      * @param player
      */
     public static void battleEnter(final Player player, final BattleEnterReq req) {
-        FightService.battleEnter(player, req.getId());
+        FightService.battleDungeon(player, req.getId());
     }
 
     /**
@@ -216,6 +216,7 @@ public class FightHandler {
 
         battle.setSideAPid(player.getPid());
         battle.setPve(true);
+        battle.setFightType(player.pd.getFightType());
         BattleRecord start = battle.start();
         final FightRecord.Builder result = buildFightRecord(start);
 
@@ -244,7 +245,7 @@ public class FightHandler {
         action.pid = player.getPid();
         action.actions = req.getPosList();
         Round ready = hmBattle.ready(action);
-        
+
         Logs.trace(JsonUtil.toJsonString(ready));
 
         player.getTransport().send(No.FightHmActionReq, FightHmActionRes.newBuilder().setRound(roundReport(ready)).build());

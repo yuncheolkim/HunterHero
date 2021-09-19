@@ -52,6 +52,7 @@ message PlayerData {
     bool manual = 502;
     // 不同FightType下, 英雄的剩余血量
     map<int32, FightHeroHpData> heroHpInfo = 503;
+    FightType fightType = 504;
 
     // 地下城
     Dungeon dungeon = 510;
@@ -65,7 +66,7 @@ message PlayerData {
     int64 matchId = 523;
     // 排位类型
     int32 matchType = 524;
-
+    // 无尽模式当前层数
     int32 endlessLayer = 530;
     // 背包
     map<int32, BagSlot> bag = 601;
@@ -527,5 +528,7 @@ enum FightType{
     F_LADDER_MULTI = 3;// 排位-英雄 33-33
     F_BATTLE_DOUBLE = 4 ;// 双人副本 33-44-33
     F_ENDLESS = 5 ;// 无尽模式 33-44
+    F_DUNGEON = 6 ;// 副本
+
 
 }

@@ -4,10 +4,6 @@
 package game.proto.data;
 
 /**
- * <pre>
- *&#47;/////////////// Fight
- * </pre>
- *
  * Protobuf type {@code Message.FightHeroPos}
  */
 public final class FightHeroPos extends
@@ -337,10 +333,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   *&#47;/////////////// Fight
-   * </pre>
-   *
    * Protobuf type {@code Message.FightHeroPos}
    */
   public static final class Builder extends

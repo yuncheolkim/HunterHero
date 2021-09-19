@@ -3,6 +3,8 @@ package game.utils;
 import com.google.protobuf.MessageLite;
 import com.google.protobuf.Parser;
 import game.anno.GameHandler;
+import game.module.event.IEvent;
+import game.module.event.IPlayerEventHandler;
 import game.msg.DefaultInvoke;
 import game.msg.IHandler;
 import game.player.Player;
@@ -21,6 +23,7 @@ import java.util.stream.Collectors;
  * 2021/8/30 21:59
  */
 public class AssisUtils {
+
 
     public static DefaultInvoke createHandler(Class<?> cls, Method method) throws Exception {
         int number = method.getAnnotation(GameHandler.class).value().getNumber();
@@ -74,4 +77,38 @@ public class AssisUtils {
 
         return defaultInvoke;
     }
+
+
+    public static IPlayerEventHandler createEvent(Class<?> cls, Method method) throws Exception {
+        ClassPool pool = ClassPool.getDefault();
+        CtClass handlerClass = pool.makeClass(cls.getName() + method.getName());
+
+        Class<?>[] parameters = method.getParameterTypes();
+        CtClass[] pa = new CtClass[parameters.length];
+        handlerClass.setInterfaces(new CtClass[]{
+                pool.get(IPlayerEventHandler.class.getName())
+        });
+
+        CtMethod ctMethod = new CtMethod(CtClass.voidType, "handler", new CtClass[]{
+                pool.get(Player.class.getName()),
+                pool.get(IEvent.class.getName()),
+        }, handlerClass);
+        ctMethod.setModifiers(Modifier.PUBLIC);
+
+        List<String> paramStr = new ArrayList<>(parameters.length);
+        for (int i = 0; i < parameters.length; i++) {
+            Class<?> parameter = parameters[i];
+            pa[i] = pool.get(parameter.getName());
+            paramStr.add("(" + parameter.getName() + ")$" + (i + 1));
+        }
+
+
+        String callBody = cls.getName() + "." + method.getName() +
+                "(" + paramStr.stream().collect(Collectors.joining(",")) + ");";
+        ctMethod.setBody("{" + callBody + " }");
+        handlerClass.addMethod(ctMethod);
+
+        return (IPlayerEventHandler<? extends IEvent>) handlerClass.toClass().newInstance();
+    }
+
 }

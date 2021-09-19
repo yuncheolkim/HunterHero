@@ -46,7 +46,7 @@ public class DungeonHandler {
     public static void fight(Player player, DungeonFightReq req) {
         DungeonConfigData data = ConfigManager.dungeonDataBox.findById(req.getTargetId());
         player.pd.getDungeonBuilder().setBossId(req.getTargetId());
-        FightService.battleEnter(player, data.battleId);
+        FightService.battleDungeon(player, data.battleId);
     }
 
     /**

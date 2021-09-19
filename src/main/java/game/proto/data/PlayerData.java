@@ -27,6 +27,7 @@ private static final long serialVersionUID = 0L;
     collectTitle_ = emptyIntList();
     expressId_ = emptyIntList();
     fightInfo_ = java.util.Collections.emptyList();
+    fightType_ = 0;
     formation_ = java.util.Collections.emptyList();
   }
 
@@ -255,6 +256,25 @@ private static final long serialVersionUID = 0L;
             manual_ = input.readBool();
             break;
           }
+          case 4026: {
+            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+              heroHpInfo_ = com.google.protobuf.MapField.newMapField(
+                  HeroHpInfoDefaultEntryHolder.defaultEntry);
+              mutable_bitField0_ |= 0x00000010;
+            }
+            com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.FightHeroHpData>
+            heroHpInfo__ = input.readMessage(
+                HeroHpInfoDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+            heroHpInfo_.getMutableMap().put(
+                heroHpInfo__.getKey(), heroHpInfo__.getValue());
+            break;
+          }
+          case 4032: {
+            int rawValue = input.readEnum();
+
+            fightType_ = rawValue;
+            break;
+          }
           case 4082: {
             game.proto.data.Dungeon.Builder subBuilder = null;
             if (dungeon_ != null) {
@@ -315,10 +335,10 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 4810: {
-            if (!((mutable_bitField0_ & 0x00000010) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000020) != 0)) {
               bag_ = com.google.protobuf.MapField.newMapField(
                   BagDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000010;
+              mutable_bitField0_ |= 0x00000020;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
             bag__ = input.readMessage(
@@ -338,10 +358,10 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 4834: {
-            if (!((mutable_bitField0_ & 0x00000020) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000040) != 0)) {
               bank_ = com.google.protobuf.MapField.newMapField(
                   BankDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000020;
+              mutable_bitField0_ |= 0x00000040;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.BagSlot>
             bank__ = input.readMessage(
@@ -351,9 +371,9 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 5610: {
-            if (!((mutable_bitField0_ & 0x00000040) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000080) != 0)) {
               formation_ = new java.util.ArrayList<game.proto.data.Formation>();
-              mutable_bitField0_ |= 0x00000040;
+              mutable_bitField0_ |= 0x00000080;
             }
             formation_.add(
                 input.readMessage(game.proto.data.Formation.parser(), extensionRegistry));
@@ -370,10 +390,10 @@ private static final long serialVersionUID = 0L;
             break;
           }
           case 5634: {
-            if (!((mutable_bitField0_ & 0x00000080) != 0)) {
+            if (!((mutable_bitField0_ & 0x00000100) != 0)) {
               formationIndex_ = com.google.protobuf.MapField.newMapField(
                   FormationIndexDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000080;
+              mutable_bitField0_ |= 0x00000100;
             }
             com.google.protobuf.MapEntry<java.lang.Integer, java.lang.Integer>
             formationIndex__ = input.readMessage(
@@ -419,7 +439,7 @@ private static final long serialVersionUID = 0L;
       if (((mutable_bitField0_ & 0x00000008) != 0)) {
         fightInfo_ = java.util.Collections.unmodifiableList(fightInfo_);
       }
-      if (((mutable_bitField0_ & 0x00000040) != 0)) {
+      if (((mutable_bitField0_ & 0x00000080) != 0)) {
         formation_ = java.util.Collections.unmodifiableList(formation_);
       }
       this.unknownFields = unknownFields.build();
@@ -438,6 +458,8 @@ private static final long serialVersionUID = 0L;
     switch (number) {
       case 401:
         return internalGetHero();
+      case 503:
+        return internalGetHeroHpInfo();
       case 601:
         return internalGetBag();
       case 604:
@@ -1141,6 +1163,122 @@ private static final long serialVersionUID = 0L;
     return manual_;
   }
 
+  public static final int HEROHPINFO_FIELD_NUMBER = 503;
+  private static final class HeroHpInfoDefaultEntryHolder {
+    static final com.google.protobuf.MapEntry<
+        java.lang.Integer, game.proto.data.FightHeroHpData> defaultEntry =
+            com.google.protobuf.MapEntry
+            .<java.lang.Integer, game.proto.data.FightHeroHpData>newDefaultInstance(
+                game.proto.data.Data.internal_static_Message_PlayerData_HeroHpInfoEntry_descriptor, 
+                com.google.protobuf.WireFormat.FieldType.INT32,
+                0,
+                com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                game.proto.data.FightHeroHpData.getDefaultInstance());
+  }
+  private com.google.protobuf.MapField<
+      java.lang.Integer, game.proto.data.FightHeroHpData> heroHpInfo_;
+  private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.FightHeroHpData>
+  internalGetHeroHpInfo() {
+    if (heroHpInfo_ == null) {
+      return com.google.protobuf.MapField.emptyMapField(
+          HeroHpInfoDefaultEntryHolder.defaultEntry);
+    }
+    return heroHpInfo_;
+  }
+
+  public int getHeroHpInfoCount() {
+    return internalGetHeroHpInfo().getMap().size();
+  }
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+
+  @java.lang.Override
+  public boolean containsHeroHpInfo(
+      int key) {
+    
+    return internalGetHeroHpInfo().getMap().containsKey(key);
+  }
+  /**
+   * Use {@link #getHeroHpInfoMap()} instead.
+   */
+  @java.lang.Override
+  @java.lang.Deprecated
+  public java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> getHeroHpInfo() {
+    return getHeroHpInfoMap();
+  }
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+  @java.lang.Override
+
+  public java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> getHeroHpInfoMap() {
+    return internalGetHeroHpInfo().getMap();
+  }
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.FightHeroHpData getHeroHpInfoOrDefault(
+      int key,
+      game.proto.data.FightHeroHpData defaultValue) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> map =
+        internalGetHeroHpInfo().getMap();
+    return map.containsKey(key) ? map.get(key) : defaultValue;
+  }
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+  @java.lang.Override
+
+  public game.proto.data.FightHeroHpData getHeroHpInfoOrThrow(
+      int key) {
+    
+    java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> map =
+        internalGetHeroHpInfo().getMap();
+    if (!map.containsKey(key)) {
+      throw new java.lang.IllegalArgumentException();
+    }
+    return map.get(key);
+  }
+
+  public static final int FIGHTTYPE_FIELD_NUMBER = 504;
+  private int fightType_;
+  /**
+   * <code>.Message.FightType fightType = 504;</code>
+   * @return The enum numeric value on the wire for fightType.
+   */
+  @java.lang.Override public int getFightTypeValue() {
+    return fightType_;
+  }
+  /**
+   * <code>.Message.FightType fightType = 504;</code>
+   * @return The fightType.
+   */
+  @java.lang.Override public game.proto.data.FightType getFightType() {
+    @SuppressWarnings("deprecation")
+    game.proto.data.FightType result = game.proto.data.FightType.valueOf(fightType_);
+    return result == null ? game.proto.data.FightType.UNRECOGNIZED : result;
+  }
+
   public static final int DUNGEON_FIELD_NUMBER = 510;
   private game.proto.data.Dungeon dungeon_;
   /**
@@ -1303,6 +1441,10 @@ private static final long serialVersionUID = 0L;
   public static final int ENDLESSLAYER_FIELD_NUMBER = 530;
   private int endlessLayer_;
   /**
+   * <pre>
+   * 无尽模式当前层数
+   * </pre>
+   *
    * <code>int32 endlessLayer = 530;</code>
    * @return The endlessLayer.
    */
@@ -1855,6 +1997,15 @@ private static final long serialVersionUID = 0L;
     if (manual_ != false) {
       output.writeBool(502, manual_);
     }
+    com.google.protobuf.GeneratedMessageV3
+      .serializeIntegerMapTo(
+        output,
+        internalGetHeroHpInfo(),
+        HeroHpInfoDefaultEntryHolder.defaultEntry,
+        503);
+    if (fightType_ != game.proto.data.FightType.F_NONE.getNumber()) {
+      output.writeEnum(504, fightType_);
+    }
     if (dungeon_ != null) {
       output.writeMessage(510, getDungeon());
     }
@@ -2036,6 +2187,20 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(502, manual_);
     }
+    for (java.util.Map.Entry<java.lang.Integer, game.proto.data.FightHeroHpData> entry
+         : internalGetHeroHpInfo().getMap().entrySet()) {
+      com.google.protobuf.MapEntry<java.lang.Integer, game.proto.data.FightHeroHpData>
+      heroHpInfo__ = HeroHpInfoDefaultEntryHolder.defaultEntry.newBuilderForType()
+          .setKey(entry.getKey())
+          .setValue(entry.getValue())
+          .build();
+      size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(503, heroHpInfo__);
+    }
+    if (fightType_ != game.proto.data.FightType.F_NONE.getNumber()) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeEnumSize(504, fightType_);
+    }
     if (dungeon_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(510, getDungeon());
@@ -2191,6 +2356,9 @@ private static final long serialVersionUID = 0L;
         .equals(other.getFightInfoList())) return false;
     if (getManual()
         != other.getManual()) return false;
+    if (!internalGetHeroHpInfo().equals(
+        other.internalGetHeroHpInfo())) return false;
+    if (fightType_ != other.fightType_) return false;
     if (hasDungeon() != other.hasDungeon()) return false;
     if (hasDungeon()) {
       if (!getDungeon()
@@ -2311,6 +2479,12 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + MANUAL_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getManual());
+    if (!internalGetHeroHpInfo().getMap().isEmpty()) {
+      hash = (37 * hash) + HEROHPINFO_FIELD_NUMBER;
+      hash = (53 * hash) + internalGetHeroHpInfo().hashCode();
+    }
+    hash = (37 * hash) + FIGHTTYPE_FIELD_NUMBER;
+    hash = (53 * hash) + fightType_;
     if (hasDungeon()) {
       hash = (37 * hash) + DUNGEON_FIELD_NUMBER;
       hash = (53 * hash) + getDungeon().hashCode();
@@ -2479,6 +2653,8 @@ private static final long serialVersionUID = 0L;
       switch (number) {
         case 401:
           return internalGetHero();
+        case 503:
+          return internalGetHeroHpInfo();
         case 601:
           return internalGetBag();
         case 604:
@@ -2496,6 +2672,8 @@ private static final long serialVersionUID = 0L;
       switch (number) {
         case 401:
           return internalGetMutableHero();
+        case 503:
+          return internalGetMutableHeroHpInfo();
         case 601:
           return internalGetMutableBag();
         case 604:
@@ -2600,6 +2778,9 @@ private static final long serialVersionUID = 0L;
       }
       manual_ = false;
 
+      internalGetMutableHeroHpInfo().clear();
+      fightType_ = 0;
+
       if (dungeonBuilder_ == null) {
         dungeon_ = null;
       } else {
@@ -2634,7 +2815,7 @@ private static final long serialVersionUID = 0L;
       internalGetMutableBank().clear();
       if (formationBuilder_ == null) {
         formation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
       } else {
         formationBuilder_.clear();
       }
@@ -2732,6 +2913,9 @@ private static final long serialVersionUID = 0L;
         result.fightInfo_ = fightInfoBuilder_.build();
       }
       result.manual_ = manual_;
+      result.heroHpInfo_ = internalGetHeroHpInfo();
+      result.heroHpInfo_.makeImmutable();
+      result.fightType_ = fightType_;
       if (dungeonBuilder_ == null) {
         result.dungeon_ = dungeon_;
       } else {
@@ -2758,9 +2942,9 @@ private static final long serialVersionUID = 0L;
       result.bank_ = internalGetBank();
       result.bank_.makeImmutable();
       if (formationBuilder_ == null) {
-        if (((bitField0_ & 0x00000040) != 0)) {
+        if (((bitField0_ & 0x00000080) != 0)) {
           formation_ = java.util.Collections.unmodifiableList(formation_);
-          bitField0_ = (bitField0_ & ~0x00000040);
+          bitField0_ = (bitField0_ & ~0x00000080);
         }
         result.formation_ = formation_;
       } else {
@@ -2931,6 +3115,11 @@ private static final long serialVersionUID = 0L;
       if (other.getManual() != false) {
         setManual(other.getManual());
       }
+      internalGetMutableHeroHpInfo().mergeFrom(
+          other.internalGetHeroHpInfo());
+      if (other.fightType_ != 0) {
+        setFightTypeValue(other.getFightTypeValue());
+      }
       if (other.hasDungeon()) {
         mergeDungeon(other.getDungeon());
       }
@@ -2966,7 +3155,7 @@ private static final long serialVersionUID = 0L;
         if (!other.formation_.isEmpty()) {
           if (formation_.isEmpty()) {
             formation_ = other.formation_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
           } else {
             ensureFormationIsMutable();
             formation_.addAll(other.formation_);
@@ -2979,7 +3168,7 @@ private static final long serialVersionUID = 0L;
             formationBuilder_.dispose();
             formationBuilder_ = null;
             formation_ = other.formation_;
-            bitField0_ = (bitField0_ & ~0x00000040);
+            bitField0_ = (bitField0_ & ~0x00000080);
             formationBuilder_ = 
               com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                  getFormationFieldBuilder() : null;
@@ -5074,6 +5263,216 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private com.google.protobuf.MapField<
+        java.lang.Integer, game.proto.data.FightHeroHpData> heroHpInfo_;
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.FightHeroHpData>
+    internalGetHeroHpInfo() {
+      if (heroHpInfo_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            HeroHpInfoDefaultEntryHolder.defaultEntry);
+      }
+      return heroHpInfo_;
+    }
+    private com.google.protobuf.MapField<java.lang.Integer, game.proto.data.FightHeroHpData>
+    internalGetMutableHeroHpInfo() {
+      onChanged();;
+      if (heroHpInfo_ == null) {
+        heroHpInfo_ = com.google.protobuf.MapField.newMapField(
+            HeroHpInfoDefaultEntryHolder.defaultEntry);
+      }
+      if (!heroHpInfo_.isMutable()) {
+        heroHpInfo_ = heroHpInfo_.copy();
+      }
+      return heroHpInfo_;
+    }
+
+    public int getHeroHpInfoCount() {
+      return internalGetHeroHpInfo().getMap().size();
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+
+    @java.lang.Override
+    public boolean containsHeroHpInfo(
+        int key) {
+      
+      return internalGetHeroHpInfo().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getHeroHpInfoMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> getHeroHpInfo() {
+      return getHeroHpInfoMap();
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+    @java.lang.Override
+
+    public java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> getHeroHpInfoMap() {
+      return internalGetHeroHpInfo().getMap();
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.FightHeroHpData getHeroHpInfoOrDefault(
+        int key,
+        game.proto.data.FightHeroHpData defaultValue) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> map =
+          internalGetHeroHpInfo().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+    @java.lang.Override
+
+    public game.proto.data.FightHeroHpData getHeroHpInfoOrThrow(
+        int key) {
+      
+      java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> map =
+          internalGetHeroHpInfo().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public Builder clearHeroHpInfo() {
+      internalGetMutableHeroHpInfo().getMutableMap()
+          .clear();
+      return this;
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+
+    public Builder removeHeroHpInfo(
+        int key) {
+      
+      internalGetMutableHeroHpInfo().getMutableMap()
+          .remove(key);
+      return this;
+    }
+    /**
+     * Use alternate mutation accessors instead.
+     */
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData>
+    getMutableHeroHpInfo() {
+      return internalGetMutableHeroHpInfo().getMutableMap();
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+    public Builder putHeroHpInfo(
+        int key,
+        game.proto.data.FightHeroHpData value) {
+      
+      if (value == null) { throw new java.lang.NullPointerException(); }
+      internalGetMutableHeroHpInfo().getMutableMap()
+          .put(key, value);
+      return this;
+    }
+    /**
+     * <pre>
+     * 不同FightType下, 英雄的剩余血量
+     * </pre>
+     *
+     * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+     */
+
+    public Builder putAllHeroHpInfo(
+        java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData> values) {
+      internalGetMutableHeroHpInfo().getMutableMap()
+          .putAll(values);
+      return this;
+    }
+
+    private int fightType_ = 0;
+    /**
+     * <code>.Message.FightType fightType = 504;</code>
+     * @return The enum numeric value on the wire for fightType.
+     */
+    @java.lang.Override public int getFightTypeValue() {
+      return fightType_;
+    }
+    /**
+     * <code>.Message.FightType fightType = 504;</code>
+     * @param value The enum numeric value on the wire for fightType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFightTypeValue(int value) {
+      
+      fightType_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.FightType fightType = 504;</code>
+     * @return The fightType.
+     */
+    @java.lang.Override
+    public game.proto.data.FightType getFightType() {
+      @SuppressWarnings("deprecation")
+      game.proto.data.FightType result = game.proto.data.FightType.valueOf(fightType_);
+      return result == null ? game.proto.data.FightType.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.Message.FightType fightType = 504;</code>
+     * @param value The fightType to set.
+     * @return This builder for chaining.
+     */
+    public Builder setFightType(game.proto.data.FightType value) {
+      if (value == null) {
+        throw new NullPointerException();
+      }
+      
+      fightType_ = value.getNumber();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>.Message.FightType fightType = 504;</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearFightType() {
+      
+      fightType_ = 0;
+      onChanged();
+      return this;
+    }
+
     private game.proto.data.Dungeon dungeon_;
     private com.google.protobuf.SingleFieldBuilderV3<
         game.proto.data.Dungeon, game.proto.data.Dungeon.Builder, game.proto.data.DungeonOrBuilder> dungeonBuilder_;
@@ -5670,6 +6069,10 @@ private static final long serialVersionUID = 0L;
 
     private int endlessLayer_ ;
     /**
+     * <pre>
+     * 无尽模式当前层数
+     * </pre>
+     *
      * <code>int32 endlessLayer = 530;</code>
      * @return The endlessLayer.
      */
@@ -5678,6 +6081,10 @@ private static final long serialVersionUID = 0L;
       return endlessLayer_;
     }
     /**
+     * <pre>
+     * 无尽模式当前层数
+     * </pre>
+     *
      * <code>int32 endlessLayer = 530;</code>
      * @param value The endlessLayer to set.
      * @return This builder for chaining.
@@ -5689,6 +6096,10 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
+     * <pre>
+     * 无尽模式当前层数
+     * </pre>
+     *
      * <code>int32 endlessLayer = 530;</code>
      * @return This builder for chaining.
      */
@@ -6100,9 +6511,9 @@ private static final long serialVersionUID = 0L;
     private java.util.List<game.proto.data.Formation> formation_ =
       java.util.Collections.emptyList();
     private void ensureFormationIsMutable() {
-      if (!((bitField0_ & 0x00000040) != 0)) {
+      if (!((bitField0_ & 0x00000080) != 0)) {
         formation_ = new java.util.ArrayList<game.proto.data.Formation>(formation_);
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
        }
     }
 
@@ -6296,7 +6707,7 @@ private static final long serialVersionUID = 0L;
     public Builder clearFormation() {
       if (formationBuilder_ == null) {
         formation_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         onChanged();
       } else {
         formationBuilder_.clear();
@@ -6401,7 +6812,7 @@ private static final long serialVersionUID = 0L;
         formationBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
             game.proto.data.Formation, game.proto.data.Formation.Builder, game.proto.data.FormationOrBuilder>(
                 formation_,
-                ((bitField0_ & 0x00000040) != 0),
+                ((bitField0_ & 0x00000080) != 0),
                 getParentForChildren(),
                 isClean());
         formation_ = null;

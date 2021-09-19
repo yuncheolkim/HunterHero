@@ -430,6 +430,71 @@ public interface PlayerDataOrBuilder extends
 
   /**
    * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+  int getHeroHpInfoCount();
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+  boolean containsHeroHpInfo(
+      int key);
+  /**
+   * Use {@link #getHeroHpInfoMap()} instead.
+   */
+  @java.lang.Deprecated
+  java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData>
+  getHeroHpInfo();
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+  java.util.Map<java.lang.Integer, game.proto.data.FightHeroHpData>
+  getHeroHpInfoMap();
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+
+  game.proto.data.FightHeroHpData getHeroHpInfoOrDefault(
+      int key,
+      game.proto.data.FightHeroHpData defaultValue);
+  /**
+   * <pre>
+   * 不同FightType下, 英雄的剩余血量
+   * </pre>
+   *
+   * <code>map&lt;int32, .Message.FightHeroHpData&gt; heroHpInfo = 503;</code>
+   */
+
+  game.proto.data.FightHeroHpData getHeroHpInfoOrThrow(
+      int key);
+
+  /**
+   * <code>.Message.FightType fightType = 504;</code>
+   * @return The enum numeric value on the wire for fightType.
+   */
+  int getFightTypeValue();
+  /**
+   * <code>.Message.FightType fightType = 504;</code>
+   * @return The fightType.
+   */
+  game.proto.data.FightType getFightType();
+
+  /**
+   * <pre>
    * 地下城
    * </pre>
    *
@@ -540,6 +605,10 @@ public interface PlayerDataOrBuilder extends
   int getMatchType();
 
   /**
+   * <pre>
+   * 无尽模式当前层数
+   * </pre>
+   *
    * <code>int32 endlessLayer = 530;</code>
    * @return The endlessLayer.
    */

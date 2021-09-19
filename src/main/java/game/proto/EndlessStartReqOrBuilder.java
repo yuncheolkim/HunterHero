@@ -12,10 +12,4 @@ public interface EndlessStartReqOrBuilder extends
    * @return The battleId.
    */
   int getBattleId();
-
-  /**
-   * <code>int32 layer = 2;</code>
-   * @return The layer.
-   */
-  int getLayer();
 }
