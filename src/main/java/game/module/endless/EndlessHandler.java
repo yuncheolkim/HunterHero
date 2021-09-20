@@ -2,7 +2,7 @@ package game.module.endless;
 
 import game.anno.EventHandler;
 import game.anno.GameHandler;
-import game.base.Logs;
+import game.manager.ConfigManager;
 import game.module.event.EventType;
 import game.module.event.handler.BattleEndEvent;
 import game.module.fight.FightService;
@@ -19,7 +19,6 @@ import game.proto.no.No;
  */
 public class EndlessHandler {
 
-
     @GameHandler(value = No.EndlessStartReq, desc = "开始无尽模式挑战")
     public static void start(Player player, EndlessStartReq req) {
         int level = 1;
@@ -29,12 +28,16 @@ public class EndlessHandler {
         FightService.startEndless(player, level, req.getBattleId());
     }
 
-    @EventHandler(EventType.BATTLE_END)
+    @EventHandler(value = EventType.BATTLE_END, desc = "无尽模式战斗结束")
     public static void endBattleEventHandler(Player player, BattleEndEvent event) {
         if (event.fightType == FightType.F_ENDLESS) {
             // 无尽战斗结束
-            Logs.C.info("Endless battle end");
+            var v = player.pd.getEndlessLayer() + 1;
 
+            // 设置下一层
+            if (ConfigManager.endlessRateDataBox.findById(v) != null) {
+                player.pd.setEndlessLayer(v);
+            }
         }
     }
 }

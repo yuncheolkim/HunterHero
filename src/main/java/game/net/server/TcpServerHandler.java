@@ -47,6 +47,7 @@ public class TcpServerHandler extends SimpleChannelInboundHandler<Message> {
             // 没有登录
             return;
         } else {
+//            ctx.channel().attr(AttributeKey.valueOf("uid"));
             final Attribute<Long> attr = ctx.channel().attr(GameConstants.pid);
             final Optional<Player> player = G.P.findPlayer(attr.get());
             if (player.isPresent()) {
