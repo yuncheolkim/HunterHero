@@ -79,6 +79,7 @@ enum No {
     BattleEndPush = 2031;
     // Endless
     EndlessStartReq = 2041;
+    EndlessLayerChangePush = 2042;
 
     // Dungeon
     DungeonEnterReq = 2101;

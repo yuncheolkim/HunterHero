@@ -7,6 +7,7 @@ import game.module.event.EventType;
 import game.module.event.handler.BattleEndEvent;
 import game.module.fight.FightService;
 import game.player.Player;
+import game.proto.EndlessLayerChangePush;
 import game.proto.EndlessStartReq;
 import game.proto.data.FightType;
 import game.proto.no.No;
@@ -37,6 +38,7 @@ public class EndlessHandler {
             // 设置下一层
             if (ConfigManager.endlessRateDataBox.findById(v) != null) {
                 player.pd.setEndlessLayer(v);
+                player.send(No.EndlessLayerChangePush, EndlessLayerChangePush.newBuilder().setLayer(v).build());
             }
         }
     }

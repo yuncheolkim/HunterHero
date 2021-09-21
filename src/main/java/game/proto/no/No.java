@@ -269,6 +269,10 @@ public enum No
    */
   EndlessStartReq(2041),
   /**
+   * <code>EndlessLayerChangePush = 2042;</code>
+   */
+  EndlessLayerChangePush(2042),
+  /**
    * <pre>
    * Dungeon
    * </pre>
@@ -749,6 +753,10 @@ public enum No
    */
   public static final int EndlessStartReq_VALUE = 2041;
   /**
+   * <code>EndlessLayerChangePush = 2042;</code>
+   */
+  public static final int EndlessLayerChangePush_VALUE = 2042;
+  /**
    * <pre>
    * Dungeon
    * </pre>
@@ -1045,6 +1053,7 @@ public enum No
       case 2030: return BattleEnterReq;
       case 2031: return BattleEndPush;
       case 2041: return EndlessStartReq;
+      case 2042: return EndlessLayerChangePush;
       case 2101: return DungeonEnterReq;
       case 2102: return DungeonFightReq;
       case 2103: return DungeonExitReq;
