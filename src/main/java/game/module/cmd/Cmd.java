@@ -1,6 +1,8 @@
 package game.module.cmd;
 
+import com.google.common.base.Stopwatch;
 import com.google.common.collect.ImmutableMap;
+import game.base.Logs;
 import game.base.constants.GameConstants;
 import game.game.enums.FeatureEnum;
 import game.game.enums.ResourceSourceEnum;
@@ -173,9 +175,15 @@ public enum Cmd {
             LadderHandler.prepareLadder(player, req);
         }
     },
-    CMD19(19, "Open Feature") {
+    CMD19(19, "性能测试") {
         @Override
         public void run(final Player player, final List<String> line) {
+
+            Stopwatch s = Stopwatch.createStarted();
+            for (int i = 0; i < 100000; i++) {
+                player.pd.buildPartial();
+            }
+            Logs.C.info(s.stop().toString());
         }
     },
     CMD20(20, "Open Feature") {

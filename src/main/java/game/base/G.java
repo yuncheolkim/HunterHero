@@ -25,6 +25,8 @@ public class G {
 
     public static SceneManager SCENE = new SceneManager();
 
+    public static RepositoryManager RP = new RepositoryManager();
+    public static HttpManager H = new HttpManager();
     ///////////// No Lifecycle
     public static RepoManager R = new RepoManager();
 

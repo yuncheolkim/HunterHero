@@ -24,6 +24,8 @@ public class GameMain {
         tcpServer.addStart(G.S);
         tcpServer.addStart(G.E);
         tcpServer.addStart(G.SCENE);
+        tcpServer.addStart(G.RP);
+        tcpServer.addStart(G.H);
         tcpServer.start();
 
         System.out.println(port);
