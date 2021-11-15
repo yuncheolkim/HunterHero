@@ -94,7 +94,9 @@ public class GameManager extends AbsLifecycle {
     private void initHandler1() {
 
         try {
-            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive("game.module");
+//            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive("game.module");
+
+            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getAllClasses();
             topLevelClasses.stream().filter(classInfo -> {
                 return classInfo.getPackageName().startsWith("game.module");
             }).filter(classInfo -> classInfo.getName().endsWith("Handler")).forEach(classInfo -> {

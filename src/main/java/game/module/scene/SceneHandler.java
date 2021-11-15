@@ -65,7 +65,7 @@ public class SceneHandler {
         Logs.C.info("离开战斗区域：{}", req.getId());
 
         final List<Integer> l = new ArrayList<>(player.D.getFightAreaList());
-        l.remove(new Integer(req.getId()));
+        l.remove(Integer.valueOf(req.getId()));
         player.D.clearFightArea().addAllFightArea(l);
         player.D.setFightTime(0);
     }

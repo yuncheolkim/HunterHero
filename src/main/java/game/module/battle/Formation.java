@@ -194,7 +194,7 @@ public enum Formation {
         final List<Integer> list = new ArrayList<>(8);
 
         findAround(pos, list);
-        list.remove(new Integer(pos.getIndex()));
+        list.remove(Integer.valueOf(pos.getIndex()));
         return list;
     }
 

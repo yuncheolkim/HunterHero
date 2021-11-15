@@ -1,8 +1,9 @@
 package game.manager;
 
 import com.cloverfew.repository.BaseRepository;
-import com.google.common.reflect.ClassPath;
 import game.base.AbsLifecycle;
+import game.base.Logs;
+import game.utils.ClassUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Yunzhe.Jin
@@ -38,12 +40,17 @@ public class RepositoryManager extends AbsLifecycle {
         factory = new SqlSessionFactoryBuilder().build(inputStream);
 
         try {
-            ClassPath.from(ClassLoader.getSystemClassLoader()).getAllClasses().stream().filter(classInfo -> {
+            Set<Class<?>> search = ClassUtils.search(SCAN_PACKAGE, null);
+            for (Class<?> aClass : search) {
+                Logs.C.info("Scan:{}", aClass.getName());
+            }
+
+            search.stream().filter(classInfo -> {
                 return classInfo.getPackageName().startsWith(SCAN_PACKAGE);
-            }).filter(classInfo -> !classInfo.getName().equals(BaseRepository.class.getName()) && BaseRepository.class.isAssignableFrom(classInfo.load())).forEach(classInfo -> {
-                Class<? extends BaseRepository> load = (Class<? extends BaseRepository>) classInfo.load();
+            }).filter(classInfo -> !classInfo.getName().equals(BaseRepository.class.getName()) && BaseRepository.class.isAssignableFrom(classInfo)).forEach(classInfo -> {
+                Class<? extends BaseRepository> load = (Class<? extends BaseRepository>) classInfo;
                 try {
-                    System.out.println("put:" + load.getName());
+                    Logs.C.info("加载repo: {}", load.getName());
                     repoMap.put(load, load.getDeclaredConstructor().newInstance());
                 } catch (Exception e) {
                     e.printStackTrace();

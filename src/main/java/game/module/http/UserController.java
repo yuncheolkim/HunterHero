@@ -66,7 +66,7 @@ public class UserController {
         Optional<User> user = repo.login(req.getAccount(), req.password);
         LoginResponse obj = new LoginResponse();
 
-        if (!user.isPresent()) {
+        if (user.isEmpty()) {
             obj.code = 2;
         } else {
             var u = user.get();
