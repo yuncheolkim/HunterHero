@@ -1,7 +1,5 @@
 package game.manager;
 
-import com.google.common.collect.ImmutableSet;
-import com.google.common.reflect.ClassPath;
 import game.anno.GameHandler;
 import game.base.AbsLifecycle;
 import game.base.G;
@@ -32,8 +30,10 @@ import game.proto.*;
 import game.proto.back.FishData;
 import game.proto.data.PlayerHero;
 import game.proto.no.No;
+import game.utils.ClassUtils;
 
 import java.lang.reflect.Method;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static game.utils.AssisUtils.createHandler;
@@ -94,14 +94,13 @@ public class GameManager extends AbsLifecycle {
     private void initHandler1() {
 
         try {
-//            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getTopLevelClassesRecursive("game.module");
+            Set<Class<?>> search = ClassUtils.search("game.module", null);
 
-            ImmutableSet<ClassPath.ClassInfo> topLevelClasses = ClassPath.from(ClassLoader.getSystemClassLoader()).getAllClasses();
-            topLevelClasses.stream().filter(classInfo -> {
+            search.stream().filter(classInfo -> {
                 return classInfo.getPackageName().startsWith("game.module");
             }).filter(classInfo -> classInfo.getName().endsWith("Handler")).forEach(classInfo -> {
 
-                Class<?> clazz = classInfo.load();
+                Class<?> clazz = classInfo;
                 for (Method m : clazz.getDeclaredMethods()) {
                     if (m.isAnnotationPresent(GameHandler.class)) {
                         Logs.C.info("[Handler] ==========> {}:{}", classInfo.getName(), m.getName());
@@ -113,7 +112,7 @@ public class GameManager extends AbsLifecycle {
 
                             }
                         } catch (Exception e) {
-                            Logs.C.error("解析失败:{},{}", clazz.getName(), m.getName());
+                            Logs.C.error(e, "解析失败:{},{}", clazz.getName(), m.getName());
                             throw new RuntimeException(e);
                         }
                     }

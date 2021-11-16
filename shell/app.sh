@@ -95,7 +95,7 @@ fi
 JAVA_PARAM="-Dfile.encoding=UTF-8"
 JAVA_PARAM="$JAVA_PARAM $PARAM"
 
-CMD="$JAVA_CMD $JAVA_VM_OPTION $JAVA_PARAM $APP_JAR >/dev/null 2>&1 &"
+CMD="$JAVA_CMD $JAVA_VM_OPTION  --add-opens java.base/java.lang=ALL-UNNAMED  $JAVA_PARAM $APP_JAR >/dev/null 2>&1 &"
 echo ${CMD}
 }
 
