@@ -1,8 +1,8 @@
 package game.base;
 
 import game.manager.*;
+import game.module.player.Player;
 import game.msg.MsgProcess;
-import game.player.Player;
 import game.proto.Message;
 import game.proto.no.No;
 
@@ -26,7 +26,9 @@ public class G {
     public static SceneManager SCENE = new SceneManager();
 
     public static RepositoryManager RP = new RepositoryManager();
+
     public static HttpManager H = new HttpManager();
+
     ///////////// No Lifecycle
     public static RepoManager R = new RepoManager();
 

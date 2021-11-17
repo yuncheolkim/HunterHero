@@ -15,7 +15,7 @@ import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.bag.BagService;
 import game.module.event.handler.TaskCompleteEvent;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.*;
 import game.proto.data.*;
 import game.proto.no.No;

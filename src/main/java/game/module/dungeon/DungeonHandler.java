@@ -7,7 +7,7 @@ import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
 import game.module.fight.FightService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.*;
 import game.proto.data.Dungeon;
 import game.proto.no.No;

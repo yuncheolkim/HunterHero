@@ -3,7 +3,7 @@ package game.module.scene;
 import game.base.Logs;
 import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
 import game.proto.ExitFightAreaReq;

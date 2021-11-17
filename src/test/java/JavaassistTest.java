@@ -7,7 +7,7 @@ import game.module.ladder.LadderHandler;
 import game.msg.DefaultInvoke;
 import game.msg.IHandler;
 import game.msg.IPlayerHandler;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.Message;
 import game.proto.back.LadderResult;
 import game.utils.AssisUtils;

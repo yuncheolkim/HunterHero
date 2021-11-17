@@ -2,7 +2,6 @@ package game.module.player;
 
 import game.base.Logs;
 import game.game.enums.FeatureEnum;
-import game.player.Player;
 import game.proto.FeatureOpenPush;
 import game.proto.NpcShowChangePush;
 import game.proto.data.NpcShowEnum;

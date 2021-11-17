@@ -2,7 +2,7 @@ package game.module.title;
 
 import game.exception.EvilAssert;
 import game.manager.ConfigManager;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.TitleChooseReq;
 import game.proto.TitleChooseRes;
 

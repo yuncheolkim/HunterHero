@@ -1,6 +1,6 @@
 package game.msg;
 
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.Message;
 
 /**
@@ -9,5 +9,6 @@ import game.proto.Message;
  */
 public interface IInvoke {
     void invoke(Player player, Message msg);
+
     int getMsgNo();
 }

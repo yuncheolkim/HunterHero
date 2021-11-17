@@ -14,7 +14,7 @@ import game.module.fight.data.FightCancelAtPrepare;
 import game.module.fight.data.FightFormation;
 import game.module.ladder.match.MatchCancel;
 import game.module.ladder.match.MatchInfoMsg;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.*;
 import game.proto.back.*;
 import game.proto.data.*;

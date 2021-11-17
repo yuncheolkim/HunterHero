@@ -6,7 +6,7 @@ import game.manager.ConfigManager;
 import game.module.event.EventType;
 import game.module.event.handler.BattleEndEvent;
 import game.module.fight.FightService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.EndlessLayerChangePush;
 import game.proto.EndlessStartReq;
 import game.proto.data.FightType;

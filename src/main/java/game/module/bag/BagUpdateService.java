@@ -1,7 +1,7 @@
 package game.module.bag;
 
 import com.google.common.collect.Multimap;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.data.BagSlot;
 
 import java.util.ArrayList;

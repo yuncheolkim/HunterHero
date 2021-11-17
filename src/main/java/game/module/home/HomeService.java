@@ -7,7 +7,7 @@ import game.exception.ModuleAssert;
 import game.game.enums.ResourceEnum;
 import game.manager.ConfigManager;
 import game.module.bag.BagService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.ResourceChangePush;
 import game.proto.ValueChange;
 import game.proto.data.*;

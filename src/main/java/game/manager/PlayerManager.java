@@ -1,6 +1,6 @@
 package game.manager;
 
-import game.player.Player;
+import game.module.player.Player;
 
 import java.util.Map;
 import java.util.Optional;

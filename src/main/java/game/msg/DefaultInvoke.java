@@ -6,7 +6,7 @@ import game.base.Logs;
 import game.exception.ErrorEnum;
 import game.exception.EvilException;
 import game.exception.ModuleException;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.Message;
 
 /**

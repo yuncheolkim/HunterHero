@@ -2,7 +2,7 @@ package game.msg;
 
 import game.base.G;
 import game.base.Logs;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.Message;
 
 /**

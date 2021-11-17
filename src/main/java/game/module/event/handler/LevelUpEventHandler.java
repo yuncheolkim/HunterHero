@@ -6,7 +6,7 @@ import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.event.IPlayerEventHandler;
 import game.module.task.TaskService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.PlayerLevelChangePush;
 import game.proto.TaskNewPush;
 import game.proto.no.No;

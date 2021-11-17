@@ -1,6 +1,6 @@
 package game.module.item;
 
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * 掉落物品条件

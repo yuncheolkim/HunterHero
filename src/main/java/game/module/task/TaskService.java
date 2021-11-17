@@ -5,7 +5,7 @@ import game.config.base.DataConfigData;
 import game.config.data.TaskTargetConfigData;
 import game.manager.ConfigManager;
 import game.module.bag.BagService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.TaskStatusChangePush;
 import game.proto.data.*;
 import game.proto.no.No;

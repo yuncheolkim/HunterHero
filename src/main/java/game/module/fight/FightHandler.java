@@ -13,7 +13,7 @@ import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.event.handler.BattleEndEvent;
 import game.module.player.ResourceService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.*;
 import game.proto.data.*;
 import game.proto.no.No;

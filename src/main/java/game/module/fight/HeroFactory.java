@@ -5,7 +5,7 @@ import game.module.battle.Hero;
 import game.module.battle.HeroData;
 import game.module.battle.hero.*;
 import game.module.battle.hero.creature.CreatureTarget;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.data.FightEnemyInfo;
 import game.proto.data.PlayerHero;
 import game.proto.data.Property;

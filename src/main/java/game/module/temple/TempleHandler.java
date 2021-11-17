@@ -5,7 +5,7 @@ import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
 import game.module.hero.HeroService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.TempleHeroBuyReq;
 import game.proto.TempleHeroBuyRes;
 

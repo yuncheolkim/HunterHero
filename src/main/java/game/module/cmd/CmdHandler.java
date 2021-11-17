@@ -1,6 +1,6 @@
 package game.module.cmd;
 
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.CmdReq;
 import org.apache.commons.lang3.StringUtils;
 

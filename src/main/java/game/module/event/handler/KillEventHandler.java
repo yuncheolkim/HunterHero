@@ -3,7 +3,7 @@ package game.module.event.handler;
 import game.module.event.IPlayerEventHandler;
 import game.module.task.TaskService;
 import game.module.task.TaskTargetTypeEnum;
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * @author Yunzhe.Jin

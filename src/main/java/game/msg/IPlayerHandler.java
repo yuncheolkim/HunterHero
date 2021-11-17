@@ -1,6 +1,6 @@
 package game.msg;
 
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * @author Yunzhe.Jin

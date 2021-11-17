@@ -2,7 +2,7 @@ package game.module.task.accept;
 
 import game.base.G;
 import game.config.base.DataConfigData;
-import game.player.Player;
+import game.module.player.Player;
 
 import java.util.Map;
 

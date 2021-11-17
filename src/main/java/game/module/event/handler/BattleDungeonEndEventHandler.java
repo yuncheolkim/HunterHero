@@ -2,7 +2,7 @@ package game.module.event.handler;
 
 import game.base.Logs;
 import game.module.event.IPlayerEventHandler;
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * 更新地下城信息

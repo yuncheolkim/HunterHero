@@ -10,7 +10,7 @@ import game.game.enums.ItemTypeEnum;
 import game.game.enums.ResourceEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.ItemBuyReq;
 import game.proto.ItemSellReq;
 import game.proto.data.BagSlot;

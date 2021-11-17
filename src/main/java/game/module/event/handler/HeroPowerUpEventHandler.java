@@ -3,7 +3,7 @@ package game.module.event.handler;
 import game.base.G;
 import game.module.event.IPlayerEventHandler;
 import game.msg.MsgProcess;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.Message;
 import game.proto.data.PlayerHero;
 import game.proto.data.Property;

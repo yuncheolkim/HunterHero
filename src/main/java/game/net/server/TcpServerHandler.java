@@ -6,7 +6,7 @@ import game.base.Logs;
 import game.base.constants.GameConstants;
 import game.msg.LoginMsgProcess;
 import game.msg.MsgProcess;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.Message;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;

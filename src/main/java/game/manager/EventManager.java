@@ -13,7 +13,7 @@ import game.module.event.EventType;
 import game.module.event.IEvent;
 import game.module.event.IPlayerEventHandler;
 import game.module.event.handler.*;
-import game.player.Player;
+import game.module.player.Player;
 
 import java.lang.reflect.Method;
 import java.util.Collection;

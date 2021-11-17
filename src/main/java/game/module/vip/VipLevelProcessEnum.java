@@ -1,6 +1,6 @@
 package game.module.vip;
 
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * vip 等级处理

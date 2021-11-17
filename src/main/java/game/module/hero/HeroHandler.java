@@ -11,7 +11,7 @@ import game.game.enums.ConsumeTypeEnum;
 import game.manager.ConfigManager;
 import game.manager.EventManager;
 import game.module.event.handler.HeroPowerUpEvent;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.*;
 import game.proto.data.*;
 import game.proto.no.No;

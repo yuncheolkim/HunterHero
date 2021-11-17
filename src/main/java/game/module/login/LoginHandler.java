@@ -2,7 +2,7 @@ package game.module.login;
 
 import game.base.G;
 import game.base.Logs;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.LoginReq;
 import game.repo.PlayerRepo;
 import io.netty.channel.Channel;

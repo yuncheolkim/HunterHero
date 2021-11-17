@@ -1,6 +1,6 @@
 package game.module.bag;
 
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.BagInfoChangePush;
 import game.proto.data.BagSlot;
 import game.proto.data.ItemData;

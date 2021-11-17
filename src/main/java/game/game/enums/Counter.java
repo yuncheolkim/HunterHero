@@ -1,6 +1,6 @@
 package game.game.enums;
 
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.back.GameCount;
 import game.proto.back.GameCountInfo;
 import org.joda.time.DateTimeUtils;

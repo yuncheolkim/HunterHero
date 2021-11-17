@@ -1,9 +1,9 @@
 package game.manager;
 
+import game.module.player.Player;
 import game.module.task.accept.ITaskAccept;
 import game.module.task.accept.TaskCommonAccept;
 import game.module.task.accept.TaskCompleteAccept;
-import game.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;

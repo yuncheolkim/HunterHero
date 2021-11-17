@@ -1,6 +1,6 @@
 package game.module.item;
 
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * 任务物品掉落

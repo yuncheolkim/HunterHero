@@ -1,7 +1,7 @@
 package game.module.event.handler;
 
 import game.module.event.IPlayerEventHandler;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.ExpChangePush;
 import game.proto.no.No;
 

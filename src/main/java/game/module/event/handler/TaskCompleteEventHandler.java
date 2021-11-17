@@ -4,7 +4,7 @@ import game.game.enums.FeatureEnum;
 import game.module.event.IPlayerEventHandler;
 import game.module.hero.HeroService;
 import game.module.player.PlayerService;
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * @author Yunzhe.Jin

@@ -3,7 +3,7 @@ package game.module.bag;
 import game.base.Logs;
 import game.base.constants.GameConstants;
 import game.exception.ModuleAssert;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.BagCleanReq;
 import game.proto.ItemDiscardReq;
 import game.proto.ItemExchangeReq;

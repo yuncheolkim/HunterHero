@@ -1,7 +1,7 @@
 package game.game.enums;
 
 import game.module.home.HomeService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.HomeOpenAreaRqRs;
 import game.proto.data.HomeData;
 import game.proto.no.No;

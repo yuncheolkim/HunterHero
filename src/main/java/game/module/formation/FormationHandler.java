@@ -4,7 +4,7 @@ import com.google.protobuf.MessageLite;
 import game.anno.GameHandler;
 import game.exception.ModuleAssert;
 import game.module.hero.HeroService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.*;
 import game.proto.data.Formation;
 import game.proto.data.FormationPos;

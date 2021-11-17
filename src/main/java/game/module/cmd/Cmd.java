@@ -10,7 +10,7 @@ import game.module.hero.HeroService;
 import game.module.home.HomeService;
 import game.module.ladder.LadderHandler;
 import game.module.player.PlayerService;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.TitleNewPush;
 import game.proto.back.LadderPrepare;
 import game.proto.data.ItemData;

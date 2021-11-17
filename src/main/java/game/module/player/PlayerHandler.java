@@ -10,7 +10,6 @@ import game.game.enums.ConsumeTypeEnum;
 import game.game.enums.ResourceSourceEnum;
 import game.manager.ConfigManager;
 import game.module.fight.FightService;
-import game.player.Player;
 import game.proto.*;
 import game.proto.data.Resource;
 import game.proto.data.ScenePos;

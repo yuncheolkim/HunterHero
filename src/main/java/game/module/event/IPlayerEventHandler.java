@@ -1,6 +1,6 @@
 package game.module.event;
 
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * @author Yunzhe.Jin

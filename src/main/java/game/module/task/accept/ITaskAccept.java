@@ -1,6 +1,6 @@
 package game.module.task.accept;
 
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * 检查任务是否可接受

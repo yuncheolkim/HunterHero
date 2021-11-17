@@ -1,4 +1,4 @@
-package game.player;
+package game.module.fish;
 
 /**
  * @author Yunzhe.Jin

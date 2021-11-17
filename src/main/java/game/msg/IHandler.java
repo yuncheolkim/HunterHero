@@ -1,7 +1,7 @@
 package game.msg;
 
 import com.google.protobuf.MessageLite;
-import game.player.Player;
+import game.module.player.Player;
 
 /**
  * @author Yunzhe.Jin

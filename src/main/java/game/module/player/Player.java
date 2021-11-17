@@ -1,4 +1,4 @@
-package game.player;
+package game.module.player;
 
 import com.google.protobuf.MessageLite;
 import game.anno.ProcessPersistenceData;
@@ -23,6 +23,7 @@ import game.module.event.handler.ExpAddEvent;
 import game.module.event.handler.ItemAddEvent;
 import game.module.event.handler.LevelUpEvent;
 import game.module.event.handler.ResourceChangeEvent;
+import game.module.fish.FishAction;
 import game.module.hero.HeroService;
 import game.module.home.HomeAreaData;
 import game.module.home.HomeService;

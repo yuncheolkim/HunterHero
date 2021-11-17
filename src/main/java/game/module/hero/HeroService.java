@@ -6,7 +6,7 @@ import game.config.data.ItemConfigData;
 import game.exception.ModuleAssert;
 import game.game.enums.ItemTypeEnum;
 import game.manager.ConfigManager;
-import game.player.Player;
+import game.module.player.Player;
 import game.proto.NewHeroPush;
 import game.proto.data.ItemData;
 import game.proto.data.PlayerHero;
