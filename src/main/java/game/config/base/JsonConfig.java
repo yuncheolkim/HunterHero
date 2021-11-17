@@ -41,7 +41,7 @@ public class JsonConfig {
             Logs.C.error(fileName, e);
             throw new RuntimeException(e);
         } finally {
-            Logs.M.info(GameConstants.TOKEN_END + "加载配置文件结束:{}", fileName);
+            Logs.C.info(GameConstants.TOKEN_END + "加载配置文件结束:{}", fileName);
         }
     }
 
