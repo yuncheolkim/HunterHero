@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
  * @author Yunzhe.Jin
  * 2021/8/21 12:43
  */
-@Repos(config = "mybatis-config.xml")
+@Repos(config = "mybatis-user.xml")
 public class UserRepository extends BaseRepository<UserMapper> {
 
     public long insert(User c) {
