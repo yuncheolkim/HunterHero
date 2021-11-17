@@ -1,6 +1,5 @@
 package com.cloverfew.repository;
 
-import game.base.G;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import java.lang.reflect.ParameterizedType;
@@ -14,6 +13,8 @@ public class BaseRepository<T> {
 
     private final Class<T> type;
 
+    private SqlSessionFactory factory;
+
     public BaseRepository() {
         Type superClass = getClass().getGenericSuperclass();
         if (superClass instanceof Class<?>) { // sanity check, should never happen
@@ -23,7 +24,7 @@ public class BaseRepository<T> {
     }
 
     protected SqlSessionFactory factory() {
-        return G.RP.getFactory();
+        return factory;
     }
 
     public T mapper() {
@@ -32,5 +33,10 @@ public class BaseRepository<T> {
 
     public Class<T> getType() {
         return type;
+    }
+
+    public void setFactory(SqlSessionFactory factory) {
+        this.factory = factory;
+        factory.getConfiguration().addMapper(getType());
     }
 }

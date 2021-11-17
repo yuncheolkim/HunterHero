@@ -109,11 +109,13 @@ bootJar {
 
 }
 
-processResources{
+processResources {
 
-    duplicatesStrategy( DuplicatesStrategy.EXCLUDE)
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
 }
 
 test {
     useJUnitPlatform()
 }
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17

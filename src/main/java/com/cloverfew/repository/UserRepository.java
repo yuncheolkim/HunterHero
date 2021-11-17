@@ -3,6 +3,7 @@ package com.cloverfew.repository;
 import com.cloverfew.repository.mybatis.User;
 import com.cloverfew.repository.mybatis.UserDynamicSqlSupport;
 import com.cloverfew.repository.mybatis.UserMapper;
+import game.anno.Repos;
 import org.mybatis.dynamic.sql.SqlBuilder;
 import org.mybatis.dynamic.sql.render.RenderingStrategies;
 
@@ -14,6 +15,7 @@ import java.util.concurrent.CompletableFuture;
  * @author Yunzhe.Jin
  * 2021/8/21 12:43
  */
+@Repos(config = "mybatis-config.xml")
 public class UserRepository extends BaseRepository<UserMapper> {
 
     public long insert(User c) {
