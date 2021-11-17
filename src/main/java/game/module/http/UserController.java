@@ -75,6 +75,7 @@ public class UserController {
             obj.token = "token";
         }
         ctx.json(obj);
+
     }
 
 }

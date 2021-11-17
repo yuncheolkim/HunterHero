@@ -40,7 +40,7 @@
         <!--                        userId="cabin_trw"-->
         <!--                        password="WkDxoclBzpJC36mS">-->
         <!--        </jdbcConnection>-->
-        <jdbcConnection driverClass="org.sqlite.JDBC" connectionURL="jdbc:sqlite:./db/WindLand.db"/>
+        <jdbcConnection driverClass="org.sqlite.JDBC" connectionURL="jdbc:sqlite:./db/User.db"/>
 
         <!-- 类型转换 -->
         <javaTypeResolver>
@@ -72,6 +72,11 @@
         <!--对应数据库表 mysql可以加入主键自增 字段命名 忽略某字段等 -->
         <table tableName="user" >
             <generatedKey column="id" sqlStatement="JDBC" identity="true" type="post"/>
+        </table>
+        <table tableName="player" >
+            <generatedKey column="id" sqlStatement="JDBC" identity="true" type="post"/>
+            <columnOverride column="id" javaType="java.lang.Long"/>
+            <columnOverride column="data" javaType="java.lang.Byte[]"/>
         </table>
     </context>
 </generatorConfiguration>
