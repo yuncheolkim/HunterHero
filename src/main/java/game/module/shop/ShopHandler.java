@@ -1,5 +1,6 @@
 package game.module.shop;
 
+import game.anno.GameHandler;
 import game.base.constants.GameConstants;
 import game.config.data.ItemConfigData;
 import game.config.data.ShopConfigData;
@@ -15,6 +16,7 @@ import game.proto.ItemBuyReq;
 import game.proto.ItemSellReq;
 import game.proto.data.BagSlot;
 import game.proto.data.ItemData;
+import game.proto.no.No;
 
 /**
  * @author Yunzhe.Jin
@@ -28,6 +30,7 @@ public class ShopHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.ItemBuyReq)
     public static void buyItem(final Player player, final ItemBuyReq req) {
         final ItemConfigData item = ConfigManager.getItem(req.getItemId());
 
@@ -60,6 +63,7 @@ public class ShopHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.ItemSellReq)
     public static void sellItem(final Player player, final ItemSellReq req) {
         final BagSlot bagSlot = player.getPd().getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);

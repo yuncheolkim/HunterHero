@@ -285,6 +285,7 @@ public class Player {
         dataPersistenceWork.addTask(() -> {
             final PlayerRepo playerRepo = G.R.getPlayerRepo();
             playerRepo.save(data);
+            PlayerService.saveData(data);
         });
     }
 

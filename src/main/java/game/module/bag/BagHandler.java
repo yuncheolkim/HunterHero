@@ -1,5 +1,6 @@
 package game.module.bag;
 
+import game.anno.GameHandler;
 import game.base.Logs;
 import game.base.constants.GameConstants;
 import game.exception.ModuleAssert;
@@ -8,6 +9,7 @@ import game.proto.BagCleanReq;
 import game.proto.ItemDiscardReq;
 import game.proto.ItemExchangeReq;
 import game.proto.data.BagSlot;
+import game.proto.no.No;
 
 /**
  * @author Yunzhe.Jin
@@ -21,6 +23,7 @@ public class BagHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.BagCleanReq)
     public static void clean(final Player player, final BagCleanReq req) {
         player.cleanBag(req.getType());
     }
@@ -31,6 +34,7 @@ public class BagHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.ItemDiscardReq)
     public static void discardItem(final Player player, final ItemDiscardReq req) {
         Logs.C.info("{}", req);
         player.removeBagItem(req.getType(), req.getCount(), req.getSlotId());
@@ -42,6 +46,7 @@ public class BagHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.ItemExchangeReq)
     public static void exchangeItem(final Player player, final ItemExchangeReq req) {
         ModuleAssert.isPositive(req.getCount());
         if (req.getType() == 1) { // bank -> bag

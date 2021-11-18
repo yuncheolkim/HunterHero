@@ -1,5 +1,6 @@
 package game.module.temple;
 
+import game.anno.GameHandler;
 import game.config.data.TempleHeroConfigData;
 import game.exception.EvilAssert;
 import game.exception.ModuleAssert;
@@ -8,6 +9,7 @@ import game.module.hero.HeroService;
 import game.module.player.Player;
 import game.proto.TempleHeroBuyReq;
 import game.proto.TempleHeroBuyRes;
+import game.proto.no.No;
 
 import static game.exception.ErrorEnum.ERR_8;
 import static game.game.enums.ConsumeTypeEnum.神殿购买英雄;
@@ -25,6 +27,7 @@ public class TempleHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.TempleHeroBuyReq)
     public static TempleHeroBuyRes TempleHeroBuyReq(final Player player, final TempleHeroBuyReq req) {
 
         final TempleHeroConfigData data = ConfigManager.templeHeroDataBox.findById(req.getId());

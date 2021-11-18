@@ -1,5 +1,6 @@
 package game.module.task;
 
+import game.anno.GameHandler;
 import game.base.G;
 import game.base.constants.GameConstants;
 import game.config.base.DataConfigData;
@@ -42,6 +43,7 @@ public class TaskHandler {
      * @param o
      * @return
      */
+    @GameHandler(No.TaskAcceptReq)
     public static void acceptTask(final Player player, final TaskReq o) {
 
         ModuleAssert.isTrue(TaskService.canAcceptTask(player, o.getTaskId()));
@@ -115,6 +117,7 @@ public class TaskHandler {
      * @param o
      * @return
      */
+    @GameHandler(No.TaskCompleteReq)
     public static void completeTask(final Player player, final TaskReq req) {
         final PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
         if (!taskBuilder.getRunTaskMap().containsKey(req.getTaskId())) {
@@ -224,6 +227,7 @@ public class TaskHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.TaskNpcReq)
     public static TaskNpcRes TaskNpcReq(final Player player, final TaskNpcReq req) {
         final Collection<DataConfigData> npcTask = G.C.getNpcTask(req.getNpcId());
 
@@ -277,6 +281,7 @@ public class TaskHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.TaskAbandonReq)
     public static TaskAbandonRes TaskAbandonReq(Player player, TaskAbandonReq req) {
         final PlayerTask.Builder taskBuilder = player.getPd().getTaskBuilder();
         final int taskId = req.getTaskId();

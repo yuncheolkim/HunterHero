@@ -1,5 +1,6 @@
 package game.module.hero;
 
+import game.anno.GameHandler;
 import game.anno.InsideMsgHandler;
 import game.base.constants.GameConstants;
 import game.config.data.ItemConfigData;
@@ -27,6 +28,7 @@ public class HeroHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.HeroUpReq)
     public static void powerUp(final Player player, final HeroUpReq req) {
         final PlayerData.Builder pd = player.getPd();
         final PlayerHero hero = pd.getHeroOrThrow(req.getHeroId());
@@ -56,6 +58,7 @@ public class HeroHandler {
     /**
      * 装备物品
      */
+    @GameHandler(No.HeroEquipmentReq)
     public static void equip(final Player player, final HeroEquipmentReq req) {
         final BagSlot bagSlot = player.pd.getBagMap().get(req.getSlotId());
         ModuleAssert.notNull(bagSlot);
@@ -99,6 +102,7 @@ public class HeroHandler {
      * @param hero
      */
     @InsideMsgHandler
+    @GameHandler(No.B_HERO_DATA)
     public static void updateHero(final Player player, final PlayerHero hero) {
         player.getPd().putHero(hero.getId(), hero);
         // Push
@@ -112,6 +116,7 @@ public class HeroHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.HeroTalentChangeReq)
     public static HeroTalentChangeRes HeroTalentChangeReq(final Player player, final HeroTalentChangeReq req) {
 
         final PlayerHero heroOrThrow = player.pd.getHeroOrThrow(req.getHeroId());

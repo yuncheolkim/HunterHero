@@ -1,9 +1,11 @@
 package game.module.chat;
 
+import game.anno.GameHandler;
 import game.base.G;
 import game.base.Logs;
 import game.module.player.Player;
 import game.proto.ChatMessageReq;
+import game.proto.no.No;
 
 /**
  * 聊天相关
@@ -19,6 +21,7 @@ public class ChatHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.ChatMessageReq)
     public static void chat(Player player, ChatMessageReq req) {
         Logs.chat.info("[{}] --> [{}] {}:{}", player.getPid(), req.getToUser(), req.getChannel(), req.getContent());
 

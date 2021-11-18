@@ -1,5 +1,6 @@
 package game.module.scene;
 
+import game.anno.GameHandler;
 import game.base.Logs;
 import game.exception.ModuleAssert;
 import game.manager.ConfigManager;
@@ -7,6 +8,7 @@ import game.module.player.Player;
 import game.proto.EnterFightAreaReq;
 import game.proto.EnterSceneReq;
 import game.proto.ExitFightAreaReq;
+import game.proto.no.No;
 import game.utils.CalcUtil;
 
 import java.util.ArrayList;
@@ -27,6 +29,7 @@ public class SceneHandler {
      * @param req
      * @return
      */
+    @GameHandler(No.EnterSceneReq)
     public static void enterScene(final Player player, final EnterSceneReq req) {
         Logs.C.info("进入场景：{}", req.getData().getId());
         ModuleAssert.isPositive(req.getData().getId());
@@ -41,6 +44,7 @@ public class SceneHandler {
      * @param req
      * @return
      */
+    @GameHandler(No.EnterFightAreaReq)
     public static void enterFightArea(final Player player, final EnterFightAreaReq req) {
 
         Logs.C.info("进入战斗区域：{}", req.getId());
@@ -61,6 +65,7 @@ public class SceneHandler {
      * @param req
      * @return
      */
+    @GameHandler(No.ExitFightAreaReq)
     public static void exitFightArea(final Player player, final ExitFightAreaReq req) {
         Logs.C.info("离开战斗区域：{}", req.getId());
 

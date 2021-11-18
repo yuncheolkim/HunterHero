@@ -1,5 +1,6 @@
 package game.module.fish;
 
+import game.anno.GameHandler;
 import game.base.G;
 import game.config.data.FishWeightConfigData;
 import game.exception.ModuleAssert;
@@ -32,6 +33,7 @@ public class FishHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FishReq)
     public static void fish(Player player, FishReq req) {
 
         // todo 检查是否在钓鱼区域
@@ -63,6 +65,7 @@ public class FishHandler {
      * @param req
      * @return
      */
+    @GameHandler(No.B_FISH_HOOK)
     public static void fishHook(Player player, FishData fishData) {
         FishAction fishAction = player.fishAction;
         if (fishAction.inFish() && fishAction.getId() == fishData.getId()) {
@@ -85,6 +88,7 @@ public class FishHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FishHookReq)
     public static void fishHook(Player player, FishHookReq req) {
 
         // todo 检查是否在钓鱼区域
@@ -125,6 +129,7 @@ public class FishHandler {
      *
      * @param player
      */
+    @GameHandler(No.B_FISH_HOOK_EXPIRE)
     public static void waitHook(Player player, FishData fishData) {
         FishAction fishAction = player.fishAction;
         if (fishAction.inFish() && fishAction.getId() == fishData.getId()) {
@@ -140,6 +145,7 @@ public class FishHandler {
      * @param player
      * @param fishData
      */
+    @GameHandler(No.FishEnterAreaReq)
     public static void enterArea(Player player, FishEnterAreaReq fishData) {
         ModuleAssert.notNull(ConfigManager.fishAreaDataBox.findById(fishData.getId()), ERR_112);
 
@@ -148,6 +154,7 @@ public class FishHandler {
         player.fishAction.setAreaId(fishData.getId());
     }
 
+    @GameHandler(No.FishExitAreaReq)
     public static void exitArea(Player player, FishExitAreaReq fishData) {
         player.pd.setFishAreaId(0);
         player.fishAction.endFish();

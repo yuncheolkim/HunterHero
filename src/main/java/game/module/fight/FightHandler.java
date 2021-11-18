@@ -1,5 +1,6 @@
 package game.module.fight;
 
+import game.anno.GameHandler;
 import game.base.Logs;
 import game.exception.ModuleAssert;
 import game.game.enums.ConsumeTypeEnum;
@@ -12,8 +13,8 @@ import game.module.battle.find.ManualTargetStrategy;
 import game.module.battle.hero.creature.CreatureTarget;
 import game.module.battle.record.BattleRecord;
 import game.module.event.handler.BattleEndEvent;
-import game.module.player.ResourceService;
 import game.module.player.Player;
+import game.module.player.ResourceService;
 import game.proto.*;
 import game.proto.data.*;
 import game.proto.no.No;
@@ -42,6 +43,7 @@ public class FightHandler {
      * @param req
      * @return
      */
+    @GameHandler(No.FightStartReq)
     public static void fight(final Player player, final FightStartReq req) {
         if (player.getPd().getFightInfoCount() == 0) {
             return;
@@ -105,6 +107,7 @@ public class FightHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FightEndReq)
     public static void endFight(final Player player) {
         FightService.endFight(player);
 
@@ -120,6 +123,7 @@ public class FightHandler {
      *
      * @param player
      */
+    @GameHandler(No.BattleEnterReq)
     public static void battleEnter(final Player player, final BattleEnterReq req) {
         FightService.battleDungeon(player, req.getId());
     }
@@ -130,6 +134,7 @@ public class FightHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FightTestReq)
     public static FightTestRes fightExercise(final Player player, final FightTestReq req) {
 
         final Battle battle = new Battle();
@@ -174,6 +179,7 @@ public class FightHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FightHmStartReq)
     public static void manualFight(final Player player, final FightStartReq req) {
         if (player.hmBattle != null) {
             Logs.C.warn("战斗已经存在");
@@ -234,6 +240,7 @@ public class FightHandler {
      * @param player
      * @param req
      */
+    @GameHandler(No.FightHmActionReq)
     public static void manualFightAction(final Player player, final FightHmActionReq req) {
 
         HalfManualBattle hmBattle = player.hmBattle;

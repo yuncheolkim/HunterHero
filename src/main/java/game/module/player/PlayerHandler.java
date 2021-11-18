@@ -79,6 +79,7 @@ public class PlayerHandler {
      *
      * @param player
      */
+    @GameHandler(No.PlayerChooseHotelReq)
     public static PlayerChooseHotelRes chooseHotel(final Player player, final PlayerChooseHotelReq req) {
         final int id = req.getId();
         final TransformConfigData transformConfigData = G.C.transformConfigData(id);
@@ -93,17 +94,15 @@ public class PlayerHandler {
      *
      * @param player
      */
+    @GameHandler(No.RecoverPowerReq)
     public static void addPower(final Player player, final RecoverPowerReq req) {
         ModuleAssert.isFalse(player.isFullPower(), ErrorEnum.ERR_6);
         if (req.getType() == 1) {//全部
             ModuleAssert.isTrue(player.consumeGem(ConsumeTypeEnum.购买体力, ConfigManager.paramConfigData.powerRecoverFullGem),
                     ErrorEnum.ERR_7);
-
             player.resetPower(ResourceSourceEnum.购买体力);
-
         } else {
             // 恢复一点
-
             if (req.getGem() > 0) {
                 player.consumeGemAssert(ConsumeTypeEnum.购买体力, req.getGem() * ConfigManager.paramConfigData.powerRecoverGem);
                 player.addPower(1, ResourceSourceEnum.购买体力);
@@ -111,9 +110,7 @@ public class PlayerHandler {
                 player.consumeGold(req.getGold() * ConfigManager.paramConfigData.powerRecoverGold, ConsumeTypeEnum.购买体力);
                 player.addPower(1, ResourceSourceEnum.购买体力);
             }
-
         }
-
     }
 
 
@@ -127,6 +124,7 @@ public class PlayerHandler {
      * @param o
      * @return
      */
+    @GameHandler(No.B_TICK)
     public static void tick(final Player player) {
 
         // 体力恢复
@@ -140,7 +138,7 @@ public class PlayerHandler {
     /**
      * 恢复体力
      */
-    public static void recoverPower(final Player player) {
+    private static void recoverPower(final Player player) {
 
         final long now = System.currentTimeMillis();
 
@@ -162,6 +160,7 @@ public class PlayerHandler {
      * @param o
      * @return
      */
+    @GameHandler(No.B_DATA_PUSH)
     public static void dataFlush(final Player player, final Empty o) {
         player.saveData();
     }

@@ -1,9 +1,12 @@
 package game.module.player;
 
+import com.cloverfew.repository.PlayerRepository;
 import game.base.Logs;
 import game.game.enums.FeatureEnum;
+import game.manager.RepositoryManager;
 import game.proto.FeatureOpenPush;
 import game.proto.NpcShowChangePush;
+import game.proto.back.SaveData;
 import game.proto.data.NpcShowEnum;
 import game.proto.no.No;
 
@@ -65,5 +68,15 @@ public class PlayerService {
                 .setShowNo(player.pd.getShowNpc())
                 .setNpcId(npcId)
                 .build());
+    }
+
+    /**
+     * 持久化数据
+     *
+     * @param data
+     */
+    public static void saveData(SaveData data) {
+        PlayerRepository repo = RepositoryManager.getRepo(PlayerRepository.class);
+
     }
 }
