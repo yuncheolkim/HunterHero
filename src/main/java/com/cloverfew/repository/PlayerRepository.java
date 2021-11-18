@@ -29,4 +29,10 @@ public class PlayerRepository extends BaseRepository<PlayerMapper> {
                 .and(PlayerDynamicSqlSupport.account, SqlBuilder.isEqualTo(account))
                 .build().render(RenderingStrategies.MYBATIS3));
     }
+
+    public void update(Player p) {
+        PlayerMapper mapper = mapper();
+        mapper.updateByPrimaryKey(p);
+    }
+
 }

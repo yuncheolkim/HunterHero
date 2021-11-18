@@ -36,7 +36,6 @@ import game.proto.back.GameCount;
 import game.proto.back.PlayerBackData;
 import game.proto.data.*;
 import game.proto.no.No;
-import game.repo.PlayerRepo;
 import game.utils.CalcUtil;
 import game.utils.DateUtils;
 import io.netty.channel.Channel;
@@ -114,6 +113,8 @@ public class Player {
      */
     public HomeAreaData homeAreaData;
 
+    private com.cloverfew.repository.mybatis.Player playerData;
+
     public Player(final long pid) {
         this.pid = pid;
         createTime = LocalDateTime.now();
@@ -161,17 +162,15 @@ public class Player {
     public void load(final String code) {
         // todo 根据code获取用户的账号, code从用户服务器生成
 
-        final PlayerRepo playerRepo = G.R.getPlayerRepo();
         final String account = code;// todo for test
 
-        if (playerRepo.has(account)) {
-            final game.proto.back.SaveData.Builder load = playerRepo.load(account);
+        if (PlayerService.hasAccount(account)) {
+            final game.proto.back.SaveData.Builder load = PlayerService.load(account);
             pd = load.getPdBuilder();
             D = load.getBackDataBuilder();
         } else {// 创建用户
             pd.setAccount(account);
             initFirstPlayer();
-            saveData();
         }
         prepareData();
     }
@@ -234,6 +233,9 @@ public class Player {
      * 创建角色数据
      */
     private void initFirstPlayer() {
+        playerData = new com.cloverfew.repository.mybatis.Player();
+        playerData.setId(pid);
+        playerData.setAccount(pd.getAccount());
         // 等级
         pd.setPid(pid);
         pd.setLevel(1);
@@ -265,6 +267,9 @@ public class Player {
         if (pd.getLadderSingleInfoBuilder() == null) {
             pd.setLadderSingleInfo(LadderInfo.newBuilder().build());
         }
+
+        PlayerService.insert(playerData);
+        saveData();
     }
 
     /**
@@ -281,11 +286,10 @@ public class Player {
                 .setBackData(D.build())
                 .setPd(pd.build())
                 .build();
-
+        playerData.setName(pd.getName());
         dataPersistenceWork.addTask(() -> {
-            final PlayerRepo playerRepo = G.R.getPlayerRepo();
-            playerRepo.save(data);
-            PlayerService.saveData(data);
+            playerData.setData(data.toByteArray());
+            PlayerService.saveData(playerData);
         });
     }
 

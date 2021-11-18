@@ -76,7 +76,7 @@
         <table tableName="player" >
             <generatedKey column="id" sqlStatement="JDBC" identity="true" type="post"/>
             <columnOverride column="id" javaType="java.lang.Long"/>
-            <columnOverride column="data" javaType="java.lang.Byte[]"/>
+            <columnOverride column="data" javaType="byte[]"/>
         </table>
     </context>
 </generatorConfiguration>

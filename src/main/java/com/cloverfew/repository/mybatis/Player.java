@@ -8,7 +8,7 @@ public class Player implements Serializable {
     private Long id;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    private Byte[] data;
+    private byte[] data;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     private String account;
@@ -31,12 +31,12 @@ public class Player implements Serializable {
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    public Byte[] getData() {
+    public byte[] getData() {
         return data;
     }
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    public Player setData(Byte[] data) {
+    public Player setData(byte[] data) {
         this.data = data;
         return this;
     }

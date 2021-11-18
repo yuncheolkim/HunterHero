@@ -10,6 +10,9 @@ import game.proto.back.SaveData;
 import game.proto.data.NpcShowEnum;
 import game.proto.no.No;
 
+import java.io.IOException;
+import java.util.Optional;
+
 /**
  * @author Yunzhe.Jin
  * 2021/6/19 13:21
@@ -75,8 +78,32 @@ public class PlayerService {
      *
      * @param data
      */
-    public static void saveData(SaveData data) {
+    public static void saveData(com.cloverfew.repository.mybatis.Player data) {
         PlayerRepository repo = RepositoryManager.getRepo(PlayerRepository.class);
+        repo.update(data);
+    }
 
+    public static void insert(com.cloverfew.repository.mybatis.Player data) {
+        PlayerRepository repo = RepositoryManager.getRepo(PlayerRepository.class);
+        repo.insert(data);
+    }
+
+    public static game.proto.back.SaveData.Builder load(String account) {
+        PlayerRepository repo = RepositoryManager.getRepo(PlayerRepository.class);
+        com.cloverfew.repository.mybatis.Player player = repo.findByAccount(account).get();
+        try {
+            byte[] s = player.getData();
+            return SaveData.newBuilder().mergeFrom(s);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public static boolean hasAccount(String account) {
+        PlayerRepository repo = RepositoryManager.getRepo(PlayerRepository.class);
+        Optional<com.cloverfew.repository.mybatis.Player> byAccount = repo.findByAccount(account);
+        return byAccount.isPresent();
     }
 }

@@ -13,7 +13,7 @@ public final class PlayerDynamicSqlSupport {
     public static final SqlColumn<Long> id = player.id;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
-    public static final SqlColumn<Byte[]> data = player.data;
+    public static final SqlColumn<byte[]> data = player.data;
 
     @Generated("org.mybatis.generator.api.MyBatisGenerator")
     public static final SqlColumn<String> account = player.account;
@@ -25,7 +25,7 @@ public final class PlayerDynamicSqlSupport {
     public static final class Player extends SqlTable {
         public final SqlColumn<Long> id = column("id", JDBCType.INTEGER);
 
-        public final SqlColumn<Byte[]> data = column("`data`", JDBCType.VARCHAR);
+        public final SqlColumn<byte[]> data = column("`data`", JDBCType.VARCHAR);
 
         public final SqlColumn<String> account = column("account", JDBCType.VARCHAR);
 
