@@ -104,7 +104,7 @@ public class AssisUtils {
 
 
         String callBody = cls.getName() + "." + method.getName() +
-                "(" + paramStr.stream().collect(Collectors.joining(",")) + ");";
+                "(" + String.join(",", paramStr) + ");";
         ctMethod.setBody("{" + callBody + " }");
         handlerClass.addMethod(ctMethod);
 

@@ -126,7 +126,6 @@ public class PlayerHandler {
      */
     @GameHandler(No.B_TICK)
     public static void tick(final Player player) {
-
         // 体力恢复
         recoverPower(player);
 
