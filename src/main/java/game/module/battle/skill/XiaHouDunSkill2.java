@@ -19,7 +19,6 @@ public class XiaHouDunSkill2 extends Skill {
     public XiaHouDunSkill2() {
         super(26);
         actionPoint.put(ActionPoint.被攻击之前, 1);
-
     }
 
     @Override
