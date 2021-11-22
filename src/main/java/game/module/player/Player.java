@@ -7,6 +7,7 @@ import game.base.G;
 import game.base.Logs;
 import game.base.Work;
 import game.base.constants.GameConstants;
+import game.base.util.Tuple2;
 import game.config.data.ItemConfigData;
 import game.exception.ErrorEnum;
 import game.exception.ModuleAssert;
@@ -165,7 +166,9 @@ public class Player {
         final String account = code;// todo for test
 
         if (PlayerService.hasAccount(account)) {
-            final game.proto.back.SaveData.Builder load = PlayerService.load(account);
+            Tuple2<game.proto.back.SaveData.Builder, com.cloverfew.repository.mybatis.Player> tuple2 = PlayerService.load(account);
+            final game.proto.back.SaveData.Builder load = tuple2.first;
+            playerData = tuple2.second;
             pd = load.getPdBuilder();
             D = load.getBackDataBuilder();
         } else {// 创建用户

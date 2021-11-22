@@ -2,6 +2,7 @@ package game.module.player;
 
 import com.cloverfew.repository.PlayerRepository;
 import game.base.Logs;
+import game.base.util.Tuple2;
 import game.game.enums.FeatureEnum;
 import game.manager.RepositoryManager;
 import game.proto.FeatureOpenPush;
@@ -88,12 +89,12 @@ public class PlayerService {
         repo.insert(data);
     }
 
-    public static game.proto.back.SaveData.Builder load(String account) {
+    public static Tuple2<game.proto.back.SaveData.Builder, com.cloverfew.repository.mybatis.Player> load(String account) {
         PlayerRepository repo = RepositoryManager.getRepo(PlayerRepository.class);
         com.cloverfew.repository.mybatis.Player player = repo.findByAccount(account).get();
         try {
             byte[] s = player.getData();
-            return SaveData.newBuilder().mergeFrom(s);
+            return new Tuple2<>(SaveData.newBuilder().mergeFrom(s), player);
         } catch (IOException e) {
             e.printStackTrace();
         }
