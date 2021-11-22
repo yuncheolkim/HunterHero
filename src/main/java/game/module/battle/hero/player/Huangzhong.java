@@ -1,4 +1,4 @@
-package game.module.battle.hero;
+package game.module.battle.hero.player;
 
 import game.module.battle.Hero;
 import game.module.battle.skill.HuanzhongSkill1;

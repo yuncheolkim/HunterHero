@@ -3,8 +3,8 @@ package hunter;
 import game.module.battle.Battle;
 import game.module.battle.Pos;
 import game.module.battle.Side;
-import game.module.battle.hero.Guanyu;
-import game.module.battle.hero.Zhangfei;
+import game.module.battle.hero.player.Guanyu;
+import game.module.battle.hero.player.Zhangfei;
 import org.junit.Test;
 
 /**

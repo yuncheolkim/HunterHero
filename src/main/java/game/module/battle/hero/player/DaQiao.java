@@ -1,4 +1,4 @@
-package game.module.battle.hero;
+package game.module.battle.hero.player;
 
 import game.module.battle.hero.base.DefaultTargetHero;
 import game.module.battle.skill.DaQiaoSkill1;

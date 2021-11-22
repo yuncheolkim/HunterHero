@@ -4,7 +4,7 @@ import game.manager.ConfigManager;
 import game.module.battle.Battle;
 import game.module.battle.Pos;
 import game.module.battle.Side;
-import game.module.battle.hero.JiangWei;
+import game.module.battle.hero.player.JiangWei;
 import game.module.battle.hero.base.BlankHero;
 import org.junit.Before;
 import org.junit.Test;

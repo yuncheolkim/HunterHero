@@ -4,7 +4,7 @@ import game.module.battle.Battle;
 import game.module.battle.HeroData;
 import game.module.battle.Pos;
 import game.module.battle.Side;
-import game.module.battle.hero.Guanyu;
+import game.module.battle.hero.player.Guanyu;
 import org.junit.Test;
 
 /**

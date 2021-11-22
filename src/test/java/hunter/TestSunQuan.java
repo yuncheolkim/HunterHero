@@ -3,7 +3,7 @@ package hunter;
 import game.module.battle.Battle;
 import game.module.battle.Pos;
 import game.module.battle.Side;
-import game.module.battle.hero.SunQuan;
+import game.module.battle.hero.player.SunQuan;
 import game.module.battle.hero.base.BlankHero;
 import org.junit.Test;
 
