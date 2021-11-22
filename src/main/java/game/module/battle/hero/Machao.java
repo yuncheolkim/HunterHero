@@ -30,21 +30,11 @@ public class Machao extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 404:
-                    skill1.talent1(id);
-                    break;
-                case 406:
-                    skill2.talent1(id);
-                    break;
-                case 413:
-                    addSkill(new CriticalAddRateSkill());
-                    break;
-                case 414:
-                    skill1.talent2(id);
-                    break;
-                case 415:
-                    skill2.talent2(id);
-                    break;
+                case 404 -> skill1.talent1(id);
+                case 406 -> skill2.talent1(id);
+                case 413 -> addSkill(new CriticalAddRateSkill());
+                case 414 -> skill1.talent2(id);
+                case 415 -> skill2.talent2(id);
             }
         });
 

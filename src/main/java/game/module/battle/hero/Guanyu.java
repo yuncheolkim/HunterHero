@@ -27,24 +27,12 @@ public class Guanyu extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 21:
-                    skill1.talent1(id);
-                    break;
-                case 22:
-                    skill1.talent2(id);
-                    break;
-                case 23:
-                    skill2.talent1(id);
-                    break;
-                case 24:
-                    skill1.talent4(id);
-                    break;
-                case 25:
-                    skill1.talent3(id);
-                    break;
-                case 26:
-                    skill2.talent2(id);
-                    break;
+                case 21 -> skill1.talent1(id);
+                case 22 -> skill1.talent2(id);
+                case 23 -> skill2.talent1(id);
+                case 24 -> skill1.talent4(id);
+                case 25 -> skill1.talent3(id);
+                case 26 -> skill2.talent2(id);
             }
         });
 

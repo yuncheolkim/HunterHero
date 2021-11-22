@@ -19,24 +19,12 @@ public class ZhuGeLiang extends DefaultTargetHero {
         FightService.talentProcess(id, talentInfo, tdata -> {
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 804:
-                    skill1.talent1(id);
-                    break;
-                case 805:
-                    skill1.talent2(id);
-                    break;
-                case 806:
-                    skill2.talent1(id);
-                    break;
-                case 813:
-                    skill2.talent2(id);
-                    break;
-                case 814:
-                    skill2.talent3(id);
-                    break;
-                case 815:
-                    skill2.talent4(id);
-                    break;
+                case 804 -> skill1.talent1(id);
+                case 805 -> skill1.talent2(id);
+                case 806 -> skill2.talent1(id);
+                case 813 -> skill2.talent2(id);
+                case 814 -> skill2.talent3(id);
+                case 815 -> skill2.talent4(id);
             }
         });
         addSkill(skill1);

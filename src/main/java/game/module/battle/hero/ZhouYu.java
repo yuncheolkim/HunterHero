@@ -21,24 +21,12 @@ public class ZhouYu extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 704:
-                    skill1.talent1(id);
-                    break;
-                case 705:
-                    skill2.talent1(id);
-                    break;
-                case 706:
-                    skill2.talent2(id);
-                    break;
-                case 713:
-                    skill1.talent2(id);
-                    break;
-                case 714:
-                    skill1.talent3(id);
-                    break;
-                case 715:
-                    skill2.talent3(id);
-                    break;
+                case 704 -> skill1.talent1(id);
+                case 705 -> skill2.talent1(id);
+                case 706 -> skill2.talent2(id);
+                case 713 -> skill1.talent2(id);
+                case 714 -> skill1.talent3(id);
+                case 715 -> skill2.talent3(id);
             }
         });
         addSkill(skill1);

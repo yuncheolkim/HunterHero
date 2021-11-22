@@ -27,21 +27,11 @@ public class XiaHouDun extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 605:
-                    skill1.talent1(id);
-                    break;
-                case 606:
-                    skill1.talent2(id);
-                    break;
-                case 613:
-                    skill1.talent3(id);
-                    break;
-                case 614:
-                    skill2.talent1(id);
-                    break;
-                case 615:
-                    addSkill(new ReduceDamageSkill());
-                    break;
+                case 605 -> skill1.talent1(id);
+                case 606 -> skill1.talent2(id);
+                case 613 -> skill1.talent3(id);
+                case 614 -> skill2.talent1(id);
+                case 615 -> addSkill(new ReduceDamageSkill());
             }
         });
         addSkill(skill1);

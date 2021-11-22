@@ -22,24 +22,12 @@ public class JiangWei extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 1104:
-                    skill1.talent1(tdata.i1);
-                    break;
-                case 1105:
-                    skill2.talent1(tdata.i1);
-                    break;
-                case 1106:
-                    skill3.talent1(tdata.i1);
-                    break;
-                case 1113:
-                    skill1.talent2(tdata.i1);
-                    break;
-                case 1114:
-                    skill1.talent3(tdata.i1);
-                    break;
-                case 1115:
-                    skill3.talent2(tdata.i1);
-                    break;
+                case 1104 -> skill1.talent1(tdata.i1);
+                case 1105 -> skill2.talent1(tdata.i1);
+                case 1106 -> skill3.talent1(tdata.i1);
+                case 1113 -> skill1.talent2(tdata.i1);
+                case 1114 -> skill1.talent3(tdata.i1);
+                case 1115 -> skill3.talent2(tdata.i1);
             }
         });
         addSkill(skill1);

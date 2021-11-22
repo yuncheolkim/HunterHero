@@ -23,24 +23,12 @@ public class DianWei extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 1004:
-                    skill1.talent1(id);
-                    break;
-                case 1005:
-                    skill2.setRate(tdata.i1);
-                    break;
-                case 1006:
-                    addSkill(new ReduceCriticalDamageSkill(tdata.i1));
-                    break;
-                case 1013:
-                    skill1.talent2(tdata.i1, tdata.i2);
-                    break;
-                case 1014:
-                    addSkill(new IncreaseHealthSkill(tdata.i1));
-                    break;
-                case 1015:
-                    addSkill(new ReduceDamageSkill(tdata.i1));
-                    break;
+                case 1004 -> skill1.talent1(id);
+                case 1005 -> skill2.setRate(tdata.i1);
+                case 1006 -> addSkill(new ReduceCriticalDamageSkill(tdata.i1));
+                case 1013 -> skill1.talent2(tdata.i1, tdata.i2);
+                case 1014 -> addSkill(new IncreaseHealthSkill(tdata.i1));
+                case 1015 -> addSkill(new ReduceDamageSkill(tdata.i1));
             }
         });
         addSkill(skill1);

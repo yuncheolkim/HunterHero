@@ -23,24 +23,12 @@ public class Lusu extends Hero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 504:
-                    skill1.talent1(id);
-                    break;
-                case 505:
-                    skill2.talent1(id);
-                    break;
-                case 506:
-                    skill2.talent2(id);
-                    break;
-                case 513:
-                    skill2.talent3(id);
-                    break;
-                case 514:
-                    skill2.talent4(id);
-                    break;
-                case 515:
-                    skill3.talent1(id);
-                    break;
+                case 504 -> skill1.talent1(id);
+                case 505 -> skill2.talent1(id);
+                case 506 -> skill2.talent2(id);
+                case 513 -> skill2.talent3(id);
+                case 514 -> skill2.talent4(id);
+                case 515 -> skill3.talent1(id);
             }
         });
         addSkill(skill1);

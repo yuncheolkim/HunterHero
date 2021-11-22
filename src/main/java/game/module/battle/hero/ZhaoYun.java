@@ -23,24 +23,12 @@ public class ZhaoYun extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 33:
-                    skill1.talent1(id);
-                    break;
-                case 34:
-                    skill1.talent2(id);
-                    break;
-                case 35:
-                    skill2.talent2(id);
-                    break;
-                case 36:
-                    skill1.talent3(id);
-                    break;
-                case 37:
-                    skill2.talent1(id);
-                    break;
-                case 38:
-                    skill1.talent4(id);
-                    break;
+                case 33 -> skill1.talent1(id);
+                case 34 -> skill1.talent2(id);
+                case 35 -> skill2.talent2(id);
+                case 36 -> skill1.talent3(id);
+                case 37 -> skill2.talent1(id);
+                case 38 -> skill1.talent4(id);
             }
         });
         addSkill(skill1);

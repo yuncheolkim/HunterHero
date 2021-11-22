@@ -27,24 +27,12 @@ public class WeiYan extends DefaultTargetHero {
 
             final int id = tdata.id;
             switch (tdata.talentId) {
-                case 304:
-                    addSkill(new AttackShieldSkill());
-                    break;
-                case 305:
-                    skill1.talent1(id);
-                    break;
-                case 306:
-                    skill2.talent1(id);
-                    break;
-                case 313:
-                    skill1.talent2(id);
-                    break;
-                case 314:
-                    skill1.talent3(id);
-                    break;
-                case 315:
-                    addSkill(new ReduceDamageSkill());
-                    break;
+                case 304 -> addSkill(new AttackShieldSkill());
+                case 305 -> skill1.talent1(id);
+                case 306 -> skill2.talent1(id);
+                case 313 -> skill1.talent2(id);
+                case 314 -> skill1.talent3(id);
+                case 315 -> addSkill(new ReduceDamageSkill());
             }
         });
         addSkill(skill1);
