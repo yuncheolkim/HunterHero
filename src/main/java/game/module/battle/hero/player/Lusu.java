@@ -7,7 +7,7 @@ import game.module.battle.skill.LusuSkill3;
 import game.module.fight.FightService;
 
 /**
- * 鲁肃
+ * 鲁肃 - 5
  *
  * @author Yunzhe.Jin
  * 2021/6/28 21:43

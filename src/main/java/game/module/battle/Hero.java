@@ -270,6 +270,7 @@ public class Hero {
                 Logs.trace("计算攻击前:", this);
                 calcAttack();
                 Logs.trace("计算攻击后:", this);
+                damageInfo.sourceDamage = fightingData.getDamage();
                 processAction(ActionPoint.出手);
                 // skill 主动技能
                 final boolean skillFire = processSkill(ActionPoint.出手);
@@ -377,7 +378,17 @@ public class Hero {
         }
 
         // Check round
-        buffCdMap.get(actionPoint).forEach(buff -> buff.checkRound(actionPoint, this));
+        List<Buff> l = new ArrayList<>(4);
+        Collection<Buff> buffs1 = Lists.newArrayList(buffCdMap.get(actionPoint));
+        for (Buff buff : buffs1) {
+            if (buff.checkRound(actionPoint, this)) {
+                l.add(buff);
+            }
+        }
+
+        for (Buff buff : l) {
+            buffCdMap.remove(actionPoint, buff);
+        }
     }
 
     public void removeBuff(final Buff buff) {
@@ -388,7 +399,9 @@ public class Hero {
             removeBuffRecord(actionPoint, buff);
             processAll(ActionPoint.buff移除后);
         }
+
         contextData = null;
+        buffCdMap.remove(buff.reducePoint(), buff);
 
         if (buff.needReCalcProperty()) {
             calcBuffEffect(ActionPoint.重新计算属性);
@@ -495,7 +508,6 @@ public class Hero {
      */
     public void addBuff(final Buff addBuff) {
 
-
         final Set<ActionPoint> values = addBuff.effectPoint.keySet();
 
         Buff added = null;
@@ -507,30 +519,30 @@ public class Hero {
             final Optional<Buff> first = buffs.stream().filter(buff -> buff.getId() == addBuff.getId()).findFirst();
             if (first.isPresent()) {
                 switch (first.get().calcBuffMergeType(addBuff)) {
-                    case MERGE: {
+                    case MERGE -> {
                         final Buff buff = first.get();
                         buff.mergeBuff(addBuff);
                         Logs.trace("Buff存在合并");
                         added = buff;
-                        break;
                     }
-                    case REPLACE: {
+                    case REPLACE -> {
                         buffMap.remove(actionPoint, first.get());
                         buffMap.put(actionPoint, addBuff);
+                        buffCdMap.remove(addBuff.reducePoint(), first.get());
+                        buffCdMap.put(addBuff.reducePoint(), addBuff);
                         Logs.trace("Buff存在替换");
                         added = addBuff;
-                        break;
                     }
                 }
             } else {
                 added = addBuff;
                 buffMap.put(actionPoint, addBuff);
+                if (!added.isInfinite()) {
+                    buffCdMap.put(addBuff.reducePoint(), addBuff);
+                }
             }
         }
 
-        if (!added.isInfinite()) {
-            buffCdMap.put(addBuff.reducePoint(), addBuff);
-        }
         processAll(ActionPoint.增加buff后);
         if (addBuff.needReCalcProperty()) {
             calcBuffEffect(ActionPoint.重新计算属性);

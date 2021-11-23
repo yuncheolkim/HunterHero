@@ -58,3 +58,4 @@ Data + Service
 ### http
 7000
 
+java -jar  --add-opens java.base/java.lang=ALL-UNNAMED -Dio.netty.tryReflectionSetAccessible=true  .\game-server-1.0.0.jar 

@@ -95,14 +95,17 @@ public abstract class Buff {
         process0(actionPoint, hero);
     }
 
-    public void checkRound(final ActionPoint actionPoint, final Hero hero) {
+    public boolean checkRound(final ActionPoint actionPoint, final Hero hero) {
         if (!isInfinite() && actionPoint == reducePoint()) {
             reduceRound();
 
             if (cd.ready()) {
                 hero.removeBuff(this);
+                return true;
             }
         }
+
+        return false;
     }
 
     protected abstract void process0(final ActionPoint actionPoint, final Hero hero);
@@ -139,6 +142,10 @@ public abstract class Buff {
 
     public void SetCd(final int round) {
         cd = new CoolDown(round);
+    }
+
+    public CoolDown getCd() {
+        return cd;
     }
 
     /**

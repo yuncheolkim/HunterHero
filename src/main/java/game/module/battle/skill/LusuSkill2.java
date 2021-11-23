@@ -5,7 +5,6 @@ import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.hero.BingDongBuff;
 import game.module.battle.record.Record;
-import game.utils.CalcUtil;
 
 /**
  * 攻击施加冰冻buff
@@ -32,7 +31,8 @@ public class LusuSkill2 extends Skill {
         switch (point) {
             case 出手后:
                 final int addBuffRate = data[0];
-                if (CalcUtil.happened100(addBuffRate)) {
+                if (true) {// todo
+//                if (CalcUtil.happened100(addBuffRate)) {
                     //加buff
                     final Hero target = hero.getBattle().getDamageInfo().target;
                     final BingDongBuff addBuff = new BingDongBuff(hero.getId());
@@ -41,6 +41,7 @@ public class LusuSkill2 extends Skill {
                     addBuff.setDefRate(buffDefRate);
                     addBuff.setHarmRate(buffHarmRate);
                     addBuff.SetCd(data[3]);
+                    addBuff.getCd().cold();
                     target.addBuff(addBuff);
                 }
                 break;

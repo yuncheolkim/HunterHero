@@ -4,6 +4,7 @@ import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 import game.module.battle.buff.Buff;
+import game.module.battle.buff.BuffMergeType;
 import game.utils.CalcUtil;
 
 /**
@@ -47,6 +48,11 @@ public class BingDongBuff extends Buff {
 
     public void setHarmRate(final int v) {
         data[1] = v;
+    }
+
+    @Override
+    public BuffMergeType calcBuffMergeType(Buff addBuf) {
+        return BuffMergeType.REPLACE;
     }
 }
 
