@@ -194,7 +194,7 @@ public class Hero {
     public void processAction(final ActionPoint actionPoint) {
         final Collection<HeroActionPointHandler> pointHandler = actionMap.get(actionPoint);
         if (!pointHandler.isEmpty()) {
-            Logs.trace("action", this, actionPoint);
+            Logs.trace("[processAction]", this, actionPoint);
             for (final HeroActionPointHandler heroActionPointHandler : pointHandler) {
                 heroActionPointHandler.handle(this);
             }
@@ -589,6 +589,9 @@ public class Hero {
         info.setNewValue(heroStats.hp);
 
         final int add = info.getNewValue() - info.getOldValue();
+
+        Logs.trace("恢复血量", info);
+
         addHpRecord(add);
 
         for (final HeroStatusChangeListener statusChangeListener : statusChangeListeners) {

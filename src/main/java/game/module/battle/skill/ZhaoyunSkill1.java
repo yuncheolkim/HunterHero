@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -71,19 +70,19 @@ public class ZhaoyunSkill1 extends Skill {
     }
 
 
-    public void talent1(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent1(final int i1) {
+        data[0] = i1;
     }
 
-    public void talent2(final int id) {
-        data[1] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent2(final int i1) {
+        data[1] = i1;
     }
 
-    public void talent3(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent3(final int i1) {
+        data[2] = i1;
     }
 
-    public void talent4(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent4(final int i1) {
+        data[3] = i1;
     }
 }

@@ -1,6 +1,6 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
+import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -38,7 +38,11 @@ public class ZhaoyunSkill2 extends Skill {
             final int rate = data[0];
             final int canAttackCount = data[1];
             if (curAttack < canAttackCount) {
-                hero.setContinueAction(CalcUtil.happened100(rate));
+                boolean happened100 = CalcUtil.happened100(rate);
+                if (happened100) {
+                    Logs.trace("进攻2次");
+                }
+                hero.setContinueAction(happened100);
             } else {
                 curAttack = 0;
                 hero.setContinueAction(false);
@@ -47,11 +51,11 @@ public class ZhaoyunSkill2 extends Skill {
     }
 
     public void talent1(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+        data[0] = id;
     }
 
     public void talent2(final int id) {
-        data[1] = ConfigManager.talentDataBox.findById(id).i1;
+        data[1] = id;
     }
 
 }

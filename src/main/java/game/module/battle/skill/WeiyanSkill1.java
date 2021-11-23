@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -12,6 +11,7 @@ import java.util.Map;
 
 /**
  * 吸血30%伤害, 不受buff影响
+ *
  * <p>
  * 0:吸血比例
  * 1:护盾持续时间 - T
@@ -60,15 +60,15 @@ public class WeiyanSkill1 extends Skill {
 
     }
 
-    public void talent1(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent1(final int i1) {
+        data[0] = i1;
     }
 
-    public void talent2(final int id) {
+    public void talent2() {
         overHpHeal = true;
     }
 
-    public void talent3(final int id) {
+    public void talent3() {
         overHpShield = true;
     }
 }

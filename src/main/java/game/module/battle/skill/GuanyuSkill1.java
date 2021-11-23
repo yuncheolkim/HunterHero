@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -48,7 +47,7 @@ public class GuanyuSkill1 extends Skill {
         final int maxDamageRate = data[1];
 
         switch (actionPoint) {
-            case 出手后:
+            case 出手后 -> {
                 if (targetHeroId == 0) {
                     targetHeroId = currentTarget.getId();
                     curDamageRate = 0;
@@ -57,31 +56,30 @@ public class GuanyuSkill1 extends Skill {
                     addDamage += data[3];
                 }
                 curDamageRate = Math.max(addDamageRate + curDamageRate, maxDamageRate);
-                break;
-            case 出手前:
+            }
+            case 出手前 -> {
                 hero.fightingData.damage += CalcUtil.change100(hero.origin.damage, curDamageRate + addDamage);
-
                 if (curDamageRate == maxDamageRate) {
                     hero.fightingData.critical += CalcUtil.change100(hero.origin.critical, data[2]);
                 }
-                break;
+            }
         }
 
     }
 
-    public void talent1(final int id) {
-        data[1] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent1(final int i1) {
+        data[1] = i1;
     }
 
-    public void talent2(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent2(final int i1) {
+        data[0] = i1;
     }
 
-    public void talent3(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent3(final int i1) {
+        data[2] = i1;
     }
 
-    public void talent4(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent4(final int i1) {
+        data[3] = i1;
     }
 }

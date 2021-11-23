@@ -6,7 +6,7 @@ import game.module.battle.skill.GuanyuSkill2;
 import game.module.fight.FightService;
 
 /**
- * 关羽
+ * 关羽 - 2
  *
  * @author Yunzhe.Jin
  * 2021/1/11 10:33
@@ -24,15 +24,13 @@ public class Guanyu extends DefaultTargetHero {
         final GuanyuSkill2 skill2 = new GuanyuSkill2();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
-
-            final int id = tdata.id;
             switch (tdata.talentId) {
-                case 21 -> skill1.talent1(id);
-                case 22 -> skill1.talent2(id);
-                case 23 -> skill2.talent1(id);
-                case 24 -> skill1.talent4(id);
-                case 25 -> skill1.talent3(id);
-                case 26 -> skill2.talent2(id);
+                case 21 -> skill1.talent1(tdata.i1);
+                case 22 -> skill1.talent2(tdata.i1);
+                case 24 -> skill1.talent4(tdata.i1);
+                case 25 -> skill1.talent3(tdata.i1);
+                case 23 -> skill2.talent1();
+                case 26 -> skill2.talent2(tdata.i1);
             }
         });
 

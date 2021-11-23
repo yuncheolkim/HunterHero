@@ -20,15 +20,13 @@ public class Lusu extends Hero {
         final LusuSkill2 skill2 = new LusuSkill2();
         final LusuSkill3 skill3 = new LusuSkill3();
         FightService.talentProcess(id, talentInfo, tdata -> {
-
-            final int id = tdata.id;
             switch (tdata.talentId) {
-                case 504 -> skill1.talent1(id);
-                case 505 -> skill2.talent1(id);
-                case 506 -> skill2.talent2(id);
-                case 513 -> skill2.talent3(id);
-                case 514 -> skill2.talent4(id);
-                case 515 -> skill3.talent1(id);
+                case 504 -> skill1.talent1(tdata.i1);
+                case 505 -> skill2.talent1(tdata.i1);
+                case 506 -> skill2.talent2(tdata.i1);
+                case 513 -> skill2.talent3(tdata.i1);
+                case 514 -> skill2.talent4(tdata.i1, tdata.i2);
+                case 515 -> skill3.talent1(tdata.i1);
             }
         });
         addSkill(skill1);

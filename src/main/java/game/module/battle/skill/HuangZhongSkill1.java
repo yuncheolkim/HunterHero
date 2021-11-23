@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.FindTargetStrategy;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
@@ -21,10 +20,10 @@ import game.utils.CalcUtil;
  * @author Yunzhe.Jin
  * 2021/5/8 22:15
  */
-public class HuanzhongSkill1 extends Skill {
+public class HuangZhongSkill1 extends Skill {
 
 
-    public HuanzhongSkill1() {
+    public HuangZhongSkill1() {
         super(4);
         actionPoint.put(ActionPoint.开场, 1);
         actionPoint.put(ActionPoint.出手前, 1);
@@ -64,24 +63,24 @@ public class HuanzhongSkill1 extends Skill {
         }
     }
 
-    public void talent1(final int id) {
-        data[0] += ConfigManager.talentDataBox.findById(id).i1;
+    public void talent1(final int v) {
+        data[0] += v;
     }
 
-    public void talent2(final int id) {
-        data[1] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent2(final int v) {
+        data[1] = v;
     }
 
-    public void talent3(final int id) {
-        data[0] += ConfigManager.talentDataBox.findById(id).i1;
+    public void talent3(final int v) {
+        data[0] += v;
     }
 
-    public void talent4(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
-        data[3] = ConfigManager.talentDataBox.findById(id).i2;
+    public void talent4(final int i1, int i2) {
+        data[2] = i1;
+        data[3] = i2;
     }
 
-    public void talent5(final int id) {
-        data[4] = ConfigManager.talentDataBox.findById(id).i1;
+    public void talent5(final int i1) {
+        data[4] = i1;
     }
 }

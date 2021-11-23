@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
@@ -39,6 +38,6 @@ public class LusuSkill3 extends Skill {
     }
 
     public void talent1(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+        data[0] = id;
     }
 }

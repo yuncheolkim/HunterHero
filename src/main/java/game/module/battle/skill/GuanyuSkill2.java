@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -100,11 +99,11 @@ public class GuanyuSkill2 extends Skill {
 
     }
 
-    public void talent1(final int id) {
+    public void talent1() {
         data[1] = 1;
     }
 
     public void talent2(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+        data[0] = id;
     }
 }

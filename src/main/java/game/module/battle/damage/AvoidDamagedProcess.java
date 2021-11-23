@@ -14,6 +14,7 @@ public class AvoidDamagedProcess implements DamagedProcess {
     public boolean process(DamageInfo info) {
 
         int avoid = info.target.fightingData.getAvoid();
+        Logs.trace("[闪避]:", avoid);
         boolean happened = CalcUtil.happened(info.source.getBattle().getRandom(), avoid, avoid + info.target.fightingData.getAvoidBase());
         if (happened) {
             info.avoid = (true);

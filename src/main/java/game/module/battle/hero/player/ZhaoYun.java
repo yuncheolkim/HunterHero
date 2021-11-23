@@ -6,7 +6,7 @@ import game.module.battle.skill.ZhaoyunSkill2;
 import game.module.fight.FightService;
 
 /**
- * 赵云
+ * 赵云 - 3
  *
  * @author Yunzhe.Jin
  * 2021/6/19 23:37
@@ -20,15 +20,14 @@ public class ZhaoYun extends DefaultTargetHero {
         final ZhaoyunSkill1 skill1 = new ZhaoyunSkill1();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
-
-            final int id = tdata.id;
+            final int i1 = tdata.i1;
             switch (tdata.talentId) {
-                case 33 -> skill1.talent1(id);
-                case 34 -> skill1.talent2(id);
-                case 35 -> skill2.talent2(id);
-                case 36 -> skill1.talent3(id);
-                case 37 -> skill2.talent1(id);
-                case 38 -> skill1.talent4(id);
+                case 33 -> skill1.talent1(i1);
+                case 34 -> skill1.talent2(i1);
+                case 36 -> skill1.talent3(i1);
+                case 38 -> skill1.talent4(i1);
+                case 37 -> skill2.talent1(i1);
+                case 35 -> skill2.talent2(i1);
             }
         });
         addSkill(skill1);

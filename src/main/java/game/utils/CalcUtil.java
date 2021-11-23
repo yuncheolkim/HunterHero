@@ -132,7 +132,11 @@ public class CalcUtil {
     }
 
     public static float calcRateProperty1(final int v, final int base) {
-        return (v * 1.0f / (v + base));
+        int i = v + base;
+        if (i == 0) {
+            return 0;
+        }
+        return (v * 1.0f / i);
     }
 
     /**

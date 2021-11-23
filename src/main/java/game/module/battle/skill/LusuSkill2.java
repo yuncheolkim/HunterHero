@@ -1,6 +1,5 @@
 package game.module.battle.skill;
 
-import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
 import game.module.battle.action.ActionPoint;
@@ -50,19 +49,19 @@ public class LusuSkill2 extends Skill {
 
 
     public void talent1(final int id) {
-        data[3] = ConfigManager.talentDataBox.findById(id).i1;
+        data[3] = id;
     }
 
     public void talent2(final int id) {
-        data[2] = ConfigManager.talentDataBox.findById(id).i1;
+        data[2] = id;
     }
 
     public void talent3(final int id) {
-        data[0] = ConfigManager.talentDataBox.findById(id).i1;
+        data[0] = id;
     }
 
-    public void talent4(final int id) {
-        data[1] += ConfigManager.talentDataBox.findById(id).i1;
-        data[2] += ConfigManager.talentDataBox.findById(id).i2;
+    public void talent4(final int i1, int i2) {
+        data[1] += i1;
+        data[2] += i2;
     }
 }

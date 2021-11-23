@@ -1,5 +1,6 @@
 package game.module.battle.damage;
 
+import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.action.ActionPoint;
 
@@ -17,6 +18,7 @@ public class ShieldDamagedProcess implements DamagedProcess {
 
         final int damage = info.allSourceDamage();
         final int shield = target.heroStats.getShield();
+        Logs.trace("[护盾]:", shield);
 
         if (shield > 0) {
             final int i = target.heroStats.reduceShield(Math.min(damage, shield));

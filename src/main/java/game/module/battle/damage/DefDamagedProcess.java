@@ -1,5 +1,6 @@
 package game.module.battle.damage;
 
+import game.base.Logs;
 import game.module.battle.Hero;
 import game.module.battle.HeroData;
 import game.utils.CalcUtil;
@@ -19,6 +20,8 @@ public class DefDamagedProcess implements DamagedProcess {
         final HeroData fightingData = target.fightingData;
         int def = CalcUtil.calcRateSub(fightingData.getDef(), info.source.fightingData.getDefReduce() / 10000.0f);
         final float rate = CalcUtil.calcRateProperty1(def, fightingData.getDefBase());
+
+        Logs.trace("[护甲]:", def, "[减伤]:", rate);
 
         if (rate > 0) {
             info.reduceDamage(rate);
