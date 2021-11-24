@@ -199,8 +199,6 @@ public class LadderHandler {
                 hero.setSide(side);
                 hero.setPos(Pos.from(fightHeroPos.getIndex()));
                 hero.setSpeed(fightHeroPos.getOrder());
-                hero.setType(1);
-                hero.init();
                 formation.heroList.add(hero);
             }
             formation.battleType = FightType.F_LADDER_MULTI;

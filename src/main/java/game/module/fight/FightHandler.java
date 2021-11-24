@@ -69,12 +69,9 @@ public class FightHandler {
         for (final FightHeroPos fightHeroPos : req.getPosList()) {
 
             Hero hero = createFightHero(player, fightHeroPos.getHeroId());
-            hero.setSide(Side.A);
             hero.setPos(Pos.from(fightHeroPos.getPos()));
             hero.setSpeed(fightHeroPos.getOrder());
             hero.setBattle(battle);
-            hero.setType(1);
-            hero.init();
 
             battle.addHero(hero);
         }

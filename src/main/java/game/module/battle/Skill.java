@@ -58,6 +58,7 @@ public abstract class Skill {
         cd = config.getCd();
         if (cd.getCd() > 0) {
             reduceCoolDownPoint.add(ActionPoint.回合开始前);
+            actionPoint.put(ActionPoint.回合结束后, 1);
         }
 
     }
@@ -66,7 +67,7 @@ public abstract class Skill {
         if (!actionPoint.containsKey(point)) {
             actionPoint.put(point, 1);
         }
-       
+
     }
 
     public Record process(final ActionPoint actionPoint, final Hero hero) {
@@ -82,6 +83,10 @@ public abstract class Skill {
         }
 
         process(record, actionPoint, hero);
+
+        if (cd.getCd() > 0 && cd.ready() && actionPoint == ActionPoint.回合结束后) {
+            cd.cold();
+        }
 
         return record;
     }

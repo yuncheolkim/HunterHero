@@ -392,10 +392,10 @@ public class FightService {
      * 构建玩家战斗英雄数据
      * <p>
      * 还需要设置
-     * side
-     * pos
-     * speed
-     * battle
+     * 1. side
+     * 2. pos
+     * 3. speed
+     * 4. battle
      */
     public static Hero createFightHero(Player player, int heroId) {
         final PlayerHero playerHero = player.getPd().getHeroMap().get(heroId);

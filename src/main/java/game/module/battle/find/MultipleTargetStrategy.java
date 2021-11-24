@@ -25,6 +25,10 @@ public class MultipleTargetStrategy implements FindTargetStrategy {
         }
     }
 
+    public MultipleTargetStrategy(int count) {
+        this(count, true);
+    }
+
     @Override
     public boolean find(Hero search, List<Hero> found) {
 

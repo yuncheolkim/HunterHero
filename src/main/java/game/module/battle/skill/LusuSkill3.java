@@ -31,7 +31,7 @@ public class LusuSkill3 extends Skill {
                 final boolean buff = damageInfo.target.hasBuff(BattleConstant.buff_lusu_1);
 
                 if (buff) {
-                    hero.fightingData.damage = CalcUtil.final100(hero.fightingData.damage, data[0]);
+                    hero.fightingData.damage = CalcUtil.final100(hero.property.damage, data[0]);
                 }
                 break;
         }

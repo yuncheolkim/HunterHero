@@ -245,7 +245,7 @@ public class Hero {
      * 普通攻击
      */
     public void attack() {
-
+        processSkill(ActionPoint.选择目标前);
         targetList = findTarget();
         processSkill(ActionPoint.选择目标后);
 
@@ -260,7 +260,7 @@ public class Hero {
             damageInfo.origin = this;
             damageInfo.source = this;
             damageInfo.target = target;
-            damageInfo.sourceDamage = property.getDamage();
+            damageInfo.sourceDamage = fightingData.getDamage();
             battle.setDamageInfo(damageInfo);
 
             processAll(ActionPoint.出手前);
@@ -280,7 +280,6 @@ public class Hero {
 
                 if (!skillFire) {// 普通攻击
                     attackRecord();
-
                     // 受到伤害
                     damage(damageInfo);
                 }
@@ -434,7 +433,7 @@ public class Hero {
                     battle.addRecord(record);
                 }
                 // 冷却
-                skill.fireCoolDown();
+//                skill.fireCoolDown();
                 if (record != null) {
                     record.cd = skill.cd;
                 }
@@ -740,6 +739,10 @@ public class Hero {
 
     public Map<Integer, Hero> friends() {
         return battle.mySideHeroes(side);
+    }
+
+    public void removeTargetStrategy(final FindTargetStrategy s) {
+        targetStrategies.remove(s);
     }
 
     public void addTargetStrategy(final FindTargetStrategy s) {
