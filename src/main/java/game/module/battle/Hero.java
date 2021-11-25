@@ -144,10 +144,16 @@ public class Hero {
      */
     private int type;
 
+    private boolean inited = false;
+
     /**
      * 初始化
      */
     public final void init() {
+        if (inited) {
+            return;
+        }
+        inited = true;
         property = origin.copy();
         // 回合结束后计算
         actionMap.put(ActionPoint.回合结束后, ShieldRoundEndHandler.INSTANCE);
@@ -335,7 +341,7 @@ public class Hero {
             info.target.attacked(info);
             return;
         }
-        Logs.trace("受到攻击--->", this);
+        Logs.trace("受到攻击--->", this, info);
         processAll(ActionPoint.被攻击之前);
 
         // 计算受到的伤害

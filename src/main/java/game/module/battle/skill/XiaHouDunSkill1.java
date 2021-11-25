@@ -14,6 +14,8 @@ import static game.module.battle.action.ActionPoint.受到伤害前;
 import static game.module.battle.action.ActionPoint.回合开始前;
 
 /**
+ * 反弹受的伤害
+ * <p>
  * 0: 反弹比例
  * 1: 减少伤害回合
  * 2: 减少伤害比例
@@ -46,11 +48,8 @@ public class XiaHouDunSkill1 extends Skill {
                 damage.source = hero;
                 damage.origin = damageInfo.origin;
                 damage.target = damageInfo.source;
-                float rate = hero.hpLoseRate();
-                rate = CalcUtil.final100(rate, data[0]);
 
-                damage.sourceDamage = CalcUtil.change100(damageInfo.allSourceDamage(), rate);
-
+                damage.sourceDamage = CalcUtil.change100(damageInfo.allSourceDamage(), data[0]);
                 damageInfo.source.damage(damage);
 
                 if (data[3] > 0) {

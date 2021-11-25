@@ -23,8 +23,16 @@ public class TestXiahouDun {
     public void test1() {
         Battle battle = new Battle();
         Common.newHero(battle, Side.A, Pos.from(1), XiaHouDun::new, g -> {
+            g.setSpeed(10);
+            g.heroStats.hp = 1000;
+            g.origin.setDamage(100);
+            g.origin.setDef(100);
         });
         Common.newHero(battle, Side.B, Pos.from(16), XiaHouDun::new, g -> {
+            g.setSpeed(11);
+            g.heroStats.hp = 1000;
+            g.origin.setDamage(100);
+            g.origin.setDef(100);
         });
 
         battle.start();

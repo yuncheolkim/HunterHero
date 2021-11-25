@@ -7,7 +7,7 @@ import game.module.battle.skill.common.ReduceDamageSkill;
 import game.module.fight.FightService;
 
 /**
- * 夏侯惇
+ * 夏侯惇 - 7
  *
  * @author Yunzhe.Jin
  * 2021/6/28 21:48
@@ -21,7 +21,6 @@ public class XiaHouDun extends DefaultTargetHero {
     protected void initTalent() {
         final XiaHouDunSkill1 skill1 = new XiaHouDunSkill1();
         final XiaHouDunSkill2 skill2 = new XiaHouDunSkill2();
-
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 
