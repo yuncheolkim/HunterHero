@@ -30,6 +30,7 @@ public class MachaoSkill2 extends Skill {
                 final int rate = data[0];
                 final int round = data[1];
                 final int i = CalcUtil.change100(hero.origin.getMaxHp(), rate);
+
                 hero.addShield(round, i, ActionPoint.出手后);
 
                 final int friendRate = data[2];

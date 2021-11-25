@@ -260,7 +260,6 @@ public class Hero {
             damageInfo.origin = this;
             damageInfo.source = this;
             damageInfo.target = target;
-            damageInfo.sourceDamage = fightingData.getDamage();
             battle.setDamageInfo(damageInfo);
 
             processAll(ActionPoint.出手前);
@@ -425,7 +424,7 @@ public class Hero {
         boolean fired = false;
         for (final Skill skill : skills) {
             if (skill.isReady() && skill.canProcess(this)) {
-                Logs.trace("技能--------->", actionPoint.name(), skill.getClass().getSimpleName(), this.getSimple());
+                Logs.trace("技能--------->", actionPoint.name() + "#" + skill.getClass().getSimpleName(), this.getSimple());
 
                 // 使用技能
                 final Record record = skill.process(actionPoint, this);
@@ -644,6 +643,7 @@ public class Hero {
     }
 
     public void addShield(final int round, final int v, final ActionPoint recordPoint) {
+        Logs.trace("[增加护盾]", round, v, recordPoint);
         heroStats.addShield(new ShieldInfo(round, v));
         recordShieldChange(recordPoint, v);
     }

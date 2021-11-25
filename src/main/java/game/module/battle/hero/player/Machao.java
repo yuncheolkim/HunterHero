@@ -7,7 +7,7 @@ import game.module.battle.skill.common.CriticalAddRateSkill;
 import game.module.fight.FightService;
 
 /**
- * 马超
+ * 马超 - 6
  *
  * @author Yunzhe.Jin
  * 2021/6/28 21:46
@@ -21,10 +21,6 @@ public class Machao extends DefaultTargetHero {
     protected void initTalent() {
         final MachaoSkill1 skill1 = new MachaoSkill1();
         final MachaoSkill2 skill2 = new MachaoSkill2();
-
-        //region todo test
-//        origin.setCritical(origin.getCriticalBase() * 20);
-        //endregion
 
         FightService.talentProcess(id, talentInfo, tdata -> {
 

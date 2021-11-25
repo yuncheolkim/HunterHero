@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.base.Logs;
 import game.manager.ConfigManager;
 import game.module.battle.Hero;
 import game.module.battle.Skill;
@@ -64,6 +65,7 @@ public class MachaoSkill1 extends Skill {
                 hero.property.critical = hero.origin.critical;
                 break;
         }
+        Logs.trace("[MachaoSkill1]", "当前暴击", critical);
     }
 
     public void talent1(final int id) {
