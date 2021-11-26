@@ -140,8 +140,9 @@ public abstract class Buff {
         return data;
     }
 
-    public void SetCd(final int round) {
+    public CoolDown SetCd(final int round) {
         cd = new CoolDown(round);
+        return cd;
     }
 
     public CoolDown getCd() {

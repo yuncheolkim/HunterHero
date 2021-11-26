@@ -21,6 +21,9 @@ import game.utils.CalcUtil;
 public class ZhouyuSkill1 extends Skill {
 
 
+    protected int rate = 100;
+
+
     public ZhouyuSkill1() {
         super(30);
         actionPoint.put(ActionPoint.出手后, 1);
@@ -31,14 +34,16 @@ public class ZhouyuSkill1 extends Skill {
 
         switch (point) {
             case 出手后:
-                final int addBuffRate = data[0];
+                // todo test
+                final int addBuffRate = rate; //data[0];
                 if (CalcUtil.happened100(addBuffRate)) {
+                    rate = 0;
                     //加buff
                     final Hero target = hero.getBattle().getDamageInfo().target;
                     final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
 
                     if (data[1] > 0) {
-                        addBuff.SetCd(data[1]);
+                        addBuff.SetCd(data[1]).cold();
                     }
 
                     addBuff.addDamageRate(data[2]);

@@ -397,6 +397,7 @@ public class Hero {
 
     public void removeBuff(final Buff buff) {
 
+        Logs.trace("[移除buff]", buff);
         contextData = buff;
         for (final ActionPoint actionPoint : buff.effectPoint.keySet()) {
             buffMap.remove(actionPoint, buff);
@@ -528,12 +529,16 @@ public class Hero {
                         buff.mergeBuff(addBuff);
                         Logs.trace("Buff存在合并");
                         added = buff;
+                        if (buffCdMap.remove(addBuff.reducePoint(), buff)) {
+                            buffCdMap.put(addBuff.reducePoint(), buff);
+                        }
                     }
                     case REPLACE -> {
                         buffMap.remove(actionPoint, first.get());
                         buffMap.put(actionPoint, addBuff);
-                        buffCdMap.remove(addBuff.reducePoint(), first.get());
-                        buffCdMap.put(addBuff.reducePoint(), addBuff);
+                        if (buffCdMap.remove(addBuff.reducePoint(), first.get())) {
+                            buffCdMap.put(addBuff.reducePoint(), addBuff);
+                        }
                         Logs.trace("Buff存在替换");
                         added = addBuff;
                     }

@@ -5,7 +5,7 @@ import game.module.battle.Battle;
 import game.module.battle.Pos;
 import game.module.battle.Side;
 import game.module.battle.hero.base.BlankHero;
-import game.module.battle.hero.player.WeiYan;
+import game.module.battle.hero.player.ZhouYu;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,7 +23,7 @@ public class TestZhouYu {
     public void test1() {
         // 一场战斗
         Battle newBattle = new Battle();
-        Common.newHero(newBattle, Side.A, Pos.from(1), WeiYan::new, g -> {
+        Common.newHero(newBattle, Side.A, Pos.from(1), ZhouYu::new, g -> {
             g.setSpeed(10);
             g.heroStats.hp = 1000;
             g.origin.setDamage(100);

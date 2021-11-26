@@ -1,5 +1,6 @@
 package game.module.battle.skill;
 
+import game.base.Logs;
 import game.manager.ConfigManager;
 import game.module.battle.BattleConstant;
 import game.module.battle.Hero;
@@ -37,6 +38,7 @@ public class ZhouyuSkill2 extends Skill {
                 final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
                 final Optional<Buff> buff = damageInfo.target.findBuff(BattleConstant.buff_zhuoshao);
                 if (buff.isPresent()) {
+                    Logs.trace("[ZhouyuSkill2]", "有灼烧buff");
                     final Buff zhuoshao = buff.get();
                     final int count = zhuoshao.data[1];
                     hero.fightingData.critical = CalcUtil.final100(hero.fightingData.critical, count * data[0]);
