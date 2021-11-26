@@ -16,16 +16,19 @@ import game.utils.CalcUtil;
  * 2021/7/4 21:04
  */
 public class ZhuoShaoBuff extends Buff {
+    private int damage;
+
     public ZhuoShaoBuff(final int sourceId) {
         super(BattleConstant.buff_zhuoshao, sourceId);
     }
+
 
     @Override
     protected void process0(final ActionPoint actionPoint, final Hero hero) {
 
         switch (actionPoint) {
             case 回合结束后:
-                final int damage = CalcUtil.change100(hero.getHp(), data[0]);
+                final int damage = CalcUtil.change100(this.damage, data[0]);
                 if (damage > 0) {
                     final DamageInfo info = new DamageInfo();
                     info.type = DamageType.DAMAGE_BUFF;
@@ -40,5 +43,9 @@ public class ZhuoShaoBuff extends Buff {
 
     public void addDamageRate(final int rate) {
         data[0] = CalcUtil.final100(data[0], rate);
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 }

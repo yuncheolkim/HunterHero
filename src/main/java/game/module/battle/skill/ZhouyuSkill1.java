@@ -41,6 +41,7 @@ public class ZhouyuSkill1 extends Skill {
                     //加buff
                     final Hero target = hero.getBattle().getDamageInfo().target;
                     final ZhuoShaoBuff addBuff = new ZhuoShaoBuff(hero.getId());
+                    addBuff.setDamage(hero.property.getDamage());
 
                     if (data[1] > 0) {
                         addBuff.SetCd(data[1]).cold();

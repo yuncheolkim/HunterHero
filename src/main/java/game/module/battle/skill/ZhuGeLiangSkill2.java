@@ -41,7 +41,7 @@ public class ZhuGeLiangSkill2 extends Skill {
     }
 
     private void attack(final Record record, final Hero hero) {
-        final ZhuGeLiangSkill1 skill = (ZhuGeLiangSkill1) hero.findSkill(36).get();
+        final ZhuGeLiangSkill1 skill = (ZhuGeLiangSkill1) hero.findSkill(35).get();
 
         final int acc = skill.getAcc();
         final int need = data[0];
@@ -63,7 +63,9 @@ public class ZhuGeLiangSkill2 extends Skill {
                 hero.damage(tempInfo);
 
                 //神锤回血
-                hero.addHp(CalcUtil.change100(tempInfo.sourceDamage, data[3]));
+                if (data[3] > 0) {
+                    hero.addHp(CalcUtil.change100(tempInfo.sourceDamage, data[3]));
+                }
 
             }
         }

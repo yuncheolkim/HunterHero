@@ -36,6 +36,7 @@ public class ZhuGeLiangSkill1 extends Skill {
 
     public ZhuGeLiangSkill1() {
         super(35);
+        needRecord = true;
         actionPoint.put(ActionPoint.出手后, 1);
     }
 
@@ -70,7 +71,7 @@ public class ZhuGeLiangSkill1 extends Skill {
      */
     private void attack(final Record record, final Hero hero) {
         final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
-        final Pos pos = hero.getPos();
+        final Pos pos = damageInfo.target.getPos();
         final Formation formation = hero.getBattle().getFormation();
         int remain = data[0];
         final List<Hero> enemyList = new ArrayList<>(remain);
