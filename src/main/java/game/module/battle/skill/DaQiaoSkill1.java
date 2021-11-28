@@ -25,7 +25,7 @@ import java.util.Map;
 public class DaQiaoSkill1 extends Skill {
 
     public DaQiaoSkill1() {
-        super(41);
+        super(40);
         actionPoint.put(ActionPoint.出手后, 1);
     }
 

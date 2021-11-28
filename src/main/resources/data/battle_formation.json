@@ -599,7 +599,7 @@
         "critical": 0,
         "criticalBase": 150,
         "criticalDamage": 150,
-        "damage": 1,
+        "damage": 10,
         "def": 0,
         "defBase": 150,
         "hp": 500,

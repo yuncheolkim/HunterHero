@@ -34,11 +34,17 @@ public class HuiChunBuff extends Buff {
                 hero.addHp(CalcUtil.change100(hero.property.maxHp, data[0]));
                 break;
             case 出手前:
-                hero.fightingData.damage += CalcUtil.change100(hero.fightingData.damage, data[1]);
-                hero.fightingData.critical += CalcUtil.change100(hero.fightingData.critical, data[2]);
+                if (data[1] > 0) {
+                    hero.fightingData.damage += CalcUtil.change100(hero.fightingData.damage, data[1]);
+                }
+                if (data[2] > 0) {
+                    hero.fightingData.critical += CalcUtil.change100(hero.fightingData.critical, data[2]);
+                }
                 break;
             case 被攻击之前:
-                hero.fightingData.def += CalcUtil.change100(hero.fightingData.def, data[3]);
+                if (data[3] > 0) {
+                    hero.fightingData.def += CalcUtil.change100(hero.fightingData.def, data[3]);
+                }
                 break;
         }
     }

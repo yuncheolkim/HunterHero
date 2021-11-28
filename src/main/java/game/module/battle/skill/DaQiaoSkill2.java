@@ -21,15 +21,15 @@ public class DaQiaoSkill2 extends Skill {
 
 
     public DaQiaoSkill2() {
-        super(42);
-        actionPoint.put(ActionPoint.出手后, 1);
+        super(41);
+        actionPoint.put(ActionPoint.出手结束后, 1);
     }
 
     @Override
     public void process(final Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
-            case 出手后:
+            case 出手结束后:
                 addAllHp(record, hero);
                 break;
         }
@@ -38,7 +38,9 @@ public class DaQiaoSkill2 extends Skill {
     private void addAllHp(final Record record, final Hero hero) {
         final Map<Integer, Hero> friend = hero.getBattle().mySideHeroes(hero.getSide());
         for (final Hero h : friend.values()) {
-            h.addHp(CalcUtil.change100(h.property.maxHp, data[0]));
+            if (h.isAlive()) {
+                h.addHp(CalcUtil.change100(h.property.maxHp, data[0]));
+            }
         }
     }
 
