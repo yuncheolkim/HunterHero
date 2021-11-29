@@ -7,6 +7,7 @@ import game.module.battle.Side;
 import game.module.battle.hero.base.BlankHero;
 import game.module.battle.hero.player.DaQiao;
 import game.module.battle.hero.player.DianWei;
+import game.module.battle.hero.player.JiangWei;
 import game.module.battle.hero.player.ZhouYu;
 import org.junit.Before;
 import org.junit.Test;
@@ -64,6 +65,25 @@ public class TestHero {
         // 一场战斗
         Battle newBattle = new Battle();
         Common.newHero(newBattle, Side.A, Pos.from(1), DianWei::new, g -> {
+            g.setSpeed(10);
+            g.heroStats.hp = 1000;
+            g.origin.setDamage(100);
+        });
+
+        Common.newHero(newBattle, Side.B, Pos.from(-1), BlankHero::new, g -> {
+            g.setSpeed(50);
+            g.origin.setDamage(100);
+            g.heroStats.hp = 1000;
+        });
+
+        newBattle.start();
+    }
+
+    @Test
+    public void testJiangWei() {
+        // 一场战斗
+        Battle newBattle = new Battle();
+        Common.newHero(newBattle, Side.A, Pos.from(1), JiangWei::new, g -> {
             g.setSpeed(10);
             g.heroStats.hp = 1000;
             g.origin.setDamage(100);
