@@ -7,6 +7,8 @@ import game.module.battle.skill.JiangWeiSkill3;
 import game.module.fight.FightService;
 
 /**
+ * 姜维 - 1012
+ *
  * @author Yunzhe.Jin
  * 2021/7/2 21:27
  */
@@ -19,8 +21,6 @@ public class JiangWei extends DefaultTargetHero {
         final JiangWeiSkill3 skill3 = new JiangWeiSkill3();
 
         FightService.talentProcess(id, talentInfo, tdata -> {
-
-            final int id = tdata.id;
             switch (tdata.talentId) {
                 case 1104 -> skill1.talent1(tdata.i1);
                 case 1105 -> skill2.talent1(tdata.i1);

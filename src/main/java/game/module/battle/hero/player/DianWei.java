@@ -6,7 +6,7 @@ import game.module.battle.skill.common.*;
 import game.module.fight.FightService;
 
 /**
- * 典韦 - 9
+ * 典韦 - 10
  *
  * @author Yunzhe.Jin
  * 2021/7/2 21:26
