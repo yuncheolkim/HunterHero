@@ -724,7 +724,11 @@ public class Hero {
     }
 
     public float hpRate() {
-        return heroStats.hp * 1.0f / Math.max(property.getMaxHp(), fightingData.getMaxHp());
+        if (fightingData != null) {
+            return heroStats.hp * 1.0f / Math.max(property.getMaxHp(), fightingData.getMaxHp());
+        } else {
+            return heroStats.hp * 1.0f / property.getMaxHp();
+        }
     }
 
     public float hpLoseRate() {

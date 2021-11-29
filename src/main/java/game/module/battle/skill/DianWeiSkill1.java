@@ -32,23 +32,21 @@ public class DianWeiSkill1 extends Skill {
     public void process(final Record record, final ActionPoint point, final Hero hero) {
 
         switch (point) {
-            case 出手前:
+            case 出手前 -> {
                 final DamageInfo damageInfo = hero.getBattle().getDamageInfo();
                 final float v = CalcUtil.change100(damageInfo.target.hpLoseRate(), data[0]);
                 hero.fightingData.damage += CalcUtil.change100(hero.fightingData.damage, v);
                 if (!critical) {
                     hero.fightingData.damage += CalcUtil.change100(hero.fightingData.damage, data[1]);
                 }
-                break;
-            case 出手后:
-                critical = hero.getBattle().getDamageInfo().sourceCriticalDamage > 0;
-                break;
-            case 开场:
+            }
+            case 出手后 -> critical = hero.getBattle().getDamageInfo().sourceCriticalDamage > 0;
+            case 开场 -> {
                 hero.origin.critical -= CalcUtil.change100(hero.origin.critical, data[2]);
                 hero.origin.damage += CalcUtil.change100(hero.origin.damage, data[3]);
                 hero.property.critical = hero.origin.critical;
                 hero.property.damage = hero.origin.damage;
-                break;
+            }
         }
     }
 
