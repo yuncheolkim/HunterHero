@@ -72,7 +72,7 @@ public class ShopHandler {
 
         final int count = Math.min(bagSlot.getData().getCount(), req.getCount());
 
-        if (item.resourceType == ResourceEnum.GOLD) {
+        if (item.sell > 0) {
             // 移除物品
             player.removeBagItem(GameConstants.ITEM_BAG, count, req.getSlotId());
             player.addGold(count * item.sell, ResourceSourceEnum.出售物品);
